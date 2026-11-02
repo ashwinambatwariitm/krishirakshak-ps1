@@ -1,0 +1,3516 @@
+{
+  "recommended_system": "effb0_seed7",
+  "validation": {
+    "effb0_seed42": {
+      "pv_val_macro_f1": 0.9765085458380929,
+      "pd_val_macro_f1": 0.5916664045281332,
+      "val_score": 0.7840874751831131
+    },
+    "effb0_seed7": {
+      "pv_val_macro_f1": 0.9755831316435261,
+      "pd_val_macro_f1": 0.6013311711748255,
+      "val_score": 0.7884571514091758
+    },
+    "mnv3s_seed42": {
+      "pv_val_macro_f1": 0.9748186017450597,
+      "pd_val_macro_f1": 0.5777361819411652,
+      "val_score": 0.7762773918431125
+    },
+    "effb0_2seed_ensemble": {
+      "pv_val_macro_f1": 0.9790468960543457,
+      "pd_val_macro_f1": 0.5669869810970025,
+      "val_score": 0.7730169385756741
+    }
+  },
+  "sets": {
+    "plantvillage_test": {
+      "effb0_seed42": {
+        "n": 2796,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus",
+          "target_spot",
+          "spider_mites"
+        ],
+        "accuracy": 0.9878397711015737,
+        "macro_f1": 0.983990337034021,
+        "accuracy_original5": 0.9749776586237712,
+        "macro_f1_original5": 0.9760950474005554,
+        "balanced_accuracy": 0.9825422414040579,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9712230215827338,
+            "recall": 0.8766233766233766,
+            "f1-score": 0.9215017064846417,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.976027397260274,
+            "recall": 0.986159169550173,
+            "f1-score": 0.9810671256454389,
+            "support": 289.0
+          },
+          "leaf_mold": {
+            "precision": 0.9932885906040269,
+            "recall": 1.0,
+            "f1-score": 0.9966329966329966,
+            "support": 148.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9739776951672863,
+            "recall": 0.9812734082397003,
+            "f1-score": 0.9776119402985075,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9937106918238994,
+            "recall": 0.9813664596273292,
+            "f1-score": 0.9875,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9963459196102314,
+            "recall": 1.0,
+            "f1-score": 0.9981696156192801,
+            "support": 818.0
+          },
+          "mosaic_virus": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 60.0
+          },
+          "target_spot": {
+            "precision": 0.9594594594594594,
+            "recall": 1.0,
+            "f1-score": 0.9793103448275862,
+            "support": 213.0
+          },
+          "spider_mites": {
+            "precision": 0.9962264150943396,
+            "recall": 1.0,
+            "f1-score": 0.998109640831758,
+            "support": 264.0
+          },
+          "accuracy": 0.9878397711015737,
+          "macro avg": {
+            "precision": 0.986025919060225,
+            "recall": 0.9825422414040579,
+            "f1-score": 0.983990337034021,
+            "support": 2796.0
+          },
+          "weighted avg": {
+            "precision": 0.9878588922064581,
+            "recall": 0.9878397711015737,
+            "f1-score": 0.9876736508855447,
+            "support": 2796.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            135,
+            3,
+            0,
+            5,
+            2,
+            0,
+            0,
+            8,
+            1
+          ],
+          [
+            0,
+            3,
+            285,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            148,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            4,
+            0,
+            262,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            316,
+            3,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            818,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            213,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            264
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 2796,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus",
+          "target_spot",
+          "spider_mites"
+        ],
+        "accuracy": 0.9839055793991416,
+        "macro_f1": 0.9796331989384217,
+        "accuracy_original5": 0.9714030384271671,
+        "macro_f1_original5": 0.9730510741285787,
+        "balanced_accuracy": 0.9795969415408472,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9647887323943662,
+            "recall": 0.8896103896103896,
+            "f1-score": 0.9256756756756757,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.956081081081081,
+            "recall": 0.9792387543252595,
+            "f1-score": 0.9675213675213675,
+            "support": 289.0
+          },
+          "leaf_mold": {
+            "precision": 0.9932885906040269,
+            "recall": 1.0,
+            "f1-score": 0.9966329966329966,
+            "support": 148.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9626865671641791,
+            "recall": 0.9662921348314607,
+            "f1-score": 0.9644859813084112,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9967948717948718,
+            "recall": 0.9658385093167702,
+            "f1-score": 0.9810725552050473,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9975579975579976,
+            "recall": 0.9987775061124694,
+            "f1-score": 0.998167379352474,
+            "support": 818.0
+          },
+          "mosaic_virus": {
+            "precision": 0.9836065573770492,
+            "recall": 1.0,
+            "f1-score": 0.9917355371900827,
+            "support": 60.0
+          },
+          "target_spot": {
+            "precision": 0.9508928571428571,
+            "recall": 1.0,
+            "f1-score": 0.9748283752860412,
+            "support": 213.0
+          },
+          "spider_mites": {
+            "precision": 0.9962121212121212,
+            "recall": 0.9962121212121212,
+            "f1-score": 0.9962121212121212,
+            "support": 264.0
+          },
+          "accuracy": 0.9839055793991416,
+          "macro avg": {
+            "precision": 0.980190937632855,
+            "recall": 0.9795969415408472,
+            "f1-score": 0.9796331989384217,
+            "support": 2796.0
+          },
+          "weighted avg": {
+            "precision": 0.9840686283254073,
+            "recall": 0.9839055793991416,
+            "f1-score": 0.98381116775123,
+            "support": 2796.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            137,
+            4,
+            0,
+            4,
+            1,
+            0,
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            5,
+            283,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            148,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            9,
+            0,
+            258,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            6,
+            311,
+            2,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            817,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            213,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            263
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 2796,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus",
+          "target_spot",
+          "spider_mites"
+        ],
+        "accuracy": 0.9839055793991416,
+        "macro_f1": 0.9788159467701638,
+        "accuracy_original5": 0.9696157283288651,
+        "macro_f1_original5": 0.9712917308680021,
+        "balanced_accuracy": 0.976954193720714,
+        "missed_disease_rate": 0.0003944773175542406,
+        "per_class": {
+          "healthy": {
+            "precision": 0.9961832061068703,
+            "recall": 1.0,
+            "f1-score": 0.9980879541108987,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9565217391304348,
+            "recall": 0.8571428571428571,
+            "f1-score": 0.9041095890410958,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9442622950819672,
+            "recall": 0.9965397923875432,
+            "f1-score": 0.9696969696969697,
+            "support": 289.0
+          },
+          "leaf_mold": {
+            "precision": 1.0,
+            "recall": 0.9932432432432432,
+            "f1-score": 0.9966101694915255,
+            "support": 148.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9771863117870723,
+            "recall": 0.9625468164794008,
+            "f1-score": 0.969811320754717,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.996875,
+            "recall": 0.9906832298136646,
+            "f1-score": 0.9937694704049844,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9987760097919217,
+            "recall": 0.9975550122249389,
+            "f1-score": 0.998165137614679,
+            "support": 818.0
+          },
+          "mosaic_virus": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 60.0
+          },
+          "target_spot": {
+            "precision": 0.9627906976744186,
+            "recall": 0.971830985915493,
+            "f1-score": 0.9672897196261683,
+            "support": 213.0
+          },
+          "spider_mites": {
+            "precision": 0.9814126394052045,
+            "recall": 1.0,
+            "f1-score": 0.9906191369606003,
+            "support": 264.0
+          },
+          "accuracy": 0.9839055793991416,
+          "macro avg": {
+            "precision": 0.981400789897789,
+            "recall": 0.976954193720714,
+            "f1-score": 0.9788159467701638,
+            "support": 2796.0
+          },
+          "weighted avg": {
+            "precision": 0.9840016432629591,
+            "recall": 0.9839055793991416,
+            "f1-score": 0.9837135905511937,
+            "support": 2796.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            132,
+            8,
+            0,
+            3,
+            1,
+            0,
+            0,
+            8,
+            2
+          ],
+          [
+            0,
+            1,
+            288,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            147,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            9,
+            0,
+            257,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2,
+            319,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            816,
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            207,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            264
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 2796,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus",
+          "target_spot",
+          "spider_mites"
+        ],
+        "accuracy": 0.9856938483547926,
+        "macro_f1": 0.9821776785437718,
+        "accuracy_original5": 0.9722966934763181,
+        "macro_f1_original5": 0.9737348348123394,
+        "balanced_accuracy": 0.981253427199514,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9647887323943662,
+            "recall": 0.8896103896103896,
+            "f1-score": 0.9256756756756757,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9594594594594594,
+            "recall": 0.9826989619377162,
+            "f1-score": 0.9709401709401709,
+            "support": 289.0
+          },
+          "leaf_mold": {
+            "precision": 0.9932885906040269,
+            "recall": 1.0,
+            "f1-score": 0.9966329966329966,
+            "support": 148.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9735849056603774,
+            "recall": 0.9662921348314607,
+            "f1-score": 0.9699248120300752,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9968253968253968,
+            "recall": 0.9751552795031055,
+            "f1-score": 0.9858712715855573,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9963414634146341,
+            "recall": 0.9987775061124694,
+            "f1-score": 0.9975579975579976,
+            "support": 818.0
+          },
+          "mosaic_virus": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 60.0
+          },
+          "target_spot": {
+            "precision": 0.9551569506726457,
+            "recall": 1.0,
+            "f1-score": 0.9770642201834863,
+            "support": 213.0
+          },
+          "spider_mites": {
+            "precision": 0.9962264150943396,
+            "recall": 1.0,
+            "f1-score": 0.998109640831758,
+            "support": 264.0
+          },
+          "accuracy": 0.9856938483547926,
+          "macro avg": {
+            "precision": 0.9835671914125246,
+            "recall": 0.981253427199514,
+            "f1-score": 0.9821776785437718,
+            "support": 2796.0
+          },
+          "weighted avg": {
+            "precision": 0.985784130444335,
+            "recall": 0.9856938483547926,
+            "f1-score": 0.9855851170604918,
+            "support": 2796.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            137,
+            4,
+            0,
+            4,
+            1,
+            0,
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            4,
+            284,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            148,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            8,
+            0,
+            258,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            314,
+            3,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            817,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            213,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            264
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 2796,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus",
+          "target_spot",
+          "spider_mites"
+        ],
+        "accuracy": 0.9839055793991416,
+        "macro_f1": 0.9801637564842263,
+        "accuracy_original5": 0.9705093833780161,
+        "macro_f1_original5": 0.9716244215531388,
+        "balanced_accuracy": 0.9793263787702843,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9645390070921985,
+            "recall": 0.8831168831168831,
+            "f1-score": 0.9220338983050848,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9528619528619529,
+            "recall": 0.9792387543252595,
+            "f1-score": 0.9658703071672355,
+            "support": 289.0
+          },
+          "leaf_mold": {
+            "precision": 0.9932885906040269,
+            "recall": 1.0,
+            "f1-score": 0.9966329966329966,
+            "support": 148.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9591078066914498,
+            "recall": 0.9662921348314607,
+            "f1-score": 0.9626865671641791,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9967948717948718,
+            "recall": 0.9658385093167702,
+            "f1-score": 0.9810725552050473,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9975579975579976,
+            "recall": 0.9987775061124694,
+            "f1-score": 0.998167379352474,
+            "support": 818.0
+          },
+          "mosaic_virus": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 60.0
+          },
+          "target_spot": {
+            "precision": 0.9551569506726457,
+            "recall": 1.0,
+            "f1-score": 0.9770642201834863,
+            "support": 213.0
+          },
+          "spider_mites": {
+            "precision": 0.9962264150943396,
+            "recall": 1.0,
+            "f1-score": 0.998109640831758,
+            "support": 264.0
+          },
+          "accuracy": 0.9839055793991416,
+          "macro avg": {
+            "precision": 0.9815533592369482,
+            "recall": 0.9793263787702843,
+            "f1-score": 0.9801637564842263,
+            "support": 2796.0
+          },
+          "weighted avg": {
+            "precision": 0.9840583698368691,
+            "recall": 0.9839055793991416,
+            "f1-score": 0.9837949353397171,
+            "support": 2796.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            136,
+            5,
+            0,
+            5,
+            1,
+            0,
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            5,
+            283,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            148,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            9,
+            0,
+            258,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            6,
+            311,
+            2,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            817,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            213,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            264
+          ]
+        ]
+      }
+    },
+    "plantdoc_test_leaf_crops": {
+      "effb0_seed42": {
+        "n": 715,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.676923076923077,
+        "macro_f1": 0.6061342646371717,
+        "accuracy_original5": 0.6666666666666666,
+        "macro_f1_original5": 0.6690680496621091,
+        "balanced_accuracy": 0.606446437397598,
+        "missed_disease_rate": 0.08389261744966443,
+        "per_class": {
+          "healthy": {
+            "precision": 0.6551724137931034,
+            "recall": 0.7983193277310925,
+            "f1-score": 0.7196969696969697,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.46774193548387094,
+            "recall": 0.58,
+            "f1-score": 0.5178571428571429,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6415094339622641,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6538461538461539,
+            "support": 51.0
+          },
+          "leaf_mold": {
+            "precision": 0.43636363636363634,
+            "recall": 0.3870967741935484,
+            "f1-score": 0.41025641025641024,
+            "support": 62.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7647058823529411,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.7428571428571429,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4444444444444444,
+            "recall": 0.417910447761194,
+            "f1-score": 0.4307692307692308,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8717948717948718,
+            "recall": 0.8854166666666666,
+            "f1-score": 0.8785529715762274,
+            "support": 192.0
+          },
+          "mosaic_virus": {
+            "precision": 0.6666666666666666,
+            "recall": 0.3939393939393939,
+            "f1-score": 0.49523809523809526,
+            "support": 66.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.676923076923077,
+          "macro avg": {
+            "precision": 0.4948399284861799,
+            "recall": 0.48515714991807835,
+            "f1-score": 0.48490741170973733,
+            "support": 715.0
+          },
+          "weighted avg": {
+            "precision": 0.6781465301520344,
+            "recall": 0.676923076923077,
+            "f1-score": 0.6724151643878429,
+            "support": 715.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            95,
+            2,
+            7,
+            5,
+            0,
+            7,
+            2,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            29,
+            4,
+            2,
+            5,
+            7,
+            2,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            9,
+            34,
+            5,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            6,
+            5,
+            24,
+            3,
+            5,
+            3,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            9,
+            0,
+            3,
+            78,
+            15,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            4,
+            6,
+            2,
+            12,
+            13,
+            28,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            14,
+            1,
+            0,
+            2,
+            2,
+            0,
+            170,
+            3,
+            0,
+            0
+          ],
+          [
+            21,
+            0,
+            1,
+            2,
+            0,
+            0,
+            16,
+            26,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 715,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6853146853146853,
+        "macro_f1": 0.6286532765695343,
+        "accuracy_original5": 0.6666666666666666,
+        "macro_f1_original5": 0.6811403005923553,
+        "balanced_accuracy": 0.6302841854552754,
+        "missed_disease_rate": 0.06543624161073826,
+        "per_class": {
+          "healthy": {
+            "precision": 0.7,
+            "recall": 0.7647058823529411,
+            "f1-score": 0.7309236947791165,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.49122807017543857,
+            "recall": 0.56,
+            "f1-score": 0.5233644859813084,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6727272727272727,
+            "recall": 0.7254901960784313,
+            "f1-score": 0.6981132075471698,
+            "support": 51.0
+          },
+          "leaf_mold": {
+            "precision": 0.42424242424242425,
+            "recall": 0.45161290322580644,
+            "f1-score": 0.4375,
+            "support": 62.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7916666666666666,
+            "recall": 0.7037037037037037,
+            "f1-score": 0.7450980392156863,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4925373134328358,
+            "recall": 0.4925373134328358,
+            "f1-score": 0.4925373134328358,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.868421052631579,
+            "recall": 0.859375,
+            "f1-score": 0.8638743455497382,
+            "support": 192.0
+          },
+          "mosaic_virus": {
+            "precision": 0.6037735849056604,
+            "recall": 0.48484848484848486,
+            "f1-score": 0.5378151260504201,
+            "support": 66.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6853146853146853,
+          "macro avg": {
+            "precision": 0.5044596384781876,
+            "recall": 0.5042273483642203,
+            "f1-score": 0.5029226212556275,
+            "support": 715.0
+          },
+          "weighted avg": {
+            "precision": 0.6902928999019998,
+            "recall": 0.6853146853146853,
+            "f1-score": 0.6863037461018986,
+            "support": 715.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            91,
+            1,
+            7,
+            10,
+            0,
+            3,
+            3,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            28,
+            5,
+            2,
+            3,
+            7,
+            4,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            7,
+            37,
+            4,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            7,
+            5,
+            28,
+            2,
+            6,
+            2,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            6,
+            76,
+            16,
+            1,
+            2,
+            1,
+            0
+          ],
+          [
+            2,
+            5,
+            1,
+            7,
+            15,
+            33,
+            3,
+            1,
+            0,
+            0
+          ],
+          [
+            15,
+            2,
+            0,
+            1,
+            0,
+            0,
+            165,
+            9,
+            0,
+            0
+          ],
+          [
+            13,
+            1,
+            0,
+            8,
+            0,
+            0,
+            12,
+            32,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 715,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6265734265734266,
+        "macro_f1": 0.5565461398981453,
+        "accuracy_original5": 0.6205128205128205,
+        "macro_f1_original5": 0.6332424900260694,
+        "balanced_accuracy": 0.5637738464268018,
+        "missed_disease_rate": 0.11241610738255034,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5732484076433121,
+            "recall": 0.7563025210084033,
+            "f1-score": 0.6521739130434783,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.48333333333333334,
+            "recall": 0.58,
+            "f1-score": 0.5272727272727272,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.5692307692307692,
+            "recall": 0.7254901960784313,
+            "f1-score": 0.6379310344827587,
+            "support": 51.0
+          },
+          "leaf_mold": {
+            "precision": 0.37735849056603776,
+            "recall": 0.3225806451612903,
+            "f1-score": 0.34782608695652173,
+            "support": 62.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.75,
+            "recall": 0.6111111111111112,
+            "f1-score": 0.673469387755102,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.3968253968253968,
+            "recall": 0.373134328358209,
+            "f1-score": 0.38461538461538464,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8429319371727748,
+            "recall": 0.8385416666666666,
+            "f1-score": 0.8407310704960835,
+            "support": 192.0
+          },
+          "mosaic_virus": {
+            "precision": 0.5405405405405406,
+            "recall": 0.30303030303030304,
+            "f1-score": 0.3883495145631068,
+            "support": 66.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6265734265734266,
+          "macro avg": {
+            "precision": 0.4533468875312165,
+            "recall": 0.45101907714144146,
+            "f1-score": 0.4452369119185162,
+            "support": 715.0
+          },
+          "weighted avg": {
+            "precision": 0.6292533314996285,
+            "recall": 0.6265734265734266,
+            "f1-score": 0.6204578885439583,
+            "support": 715.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            90,
+            1,
+            10,
+            8,
+            0,
+            4,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            29,
+            4,
+            4,
+            3,
+            8,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            10,
+            37,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            17,
+            3,
+            9,
+            20,
+            2,
+            4,
+            3,
+            4,
+            0,
+            0
+          ],
+          [
+            2,
+            5,
+            0,
+            7,
+            66,
+            22,
+            5,
+            0,
+            0,
+            1
+          ],
+          [
+            5,
+            9,
+            3,
+            5,
+            16,
+            25,
+            2,
+            2,
+            0,
+            0
+          ],
+          [
+            18,
+            2,
+            1,
+            6,
+            0,
+            0,
+            161,
+            4,
+            0,
+            0
+          ],
+          [
+            24,
+            1,
+            1,
+            1,
+            0,
+            0,
+            19,
+            20,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 715,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6825174825174826,
+        "macro_f1": 0.6168178658019932,
+        "accuracy_original5": 0.676923076923077,
+        "macro_f1_original5": 0.6832095178048881,
+        "balanced_accuracy": 0.6182640872850699,
+        "missed_disease_rate": 0.07718120805369127,
+        "per_class": {
+          "healthy": {
+            "precision": 0.676056338028169,
+            "recall": 0.8067226890756303,
+            "f1-score": 0.735632183908046,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5166666666666667,
+            "recall": 0.62,
+            "f1-score": 0.5636363636363636,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.660377358490566,
+            "recall": 0.6862745098039216,
+            "f1-score": 0.6730769230769231,
+            "support": 51.0
+          },
+          "leaf_mold": {
+            "precision": 0.4098360655737705,
+            "recall": 0.4032258064516129,
+            "f1-score": 0.4065040650406504,
+            "support": 62.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7623762376237624,
+            "recall": 0.7129629629629629,
+            "f1-score": 0.7368421052631579,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4603174603174603,
+            "recall": 0.43283582089552236,
+            "f1-score": 0.4461538461538462,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8795811518324608,
+            "recall": 0.875,
+            "f1-score": 0.8772845953002611,
+            "support": 192.0
+          },
+          "mosaic_virus": {
+            "precision": 0.627906976744186,
+            "recall": 0.4090909090909091,
+            "f1-score": 0.4954128440366973,
+            "support": 66.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6825174825174826,
+          "macro avg": {
+            "precision": 0.49931182552770415,
+            "recall": 0.4946112698280559,
+            "f1-score": 0.4934542926415945,
+            "support": 715.0
+          },
+          "weighted avg": {
+            "precision": 0.6837377119284797,
+            "recall": 0.6825174825174826,
+            "f1-score": 0.6795235919456224,
+            "support": 715.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            96,
+            1,
+            6,
+            6,
+            0,
+            6,
+            2,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            31,
+            5,
+            2,
+            3,
+            6,
+            2,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            8,
+            35,
+            4,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            7,
+            5,
+            25,
+            3,
+            4,
+            3,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            6,
+            77,
+            16,
+            0,
+            2,
+            1,
+            0
+          ],
+          [
+            4,
+            5,
+            2,
+            10,
+            15,
+            29,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            13,
+            2,
+            0,
+            2,
+            2,
+            0,
+            168,
+            5,
+            0,
+            0
+          ],
+          [
+            18,
+            0,
+            0,
+            6,
+            0,
+            0,
+            15,
+            27,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 715,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6727272727272727,
+        "macro_f1": 0.6173353739219647,
+        "accuracy_original5": 0.6538461538461539,
+        "macro_f1_original5": 0.6717283897186634,
+        "balanced_accuracy": 0.6204892078458706,
+        "missed_disease_rate": 0.07214765100671142,
+        "per_class": {
+          "healthy": {
+            "precision": 0.6742424242424242,
+            "recall": 0.7478991596638656,
+            "f1-score": 0.7091633466135459,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.4915254237288136,
+            "recall": 0.58,
+            "f1-score": 0.5321100917431193,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6491228070175439,
+            "recall": 0.7254901960784313,
+            "f1-score": 0.6851851851851852,
+            "support": 51.0
+          },
+          "leaf_mold": {
+            "precision": 0.4126984126984127,
+            "recall": 0.41935483870967744,
+            "f1-score": 0.416,
+            "support": 62.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.8043478260869565,
+            "recall": 0.6851851851851852,
+            "f1-score": 0.74,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4520547945205479,
+            "recall": 0.4925373134328358,
+            "f1-score": 0.4714285714285714,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8663101604278075,
+            "recall": 0.84375,
+            "f1-score": 0.8548812664907651,
+            "support": 192.0
+          },
+          "mosaic_virus": {
+            "precision": 0.6078431372549019,
+            "recall": 0.4696969696969697,
+            "f1-score": 0.5299145299145299,
+            "support": 66.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6727272727272727,
+          "macro avg": {
+            "precision": 0.4958144985977409,
+            "recall": 0.49639136627669644,
+            "f1-score": 0.49386829913757174,
+            "support": 715.0
+          },
+          "weighted avg": {
+            "precision": 0.681272893325477,
+            "recall": 0.6727272727272727,
+            "f1-score": 0.6746149142726049,
+            "support": 715.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            89,
+            2,
+            7,
+            8,
+            0,
+            7,
+            3,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            29,
+            6,
+            2,
+            2,
+            7,
+            3,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            7,
+            37,
+            4,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            11,
+            7,
+            5,
+            26,
+            2,
+            5,
+            2,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            6,
+            74,
+            18,
+            1,
+            2,
+            1,
+            0
+          ],
+          [
+            2,
+            5,
+            2,
+            6,
+            14,
+            33,
+            4,
+            1,
+            0,
+            0
+          ],
+          [
+            16,
+            2,
+            0,
+            3,
+            0,
+            0,
+            162,
+            9,
+            0,
+            0
+          ],
+          [
+            13,
+            1,
+            0,
+            8,
+            0,
+            1,
+            12,
+            31,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "plantdoc_test_full_images": {
+      "effb0_seed42": {
+        "n": 230,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6739130434782609,
+        "macro_f1": 0.5922754270521173,
+        "accuracy_original5": 0.6666666666666666,
+        "macro_f1_original5": 0.6737936708322103,
+        "balanced_accuracy": 0.6017780469098928,
+        "missed_disease_rate": 0.06944444444444445,
+        "per_class": {
+          "healthy": {
+            "precision": 0.375,
+            "recall": 0.6428571428571429,
+            "f1-score": 0.47368421052631576,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.5,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5405405405405406,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.7777777777777778,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7777777777777778,
+            "support": 27.0
+          },
+          "leaf_mold": {
+            "precision": 0.75,
+            "recall": 0.41379310344827586,
+            "f1-score": 0.5333333333333333,
+            "support": 29.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.72,
+            "recall": 0.8,
+            "f1-score": 0.7578947368421053,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.5,
+            "recall": 0.48148148148148145,
+            "f1-score": 0.49056603773584906,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.85,
+            "recall": 0.8793103448275862,
+            "f1-score": 0.864406779661017,
+            "support": 58.0
+          },
+          "mosaic_virus": {
+            "precision": 0.42857142857142855,
+            "recall": 0.23076923076923078,
+            "f1-score": 0.3,
+            "support": 13.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6739130434782609,
+          "macro avg": {
+            "precision": 0.4901349206349206,
+            "recall": 0.48142243752791425,
+            "f1-score": 0.47382034164169384,
+            "support": 230.0
+          },
+          "weighted avg": {
+            "precision": 0.6837888198757764,
+            "recall": 0.6739130434782609,
+            "f1-score": 0.6681459747840258,
+            "support": 230.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            9,
+            0,
+            0,
+            0,
+            0,
+            2,
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            1,
+            0,
+            2,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            21,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            1,
+            3,
+            12,
+            4,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            2,
+            0,
+            1,
+            36,
+            4,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            1,
+            2,
+            0,
+            8,
+            13,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            4,
+            2,
+            0,
+            0,
+            0,
+            0,
+            51,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0,
+            7,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 230,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6826086956521739,
+        "macro_f1": 0.6171814095751551,
+        "accuracy_original5": 0.6590909090909091,
+        "macro_f1_original5": 0.6844471547257924,
+        "balanced_accuracy": 0.6330921670171163,
+        "missed_disease_rate": 0.06018518518518518,
+        "per_class": {
+          "healthy": {
+            "precision": 0.43478260869565216,
+            "recall": 0.7142857142857143,
+            "f1-score": 0.5405405405405406,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.4166666666666667,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.4878048780487805,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.8076923076923077,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7924528301886793,
+            "support": 27.0
+          },
+          "leaf_mold": {
+            "precision": 0.7222222222222222,
+            "recall": 0.4482758620689655,
+            "f1-score": 0.5531914893617021,
+            "support": 29.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7674418604651163,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.75,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.42857142857142855,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.375,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8709677419354839,
+            "recall": 0.9310344827586207,
+            "f1-score": 0.9,
+            "support": 58.0
+          },
+          "mosaic_virus": {
+            "precision": 0.5384615384615384,
+            "recall": 0.5384615384615384,
+            "f1-score": 0.5384615384615384,
+            "support": 13.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6826086956521739,
+          "macro avg": {
+            "precision": 0.4986806374710415,
+            "recall": 0.5064737336136931,
+            "f1-score": 0.4937451276601241,
+            "support": 230.0
+          },
+          "weighted avg": {
+            "precision": 0.6936733388340264,
+            "recall": 0.6826086956521739,
+            "f1-score": 0.6798870873955676,
+            "support": 230.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            10,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            2,
+            0,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            21,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            13,
+            1,
+            3,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            33,
+            5,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            2,
+            2,
+            1,
+            7,
+            9,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            54,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            3,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 230,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6,
+        "macro_f1": 0.49689228950118236,
+        "accuracy_original5": 0.6060606060606061,
+        "macro_f1_original5": 0.6249259100778142,
+        "balanced_accuracy": 0.5165579509139346,
+        "missed_disease_rate": 0.0787037037037037,
+        "per_class": {
+          "healthy": {
+            "precision": 0.2916666666666667,
+            "recall": 0.5,
+            "f1-score": 0.3684210526315789,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.37037037037037035,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.45454545454545453,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.6774193548387096,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7241379310344828,
+            "support": 27.0
+          },
+          "leaf_mold": {
+            "precision": 0.7333333333333333,
+            "recall": 0.3793103448275862,
+            "f1-score": 0.5,
+            "support": 29.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.62,
+            "recall": 0.6888888888888889,
+            "f1-score": 0.6526315789473685,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.30434782608695654,
+            "recall": 0.25925925925925924,
+            "f1-score": 0.28,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8620689655172413,
+            "recall": 0.8620689655172413,
+            "f1-score": 0.8620689655172413,
+            "support": 58.0
+          },
+          "mosaic_virus": {
+            "precision": 0.5,
+            "recall": 0.07692307692307693,
+            "f1-score": 0.13333333333333333,
+            "support": 13.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6,
+          "macro avg": {
+            "precision": 0.4359206516813277,
+            "recall": 0.41324636073114773,
+            "f1-score": 0.3975138316009459,
+            "support": 230.0
+          },
+          "weighted avg": {
+            "precision": 0.6198000442664751,
+            "recall": 0.6,
+            "f1-score": 0.5895593303826556,
+            "support": 230.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            7,
+            1,
+            1,
+            0,
+            1,
+            3,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            2,
+            0,
+            1,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            21,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            4,
+            3,
+            11,
+            2,
+            2,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            3,
+            0,
+            0,
+            31,
+            6,
+            4,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            2,
+            2,
+            1,
+            11,
+            7,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            3,
+            1,
+            0,
+            2,
+            0,
+            50,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            1,
+            1,
+            2,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 230,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.6652173913043479,
+        "macro_f1": 0.5810134759061772,
+        "accuracy_original5": 0.6818181818181818,
+        "macro_f1_original5": 0.6944538507802265,
+        "balanced_accuracy": 0.5995410409964163,
+        "missed_disease_rate": 0.08333333333333333,
+        "per_class": {
+          "healthy": {
+            "precision": 0.35714285714285715,
+            "recall": 0.7142857142857143,
+            "f1-score": 0.47619047619047616,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.4583333333333333,
+            "recall": 0.6470588235294118,
+            "f1-score": 0.5365853658536586,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.84,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.8076923076923077,
+            "support": 27.0
+          },
+          "leaf_mold": {
+            "precision": 0.75,
+            "recall": 0.41379310344827586,
+            "f1-score": 0.5333333333333333,
+            "support": 29.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.75,
+            "recall": 0.8,
+            "f1-score": 0.7741935483870968,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.45,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3829787234042553,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.85,
+            "recall": 0.8793103448275862,
+            "f1-score": 0.864406779661017,
+            "support": 58.0
+          },
+          "mosaic_virus": {
+            "precision": 0.3333333333333333,
+            "recall": 0.23076923076923078,
+            "f1-score": 0.2727272727272727,
+            "support": 13.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6652173913043479,
+          "macro avg": {
+            "precision": 0.4788809523809524,
+            "recall": 0.479632832797133,
+            "f1-score": 0.4648107807249418,
+            "support": 230.0
+          },
+          "weighted avg": {
+            "precision": 0.6815434782608696,
+            "recall": 0.6652173913043479,
+            "f1-score": 0.6605354775463722,
+            "support": 230.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            10,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            11,
+            1,
+            0,
+            1,
+            4,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            21,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            3,
+            1,
+            12,
+            3,
+            2,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            2,
+            0,
+            1,
+            36,
+            4,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            2,
+            2,
+            0,
+            8,
+            9,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            4,
+            2,
+            0,
+            0,
+            0,
+            0,
+            51,
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0,
+            7,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 230,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "leaf_mold",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus",
+          "mosaic_virus"
+        ],
+        "accuracy": 0.691304347826087,
+        "macro_f1": 0.625659012358097,
+        "accuracy_original5": 0.6818181818181818,
+        "macro_f1_original5": 0.6962416684626278,
+        "balanced_accuracy": 0.6495611227102099,
+        "missed_disease_rate": 0.06481481481481481,
+        "per_class": {
+          "healthy": {
+            "precision": 0.4166666666666667,
+            "recall": 0.7142857142857143,
+            "f1-score": 0.5263157894736842,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.45454545454545453,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5128205128205128,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.7857142857142857,
+            "recall": 0.8148148148148148,
+            "f1-score": 0.8,
+            "support": 27.0
+          },
+          "leaf_mold": {
+            "precision": 0.7058823529411765,
+            "recall": 0.41379310344827586,
+            "f1-score": 0.5217391304347826,
+            "support": 29.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.782608695652174,
+            "recall": 0.8,
+            "f1-score": 0.7912087912087912,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.3684210526315789,
+            "recall": 0.25925925925925924,
+            "f1-score": 0.30434782608695654,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8983050847457628,
+            "recall": 0.9137931034482759,
+            "f1-score": 0.905982905982906,
+            "support": 58.0
+          },
+          "mosaic_virus": {
+            "precision": 0.6,
+            "recall": 0.6923076923076923,
+            "f1-score": 0.6428571428571429,
+            "support": 13.0
+          },
+          "target_spot": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "spider_mites": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.691304347826087,
+          "macro avg": {
+            "precision": 0.5012143592897098,
+            "recall": 0.519648898168168,
+            "f1-score": 0.5005272098864776,
+            "support": 230.0
+          },
+          "weighted avg": {
+            "precision": 0.697008411525394,
+            "recall": 0.691304347826087,
+            "f1-score": 0.6849684472438428,
+            "support": 230.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            10,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            3,
+            0,
+            1,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            22,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            4,
+            1,
+            12,
+            1,
+            4,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            1,
+            36,
+            4,
+            3,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            3,
+            2,
+            1,
+            8,
+            7,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            0,
+            0,
+            0,
+            0,
+            53,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2,
+            9,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "footprint": [
+    {
+      "model": "effb0_seed42",
+      "architecture": "efficientnet_b0",
+      "classes": 10,
+      "parameters_M": 4.020358,
+      "gflops_per_image": 0.769095104,
+      "weights_fp32_MB": 16.081432,
+      "weights_fp16_MB": 8.040716,
+      "weights_int8_MB_est": 4.020358,
+      "checkpoint_file_MB": 16.384059,
+      "cpu_latency_ms_median_kaggle": 30.711165499724302,
+      "ram_pytorch_runtime_MB": 627.86328125,
+      "ram_after_model_load_MB": 663.51953125,
+      "ram_peak_inference_MB": 680.703125,
+      "ram_model_plus_inference_MB": 52.83984375,
+      "head_params_per_extra_class": 1281,
+      "bytes_per_extra_class_fp32": 5124
+    },
+    {
+      "model": "mnv3s_seed42",
+      "architecture": "mobilenet_v3_small",
+      "classes": 10,
+      "parameters_M": 1.528106,
+      "gflops_per_image": 0.11099328,
+      "weights_fp32_MB": 6.112424,
+      "weights_fp16_MB": 3.056212,
+      "weights_int8_MB_est": 1.528106,
+      "checkpoint_file_MB": 6.249371,
+      "cpu_latency_ms_median_kaggle": 12.027737500375224,
+      "ram_pytorch_runtime_MB": 629.90625,
+      "ram_after_model_load_MB": 645.58203125,
+      "ram_peak_inference_MB": 659.8515625,
+      "ram_model_plus_inference_MB": 29.9453125,
+      "head_params_per_extra_class": 1025,
+      "bytes_per_extra_class_fp32": 4100
+    }
+  ],
+  "footprint_projection": [
+    {
+      "model": "effb0_seed42",
+      "scenario": "now: tomato only (10 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 16.081432,
+      "int8_MB_est": 4.020358,
+      "note": "measured"
+    },
+    {
+      "model": "effb0_seed42",
+      "scenario": "one model, all 14 PlantVillage crops (38 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 16.224904,
+      "int8_MB_est": 4.056226,
+      "note": "same latency and RAM; only the last layer grows"
+    },
+    {
+      "model": "effb0_seed42",
+      "scenario": "one model per crop (14 crops), loaded on demand",
+      "models_on_disk": 14,
+      "fp32_MB": 225.14004799999998,
+      "int8_MB_est": 56.285011999999995,
+      "note": "RAM stays at one model if only the selected crop's model is loaded"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "now: tomato only (10 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 6.112424,
+      "int8_MB_est": 1.528106,
+      "note": "measured"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "one model, all 14 PlantVillage crops (38 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 6.227224,
+      "int8_MB_est": 1.556806,
+      "note": "same latency and RAM; only the last layer grows"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "one model per crop (14 crops), loaded on demand",
+      "models_on_disk": 14,
+      "fp32_MB": 85.573936,
+      "int8_MB_est": 21.393484,
+      "note": "RAM stays at one model if only the selected crop's model is loaded"
+    }
+  ],
+  "config": {
+    "seeds": [
+      42,
+      7
+    ],
+    "img_size": 224,
+    "epochs": 20,
+    "warmup_epochs": 1,
+    "ema_decay": 0.998,
+    "epoch_samples": 10000,
+    "batch": 64,
+    "patience": 10,
+    "pd_share": 0.5,
+    "torch": "2.11.0+cu128",
+    "albumentations": "2.0.8",
+    "plantvillage_split": {
+      "train": {
+        "healthy": 1108,
+        "early_blight": 694,
+        "late_blight": 1334,
+        "leaf_mold": 653,
+        "septoria_leaf_spot": 1239,
+        "bacterial_spot": 1480,
+        "yellow_leaf_curl_virus": 3740,
+        "mosaic_virus": 254,
+        "target_spot": 978,
+        "spider_mites": 1171
+      },
+      "val": {
+        "healthy": 222,
+        "early_blight": 152,
+        "late_blight": 286,
+        "leaf_mold": 151,
+        "septoria_leaf_spot": 265,
+        "bacterial_spot": 325,
+        "yellow_leaf_curl_virus": 799,
+        "mosaic_virus": 59,
+        "target_spot": 213,
+        "spider_mites": 241
+      },
+      "test": {
+        "healthy": 261,
+        "early_blight": 154,
+        "late_blight": 289,
+        "leaf_mold": 148,
+        "septoria_leaf_spot": 267,
+        "bacterial_spot": 322,
+        "yellow_leaf_curl_virus": 818,
+        "mosaic_virus": 60,
+        "target_spot": 213,
+        "spider_mites": 264
+      }
+    },
+    "plantdoc_crop_split": {
+      "train": {
+        "healthy": 235,
+        "early_blight": 138,
+        "late_blight": 130,
+        "leaf_mold": 179,
+        "septoria_leaf_spot": 264,
+        "bacterial_spot": 166,
+        "yellow_leaf_curl_virus": 434,
+        "mosaic_virus": 152,
+        "target_spot": 0,
+        "spider_mites": 0
+      },
+      "val": {
+        "healthy": 35,
+        "early_blight": 20,
+        "late_blight": 25,
+        "leaf_mold": 31,
+        "septoria_leaf_spot": 38,
+        "bacterial_spot": 24,
+        "yellow_leaf_curl_virus": 65,
+        "mosaic_virus": 20,
+        "target_spot": 0,
+        "spider_mites": 0
+      },
+      "test": {
+        "healthy": 119,
+        "early_blight": 50,
+        "late_blight": 51,
+        "leaf_mold": 62,
+        "septoria_leaf_spot": 108,
+        "bacterial_spot": 67,
+        "yellow_leaf_curl_virus": 192,
+        "mosaic_virus": 66,
+        "target_spot": 0,
+        "spider_mites": 0
+      }
+    },
+    "plantdoc_full_split": {
+      "train": {
+        "healthy": 69,
+        "early_blight": 58,
+        "late_blight": 71,
+        "leaf_mold": 51,
+        "septoria_leaf_spot": 131,
+        "bacterial_spot": 66,
+        "yellow_leaf_curl_virus": 180,
+        "mosaic_virus": 35,
+        "target_spot": 0,
+        "spider_mites": 0
+      },
+      "val": {
+        "healthy": 7,
+        "early_blight": 9,
+        "late_blight": 8,
+        "leaf_mold": 11,
+        "septoria_leaf_spot": 24,
+        "bacterial_spot": 11,
+        "yellow_leaf_curl_virus": 38,
+        "mosaic_virus": 6,
+        "target_spot": 0,
+        "spider_mites": 0
+      },
+      "test": {
+        "healthy": 14,
+        "early_blight": 17,
+        "late_blight": 27,
+        "leaf_mold": 29,
+        "septoria_leaf_spot": 45,
+        "bacterial_spot": 27,
+        "yellow_leaf_curl_virus": 58,
+        "mosaic_virus": 13,
+        "target_spot": 0,
+        "spider_mites": 0
+      }
+    },
+    "plantdoc_classes_left_out": [
+      "spider_mites"
+    ],
+    "classes": [
+      "healthy",
+      "early_blight",
+      "late_blight",
+      "leaf_mold",
+      "septoria_leaf_spot",
+      "bacterial_spot",
+      "yellow_leaf_curl_virus",
+      "mosaic_virus",
+      "target_spot",
+      "spider_mites"
+    ]
+  }
+}

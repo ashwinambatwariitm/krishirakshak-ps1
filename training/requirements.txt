@@ -1,0 +1,13 @@
+# Packages for running the training scripts locally (smoke tests). Kaggle notebooks install
+# albumentations and ultralytics themselves; the other packages are preinstalled on Kaggle.
+torch>=2.5
+torchvision>=0.20
+albumentations==2.0.8
+ultralytics==8.4.7
+opencv-python-headless
+numpy
+pandas
+scikit-learn
+matplotlib
+pillow
+pyyaml

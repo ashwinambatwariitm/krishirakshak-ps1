@@ -1,0 +1,30 @@
+# Model weights are published as GitHub Release assets, not stored in git
+*.pt
+*.pth
+*.onnx
+*.pte
+*.engine
+
+# Datasets and bulky training output
+data/
+datasets/
+runs/
+**/ip102_yolo/
+*.cache
+
+# Kaggle credentials and per-user upload settings
+kaggle.json
+access_token
+**/kernel-metadata.json
+
+# Python and notebook clutter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store

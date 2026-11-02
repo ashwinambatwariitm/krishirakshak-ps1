@@ -1,0 +1,19 @@
+{
+  "classes": [
+    "healthy",
+    "early_blight",
+    "late_blight",
+    "leaf_mold",
+    "septoria_leaf_spot"
+  ],
+  "disease_classes": [
+    "early_blight",
+    "late_blight",
+    "leaf_mold",
+    "septoria_leaf_spot"
+  ],
+  "gate_classes": [
+    "healthy",
+    "diseased"
+  ]
+}

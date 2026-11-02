@@ -1,0 +1,103 @@
+class_id,name,test,train,val
+0,rice leaf roller,39.0,137.0,14.0
+1,rice leaf caterpillar,26.0,94.0,10.0
+2,paddy stem maggot,5.0,18.0,2.0
+3,asiatic rice borer,34.0,130.0,15.0
+4,yellow rice borer,16.0,60.0,6.0
+5,rice gall midge,19.0,69.0,7.0
+6,Rice Stemfly,6.0,20.0,2.0
+7,brown plant hopper,22.0,86.0,9.0
+8,white backed plant hopper,16.0,56.0,6.0
+9,small brown plant hopper,12.0,38.0,4.0
+10,rice water weevil,30.0,111.0,12.0
+11,rice leafhopper,23.0,87.0,9.0
+12,grain spreader thrips,4.0,14.0,2.0
+13,rice shell pest,7.0,26.0,3.0
+14,grub,118.0,482.0,76.0
+15,mole cricket,176.0,631.0,70.0
+16,wireworm,109.0,382.0,41.0
+17,white margined moth,13.0,43.0,4.0
+18,black cutworm,67.0,226.0,24.0
+19,large cutworm,40.0,124.0,12.0
+20,yellow cutworm,43.0,150.0,16.0
+21,red spider,37.0,118.0,13.0
+22,corn borer,90.0,315.0,35.0
+23,army worm,41.0,157.0,18.0
+24,aphids,282.0,1014.0,99.0
+25,Potosiabre vitarsis,47.0,174.0,17.0
+26,peach borer,50.0,184.0,20.0
+27,english grain aphid,60.0,232.0,18.0
+28,green bug,12.0,56.0,4.0
+29,bird cherry-oataphid,28.0,88.0,9.0
+30,wheat blossom midge,6.0,17.0,2.0
+31,penthaleus major,14.0,52.0,6.0
+32,longlegged spider mite,15.0,44.0,5.0
+33,wheat phloeothrips,22.0,77.0,9.0
+34,wheat sawfly,29.0,105.0,12.0
+35,cerodonta denticornis,5.0,20.0,2.0
+36,beet fly,7.0,24.0,3.0
+37,flea beetle,74.0,281.0,29.0
+38,cabbage army worm,56.0,189.0,21.0
+39,beet army worm,83.0,304.0,33.0
+40,Beet spot flies,14.0,51.0,6.0
+41,meadow moth,20.0,72.0,8.0
+42,beet weevil,31.0,113.0,13.0
+43,sericaorient alismots chulsky,18.0,72.0,10.0
+44,alfalfa weevil,19.0,65.0,7.0
+45,flax budworm,85.0,316.0,33.0
+46,alfalfa plant bug,46.0,173.0,18.0
+47,tarnished plant bug,71.0,265.0,29.0
+48,Locustoidea,109.0,398.0,45.0
+49,lytta polita,51.0,199.0,20.0
+50,legume blister beetle,96.0,339.0,41.0
+51,blister beetle,198.0,731.0,84.0
+52,therioaphis maculata Buckton,3.0,2.0,0.0
+53,odontothrips loti,13.0,47.0,5.0
+54,Thrips,9.0,35.0,4.0
+55,alfalfa seed chalcid,4.0,14.0,2.0
+56,Pieris canidia,11.0,42.0,4.0
+57,Apolygus lucorum,7.0,25.0,3.0
+58,Limacodidae,47.0,163.0,14.0
+59,Viteus vitifoliae,0.0,0.0,0.0
+60,Colomerus vitis,0.0,0.0,0.0
+61,Brevipoalpus lewisi McGregor,0.0,2.0,0.0
+62,oides decempunctata,35.0,125.0,16.0
+63,Polyphagotars onemus latus,0.0,0.0,0.0
+64,Pseudococcus comstocki Kuwana,13.0,56.0,4.0
+65,parathrene regalis,6.0,23.0,2.0
+66,Ampelophaga,56.0,201.0,22.0
+67,Lycorma delicatula,68.0,243.0,27.0
+68,Xylotrechus,31.0,113.0,13.0
+69,Cicadella viridis,41.0,149.0,16.0
+70,Miridae,254.0,913.0,101.0
+71,Trialeurodes vaporariorum,23.0,81.0,8.0
+72,Erythroneura apicalis,2.0,10.0,1.0
+73,Papilio xuthus,22.0,74.0,12.0
+74,Panonchus citri McGregor,14.0,65.0,3.0
+75,Phyllocoptes oleiverus ashmead,0.0,0.0,0.0
+76,Icerya purchasi Maskell,59.0,210.0,21.0
+77,Unaspis yanonensis,102.0,405.0,39.0
+78,Ceroplastes rubens,85.0,255.0,30.0
+79,Chrysomphalus aonidum,39.0,130.0,14.0
+80,Parlatoria zizyphus Lucus,0.0,0.0,0.0
+81,Nipaecoccus vastalor,12.0,32.0,2.0
+82,Aleurocanthus spiniferus,27.0,97.0,24.0
+83,Tetradacus c Bactrocera minax,13.0,40.0,5.0
+84,Dacus dorsalis(Hendel),26.0,95.0,10.0
+85,Bactrocera tsuneonis,6.0,18.0,3.0
+86,Prodenia litura,85.0,317.0,35.0
+87,Adristyrannus,27.0,95.0,11.0
+88,Phyllocnistis citrella Stainton,5.0,16.0,2.0
+89,Toxoptera citricidus,5.0,16.0,1.0
+90,Toxoptera aurantii,4.0,22.0,2.0
+91,Aphis citricola Vander Goot,1.0,7.0,0.0
+92,Scirtothrips dorsalis Hood,15.0,56.0,6.0
+93,Dasineura sp,5.0,15.0,2.0
+94,Lawana imitata Melichar,29.0,107.0,14.0
+95,Salurnis marginella Guerr,37.0,129.0,17.0
+96,Deporaus marginatus Pascoe,13.0,48.0,5.0
+97,Chlumetia transversa,12.0,43.0,5.0
+98,Mango flat beak leafhopper,3.0,9.0,1.0
+99,Rhytidodera bowrinii white,29.0,100.0,11.0
+100,Sternochetus frigidus,12.0,48.0,5.0
+101,Cicadellidae,593.0,2143.0,239.0

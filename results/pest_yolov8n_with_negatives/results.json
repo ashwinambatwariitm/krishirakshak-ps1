@@ -1,0 +1,227 @@
+{
+  "base_weights": "/kaggle/input/notebooks/ashwinambatwar/ps1-ip102-pest/pest_outputs/ip102_yolov8n_best.pt",
+  "negatives": {
+    "train": 4197,
+    "val_pv": 1000,
+    "test_pv": 1000,
+    "val_pd": 125,
+    "test_pd": 79
+  },
+  "models": {
+    "base": {
+      "test_map50": 0.5687804197594437,
+      "test_map50_95": 0.35823874162397984,
+      "threshold": 0.7,
+      "levels": [
+        {
+          "conf": 0.1,
+          "pest_found_rate": 0.961971197119712,
+          "species_correct_when_found": 0.7569590643274854,
+          "species_correct_overall": 0.7281728172817282,
+          "box_precision_any_species": 0.8608957795004306,
+          "false_alarm_val_pv": 0.941,
+          "false_alarm_val_pd": 0.608,
+          "false_alarm_test_pv": 0.946,
+          "false_alarm_test_pd": 0.7721518987341772
+        },
+        {
+          "conf": 0.2,
+          "pest_found_rate": 0.9187668766876688,
+          "species_correct_when_found": 0.7700220426157237,
+          "species_correct_overall": 0.7074707470747075,
+          "box_precision_any_species": 0.910923401804569,
+          "false_alarm_val_pv": 0.689,
+          "false_alarm_val_pd": 0.344,
+          "false_alarm_test_pv": 0.719,
+          "false_alarm_test_pd": 0.5569620253164557
+        },
+        {
+          "conf": 0.25,
+          "pest_found_rate": 0.8832133213321333,
+          "species_correct_when_found": 0.7831847133757962,
+          "species_correct_overall": 0.6917191719171917,
+          "box_precision_any_species": 0.9259099720008616,
+          "false_alarm_val_pv": 0.536,
+          "false_alarm_val_pd": 0.296,
+          "false_alarm_test_pv": 0.57,
+          "false_alarm_test_pd": 0.4810126582278481
+        },
+        {
+          "conf": 0.3,
+          "pest_found_rate": 0.8404590459045904,
+          "species_correct_when_found": 0.7967871485943775,
+          "species_correct_overall": 0.6696669666966697,
+          "box_precision_any_species": 0.939618138424821,
+          "false_alarm_val_pv": 0.429,
+          "false_alarm_val_pd": 0.248,
+          "false_alarm_test_pv": 0.45,
+          "false_alarm_test_pd": 0.43037974683544306
+        },
+        {
+          "conf": 0.4,
+          "pest_found_rate": 0.7346984698469847,
+          "species_correct_when_found": 0.8419601837672281,
+          "species_correct_overall": 0.6185868586858686,
+          "box_precision_any_species": 0.955369997120645,
+          "false_alarm_val_pv": 0.268,
+          "false_alarm_val_pd": 0.184,
+          "false_alarm_test_pv": 0.287,
+          "false_alarm_test_pd": 0.31645569620253167
+        },
+        {
+          "conf": 0.5,
+          "pest_found_rate": 0.6235373537353736,
+          "species_correct_when_found": 0.88018765788524,
+          "species_correct_overall": 0.5488298829882988,
+          "box_precision_any_species": 0.9711103376261747,
+          "false_alarm_val_pv": 0.173,
+          "false_alarm_val_pd": 0.12,
+          "false_alarm_test_pv": 0.185,
+          "false_alarm_test_pd": 0.189873417721519
+        },
+        {
+          "conf": 0.6,
+          "pest_found_rate": 0.5002250225022502,
+          "species_correct_when_found": 0.9154295996401259,
+          "species_correct_overall": 0.45792079207920794,
+          "box_precision_any_species": 0.982773851590106,
+          "false_alarm_val_pv": 0.094,
+          "false_alarm_val_pd": 0.08,
+          "false_alarm_test_pv": 0.118,
+          "false_alarm_test_pd": 0.11392405063291139
+        },
+        {
+          "conf": 0.7,
+          "pest_found_rate": 0.37646264626462644,
+          "species_correct_when_found": 0.9420203227734608,
+          "species_correct_overall": 0.3546354635463546,
+          "box_precision_any_species": 0.9893617021276596,
+          "false_alarm_val_pv": 0.057,
+          "false_alarm_val_pd": 0.04,
+          "false_alarm_test_pv": 0.081,
+          "false_alarm_test_pd": 0.06329113924050633
+        }
+      ]
+    },
+    "negft": {
+      "test_map50": 0.5664667993428102,
+      "test_map50_95": 0.35817177821492563,
+      "threshold": 0.2,
+      "levels": [
+        {
+          "conf": 0.1,
+          "pest_found_rate": 0.9592709270927092,
+          "species_correct_when_found": 0.747595589960122,
+          "species_correct_overall": 0.7171467146714672,
+          "box_precision_any_species": 0.8676923076923077,
+          "false_alarm_val_pv": 0.006,
+          "false_alarm_val_pd": 0.112,
+          "false_alarm_test_pv": 0.006,
+          "false_alarm_test_pd": 0.12658227848101267
+        },
+        {
+          "conf": 0.2,
+          "pest_found_rate": 0.921917191719172,
+          "species_correct_when_found": 0.7647058823529411,
+          "species_correct_overall": 0.704995499549955,
+          "box_precision_any_species": 0.9121737473804534,
+          "false_alarm_val_pv": 0.002,
+          "false_alarm_val_pd": 0.048,
+          "false_alarm_test_pv": 0.003,
+          "false_alarm_test_pd": 0.05063291139240506
+        },
+        {
+          "conf": 0.25,
+          "pest_found_rate": 0.8908640864086409,
+          "species_correct_when_found": 0.7779742359181612,
+          "species_correct_overall": 0.693069306930693,
+          "box_precision_any_species": 0.9213011542497377,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.032,
+          "false_alarm_test_pv": 0.002,
+          "false_alarm_test_pd": 0.05063291139240506
+        },
+        {
+          "conf": 0.3,
+          "pest_found_rate": 0.8517101710171017,
+          "species_correct_when_found": 0.790224570673712,
+          "species_correct_overall": 0.673042304230423,
+          "box_precision_any_species": 0.9330408681597784,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.008,
+          "false_alarm_test_pv": 0.002,
+          "false_alarm_test_pd": 0.02531645569620253
+        },
+        {
+          "conf": 0.4,
+          "pest_found_rate": 0.7565256525652565,
+          "species_correct_when_found": 0.8239143367043427,
+          "species_correct_overall": 0.6233123312331234,
+          "box_precision_any_species": 0.9513677811550152,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.008,
+          "false_alarm_test_pv": 0.001,
+          "false_alarm_test_pd": 0.012658227848101266
+        },
+        {
+          "conf": 0.5,
+          "pest_found_rate": 0.6460396039603961,
+          "species_correct_when_found": 0.8634622082897945,
+          "species_correct_overall": 0.5578307830783078,
+          "box_precision_any_species": 0.9642379679144385,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.008,
+          "false_alarm_test_pv": 0.001,
+          "false_alarm_test_pd": 0.012658227848101266
+        },
+        {
+          "conf": 0.6,
+          "pest_found_rate": 0.533078307830783,
+          "species_correct_when_found": 0.8982693119459688,
+          "species_correct_overall": 0.47884788478847884,
+          "box_precision_any_species": 0.9789603960396039,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.008,
+          "false_alarm_test_pv": 0.001,
+          "false_alarm_test_pd": 0.0
+        },
+        {
+          "conf": 0.7,
+          "pest_found_rate": 0.39693969396939693,
+          "species_correct_when_found": 0.9308390022675737,
+          "species_correct_overall": 0.3694869486948695,
+          "box_precision_any_species": 0.9876819708846585,
+          "false_alarm_val_pv": 0.0,
+          "false_alarm_val_pd": 0.0,
+          "false_alarm_test_pv": 0.0,
+          "false_alarm_test_pd": 0.0
+        }
+      ]
+    }
+  },
+  "config": {
+    "ft_epochs": 30,
+    "ft_lr0": 0.002,
+    "optimizer": "SGD",
+    "img_size": 640,
+    "batch": 32,
+    "aug": {
+      "degrees": 30.0,
+      "flipud": 0.5,
+      "fliplr": 0.5,
+      "hsv_h": 0.015,
+      "hsv_s": 0.6,
+      "hsv_v": 0.4,
+      "translate": 0.1,
+      "scale": 0.5,
+      "shear": 2.0,
+      "perspective": 0.0005,
+      "mosaic": 1.0,
+      "mixup": 0.1,
+      "close_mosaic": 5
+    },
+    "seed": 42,
+    "ultralytics": "8.4.7",
+    "torch": "2.9.1+cu128"
+  }
+}

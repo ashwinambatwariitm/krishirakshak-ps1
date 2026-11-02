@@ -1,0 +1,2053 @@
+{
+  "gate_thresholds": {
+    "gate_mnv3": 0.5,
+    "gate_paper_cnn": 0.5
+  },
+  "external_notes": {
+    "plantdoc_crops_removed_as_plantvillage_lookalikes": 0,
+    "plantdoc_full_removed_as_plantvillage_lookalikes": 0
+  },
+  "sets": {
+    "plantvillage_test": {
+      "systems": {
+        "direct_mnv3": {
+          "n": 1063,
+          "accuracy": 0.973659454374412,
+          "macro_f1": 0.9575178197324623,
+          "balanced_accuracy": 0.9735152339005214,
+          "missed_disease_rate": 0.0,
+          "per_class": {
+            "healthy": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.7818181818181819,
+              "recall": 0.9555555555555556,
+              "f1-score": 0.86,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9627507163323782,
+              "recall": 0.9739130434782609,
+              "f1-score": 0.968299711815562,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9879518072289156,
+              "recall": 0.9879518072289156,
+              "f1-score": 0.9879518072289156,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.993485342019544,
+              "recall": 0.9501557632398754,
+              "f1-score": 0.9713375796178344,
+              "support": 321.0
+            },
+            "accuracy": 0.973659454374412,
+            "macro avg": {
+              "precision": 0.9452012094798039,
+              "recall": 0.9735152339005214,
+              "f1-score": 0.9575178197324623,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9757663312368413,
+              "recall": 0.973659454374412,
+              "f1-score": 0.9741888651304739,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              269,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              43,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              9,
+              336,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              82,
+              0
+            ],
+            [
+              0,
+              2,
+              13,
+              1,
+              305
+            ]
+          ]
+        },
+        "direct_effb0": {
+          "n": 1063,
+          "accuracy": 0.9774223894637818,
+          "macro_f1": 0.9621954359110483,
+          "balanced_accuracy": 0.981832136891056,
+          "missed_disease_rate": 0.0,
+          "per_class": {
+            "healthy": {
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1-score": 1.0,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.8301886792452831,
+              "recall": 0.9777777777777777,
+              "f1-score": 0.8979591836734694,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9792899408284024,
+              "recall": 0.9594202898550724,
+              "f1-score": 0.9692532942898975,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9222222222222223,
+              "recall": 1.0,
+              "f1-score": 0.9595375722543352,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.9968051118210862,
+              "recall": 0.9719626168224299,
+              "f1-score": 0.9842271293375394,
+              "support": 321.0
+            },
+            "accuracy": 0.9774223894637818,
+            "macro avg": {
+              "precision": 0.9457011908233988,
+              "recall": 0.981832136891056,
+              "f1-score": 0.9621954359110483,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9790521218164155,
+              "recall": 0.9774223894637818,
+              "f1-score": 0.9777789998210542,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              269,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              44,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              8,
+              331,
+              6,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              83,
+              0
+            ],
+            [
+              0,
+              1,
+              7,
+              1,
+              312
+            ]
+          ]
+        },
+        "cascade_mnv3": {
+          "n": 1063,
+          "accuracy": 0.9727187206020697,
+          "macro_f1": 0.9591365116978716,
+          "balanced_accuracy": 0.9806745793340597,
+          "missed_disease_rate": 0.003778337531486146,
+          "per_class": {
+            "healthy": {
+              "precision": 0.988929889298893,
+              "recall": 0.9962825278810409,
+              "f1-score": 0.9925925925925926,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.7758620689655172,
+              "recall": 1.0,
+              "f1-score": 0.8737864077669902,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9705882352941176,
+              "recall": 0.9565217391304348,
+              "f1-score": 0.9635036496350365,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9879518072289156,
+              "recall": 0.9879518072289156,
+              "f1-score": 0.9879518072289156,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.9935691318327974,
+              "recall": 0.9626168224299065,
+              "f1-score": 0.9778481012658228,
+              "support": 321.0
+            },
+            "accuracy": 0.9727187206020697,
+            "macro avg": {
+              "precision": 0.9433802265240482,
+              "recall": 0.9806745793340597,
+              "f1-score": 0.9591365116978716,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9752818116835832,
+              "recall": 0.9727187206020697,
+              "f1-score": 0.9733074274575153,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              268,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              45,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              11,
+              330,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              82,
+              1
+            ],
+            [
+              1,
+              1,
+              10,
+              0,
+              309
+            ]
+          ]
+        },
+        "cascade_mnv3@0.5": {
+          "n": 1063,
+          "accuracy": 0.9727187206020697,
+          "macro_f1": 0.9591365116978716,
+          "balanced_accuracy": 0.9806745793340597,
+          "missed_disease_rate": 0.003778337531486146,
+          "per_class": {
+            "healthy": {
+              "precision": 0.988929889298893,
+              "recall": 0.9962825278810409,
+              "f1-score": 0.9925925925925926,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.7758620689655172,
+              "recall": 1.0,
+              "f1-score": 0.8737864077669902,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9705882352941176,
+              "recall": 0.9565217391304348,
+              "f1-score": 0.9635036496350365,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9879518072289156,
+              "recall": 0.9879518072289156,
+              "f1-score": 0.9879518072289156,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.9935691318327974,
+              "recall": 0.9626168224299065,
+              "f1-score": 0.9778481012658228,
+              "support": 321.0
+            },
+            "accuracy": 0.9727187206020697,
+            "macro avg": {
+              "precision": 0.9433802265240482,
+              "recall": 0.9806745793340597,
+              "f1-score": 0.9591365116978716,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9752818116835832,
+              "recall": 0.9727187206020697,
+              "f1-score": 0.9733074274575153,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              268,
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              45,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              11,
+              330,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              82,
+              1
+            ],
+            [
+              1,
+              1,
+              10,
+              0,
+              309
+            ]
+          ]
+        },
+        "cascade_paper_gate": {
+          "n": 1063,
+          "accuracy": 0.9727187206020697,
+          "macro_f1": 0.9605313066862887,
+          "balanced_accuracy": 0.9807950207983497,
+          "missed_disease_rate": 0.005037783375314861,
+          "per_class": {
+            "healthy": {
+              "precision": 0.9853479853479854,
+              "recall": 1.0,
+              "f1-score": 0.992619926199262,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.7894736842105263,
+              "recall": 1.0,
+              "f1-score": 0.8823529411764706,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9705882352941176,
+              "recall": 0.9565217391304348,
+              "f1-score": 0.9635036496350365,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9879518072289156,
+              "recall": 0.9879518072289156,
+              "f1-score": 0.9879518072289156,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.9935483870967742,
+              "recall": 0.9595015576323987,
+              "f1-score": 0.9762282091917591,
+              "support": 321.0
+            },
+            "accuracy": 0.9727187206020697,
+            "macro avg": {
+              "precision": 0.9453820198356638,
+              "recall": 0.9807950207983497,
+              "f1-score": 0.9605313066862887,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9749453408114929,
+              "recall": 0.9727187206020697,
+              "f1-score": 0.9731878238712933,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              269,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              45,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              11,
+              330,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              82,
+              1
+            ],
+            [
+              2,
+              1,
+              10,
+              0,
+              308
+            ]
+          ]
+        },
+        "cascade_paper_gate@0.5": {
+          "n": 1063,
+          "accuracy": 0.9727187206020697,
+          "macro_f1": 0.9605313066862887,
+          "balanced_accuracy": 0.9807950207983497,
+          "missed_disease_rate": 0.005037783375314861,
+          "per_class": {
+            "healthy": {
+              "precision": 0.9853479853479854,
+              "recall": 1.0,
+              "f1-score": 0.992619926199262,
+              "support": 269.0
+            },
+            "early_blight": {
+              "precision": 0.7894736842105263,
+              "recall": 1.0,
+              "f1-score": 0.8823529411764706,
+              "support": 45.0
+            },
+            "late_blight": {
+              "precision": 0.9705882352941176,
+              "recall": 0.9565217391304348,
+              "f1-score": 0.9635036496350365,
+              "support": 345.0
+            },
+            "leaf_mold": {
+              "precision": 0.9879518072289156,
+              "recall": 0.9879518072289156,
+              "f1-score": 0.9879518072289156,
+              "support": 83.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.9935483870967742,
+              "recall": 0.9595015576323987,
+              "f1-score": 0.9762282091917591,
+              "support": 321.0
+            },
+            "accuracy": 0.9727187206020697,
+            "macro avg": {
+              "precision": 0.9453820198356638,
+              "recall": 0.9807950207983497,
+              "f1-score": 0.9605313066862887,
+              "support": 1063.0
+            },
+            "weighted avg": {
+              "precision": 0.9749453408114929,
+              "recall": 0.9727187206020697,
+              "f1-score": 0.9731878238712933,
+              "support": 1063.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              269,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              45,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              11,
+              330,
+              1,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              82,
+              1
+            ],
+            [
+              2,
+              1,
+              10,
+              0,
+              308
+            ]
+          ]
+        }
+      },
+      "gates": {
+        "gate_mnv3": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.9962370649106302,
+            "diseased_recall": 0.9962216624685138,
+            "healthy_recall": 0.9962825278810409,
+            "macro_f1": 0.995035262248377
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.9962370649106302,
+            "diseased_recall": 0.9962216624685138,
+            "healthy_recall": 0.9962825278810409,
+            "macro_f1": 0.995035262248377
+          }
+        },
+        "gate_paper_cnn": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.9962370649106302,
+            "diseased_recall": 0.9949622166246851,
+            "healthy_recall": 1.0,
+            "macro_f1": 0.9950473368370047
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.9962370649106302,
+            "diseased_recall": 0.9949622166246851,
+            "healthy_recall": 1.0,
+            "macro_f1": 0.9950473368370047
+          }
+        }
+      },
+      "stage2_on_diseased_only": {
+        "n": 794,
+        "accuracy": 0.9685138539042821,
+        "macro_f1": 0.954072182465489,
+        "balanced_accuracy": 0.97900068375901,
+        "missed_disease_rate": 0.01602136181575434,
+        "per_class": {
+          "early_blight": {
+            "precision": 0.7894736842105263,
+            "recall": 1.0,
+            "f1-score": 0.8823529411764706,
+            "support": 45.0
+          },
+          "late_blight": {
+            "precision": 0.9707602339181286,
+            "recall": 0.9623188405797102,
+            "f1-score": 0.9665211062590975,
+            "support": 345.0
+          },
+          "leaf_mold": {
+            "precision": 0.9879518072289156,
+            "recall": 0.9879518072289156,
+            "f1-score": 0.9879518072289156,
+            "support": 83.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9935897435897436,
+            "recall": 0.9657320872274143,
+            "f1-score": 0.9794628751974723,
+            "support": 321.0
+          },
+          "accuracy": 0.9685138539042821,
+          "macro avg": {
+            "precision": 0.9354438672368285,
+            "recall": 0.97900068375901,
+            "f1-score": 0.954072182465489,
+            "support": 794.0
+          },
+          "weighted avg": {
+            "precision": 0.9715124737827905,
+            "recall": 0.9685138539042821,
+            "f1-score": 0.9692232329354136,
+            "support": 794.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            45,
+            0,
+            0,
+            0
+          ],
+          [
+            11,
+            332,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            82,
+            1
+          ],
+          [
+            1,
+            10,
+            0,
+            310
+          ]
+        ]
+      }
+    },
+    "plantdoc_leaf_crops": {
+      "systems": {
+        "direct_mnv3": {
+          "n": 1524,
+          "accuracy": 0.31299212598425197,
+          "macro_f1": 0.26721190143261697,
+          "balanced_accuracy": 0.37180921361709707,
+          "missed_disease_rate": 0.0052863436123348016,
+          "per_class": {
+            "healthy": {
+              "precision": 0.6666666666666666,
+              "recall": 0.030848329048843187,
+              "f1-score": 0.05896805896805897,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.3006535947712418,
+              "recall": 0.6448598130841121,
+              "f1-score": 0.4101040118870728,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.2154761904761905,
+              "recall": 0.8227272727272728,
+              "f1-score": 0.34150943396226413,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.5,
+              "recall": 0.04693140794223827,
+              "f1-score": 0.0858085808580858,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7348066298342542,
+              "recall": 0.3136792452830189,
+              "f1-score": 0.4396694214876033,
+              "support": 424.0
+            },
+            "accuracy": 0.31299212598425197,
+            "macro avg": {
+              "precision": 0.48352061634967053,
+              "recall": 0.37180921361709707,
+              "f1-score": 0.26721190143261697,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.5388031335753706,
+              "recall": 0.31299212598425197,
+              "f1-score": 0.25985677202266416,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              12,
+              34,
+              329,
+              0,
+              14
+            ],
+            [
+              1,
+              138,
+              49,
+              0,
+              26
+            ],
+            [
+              2,
+              28,
+              181,
+              6,
+              3
+            ],
+            [
+              2,
+              46,
+              211,
+              13,
+              5
+            ],
+            [
+              1,
+              213,
+              70,
+              7,
+              133
+            ]
+          ]
+        },
+        "direct_effb0": {
+          "n": 1524,
+          "accuracy": 0.3320209973753281,
+          "macro_f1": 0.30484758525802363,
+          "balanced_accuracy": 0.38692189417779366,
+          "missed_disease_rate": 0.004405286343612335,
+          "per_class": {
+            "healthy": {
+              "precision": 0.8214285714285714,
+              "recall": 0.05912596401028278,
+              "f1-score": 0.11031175059952038,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.25811965811965815,
+              "recall": 0.705607476635514,
+              "f1-score": 0.37797246558197745,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.23511450381679388,
+              "recall": 0.7,
+              "f1-score": 0.352,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.5063291139240507,
+              "recall": 0.1444043321299639,
+              "f1-score": 0.2247191011235955,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7796610169491526,
+              "recall": 0.32547169811320753,
+              "f1-score": 0.45923460898502494,
+              "support": 424.0
+            },
+            "accuracy": 0.3320209973753281,
+            "macro avg": {
+              "precision": 0.5201305728476453,
+              "recall": 0.38692189417779366,
+              "f1-score": 0.30484758525802363,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.5887978659490936,
+              "recall": 0.3320209973753281,
+              "f1-score": 0.30065619674451655,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              23,
+              93,
+              252,
+              13,
+              8
+            ],
+            [
+              1,
+              151,
+              32,
+              5,
+              25
+            ],
+            [
+              0,
+              46,
+              154,
+              16,
+              4
+            ],
+            [
+              3,
+              41,
+              191,
+              40,
+              2
+            ],
+            [
+              1,
+              254,
+              26,
+              5,
+              138
+            ]
+          ]
+        },
+        "cascade_mnv3": {
+          "n": 1524,
+          "accuracy": 0.34448818897637795,
+          "macro_f1": 0.317686916210161,
+          "balanced_accuracy": 0.38766181513712433,
+          "missed_disease_rate": 0.01762114537444934,
+          "per_class": {
+            "healthy": {
+              "precision": 0.726027397260274,
+              "recall": 0.13624678663239073,
+              "f1-score": 0.22943722943722944,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.2829076620825147,
+              "recall": 0.6728971962616822,
+              "f1-score": 0.3983402489626556,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.22123893805309736,
+              "recall": 0.6818181818181818,
+              "f1-score": 0.33407572383073497,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.3793103448275862,
+              "recall": 0.07942238267148015,
+              "f1-score": 0.13134328358208955,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7572815533980582,
+              "recall": 0.36792452830188677,
+              "f1-score": 0.49523809523809526,
+              "support": 424.0
+            },
+            "accuracy": 0.34448818897637795,
+            "macro avg": {
+              "precision": 0.47335317912430613,
+              "recall": 0.38766181513712433,
+              "f1-score": 0.317686916210161,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.5366114224078768,
+              "recall": 0.34448818897637795,
+              "f1-score": 0.3243803127985849,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              53,
+              42,
+              284,
+              0,
+              10
+            ],
+            [
+              0,
+              144,
+              32,
+              9,
+              29
+            ],
+            [
+              3,
+              44,
+              150,
+              19,
+              4
+            ],
+            [
+              13,
+              55,
+              180,
+              22,
+              7
+            ],
+            [
+              4,
+              224,
+              32,
+              8,
+              156
+            ]
+          ]
+        },
+        "cascade_mnv3@0.5": {
+          "n": 1524,
+          "accuracy": 0.34448818897637795,
+          "macro_f1": 0.317686916210161,
+          "balanced_accuracy": 0.38766181513712433,
+          "missed_disease_rate": 0.01762114537444934,
+          "per_class": {
+            "healthy": {
+              "precision": 0.726027397260274,
+              "recall": 0.13624678663239073,
+              "f1-score": 0.22943722943722944,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.2829076620825147,
+              "recall": 0.6728971962616822,
+              "f1-score": 0.3983402489626556,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.22123893805309736,
+              "recall": 0.6818181818181818,
+              "f1-score": 0.33407572383073497,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.3793103448275862,
+              "recall": 0.07942238267148015,
+              "f1-score": 0.13134328358208955,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7572815533980582,
+              "recall": 0.36792452830188677,
+              "f1-score": 0.49523809523809526,
+              "support": 424.0
+            },
+            "accuracy": 0.34448818897637795,
+            "macro avg": {
+              "precision": 0.47335317912430613,
+              "recall": 0.38766181513712433,
+              "f1-score": 0.317686916210161,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.5366114224078768,
+              "recall": 0.34448818897637795,
+              "f1-score": 0.3243803127985849,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              53,
+              42,
+              284,
+              0,
+              10
+            ],
+            [
+              0,
+              144,
+              32,
+              9,
+              29
+            ],
+            [
+              3,
+              44,
+              150,
+              19,
+              4
+            ],
+            [
+              13,
+              55,
+              180,
+              22,
+              7
+            ],
+            [
+              4,
+              224,
+              32,
+              8,
+              156
+            ]
+          ]
+        },
+        "cascade_paper_gate": {
+          "n": 1524,
+          "accuracy": 0.33398950131233596,
+          "macro_f1": 0.30664485061472224,
+          "balanced_accuracy": 0.37695983224726065,
+          "missed_disease_rate": 0.029955947136563875,
+          "per_class": {
+            "healthy": {
+              "precision": 0.5802469135802469,
+              "recall": 0.12082262210796915,
+              "f1-score": 0.2,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.28429423459244535,
+              "recall": 0.6682242990654206,
+              "f1-score": 0.398884239888424,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.21481481481481482,
+              "recall": 0.6590909090909091,
+              "f1-score": 0.3240223463687151,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.3620689655172414,
+              "recall": 0.07581227436823104,
+              "f1-score": 0.1253731343283582,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7391304347826086,
+              "recall": 0.3608490566037736,
+              "f1-score": 0.4849445324881141,
+              "support": 424.0
+            },
+            "accuracy": 0.33398950131233596,
+            "macro avg": {
+              "precision": 0.4361110726574714,
+              "recall": 0.37695983224726065,
+              "f1-score": 0.30664485061472224,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.4904846998955778,
+              "recall": 0.33398950131233596,
+              "f1-score": 0.31154264010574517,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              47,
+              36,
+              291,
+              1,
+              14
+            ],
+            [
+              1,
+              143,
+              32,
+              9,
+              29
+            ],
+            [
+              9,
+              43,
+              145,
+              19,
+              4
+            ],
+            [
+              18,
+              56,
+              175,
+              21,
+              7
+            ],
+            [
+              6,
+              225,
+              32,
+              8,
+              153
+            ]
+          ]
+        },
+        "cascade_paper_gate@0.5": {
+          "n": 1524,
+          "accuracy": 0.33398950131233596,
+          "macro_f1": 0.30664485061472224,
+          "balanced_accuracy": 0.37695983224726065,
+          "missed_disease_rate": 0.029955947136563875,
+          "per_class": {
+            "healthy": {
+              "precision": 0.5802469135802469,
+              "recall": 0.12082262210796915,
+              "f1-score": 0.2,
+              "support": 389.0
+            },
+            "early_blight": {
+              "precision": 0.28429423459244535,
+              "recall": 0.6682242990654206,
+              "f1-score": 0.398884239888424,
+              "support": 214.0
+            },
+            "late_blight": {
+              "precision": 0.21481481481481482,
+              "recall": 0.6590909090909091,
+              "f1-score": 0.3240223463687151,
+              "support": 220.0
+            },
+            "leaf_mold": {
+              "precision": 0.3620689655172414,
+              "recall": 0.07581227436823104,
+              "f1-score": 0.1253731343283582,
+              "support": 277.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.7391304347826086,
+              "recall": 0.3608490566037736,
+              "f1-score": 0.4849445324881141,
+              "support": 424.0
+            },
+            "accuracy": 0.33398950131233596,
+            "macro avg": {
+              "precision": 0.4361110726574714,
+              "recall": 0.37695983224726065,
+              "f1-score": 0.30664485061472224,
+              "support": 1524.0
+            },
+            "weighted avg": {
+              "precision": 0.4904846998955778,
+              "recall": 0.33398950131233596,
+              "f1-score": 0.31154264010574517,
+              "support": 1524.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              47,
+              36,
+              291,
+              1,
+              14
+            ],
+            [
+              1,
+              143,
+              32,
+              9,
+              29
+            ],
+            [
+              9,
+              43,
+              145,
+              19,
+              4
+            ],
+            [
+              18,
+              56,
+              175,
+              21,
+              7
+            ],
+            [
+              6,
+              225,
+              32,
+              8,
+              153
+            ]
+          ]
+        }
+      },
+      "gates": {
+        "gate_mnv3": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.7664041994750657,
+            "diseased_recall": 0.9823788546255506,
+            "healthy_recall": 0.13624678663239073,
+            "macro_f1": 0.5458864414780888
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.7664041994750657,
+            "diseased_recall": 0.9823788546255506,
+            "healthy_recall": 0.13624678663239073,
+            "macro_f1": 0.5458864414780888
+          }
+        },
+        "gate_paper_cnn": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.7532808398950132,
+            "diseased_recall": 0.9700440528634361,
+            "healthy_recall": 0.12082262210796915,
+            "macro_f1": 0.5270752521334368
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.7532808398950132,
+            "diseased_recall": 0.9700440528634361,
+            "healthy_recall": 0.12082262210796915,
+            "macro_f1": 0.5270752521334368
+          }
+        }
+      },
+      "stage2_on_diseased_only": {
+        "n": 1135,
+        "accuracy": 0.4193832599118943,
+        "macro_f1": 0.38688827772324186,
+        "balanced_accuracy": 0.45482719024821094,
+        "missed_disease_rate": 0.3583061889250814,
+        "per_class": {
+          "early_blight": {
+            "precision": 0.3037974683544304,
+            "recall": 0.6728971962616822,
+            "f1-score": 0.4186046511627907,
+            "support": 214.0
+          },
+          "late_blight": {
+            "precision": 0.3768472906403941,
+            "recall": 0.6954545454545454,
+            "f1-score": 0.48881789137380194,
+            "support": 220.0
+          },
+          "leaf_mold": {
+            "precision": 0.3898305084745763,
+            "recall": 0.08303249097472924,
+            "f1-score": 0.13690476190476192,
+            "support": 277.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7959183673469388,
+            "recall": 0.36792452830188677,
+            "f1-score": 0.5032258064516129,
+            "support": 424.0
+          },
+          "accuracy": 0.4193832599118943,
+          "macro avg": {
+            "precision": 0.46659840870408487,
+            "recall": 0.45482719024821094,
+            "f1-score": 0.38688827772324186,
+            "support": 1135.0
+          },
+          "weighted avg": {
+            "precision": 0.5227942738073079,
+            "recall": 0.4193832599118943,
+            "f1-score": 0.3950763809992745,
+            "support": 1135.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            144,
+            32,
+            9,
+            29
+          ],
+          [
+            44,
+            153,
+            19,
+            4
+          ],
+          [
+            58,
+            189,
+            23,
+            7
+          ],
+          [
+            228,
+            32,
+            8,
+            156
+          ]
+        ]
+      }
+    },
+    "plantdoc_full_images": {
+      "systems": {
+        "direct_mnv3": {
+          "n": 499,
+          "accuracy": 0.3907815631262525,
+          "macro_f1": 0.30958972408958363,
+          "balanced_accuracy": 0.3768245626525881,
+          "missed_disease_rate": 0.026845637583892617,
+          "per_class": {
+            "healthy": {
+              "precision": 0.3333333333333333,
+              "recall": 0.11538461538461539,
+              "f1-score": 0.17142857142857143,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.29910714285714285,
+              "recall": 0.7613636363636364,
+              "f1-score": 0.42948717948717946,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.4385026737967914,
+              "recall": 0.7387387387387387,
+              "f1-score": 0.5503355704697986,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.5,
+              "recall": 0.03296703296703297,
+              "f1-score": 0.061855670103092786,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.578125,
+              "recall": 0.2356687898089172,
+              "f1-score": 0.334841628959276,
+              "support": 157.0
+            },
+            "accuracy": 0.3907815631262525,
+            "macro avg": {
+              "precision": 0.42981362999745354,
+              "recall": 0.3768245626525881,
+              "f1-score": 0.30958972408958363,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.45810457654550246,
+              "recall": 0.3907815631262525,
+              "f1-score": 0.33265612736932454,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              6,
+              11,
+              22,
+              0,
+              13
+            ],
+            [
+              1,
+              67,
+              13,
+              1,
+              6
+            ],
+            [
+              1,
+              27,
+              82,
+              1,
+              0
+            ],
+            [
+              5,
+              29,
+              46,
+              3,
+              8
+            ],
+            [
+              5,
+              90,
+              24,
+              1,
+              37
+            ]
+          ]
+        },
+        "direct_effb0": {
+          "n": 499,
+          "accuracy": 0.40480961923847697,
+          "macro_f1": 0.3805346773386716,
+          "balanced_accuracy": 0.4174862579321178,
+          "missed_disease_rate": 0.0,
+          "per_class": {
+            "healthy": {
+              "precision": 1.0,
+              "recall": 0.28846153846153844,
+              "f1-score": 0.44776119402985076,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.2733812949640288,
+              "recall": 0.8636363636363636,
+              "f1-score": 0.41530054644808745,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.45098039215686275,
+              "recall": 0.6216216216216216,
+              "f1-score": 0.5227272727272727,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.6666666666666666,
+              "recall": 0.10989010989010989,
+              "f1-score": 0.18867924528301888,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.8421052631578947,
+              "recall": 0.20382165605095542,
+              "f1-score": 0.3282051282051282,
+              "support": 157.0
+            },
+            "accuracy": 0.40480961923847697,
+            "macro avg": {
+              "precision": 0.6466267233890906,
+              "recall": 0.4174862579321178,
+              "f1-score": 0.3805346773386716,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.6392656722819688,
+              "recall": 0.40480961923847697,
+              "f1-score": 0.373849246289922,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              15,
+              14,
+              21,
+              2,
+              0
+            ],
+            [
+              0,
+              76,
+              8,
+              1,
+              3
+            ],
+            [
+              0,
+              41,
+              69,
+              1,
+              0
+            ],
+            [
+              0,
+              32,
+              46,
+              10,
+              3
+            ],
+            [
+              0,
+              115,
+              9,
+              1,
+              32
+            ]
+          ]
+        },
+        "cascade_mnv3": {
+          "n": 499,
+          "accuracy": 0.4188376753507014,
+          "macro_f1": 0.39531282199011514,
+          "balanced_accuracy": 0.4357297806342393,
+          "missed_disease_rate": 0.011185682326621925,
+          "per_class": {
+            "healthy": {
+              "precision": 0.8076923076923077,
+              "recall": 0.40384615384615385,
+              "f1-score": 0.5384615384615384,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.2938775510204082,
+              "recall": 0.8181818181818182,
+              "f1-score": 0.43243243243243246,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.4585987261146497,
+              "recall": 0.6486486486486487,
+              "f1-score": 0.5373134328358209,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.5,
+              "recall": 0.06593406593406594,
+              "f1-score": 0.11650485436893204,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.6440677966101694,
+              "recall": 0.24203821656050956,
+              "f1-score": 0.35185185185185186,
+              "support": 157.0
+            },
+            "accuracy": 0.4188376753507014,
+            "macro avg": {
+              "precision": 0.5408472762875071,
+              "recall": 0.4357297806342393,
+              "f1-score": 0.39531282199011514,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.5318323189505384,
+              "recall": 0.4188376753507014,
+              "f1-score": 0.3838447446636147,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              21,
+              9,
+              18,
+              0,
+              4
+            ],
+            [
+              0,
+              72,
+              10,
+              0,
+              6
+            ],
+            [
+              1,
+              33,
+              72,
+              3,
+              2
+            ],
+            [
+              2,
+              34,
+              40,
+              6,
+              9
+            ],
+            [
+              2,
+              97,
+              17,
+              3,
+              38
+            ]
+          ]
+        },
+        "cascade_mnv3@0.5": {
+          "n": 499,
+          "accuracy": 0.4188376753507014,
+          "macro_f1": 0.39531282199011514,
+          "balanced_accuracy": 0.4357297806342393,
+          "missed_disease_rate": 0.011185682326621925,
+          "per_class": {
+            "healthy": {
+              "precision": 0.8076923076923077,
+              "recall": 0.40384615384615385,
+              "f1-score": 0.5384615384615384,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.2938775510204082,
+              "recall": 0.8181818181818182,
+              "f1-score": 0.43243243243243246,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.4585987261146497,
+              "recall": 0.6486486486486487,
+              "f1-score": 0.5373134328358209,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.5,
+              "recall": 0.06593406593406594,
+              "f1-score": 0.11650485436893204,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.6440677966101694,
+              "recall": 0.24203821656050956,
+              "f1-score": 0.35185185185185186,
+              "support": 157.0
+            },
+            "accuracy": 0.4188376753507014,
+            "macro avg": {
+              "precision": 0.5408472762875071,
+              "recall": 0.4357297806342393,
+              "f1-score": 0.39531282199011514,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.5318323189505384,
+              "recall": 0.4188376753507014,
+              "f1-score": 0.3838447446636147,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              21,
+              9,
+              18,
+              0,
+              4
+            ],
+            [
+              0,
+              72,
+              10,
+              0,
+              6
+            ],
+            [
+              1,
+              33,
+              72,
+              3,
+              2
+            ],
+            [
+              2,
+              34,
+              40,
+              6,
+              9
+            ],
+            [
+              2,
+              97,
+              17,
+              3,
+              38
+            ]
+          ]
+        },
+        "cascade_paper_gate": {
+          "n": 499,
+          "accuracy": 0.3727454909819639,
+          "macro_f1": 0.29139704944585265,
+          "balanced_accuracy": 0.3576789094305018,
+          "missed_disease_rate": 0.03355704697986577,
+          "per_class": {
+            "healthy": {
+              "precision": 0.16666666666666666,
+              "recall": 0.057692307692307696,
+              "f1-score": 0.08571428571428572,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.29098360655737704,
+              "recall": 0.8068181818181818,
+              "f1-score": 0.42771084337349397,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.43558282208588955,
+              "recall": 0.6396396396396397,
+              "f1-score": 0.5182481751824818,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.45454545454545453,
+              "recall": 0.054945054945054944,
+              "f1-score": 0.09803921568627451,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.5714285714285714,
+              "recall": 0.22929936305732485,
+              "f1-score": 0.32727272727272727,
+              "support": 157.0
+            },
+            "accuracy": 0.3727454909819639,
+            "macro avg": {
+              "precision": 0.38384142425679185,
+              "recall": 0.3576789094305018,
+              "f1-score": 0.29139704944585265,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.4282581951366165,
+              "recall": 0.3727454909819639,
+              "f1-score": 0.3204902431433566,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              10,
+              28,
+              0,
+              11
+            ],
+            [
+              1,
+              71,
+              10,
+              0,
+              6
+            ],
+            [
+              2,
+              33,
+              71,
+              3,
+              2
+            ],
+            [
+              6,
+              34,
+              38,
+              5,
+              8
+            ],
+            [
+              6,
+              96,
+              16,
+              3,
+              36
+            ]
+          ]
+        },
+        "cascade_paper_gate@0.5": {
+          "n": 499,
+          "accuracy": 0.3727454909819639,
+          "macro_f1": 0.29139704944585265,
+          "balanced_accuracy": 0.3576789094305018,
+          "missed_disease_rate": 0.03355704697986577,
+          "per_class": {
+            "healthy": {
+              "precision": 0.16666666666666666,
+              "recall": 0.057692307692307696,
+              "f1-score": 0.08571428571428572,
+              "support": 52.0
+            },
+            "early_blight": {
+              "precision": 0.29098360655737704,
+              "recall": 0.8068181818181818,
+              "f1-score": 0.42771084337349397,
+              "support": 88.0
+            },
+            "late_blight": {
+              "precision": 0.43558282208588955,
+              "recall": 0.6396396396396397,
+              "f1-score": 0.5182481751824818,
+              "support": 111.0
+            },
+            "leaf_mold": {
+              "precision": 0.45454545454545453,
+              "recall": 0.054945054945054944,
+              "f1-score": 0.09803921568627451,
+              "support": 91.0
+            },
+            "septoria_leaf_spot": {
+              "precision": 0.5714285714285714,
+              "recall": 0.22929936305732485,
+              "f1-score": 0.32727272727272727,
+              "support": 157.0
+            },
+            "accuracy": 0.3727454909819639,
+            "macro avg": {
+              "precision": 0.38384142425679185,
+              "recall": 0.3576789094305018,
+              "f1-score": 0.29139704944585265,
+              "support": 499.0
+            },
+            "weighted avg": {
+              "precision": 0.4282581951366165,
+              "recall": 0.3727454909819639,
+              "f1-score": 0.3204902431433566,
+              "support": 499.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              3,
+              10,
+              28,
+              0,
+              11
+            ],
+            [
+              1,
+              71,
+              10,
+              0,
+              6
+            ],
+            [
+              2,
+              33,
+              71,
+              3,
+              2
+            ],
+            [
+              6,
+              34,
+              38,
+              5,
+              8
+            ],
+            [
+              6,
+              96,
+              16,
+              3,
+              36
+            ]
+          ]
+        }
+      },
+      "gates": {
+        "gate_mnv3": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.9278557114228457,
+            "diseased_recall": 0.9888143176733781,
+            "healthy_recall": 0.40384615384615385,
+            "macro_f1": 0.7496655518394648
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.9278557114228457,
+            "diseased_recall": 0.9888143176733781,
+            "healthy_recall": 0.40384615384615385,
+            "macro_f1": 0.7496655518394648
+          }
+        },
+        "gate_paper_cnn": {
+          "tuned": {
+            "threshold": 0.5,
+            "accuracy": 0.8717434869739479,
+            "diseased_recall": 0.9664429530201343,
+            "healthy_recall": 0.057692307692307696,
+            "macro_f1": 0.5083743842364532
+          },
+          "at_0.5": {
+            "threshold": 0.5,
+            "accuracy": 0.8717434869739479,
+            "diseased_recall": 0.9664429530201343,
+            "healthy_recall": 0.057692307692307696,
+            "macro_f1": 0.5083743842364532
+          }
+        }
+      },
+      "stage2_on_diseased_only": {
+        "n": 447,
+        "accuracy": 0.4228187919463087,
+        "macro_f1": 0.37392327935586966,
+        "balanced_accuracy": 0.44595293958351284,
+        "missed_disease_rate": 0.467966573816156,
+        "per_class": {
+          "early_blight": {
+            "precision": 0.3,
+            "recall": 0.8181818181818182,
+            "f1-score": 0.43902439024390244,
+            "support": 88.0
+          },
+          "late_blight": {
+            "precision": 0.5214285714285715,
+            "recall": 0.6576576576576577,
+            "f1-score": 0.5816733067729084,
+            "support": 111.0
+          },
+          "leaf_mold": {
+            "precision": 0.5,
+            "recall": 0.06593406593406594,
+            "f1-score": 0.11650485436893204,
+            "support": 91.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.6909090909090909,
+            "recall": 0.24203821656050956,
+            "f1-score": 0.3584905660377358,
+            "support": 157.0
+          },
+          "accuracy": 0.4228187919463087,
+          "macro avg": {
+            "precision": 0.5030844155844156,
+            "recall": 0.44595293958351284,
+            "f1-score": 0.37392327935586966,
+            "support": 447.0
+          },
+          "weighted avg": {
+            "precision": 0.5330006682355676,
+            "recall": 0.4228187919463087,
+            "f1-score": 0.38050300673099235,
+            "support": 447.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            72,
+            10,
+            0,
+            6
+          ],
+          [
+            33,
+            73,
+            3,
+            2
+          ],
+          [
+            36,
+            40,
+            6,
+            9
+          ],
+          [
+            99,
+            17,
+            3,
+            38
+          ]
+        ]
+      }
+    }
+  },
+  "robustness_macro_f1": {
+    "cascade_mnv3": {
+      "brightness_x0.5": 0.9511487600406889,
+      "brightness_x0.7": 0.9563373616167008,
+      "brightness_x1.3": 0.9633528212189532,
+      "brightness_x1.6": 0.9580781477197833,
+      "clean": 0.9591365116978716,
+      "downscale_0.35": 0.9356091420914915,
+      "gaussian_blur_s2": 0.9054113724992747,
+      "half_shadow": 0.9010776736424562,
+      "jpeg_q30": 0.9521484744531911,
+      "motion_blur_9": 0.91524125451073,
+      "noise_std0.06": 0.9453852821990776,
+      "rotate_180": 0.9553334592918598,
+      "rotate_270": 0.9579775480655492,
+      "rotate_45": 0.9603352633162764,
+      "rotate_90": 0.9600326802605759
+    },
+    "cascade_paper_gate": {
+      "brightness_x0.5": 0.9049818201748538,
+      "brightness_x0.7": 0.9468891914778137,
+      "brightness_x1.3": 0.9615847478390555,
+      "brightness_x1.6": 0.957149421973795,
+      "clean": 0.9605313066862887,
+      "downscale_0.35": 0.9421639569150612,
+      "gaussian_blur_s2": 0.9026791819395662,
+      "half_shadow": 0.9056137255644126,
+      "jpeg_q30": 0.9534372722622322,
+      "motion_blur_9": 0.9292678108512501,
+      "noise_std0.06": 0.9388925805823483,
+      "rotate_180": 0.9555428997733486,
+      "rotate_270": 0.9595635524477302,
+      "rotate_45": 0.9598246272957158,
+      "rotate_90": 0.9579864152969035
+    },
+    "direct_effb0": {
+      "brightness_x0.5": 0.9556387485766997,
+      "brightness_x0.7": 0.9653535709785428,
+      "brightness_x1.3": 0.9553095037739905,
+      "brightness_x1.6": 0.9515288792985093,
+      "clean": 0.9621954359110483,
+      "downscale_0.35": 0.9527860764300607,
+      "gaussian_blur_s2": 0.9318401479953836,
+      "half_shadow": 0.9259985582524269,
+      "jpeg_q30": 0.9548124355294888,
+      "motion_blur_9": 0.9114710098820055,
+      "noise_std0.06": 0.9464139657864559,
+      "rotate_180": 0.965764535395059,
+      "rotate_270": 0.9599063715880302,
+      "rotate_45": 0.9607375010964111,
+      "rotate_90": 0.9686849513122565
+    },
+    "direct_mnv3": {
+      "brightness_x0.5": 0.9592244227684571,
+      "brightness_x0.7": 0.965539875605925,
+      "brightness_x1.3": 0.9475570045359986,
+      "brightness_x1.6": 0.9508729147206594,
+      "clean": 0.9575178197324623,
+      "downscale_0.35": 0.9430889744121307,
+      "gaussian_blur_s2": 0.9271936767531409,
+      "half_shadow": 0.9022434303927451,
+      "jpeg_q30": 0.9472704148721018,
+      "motion_blur_9": 0.934903664282384,
+      "noise_std0.06": 0.9440939339074201,
+      "rotate_180": 0.9527060686082635,
+      "rotate_270": 0.9540704353668575,
+      "rotate_45": 0.9585683584238497,
+      "rotate_90": 0.9484427543042084
+    }
+  },
+  "config": {
+    "seed": 42,
+    "img_size": 224,
+    "epochs": 30,
+    "paper_cnn_epochs": 40,
+    "batch": 64,
+    "patience": 8,
+    "target_diseased_recall": 0.98,
+    "seq_block": 20,
+    "hash_max_dist": 16,
+    "torch": "2.11.0+cu128",
+    "albumentations": "2.0.8",
+    "plantvillage_root": "/kaggle/input/datasets/abdallahalidev/plantvillage-dataset/color",
+    "plantdoc_detection_root": "/kaggle/input/datasets/yusufmurtaza01/plantdoc-object-detection-dataset",
+    "plantdoc_full_root": "/kaggle/input/datasets/nirmalsankalana/plantdoc-dataset",
+    "split_counts": {
+      "train": {
+        "healthy": 1076,
+        "early_blight": 853,
+        "late_blight": 1249,
+        "leaf_mold": 746,
+        "septoria_leaf_spot": 1229
+      },
+      "val": {
+        "healthy": 246,
+        "early_blight": 102,
+        "late_blight": 315,
+        "leaf_mold": 123,
+        "septoria_leaf_spot": 221
+      },
+      "test": {
+        "healthy": 269,
+        "early_blight": 45,
+        "late_blight": 345,
+        "leaf_mold": 83,
+        "septoria_leaf_spot": 321
+      }
+    }
+  }
+}

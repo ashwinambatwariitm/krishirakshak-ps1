@@ -1,0 +1,23 @@
+{
+  "img_size": 224,
+  "resize": "direct resize to img_size x img_size (no aspect-ratio preservation)",
+  "color_order": "RGB",
+  "scale": "pixel / 255",
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "layout": "NCHW float32",
+  "recommended_system": "direct_effb0",
+  "recommended_checkpoints": [
+    "direct_effb0_best.pt"
+  ],
+  "gate_healthy_threshold": 0.5,
+  "gate_rule": "healthy if softmax(gate)[0] > gate_healthy_threshold, else run stage2"
+}

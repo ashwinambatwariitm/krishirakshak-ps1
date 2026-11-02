@@ -1,0 +1,116 @@
+{
+  "test_map50": 0.5687804197594437,
+  "test_map50_95": 0.35823874162397984,
+  "test_precision": 0.5355235938048438,
+  "test_recall": 0.5818768657852192,
+  "conf_threshold": 0.7,
+  "two_level": [
+    {
+      "conf": 0.1,
+      "pest_found_rate": 0.961971197119712,
+      "species_correct_when_found": 0.7569590643274854,
+      "species_correct_overall": 0.7281728172817282,
+      "images_with_pest_found": 0.9860452869931543,
+      "box_precision_any_species": 0.8608957795004306,
+      "false_alarm_rate": 0.911
+    },
+    {
+      "conf": 0.2,
+      "pest_found_rate": 0.9187668766876688,
+      "species_correct_when_found": 0.7700220426157237,
+      "species_correct_overall": 0.7074707470747075,
+      "images_with_pest_found": 0.954449710373881,
+      "box_precision_any_species": 0.910923401804569,
+      "false_alarm_rate": 0.635
+    },
+    {
+      "conf": 0.25,
+      "pest_found_rate": 0.8832133213321333,
+      "species_correct_when_found": 0.7831847133757962,
+      "species_correct_overall": 0.6917191719171917,
+      "images_with_pest_found": 0.9220642443391258,
+      "box_precision_any_species": 0.9259099720008616,
+      "false_alarm_rate": 0.493
+    },
+    {
+      "conf": 0.3,
+      "pest_found_rate": 0.8404590459045904,
+      "species_correct_when_found": 0.7967871485943775,
+      "species_correct_overall": 0.6696669666966697,
+      "images_with_pest_found": 0.882306477093207,
+      "box_precision_any_species": 0.939618138424821,
+      "false_alarm_rate": 0.368
+    },
+    {
+      "conf": 0.4,
+      "pest_found_rate": 0.7346984698469847,
+      "species_correct_when_found": 0.8419601837672281,
+      "species_correct_overall": 0.6185868586858686,
+      "images_with_pest_found": 0.7772511848341233,
+      "box_precision_any_species": 0.955369997120645,
+      "false_alarm_rate": 0.208
+    },
+    {
+      "conf": 0.5,
+      "pest_found_rate": 0.6235373537353736,
+      "species_correct_when_found": 0.88018765788524,
+      "species_correct_overall": 0.5488298829882988,
+      "images_with_pest_found": 0.6648235913638757,
+      "box_precision_any_species": 0.9711103376261747,
+      "false_alarm_rate": 0.116
+    },
+    {
+      "conf": 0.6,
+      "pest_found_rate": 0.5002250225022502,
+      "species_correct_when_found": 0.9154295996401259,
+      "species_correct_overall": 0.45792079207920794,
+      "images_with_pest_found": 0.5423907319641916,
+      "box_precision_any_species": 0.982773851590106,
+      "false_alarm_rate": 0.067
+    },
+    {
+      "conf": 0.7,
+      "pest_found_rate": 0.37646264626462644,
+      "species_correct_when_found": 0.9420203227734608,
+      "species_correct_overall": 0.3546354635463546,
+      "images_with_pest_found": 0.4204844655081622,
+      "box_precision_any_species": 0.9893617021276596,
+      "false_alarm_rate": 0.03
+    }
+  ],
+  "split_sizes": {
+    "train": 13662,
+    "val": 1516,
+    "test": 3798
+  },
+  "annotation_problems": {
+    "degenerate box": 1,
+    "repaired xml": 1
+  },
+  "filename_class_mismatch": 12948,
+  "config": {
+    "model": "yolov8n.pt",
+    "img_size": 640,
+    "epochs": 100,
+    "batch": 32,
+    "patience": 25,
+    "aug": {
+      "degrees": 30.0,
+      "flipud": 0.5,
+      "fliplr": 0.5,
+      "hsv_h": 0.015,
+      "hsv_s": 0.6,
+      "hsv_v": 0.4,
+      "translate": 0.1,
+      "scale": 0.5,
+      "shear": 2.0,
+      "perspective": 0.0005,
+      "mosaic": 1.0,
+      "mixup": 0.1,
+      "close_mosaic": 10
+    },
+    "seed": 42,
+    "ultralytics": "8.4.7",
+    "torch": "2.9.1+cu128"
+  }
+}

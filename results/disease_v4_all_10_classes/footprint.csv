@@ -1,0 +1,3 @@
+model,architecture,classes,parameters_M,gflops_per_image,weights_fp32_MB,weights_fp16_MB,weights_int8_MB_est,checkpoint_file_MB,cpu_latency_ms_median_kaggle,ram_pytorch_runtime_MB,ram_after_model_load_MB,ram_peak_inference_MB,ram_model_plus_inference_MB,head_params_per_extra_class,bytes_per_extra_class_fp32
+effb0_seed42,efficientnet_b0,10,4.020358,0.769095104,16.081432,8.040716,4.020358,16.384059,30.711165499724302,627.86328125,663.51953125,680.703125,52.83984375,1281,5124
+mnv3s_seed42,mobilenet_v3_small,10,1.528106,0.11099328,6.112424,3.056212,1.528106,6.249371,12.027737500375224,629.90625,645.58203125,659.8515625,29.9453125,1025,4100

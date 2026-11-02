@@ -1,0 +1,9 @@
+{
+  "classes": [
+    "healthy",
+    "early_blight",
+    "late_blight",
+    "leaf_mold",
+    "septoria_leaf_spot"
+  ]
+}
