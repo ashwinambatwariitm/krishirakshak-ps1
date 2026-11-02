@@ -1,15 +1,20 @@
 # Trained models
 
-Model weights are not stored in git. Download them from the GitHub Release of this repository (tag `models-v1`) and
-place them in this folder. Check each file against its SHA-256 checksum:
+Model weights are not stored in git. Download them from the GitHub Release of this repository (tag `models-v1`) into
+this folder and check each file against its SHA-256 checksum:
 
 ```
+gh release download models-v1 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 sha256sum models/*.pt
 ```
+
+Then try them on a photo: `python tools/predict.py leaf.jpg`. To export them to ONNX for the Raspberry Pi:
+`python tools/export_onnx.py --disease-model models/tomato_disease_v4_effb0_10class.pt --pest-model models/pest_yolov8n_ip102_negatives.pt --check-images some_photos/`
 
 | File | What it is | SHA-256 |
 |---|---|---|
 | `tomato_disease_v4_effb0_10class.pt` | Tomato disease classifier, all 10 classes (recommended) | `ecb0abfe188bb658605e777bbf03bdef47bda57fef8db8918e58eeef7854a106` |
+| `tomato_disease_v4_mnv3s_10class.pt` | Smaller fallback (MobileNetV3-Small, 6 MB, about 2.5x faster), all 10 classes; field macro F1 about 0.50-0.56 | `a2ebb0eeddca12279e12a0802d568f471f4a790add4e1b4e700e244d005fa3e8` |
 | `tomato_disease_v3_effb0_5class.pt` | Tomato disease classifier, 5 classes (alternative) | `12e61130ca17e707c85a056937d08ff61854f395732d1b69ab26bbd67ac1dabe` |
 | `pest_yolov8n_ip102_negatives.pt` | IP102 insect pest detector, fine-tuned with insect-free leaves | `1a6d9aebf217d4437190a2901c7dfa5f9ff84b08f5e13fc098b4c9418b7ca260` |
 
@@ -20,7 +25,7 @@ Each file is a dictionary saved with `torch.save`:
 | Key | Meaning |
 |---|---|
 | `model_state_dict` | Weights (EMA-averaged) |
-| `arch` | `efficientnet_b0` (torchvision) |
+| `arch` | `efficientnet_b0` or `mobilenet_v3_small` (torchvision) |
 | `class_names` | Output order of the classes |
 | `img_size`, `mean`, `std` | Input size and normalisation |
 

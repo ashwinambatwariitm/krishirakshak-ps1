@@ -21,7 +21,8 @@ runs, even when the leaf looks healthy.
 |---|---|
 | Tomato disease classifier, all 10 PlantVillage tomato classes | Trained and tested |
 | Insect pest detector, 102 IP102 species | Trained, fine-tuned against false alarms, tested |
-| ONNX export and Raspberry Pi inference (C++) | Next |
+| ONNX export | Tool ready (`tools/export_onnx.py`); outputs verified against PyTorch |
+| Raspberry Pi inference (C++), camera and quality checks | In progress |
 | Knowledge base and Llama / ExecuTorch advisory | Next |
 
 Key results (held-out test images; details in [docs/RESULTS.md](docs/RESULTS.md)):
@@ -36,10 +37,16 @@ Key results (held-out test images; details in [docs/RESULTS.md](docs/RESULTS.md)
 
 ```
 README.md                  this file
+CONTRIBUTING.md            setup, workflow, rules, how to run experiments and publish models
 docs/                      problem statement, plan, design decisions, dataset research, results
   RESULTS.md               all training results and the recommended models
+  ROADMAP.md               open tasks with "done when" criteria
   PROJECT_HANDOFF.md       design decisions and the reasons behind them
   plan_phase1.md           Phase 1 plan, milestones and evaluation checklist
+tools/
+  predict.py               run the disease and pest models on photos
+  export_onnx.py           export to ONNX and check the outputs match PyTorch
+  check_repo.py            repository rules (also run automatically on GitHub)
 training/
   src/                     training scripts, one per experiment (cells separated by "# %%")
   build_notebooks.py       turns the scripts into Kaggle notebooks
@@ -60,6 +67,24 @@ Training scripts (newest last):
 | `tomato_disease_v4.py` | v4: all 10 tomato classes, plus memory and latency measurements (current) |
 | `ip102_pest.py` | YOLOv8n pest detector on IP102 (100 epochs) |
 | `ip102_pest_negft.py` | Fine-tunes the detector with insect-free leaf images (current) |
+
+## Quick start for team members
+
+```
+pip install -r training/requirements.txt onnx onnxruntime
+gh release download models-v1 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
+python tools/predict.py path/to/leaf_photo.jpg
+```
+
+Example output:
+
+```
+leaf_photo.jpg
+  Disease : late_blight (97%)   others: healthy 0%, target_spot 0%
+  Pests   : none detected
+```
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before making changes and pick a task from [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## How to train on Kaggle
 

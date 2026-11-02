@@ -1,0 +1,17 @@
+# Runs the repository rules (tools/check_repo.py) on every push and pull request.
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repo-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check file names, ASCII text, large files, credentials and Python syntax
+        run: python tools/check_repo.py
