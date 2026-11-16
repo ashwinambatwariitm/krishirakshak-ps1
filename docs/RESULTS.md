@@ -104,6 +104,41 @@ Scaling to more crops (EfficientNet-B0): one model for all 14 PlantVillage crops
 the same latency and RAM; one model per crop (14 crops) is about 225 MB FP32 / 56 MB INT8 on disk with one model in RAM
 at a time. The Python/PyTorch runtime itself used about 630 MB; the Pi application will use ONNX Runtime from C++.
 
+### v5 - six classes for the Phase 1 demo (`results/disease_v5_six_classes/`)
+
+The organisers asked for about 4-6 disease classes, including healthy, for one crop. v5 uses the v4 recipe on six
+classes: healthy, early blight, late blight, septoria leaf spot, bacterial spot and yellow leaf curl virus (leaf mold is
+mostly a polyhouse disease and was the weakest v4 field class). The splits are the v4 split manifests filtered to these
+classes, so every test image was also a v4 test image (PlantVillage 2,111; PlantDoc 587 leaf crops and 188 full photos).
+
+| System | PlantVillage test acc / F1 | PlantDoc crops acc / F1 | PlantDoc full photos acc / F1 |
+|---|---|---|---|
+| EfficientNet-B0, seed 7 (recommended on validation) | 98.7% / 0.980 | 76.0% / 0.693 | 73.4% / 0.683 |
+| EfficientNet-B0, seed 42 | 99.0% / 0.985 | 75.5% / 0.692 | 75.0% / 0.689 |
+| MobileNetV3-Small, seed 42 | 98.5% / 0.977 | 74.5% / 0.674 | 70.2% / 0.637 |
+| v4 EfficientNet-B0, outputs restricted to the same six classes | 98.5% / 0.979 | 77.0% / 0.715 | 72.9% / 0.670 |
+
+Training on six classes is no better than the v4 model restricted to the same six classes; the gain over the v4
+10-class field result (F1 0.63) comes from choosing among fewer classes. Field recall per class (leaf crops): yellow
+leaf curl virus 0.92, healthy 0.82, septoria 0.73, late blight 0.69, early blight 0.58, bacterial spot 0.43. Field
+macro F1 stays between 0.65 and 0.71 under blur, shadow, rotation, low light and JPEG compression.
+
+### "Uncertain" threshold for v5 (`results/disease_v5_threshold/`)
+
+The application names a disease only when the top probability is at least 0.85; otherwise it answers "uncertain - take
+a clearer photo or consult your local KVK". The threshold is the lowest one reaching 85% accuracy on answered PlantDoc
+validation photos; the test sets only report.
+
+| Test set | Accuracy, always answering | Photos answered at 0.85 | Accuracy on answered photos |
+|---|---|---|---|
+| PlantVillage (2,111) | 98.7% | 97% | 99.6% |
+| PlantDoc leaf crops (587) | 76.3% | 70% | 88.3% |
+| PlantDoc full photos (188) | 73.4% | 65% | 86.2% |
+
+Diseased leaves answered as "healthy" fall from 5.3% to 4.0% on the field crops. Bacterial spot stays unreliable
+(answered for 33% of its photos, 55% correct when answered), so the application presents it as "possible bacterial
+spot - confirm with an expert".
+
 ## IP102 pest detector (YOLOv8n, all classes)
 
 Data: 18,976 annotated images (13,662 train, 1,516 validation, official 3,798 test). One malformed annotation file was
@@ -134,12 +169,70 @@ The false-alarm problem is solved without losing detection accuracy. 34 species 
 89-100% of the time; species naming is reliable for aphids (94%) and about 60% for whitefly, red spider mite,
 Spodoptera litura, black cutworm and thrips, so the application should present those species as a suggestion.
 
+## INT8 post-training quantization (`results/int8_ptq/`)
+
+ONNX Runtime static quantization: QDQ format, INT8 weights per output channel, INT8 activations (S8S8, the format ONNX
+Runtime recommends for Arm). Calibration images come from the training split, the calibration method and the
+FP32/INT8 layout are chosen on validation, and the test sets only report. The FP32 ONNX models reproduce the published
+PyTorch test accuracy (within 1-2 images, from FP16 evaluation during training).
+
+Fully INT8 classifiers lost too much accuracy (v5 EfficientNet-B0 validation score 0.84 -> 0.77; MobileNetV3-Small
+collapsed to 0.24). A per-block sensitivity test on PlantDoc training photos traced the loss to a few early blocks
+(EfficientNet-B0 blocks 0-3; MobileNetV3-Small blocks 1 and 4 and its hard-swish activations). These blocks stay in
+FP32 (mixed precision); they hold few weights, so the files are still about 3x smaller.
+
+| Model | Test set | FP32 acc / F1 | INT8 acc / F1 | Same answer as FP32 | Size FP32 -> INT8 |
+|---|---|---|---|---|---|
+| v5 EfficientNet-B0 (blocks 0-3 FP32, Percentile) | PlantVillage | 98.7% / 0.980 | 98.9% / 0.983 | 99.6% | 16.1 -> 5.0 MB |
+| | PlantDoc leaf crops | 76.3% / 0.696 | 75.6% / 0.685 | 93.7% | |
+| | PlantDoc full photos | 73.4% / 0.681 | 73.9% / 0.678 | 94.7% | |
+| v5 MobileNetV3-Small (blocks 0, 1, 4 + hard-swish FP32, MinMax) | PlantVillage | 98.5% / 0.976 | 98.3% / 0.974 | 99.3% | 6.1 -> 1.9 MB |
+| | PlantDoc leaf crops | 74.6% / 0.675 | 75.3% / 0.686 | 90.6% | |
+| | PlantDoc full photos | 69.7% / 0.630 | 67.6% / 0.608 | 89.4% | |
+| v4 EfficientNet-B0, 10 classes (blocks 0-3 FP32) | PlantVillage | 98.4% / 0.980 | 98.4% / 0.979 | 99.6% | 16.1 -> 5.0 MB |
+| | PlantDoc leaf crops | 68.5% / 0.629 | 67.1% / 0.617 | 92.5% | |
+
+Per-class recall changes by at most 4.5 points on the field crops (bacterial spot 0.43 -> 0.39); the full per-class table
+is `disease_per_class_recall.csv`.
+
+Pest detector: the box decoding at the end of the YOLO head stays in FP32 (it joins pixel coordinates and 0-1 class
+scores in one tensor). Percentile calibration was chosen on validation (validation mAP50 0.612 vs 0.608 FP32).
+
+| Pest detector, threshold 0.20 | IP102 test mAP50 | Insects found | Species correct when found | False alarms, PlantVillage / PlantDoc | Size |
+|---|---|---|---|---|---|
+| FP32 ONNX | 0.571 | 92.2% | 76.5% | 0.3% / 5.1% | 13.6 MB |
+| INT8 | 0.560 | 92.0% | 76.5% | 0.5% / 3.8% | 3.9 MB |
+
+The ONNX model uses a square 640 x 640 input (PyTorch evaluation used a tighter rectangle), so its FP32 mAP differs
+slightly from the PyTorch value; the 0.20 threshold is confirmed on validation for both FP32 and INT8. Mean per-species
+AP50 change -0.011; the largest drops are rare species with fewer than 25 test boxes.
+
+### Size, RAM and latency (`results/int8_ptq/bench_pc_x86.csv`, `tools/bench_onnx.py`)
+
+Measured on a development PC (Intel i5-12500H, ONNX Runtime 1.23, batch 1, 4 threads). These numbers are only a
+reference: the deployment numbers must be measured on the Raspberry Pi 5 with the same tool.
+
+| Model | Size | Extra RAM (session / peak) | Latency median |
+|---|---|---|---|
+| v5 EfficientNet-B0 FP32 | 16.1 MB | 59 / 77 MB | 5.1 ms |
+| v5 EfficientNet-B0 INT8 | 5.0 MB | 20 / 48 MB | 9.4 ms |
+| v5 MobileNetV3-Small FP32 | 6.1 MB | 25 / 33 MB | 1.3 ms |
+| v5 MobileNetV3-Small INT8 | 1.9 MB | 13 / 24 MB | 2.6 ms |
+| Pest YOLOv8n FP32 | 13.6 MB | 46 / 100 MB | 124 ms |
+| Pest YOLOv8n INT8 | 3.9 MB | 17 / 89 MB | 175 ms |
+
+INT8 cuts model size by 3.2-3.5x and RAM by up to 3x, but is slower than FP32 on this x86 CPU: S8S8 activations are
+not ONNX Runtime's fast path on Intel (a UINT8-activation prototype was faster there), and the mixed-precision
+boundaries add conversion steps. S8S8 is the recommended path on Arm, so the speed comparison is decided on the Pi 5.
+
 ## Recommended models
 
 | Task | Model | Notes |
 |---|---|---|
-| Tomato disease, all 10 classes | v4 EfficientNet-B0, seed 7 | Full tomato coverage; field macro F1 about 0.62 |
-| Tomato disease, 5 classes (alternative) | v3 EfficientNet-B0, seed 42 | Field macro F1 about 0.78 on 5 classes |
-| Insect pests | YOLOv8n fine-tuned with negatives | Confidence threshold 0.2 to 0.3 |
+| Tomato disease, Phase 1 demo (6 classes) | v5 EfficientNet-B0, seed 7 | Field accuracy 76% (crops); 88% on answered photos with the 0.85 "uncertain" threshold; INT8 5.0 MB with no meaningful accuracy loss |
+| Tomato disease, small fallback (6 classes) | v5 MobileNetV3-Small, seed 42 | Field accuracy 75% (crops); INT8 1.9 MB |
+| Tomato disease, all 10 classes (extended coverage) | v4 EfficientNet-B0, seed 7 | Field macro F1 about 0.62 |
+| Tomato disease, 5 classes (earlier alternative) | v3 EfficientNet-B0, seed 42 | Field macro F1 about 0.78 on a different class set and test split |
+| Insect pests | YOLOv8n fine-tuned with negatives | Confidence threshold 0.2 (FP32 and INT8) |
 
 Download links and input specifications are in `models/README.md`.

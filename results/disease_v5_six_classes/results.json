@@ -1,0 +1,2312 @@
+{
+  "recommended_system": "effb0_seed7",
+  "validation": {
+    "effb0_seed42": {
+      "pv_val_macro_f1": 0.9804343871500598,
+      "pd_val_macro_f1": 0.7007622488944976,
+      "val_score": 0.8405983180222787
+    },
+    "effb0_seed7": {
+      "pv_val_macro_f1": 0.977009395757995,
+      "pd_val_macro_f1": 0.7053874833369148,
+      "val_score": 0.8411984395474549
+    },
+    "mnv3s_seed42": {
+      "pv_val_macro_f1": 0.976021439018779,
+      "pd_val_macro_f1": 0.6864692685499798,
+      "val_score": 0.8312453537843794
+    },
+    "effb0_2seed_ensemble": {
+      "pv_val_macro_f1": 0.9783762039161386,
+      "pd_val_macro_f1": 0.6959620652616763,
+      "val_score": 0.8371691345889074
+    }
+  },
+  "sets": {
+    "plantvillage_test": {
+      "effb0_seed42": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.9900521080056846,
+        "macro_f1": 0.9851252052878285,
+        "balanced_accuracy": 0.9828801130951463,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9795918367346939,
+            "recall": 0.935064935064935,
+            "f1-score": 0.9568106312292359,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9694915254237289,
+            "recall": 0.9896193771626297,
+            "f1-score": 0.9794520547945206,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9813432835820896,
+            "recall": 0.9850187265917603,
+            "f1-score": 0.983177570093458,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 1.0,
+            "recall": 0.9875776397515528,
+            "f1-score": 0.99375,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9951338199513382,
+            "recall": 1.0,
+            "f1-score": 0.9975609756097561,
+            "support": 818.0
+          },
+          "accuracy": 0.9900521080056846,
+          "macro avg": {
+            "precision": 0.9875934109486417,
+            "recall": 0.9828801130951463,
+            "f1-score": 0.9851252052878285,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.9900892066040802,
+            "recall": 0.9900521080056846,
+            "f1-score": 0.9900100759396744,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            144,
+            5,
+            5,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            286,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            4,
+            263,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            318,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.9867361440075794,
+        "macro_f1": 0.9799039781931067,
+        "balanced_accuracy": 0.977243102328678,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9791666666666666,
+            "recall": 0.9155844155844156,
+            "f1-score": 0.9463087248322147,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9662162162162162,
+            "recall": 0.9896193771626297,
+            "f1-score": 0.9777777777777777,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.959409594095941,
+            "recall": 0.9737827715355806,
+            "f1-score": 0.966542750929368,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9968553459119497,
+            "recall": 0.984472049689441,
+            "f1-score": 0.990625,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9963459196102314,
+            "recall": 1.0,
+            "f1-score": 0.9981696156192801,
+            "support": 818.0
+          },
+          "accuracy": 0.9867361440075794,
+          "macro avg": {
+            "precision": 0.9829989570835007,
+            "recall": 0.977243102328678,
+            "f1-score": 0.9799039781931067,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.9868256269074308,
+            "recall": 0.9867361440075794,
+            "f1-score": 0.9866699343802232,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            141,
+            3,
+            9,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            286,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            260,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            317,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.98531501657982,
+        "macro_f1": 0.9765675472262951,
+        "balanced_accuracy": 0.9740754133688009,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9652777777777778,
+            "recall": 0.9025974025974026,
+            "f1-score": 0.9328859060402684,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9437086092715232,
+            "recall": 0.986159169550173,
+            "f1-score": 0.9644670050761421,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9696969696969697,
+            "recall": 0.9588014981273408,
+            "f1-score": 0.9642184557438794,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 1.0,
+            "recall": 0.9968944099378882,
+            "f1-score": 0.9984447900466563,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9987789987789988,
+            "recall": 1.0,
+            "f1-score": 0.9993891264508247,
+            "support": 818.0
+          },
+          "accuracy": 0.98531501657982,
+          "macro avg": {
+            "precision": 0.9795770592542116,
+            "recall": 0.9740754133688009,
+            "f1-score": 0.9765675472262951,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.9854547028742587,
+            "recall": 0.98531501657982,
+            "f1-score": 0.9852398150225582,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            139,
+            7,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            285,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            10,
+            256,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            321,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.9895783988630981,
+        "macro_f1": 0.9842153688487713,
+        "balanced_accuracy": 0.9817978620128952,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9794520547945206,
+            "recall": 0.9285714285714286,
+            "f1-score": 0.9533333333333334,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9727891156462585,
+            "recall": 0.9896193771626297,
+            "f1-score": 0.9811320754716981,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9740740740740741,
+            "recall": 0.9850187265917603,
+            "f1-score": 0.9795158286778398,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 1.0,
+            "recall": 0.9875776397515528,
+            "f1-score": 0.99375,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9951338199513382,
+            "recall": 1.0,
+            "f1-score": 0.9975609756097561,
+            "support": 818.0
+          },
+          "accuracy": 0.9895783988630981,
+          "macro avg": {
+            "precision": 0.9869081774110319,
+            "recall": 0.9817978620128952,
+            "f1-score": 0.9842153688487713,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.989611043750875,
+            "recall": 0.9895783988630981,
+            "f1-score": 0.9895232626482321,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            143,
+            4,
+            7,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            286,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            4,
+            263,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            318,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.9872098531501659,
+        "macro_f1": 0.9802874418681008,
+        "balanced_accuracy": 0.9778673220540212,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9791666666666666,
+            "recall": 0.9155844155844156,
+            "f1-score": 0.9463087248322147,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9727891156462585,
+            "recall": 0.9896193771626297,
+            "f1-score": 0.9811320754716981,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9525547445255474,
+            "recall": 0.9775280898876404,
+            "f1-score": 0.9648798521256932,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9968553459119497,
+            "recall": 0.984472049689441,
+            "f1-score": 0.990625,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9975609756097561,
+            "recall": 1.0,
+            "f1-score": 0.9987789987789988,
+            "support": 818.0
+          },
+          "accuracy": 0.9872098531501659,
+          "macro avg": {
+            "precision": 0.9831544747266964,
+            "recall": 0.9778673220540212,
+            "f1-score": 0.9802874418681008,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.9873292928987139,
+            "recall": 0.9872098531501659,
+            "f1-score": 0.9871549526074197,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            141,
+            2,
+            10,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            286,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            6,
+            261,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            317,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      },
+      "v4_effb0_restricted_to_6": {
+        "n": 2111,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.98531501657982,
+        "macro_f1": 0.9787278160907552,
+        "balanced_accuracy": 0.977617469638454,
+        "missed_disease_rate": 0.0,
+        "per_class": {
+          "healthy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 261.0
+          },
+          "early_blight": {
+            "precision": 0.9666666666666667,
+            "recall": 0.9415584415584416,
+            "f1-score": 0.9539473684210527,
+            "support": 154.0
+          },
+          "late_blight": {
+            "precision": 0.9562289562289562,
+            "recall": 0.9826989619377162,
+            "f1-score": 0.9692832764505119,
+            "support": 289.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.9626865671641791,
+            "recall": 0.9662921348314607,
+            "f1-score": 0.9644859813084112,
+            "support": 267.0
+          },
+          "bacterial_spot": {
+            "precision": 0.9968253968253968,
+            "recall": 0.9751552795031055,
+            "f1-score": 0.9858712715855573,
+            "support": 322.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9975609756097561,
+            "recall": 1.0,
+            "f1-score": 0.9987789987789988,
+            "support": 818.0
+          },
+          "accuracy": 0.98531501657982,
+          "macro avg": {
+            "precision": 0.9799947604158259,
+            "recall": 0.977617469638454,
+            "f1-score": 0.9787278160907552,
+            "support": 2111.0
+          },
+          "weighted avg": {
+            "precision": 0.9854271929304733,
+            "recall": 0.98531501657982,
+            "f1-score": 0.9853151535254173,
+            "support": 2111.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            261,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            145,
+            4,
+            4,
+            1,
+            0
+          ],
+          [
+            0,
+            5,
+            284,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            9,
+            258,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            6,
+            314,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            818
+          ]
+        ]
+      }
+    },
+    "plantdoc_test_leaf_crops": {
+      "effb0_seed42": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7546848381601363,
+        "macro_f1": 0.6916224663120385,
+        "balanced_accuracy": 0.6972401864974845,
+        "missed_disease_rate": 0.053418803418803416,
+        "per_class": {
+          "healthy": {
+            "precision": 0.7933884297520661,
+            "recall": 0.8067226890756303,
+            "f1-score": 0.8,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5357142857142857,
+            "recall": 0.6,
+            "f1-score": 0.5660377358490566,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6727272727272727,
+            "recall": 0.7254901960784313,
+            "f1-score": 0.6981132075471698,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7578947368421053,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.7093596059113301,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4189189189189189,
+            "recall": 0.4626865671641791,
+            "f1-score": 0.4397163120567376,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9516129032258065,
+            "recall": 0.921875,
+            "f1-score": 0.9365079365079365,
+            "support": 192.0
+          },
+          "accuracy": 0.7546848381601363,
+          "macro avg": {
+            "precision": 0.6883760911967425,
+            "recall": 0.6972401864974845,
+            "f1-score": 0.6916224663120385,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7634376574125568,
+            "recall": 0.7546848381601363,
+            "f1-score": 0.7580698714362988,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            96,
+            3,
+            8,
+            0,
+            9,
+            3
+          ],
+          [
+            1,
+            30,
+            5,
+            4,
+            8,
+            2
+          ],
+          [
+            1,
+            9,
+            37,
+            1,
+            3,
+            0
+          ],
+          [
+            1,
+            8,
+            2,
+            72,
+            23,
+            2
+          ],
+          [
+            7,
+            6,
+            3,
+            18,
+            31,
+            2
+          ],
+          [
+            15,
+            0,
+            0,
+            0,
+            0,
+            177
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7597955706984668,
+        "macro_f1": 0.6925953488308388,
+        "balanced_accuracy": 0.6945988104335156,
+        "missed_disease_rate": 0.053418803418803416,
+        "per_class": {
+          "healthy": {
+            "precision": 0.7950819672131147,
+            "recall": 0.8151260504201681,
+            "f1-score": 0.8049792531120332,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5576923076923077,
+            "recall": 0.58,
+            "f1-score": 0.5686274509803921,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.660377358490566,
+            "recall": 0.6862745098039216,
+            "f1-score": 0.6730769230769231,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7314814814814815,
+            "recall": 0.7314814814814815,
+            "f1-score": 0.7314814814814815,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.47540983606557374,
+            "recall": 0.43283582089552236,
+            "f1-score": 0.453125,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9267015706806283,
+            "recall": 0.921875,
+            "f1-score": 0.9242819843342036,
+            "support": 192.0
+          },
+          "accuracy": 0.7597955706984668,
+          "macro avg": {
+            "precision": 0.6911240869372787,
+            "recall": 0.6945988104335156,
+            "f1-score": 0.6925953488308388,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7580200602266932,
+            "recall": 0.7597955706984668,
+            "f1-score": 0.758726307901945,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            97,
+            4,
+            8,
+            3,
+            4,
+            3
+          ],
+          [
+            2,
+            29,
+            6,
+            4,
+            7,
+            2
+          ],
+          [
+            1,
+            9,
+            35,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            5,
+            2,
+            79,
+            18,
+            4
+          ],
+          [
+            7,
+            5,
+            2,
+            19,
+            29,
+            5
+          ],
+          [
+            15,
+            0,
+            0,
+            0,
+            0,
+            177
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7444633730834753,
+        "macro_f1": 0.6735880042510657,
+        "balanced_accuracy": 0.6819023289249365,
+        "missed_disease_rate": 0.053418803418803416,
+        "per_class": {
+          "healthy": {
+            "precision": 0.7950819672131147,
+            "recall": 0.8151260504201681,
+            "f1-score": 0.8049792531120332,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5,
+            "recall": 0.54,
+            "f1-score": 0.5192307692307693,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6333333333333333,
+            "recall": 0.7450980392156863,
+            "f1-score": 0.6846846846846847,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7222222222222222,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.7222222222222222,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4098360655737705,
+            "recall": 0.373134328358209,
+            "f1-score": 0.390625,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.945054945054945,
+            "recall": 0.8958333333333334,
+            "f1-score": 0.9197860962566845,
+            "support": 192.0
+          },
+          "accuracy": 0.7444633730834753,
+          "macro avg": {
+            "precision": 0.6675880888995643,
+            "recall": 0.6819023289249365,
+            "f1-score": 0.6735880042510657,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7475712435133777,
+            "recall": 0.7444633730834753,
+            "f1-score": 0.7452194105316401,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            97,
+            2,
+            8,
+            3,
+            9,
+            0
+          ],
+          [
+            1,
+            27,
+            6,
+            5,
+            9,
+            2
+          ],
+          [
+            1,
+            10,
+            38,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            6,
+            2,
+            78,
+            16,
+            5
+          ],
+          [
+            6,
+            8,
+            5,
+            20,
+            25,
+            3
+          ],
+          [
+            16,
+            1,
+            1,
+            1,
+            1,
+            172
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7666098807495741,
+        "macro_f1": 0.6995234286009189,
+        "balanced_accuracy": 0.7044130857152148,
+        "missed_disease_rate": 0.04700854700854701,
+        "per_class": {
+          "healthy": {
+            "precision": 0.8166666666666667,
+            "recall": 0.8235294117647058,
+            "f1-score": 0.8200836820083682,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5555555555555556,
+            "recall": 0.6,
+            "f1-score": 0.5769230769230769,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6428571428571429,
+            "recall": 0.7058823529411765,
+            "f1-score": 0.6728971962616822,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.75,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.7358490566037735,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.46153846153846156,
+            "recall": 0.44776119402985076,
+            "f1-score": 0.45454545454545453,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9468085106382979,
+            "recall": 0.9270833333333334,
+            "f1-score": 0.9368421052631579,
+            "support": 192.0
+          },
+          "accuracy": 0.7666098807495741,
+          "macro avg": {
+            "precision": 0.6955710562093541,
+            "recall": 0.7044130857152148,
+            "f1-score": 0.6995234286009189,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7690922254897027,
+            "recall": 0.7666098807495741,
+            "f1-score": 0.7675533165123931,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            98,
+            1,
+            10,
+            1,
+            7,
+            2
+          ],
+          [
+            1,
+            30,
+            6,
+            4,
+            7,
+            2
+          ],
+          [
+            1,
+            10,
+            36,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            7,
+            2,
+            78,
+            19,
+            2
+          ],
+          [
+            6,
+            6,
+            2,
+            19,
+            30,
+            4
+          ],
+          [
+            14,
+            0,
+            0,
+            0,
+            0,
+            178
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.768313458262351,
+        "macro_f1": 0.7051464559194577,
+        "balanced_accuracy": 0.7073345714045707,
+        "missed_disease_rate": 0.05128205128205128,
+        "per_class": {
+          "healthy": {
+            "precision": 0.8048780487804879,
+            "recall": 0.8319327731092437,
+            "f1-score": 0.8181818181818182,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.62,
+            "recall": 0.62,
+            "f1-score": 0.62,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.6545454545454545,
+            "recall": 0.7058823529411765,
+            "f1-score": 0.6792452830188679,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7383177570093458,
+            "recall": 0.7314814814814815,
+            "f1-score": 0.7348837209302326,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.48333333333333334,
+            "recall": 0.43283582089552236,
+            "f1-score": 0.4566929133858268,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.921875,
+            "recall": 0.921875,
+            "f1-score": 0.921875,
+            "support": 192.0
+          },
+          "accuracy": 0.768313458262351,
+          "macro avg": {
+            "precision": 0.7038249322781036,
+            "recall": 0.7073345714045707,
+            "f1-score": 0.7051464559194577,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7653900461278346,
+            "recall": 0.768313458262351,
+            "f1-score": 0.7665604989010463,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            99,
+            2,
+            9,
+            2,
+            4,
+            3
+          ],
+          [
+            1,
+            31,
+            6,
+            4,
+            6,
+            2
+          ],
+          [
+            1,
+            8,
+            36,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            5,
+            2,
+            79,
+            18,
+            4
+          ],
+          [
+            7,
+            4,
+            2,
+            19,
+            29,
+            6
+          ],
+          [
+            15,
+            0,
+            0,
+            0,
+            0,
+            177
+          ]
+        ]
+      },
+      "v4_effb0_restricted_to_6": {
+        "n": 587,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7700170357751278,
+        "macro_f1": 0.715000117307025,
+        "balanced_accuracy": 0.7189140437131183,
+        "missed_disease_rate": 0.042735042735042736,
+        "per_class": {
+          "healthy": {
+            "precision": 0.8230088495575221,
+            "recall": 0.7815126050420168,
+            "f1-score": 0.8017241379310345,
+            "support": 119.0
+          },
+          "early_blight": {
+            "precision": 0.5370370370370371,
+            "recall": 0.58,
+            "f1-score": 0.5576923076923077,
+            "support": 50.0
+          },
+          "late_blight": {
+            "precision": 0.7037037037037037,
+            "recall": 0.7450980392156863,
+            "f1-score": 0.7238095238095238,
+            "support": 51.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.8058252427184466,
+            "recall": 0.7685185185185185,
+            "f1-score": 0.7867298578199052,
+            "support": 108.0
+          },
+          "bacterial_spot": {
+            "precision": 0.4931506849315068,
+            "recall": 0.5373134328358209,
+            "f1-score": 0.5142857142857142,
+            "support": 67.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9105263157894737,
+            "recall": 0.9010416666666666,
+            "f1-score": 0.9057591623036649,
+            "support": 192.0
+          },
+          "accuracy": 0.7700170357751278,
+          "macro avg": {
+            "precision": 0.7122086389562816,
+            "recall": 0.7189140437131183,
+            "f1-score": 0.715000117307025,
+            "support": 587.0
+          },
+          "weighted avg": {
+            "precision": 0.7760989243162998,
+            "recall": 0.7700170357751278,
+            "f1-score": 0.7726299832652309,
+            "support": 587.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            93,
+            4,
+            8,
+            1,
+            9,
+            4
+          ],
+          [
+            0,
+            29,
+            6,
+            3,
+            8,
+            4
+          ],
+          [
+            1,
+            8,
+            38,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            83,
+            16,
+            3
+          ],
+          [
+            2,
+            5,
+            2,
+            16,
+            36,
+            6
+          ],
+          [
+            17,
+            2,
+            0,
+            0,
+            0,
+            173
+          ]
+        ]
+      }
+    },
+    "plantdoc_test_full_images": {
+      "effb0_seed42": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.75,
+        "macro_f1": 0.6886576958298223,
+        "balanced_accuracy": 0.6936878199555685,
+        "missed_disease_rate": 0.05172413793103448,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5,
+            "recall": 0.6428571428571429,
+            "f1-score": 0.5625,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.5882352941176471,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5882352941176471,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.84,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.8076923076923077,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7291666666666666,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7526881720430108,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.5454545454545454,
+            "recall": 0.4444444444444444,
+            "f1-score": 0.4897959183673469,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9310344827586207,
+            "recall": 0.9310344827586207,
+            "f1-score": 0.9310344827586207,
+            "support": 58.0
+          },
+          "accuracy": 0.75,
+          "macro avg": {
+            "precision": 0.6889818314995799,
+            "recall": 0.6936878199555685,
+            "f1-score": 0.6886576958298223,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.751169003868472,
+            "recall": 0.75,
+            "f1-score": 0.7488199459869477,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            9,
+            1,
+            0,
+            1,
+            2,
+            1
+          ],
+          [
+            0,
+            10,
+            1,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            3,
+            21,
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0,
+            35,
+            3,
+            3
+          ],
+          [
+            3,
+            1,
+            3,
+            8,
+            12,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0,
+            54
+          ]
+        ]
+      },
+      "effb0_seed7": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7340425531914894,
+        "macro_f1": 0.6827578248922267,
+        "balanced_accuracy": 0.7014327570108504,
+        "missed_disease_rate": 0.04597701149425287,
+        "per_class": {
+          "healthy": {
+            "precision": 0.6,
+            "recall": 0.8571428571428571,
+            "f1-score": 0.7058823529411765,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.5555555555555556,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5714285714285714,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.8076923076923077,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7924528301886793,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.7391304347826086,
+            "recall": 0.7555555555555555,
+            "f1-score": 0.7472527472527473,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.45,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3829787234042553,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.896551724137931,
+            "recall": 0.896551724137931,
+            "f1-score": 0.896551724137931,
+            "support": 58.0
+          },
+          "accuracy": 0.7340425531914894,
+          "macro avg": {
+            "precision": 0.6748216703614004,
+            "recall": 0.7014327570108504,
+            "f1-score": 0.6827578248922267,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.7290585442412456,
+            "recall": 0.7340425531914894,
+            "f1-score": 0.7285088522810906,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            12,
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            10,
+            1,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            5,
+            21,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            34,
+            6,
+            4
+          ],
+          [
+            3,
+            2,
+            3,
+            9,
+            9,
+            1
+          ],
+          [
+            5,
+            0,
+            0,
+            0,
+            1,
+            52
+          ]
+        ]
+      },
+      "mnv3s_seed42": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7021276595744681,
+        "macro_f1": 0.63708296881588,
+        "balanced_accuracy": 0.6423346605564321,
+        "missed_disease_rate": 0.028735632183908046,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5833333333333334,
+            "recall": 0.5,
+            "f1-score": 0.5384615384615384,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.37037037037037035,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.45454545454545453,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.8461538461538461,
+            "recall": 0.8148148148148148,
+            "f1-score": 0.8301886792452831,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.723404255319149,
+            "recall": 0.7555555555555555,
+            "f1-score": 0.7391304347826086,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.45,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3829787234042553,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8928571428571429,
+            "recall": 0.8620689655172413,
+            "f1-score": 0.8771929824561403,
+            "support": 58.0
+          },
+          "accuracy": 0.7021276595744681,
+          "macro avg": {
+            "precision": 0.6443531580056403,
+            "recall": 0.6423346605564321,
+            "f1-score": 0.63708296881588,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.7116916094903872,
+            "recall": 0.7021276595744681,
+            "f1-score": 0.7029750887497093,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            7,
+            3,
+            0,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            10,
+            1,
+            0,
+            5,
+            0
+          ],
+          [
+            0,
+            3,
+            22,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            34,
+            3,
+            3
+          ],
+          [
+            2,
+            4,
+            2,
+            9,
+            9,
+            1
+          ],
+          [
+            2,
+            2,
+            1,
+            2,
+            1,
+            50
+          ]
+        ]
+      },
+      "effb0_2seed_ensemble": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7606382978723404,
+        "macro_f1": 0.7105806456255487,
+        "balanced_accuracy": 0.719157624735718,
+        "missed_disease_rate": 0.04597701149425287,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5789473684210527,
+            "recall": 0.7857142857142857,
+            "f1-score": 0.6666666666666666,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.6666666666666666,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.625,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.8461538461538461,
+            "recall": 0.8148148148148148,
+            "f1-score": 0.8301886792452831,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.74,
+            "recall": 0.8222222222222222,
+            "f1-score": 0.7789473684210526,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.5238095238095238,
+            "recall": 0.4074074074074074,
+            "f1-score": 0.4583333333333333,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9122807017543859,
+            "recall": 0.896551724137931,
+            "f1-score": 0.9043478260869565,
+            "support": 58.0
+          },
+          "accuracy": 0.7606382978723404,
+          "macro avg": {
+            "precision": 0.7113096844675791,
+            "recall": 0.719157624735718,
+            "f1-score": 0.7105806456255487,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.7587228094786884,
+            "recall": 0.7606382978723404,
+            "f1-score": 0.7566661338561002,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            11,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            10,
+            1,
+            4,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            22,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            37,
+            4,
+            4
+          ],
+          [
+            3,
+            1,
+            3,
+            9,
+            11,
+            0
+          ],
+          [
+            5,
+            0,
+            0,
+            0,
+            1,
+            52
+          ]
+        ]
+      },
+      "effb0_seed7+flipTTA": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7393617021276596,
+        "macro_f1": 0.678267037569313,
+        "balanced_accuracy": 0.6944662667110267,
+        "missed_disease_rate": 0.04597701149425287,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5789473684210527,
+            "recall": 0.7857142857142857,
+            "f1-score": 0.6666666666666666,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.5555555555555556,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5714285714285714,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.8076923076923077,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.7924528301886793,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.74,
+            "recall": 0.8222222222222222,
+            "f1-score": 0.7789473684210526,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.42105263157894735,
+            "recall": 0.2962962962962963,
+            "f1-score": 0.34782608695652173,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.9285714285714286,
+            "recall": 0.896551724137931,
+            "f1-score": 0.9122807017543859,
+            "support": 58.0
+          },
+          "accuracy": 0.7393617021276596,
+          "macro avg": {
+            "precision": 0.6719698819698819,
+            "recall": 0.6944662667110267,
+            "f1-score": 0.678267037569313,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.7334200203181166,
+            "recall": 0.7393617021276596,
+            "f1-score": 0.7329790536768149,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            11,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            10,
+            1,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            5,
+            21,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            37,
+            5,
+            3
+          ],
+          [
+            3,
+            3,
+            3,
+            10,
+            8,
+            0
+          ],
+          [
+            5,
+            0,
+            0,
+            0,
+            1,
+            52
+          ]
+        ]
+      },
+      "v4_effb0_restricted_to_6": {
+        "n": 188,
+        "classes_present": [
+          "healthy",
+          "early_blight",
+          "late_blight",
+          "septoria_leaf_spot",
+          "bacterial_spot",
+          "yellow_leaf_curl_virus"
+        ],
+        "accuracy": 0.7287234042553191,
+        "macro_f1": 0.6695883662455632,
+        "balanced_accuracy": 0.6796666559344046,
+        "missed_disease_rate": 0.040229885057471264,
+        "per_class": {
+          "healthy": {
+            "precision": 0.5882352941176471,
+            "recall": 0.7142857142857143,
+            "f1-score": 0.6451612903225806,
+            "support": 14.0
+          },
+          "early_blight": {
+            "precision": 0.5,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.5405405405405406,
+            "support": 17.0
+          },
+          "late_blight": {
+            "precision": 0.84,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.8076923076923077,
+            "support": 27.0
+          },
+          "septoria_leaf_spot": {
+            "precision": 0.75,
+            "recall": 0.7333333333333333,
+            "f1-score": 0.7415730337078652,
+            "support": 45.0
+          },
+          "bacterial_spot": {
+            "precision": 0.42857142857142855,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.375,
+            "support": 27.0
+          },
+          "yellow_leaf_curl_virus": {
+            "precision": 0.8852459016393442,
+            "recall": 0.9310344827586207,
+            "f1-score": 0.907563025210084,
+            "support": 58.0
+          },
+          "accuracy": 0.7287234042553191,
+          "macro avg": {
+            "precision": 0.6653421040547366,
+            "recall": 0.6796666559344046,
+            "f1-score": 0.6695883662455632,
+            "support": 188.0
+          },
+          "weighted avg": {
+            "precision": 0.7238350265114766,
+            "recall": 0.7287234042553191,
+            "f1-score": 0.7242743698959385,
+            "support": 188.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            10,
+            0,
+            0,
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            10,
+            2,
+            2,
+            3,
+            0
+          ],
+          [
+            0,
+            4,
+            21,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            33,
+            5,
+            4
+          ],
+          [
+            4,
+            2,
+            2,
+            8,
+            9,
+            2
+          ],
+          [
+            3,
+            1,
+            0,
+            0,
+            0,
+            54
+          ]
+        ]
+      }
+    }
+  },
+  "footprint": [
+    {
+      "model": "effb0_seed42",
+      "architecture": "efficientnet_b0",
+      "classes": 6,
+      "parameters_M": 4.015234,
+      "gflops_per_image": 0.769084864,
+      "weights_fp32_MB": 16.060936,
+      "weights_fp16_MB": 8.030468,
+      "weights_int8_MB_est": 4.015234,
+      "checkpoint_file_MB": 16.363515,
+      "cpu_latency_ms_median_kaggle": 28.825125999901502,
+      "ram_pytorch_runtime_MB": 601.35546875,
+      "ram_after_model_load_MB": 637.12890625,
+      "ram_peak_inference_MB": 668.08203125,
+      "ram_model_plus_inference_MB": 66.7265625,
+      "head_params_per_extra_class": 1281,
+      "bytes_per_extra_class_fp32": 5124
+    },
+    {
+      "model": "mnv3s_seed42",
+      "architecture": "mobilenet_v3_small",
+      "classes": 6,
+      "parameters_M": 1.524006,
+      "gflops_per_image": 0.110985088,
+      "weights_fp32_MB": 6.096024,
+      "weights_fp16_MB": 3.048012,
+      "weights_int8_MB_est": 1.524006,
+      "checkpoint_file_MB": 6.232859,
+      "cpu_latency_ms_median_kaggle": 11.577621499782254,
+      "ram_pytorch_runtime_MB": 603.77734375,
+      "ram_after_model_load_MB": 619.59375,
+      "ram_peak_inference_MB": 633.48046875,
+      "ram_model_plus_inference_MB": 29.703125,
+      "head_params_per_extra_class": 1025,
+      "bytes_per_extra_class_fp32": 4100
+    }
+  ],
+  "footprint_projection": [
+    {
+      "model": "effb0_seed42",
+      "scenario": "now: tomato only (6 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 16.060936,
+      "int8_MB_est": 4.015234,
+      "note": "measured"
+    },
+    {
+      "model": "effb0_seed42",
+      "scenario": "one model, all 14 PlantVillage crops (38 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 16.224904000000002,
+      "int8_MB_est": 4.0562260000000006,
+      "note": "same latency and RAM; only the last layer grows"
+    },
+    {
+      "model": "effb0_seed42",
+      "scenario": "one model per crop (14 crops), loaded on demand",
+      "models_on_disk": 14,
+      "fp32_MB": 224.85310400000003,
+      "int8_MB_est": 56.21327600000001,
+      "note": "RAM stays at one model if only the selected crop's model is loaded"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "now: tomato only (6 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 6.096024,
+      "int8_MB_est": 1.524006,
+      "note": "measured"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "one model, all 14 PlantVillage crops (38 classes)",
+      "models_on_disk": 1,
+      "fp32_MB": 6.227224,
+      "int8_MB_est": 1.556806,
+      "note": "same latency and RAM; only the last layer grows"
+    },
+    {
+      "model": "mnv3s_seed42",
+      "scenario": "one model per crop (14 crops), loaded on demand",
+      "models_on_disk": 14,
+      "fp32_MB": 85.344336,
+      "int8_MB_est": 21.336084,
+      "note": "RAM stays at one model if only the selected crop's model is loaded"
+    }
+  ],
+  "config": {
+    "seeds": [
+      42,
+      7
+    ],
+    "img_size": 224,
+    "epochs": 20,
+    "warmup_epochs": 1,
+    "ema_decay": 0.998,
+    "epoch_samples": 10000,
+    "batch": 64,
+    "patience": 10,
+    "pd_share": 0.5,
+    "torch": "2.11.0+cu130",
+    "albumentations": "2.0.8",
+    "plantvillage_split": {
+      "train": {
+        "healthy": 1108,
+        "early_blight": 694,
+        "late_blight": 1334,
+        "septoria_leaf_spot": 1239,
+        "bacterial_spot": 1480,
+        "yellow_leaf_curl_virus": 3740
+      },
+      "val": {
+        "healthy": 222,
+        "early_blight": 152,
+        "late_blight": 286,
+        "septoria_leaf_spot": 265,
+        "bacterial_spot": 325,
+        "yellow_leaf_curl_virus": 799
+      },
+      "test": {
+        "healthy": 261,
+        "early_blight": 154,
+        "late_blight": 289,
+        "septoria_leaf_spot": 267,
+        "bacterial_spot": 322,
+        "yellow_leaf_curl_virus": 818
+      }
+    },
+    "plantdoc_crop_split": {
+      "train": {
+        "healthy": 235,
+        "early_blight": 138,
+        "late_blight": 130,
+        "septoria_leaf_spot": 264,
+        "bacterial_spot": 166,
+        "yellow_leaf_curl_virus": 434
+      },
+      "val": {
+        "healthy": 35,
+        "early_blight": 20,
+        "late_blight": 25,
+        "septoria_leaf_spot": 38,
+        "bacterial_spot": 24,
+        "yellow_leaf_curl_virus": 65
+      },
+      "test": {
+        "healthy": 119,
+        "early_blight": 50,
+        "late_blight": 51,
+        "septoria_leaf_spot": 108,
+        "bacterial_spot": 67,
+        "yellow_leaf_curl_virus": 192
+      }
+    },
+    "plantdoc_full_split": {
+      "train": {
+        "healthy": 69,
+        "early_blight": 58,
+        "late_blight": 71,
+        "septoria_leaf_spot": 131,
+        "bacterial_spot": 66,
+        "yellow_leaf_curl_virus": 180
+      },
+      "val": {
+        "healthy": 7,
+        "early_blight": 9,
+        "late_blight": 8,
+        "septoria_leaf_spot": 24,
+        "bacterial_spot": 11,
+        "yellow_leaf_curl_virus": 38
+      },
+      "test": {
+        "healthy": 14,
+        "early_blight": 17,
+        "late_blight": 27,
+        "septoria_leaf_spot": 45,
+        "bacterial_spot": 27,
+        "yellow_leaf_curl_virus": 58
+      }
+    },
+    "split_source": "v4 split manifests filtered to the six classes",
+    "classes": [
+      "healthy",
+      "early_blight",
+      "late_blight",
+      "septoria_leaf_spot",
+      "bacterial_spot",
+      "yellow_leaf_curl_virus"
+    ]
+  }
+}

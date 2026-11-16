@@ -1,0 +1,451 @@
+{
+  "settings": {
+    "format": "QDQ",
+    "activations": "int8",
+    "weights": "int8 per-channel",
+    "calib_chunk": 16,
+    "calib_disease": 384,
+    "calib_pest": 400,
+    "onnxruntime": "1.23.2",
+    "onnx": "1.20.1",
+    "torch": "2.9.1+cu128",
+    "ultralytics": "8.4.7",
+    "cpu_cores": 4
+  },
+  "disease": {
+    "tomato_disease_v5_effb0_6class": {
+      "chosen_variant": "percentile+fp32:f0,f1,f2,f3",
+      "fp32_val_score": 0.8411984395474549,
+      "size_mb_fp32": 16.05,
+      "size_mb_int8": 4.96
+    },
+    "tomato_disease_v5_mnv3s_6class": {
+      "chosen_variant": "minmax+fp32:f0,f1,f4,hswish",
+      "fp32_val_score": 0.8312453537843794,
+      "size_mb_fp32": 6.11,
+      "size_mb_int8": 1.88
+    },
+    "tomato_disease_v4_effb0_10class": {
+      "chosen_variant": "percentile+fp32:f0,f1,f2,f3",
+      "fp32_val_score": 0.7871687750155483,
+      "size_mb_fp32": 16.07,
+      "size_mb_int8": 4.96
+    }
+  },
+  "disease_test": [
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantvillage_test",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.05,
+      "n": 2111,
+      "accuracy": 0.9867361440075794,
+      "macro_f1": 0.9799039781931067,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantvillage_test",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 2111,
+      "accuracy": 0.9886309805779252,
+      "macro_f1": 0.9825333152125338,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 0.9962103268593084
+    },
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.05,
+      "n": 587,
+      "accuracy": 0.7632027257240205,
+      "macro_f1": 0.6958907702575132,
+      "missed_disease_rate": 0.053418803418803416,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 587,
+      "accuracy": 0.7563884156729132,
+      "macro_f1": 0.685440889683366,
+      "missed_disease_rate": 0.05128205128205128,
+      "top1_agreement_with_fp32": 0.9369676320272572
+    },
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.05,
+      "n": 188,
+      "accuracy": 0.7340425531914894,
+      "macro_f1": 0.6814116725715618,
+      "missed_disease_rate": 0.04597701149425287,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_effb0_6class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 188,
+      "accuracy": 0.7393617021276596,
+      "macro_f1": 0.6781053389799183,
+      "missed_disease_rate": 0.040229885057471264,
+      "top1_agreement_with_fp32": 0.9468085106382979
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantvillage_test",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 6.11,
+      "n": 2111,
+      "accuracy": 0.9848413074372335,
+      "macro_f1": 0.9760054646345536,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantvillage_test",
+      "precision": "int8",
+      "variant": "minmax+fp32:f0,f1,f4,hswish",
+      "size_mb": 1.88,
+      "n": 2111,
+      "accuracy": 0.9829464708668877,
+      "macro_f1": 0.973902038721658,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 0.9933680720037896
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 6.11,
+      "n": 587,
+      "accuracy": 0.7461669505962522,
+      "macro_f1": 0.6749236525279727,
+      "missed_disease_rate": 0.053418803418803416,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "int8",
+      "variant": "minmax+fp32:f0,f1,f4,hswish",
+      "size_mb": 1.88,
+      "n": 587,
+      "accuracy": 0.7529812606473595,
+      "macro_f1": 0.6854506930273164,
+      "missed_disease_rate": 0.06623931623931624,
+      "top1_agreement_with_fp32": 0.9063032367972743
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 6.11,
+      "n": 188,
+      "accuracy": 0.6968085106382979,
+      "macro_f1": 0.6295406943910894,
+      "missed_disease_rate": 0.028735632183908046,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v5_mnv3s_6class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "int8",
+      "variant": "minmax+fp32:f0,f1,f4,hswish",
+      "size_mb": 1.88,
+      "n": 188,
+      "accuracy": 0.675531914893617,
+      "macro_f1": 0.6077155236861449,
+      "missed_disease_rate": 0.05747126436781609,
+      "top1_agreement_with_fp32": 0.8936170212765957
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantvillage_test",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.07,
+      "n": 2796,
+      "accuracy": 0.9839055793991416,
+      "macro_f1": 0.9796331989384217,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantvillage_test",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 2796,
+      "accuracy": 0.9839055793991416,
+      "macro_f1": 0.9790652046237941,
+      "missed_disease_rate": 0.0,
+      "top1_agreement_with_fp32": 0.9964234620886981
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.07,
+      "n": 715,
+      "accuracy": 0.6853146853146853,
+      "macro_f1": 0.6286532765695343,
+      "missed_disease_rate": 0.06543624161073826,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantdoc_test_leaf_crops",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 715,
+      "accuracy": 0.6713286713286714,
+      "macro_f1": 0.6166750624528867,
+      "missed_disease_rate": 0.06375838926174497,
+      "top1_agreement_with_fp32": 0.9244755244755245
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "fp32",
+      "variant": "fp32",
+      "size_mb": 16.07,
+      "n": 230,
+      "accuracy": 0.6826086956521739,
+      "macro_f1": 0.6171814095751551,
+      "missed_disease_rate": 0.06018518518518518,
+      "top1_agreement_with_fp32": 1.0
+    },
+    {
+      "model": "tomato_disease_v4_effb0_10class",
+      "eval_set": "plantdoc_test_full_images",
+      "precision": "int8",
+      "variant": "percentile+fp32:f0,f1,f2,f3",
+      "size_mb": 4.96,
+      "n": 230,
+      "accuracy": 0.6826086956521739,
+      "macro_f1": 0.6215671805322134,
+      "missed_disease_rate": 0.06481481481481481,
+      "top1_agreement_with_fp32": 0.9173913043478261
+    }
+  ],
+  "pest": {
+    "chosen_method": "percentile",
+    "size_mb_fp32": 13.58,
+    "size_mb_int8": 3.85,
+    "excluded_decode_nodes": 24,
+    "test": {
+      "fp32": {
+        "map50": 0.5705586281241036,
+        "map50_95": 0.34357101742647894,
+        "threshold": 0.2,
+        "levels": [
+          {
+            "conf": 0.1,
+            "pest_found_rate": 0.9592709270927092,
+            "species_correct_when_found": 0.747595589960122,
+            "species_correct_overall": 0.7171467146714672,
+            "box_precision_any_species": 0.8676923076923077,
+            "false_alarm_val_pv": 0.006,
+            "false_alarm_test_pv": 0.006,
+            "false_alarm_val_pd": 0.112,
+            "false_alarm_test_pd": 0.12658227848101267
+          },
+          {
+            "conf": 0.2,
+            "pest_found_rate": 0.921917191719172,
+            "species_correct_when_found": 0.7647058823529411,
+            "species_correct_overall": 0.704995499549955,
+            "box_precision_any_species": 0.9121737473804534,
+            "false_alarm_val_pv": 0.002,
+            "false_alarm_test_pv": 0.003,
+            "false_alarm_val_pd": 0.048,
+            "false_alarm_test_pd": 0.05063291139240506
+          },
+          {
+            "conf": 0.25,
+            "pest_found_rate": 0.8908640864086409,
+            "species_correct_when_found": 0.7779742359181612,
+            "species_correct_overall": 0.693069306930693,
+            "box_precision_any_species": 0.9213011542497377,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.002,
+            "false_alarm_val_pd": 0.032,
+            "false_alarm_test_pd": 0.05063291139240506
+          },
+          {
+            "conf": 0.3,
+            "pest_found_rate": 0.8517101710171017,
+            "species_correct_when_found": 0.790224570673712,
+            "species_correct_overall": 0.673042304230423,
+            "box_precision_any_species": 0.9330408681597784,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.002,
+            "false_alarm_val_pd": 0.008,
+            "false_alarm_test_pd": 0.02531645569620253
+          },
+          {
+            "conf": 0.4,
+            "pest_found_rate": 0.7565256525652565,
+            "species_correct_when_found": 0.8239143367043427,
+            "species_correct_overall": 0.6233123312331234,
+            "box_precision_any_species": 0.9513677811550152,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.001,
+            "false_alarm_val_pd": 0.008,
+            "false_alarm_test_pd": 0.012658227848101266
+          },
+          {
+            "conf": 0.5,
+            "pest_found_rate": 0.6460396039603961,
+            "species_correct_when_found": 0.8634622082897945,
+            "species_correct_overall": 0.5578307830783078,
+            "box_precision_any_species": 0.9642379679144385,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.001,
+            "false_alarm_val_pd": 0.008,
+            "false_alarm_test_pd": 0.012658227848101266
+          },
+          {
+            "conf": 0.6,
+            "pest_found_rate": 0.533078307830783,
+            "species_correct_when_found": 0.8982693119459688,
+            "species_correct_overall": 0.47884788478847884,
+            "box_precision_any_species": 0.9789603960396039,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.001,
+            "false_alarm_val_pd": 0.008,
+            "false_alarm_test_pd": 0.0
+          },
+          {
+            "conf": 0.7,
+            "pest_found_rate": 0.39693969396939693,
+            "species_correct_when_found": 0.9308390022675737,
+            "species_correct_overall": 0.3694869486948695,
+            "box_precision_any_species": 0.9876819708846585,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.0,
+            "false_alarm_val_pd": 0.0,
+            "false_alarm_test_pd": 0.0
+          }
+        ]
+      },
+      "int8": {
+        "map50": 0.5598019124009865,
+        "map50_95": 0.33890187086662693,
+        "threshold": 0.2,
+        "levels": [
+          {
+            "conf": 0.1,
+            "pest_found_rate": 0.9574707470747075,
+            "species_correct_when_found": 0.7501762632197415,
+            "species_correct_overall": 0.7182718271827183,
+            "box_precision_any_species": 0.8726569473371021,
+            "false_alarm_val_pv": 0.016,
+            "false_alarm_test_pv": 0.015,
+            "false_alarm_val_pd": 0.088,
+            "false_alarm_test_pd": 0.10126582278481013
+          },
+          {
+            "conf": 0.2,
+            "pest_found_rate": 0.9198919891989199,
+            "species_correct_when_found": 0.7651663405088063,
+            "species_correct_overall": 0.7038703870387039,
+            "box_precision_any_species": 0.9117703349282297,
+            "false_alarm_val_pv": 0.008,
+            "false_alarm_test_pv": 0.005,
+            "false_alarm_val_pd": 0.032,
+            "false_alarm_test_pd": 0.0379746835443038
+          },
+          {
+            "conf": 0.25,
+            "pest_found_rate": 0.8946894689468947,
+            "species_correct_when_found": 0.772635814889336,
+            "species_correct_overall": 0.6912691269126913,
+            "box_precision_any_species": 0.9245635910224439,
+            "false_alarm_val_pv": 0.007,
+            "false_alarm_test_pv": 0.005,
+            "false_alarm_val_pd": 0.032,
+            "false_alarm_test_pd": 0.0379746835443038
+          },
+          {
+            "conf": 0.3,
+            "pest_found_rate": 0.8661116111611161,
+            "species_correct_when_found": 0.7796830345544298,
+            "species_correct_overall": 0.6752925292529253,
+            "box_precision_any_species": 0.9336620349619005,
+            "false_alarm_val_pv": 0.006,
+            "false_alarm_test_pv": 0.005,
+            "false_alarm_val_pd": 0.024,
+            "false_alarm_test_pd": 0.0379746835443038
+          },
+          {
+            "conf": 0.4,
+            "pest_found_rate": 0.7815031503150315,
+            "species_correct_when_found": 0.8139936654189461,
+            "species_correct_overall": 0.6361386138613861,
+            "box_precision_any_species": 0.949417372881356,
+            "false_alarm_val_pv": 0.001,
+            "false_alarm_test_pv": 0.004,
+            "false_alarm_val_pd": 0.016,
+            "false_alarm_test_pd": 0.02531645569620253
+          },
+          {
+            "conf": 0.5,
+            "pest_found_rate": 0.6784428442844285,
+            "species_correct_when_found": 0.8524046434494196,
+            "species_correct_overall": 0.5783078307830783,
+            "box_precision_any_species": 0.9632795188350743,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.002,
+            "false_alarm_val_pd": 0.008,
+            "false_alarm_test_pd": 0.012658227848101266
+          },
+          {
+            "conf": 0.6,
+            "pest_found_rate": 0.5182268226822683,
+            "species_correct_when_found": 0.8975249674337821,
+            "species_correct_overall": 0.4651215121512151,
+            "box_precision_any_species": 0.9796005099872503,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.001,
+            "false_alarm_val_pd": 0.0,
+            "false_alarm_test_pd": 0.012658227848101266
+          },
+          {
+            "conf": 0.7,
+            "pest_found_rate": 0.3982898289828983,
+            "species_correct_when_found": 0.9316384180790961,
+            "species_correct_overall": 0.3710621062106211,
+            "box_precision_any_species": 0.9888205701509223,
+            "false_alarm_val_pv": 0.0,
+            "false_alarm_test_pv": 0.0,
+            "false_alarm_val_pd": 0.0,
+            "false_alarm_test_pd": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

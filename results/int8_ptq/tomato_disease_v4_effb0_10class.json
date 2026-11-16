@@ -1,0 +1,34 @@
+{
+  "onnx_file": "tomato_disease_v4_effb0_10class_int8.onnx",
+  "fp32_onnx_file": "tomato_disease_v4_effb0_10class.onnx",
+  "input": "image",
+  "output": "logits",
+  "classes": [
+    "healthy",
+    "early_blight",
+    "late_blight",
+    "leaf_mold",
+    "septoria_leaf_spot",
+    "bacterial_spot",
+    "yellow_leaf_curl_virus",
+    "mosaic_virus",
+    "target_spot",
+    "spider_mites"
+  ],
+  "img_size": 224,
+  "color_order": "RGB",
+  "resize": "direct resize to img_size x img_size, bilinear",
+  "scale": "pixel / 255",
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "layout": "NCHW float32 (the INT8 model quantizes its input internally)",
+  "output_meaning": "logits; apply softmax for probabilities"
+}

@@ -25,7 +25,8 @@ PLANTDOC_FOLDERS = "nirmalsankalana/plantdoc-dataset"
 IP102 = "parserpixy/ip102-dataset"
 DISEASE_DATA = [PLANTVILLAGE, PLANTDOC_BOXES, PLANTDOC_FOLDERS]
 
-# One entry per Kaggle notebook. "after" names another notebook whose output (trained weights) must be attached.
+# One entry per Kaggle notebook. "after" names one or more notebooks whose outputs (trained weights) must be attached;
+# "gpu": False runs the notebook on CPU only (no GPU quota used).
 NOTEBOOKS = [
     dict(src="tomato_disease.py", slug="ps1-tomato-disease", title="PS1 Tomato Disease", datasets=DISEASE_DATA),
     dict(src="tomato_disease_v2.py", slug="ps1-tomato-disease-v2", title="PS1 Tomato Disease v2", datasets=DISEASE_DATA),
@@ -34,6 +35,12 @@ NOTEBOOKS = [
     dict(src="ip102_pest.py", slug="ps1-ip102-pest", title="PS1 IP102 Pest", datasets=[IP102, PLANTVILLAGE]),
     dict(src="ip102_pest_negft.py", slug="ps1-ip102-pest-negft", title="PS1 IP102 Pest NegFT",
          datasets=[IP102, PLANTVILLAGE, PLANTDOC_FOLDERS], after="ps1-ip102-pest"),
+    dict(src="tomato_disease_v5.py", slug="ps1-tomato-disease-v5", title="PS1 Tomato Disease v5", datasets=DISEASE_DATA,
+         after="ps1-tomato-disease-v4"),
+    dict(src="disease_v5_threshold.py", slug="ps1-disease-v5-threshold", title="PS1 Disease v5 Threshold",
+         datasets=DISEASE_DATA, after="ps1-tomato-disease-v5", gpu=False),
+    dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
+         after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]
 
 
@@ -74,11 +81,14 @@ def main():
         (folder / notebook_file).write_text(json.dumps(notebook, indent=1) + "\n")
 
         if args.kaggle_user:
-            # Private notebook with GPU and internet; the GPU type (choose T4) is set in the Kaggle web UI.
+            # Private notebook with internet and (unless gpu=False) a GPU; the GPU type (choose T4) is set in the web UI.
+            after = nb.get("after") or []
+            after = [after] if isinstance(after, str) else after
             meta = {"id": f"{args.kaggle_user}/{nb['slug']}", "title": nb["title"], "code_file": notebook_file,
-                    "language": "python", "kernel_type": "notebook", "is_private": True, "enable_gpu": True,
+                    "language": "python", "kernel_type": "notebook", "is_private": True,
+                    "enable_gpu": nb.get("gpu", True),
                     "enable_internet": True, "dataset_sources": nb["datasets"], "competition_sources": [],
-                    "kernel_sources": [f"{args.kaggle_user}/{nb['after']}"] if nb.get("after") else []}
+                    "kernel_sources": [f"{args.kaggle_user}/{a}" for a in after]}
             (folder / "kernel-metadata.json").write_text(json.dumps(meta, indent=2) + "\n")
         print(folder / notebook_file)
 

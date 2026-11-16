@@ -1,0 +1,7 @@
+model,scenario,models_on_disk,fp32_MB,int8_MB_est,note
+effb0_seed42,now: tomato only (6 classes),1,16.060936,4.015234,measured
+effb0_seed42,"one model, all 14 PlantVillage crops (38 classes)",1,16.224904000000002,4.0562260000000006,same latency and RAM; only the last layer grows
+effb0_seed42,"one model per crop (14 crops), loaded on demand",14,224.85310400000003,56.21327600000001,RAM stays at one model if only the selected crop's model is loaded
+mnv3s_seed42,now: tomato only (6 classes),1,6.096024,1.524006,measured
+mnv3s_seed42,"one model, all 14 PlantVillage crops (38 classes)",1,6.227224,1.556806,same latency and RAM; only the last layer grows
+mnv3s_seed42,"one model per crop (14 crops), loaded on demand",14,85.344336,21.336084,RAM stays at one model if only the selected crop's model is loaded

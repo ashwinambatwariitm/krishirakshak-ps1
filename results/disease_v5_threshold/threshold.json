@@ -1,0 +1,107 @@
+{
+  "model": "effb0_seed7_best.pt",
+  "classes": [
+    "healthy",
+    "early_blight",
+    "late_blight",
+    "septoria_leaf_spot",
+    "bacterial_spot",
+    "yellow_leaf_curl_virus"
+  ],
+  "threshold": 0.85,
+  "target_accuracy": 0.85,
+  "chosen_on": "plantdoc_val",
+  "rule": "answer only if the top softmax probability >= threshold, otherwise report 'uncertain - take a clearer photo or consult your local KVK'",
+  "summary": [
+    {
+      "eval_set": "plantdoc_val",
+      "threshold": 0.0,
+      "n": 304,
+      "coverage": 1.0,
+      "accuracy_answered": 0.7631578947368421,
+      "accuracy_all_photos": 0.7631578947368421,
+      "missed_disease_answered": 0.04580152671755725
+    },
+    {
+      "eval_set": "plantdoc_val",
+      "threshold": 0.85,
+      "n": 304,
+      "coverage": 0.7236842105263158,
+      "accuracy_answered": 0.8863636363636364,
+      "accuracy_all_photos": 0.7631578947368421,
+      "missed_disease_answered": 0.015789473684210527
+    },
+    {
+      "eval_set": "plantvillage_val",
+      "threshold": 0.0,
+      "n": 2049,
+      "coverage": 1.0,
+      "accuracy_answered": 0.9814543679843827,
+      "accuracy_all_photos": 0.9814543679843827,
+      "missed_disease_answered": 0.0
+    },
+    {
+      "eval_set": "plantvillage_val",
+      "threshold": 0.85,
+      "n": 2049,
+      "coverage": 0.9609565641776476,
+      "accuracy_answered": 0.9949212798374809,
+      "accuracy_all_photos": 0.9814543679843827,
+      "missed_disease_answered": 0.0
+    },
+    {
+      "eval_set": "plantvillage_test",
+      "threshold": 0.0,
+      "n": 2111,
+      "coverage": 1.0,
+      "accuracy_answered": 0.9867361440075794,
+      "accuracy_all_photos": 0.9867361440075794,
+      "missed_disease_answered": 0.0
+    },
+    {
+      "eval_set": "plantvillage_test",
+      "threshold": 0.85,
+      "n": 2111,
+      "coverage": 0.9729985788725722,
+      "accuracy_answered": 0.9961051606621227,
+      "accuracy_all_photos": 0.9867361440075794,
+      "missed_disease_answered": 0.0
+    },
+    {
+      "eval_set": "plantdoc_test_leaf_crops",
+      "threshold": 0.0,
+      "n": 587,
+      "coverage": 1.0,
+      "accuracy_answered": 0.7632027257240205,
+      "accuracy_all_photos": 0.7632027257240205,
+      "missed_disease_answered": 0.053418803418803416
+    },
+    {
+      "eval_set": "plantdoc_test_leaf_crops",
+      "threshold": 0.85,
+      "n": 587,
+      "coverage": 0.6984667802385008,
+      "accuracy_answered": 0.8829268292682927,
+      "accuracy_all_photos": 0.7632027257240205,
+      "missed_disease_answered": 0.04024767801857585
+    },
+    {
+      "eval_set": "plantdoc_test_full_images",
+      "threshold": 0.0,
+      "n": 188,
+      "coverage": 1.0,
+      "accuracy_answered": 0.7340425531914894,
+      "accuracy_all_photos": 0.7340425531914894,
+      "missed_disease_answered": 0.04597701149425287
+    },
+    {
+      "eval_set": "plantdoc_test_full_images",
+      "threshold": 0.85,
+      "n": 188,
+      "coverage": 0.6542553191489362,
+      "accuracy_answered": 0.8617886178861789,
+      "accuracy_all_photos": 0.7340425531914894,
+      "missed_disease_answered": 0.034782608695652174
+    }
+  ]
+}
