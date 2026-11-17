@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Collect everything the Raspberry Pi 5 needs into one folder (dist/krishirakshak-pi), laid out like the repository
+# root so the binary runs with "--root .":
+#
+#   krishirakshak, grounding_test       aarch64 binaries (build/arm, see cpp/README.md)
+#   lib/libonnxruntime.so*              ONNX Runtime 1.23.2 for aarch64
+#   models/                             ONNX vision models (FP32 + INT8), Llama .pte + tokenizer
+#   results/...json                     model input/output specifications and thresholds
+#   app/kb/tomato_kb.json               advice knowledge base (ICAR, NIPHM, TNAU extracts)
+#   run_benchmarks.sh                   timing runs used for the report
+#
+# OpenCV is NOT copied: install it on the Pi with  sudo apt install libopencv-dev  (Raspberry Pi OS Trixie ships
+# OpenCV 4.10, the version the binary is linked against).
+#
+# Usage:  bash cpp/package_pi.sh        then   rsync -a dist/krishirakshak-pi/ pi@<pi-ip>:~/krishirakshak/
+set -euo pipefail
+
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+OUT="${REPO}/dist/krishirakshak-pi"
+ORT="${ORT_ROOT:-$HOME/arm_libs/onnxruntime-linux-aarch64-1.23.2}"
+
+mkdir -p "${OUT}/lib" "${OUT}/models" "${OUT}/results/int8_ptq" "${OUT}/results/pest_yolov8n_with_negatives" \
+         "${OUT}/app/kb" "${OUT}/photos"
+
+cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${OUT}/"
+cp -P "${ORT}"/lib/libonnxruntime.so* "${OUT}/lib/"
+for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
+         pest_yolov8n_ip102_negatives pest_yolov8n_ip102_negatives_int8; do
+  cp "${REPO}/models/${m}.onnx" "${OUT}/models/"
+done
+cp "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
+cp "${REPO}"/results/int8_ptq/*.json "${OUT}/results/int8_ptq/"
+cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
+cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
+
+# A few labelled field photos for the first run on the Pi (optional; skipped if the data folder is absent)
+DATA="${KR_DATA:-$HOME/ARM_AgriTech/data/plantdoc_cls/test}"
+if [ -d "${DATA}" ]; then
+  for d in Tomato_leaf_late_blight Tomato_Early_blight_leaf Tomato_leaf_yellow_virus Tomato_Septoria_leaf_spot Tomato_leaf; do
+    f="$(ls "${DATA}/${d}" | head -1)"
+    cp "${DATA}/${d}/${f}" "${OUT}/photos/${d}.jpg"
+  done
+fi
+
+cat > "${OUT}/run_benchmarks.sh" <<'EOF'
+#!/usr/bin/env bash
+# Run on the Pi from this folder. Prints the device state, then times the pipeline (FP32 and INT8 vision,
+# with Llama). Results are written to bench/ as JSON, one file per run.
+set -u
+cd "$(dirname "$0")"
+mkdir -p bench
+echo "model: $(tr -d '\0' < /proc/device-tree/model)"; echo "kernel: $(uname -r)"
+vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
+./grounding_test . || exit 1
+for p in photos/*.jpg; do
+  n="$(basename "$p" .jpg)"
+  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama "$p" > "bench/${n}_fp32_vision.json"
+  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --int8 "$p" > "bench/${n}_int8_vision.json"
+done
+for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg; do
+  n="$(basename "$p" .jpg)"
+  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . "$p" > "bench/${n}_llama_en.json"
+done
+vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
+echo "results in bench/"
+EOF
+chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test"
+
+du -sh "${OUT}"
+echo "Copy to the Pi:  rsync -a ${OUT}/ pi@<pi-ip>:~/krishirakshak/"

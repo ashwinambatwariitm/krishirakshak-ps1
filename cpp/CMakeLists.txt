@@ -74,6 +74,18 @@ if(EXECUTORCH_ROOT)
     target_sources(krishirakshak_core PRIVATE src/llama_advisor.cpp)
     target_compile_definitions(krishirakshak_core PUBLIC KR_WITH_LLM)
     list(APPEND CMAKE_PREFIX_PATH ${EXECUTORCH_ROOT} ${EXECUTORCH_ROOT}/lib/cmake/ExecuTorch)
+    # The cross toolchain restricts package search to the target sysroot (CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY),
+    # which hides the ExecuTorch install and the packages it depends on (tokenizers, absl, re2, KleidiAI, ...).
+    # Point every package config in the install at its folder explicitly.
+    file(GLOB KR_ET_PKG_DIRS LIST_DIRECTORIES true "${EXECUTORCH_ROOT}/lib/cmake/*")
+    foreach(dir ${KR_ET_PKG_DIRS})
+        file(GLOB cfg "${dir}/*[Cc]onfig.cmake")
+        foreach(f ${cfg})
+            get_filename_component(name "${f}" NAME)
+            string(REGEX REPLACE "(-config|Config)\\.cmake$" "" name "${name}")
+            set(${name}_DIR "${dir}")
+        endforeach()
+    endforeach()
     # executorch-config.cmake also loads the tokenizers package (tokenizers::tokenizers); a second
     # find_package(tokenizers) would fail because its targets already exist.
     find_package(executorch CONFIG REQUIRED FIND_ROOT_PATH_BOTH)
@@ -108,8 +120,13 @@ add_executable(grounding_test tests/grounding_test.cpp)
 target_link_libraries(grounding_test PRIVATE krishirakshak_core)
 add_test(NAME grounding COMMAND grounding_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
 target_link_libraries(krishirakshak PRIVATE krishirakshak_core)
-# Find libonnxruntime.so next to the binary or in ./lib after deployment
-set_target_properties(krishirakshak PROPERTIES BUILD_RPATH "${ORT_ROOT}/lib" INSTALL_RPATH "$ORIGIN:$ORIGIN/lib")
+# Library search path: on the development machine the ONNX Runtime folder; on the Pi the lib/ folder next to the
+# binary (cpp/package_pi.sh puts libonnxruntime there; OpenCV comes from the Pi's own apt packages)
+if(CMAKE_CROSSCOMPILING)
+    set_target_properties(krishirakshak grounding_test PROPERTIES BUILD_RPATH "\$ORIGIN/lib" INSTALL_RPATH "\$ORIGIN/lib")
+else()
+    set_target_properties(krishirakshak PROPERTIES BUILD_RPATH "${ORT_ROOT}/lib" INSTALL_RPATH "\$ORIGIN/lib")
+endif()
 
 message(STATUS "===========================================")
 message(STATUS "KrishiRakshak - build configuration")

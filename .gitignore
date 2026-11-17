@@ -39,3 +39,6 @@ build/
 outputs/
 # Llama tokenizer: published with the .pte as a release asset (Llama 3.2 licence), not stored in git
 models/*.model
+
+# Pi deployment bundle (cpp/package_pi.sh)
+dist/
