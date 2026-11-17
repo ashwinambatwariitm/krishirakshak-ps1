@@ -20,7 +20,9 @@
 #include <unistd.h>
 
 #include <algorithm>
+#include <cctype>
 #include <cstdio>
+#include <set>
 #include <thread>
 
 namespace kr {
@@ -93,6 +95,40 @@ std::string factsBlock(const std::vector<KbChunk>& facts) {
     return out;
 }
 
+// Detects a repeated sentence while tokens stream in. Text is split at '.', '!', '?', ';' and new lines; each
+// completed sentence is normalised (lower-case letters only, list markers such as "IV." are too short to count) and
+// compared with the sentences seen before in this answer.
+class RepeatDetector {
+public:
+    // Adds the next token piece; returns true when it completes a sentence that was already written.
+    bool addAndCheck(const std::string& piece) {
+        for (char ch : piece) {
+            if (ch == '.' || ch == '!' || ch == '?' || ch == ';' || ch == '\n') {
+                const bool repeated = finishSentence();
+                current_.clear();
+                if (repeated) return true;
+            } else {
+                current_ += ch;
+            }
+        }
+        return false;
+    }
+
+private:
+    bool finishSentence() {
+        std::string key;
+        int letters = 0;
+        for (unsigned char ch : current_) {
+            if (std::isalpha(ch)) { key += static_cast<char>(std::tolower(ch)); ++letters; }
+            else if (std::isspace(ch) && !key.empty() && key.back() != ' ') key += ' ';
+        }
+        if (letters < 12) return false;          // list markers ("IV"), fragments: not a sentence
+        return !seen_.insert(key).second;
+    }
+    std::string current_;
+    std::set<std::string> seen_;
+};
+
 class ExecuTorchLlama final : public LlamaAdvisor {
 public:
     ExecuTorchLlama(std::unique_ptr<llm::TextLLMRunner> runner, int maxNewTokens, float temperature)
@@ -102,15 +138,19 @@ public:
                        const std::string& lang) override {
         // Rephrase-only prompt (tests showed the 1B model refusing on "do not name pesticides" wording and reversing
         // instructions when asked to "explain"): Llama rewrites each fact in simple words and nothing else.
+        // The one-shot example is deliberately about another topic (grain storage): on the Raspberry Pi 5 the
+        // earlier example (crop debris, overhead irrigation - also late blight advice) was copied as the answer and
+        // repeated until the token limit. Copied example sentences are not in the extracts, so the grounding check
+        // drops them.
         const std::string system =
             std::string("You rewrite agricultural extension text for tomato farmers in India. Rewrite each FACT in "
                         "simple ") +
             languageName(lang) + " as one short sentence. Keep the meaning of every fact exactly: do not add new "
             "advice, do not leave out an instruction and never turn an instruction into its opposite. Write each "
             "fact once, as plain sentences without a title, list markers or an introduction.\n\n"
-            "Example.\nFACTS:\n1. Removal and destruction of crop debris.\n2. Avoid overhead irrigation.\n"
-            "Rewritten facts:\nRemove the old plant waste from the field and destroy it. Do not water the plants "
-            "from above.";
+            "Example (a different topic, only to show the style).\nFACTS:\n1. Cleaning of storage bins before "
+            "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the bins before you "
+            "put grain in them. Do not keep grain in wet bags.";
         const std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
         return generate(llama3Chat(system, user), lang);
     }
@@ -147,8 +187,20 @@ private:
         runner_->reset();                       // clear the KV cache of the previous request
         Timer t;
         StdoutSilencer quiet;
+        // Repetition stop: when a sentence is completed that was already written, the 1B model is looping
+        // (seen on the Pi: two sentences alternated until the token limit, 11 s of wasted decoding). Generation is
+        // stopped there; the grounding check removes the duplicate afterwards.
+        RepeatDetector repeats;
+        bool stoppedOnRepeat = false;
         const auto err = runner_->generate(
-            prompt, cfg, [&](const std::string& piece) { out.text += piece; },
+            prompt, cfg,
+            [&](const std::string& piece) {
+                out.text += piece;
+                if (!stoppedOnRepeat && repeats.addAndCheck(piece)) {
+                    stoppedOnRepeat = true;
+                    runner_->stop();
+                }
+            },
             [&](const llm::Stats& s) {
                 st.inferenceStart = s.inference_start_ms;
                 st.firstToken = s.first_token_ms;
@@ -180,7 +232,8 @@ private:
                      {"generated_tokens", st.generatedTokens},
                      {"time_to_first_token_s", (st.firstToken - st.inferenceStart) / 1000.0},
                      {"tokens_per_s", st.generatedTokens * 1000.0 / genMs},
-                     {"total_s", totalMs / 1000.0}};
+                     {"total_s", totalMs / 1000.0},
+                     {"stopped_on_repeat", stoppedOnRepeat}};
         return out;
     }
 

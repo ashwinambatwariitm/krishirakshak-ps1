@@ -17,7 +17,8 @@
  *   --bind ADDR        address for --serve; default 0.0.0.0 (reachable over the Pi's Wi-Fi hotspot)
  *   --root DIR         repository root (models/, results/, app/kb/); default "."
  *   --lang en|hi       answer language; default en
- *   --int8             use the INT8 ONNX vision models
+ *   --int8 / --fp32    INT8 or FP32 ONNX vision models (default: INT8 on the Raspberry Pi build, where it is about
+ *                      twice as fast with the same answers; FP32 on the development build, used by the parity test)
  *   --no-llama         vision + knowledge base only
  *   --sequential       run the two vision models one after the other (default: in parallel)
  *   --threads N        ONNX Runtime threads per vision model; default 2
@@ -39,7 +40,7 @@
 namespace {
 
 void usage() {
-    std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8] [--no-llama] [--sequential] [--threads N]\n"
+    std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
                  "                     [--llama-threads N] [--ort-spin] [--brief]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
@@ -66,6 +67,11 @@ int main(int argc, char** argv) {
     bool briefOut = false;
     int servePort = 0;
     std::vector<std::string> photos;
+#ifdef KR_DEFAULT_INT8
+    bool useInt8 = true;     // Raspberry Pi build: INT8 vision 125 ms vs FP32 269 ms per photo, same diagnoses
+#else
+    bool useInt8 = false;
+#endif
 
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
@@ -75,10 +81,8 @@ int main(int argc, char** argv) {
         };
         if (a == "--root") cfg.repoRoot = next();
         else if (a == "--lang") lang = next();
-        else if (a == "--int8") {
-            cfg.diseaseOnnx = "models/tomato_disease_v5_effb0_6class_int8.onnx";
-            cfg.pestOnnx = "models/pest_yolov8n_ip102_negatives_int8.onnx";
-        }
+        else if (a == "--int8") useInt8 = true;
+        else if (a == "--fp32") useInt8 = false;
         else if (a == "--no-llama") cfg.useLlama = false;
         else if (a == "--sequential") cfg.parallelVision = false;
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
@@ -92,6 +96,10 @@ int main(int argc, char** argv) {
         else if (a == "--bind") bindAddr = next();
         else if (a == "-h" || a == "--help") { usage(); return 0; }
         else photos.push_back(a);
+    }
+    if (useInt8) {
+        cfg.diseaseOnnx = "models/tomato_disease_v5_effb0_6class_int8.onnx";
+        cfg.pestOnnx = "models/pest_yolov8n_ip102_negatives_int8.onnx";
     }
     if (!listFile.empty()) {
         std::ifstream in(listFile);

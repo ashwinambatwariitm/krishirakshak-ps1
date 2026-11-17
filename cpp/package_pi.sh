@@ -60,7 +60,7 @@ echo "memory bandwidth ..."
 ./membw --mb 256 --threads 4 > bench/membw.json && cat bench/membw.json
 for p in photos/*.jpg; do
   n="$(basename "$p" .jpg)"
-  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama "$p" > "bench/${n}_fp32_vision.json"
+  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --fp32 "$p" > "bench/${n}_fp32_vision.json"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --int8 "$p" > "bench/${n}_int8_vision.json"
 done
 # ONNX Runtime spinning A/B: every photo 5 times in one process. Wall time should be about equal; the user CPU time

@@ -120,6 +120,10 @@ else()
 endif()
 
 add_executable(krishirakshak src/main.cpp)
+if(CMAKE_CROSSCOMPILING)
+    # Measured on the Pi 5: INT8 vision 125 ms vs FP32 269 ms per photo with the same diagnoses (--fp32 overrides)
+    target_compile_definitions(krishirakshak PRIVATE KR_DEFAULT_INT8)
+endif()
 
 # Memory bandwidth benchmark (no dependencies); its result feeds tools/perf_model.py
 add_executable(membw tools/membw.cpp)
