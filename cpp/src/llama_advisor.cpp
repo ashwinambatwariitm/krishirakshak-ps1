@@ -22,6 +22,8 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <set>
 #include <thread>
 
@@ -95,6 +97,19 @@ std::string factsBlock(const std::vector<KbChunk>& facts) {
     return out;
 }
 
+void replaceAll(std::string& s, const std::string& from, const std::string& to) {
+    for (size_t p = s.find(from); p != std::string::npos; p = s.find(from, p + to.size())) s.replace(p, from.size(), to);
+}
+
+// True for the short refusals Llama 3.2 1B produces ("I can't fulfill this request.", "I cannot help with that.")
+bool looksLikeRefusal(const std::string& text) {
+    std::string low;
+    for (unsigned char ch : text.substr(0, 60)) low += static_cast<char>(std::tolower(ch));
+    for (const char* p : {"i can't", "i cannot", "i can not", "i'm unable", "i am unable", "i won't"})
+        if (low.rfind(p, 0) == 0) return true;
+    return false;
+}
+
 // Detects a repeated sentence while tokens stream in. Text is split at '.', '!', '?', ';' and new lines; each
 // completed sentence is normalised (lower-case letters only, list markers such as "IV." are too short to count) and
 // compared with the sentences seen before in this answer.
@@ -151,8 +166,42 @@ public:
             "Example (a different topic, only to show the style).\nFACTS:\n1. Cleaning of storage bins before "
             "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the bins before you "
             "put grain in them. Do not keep grain in wet bags.";
-        const std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
-        return generate(llama3Chat(system, user), lang);
+        std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
+
+        // Development option: KR_ADVISOR_PROMPT=<file> replaces the prompt above, so prompt variants can be tried on
+        // the Pi without rebuilding. File format: system text, a line "----USER----", user template; placeholders
+        // {language}, {diagnosis}, {facts}.
+        std::string sys = system;
+        if (const char* path = std::getenv("KR_ADVISOR_PROMPT")) {
+            const std::string file = readFile(path);
+            const auto sep = file.find("----USER----");
+            if (sep != std::string::npos) {
+                auto fill = [&](std::string s) {
+                    replaceAll(s, "{language}", languageName(lang));
+                    replaceAll(s, "{diagnosis}", diagnosisLine);
+                    replaceAll(s, "{facts}", factsBlock(facts));
+                    const auto b = s.find_first_not_of("\n"), e = s.find_last_not_of("\n");
+                    return b == std::string::npos ? std::string() : s.substr(b, e - b + 1);
+                };
+                sys = fill(file.substr(0, sep));
+                user = fill(file.substr(sep + std::strlen("----USER----")));
+            }
+        }
+
+        LlamaOutput out = generate(llama3Chat(sys, user), lang);
+        // Llama 3.2 1B sometimes refuses this harmless task outright ("I can't fulfill this request."), measured on
+        // the Pi for 2 of 5 diseases. A refusal is short (about 2.5 s), so one retry with a plain fallback prompt
+        // costs little; the stats report both attempts.
+        if (looksLikeRefusal(out.text)) {
+            const std::string fallbackSystem = "You are a helpful agricultural extension worker in India.";
+            const std::string fallbackUser = "Here is advice for a tomato farmer:\n" + factsBlock(facts) +
+                                             "\nSay the same advice again in simple " + languageName(lang) +
+                                             ", one short sentence for each point.";
+            LlamaOutput retry = generate(llama3Chat(fallbackSystem, fallbackUser), lang);
+            retry.stats["first_attempt"] = {{"refused", true}, {"text", out.text}, {"stats", out.stats}};
+            return retry;
+        }
+        return out;
     }
 
     LlamaOutput answer(const std::string& question, const std::vector<KbChunk>& facts,
