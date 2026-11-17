@@ -21,8 +21,9 @@ import json
 from collections import Counter
 from pathlib import Path
 
-# Operator names that do real work per weight; outside a delegate they are a performance problem
-HEAVY = ("mm", "matmul", "linear", "addmm", "bmm", "conv", "embedding", "sdpa", "attention", "gemm")
+# Operator names that do real work per weight; outside a delegate they are a performance problem.
+# The embedding lookup is not in the list: it reads one table row per token, however large the table is.
+HEAVY = ("mm", "matmul", "linear", "addmm", "bmm", "conv", "sdpa", "attention", "gemm")
 # Except for the KV-cache attention kernel the Llama export adds on purpose (it reads the cache in place)
 EXPECTED_OUTSIDE = ("custom_sdpa", "update_cache")
 
@@ -84,6 +85,13 @@ def main():
     segment_bytes = sum(s.size for s in program.segments)
     print(f"{args.pte}: {file_bytes / 2**20:.1f} MiB, {len(program.segments)} data segments "
           f"({segment_bytes / 2**20:.1f} MiB)")
+    # Recent exports keep the weights out of the delegate payload, as named tensors the backend loads at start-up
+    named = program.named_data or []
+    if named:
+        # identical tensors share one segment, so count each segment once
+        named_bytes = sum(program.segments[i].size for i in {n.segment_index for n in named})
+        print(f"  weights stored as named data: {len(named)} tensors, {named_bytes / 2**20:.1f} MiB "
+              "(loaded by the delegate; not counted in its payload below)")
     problems = 0
     for m in methods:
         if not m["delegate_calls"] and not m["outside_delegate"]:
@@ -95,6 +103,11 @@ def main():
         for op, n in m["outside_delegate"].items():
             mark = "  <-- heavy operator outside the delegate" if op in m["heavy_outside_delegate"] else ""
             print(f"    {n:5d} x {op}{mark}")
+        calls = sum(m["delegate_calls"].values())
+        if calls > 1:
+            # Each switch between the delegate and the generic kernels synchronises the thread pool; an operator
+            # the delegate does not support (often the mean of a normalisation layer) splits the graph there.
+            print(f"  note: the graph is split into {calls} delegate calls per run of this method")
         problems += len(m["heavy_outside_delegate"])
     print("\nOK: every heavy operator runs in a delegate" if problems == 0
           else f"\nWARNING: {problems} heavy operator type(s) run outside the delegate (see above)")

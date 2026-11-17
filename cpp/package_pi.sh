@@ -74,6 +74,24 @@ for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg;
   n="$(basename "$p" .jpg)"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . "$p" > "bench/${n}_llama_en.json"
 done
+# The same A/B with Llama, the case that matters: does spinning after vision slow Llama down on 4 cores?
+# The order alternates (off-on, on-off, off-on) so that warm caches and clock boost do not favour one mode.
+P=photos/Tomato_leaf_late_blight.jpg
+for i in 1 2 3; do
+  if [ $((i % 2)) -eq 1 ]; then order="off on"; else order="on off"; fi
+  for mode in $order; do
+    flag=""; [ "$mode" = on ] && flag="--ort-spin"
+    ./krishirakshak --root . $flag "$P" > "bench/llama_spin_${mode}_${i}.json" 2>/dev/null
+  done
+done
+python3 -c '
+import glob, json
+print("mode run time_to_first_token_s tokens_per_s total_ms")
+for f in sorted(glob.glob("bench/llama_spin_*.json")):
+    d = json.load(open(f)); s = (d.get("llama") or {}).get("stats") or {}
+    mode, run = f[:-5].split("_")[-2:]
+    print(mode, run, s.get("time_to_first_token_s"), round(s.get("tokens_per_s", 0), 2), round(d["timings_ms"]["total"]))
+' | tee -a bench/ort_spin_ab.txt
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
 python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
   --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt

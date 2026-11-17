@@ -13,6 +13,10 @@
 #   EXECUTORCH_ROOT   ExecuTorch install prefix; when set, the Llama advisor is compiled in (KR_WITH_LLM)
 cmake_minimum_required(VERSION 3.16)
 project(KrishiRakshak VERSION 0.1 LANGUAGES C CXX)
+# find_package(executorch) may also use EXECUTORCH_ROOT as a search prefix (CMake >= 3.27); it is the install prefix
+if(POLICY CMP0144)
+    cmake_policy(SET CMP0144 NEW)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -62,7 +66,10 @@ set(KR_SOURCES
 )
 
 add_library(krishirakshak_core STATIC ${KR_SOURCES})
-target_include_directories(krishirakshak_core PUBLIC src ${ORT_ROOT}/include ${OpenCV_INCLUDE_DIRS} ${THIRD_PARTY_SRC})
+target_include_directories(krishirakshak_core PUBLIC src)
+# Third-party headers as system headers: with ExecuTorch, Abseil raises the language level to C++20 and GCC then
+# warns about code inside the OpenCV 4.10 headers (166 warnings on the ARM build, none in project code)
+target_include_directories(krishirakshak_core SYSTEM PUBLIC ${ORT_ROOT}/include ${OpenCV_INCLUDE_DIRS} ${THIRD_PARTY_SRC})
 target_link_directories(krishirakshak_core PUBLIC ${ORT_ROOT}/lib)
 target_link_libraries(krishirakshak_core PUBLIC onnxruntime ${OpenCV_LIBS} sqlite3_static pthread dl)
 

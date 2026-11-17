@@ -254,6 +254,9 @@ def main():
                 print(f" | measured {m:6.2f} tok/s | efficiency {m / tps:6.1%}", end="")
                 if m > tps * 1.05:
                     print("  (above the limit: check the bandwidth measurement and the weight model)", end="")
+                elif m < tps * 0.5:
+                    print("\n             far below the memory limit: decode time goes to compute or overhead "
+                          "(thread pool, graph splits, slow cores), not to reading weights", end="")
             print()
         report["runs"].append(row)
 
