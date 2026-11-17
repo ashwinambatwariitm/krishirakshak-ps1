@@ -71,6 +71,23 @@ off: Llama runs on the same four cores right after vision, and spinning threads 
 development PC, 10 photos took the same wall time either way, but 45 % more CPU time with spinning (10.3 s vs
 14.8 s user time); the outputs are identical. `run_benchmarks.sh` repeats this A/B on the Pi.
 
+## Llama prompt prefix cache
+
+Every diagnosis prompt starts with the same system instructions and example; only the diagnosis line and the facts
+change. The application prefills that fixed prefix once, at load time, and keeps its KV cache entries. Each
+request then moves the cache position back to the end of the prefix and prefills only its own tokens. The attention
+kernel reads only cache positions below the current one, so entries left over from the previous request are never
+used. On every request the application checks that the prefix and the rest tokenize to exactly the tokens of the
+whole prompt, and falls back to a full prefill otherwise. The follow-up answer uses a different system prompt;
+switching between the two re-prefills the other prefix.
+
+- `--no-prefix-cache` prefills the whole prompt every time (A/B comparison).
+- The result JSON shows `prompt_tokens`, `prefilled_tokens` and `prefix_cache` (`hit`, `miss`, `split_mismatch`,
+  `off`) in `llama.stats`; the start-up line shows `llama_info.prefix_tokens` and `prefix_prefill_ms`.
+- The gain is per request, so it shows in `--serve` mode and in CLI runs with several photos; a single-photo CLI
+  run pays the prefix prefill during start-up instead.
+- With temperature 0 the Llama text should be the same with and without the cache; `run_benchmarks.sh` compares it.
+
 ## Performance model: how fast could it be?
 
 A timing alone does not say whether the application uses the Pi well. `tools/perf_model.py` computes the best

@@ -45,6 +45,8 @@ struct PipelineConfig {
     // ONNX Runtime worker threads normally keep spinning for a while after each run, waiting for more work. Here
     // Llama runs right after vision on the same four cores, so spinning threads would take CPU time from it.
     bool ortSpin = false;
+    // Keep the KV cache of the fixed start of the Llama prompt between requests (see llama_advisor.cpp)
+    bool llamaPrefixCache = true;
 };
 
 class Pipeline {

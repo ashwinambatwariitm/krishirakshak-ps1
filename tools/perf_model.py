@@ -226,18 +226,22 @@ def main():
     report["runs"] = []
     for c in cases:
         p, n = int(c["prompt_tokens"]), int(c["generated_tokens"])
+        # with the prompt prefix cache only the request's own tokens are prefilled (they attend to the prefix too)
+        f = int(c.get("prefilled_tokens") or p)
         # decode: all weights except the embedding table (one row per token) + the KV cache read so far
         weights_per_token = wb["layers"] + wb["output_layer"] + wb["norms"]
         avg_pos = p + n / 2
         decode_bytes = weights_per_token + kv_cache_bytes(shape, avg_pos, args.kv_bytes)
-        # prefill: one multiply-add per weight per prompt token, attention ~ T^2/2 (causal), output layer once
-        attn = shape.layers * 2 * shape.heads * shape.head_dim * p * p / 2
-        prefill_macs = p * shape.layers * shape.layer_linear_params + attn + shape.table_params
+        # prefill: one multiply-add per weight per prefilled token, causal attention of each prefilled token over
+        # all positions before it, output layer once
+        attn = shape.layers * 2 * shape.heads * shape.head_dim * f * (p - f / 2)
+        prefill_macs = f * shape.layers * shape.layer_linear_params + attn + shape.table_params
         prefill_s = max(prefill_macs / peak, (weights_per_token / bw) if bw else 0)
         row = {"file": c["file"], "prompt_tokens": p, "generated_tokens": n,
                "decode_bytes_per_token": decode_bytes, "prefill_macs": prefill_macs,
                "predicted_prefill_s": prefill_s}
-        print(f"  {c['file']}: prompt {p} tokens, generated {n}")
+        print(f"  {c['file']}: prompt {p} tokens" + (f" ({f} prefilled, rest from the prefix cache)" if f < p else "")
+              + f", generated {n}")
         print(f"    prefill  {prefill_macs / 1e9:7.1f} GMAC -> >= {prefill_s:6.2f} s", end="")
         if "time_to_first_token_s" in c:
             m = c["time_to_first_token_s"]

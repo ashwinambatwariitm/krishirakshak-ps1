@@ -37,10 +37,16 @@ public:
     virtual LlamaOutput answer(const std::string& question, const std::vector<KbChunk>& facts,
                                const std::string& lang) = 0;
 
+    // Load-time facts for the info endpoint (prefix cache state, prefix length, time to prefill it).
+    virtual nlohmann::json info() const = 0;
+
     // Loads the .pte and tokenizer from local disk; returns nullptr if the files are missing.
     // threads: size of the XNNPACK thread pool (4 on the Raspberry Pi 5; 0 = ExecuTorch default).
+    // prefixCache: keep the KV cache of the fixed start of the prompt (system instructions and example) between
+    // requests, so that each request prefills only its own part (see llama_advisor.cpp).
     static std::unique_ptr<LlamaAdvisor> create(const std::string& ptePath, const std::string& tokenizerPath,
-                                                int maxNewTokens = 120, float temperature = 0.0f, int threads = 4);
+                                                int maxNewTokens = 120, float temperature = 0.0f, int threads = 4,
+                                                bool prefixCache = true);
 };
 
 }  // namespace kr

@@ -92,6 +92,30 @@ for f in sorted(glob.glob("bench/llama_spin_*.json")):
     mode, run = f[:-5].split("_")[-2:]
     print(mode, run, s.get("time_to_first_token_s"), round(s.get("tokens_per_s", 0), 2), round(d["timings_ms"]["total"]))
 ' | tee -a bench/ort_spin_ab.txt
+# Llama prefix cache A/B: three photos in ONE process (as in --serve), with and without the cached prompt prefix.
+# The prefix is prefilled once at load time (llama_info.prefix_prefill_ms), then each request prefills only its
+# own tokens. Diagnoses and Llama texts should be the same in both modes.
+LIST="photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg photos/Tomato_leaf_late_blight.jpg"
+./krishirakshak --root . $LIST > bench/prefix_cache_on.json 2> bench/prefix_cache_on.log
+./krishirakshak --root . --no-prefix-cache $LIST > bench/prefix_cache_off.json 2> bench/prefix_cache_off.log
+python3 -c '
+import json
+def results(path):
+    text, dec, out, i = open(path).read(), json.JSONDecoder(), [], 0
+    while True:
+        while i < len(text) and text[i].isspace(): i += 1
+        if i >= len(text): return out
+        obj, i = dec.raw_decode(text, i); out.append(obj)
+print("mode request prompt_tokens prefilled ttft_s tokens_per_s llama_text_same")
+on, off = results("bench/prefix_cache_on.json"), results("bench/prefix_cache_off.json")
+for mode, rs in (("cache", on), ("no-cache", off)):
+    for k, r in enumerate(rs, 1):
+        s = (r.get("llama") or {}).get("stats") or {}
+        same = (r.get("llama") or {}).get("raw_text") == ((off[k-1].get("llama") or {}).get("raw_text") if k <= len(off) else None)
+        print(mode, k, s.get("prompt_tokens"), s.get("prefilled_tokens"), s.get("time_to_first_token_s"),
+              round(s.get("tokens_per_s", 0), 2), same)
+' | tee bench/prefix_cache_ab.txt
+grep -h '^loaded:' bench/prefix_cache_on.log | tee -a bench/prefix_cache_ab.txt
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
 python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
   --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt

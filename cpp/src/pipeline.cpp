@@ -41,7 +41,8 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
 #ifdef KR_WITH_LLM
     if (cfg_.useLlama)
-        llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), 160, 0.0f, cfg_.llamaThreads);
+        llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), 160, 0.0f, cfg_.llamaThreads,
+                                      cfg_.llamaPrefixCache);
 #endif
     loadMs_ = t.ms();
 }
@@ -49,11 +50,15 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
 bool Pipeline::llamaReady() const { return llama_ != nullptr; }
 
 nlohmann::json Pipeline::info() const {
-    return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()},
-            {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
-            {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
-            {"vision_threads_per_model", cfg_.visionThreads},
-            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+    nlohmann::json j = {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()},
+                        {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
+                        {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
+                        {"vision_threads_per_model", cfg_.visionThreads},
+                        {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+#ifdef KR_WITH_LLM
+    if (llama_) j["llama_info"] = llama_->info();
+#endif
+    return j;
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang) {
