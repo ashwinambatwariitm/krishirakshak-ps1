@@ -51,6 +51,7 @@
 #include <pytorch/tokenizers/tokenizer.h>
 
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <unordered_map>
 #include <unordered_set>
@@ -223,6 +224,8 @@ private:
         LlamaOutput out;
         Timer total;
         stats_.reset();
+        // Debug: KR_DUMP_PROMPT=file writes the full prompt text (input of cpp/tools/prefill_check)
+        if (const char* dump = std::getenv("KR_DUMP_PROMPT")) std::ofstream(dump) << prompt.prefix + prompt.rest;
         const auto all = encode(prompt.prefix + prompt.rest);
 
         // Decide what to prefill: only the rest (prefix cached) or the whole prompt

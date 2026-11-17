@@ -92,12 +92,13 @@ for f in sorted(glob.glob("bench/llama_spin_*.json")):
     mode, run = f[:-5].split("_")[-2:]
     print(mode, run, s.get("time_to_first_token_s"), round(s.get("tokens_per_s", 0), 2), round(d["timings_ms"]["total"]))
 ' | tee -a bench/ort_spin_ab.txt
-# Llama prefix cache A/B: three photos in ONE process (as in --serve), with and without the cached prompt prefix.
+# Llama prefix cache A/B (experimental, off by default): three photos in ONE process (as in --serve), with and
+# without the cached prompt prefix.
 # The prefix is prefilled once at load time (llama_info.prefix_prefill_ms), then each request prefills only its
 # own tokens. Diagnoses and Llama texts should be the same in both modes.
 LIST="photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg photos/Tomato_leaf_late_blight.jpg"
-./krishirakshak --root . $LIST > bench/prefix_cache_on.json 2> bench/prefix_cache_on.log
-./krishirakshak --root . --no-prefix-cache $LIST > bench/prefix_cache_off.json 2> bench/prefix_cache_off.log
+./krishirakshak --root . --prefix-cache $LIST > bench/prefix_cache_on.json 2> bench/prefix_cache_on.log
+./krishirakshak --root . $LIST > bench/prefix_cache_off.json 2> bench/prefix_cache_off.log
 python3 -c '
 import json
 def results(path):

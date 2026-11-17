@@ -71,7 +71,11 @@ off: Llama runs on the same four cores right after vision, and spinning threads 
 development PC, 10 photos took the same wall time either way, but 45 % more CPU time with spinning (10.3 s vs
 14.8 s user time); the outputs are identical. `run_benchmarks.sh` repeats this A/B on the Pi.
 
-## Llama prompt prefix cache
+## Llama prompt prefix cache (experimental, off by default)
+
+Status: on WSL the time to first token dropped by about 40 %, but the diagnosis answers changed and failed the
+output check, while the follow-up answers stayed identical. Until `prefill_check` (below) shows why, the cache
+is off; `--prefix-cache` turns it on.
 
 Every diagnosis prompt starts with the same system instructions and example; only the diagnosis line and the facts
 change. The application prefills that fixed prefix once, at load time, and keeps its KV cache entries. Each
@@ -81,7 +85,14 @@ used. On every request the application checks that the prefix and the rest token
 whole prompt, and falls back to a full prefill otherwise. The follow-up answer uses a different system prompt;
 switching between the two re-prefills the other prefix.
 
-- `--no-prefix-cache` prefills the whole prompt every time (A/B comparison).
+- `--prefix-cache` turns the cache on; `--no-prefix-cache` (the default) prefills the whole prompt every time.
+- `prefill_check` (built with ExecuTorch) compares the logits after a split prefill with a single prefill, for
+  several split points. A tiny difference that is larger than the top-1 margin means rounding flips greedy
+  decoding; a large difference means the split computation is wrong:
+  ```
+  KR_DUMP_PROMPT=/tmp/prompt.txt build/x86-llm/krishirakshak --root . leaf.jpg > /dev/null
+  build/x86-llm/prefill_check models/llama3_2_1b_instruct_8da4w.pte models/llama3_2_tokenizer.model /tmp/prompt.txt
+  ```
 - The result JSON shows `prompt_tokens`, `prefilled_tokens` and `prefix_cache` (`hit`, `miss`, `split_mismatch`,
   `off`) in `llama.stats`; the start-up line shows `llama_info.prefix_tokens` and `prefix_prefill_ms`.
 - The gain is per request, so it shows in `--serve` mode and in CLI runs with several photos; a single-photo CLI

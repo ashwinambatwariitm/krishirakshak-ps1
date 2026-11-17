@@ -23,7 +23,8 @@
  *   --threads N        ONNX Runtime threads per vision model; default 2
  *   --llama-threads N  XNNPACK threads for Llama; default 4
  *   --ort-spin         let ONNX Runtime threads busy-wait after each run (off by default; for A/B timing)
- *   --no-prefix-cache  prefill the whole Llama prompt on every request (for A/B timing)
+ *   --prefix-cache     reuse the KV cache of the fixed start of the Llama prompt (experimental, off by default)
+ *   --no-prefix-cache  prefill the whole Llama prompt on every request (the default)
  *   --brief            print only the fields used by the parity test
  */
 #include "common.hpp"
@@ -41,7 +42,7 @@ namespace {
 
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8] [--no-llama] [--sequential] [--threads N]\n"
-                 "                     [--llama-threads N] [--ort-spin] [--no-prefix-cache] [--brief]\n"
+                 "                     [--llama-threads N] [--ort-spin] [--prefix-cache] [--brief]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
 
@@ -85,6 +86,7 @@ int main(int argc, char** argv) {
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
         else if (a == "--ort-spin") cfg.ortSpin = true;
+        else if (a == "--prefix-cache") cfg.llamaPrefixCache = true;
         else if (a == "--no-prefix-cache") cfg.llamaPrefixCache = false;
         else if (a == "--brief") briefOut = true;
         else if (a == "--list") listFile = next();

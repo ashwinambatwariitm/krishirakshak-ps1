@@ -46,7 +46,7 @@ public:
     // requests, so that each request prefills only its own part (see llama_advisor.cpp).
     static std::unique_ptr<LlamaAdvisor> create(const std::string& ptePath, const std::string& tokenizerPath,
                                                 int maxNewTokens = 120, float temperature = 0.0f, int threads = 4,
-                                                bool prefixCache = true);
+                                                bool prefixCache = false);
 };
 
 }  // namespace kr
