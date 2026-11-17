@@ -42,6 +42,9 @@ struct PipelineConfig {
     int llamaThreads = 4;             // XNNPACK thread pool for Llama (runs after vision, so it gets all 4 cores)
     bool useLlama = true;
     bool parallelVision = true;
+    // ONNX Runtime worker threads normally keep spinning for a while after each run, waiting for more work. Here
+    // Llama runs right after vision on the same four cores, so spinning threads would take CPU time from it.
+    bool ortSpin = false;
 };
 
 class Pipeline {

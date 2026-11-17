@@ -21,8 +21,9 @@ std::string baseName(const std::string& path) {
 }
 }  // namespace
 
-DiseaseClassifier::DiseaseClassifier(const std::string& onnxPath, const std::string& specJsonPath, int threads)
-    : session_(onnxPath, threads), modelName_(baseName(onnxPath)) {
+DiseaseClassifier::DiseaseClassifier(const std::string& onnxPath, const std::string& specJsonPath, int threads,
+                                     bool allowSpinning)
+    : session_(onnxPath, threads, allowSpinning), modelName_(baseName(onnxPath)) {
     const auto spec = nlohmann::json::parse(readFile(specJsonPath));
     classes_ = spec.at("classes").get<std::vector<std::string>>();
     size_ = spec.at("img_size").get<int>();

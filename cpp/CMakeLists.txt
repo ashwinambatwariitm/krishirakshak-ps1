@@ -114,6 +114,10 @@ endif()
 
 add_executable(krishirakshak src/main.cpp)
 
+# Memory bandwidth benchmark (no dependencies); its result feeds tools/perf_model.py
+add_executable(membw tools/membw.cpp)
+target_link_libraries(membw PRIVATE pthread)
+
 # Regression test of the Llama output grounding check (no models needed): build/<dir>/grounding_test <repo root>
 enable_testing()
 add_executable(grounding_test tests/grounding_test.cpp)

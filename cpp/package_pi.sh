@@ -3,6 +3,8 @@
 # root so the binary runs with "--root .":
 #
 #   krishirakshak, grounding_test       aarch64 binaries (build/arm, see cpp/README.md)
+#   membw                               memory bandwidth benchmark (input of the performance model)
+#   tools/perf_model.py                 predicted limits vs measured speed (Python standard library only)
 #   lib/libonnxruntime.so*              ONNX Runtime 1.23.2 for aarch64
 #   models/                             ONNX vision models (FP32 + INT8), Llama .pte + tokenizer
 #   results/...json                     model input/output specifications and thresholds
@@ -20,9 +22,10 @@ OUT="${REPO}/dist/krishirakshak-pi"
 ORT="${ORT_ROOT:-$HOME/arm_libs/onnxruntime-linux-aarch64-1.23.2}"
 
 mkdir -p "${OUT}/lib" "${OUT}/models" "${OUT}/results/int8_ptq" "${OUT}/results/pest_yolov8n_with_negatives" \
-         "${OUT}/app/kb" "${OUT}/photos"
+         "${OUT}/app/kb" "${OUT}/photos" "${OUT}/tools"
 
-cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${OUT}/"
+cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${REPO}/build/arm/membw" "${OUT}/"
+cp "${REPO}/tools/perf_model.py" "${OUT}/tools/"
 cp -P "${ORT}"/lib/libonnxruntime.so* "${OUT}/lib/"
 for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
          pest_yolov8n_ip102_negatives pest_yolov8n_ip102_negatives_int8; do
@@ -44,27 +47,39 @@ fi
 
 cat > "${OUT}/run_benchmarks.sh" <<'EOF'
 #!/usr/bin/env bash
-# Run on the Pi from this folder. Prints the device state, then times the pipeline (FP32 and INT8 vision,
-# with Llama). Results are written to bench/ as JSON, one file per run.
+# Run on the Pi from this folder. Prints the device state, measures the memory bandwidth, then times the pipeline
+# (FP32 and INT8 vision, ONNX Runtime spinning off/on, Llama). Results are written to bench/, one file per run, and
+# the performance model compares the Llama runs with the limits of the hardware (bench/perf_model.txt).
 set -u
 cd "$(dirname "$0")"
 mkdir -p bench
 echo "model: $(tr -d '\0' < /proc/device-tree/model)"; echo "kernel: $(uname -r)"
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
 ./grounding_test . || exit 1
+echo "memory bandwidth ..."
+./membw --mb 256 --threads 4 > bench/membw.json && cat bench/membw.json
 for p in photos/*.jpg; do
   n="$(basename "$p" .jpg)"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama "$p" > "bench/${n}_fp32_vision.json"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --int8 "$p" > "bench/${n}_int8_vision.json"
 done
+# ONNX Runtime spinning A/B: every photo 5 times in one process. Wall time should be about equal; the user CPU time
+# shows what spinning threads burn after each run (time that Llama gets when spinning is off)
+PHOTOS="$(for i in 1 2 3 4 5; do ls photos/*.jpg; done | tr '\n' ' ')"
+for mode in "" "--ort-spin"; do
+  /usr/bin/time -f "vision x5 ${mode:-no-spin}: %e s wall, %U s user CPU, %S s system CPU" \
+    ./krishirakshak --root . --no-llama --brief $mode $PHOTOS > /dev/null
+done 2>&1 | grep wall | tee bench/ort_spin_ab.txt
 for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg; do
   n="$(basename "$p" .jpg)"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . "$p" > "bench/${n}_llama_en.json"
 done
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
+python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
+  --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt
 echo "results in bench/"
 EOF
-chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test"
+chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test" "${OUT}/membw"
 
 du -sh "${OUT}"
 echo "Copy to the Pi:  rsync -a ${OUT}/ pi@<pi-ip>:~/krishirakshak/"

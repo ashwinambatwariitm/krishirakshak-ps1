@@ -34,9 +34,10 @@ std::string Pipeline::path(const std::string& p) const {
 
 Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     Timer t;
-    disease_ = std::make_unique<DiseaseClassifier>(path(cfg_.diseaseOnnx), path(cfg_.diseaseSpec), cfg_.visionThreads);
+    disease_ = std::make_unique<DiseaseClassifier>(path(cfg_.diseaseOnnx), path(cfg_.diseaseSpec), cfg_.visionThreads,
+                                                    cfg_.ortSpin);
     pest_ = std::make_unique<PestDetector>(path(cfg_.pestOnnx), path(cfg_.pestSpec), path(cfg_.pestLabels),
-                                           path(cfg_.pestConfig), cfg_.visionThreads);
+                                           path(cfg_.pestConfig), cfg_.visionThreads, cfg_.ortSpin);
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
 #ifdef KR_WITH_LLM
     if (cfg_.useLlama)
@@ -51,7 +52,8 @@ nlohmann::json Pipeline::info() const {
     return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()},
             {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
-            {"vision_threads_per_model", cfg_.visionThreads}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+            {"vision_threads_per_model", cfg_.visionThreads},
+            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang) {

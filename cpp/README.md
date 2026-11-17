@@ -64,7 +64,42 @@ build/x86-llm/krishirakshak --root . --serve 8080             # web page at http
 ```
 
 Options: `--int8` (INT8 vision models), `--no-llama`, `--sequential`, `--threads N` (per vision model),
-`--llama-threads N`, `--brief`, `--list FILE`.
+`--llama-threads N`, `--ort-spin`, `--brief`, `--list FILE`.
+
+`--ort-spin` lets ONNX Runtime's worker threads busy-wait after each run (its default). The application turns this
+off: Llama runs on the same four cores right after vision, and spinning threads would take CPU time from it. On the
+development PC, 10 photos took the same wall time either way, but 45 % more CPU time with spinning (10.3 s vs
+14.8 s user time); the outputs are identical. `run_benchmarks.sh` repeats this A/B on the Pi.
+
+## Performance model: how fast could it be?
+
+A timing alone does not say whether the application uses the Pi well. `tools/perf_model.py` computes the best
+possible Llama speed from the hardware and the model size, and compares the measurement with it:
+
+| Llama phase | What limits it | Best possible time |
+|---|---|---|
+| Prefill (prompt, all tokens at once) | compute: each weight is reused for every prompt token | multiply-adds / peak int8 multiply-adds per second |
+| Decode (one token per step) | memory bandwidth: each token reads all weights once | weight bytes per token / measured read bandwidth |
+
+Efficiency = best possible time / measured time. Much below 100 % means time is lost (threads, operators outside the
+XNNPACK delegate, throttling); above 100 % means the model of the hardware or of the weights is wrong.
+
+- `membw` (built with the application, no dependencies) measures read and copy bandwidth with 1-4 threads and a
+  working-set sweep that shows the L1 / L2 / L3 / DRAM steps.
+- `tools/perf_model.py` models the Llama weights (4-bit groups with scales, embedding table, output layer, KV
+  cache) and checks the model against the real `.pte` size. Several storage hypotheses are compared; the closest
+  one tells, for example, whether the output layer (128256 x 2048, a fifth of the model) is quantized.
+- `llm/inspect_pte.py` (export environment) lists the operators that run outside the XNNPACK delegate and warns
+  about heavy ones (matrix products, embedding, attention) that would run on the slow generic kernels.
+
+```
+build/arm/membw > membw.json                                   # on the Pi (run_benchmarks.sh does this)
+python -m tools.perf_model --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
+    --measured 'bench/*_llama_en.json'
+python -m llm.inspect_pte models/llama3_2_1b_instruct_8da4w.pte  # needs the executorch Python package
+```
+
+Without measurements, the model gives the limits for the default prompt (295 tokens, 86 generated).
 
 ## Tests
 

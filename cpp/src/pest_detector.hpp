@@ -28,7 +28,7 @@ struct PestDetection {
 class PestDetector {
 public:
     PestDetector(const std::string& onnxPath, const std::string& specJsonPath, const std::string& labelsJsonPath,
-                 const std::string& pestConfigJsonPath, int threads);
+                 const std::string& pestConfigJsonPath, int threads, bool allowSpinning = false);
 
     std::vector<PestDetection> predict(const cv::Mat& imageRgb);
 

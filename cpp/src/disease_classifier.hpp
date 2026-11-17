@@ -23,7 +23,8 @@ struct ClassProbability {
 
 class DiseaseClassifier {
 public:
-    DiseaseClassifier(const std::string& onnxPath, const std::string& specJsonPath, int threads);
+    DiseaseClassifier(const std::string& onnxPath, const std::string& specJsonPath, int threads,
+                      bool allowSpinning = false);
 
     // All classes, sorted from most to least likely.
     std::vector<ClassProbability> predict(const cv::Mat& imageRgb);
