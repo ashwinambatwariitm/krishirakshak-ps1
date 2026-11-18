@@ -189,8 +189,10 @@ def encode(text):
 def build_model(ckpt_dir, kv_cache, state=None):
     """Llama from params.json and the original checkpoint (or a given state dict), on the GPU in DTYPE."""
     params = json.load(open(ckpt_dir / "params.json"))
+    # enable_dynamic_shape as in the exported model: the prompt goes in at once from position 0 (prefill), then
+    # one token per step; without it the cache path expects one position per token (static-shape export)
     args = ModelArgs(max_seq_len=CONTEXT, max_context_len=CONTEXT, use_kv_cache=kv_cache,
-                     generate_full_logits=not kv_cache, **params)
+                     generate_full_logits=not kv_cache, enable_dynamic_shape=kv_cache, **params)
     model = construct_transformer(args)
     if state is None:
         state = torch.load(ckpt_dir / "consolidated.00.pth", map_location="cpu", mmap=True, weights_only=True)

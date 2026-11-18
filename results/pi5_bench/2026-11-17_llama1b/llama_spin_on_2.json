@@ -1,0 +1,240 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 11,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 12,
+     "note": "",
+     "product": "",
+     "section": "spread",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Spreads through tiny air-borne spores and thrives in wet, humid conditions (15-18 degree C, humidity above 90%). In just 4-5 days the infection spreads widely, causing outbreaks.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "",
+     "id": 13,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "",
+     "id": 14,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Proper drainage. Crop rotation.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 15,
+     "note": "",
+     "product": "",
+     "section": "biological",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Soil application of Trichoderma asperellum (viride) @ 1.0 kg/ac.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "2.5 g/litre",
+     "id": 16,
+     "note": "Apply 6 times at 6-day intervals along with soil mulching (preventive, before or at first symptoms).",
+     "product": "Copper oxychloride 50% WP",
+     "section": "chemical",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Spray Copper oxychloride 50% WP @ 2.5 g/litre. Apply 6 times at 6-day intervals along with soil mulching (preventive, before or at first symptoms).",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "0.75 g/litre",
+     "id": 17,
+     "note": "Label claim (CIB&RC) for early blight, leaf spot and late blight.",
+     "product": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+     "section": "chemical",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "600 g in 200-300 l of water/acre",
+     "id": 19,
+     "note": "One of the options listed for Alternaria blight and late blight in the NIPHM package.",
+     "product": "Cymoxanil 8% + Mancozeb 64% WP",
+     "section": "chemical",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Spray Cymoxanil 8% + Mancozeb 64% WP @ 600 g in 200-300 l of water/acre. One of the options listed for Alternaria blight and late blight in the NIPHM package.",
+     "topic": "late_blight",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 60,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 61,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Late blight",
+   "topic": "late_blight"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Late blight",
+  "reliability": "medium",
+  "top": [
+   {
+    "class": "late_blight",
+    "probability": 0.9506918787956238
+   },
+   {
+    "class": "healthy",
+    "probability": 0.011458996683359146
+   },
+   {
+    "class": "yellow_leaf_curl_virus",
+    "probability": 0.01115847285836935
+   }
+  ],
+  "topic": "late_blight",
+  "urgent": true
+ },
+ "lang": "en",
+ "llama": {
+  "accepted": false,
+  "dropped_sentences": [
+   "I.",
+   "Remove the old plant waste from the field and destroy it.",
+   "II.",
+   "III.",
+   "Remove the old plant waste from the field and destroy it.",
+   "IV.",
+   "Avoid overhead irrigation.",
+   "V.",
+   "Remove the old plant waste from the field and destroy it.",
+   "VI.",
+   "Avoid overhead irrigation.",
+   "VII.",
+   "Remove the old plant waste from the field and destroy it.",
+   "VIII.",
+   "Avoid overhead irrigation.",
+   "IX.",
+   "Remove the old plant waste from the field and destroy it.",
+   "X.",
+   "Avoid overhead irrigation.",
+   "IX.",
+   "Remove the old plant waste from the field and destroy it.",
+   "X.",
+   "Avoid overhead irrigation.",
+   "IX.",
+   "Remove the old plant waste from the field and destroy it.",
+   "X.",
+   "Avoid overhead irrigation.",
+   "IX.",
+   "Remove the old plant waste from the field and destroy it.",
+   "X."
+  ],
+  "raw_text": "I. Remove the old plant waste from the field and destroy it.\nII. Avoid overhead irrigation.\nIII. Remove the old plant waste from the field and destroy it.\nIV. Avoid overhead irrigation.\nV. Remove the old plant waste from the field and destroy it.\nVI. Avoid overhead irrigation.\nVII. Remove the old plant waste from the field and destroy it.\nVIII. Avoid overhead irrigation.\nIX. Remove the old plant waste from the field and destroy it.\nX. Avoid overhead irrigation.\nIX. Remove the old plant waste from the field and destroy it.\nX. Avoid overhead irrigation.\nIX. Remove the old plant waste from the field and destroy it.\nX. Avoid overhead irrigation.\nIX. Remove the old plant waste from the field and destroy it.\nX.",
+  "rejected_reasons": [
+   "too_few_grounded_sentences:1"
+  ],
+  "stats": {
+   "generated_tokens": 159,
+   "ok": true,
+   "prompt_tokens": 295,
+   "time_to_first_token_s": 2.457,
+   "tokens_per_s": 13.635194237200926,
+   "total_s": 14.117444073
+  },
+  "text": null
+ },
+ "messages": [
+  "The spray options below are copied from ICAR, NIPHM and TNAU publications. Use only one product, follow the label, observe the waiting period before harvest and wear protective clothing. Confirm with your KVK or agriculture officer if unsure."
+ ],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 121.63623621323529,
+   "height": 499,
+   "sharpness": 342.5343672702552,
+   "width": 750
+  },
+  "ok": true
+ },
+ "severity": {
+  "lesion_share": 0.10232365918113133,
+  "level": "moderate",
+  "method": "hsv_colour_ratio"
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 58.786511,
+  "llama": 14117.473276,
+  "pest": 261.341787,
+  "quality": 2.388751,
+  "retrieval": 0.274173,
+  "severity": 2.335457,
+  "total": 14384.32494,
+  "vision_wall": 261.515354
+ }
+}

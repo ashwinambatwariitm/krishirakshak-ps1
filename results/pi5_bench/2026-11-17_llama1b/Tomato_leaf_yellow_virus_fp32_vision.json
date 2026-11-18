@@ -1,0 +1,179 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 33,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_LC",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Leaf curl (updated Jun 2023)",
+     "text": "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_6.html"
+    },
+    {
+     "dose": "",
+     "id": 34,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 35,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Use 100-mesh nylon net on nursery beds to stop whitefly entry and leaf curl transmission. Grow 5-6 rows of sorghum or maize around the tomato field at least 2 months before transplanting as a barrier against whiteflies, thrips and aphids.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "",
+     "id": 37,
+     "note": "",
+     "product": "",
+     "section": "biological",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Conserve whitefly parasitoids (Encarsia, Eretmocerus) and predators. Spray neem seed kernel extract (NSKE) 5% or azadirachtin 5% W/W neem extract concentrate @ 80 g in 160 l of water/acre.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 36,
+     "note": "",
+     "product": "",
+     "section": "resistant_varieties",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Tolerant/resistant varieties for tomato leaf curl virus: Arka Ananya, Kashi Vishesh, Kashi Amrit, COTH 2, TNAU Tomato Hybrid Co3.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "0.5 ml/litre",
+     "id": 38,
+     "note": "Label claim (CIB&RC) against the whitefly vector. Alternative: Thiamethoxam 25% WP 0.4 g/litre.",
+     "product": "Imidacloprid 17.8% SL",
+     "section": "chemical",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Spray Imidacloprid 17.8% SL @ 0.5 ml/litre. Label claim (CIB&RC) against the whitefly vector. Alternative: Thiamethoxam 25% WP 0.4 g/litre.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "60-70 ml in 200 l of water/acre, roots dipped for 15 minutes before transplanting",
+     "id": 39,
+     "note": "For management of the leaf curl vector.",
+     "product": "Imidacloprid 17.8% SL (seedling root dip)",
+     "section": "chemical",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Spray Imidacloprid 17.8% SL (seedling root dip) @ 60-70 ml in 200 l of water/acre, roots dipped for 15 minutes before transplanting. For management of the leaf curl vector.",
+     "topic": "yellow_leaf_curl_virus",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 60,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 61,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Tomato leaf curl virus",
+   "topic": "yellow_leaf_curl_virus"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Tomato leaf curl virus",
+  "reliability": "good",
+  "top": [
+   {
+    "class": "yellow_leaf_curl_virus",
+    "probability": 0.9489696621894836
+   },
+   {
+    "class": "early_blight",
+    "probability": 0.011480110697448254
+   },
+   {
+    "class": "late_blight",
+    "probability": 0.011445037089288235
+   }
+  ],
+  "topic": "yellow_leaf_curl_virus",
+  "urgent": false
+ },
+ "lang": "en",
+ "llama": null,
+ "messages": [
+  "The spray options below are copied from ICAR, NIPHM and TNAU publications. Use only one product, follow the label, observe the waiting period before harvest and wear protective clothing. Confirm with your KVK or agriculture officer if unsure."
+ ],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 132.5116424560547,
+   "height": 240,
+   "sharpness": 333.3706034715804,
+   "width": 320
+  },
+  "ok": true
+ },
+ "severity": {
+  "lesion_share": 0.051207767962844916,
+  "level": "low",
+  "method": "hsv_colour_ratio"
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 77.106291,
+  "pest": 263.365685,
+  "quality": 2.820048,
+  "retrieval": 0.271285,
+  "severity": 1.569693,
+  "total": 268.227127,
+  "vision_wall": 263.508419
+ }
+}
