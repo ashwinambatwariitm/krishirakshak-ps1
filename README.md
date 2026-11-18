@@ -86,6 +86,19 @@ leaf_photo.jpg
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before making changes and pick a task from [docs/ROADMAP.md](docs/ROADMAP.md).
 
+## Team tasks (Phase 1, until Friday 20 November 2026)
+
+Each task has a work order with inputs, steps, deliverables and acceptance checks, and can be done without the
+Raspberry Pi:
+
+| Task | Work order | Start with |
+|---|---|---|
+| Farmer mobile app (web app served by the Pi, phone over the Pi's Wi-Fi hotspot) | [docs/handover/KrishiRakshak_App_Work_Order_Onkar.pdf](docs/handover/KrishiRakshak_App_Work_Order_Onkar.pdf) | [docs/APP_API.md](docs/APP_API.md), `python tools/mock_api_server.py` |
+| Llama 3.2 1B advisor quality (on a laptop) | [docs/handover/LLAMA_1B_TASK_AMAN.md](docs/handover/LLAMA_1B_TASK_AMAN.md) (PDF next to it) | `gh release download llm-v1 --dir models`, `python -m llm.eval_advisor` |
+
+Model files: vision models in release `models-v2`, Llama 3.2 1B (ExecuTorch, INT4) with its licence in release
+`llm-v1`. Built with Llama.
+
 ## How to train on Kaggle
 
 1. Create a Kaggle account with phone verification (needed for GPU and internet) and install the Kaggle command-line
