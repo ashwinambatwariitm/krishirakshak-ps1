@@ -1,0 +1,155 @@
+[
+ {
+  "topic": "healthy",
+  "text": "Rotate tomato plants with non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept": "Rotate tomato plants with non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "healthy",
+  "text": "Rotate your tomato crop with other non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept": "Rotate your tomato crop with other non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "healthy",
+  "text": "Rotate tomato plants with non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept": "Rotate tomato plants with non-host crops like cereals and legumes. Do not plant tomatoes with chillies or brinjals.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "text": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin appear on the leaves. Irregular leaf spots appear on the margins of the leaves. This disease appears on the leaves at any stage of the plant's growth.",
+  "kept": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin appear on the leaves. Irregular leaf spots appear on the margins of the leaves.",
+  "kept_sentences": 2,
+  "dropped": [
+   "This disease appears on the leaves at any stage of the plant's growth."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "text": "Remove and destroy the crop debris. Follow the crop rotation.",
+  "kept": "Remove and destroy the crop debris. Follow the crop rotation.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "text": "Remove and destroy crop debris. Use resistant or tolerant cultivars. Change the nursery bed every season.",
+  "kept": "Remove and destroy crop debris. Use resistant or tolerant cultivars. Change the nursery bed every season.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "text": "Black lesions appear on leaves and stems, and the lesions expand rapidly. The entire leaf becomes necrotic. White sporulation is seen on leaves. Blight appears on the foliage as a light-pale green water-soaked dead area. The lesions are wet in the morning and dry in the daylight.",
+  "kept": "The entire leaf becomes necrotic. White sporulation is seen on leaves. Blight appears on the foliage as a light-pale green water-soaked dead area. The lesions are wet in the morning and dry in the daylight.",
+  "kept_sentences": 4,
+  "dropped": [
+   "Black lesions appear on leaves and stems, and the lesions expand rapidly."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "text": "Rotate your tomato crop with a non-solanaceous host every year. Use healthy and certified seeds from a disease-free area. Plant windbreaks to prevent late sowing in the monsoon season.",
+  "kept": "Use healthy and certified seeds from a disease-free area. Plant windbreaks to prevent late sowing in the monsoon season.",
+  "kept_sentences": 2,
+  "dropped": [
+   "Rotate your tomato crop with a non-solanaceous host every year."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "text": "Rotate your tomato crop with a non-solanaceous variety every year. Ensure good drainage in your field.",
+  "kept": "",
+  "kept_sentences": 0,
+  "dropped": [
+   "Rotate your tomato crop with a non-solanaceous variety every year.",
+   "Ensure good drainage in your field."
+  ],
+  "accepted": false
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "text": "Small, round to irregular spots with a grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+  "kept": "Small, round to irregular spots with a grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+  "kept_sentences": 4,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "text": "Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+  "kept": "Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "text": "Small, round to irregular spots with a grey centre and dark margin on leaves. Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+  "kept": "Small, round to irregular spots with a grey centre and dark margin on leaves. Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+  "kept_sentences": 5,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "bacterial_spot",
+  "text": "Small, brown, water-soaked, circular spots with a yellow halo appear on leaves. Use disease-free seed.",
+  "kept": "Small, brown, water-soaked, circular spots with a yellow halo appear on leaves. Use disease-free seed.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "bacterial_spot",
+  "text": "Use disease-free seed.",
+  "kept": "Use disease-free seed.",
+  "kept_sentences": 1,
+  "dropped": [],
+  "accepted": false
+ },
+ {
+  "topic": "bacterial_spot",
+  "text": "Use disease-free seed. Rotate the nursery seedbed and main field. Plant urd and mung as mulches to prevent rain splash.",
+  "kept": "Use disease-free seed. Rotate the nursery seedbed and main field. Plant urd and mung as mulches to prevent rain splash.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "text": "Whiteflies spread the virus. Choose seed from disease-free healthy plants. Remove and destroy infected plants in the nursery.",
+  "kept": "Whiteflies spread the virus. Choose seed from disease-free healthy plants. Remove and destroy infected plants in the nursery.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "text": "Plant Sorghum, Maize or Bajra as a barrier crop. Use disease-free seeds.",
+  "kept": "Plant Sorghum, Maize or Bajra as a barrier crop. Use disease-free seeds.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "text": "Remove and destroy infected plants in the nursery. Use a 100-mesh nylon net on nursery beds.",
+  "kept": "Remove and destroy infected plants in the nursery. Use a 100-mesh nylon net on nursery beds.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ }
+]
