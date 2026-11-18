@@ -15,6 +15,7 @@
 
 #include <json.hpp>
 
+#include <functional>
 #include <memory>
 #include <string>
 #include <vector>
@@ -26,21 +27,32 @@ struct LlamaOutput {
     nlohmann::json stats;    // prompt/generated tokens, time to first token, tokens per second, total seconds
 };
 
+// Called with every generated text piece as soon as it is decoded (for streaming to the web page).
+using TokenFn = std::function<void(const std::string&)>;
+
+struct LlamaOptions {
+    int maxNewTokens = 160;
+    float temperature = 0.0f;
+    int threads = 4;               // XNNPACK thread pool (4 on the Raspberry Pi 5; 0 = ExecuTorch default)
+    // Decoding steered towards the facts (both off by default; measured with --eval-advisor before enabling):
+    float factBias = 0.0f;         // added to the logit of every token that occurs in the facts given to Llama
+    bool blockCauseWords = false;  // forbid single-token cause words (fungus, bacteria, virus...) absent from the facts
+};
+
 class LlamaAdvisor {
 public:
     virtual ~LlamaAdvisor() = default;
 
     // Explanation of a diagnosis from the retrieved extracts (spray rows are not given to Llama).
     virtual LlamaOutput advise(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
-                               const std::string& lang) = 0;
+                               const std::string& lang, const TokenFn& onToken = {}) = 0;
     // Answer to a follow-up question from the retrieved extracts (product names and doses copied verbatim).
     virtual LlamaOutput answer(const std::string& question, const std::vector<KbChunk>& facts,
-                               const std::string& lang) = 0;
+                               const std::string& lang, const TokenFn& onToken = {}) = 0;
 
     // Loads the .pte and tokenizer from local disk; returns nullptr if the files are missing.
-    // threads: size of the XNNPACK thread pool (4 on the Raspberry Pi 5; 0 = ExecuTorch default).
     static std::unique_ptr<LlamaAdvisor> create(const std::string& ptePath, const std::string& tokenizerPath,
-                                                int maxNewTokens = 120, float temperature = 0.0f, int threads = 4);
+                                                const LlamaOptions& options);
 };
 
 }  // namespace kr

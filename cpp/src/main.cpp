@@ -13,6 +13,8 @@
  *   krishirakshak [options] --list files.txt              same, photo paths read from a file (parity tests)
  *   krishirakshak [options] --ask "question" --topic late_blight
  *   krishirakshak [options] --serve 8080                  farmer web page at http://<pi-ip>:8080/
+ *   krishirakshak [options] --eval-advisor demo           Llama summary per topic without photos, scored by the
+ *                                                         grounding check (demo = six diseases, or a comma list)
  * Options:
  *   --bind ADDR        address for --serve; default 0.0.0.0 (reachable over the Pi's Wi-Fi hotspot)
  *   --root DIR         repository root (models/, results/, app/kb/); default "."
@@ -26,6 +28,8 @@
  *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_instruct_8da4w.pte
  *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
  *   --ort-spin         let ONNX Runtime threads busy-wait after each run (off by default; for A/B timing)
+ *   --fact-bias X      add X to the logits of tokens that occur in the facts (Llama decoding; default 0 = off)
+ *   --block-cause-words  forbid cause words (fungus, bacteria, virus...) that the facts do not contain
  *   --brief            print only the fields used by the parity test
  */
 #include "common.hpp"
@@ -43,8 +47,10 @@ namespace {
 
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
-                 "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
-                 "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
+                 "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--fact-bias X]\n"
+                 "                     [--block-cause-words] [--brief]\n"
+                 "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC] | --serve PORT\n"
+                 "                      | --eval-advisor demo|TOPIC,TOPIC)\n";
 }
 
 // Reduced result for the parity test against the Python reference (tools/cpp_parity.py)
@@ -65,7 +71,7 @@ nlohmann::json brief(const std::string& path, const nlohmann::json& r) {
 
 int main(int argc, char** argv) {
     kr::PipelineConfig cfg;
-    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0";
+    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0", evalTopics;
     bool briefOut = false;
     int servePort = 0;
     std::vector<std::string> photos;
@@ -91,6 +97,9 @@ int main(int argc, char** argv) {
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
         else if (a == "--llama-pte") cfg.llamaPte = next();
         else if (a == "--ort-spin") cfg.ortSpin = true;
+        else if (a == "--fact-bias") cfg.llamaFactBias = std::stof(next());
+        else if (a == "--block-cause-words") cfg.llamaBlockCauseWords = true;
+        else if (a == "--eval-advisor") evalTopics = next();
         else if (a == "--brief") briefOut = true;
         else if (a == "--list") listFile = next();
         else if (a == "--ask") question = next();
@@ -108,7 +117,7 @@ int main(int argc, char** argv) {
         std::ifstream in(listFile);
         for (std::string line; std::getline(in, line);) if (!line.empty()) photos.push_back(line);
     }
-    if (photos.empty() && question.empty() && servePort == 0) { usage(); return 2; }
+    if (photos.empty() && question.empty() && servePort == 0 && evalTopics.empty()) { usage(); return 2; }
 
     try {
         kr::Pipeline pipe(cfg);
@@ -123,6 +132,21 @@ int main(int argc, char** argv) {
                 if (img.empty()) return nlohmann::json({{"status", "not_an_image"}, {"messages", nlohmann::json::array()}}).dump();
                 return pipe.analyse(img, useLang).dump();
             };
+            // Streaming variant: newline-delimited JSON events ({"event": "result" | "token" | "final", ...})
+            server.analyseStream = [&](const std::string& bytes, const std::string& l,
+                                       const std::function<void(const std::string&)>& emit) {
+                const cv::Mat img = kr::decodeImageRgb(bytes);
+                const std::string useLang = (l == "hi") ? "hi" : "en";
+                if (img.empty()) {
+                    emit(nlohmann::json({{"event", "final"}, {"data", {{"status", "not_an_image"}, {"messages", nlohmann::json::array()}}}}).dump());
+                    return;
+                }
+                const auto r = pipe.analyse(img, useLang, [&](const std::string& ev, const nlohmann::json& data) {
+                    if (ev == "token") emit(nlohmann::json({{"event", "token"}, {"text", data["text"]}}).dump());
+                    else emit(nlohmann::json({{"event", ev}, {"data", data}}).dump());
+                });
+                emit(nlohmann::json({{"event", "final"}, {"data", r}}).dump());
+            };
             server.ask = [&](const std::string& body) {
                 const auto j = nlohmann::json::parse(body);
                 const std::string t = j.contains("topic") && j["topic"].is_string() ? j["topic"].get<std::string>() : "";
@@ -135,6 +159,42 @@ int main(int argc, char** argv) {
         }
         if (!question.empty()) {
             std::cout << pipe.followUp(question, topic, lang).dump(1) << "\n";
+            return 0;
+        }
+        if (!evalTopics.empty()) {
+            // Same six demo diseases as llm/eval_advisor.py; or an explicit comma-separated list of topics
+            std::vector<std::string> topics;
+            if (evalTopics == "demo") {
+                topics = {"healthy", "early_blight", "late_blight", "septoria_leaf_spot", "bacterial_spot",
+                          "yellow_leaf_curl_virus"};
+            } else {
+                for (size_t s = 0; s <= evalTopics.size();) {
+                    const size_t c = evalTopics.find(',', s);
+                    const std::string tp = evalTopics.substr(s, c == std::string::npos ? std::string::npos : c - s);
+                    if (!tp.empty()) topics.push_back(tp);
+                    if (c == std::string::npos) break;
+                    s = c + 1;
+                }
+            }
+            int accepted = 0, grounded = 0, dropped = 0, evaluated = 0;
+            double seconds = 0;
+            for (const auto& tp : topics) {
+                const auto r = pipe.evalAdvisor(tp);
+                std::cout << r.dump() << "\n";
+                if (!r["llama"].is_object()) continue;
+                ++evaluated;
+                accepted += r["llama"]["accepted"].get<bool>() ? 1 : 0;
+                grounded += r["llama"]["grounded_sentences"].get<int>();
+                dropped += static_cast<int>(r["llama"]["dropped_sentences"].size());
+                seconds += r["llama"]["stats"].value("total_s", 0.0);
+                std::cerr << tp << ": " << (r["llama"]["accepted"].get<bool>() ? "accepted" : "rejected") << ", "
+                          << r["llama"]["grounded_sentences"] << " grounded, " << r["llama"]["dropped_sentences"].size()
+                          << " dropped, " << r["llama"]["stats"].value("total_s", 0.0) << " s\n";
+            }
+            std::cout << nlohmann::json({{"summary", {{"topics", evaluated}, {"accepted", accepted},
+                                                      {"grounded_sentences", grounded}, {"dropped_sentences", dropped},
+                                                      {"llama_seconds", seconds}, {"config", pipe.info()}}}}).dump()
+                      << "\n";
             return 0;
         }
         for (const auto& path : photos) {

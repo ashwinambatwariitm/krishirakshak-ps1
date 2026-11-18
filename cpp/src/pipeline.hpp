@@ -19,12 +19,20 @@
 
 #include <json.hpp>
 
+#include <functional>
 #include <memory>
 #include <string>
 
 namespace kr {
 
 class LlamaAdvisor;   // defined in llama_advisor.hpp, only when built with ExecuTorch
+struct KbChunk;
+
+// Progress events of one analysis, for streaming to the web page:
+//   "result"  the result without the Llama summary (diagnosis, notes, verified extracts), sent before Llama starts
+//   "token"   {"text": piece} for every generated Llama text piece
+// The complete result (with the checked Llama summary) is the return value of analyse().
+using EventFn = std::function<void(const std::string& event, const nlohmann::json& data)>;
 
 struct PipelineConfig {
     std::string repoRoot = ".";       // other paths are relative to this unless absolute
@@ -45,6 +53,9 @@ struct PipelineConfig {
     // ONNX Runtime worker threads normally keep spinning for a while after each run, waiting for more work. Here
     // Llama runs right after vision on the same four cores, so spinning threads would take CPU time from it.
     bool ortSpin = false;
+    // Llama decoding steered towards the facts (see LlamaOptions in llama_advisor.hpp); off by default
+    float llamaFactBias = 0.0f;
+    bool llamaBlockCauseWords = false;
 };
 
 class Pipeline {
@@ -52,13 +63,18 @@ public:
     explicit Pipeline(PipelineConfig cfg);
     ~Pipeline();
 
-    nlohmann::json analyse(const cv::Mat& imageRgb, const std::string& lang);
+    nlohmann::json analyse(const cv::Mat& imageRgb, const std::string& lang, const EventFn& onEvent = {});
+    // Llama summary for one topic without a photo, exactly as analyse() would produce it after that diagnosis
+    // (confidence 92 %, medium spread, like llm/eval_advisor.py): for measuring prompt and decoding changes.
+    nlohmann::json evalAdvisor(const std::string& topic);
     nlohmann::json followUp(const std::string& question, const std::string& topic, const std::string& lang);
     nlohmann::json info() const;
     bool llamaReady() const;
 
 private:
     std::string path(const std::string& p) const;
+    nlohmann::json runAdvisor(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
+                              const std::string& topic, const std::string& lang, const EventFn& onEvent);
     PipelineConfig cfg_;
     std::unique_ptr<DiseaseClassifier> disease_;
     std::unique_ptr<PestDetector> pest_;

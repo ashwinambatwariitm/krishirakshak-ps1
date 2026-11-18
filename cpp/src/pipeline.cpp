@@ -41,7 +41,13 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
 #ifdef KR_WITH_LLM
     if (cfg_.useLlama)
-        llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), 160, 0.0f, cfg_.llamaThreads);
+    {
+        LlamaOptions lo;
+        lo.threads = cfg_.llamaThreads;
+        lo.factBias = cfg_.llamaFactBias;
+        lo.blockCauseWords = cfg_.llamaBlockCauseWords;
+        llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), lo);
+    }
 #endif
     loadMs_ = t.ms();
 }
@@ -53,10 +59,11 @@ nlohmann::json Pipeline::info() const {
             {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
             {"vision_threads_per_model", cfg_.visionThreads},
-            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+            {"ort_spinning", cfg_.ortSpin}, {"llama_fact_bias", cfg_.llamaFactBias},
+            {"llama_block_cause_words", cfg_.llamaBlockCauseWords}, {"load_ms", loadMs_}, {"runtime", "C++"}};
 }
 
-nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang) {
+nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const EventFn& onEvent) {
     nlohmann::json result = {{"lang", lang}};
     nlohmann::json timings;
     Timer total;
@@ -174,19 +181,17 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         } else {
             line = "An insect pest was found on the tomato plant: " + kb_->topicName(topics.front(), "en") + ".";
         }
-        t.reset();
-        const LlamaOutput out = llama_->advise(line, blockChunks.front(), lang);
-        timings["llama"] = t.ms();
-        // 1. drop sentences not supported by the sources; 2. safety/language checks on what remains
-        const GroundingResult gr = keepGroundedSentences(out.text, blockChunks.front());
-        GuardResult g = checkOutput(gr.kept, blockChunks.front(), lang, topics.front());
-        if (gr.keptCount < kMinGroundedSentences) {
-            g.ok = false;
-            g.reasons.push_back("too_few_grounded_sentences:" + std::to_string(gr.keptCount));
+        // Everything except the Llama summary is ready now (about 0.3 s on the Pi): send it to a streaming client
+        if (onEvent) {
+            nlohmann::json early = result;
+            early["llama"] = {{"pending", true}};
+            timings["total"] = total.ms();
+            early["timings_ms"] = timings;
+            onEvent("result", early);
         }
-        result["llama"] = {{"text", g.ok ? nlohmann::json(gr.kept) : nullptr}, {"accepted", g.ok},
-                           {"rejected_reasons", g.reasons}, {"dropped_sentences", gr.dropped},
-                           {"raw_text", out.text}, {"stats", out.stats}};
+        t.reset();
+        result["llama"] = runAdvisor(line, blockChunks.front(), topics.front(), lang, onEvent);
+        timings["llama"] = t.ms();
     } else if (llama_ && lang == "hi") {
         // Llama 3.2 1B produced fluent but meaningless Hindi in tests: the Hindi page shows the reviewed Hindi
         // extracts only.
@@ -196,6 +201,46 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     timings["total"] = total.ms();
     result["timings_ms"] = timings;
     return result;
+}
+
+nlohmann::json Pipeline::runAdvisor(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
+                                    const std::string& topic, const std::string& lang, const EventFn& onEvent) {
+#ifdef KR_WITH_LLM
+    TokenFn onToken;
+    if (onEvent) onToken = [&](const std::string& piece) { onEvent("token", {{"text", piece}}); };
+    const LlamaOutput out = llama_->advise(diagnosisLine, facts, lang, onToken);
+    // 1. drop sentences not supported by the sources; 2. safety/language checks on what remains
+    const GroundingResult gr = keepGroundedSentences(out.text, facts);
+    GuardResult g = checkOutput(gr.kept, facts, lang, topic);
+    if (gr.keptCount < kMinGroundedSentences) {
+        g.ok = false;
+        g.reasons.push_back("too_few_grounded_sentences:" + std::to_string(gr.keptCount));
+    }
+    return {{"text", g.ok ? nlohmann::json(gr.kept) : nullptr}, {"accepted", g.ok},
+            {"grounded_sentences", gr.keptCount}, {"rejected_reasons", g.reasons},
+            {"dropped_sentences", gr.dropped}, {"raw_text", out.text}, {"stats", out.stats}};
+#else
+    (void)diagnosisLine; (void)facts; (void)topic; (void)lang; (void)onEvent;
+    return nullptr;
+#endif
+}
+
+nlohmann::json Pipeline::evalAdvisor(const std::string& topic) {
+    nlohmann::json r = {{"topic", topic}, {"name", kb_->topicName(topic, "en")}};
+    const auto facts = kb_->retrieveForDiagnosis(topic, "en");
+    r["facts"] = static_cast<int>(facts.size());
+    if (!llama_ || facts.empty()) {
+        r["llama"] = nullptr;
+        return r;
+    }
+    // Same diagnosis line as analyse() and llm/eval_advisor.py (confidence 92 %, medium spread)
+    std::string line = "Diagnosis: " + kb_->topicName(topic, "en") + " on a tomato leaf (model confidence 92%).";
+    line += " Estimated spread on the photographed leaf: medium.";
+    if (kb_->urgent(topic)) line += " This disease is urgent: it spreads very fast.";
+    if (kb_->reliability(topic) == "low")
+        line += " The photo result is not certain; the farmer should confirm with the local KVK.";
+    r["llama"] = runAdvisor(line, facts, topic, "en", {});
+    return r;
 }
 
 nlohmann::json Pipeline::followUp(const std::string& question, const std::string& topic, const std::string& lang) {

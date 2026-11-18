@@ -86,6 +86,23 @@ Display rules (these are safety rules, not style):
 - The Llama text is shown only when `llama.text` is not null, and always together with the extracts.
 - In Hindi (`lang=hi`) the names, extracts and messages are already in Hindi; there is no Llama text.
 
+### `POST /api/analyse_stream?lang=en|hi` (optional, faster feeling)
+Same body as `/api/analyse`. The answer is a stream of JSON objects, one per line (`application/x-ndjson`), sent as
+soon as each part is ready, so the app can show the diagnosis after about 0.3 s instead of waiting 10-20 s:
+
+| Line | When | What the app does |
+|---|---|---|
+| `{"event": "result", "data": {...}}` | after vision and retrieval (about 0.3 s on the Pi) | show the result screen from `data` (same fields as `/api/analyse`; `llama` is `{"pending": true}`) |
+| `{"event": "token", "text": "..."}` | for every piece of text Llama writes | optional: append `text` to a "writing a summary..." box, in a muted style |
+| `{"event": "final", "data": {...}}` | at the end | replace everything with `data`: exactly the `/api/analyse` answer, with the checked `llama.text` |
+| `{"event": "error", "message": "..."}` | on a device error | show an error and offer to try again |
+
+- The streamed tokens are **not checked yet**: show them as "being written", and show only `final.data.llama.text`
+  as advice (it is null when the check rejects the summary). The `result` line is not sent for photos that need a
+  retake or when Llama is not used (Hindi); then only the `final` line comes.
+- Read the body incrementally (OkHttp `source().readUtf8Line()`, Dart `stream.transform(utf8.decoder).transform(const
+  LineSplitter())`, browser `response.body.getReader()`). `/api/analyse` stays available and unchanged.
+
 ### `POST /api/ask`
 Body (JSON): `{"question": "when can I harvest after spraying?", "topic": "late_blight", "lang": "en"}`
 (`topic` from the last `disease.topic`, may be null).

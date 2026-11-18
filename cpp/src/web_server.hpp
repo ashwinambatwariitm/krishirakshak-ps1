@@ -9,6 +9,10 @@
  *   GET  /                      farmer web page
  *   GET  /api/info              JSON: models, runtime, knowledge-base version
  *   POST /api/analyse?lang=en   body = raw JPEG/PNG bytes of the photo -> JSON result
+ *   POST /api/analyse_stream?lang=en  same body -> newline-delimited JSON events, sent as they happen:
+ *                               {"event":"result","data":{...}}  result without the Llama summary (about 0.3 s)
+ *                               {"event":"token","text":"..."}   each generated Llama text piece
+ *                               {"event":"final","data":{...}}   complete result, same fields as /api/analyse
  *   POST /api/ask               body = {"question": "...", "topic": "late_blight", "lang": "en"} -> JSON answer
  *
  * Requests are handled on their own threads, but the application callbacks are serialised by a mutex: the
@@ -37,6 +41,9 @@ public:
     std::function<std::string()> getInfo;
     std::function<std::string(const std::string& imageBytes, const std::string& lang)> analyse;
     std::function<std::string(const std::string& jsonBody)> ask;
+    // Streaming analysis: calls emit(line) for every event (one JSON object per line, without the newline)
+    std::function<void(const std::string& imageBytes, const std::string& lang,
+                       const std::function<void(const std::string&)>& emit)> analyseStream;
     std::function<std::string()> pageHtml;
 
     static constexpr size_t kMaxBody = 15 * 1024 * 1024;   // 15 MB photo limit
@@ -163,6 +170,25 @@ private:
             } else if (method == "POST" && route == "/api/analyse") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
                 reply(fd, "200 OK", "application/json; charset=utf-8", analyse(body, queryParam(query, "lang", "en")));
+            } else if (method == "POST" && route == "/api/analyse_stream" && analyseStream) {
+                std::lock_guard<std::mutex> lock(pipelineMutex_);
+                // No Content-Length: the body ends when the connection closes (HTTP/1.1, Connection: close)
+                const std::string hdr = "HTTP/1.1 200 OK\r\nContent-Type: application/x-ndjson; charset=utf-8"
+                                        "\r\nCache-Control: no-store\r\nX-Accel-Buffering: no\r\nConnection: close\r\n\r\n";
+                bool clientOpen = sendAll(fd, hdr.data(), hdr.size());
+                auto emit = [&](const std::string& line) {
+                    if (!clientOpen) return;                 // the phone went away: finish the analysis quietly
+                    const std::string l = line + "\n";
+                    clientOpen = sendAll(fd, l.data(), l.size());
+                };
+                try {
+                    analyseStream(body, queryParam(query, "lang", "en"), emit);
+                } catch (const std::exception& e) {          // headers are already sent: report as an event
+                    std::string msg = e.what();
+                    for (auto& ch : msg) if (ch == '"' || ch == '\\' || static_cast<unsigned char>(ch) < 0x20) ch = ' ';
+                    emit("{\"event\":\"error\",\"message\":\"" + msg + "\"}");
+                }
+                ::close(fd);
             } else if (method == "POST" && route == "/api/ask") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
                 reply(fd, "200 OK", "application/json; charset=utf-8", ask(body));

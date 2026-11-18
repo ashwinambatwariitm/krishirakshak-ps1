@@ -66,6 +66,26 @@ build/x86-llm/krishirakshak --root . --serve 8080             # web page at http
 Options: `--int8` (INT8 vision models), `--no-llama`, `--sequential`, `--threads N` (per vision model),
 `--llama-threads N`, `--ort-spin`, `--brief`, `--list FILE`.
 
+### Llama output quality and streaming (branch llama-quality-speed)
+
+- `--eval-advisor demo` runs the Llama summary for the six demo diseases without photos (same prompt and grounding
+  check as a real diagnosis) and prints one JSON line per topic plus a summary: accepted answers, grounded and dropped
+  sentences, Llama seconds. Use it to compare decoding options before trying them on the Pi.
+- `--fact-bias X` adds X to the logit of every token that occurs in the facts given to Llama, so wording from the
+  sources wins close calls (try 1-3). `--block-cause-words` forbids single-token cause words (fungus, bacteria,
+  virus, caused, ...) that the facts do not contain. Both are off by default; the first generated token comes from
+  prefill and is not steered.
+- Repeated sentences are now caught when they are nearly the same (80 % of content words shared), not only when
+  identical; on the Pi the 1B model looped with "The disease is (also) highly contagious..." to the token limit.
+- `POST /api/analyse_stream` sends the result without the Llama summary as soon as it is ready (about 0.3 s on the
+  Pi), then every Llama text piece, then the complete checked result (newline-delimited JSON, `docs/APP_API.md`). The
+  farmer page uses it and falls back to `/api/analyse`.
+
+```
+build/x86-llm/krishirakshak --root . --eval-advisor demo > /tmp/eval_base.jsonl
+build/x86-llm/krishirakshak --root . --eval-advisor demo --fact-bias 2 --block-cause-words > /tmp/eval_steer.jsonl
+```
+
 `--ort-spin` lets ONNX Runtime's worker threads busy-wait after each run (its default). The application turns this
 off: Llama runs on the same four cores right after vision, and spinning threads would take CPU time from it. On the
 development PC, 10 photos took the same wall time either way, but 45 % more CPU time with spinning (10.3 s vs

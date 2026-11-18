@@ -51,8 +51,42 @@ async function analyse() {
   if (!f) return;
   const lang = document.getElementById('lang').value;
   out.textContent = 'Checking...';
+  const img = URL.createObjectURL(f);
+  // Streaming: the diagnosis and the verified advice appear after about 0.3 s, the Llama text while it is written,
+  // and the checked final result replaces both. Falls back to the one-shot endpoint if streaming is not available.
+  try {
+    const resp = await fetch('/api/analyse_stream?lang=' + lang, {method: 'POST', body: f});
+    if (!resp.ok || !resp.body) throw new Error('no stream');
+    const reader = resp.body.getReader(), dec = new TextDecoder();
+    let buf = '', live = null, gotFinal = false;
+    for (;;) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, {stream: true});
+      let nl;
+      while ((nl = buf.indexOf('\n')) >= 0) {
+        const line = buf.slice(0, nl); buf = buf.slice(nl + 1);
+        if (!line.trim()) continue;
+        const ev = JSON.parse(line);
+        if (ev.event === 'result') {
+          render(ev.data, img, lang);
+          const c = el('div', 'card llama'); c.appendChild(el('b', '', 'Llama 3.2 1B is writing a summary of the sources below...'));
+          live = el('p', 'muted', ''); c.appendChild(live);
+          const first = document.getElementById('out').children[1];
+          document.getElementById('out').insertBefore(c, first || null);
+        } else if (ev.event === 'token' && live) {
+          live.textContent += ev.text;
+        } else if (ev.event === 'final') {
+          gotFinal = true; render(ev.data, img, lang);
+        } else if (ev.event === 'error') {
+          throw new Error(ev.message);
+        }
+      }
+    }
+    if (gotFinal) return;
+  } catch (e) { /* fall back below */ }
   const r = await (await fetch('/api/analyse?lang=' + lang, {method: 'POST', body: f})).json();
-  render(r, URL.createObjectURL(f), lang);
+  render(r, img, lang);
 }
 function render(r, img, lang) {
   const out = document.getElementById('out'); out.innerHTML = '';
