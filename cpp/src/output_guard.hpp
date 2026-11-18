@@ -39,4 +39,8 @@ struct GroundingResult {
 GroundingResult keepGroundedSentences(const std::string& text, const std::vector<KbChunk>& facts,
                                       double minOverlap = 0.75);
 
+// The word lists of the grounding check (stop words, negations, same-meaning groups) and its threshold, so the
+// Python copy used to build and score LoRA training data (llm/grounding.py) applies exactly the same rule.
+nlohmann::json groundingConfig();
+
 }  // namespace kr

@@ -157,15 +157,22 @@ public:
         // earlier example (crop debris, overhead irrigation - also late blight advice) was copied as the answer and
         // repeated until the token limit. Copied example sentences are not in the extracts, so the grounding check
         // drops them.
+        // "Keep the key words" (2026-11-18): Llama 3.2 3B rewrote faithfully but in its own words ("yellow edge" for
+        // "yellow margin"), so the grounding check dropped correct sentences; asking it to keep the technical terms
+        // raised the accepted answers on the five test photos from 6/10 to 7/10 (1B + 3B) with no distortion.
+        // The same text is in prompts/advise_keep_words.txt for experiments with KR_ADVISOR_PROMPT.
         const std::string system =
             std::string("You rewrite agricultural extension text for tomato farmers in India. Rewrite each FACT in "
                         "simple ") +
-            languageName(lang) + " as one short sentence. Keep the meaning of every fact exactly: do not add new "
-            "advice, do not leave out an instruction and never turn an instruction into its opposite. Write each "
-            "fact once, as plain sentences without a title, list markers or an introduction.\n\n"
+            languageName(lang) + " as one short sentence. Keep the key words of the fact: the names of symptoms, "
+            "plant parts, pests and actions (for example \"concentric rings\", \"margin\", \"lesions\", \"crop "
+            "debris\", \"crop rotation\") stay as they are; only make the sentence shorter and easier to read. Keep "
+            "the meaning of every fact exactly: do not add new advice, causes, months or numbers, do not leave out an "
+            "instruction and never turn an instruction into its opposite. Write each fact once, as plain sentences "
+            "without a title, list markers or an introduction.\n\n"
             "Example (a different topic, only to show the style).\nFACTS:\n1. Cleaning of storage bins before "
-            "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the bins before you "
-            "put grain in them. Do not keep grain in wet bags.";
+            "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the storage bins "
+            "before filling them with grain. Avoid storing grain in damp bags.";
         std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
 
         // Development option: KR_ADVISOR_PROMPT=<file> replaces the prompt above, so prompt variants can be tried on
