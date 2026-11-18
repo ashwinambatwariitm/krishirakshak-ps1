@@ -1,6 +1,12 @@
 /**
  * KrishiRakshak Main Application Logic
- * Adheres strictly to Section 8 Content & Safety Rules and all Functional Requirements.
+ * 
+ * Supports:
+ * - Disease & Pest Detection Flow (FR-1 to FR-8)
+ * - Kisan AI Chat & Quick Chips (FR-9)
+ * - Offline Text-to-Speech Voice Advisor (FR-15)
+ * - Field Weather & Spray Suitability Meter
+ * - Bottom Navigation for Farmers
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,10 +17,19 @@ function initApp() {
   // Initialize language
   window.updateStaticDOMText();
 
-  // Bind navigation & header controls
+  // Bottom Navigation Tabs
+  document.querySelectorAll(".nav-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const targetTab = item.getAttribute("data-tab");
+      switchTab(targetTab);
+    });
+  });
+
+  // Header Controls
   document.getElementById("btn-lang-toggle").addEventListener("click", () => {
     const nextLang = window.getLanguage() === "en" ? "hi" : "en";
     window.setLanguage(nextLang);
+    updateWeatherUI();
   });
 
   document.getElementById("btn-about").addEventListener("click", () => {
@@ -85,10 +100,13 @@ function initApp() {
 
   // Back to home buttons
   document.querySelectorAll(".btn-home-back").forEach(btn => {
-    btn.addEventListener("click", () => showView("home"));
+    btn.addEventListener("click", () => {
+      if (window.voiceAdvisor) window.voiceAdvisor.stop();
+      showView("home");
+    });
   });
 
-  // Follow-up Q&A ask button
+  // Kisan AI / Follow-up Q&A ask button & chips
   const btnAsk = document.getElementById("btn-ask");
   const inputQuestion = document.getElementById("input-question");
   if (btnAsk && inputQuestion) {
@@ -98,43 +116,109 @@ function initApp() {
     });
   }
 
+  // Clickable prompt suggestion chips
+  document.querySelectorAll(".chip-btn").forEach(chip => {
+    chip.addEventListener("click", () => {
+      const query = chip.getAttribute("data-query");
+      if (inputQuestion) {
+        inputQuestion.value = query;
+        handleAskQuestion();
+      }
+    });
+  });
+
+  // Voice Read-Aloud (Text-to-Speech) Listeners (FR-15)
+  const btnVoiceDiag = document.getElementById("btn-voice-diagnosis");
+  if (btnVoiceDiag) {
+    btnVoiceDiag.addEventListener("click", () => {
+      const res = window.appState.analysisResult;
+      if (!res || !res.disease) return;
+      const lang = window.getLanguage();
+      let textToRead = "";
+      if (lang === "hi") {
+        textToRead = `जांच परिणाम: ${res.disease.name}। मॉडल सटीकता: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} प्रतिशत।`;
+        if (res.disease.urgent) textToRead += " ध्यान दें: तत्काल कार्रवाई करें।";
+      } else {
+        textToRead = `Diagnosis Result: ${res.disease.name}. Model confidence: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} percent.`;
+        if (res.disease.urgent) textToRead += " Urgent: act today.";
+      }
+      window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag);
+    });
+  }
+
+  const btnVoiceLlama = document.getElementById("btn-voice-llama");
+  if (btnVoiceLlama) {
+    btnVoiceLlama.addEventListener("click", () => {
+      const res = window.appState.analysisResult;
+      if (!res || !res.llama || !res.llama.text) return;
+      const lang = window.getLanguage();
+      window.voiceAdvisor.toggle(res.llama.text, lang, btnVoiceLlama);
+    });
+  }
+
+  const btnVoiceAi = document.getElementById("btn-voice-ai-answer");
+  if (btnVoiceAi) {
+    btnVoiceAi.addEventListener("click", () => {
+      const ansEl = document.getElementById("qa-answer-text");
+      if (!ansEl || !ansEl.textContent) return;
+      const lang = window.getLanguage();
+      window.voiceAdvisor.toggle(ansEl.textContent, lang, btnVoiceAi);
+    });
+  }
+
   // Developer mock selector (if testing with query parameter ?example=...)
   const urlParams = new URLSearchParams(window.location.search);
   const mockParam = urlParams.get("example");
   if (mockParam) {
     window.appState.mockExample = mockParam;
-    console.log(`[KrishiRakshak] Running with mock scenario: ${mockParam}`);
   }
+
+  // Initialize weather assessment
+  updateWeatherUI();
 
   // Register Service Worker for offline PWA
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(err => {
-      console.log("Service Worker registration skipped:", err);
-    });
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
 
-  // Pre-load info to warm up
+  // Warm up /api/info
   window.apiService.getInfo().catch(() => {});
 }
 
 /**
- * Handle image file selection from camera or gallery
+ * Switch bottom navigation tabs
  */
-function handleImageSelected(event) {
-  const file = event.target.files && event.target.files[0];
-  if (!file) return;
+function switchTab(tabName) {
+  if (window.voiceAdvisor) window.voiceAdvisor.stop();
 
-  // Clear input value so same photo can be re-selected if needed
-  event.target.value = "";
+  document.querySelectorAll(".nav-item").forEach(item => {
+    if (item.getAttribute("data-tab") === tabName) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
 
-  window.appState.setCapturedImage(file);
-  startAnalysis(file);
+  const tabs = ["scan", "ai", "weather", "guide"];
+  tabs.forEach(t => {
+    const el = document.getElementById(`tab-${t}-content`);
+    if (el) {
+      if (t === tabName) {
+        el.classList.remove("hidden");
+      } else {
+        el.classList.add("hidden");
+      }
+    }
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /**
- * Switch view visibility
+ * Switch view within Scan tab
  */
 function showView(viewName) {
+  switchTab("scan");
   const views = ["home", "waiting", "result", "uncertain", "retake"];
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
@@ -152,18 +236,28 @@ function showView(viewName) {
 }
 
 /**
- * Start analysis request with waiting screen and error handling
+ * Handle image file selection
+ */
+function handleImageSelected(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  event.target.value = "";
+  window.appState.setCapturedImage(file);
+  startAnalysis(file);
+}
+
+/**
+ * Start analysis request with waiting screen
  */
 async function startAnalysis(blob) {
   showView("waiting");
 
-  // Show captured photo preview on waiting screen
   const thumb = document.getElementById("waiting-photo-thumb");
   if (thumb && window.appState.capturedUrl) {
     thumb.src = window.appState.capturedUrl;
   }
 
-  // Reset waiting state
   document.getElementById("waiting-progress").classList.remove("hidden");
   document.getElementById("waiting-error-box").classList.add("hidden");
 
@@ -190,7 +284,6 @@ async function startAnalysis(blob) {
 
 /**
  * Route result based on status field: answered, uncertain, or retake_photo
- * Meets FR-3 and Section 8 (Never show a diagnosis when status is uncertain or retake_photo).
  */
 function routeResultStatus(data) {
   const status = data.status || "uncertain";
@@ -202,17 +295,16 @@ function routeResultStatus(data) {
     renderRetakeScreen(data);
     showView("retake");
   } else {
-    // Default to uncertain
     renderUncertainScreen(data);
     showView("uncertain");
   }
 }
 
 /**
- * Render Status: answered Screen (FR-4 - FR-8, FR-12, FR-13)
+ * Render Status: answered Screen
  */
 function renderAnsweredScreen(data) {
-  // 1. Render photo with pest bounding boxes on canvas (FR-13)
+  // 1. Photo with pest bounding boxes canvas (FR-13)
   const canvas = document.getElementById("result-photo-canvas");
   if (canvas && window.appState.capturedUrl) {
     window.PestCanvas.render(canvas, window.appState.capturedUrl, data.pests || []);
@@ -236,7 +328,6 @@ function renderAnsweredScreen(data) {
     confidenceEl.classList.add("hidden");
   }
 
-  // Urgent action badge (Section 8 & FR-4)
   if (disease.urgent) {
     urgentBadge.textContent = window.t("urgent_badge");
     urgentBadge.classList.remove("hidden");
@@ -244,7 +335,6 @@ function renderAnsweredScreen(data) {
     urgentBadge.classList.add("hidden");
   }
 
-  // Estimated spread (severity.level, hidden when unknown or missing)
   if (data.severity && data.severity.level && data.severity.level !== "unknown") {
     const lvl = data.severity.level.toLowerCase();
     const localizedLvl = window.t(`spread_${lvl}`) || lvl;
@@ -254,7 +344,6 @@ function renderAnsweredScreen(data) {
     spreadBadge.classList.add("hidden");
   }
 
-  // Detected insects / pests
   if (Array.isArray(data.pests) && data.pests.length > 0) {
     const pestStrings = data.pests.map(p => {
       if (p.species_reliable && p.species) {
@@ -268,7 +357,7 @@ function renderAnsweredScreen(data) {
     pestsBadge.classList.add("hidden");
   }
 
-  // 3. Official Notices / Messages (FR-5) - Shown above advice
+  // 3. Official Notices (FR-5)
   const messagesContainer = document.getElementById("res-messages-container");
   messagesContainer.innerHTML = "";
   if (Array.isArray(data.messages) && data.messages.length > 0) {
@@ -284,7 +373,6 @@ function renderAnsweredScreen(data) {
   }
 
   // 4. Llama Advice Card (FR-6)
-  // Non-negotiable rule: Show Llama text only when llama.text is not null and accepted is true
   const llamaContainer = document.getElementById("res-llama-card");
   const llamaTextEl = document.getElementById("res-llama-text");
   if (data.llama && data.llama.text && data.llama.accepted !== false) {
@@ -297,14 +385,11 @@ function renderAnsweredScreen(data) {
   // 5. Advice Blocks (FR-7)
   const adviceContainer = document.getElementById("res-advice-blocks");
   adviceContainer.innerHTML = "";
-
   const sectionOrder = ["symptoms", "spread", "cultural", "mechanical", "biological", "monitoring", "safety", "general"];
 
   if (Array.isArray(data.advice_blocks)) {
     data.advice_blocks.forEach(block => {
       const chunks = block.chunks || [];
-
-      // Group non-chemical chunks by section
       const nonChemicalChunks = chunks.filter(c => c.section !== "chemical");
 
       if (nonChemicalChunks.length > 0) {
@@ -318,7 +403,6 @@ function renderAnsweredScreen(data) {
           blockEl.appendChild(blockTitle);
         }
 
-        // Group chunks by section
         const grouped = {};
         nonChemicalChunks.forEach(c => {
           const sec = c.section || "general";
@@ -326,7 +410,6 @@ function renderAnsweredScreen(data) {
           grouped[sec].push(c);
         });
 
-        // Render according to sorted section order
         const sortedSections = Object.keys(grouped).sort((a, b) => {
           let ia = sectionOrder.indexOf(a);
           let ib = sectionOrder.indexOf(b);
@@ -338,7 +421,6 @@ function renderAnsweredScreen(data) {
         sortedSections.forEach((sec, idx) => {
           const secWrapper = document.createElement("details");
           secWrapper.className = "advice-section-accordion";
-          // Open first two sections (symptoms, spread/cultural) by default
           if (idx < 2) secWrapper.open = true;
 
           const summary = document.createElement("summary");
@@ -354,11 +436,9 @@ function renderAnsweredScreen(data) {
             item.className = "advice-chunk";
 
             const textSpan = document.createElement("span");
-            // Section 8 rule: show advice text exactly as received, never shorten or translate
             textSpan.textContent = chunk.text + " ";
             item.appendChild(textSpan);
 
-            // Mandatory source badge
             if (chunk.source_org) {
               const srcBadge = document.createElement("span");
               srcBadge.className = "source-badge";
@@ -399,7 +479,6 @@ function renderAnsweredScreen(data) {
     allSprays.forEach(spray => {
       const tr = document.createElement("tr");
 
-      // Product + Note
       const tdProd = document.createElement("td");
       const prodName = document.createElement("strong");
       prodName.textContent = spray.product || "";
@@ -412,11 +491,9 @@ function renderAnsweredScreen(data) {
         tdProd.appendChild(noteDiv);
       }
 
-      // Dose
       const tdDose = document.createElement("td");
       tdDose.textContent = spray.dose || "—";
 
-      // Source
       const tdSrc = document.createElement("td");
       tdSrc.className = "source-cell";
       tdSrc.textContent = spray.source_org || "";
@@ -431,17 +508,12 @@ function renderAnsweredScreen(data) {
     sprayContainer.classList.add("hidden");
   }
 
-  // 7. Reset Follow-up Q&A UI (FR-9)
-  document.getElementById("input-question").value = "";
-  document.getElementById("qa-response-container").classList.add("hidden");
-  document.getElementById("qa-loading").classList.add("hidden");
-
-  // 8. Technical Details Drawer (FR-12)
+  // Technical Details Drawer (FR-12)
   renderTechnicalDetails(data);
 }
 
 /**
- * Handle Follow-up Question (FR-9)
+ * Handle Follow-up Question in Kisan AI Tab (FR-9)
  */
 async function handleAskQuestion() {
   const inputEl = document.getElementById("input-question");
@@ -467,18 +539,15 @@ async function handleAskQuestion() {
     loadingEl.classList.add("hidden");
     resContainer.classList.remove("hidden");
 
-    // Display simplified answer if present and accepted
     if (res.answer && res.accepted !== false) {
       answerEl.textContent = res.answer;
       answerEl.parentElement.classList.remove("hidden");
       fallbackNotice.classList.add("hidden");
     } else {
       answerEl.parentElement.classList.add("hidden");
-      // Safety rule: if Llama answer was rejected or null, show fallback notice and facts only
       fallbackNotice.classList.remove("hidden");
     }
 
-    // Always render facts with sources
     if (Array.isArray(res.facts) && res.facts.length > 0) {
       res.facts.forEach(fact => {
         const factItem = document.createElement("div");
@@ -509,8 +578,39 @@ async function handleAskQuestion() {
 }
 
 /**
- * Render Status: uncertain Screen (FR-3, Section 8)
- * Safety rule: Never show a diagnosis when status is uncertain.
+ * Update Weather & Spray Suitability UI
+ */
+function updateWeatherUI() {
+  if (!window.fieldWeather) return;
+
+  const evaluation = window.fieldWeather.evaluateSprayConditions();
+  const banner = document.getElementById("spray-status-banner");
+  const statusText = document.getElementById("spray-status-text");
+  const issuesBox = document.getElementById("spray-issues-box");
+
+  if (!banner || !statusText || !issuesBox) return;
+
+  const lang = window.getLanguage();
+
+  if (evaluation.isFavorable) {
+    banner.className = "spray-meter-banner favorable";
+    statusText.textContent = window.t("spray_favorable");
+    issuesBox.innerHTML = "";
+  } else {
+    banner.className = "spray-meter-banner unfavorable";
+    statusText.textContent = window.t("spray_unfavorable");
+    issuesBox.innerHTML = "";
+    evaluation.issues.forEach(issue => {
+      const p = document.createElement("div");
+      p.className = "alert-note";
+      p.textContent = lang === "hi" ? issue.hi : issue.en;
+      issuesBox.appendChild(p);
+    });
+  }
+}
+
+/**
+ * Render Status: uncertain Screen
  */
 function renderUncertainScreen(data) {
   const msgContainer = document.getElementById("uncertain-messages");
@@ -533,26 +633,24 @@ function renderUncertainScreen(data) {
 }
 
 /**
- * Render Status: retake_photo Screen (FR-3, Section 8)
- * Safety rule: Never show a diagnosis when status is retake_photo.
+ * Render Status: retake_photo Screen
  */
 function renderRetakeScreen(data) {
   const issuesContainer = document.getElementById("retake-issues-list");
   issuesContainer.innerHTML = "";
 
-  // Messages from device (e.g. "The photo is too dark. Take it in daylight.")
   const messages = data.messages || [];
   if (messages.length > 0) {
     messages.forEach(m => {
       const li = document.createElement("li");
-      li.className = "issue-item";
+      li.className = "alert-note";
       li.textContent = m;
       issuesContainer.appendChild(li);
     });
   } else if (data.quality && Array.isArray(data.quality.issues)) {
     data.quality.issues.forEach(issue => {
       const li = document.createElement("li");
-      li.className = "issue-item";
+      li.className = "alert-note";
       li.textContent = window.t(`issue_${issue}`) || issue;
       issuesContainer.appendChild(li);
     });
@@ -589,7 +687,7 @@ function renderTechnicalDetails(data) {
 }
 
 /**
- * About Modal & API Info (FR-10)
+ * About Modal
  */
 async function openAboutModal() {
   const modal = document.getElementById("about-modal");
@@ -628,7 +726,7 @@ function closeModal() {
 }
 
 /**
- * Scan History Modal (FR-14)
+ * History Modal
  */
 function openHistoryModal() {
   document.getElementById("history-modal").classList.remove("hidden");
@@ -654,14 +752,20 @@ function renderHistoryList() {
 
   history.forEach(item => {
     const row = document.createElement("div");
-    row.className = "history-item-row";
+    row.style.padding = "10px";
+    row.style.borderBottom = "1px solid var(--line-border)";
+    row.style.display = "flex";
+    row.style.justifyContent = "space-between";
+    row.style.alignItems = "center";
 
     const titleDiv = document.createElement("div");
-    titleDiv.className = "history-item-title";
+    titleDiv.style.fontWeight = "700";
+    titleDiv.style.color = "var(--primary-dark)";
     titleDiv.textContent = item.diseaseName;
 
     const metaDiv = document.createElement("div");
-    metaDiv.className = "history-item-meta";
+    metaDiv.style.fontSize = "0.85rem";
+    metaDiv.style.color = "var(--ink-muted)";
     const date = new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const conf = Math.round(item.confidence * 100);
     metaDiv.textContent = `${date} • ${window.t("confidence")}: ${conf}%`;

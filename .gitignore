@@ -42,3 +42,4 @@ models/*.model
 
 # Pi deployment bundle (cpp/package_pi.sh)
 dist/
+*.apk

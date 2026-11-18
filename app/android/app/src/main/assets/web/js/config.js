@@ -15,7 +15,7 @@ const CONFIG = {
   DEFAULT_LANG: localStorage.getItem("KR_LANG") || "en",
 
   // Version
-  APP_VERSION: "1.0.0 (Android Native APK)"
+  APP_VERSION: "1.2.0 (Farmer Portal & Voice AI)"
 };
 
 window.CONFIG = CONFIG;

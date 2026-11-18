@@ -1,7 +1,6 @@
 /**
  * Bilingual UI Dictionary (English & Hindi)
- * Meets FR-11: All fixed interface text available in both languages.
- * Meets Section 8: No hardcoded agricultural advice or pesticide doses.
+ * Meets FR-11, FR-15, and Section 8 Content & Safety Rules.
  */
 
 const I18N = {
@@ -10,6 +9,12 @@ const I18N = {
     app_subtitle: "On-Device Plant Health Advisor",
     tagline: "Runs 100% offline on Raspberry Pi • Zero internet required",
     
+    // Bottom Navigation
+    nav_scan: "Scan",
+    nav_ai: "Kisan AI",
+    nav_weather: "Spray & Weather",
+    nav_guide: "Kisan Guide",
+    
     // Actions & Navigation
     take_photo: "Take Photo",
     choose_gallery: "Choose from Gallery",
@@ -17,12 +22,14 @@ const I18N = {
     take_another_photo: "Take Another Photo",
     back_to_home: "Back to Home",
     try_again: "Try Again",
-    ask: "Ask",
+    ask: "Ask AI",
     close: "Close",
     about_btn: "About",
     history_btn: "Recent Scans",
     clear_history: "Clear History",
     no_history: "No recent scans saved yet.",
+    listen_voice: "Listen Aloud",
+    stop_voice: "Stop Voice",
     
     // Waiting Screen
     checking_plant: "Checking your plant...",
@@ -66,12 +73,46 @@ const I18N = {
     col_note: "Label / Waiting Note",
     col_source: "Official Source",
     
-    // Q&A
-    ask_title: "Ask a Follow-up Question",
-    ask_placeholder: "e.g. When can I harvest after spraying?",
-    ask_waiting: "Checking with on-device knowledge...",
+    // Q&A & Kisan AI
+    ask_title: "Kisan AI Assistant (On-Device Llama)",
+    ask_desc: "Ask any follow-up question about tomato diseases, pest control, or harvest intervals.",
+    ask_placeholder: "Type or tap a suggestion below...",
+    ask_waiting: "Finding verified answer on device...",
     verified_facts_title: "Verified Reference Facts:",
     llama_rejected_notice: "A simplified explanation could not be verified safely. Please refer directly to the verified official facts below:",
+    chip_q1: "When can I harvest after spraying?",
+    chip_q2: "How to prevent disease spread?",
+    chip_q3: "What are organic bio-control options?",
+    chip_q4: "Water management tips during blight?",
+    
+    // Weather & Spray Meter
+    weather_title: "Weather & Spray Suitability Meter",
+    weather_desc: "Check if wind, temperature, and rain conditions are safe for spraying today to avoid drift and wash-off.",
+    spray_favorable: "GOOD CONDITIONS FOR SPRAYING",
+    spray_unfavorable: "SPRAYING NOT RECOMMENDED RIGHT NOW",
+    temp_label: "Temperature",
+    humidity_label: "Humidity",
+    wind_label: "Wind Speed",
+    rain_label: "Rain Chance",
+    spray_tip_title: "Agronomy Spray Tip:",
+    spray_tip_text: "Ideal spray hours: 7:00 AM – 10:00 AM or 4:00 PM – 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.",
+    
+    // Kisan Guide
+    guide_title: "Farmer Safety & Knowledge Guide",
+    helpline_title: "Government Farmer Helplines",
+    kisan_call_center: "Kisan Call Center: 1800-180-1551 (Toll Free, 6 AM - 10 PM)",
+    kvk_contact: "Contact your local District Krishi Vigyan Kendra (KVK) for on-field soil & leaf tests.",
+    cibrc_title: "CIB&RC Official Toxicity Label Codes",
+    toxic_red: "Red Triangle: Extremely Toxic (Class I) — Highest hazard, use maximum protective gear.",
+    toxic_yellow: "Yellow Triangle: Highly Toxic (Class II) — Strict precautions needed.",
+    toxic_blue: "Blue Triangle: Moderately Toxic (Class III) — Follow label safety rules.",
+    toxic_green: "Green Triangle: Slightly Toxic (Class IV) — Safer bio-rational or organic choice.",
+    golden_rules_title: "5 Golden Rules of Safe Spraying",
+    rule_1: "1. Wear protective gear: mask, gloves, and boots.",
+    rule_2: "2. Never blow blocked nozzles with your mouth; use clean water and a soft brush.",
+    rule_3: "3. Spray with the wind at your back, never walking into the spray mist.",
+    rule_4: "4. Strictly observe the harvest waiting period (PHI) before picking produce.",
+    rule_5: "5. Triple rinse empty pesticide containers and puncture them; never reuse for water or feed.",
     
     // Uncertain & Retake
     uncertain_title: "Diagnosis Uncertain",
@@ -117,6 +158,12 @@ const I18N = {
     app_subtitle: "डिवाइस पर चलने वाला फसल स्वास्थ्य सलाहकार",
     tagline: "रास्पबेरी पाई पर 100% ऑफलाइन • बिना इंटरनेट चलता है",
     
+    // Bottom Navigation
+    nav_scan: "जांच",
+    nav_ai: "किसान AI",
+    nav_weather: "मौसम व छिड़काव",
+    nav_guide: "मार्गदर्शिका",
+    
     // Actions & Navigation
     take_photo: "फोटो लें",
     choose_gallery: "गैलरी से चुनें",
@@ -124,12 +171,14 @@ const I18N = {
     take_another_photo: "दूसरी फोटो लें",
     back_to_home: "मुख्य पृष्ठ",
     try_again: "पुनः प्रयास करें",
-    ask: "पूछें",
+    ask: "AI से पूछें",
     close: "बंद करें",
     about_btn: "जानकारी",
     history_btn: "हाल की जांच",
     clear_history: "इतिहास मिटाएं",
     no_history: "कोई हालिया जांच सहेजी नहीं गई है।",
+    listen_voice: "बोलकर सुनें (Voice)",
+    stop_voice: "आवाज बंद करें",
     
     // Waiting Screen
     checking_plant: "आपके पौधे की जांच हो रही है...",
@@ -173,12 +222,46 @@ const I18N = {
     col_note: "लेबल / तुड़ाई प्रतीक्षा टिप्पणी",
     col_source: "आधिकारिक स्रोत",
     
-    // Q&A
-    ask_title: "आगे का प्रश्न पूछें",
-    ask_placeholder: "उदा. छिड़काव के कितने दिन बाद तुड़ाई कर सकते हैं?",
-    ask_waiting: "डिवाइस से उत्तर खोजा जा रहा है...",
+    // Q&A & Kisan AI
+    ask_title: "किसान AI मित्र (डिवाइस पर Llama मॉडल)",
+    ask_desc: "टमाटर के रोग, कीट नियंत्रण या तुड़ाई समय के बारे में कोई भी प्रश्न पूछें।",
+    ask_placeholder: "लिखें या नीचे दिए गए सुझाव पर टैप करें...",
+    ask_waiting: "डिवाइस से प्रमाणित उत्तर खोजा जा रहा है...",
     verified_facts_title: "प्रमाणित संदर्भ तथ्य:",
     llama_rejected_notice: "सरल भाषा में व्याख्या सत्यापित नहीं हो सकी। कृपया नीचे दिए गए प्रमाणित आधिकारिक तथ्यों को पढ़ें:",
+    chip_q1: "छिड़काव के कितने दिन बाद तुड़ाई करें?",
+    chip_q2: "रोग को आगे फैलने से कैसे रोकें?",
+    chip_q3: "जैविक व देसी नियंत्रण के क्या उपाय हैं?",
+    chip_q4: "झुलसा रोग में सिंचाई कैसे करें?",
+    
+    // Weather & Spray Meter
+    weather_title: "मौसम एवं सुरक्षित छिड़काव मीटर",
+    weather_desc: "जांचें कि आज खेत में दवा छिड़कने के लिए हवा, तापमान और बारिश के हालात अनुकूल हैं या नहीं।",
+    spray_favorable: "छिड़काव के लिए मौसम अनुकूल है",
+    spray_unfavorable: "वर्तमान समय में छिड़काव न करें",
+    temp_label: "तापमान",
+    humidity_label: "नमी (आर्द्रता)",
+    wind_label: "हवा की गति",
+    rain_label: "बारिश की संभावना",
+    spray_tip_title: "कृषि छिड़काव सलाह:",
+    spray_tip_text: "छिड़काव का सबसे उत्तम समय: सुबह 7:00 से 10:00 बजे या शाम 4:00 से 6:30 बजे। तेज हवा (>12 किमी/घंटा) या तेज दोपहर की धूप में कभी छिड़काव न करें।",
+    
+    // Kisan Guide
+    guide_title: "किसान सुरक्षा एवं मार्गदर्शिका",
+    helpline_title: "सरकारी किसान हेल्पलाइन",
+    kisan_call_center: "किसान कॉल सेंटर: 1800-180-1551 (टोल फ्री, सुबह 6 से रात 10)",
+    kvk_contact: "खेत की मिट्टी व रोग जांच के लिए अपने जिला कृषि विज्ञान केंद्र (KVK) से संपर्क करें।",
+    cibrc_title: "केंद्रीय कीटनाशी बोर्ड (CIB&RC) विषाक्तता रंग संकेत",
+    toxic_red: "लाल त्रिकोण: अत्यधिक विषाक्त (Class I) — अत्यंत खतरनाक, पूर्ण सुरक्षा उपकरण पहनें।",
+    toxic_yellow: "पीला त्रिकोण: अति विषाक्त (Class II) — विशेष सावधानी आवश्यक।",
+    toxic_blue: "नीला त्रिकोण: मध्यम विषाक्त (Class III) — लेबल निर्देश अनुसार उपयोग करें।",
+    toxic_green: "हरा त्रिकोण: कम विषाक्त (Class IV) — जैविक व अपेक्षाकृत सुरक्षित विकल्प।",
+    golden_rules_title: "सुरक्षित छिड़काव के 5 सुनहरे नियम",
+    rule_1: "1. सुरक्षात्मक कपड़े: मास्क, दस्ताने और जूते जरूर पहनें।",
+    rule_2: "2. बंद नोजल को कभी मुंह से न फूंकें; साफ पानी और ब्रश का उपयोग करें।",
+    rule_3: "3. हवा की दिशा में छिड़काव करें, दवा के फुहार की उल्टी दिशा में न चलें।",
+    rule_4: "4. फसल तुड़ाई से पहले लेबल पर दी गई प्रतीक्षा अवधि (PHI) का कड़ाई से पालन करें।",
+    rule_5: "5. खाली डिब्बों को तीन बार धोकर नष्ट करें; पानी या चारे के लिए प्रयोग न करें।",
     
     // Uncertain & Retake
     uncertain_title: "निदान अनिश्चित है",
@@ -229,7 +312,6 @@ function setLanguage(lang) {
   updateStaticDOMText();
   document.documentElement.lang = lang;
   
-  // Dispatch custom event for views to re-render dynamic content
   window.dispatchEvent(new CustomEvent("kr-lang-changed", { detail: { lang } }));
 }
 
