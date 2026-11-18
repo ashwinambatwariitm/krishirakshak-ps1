@@ -23,6 +23,8 @@
  *   --sequential       run the two vision models one after the other (default: in parallel)
  *   --threads N        ONNX Runtime threads per vision model; default 2
  *   --llama-threads N  XNNPACK threads for Llama; default 4
+ *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_instruct_8da4w.pte
+ *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
  *   --ort-spin         let ONNX Runtime threads busy-wait after each run (off by default; for A/B timing)
  *   --brief            print only the fields used by the parity test
  */
@@ -41,7 +43,7 @@ namespace {
 
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
-                 "                     [--llama-threads N] [--ort-spin] [--brief]\n"
+                 "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
 
@@ -87,6 +89,7 @@ int main(int argc, char** argv) {
         else if (a == "--sequential") cfg.parallelVision = false;
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
+        else if (a == "--llama-pte") cfg.llamaPte = next();
         else if (a == "--ort-spin") cfg.ortSpin = true;
         else if (a == "--brief") briefOut = true;
         else if (a == "--list") listFile = next();

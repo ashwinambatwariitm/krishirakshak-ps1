@@ -32,6 +32,10 @@ for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
   cp "${REPO}/models/${m}.onnx" "${OUT}/models/"
 done
 cp "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
+# Llama 3.2 3B (exported on Kaggle, training/src/llama3b_export.py), if present; select it with --llama-pte
+if [ -f "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" ]; then
+  cp "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" "${REPO}/models/llama3_2_3b_params.json" "${OUT}/models/"
+fi
 cp "${REPO}"/results/int8_ptq/*.json "${OUT}/results/int8_ptq/"
 cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
 cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
@@ -95,6 +99,19 @@ for f in sorted(glob.glob("bench/llama_spin_*.json")):
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
 python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
   --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt
+# Llama 3.2 3B, if it is in the bundle: the same photos in English and Hindi, and its own performance model
+B3=models/llama3_2_3b_instruct_8da4w.pte
+if [ -f "$B3" ]; then
+  for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg; do
+    n="$(basename "$p" .jpg)"
+    for lang in en hi; do
+      /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --llama-pte "$B3" --lang $lang "$p" \
+        > "bench/${n}_llama3b_${lang}.json"
+    done
+  done
+  python3 tools/perf_model.py --pte "$B3" --params models/llama3_2_3b_params.json --membw bench/membw.json \
+    --measured 'bench/*_llama3b_en.json' --json bench/perf_model_3b.json | tee bench/perf_model_3b.txt
+fi
 echo "results in bench/"
 EOF
 chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test" "${OUT}/membw"

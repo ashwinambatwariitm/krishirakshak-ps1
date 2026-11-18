@@ -34,7 +34,9 @@ DEFAULT_CONFIG = {
     "pest_config": REPO / "results" / "pest_yolov8n_with_negatives" / "pest_config.json",
     "kb_db": REPO / "app" / "kb" / "tomato_kb.sqlite",
     "kb_json": REPO / "app" / "kb" / "tomato_kb.json",
-    "llama_pte": REPO / "models" / "llama3_2_1b_instruct_8da4w.pte",
+    # KR_LLAMA_PTE selects another .pte (e.g. models/llama3_2_3b_instruct_8da4w.pte); the tokenizer is shared
+    "llama_pte": Path(os.environ["KR_LLAMA_PTE"]) if os.environ.get("KR_LLAMA_PTE")
+                 else REPO / "models" / "llama3_2_1b_instruct_8da4w.pte",
     "llama_tokenizer": REPO / "models" / "llama3_2_tokenizer.model",
     "disease_threshold": 0.85,     # results/disease_v5_threshold/threshold.json
     "threads": 4,                  # Raspberry Pi 5: four Cortex-A76 cores
