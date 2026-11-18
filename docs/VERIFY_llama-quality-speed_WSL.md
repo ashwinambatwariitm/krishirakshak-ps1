@@ -6,7 +6,7 @@
 | Date | 18 November 2026 |
 | Machine | WSL2 Ubuntu 22.04, Intel Core i5-12500H (16 threads), about 9 GB RAM for WSL, GCC 11.4.0 |
 | Power | **on battery ("Not charging") during steps 3-6**: absolute times are 3-8x slower than earlier measurements on this machine the same day; compare times only within this report |
-| Status | Steps 1-6 and 8 done; **step 7 (FP32 baseline) in progress** (export finished, evaluation pending) |
+| Status | All steps done (step 7: export on Kaggle, evaluation on this PC) |
 
 ## Summary
 
@@ -18,7 +18,7 @@
 | 4. Decoding options, 1B | best: `--block-cause-words`, **5/6 accepted** (default 3/6, every fact-bias setting 4/6). **But 2 of the 4 kept late-blight sentences pass only through gaps in the grounding check** (see 4.3) |
 | 5. Llama 3B | 5/6 accepted with and without `--block-cause-words`; identical answers (the option did not change any token) |
 | 6. Streaming | result event after 2.7 s, first token after 19.4 s, final after 37.9 s, 117 token events; `final.data` equals `/api/analyse` except timings |
-| 7. FP32 baseline | **in progress**: export done on Kaggle (CPU session), evaluation pending - see step 7 |
+| 7. FP32 baseline | **FP32 6/6 accepted vs INT4 3/6** with the same prompts and options: the INT4 quantization is a main cause of the rejected answers. FP32: 21 grounded / 46 dropped sentences, Llama 412 s vs 163 s, peak RSS 6.2 GB |
 | 8. Pi bundle | ARM configure + build exit 0, 0 warnings, 0 errors; aarch64 binary; bundle 2.9 GB (both Llama models included); not copied |
 
 ## Step 1 - checkout
@@ -187,20 +187,62 @@ as given (times relative to the start of curl):
 `llama.stats` removed: **identical**. Events are newline-delimited JSON objects `{"data": ..., "event": "result"}`,
 `{"event": "token", "text": ...}`, `{"data": ..., "event": "final"}`. Server stopped afterwards.
 
-## Step 7 - FP32 baseline (in progress)
+## Step 7 - FP32 baseline
 
-Not run on this PC: the FP32 export loads the full model in PyTorch, more memory than this laptop (about 9 GB for WSL)
-can give without heavy swapping (an earlier Llama export on this machine stopped WSL). It was run in a Kaggle CPU
+Export: not run on this PC - the FP32 export loads the full model in PyTorch, more memory than this laptop (about 9 GB for
+WSL) can give without heavy swapping (an earlier Llama export on this machine stopped WSL). It was run in a Kaggle CPU
 session (about 30 GB RAM) with the exact arguments of `llm/export_llama.sh fp32` (torch 2.14.1, torchao 0.18.0,
 executorch 1.5.1, the same original Llama 3.2 1B Instruct checkpoint):
 
 | Attempt | Result |
 |---|---|
 | 1 | failed after 12 s: `mismatched input 'get_bos_id' expecting <EOF>` (Hydra) - a quoting error in the run script (the metadata argument lost its `\"` escapes), not in the repository |
-| 2 | **export succeeded** in about 12.5 minutes: `Saved exported program to llama3_2_1b_instruct_fp32.pte` |
+| 2 | **export succeeded** in about 12.5 minutes: `Saved exported program to llama3_2_1b_instruct_fp32.pte` (5,994,769,024 bytes) |
 
-Download of the `.pte` and the evaluation (`$B --root . --eval-advisor demo --llama-pte <fp32 .pte>`, compared with
-`/tmp/e_base.jsonl`) and the `tools.perf_model` size check: pending; added in a follow-up commit.
+Evaluation on this PC: `$B --root . --eval-advisor demo --llama-pte <fp32 .pte> > /tmp/e_fp32.jsonl`, exit 0, peak RSS
+6.17 GB, wall time 9377 s (mostly loading the 6 GB file under memory pressure; Llama seconds below).
+
+| Llama 3.2 1B, default options | Accepted (of 6) | Grounded | Dropped | Llama seconds | Per topic (accepted, grounded) |
+|---|---|---|---|---|---|
+| INT4 8da4w (`/tmp/e_base.jsonl`) | 3 | 18 | 56 | 163 | healthy n0, early_blight Y5, late_blight n1, septoria Y4, bacterial_spot n1, yellow_leaf_curl Y7 |
+| **FP32** (`/tmp/e_fp32.jsonl`) | **6** | 21 | 46 | 412 | healthy Y3, early_blight Y4, late_blight Y2, septoria Y4, bacterial_spot Y4, yellow_leaf_curl Y4 |
+
+late_blight raw_text, INT4 (rejected: too_few_grounded_sentences:1): see step 4.1 (seven sentences, five of them "The
+disease is caused by a fungus ...").
+
+late_blight raw_text, FP32 (accepted, 2 grounded):
+```
+1. Black spots on leaves and stems.
+2. Rapidly spreading lesions on leaves and stems.
+3. White spots on leaves.
+4. Greenish-brown fruit with soft rot and decay.
+5. Leaves turn yellow and die.
+6. Fruits turn green and decay.
+7. Fruits turn green and decay.
+```
+Kept: "Black spots on leaves and stems. White spots on leaves."
+
+Result: with the same prompt and options FP32 is accepted on all six diseases and does not invent causes ("caused by a
+fungus" appears in the INT4 text only). The difference between the two runs is the weight quantization, so the
+rejected INT4 answers come largely from quantization, not only from the 1B model size. Cost of FP32: 2.5x the Llama time
+on this PC and about 6 GB of memory (the Pi 5 has 8 GB).
+
+`python tools/perf_model.py --pte <fp32 .pte>` (size check):
+```
+== Llama weights ==
+layers 16, dim 2048, heads 32 (KV heads 8), feed-forward 8192, vocabulary 128256
+  layers           580.0 MiB
+  output_layer    1002.0 MiB
+  embedding        156.6 MiB
+  norms              0.3 MiB
+  .pte file       5717.1 MiB
+  WARNING: no hypothesis within 5 % of the file size; the predictions below are approximate
+  NOTE: the output layer looks unquantized (fp32); it is read on every token
+```
+The script's size hypotheses are built for quantized exports; for FP32 they do not fit (expected).
+
+Related measurement (same day, separate Kaggle run, not part of this branch): the same 1B model in FP16 PyTorch, on the
+same six diseases with three prompt variants each, was accepted on 17 of 18 prompts, consistent with this result.
 
 ## Step 8 - Pi bundle
 
