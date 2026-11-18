@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2e7d32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1b5e20;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#e8f5e9;stop-opacity:0.95" />
+    </linearGradient>
+  </defs>
+  <!-- Background Circle -->
+  <rect width="512" height="512" rx="128" fill="url(#grad1)"/>
+  <!-- Protective Shield -->
+  <path d="M256 70 L390 130 C390 270 330 380 256 440 C182 380 122 270 122 130 Z" fill="url(#shieldGrad)" stroke="#a5d6a7" stroke-width="12"/>
+  <!-- Tomato / Leaf Plant Emblem -->
+  <!-- Left Leaf -->
+  <path d="M256 260 C210 200 160 210 160 250 C160 290 220 300 256 260 Z" fill="#2e7d32"/>
+  <!-- Right Leaf -->
+  <path d="M256 260 C302 200 352 210 352 250 C352 290 292 300 256 260 Z" fill="#388e3c"/>
+  <!-- Center Stem -->
+  <path d="M256 160 C256 220 256 310 256 360" stroke="#1b5e20" stroke-width="16" stroke-linecap="round"/>
+  <!-- AI Sparkle / Star at top of shield -->
+  <circle cx="256" cy="145" r="16" fill="#fbc02d"/>
+</svg>

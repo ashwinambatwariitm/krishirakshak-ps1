@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="theme-color" content="#1c5220">
+  <meta name="description" content="Offline On-Device Plant Disease and Insect Pest Advisor">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="apple-touch-icon" href="assets/icon.svg">
+  <title>KrishiRakshak | Plant Health Advisor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- App Header (Visible at all times, FR-1) -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#a5d6a7"/>
+        </svg>
+        <div class="brand-text">
+          <h1 data-i18n="app_title">KrishiRakshak</h1>
+          <p data-i18n="app_subtitle">On-Device Plant Health Advisor</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <!-- Language Switch English / Hindi (FR-1) -->
+        <button id="btn-lang-toggle" class="icon-btn btn-lang" title="Toggle English / Hindi">हिन्दी</button>
+        <!-- History button (FR-14) -->
+        <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+        <!-- About button (FR-10) -->
+        <button id="btn-about" class="icon-btn" title="About" aria-label="About KrishiRakshak">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="main-content">
+
+    <!-- VIEW 1: HOME SCREEN (FR-1) -->
+    <section id="view-home">
+      <div class="card home-hero">
+        <svg class="home-illustration" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#e8f5e9"/>
+          <path d="M12 8v8M8 12h8" stroke="#2e7d32" stroke-linecap="round"/>
+        </svg>
+        <h2 class="home-title" data-i18n="app_title">KrishiRakshak</h2>
+        <p class="home-tagline" data-i18n="tagline">Runs 100% offline on Raspberry Pi • Zero internet required</p>
+
+        <!-- Hidden Native Inputs for Camera and Gallery -->
+        <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
+        <input type="file" id="gallery-input" accept="image/*" class="hidden">
+
+        <div class="action-buttons-group">
+          <!-- Large Take Photo Button (FR-1) -->
+          <button id="btn-take-photo" class="btn btn-primary">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <span data-i18n="take_photo">Take Photo</span>
+          </button>
+
+          <!-- Choose from Gallery Button (FR-1) -->
+          <button id="btn-choose-gallery" class="btn btn-secondary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            <span data-i18n="choose_gallery">Choose from Gallery</span>
+          </button>
+        </div>
+
+        <div class="offline-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"></path>
+          </svg>
+          <span>Offline On-Device AI Advisor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: WAITING SCREEN (FR-2) -->
+    <section id="view-waiting" class="hidden">
+      <div class="card waiting-card">
+        <!-- Photo Preview with Scanning Animation -->
+        <div class="waiting-photo-container">
+          <img id="waiting-photo-thumb" class="waiting-photo-thumb" alt="Captured leaf preview">
+          <div class="waiting-scanner"></div>
+        </div>
+
+        <div id="waiting-progress">
+          <div class="spinner"></div>
+          <h2 class="waiting-title" data-i18n="checking_plant">Checking your plant...</h2>
+          <p class="waiting-desc" data-i18n="waiting_desc">On-device AI is analyzing disease, insects, and severity. This may take 15–45 seconds.</p>
+        </div>
+
+        <!-- Error State (If device cannot be reached or times out) -->
+        <div id="waiting-error-box" class="error-card hidden">
+          <p id="waiting-error-msg" class="error-text" data-i18n="device_error">Cannot connect to KrishiRakshak device.</p>
+          <div style="display:flex;gap:10px;">
+            <button id="btn-retry-analysis" class="btn btn-primary" data-i18n="try_again">Try Again</button>
+            <button id="btn-cancel-analysis" class="btn btn-secondary" data-i18n="close">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: RESULT SCREEN (STATUS: ANSWERED) (FR-4 - FR-8) -->
+    <section id="view-result" class="hidden">
+      <!-- Back Navigation Bar -->
+      <button class="btn btn-secondary btn-home-back" style="margin-bottom:12px;min-height:44px;font-size:0.95rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span data-i18n="back_to_home">Back to Home</span>
+      </button>
+
+      <!-- Canvas for Pest Bounding Boxes Overlay (FR-13) -->
+      <div class="result-photo-wrapper">
+        <canvas id="result-photo-canvas" class="result-canvas"></canvas>
+      </div>
+
+      <!-- Result Header Card (FR-4) -->
+      <div class="card result-header-card">
+        <h2 id="res-disease-name" class="disease-title">Disease Name</h2>
+        <div class="meta-tags-row">
+          <span id="res-confidence" class="tag-badge">Confidence: 95%</span>
+          <span id="res-urgent-badge" class="tag-badge urgent-badge hidden" data-i18n="urgent_badge">Urgent - act today</span>
+          <span id="res-spread-badge" class="tag-badge hidden">Estimated spread: High</span>
+          <span id="res-pests-badge" class="tag-badge hidden">Insect found</span>
+        </div>
+      </div>
+
+      <!-- Official Messages Banner (FR-5) -->
+      <div id="res-messages-container" class="hidden"></div>
+
+      <!-- Llama Advice Card (FR-6: Rendered only when llama.text is not null) -->
+      <div id="res-llama-card" class="card llama-card hidden">
+        <div class="llama-header">
+          <h3 data-i18n="llama_card_title">Advice (explained by Llama on this device)</h3>
+          <span class="pill-ai" data-i18n="llama_badge">AI Simplified</span>
+        </div>
+        <p id="res-llama-text" class="llama-body"></p>
+      </div>
+
+      <!-- Grouped Official Advice Blocks (FR-7) -->
+      <h3 class="section-heading" data-i18n="advice_title">Verified Management Practices</h3>
+      <div id="res-advice-blocks"></div>
+
+      <!-- Spray Options Table (FR-8) -->
+      <div id="res-spray-container" class="card spray-card hidden">
+        <div class="spray-card-header">
+          <h3 data-i18n="spray_title">Spray Options (Official Recommendations)</h3>
+        </div>
+        <div style="padding:10px 14px 4px;">
+          <p class="table-note" data-i18n="spray_notice">The spray options below are copied exactly from ICAR, NIPHM and TNAU publications. Always wear protective equipment and observe harvest waiting periods.</p>
+        </div>
+        <div class="spray-table-wrapper">
+          <table class="spray-table">
+            <thead>
+              <tr>
+                <th data-i18n="col_product">Product</th>
+                <th data-i18n="col_dose">Dose</th>
+                <th data-i18n="col_source">Source</th>
+              </tr>
+            </thead>
+            <tbody id="res-spray-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Follow-up Question Card (FR-9) -->
+      <div class="card qa-card">
+        <h3 data-i18n="ask_title">Ask a Follow-up Question</h3>
+        <div class="qa-input-row">
+          <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="e.g. When can I harvest after spraying?">
+          <button id="btn-ask" class="btn btn-ask" data-i18n="ask">Ask</button>
+        </div>
+        <div id="qa-loading" class="muted text-center hidden" style="margin-top:10px;" data-i18n="ask_waiting">
+          Finding answer...
+        </div>
+        <div id="qa-response-container" class="qa-response hidden">
+          <p id="qa-rejected-notice" class="table-note hidden" style="color:var(--warn-amber);margin-bottom:8px;" data-i18n="llama_rejected_notice">
+            A simplified explanation could not be verified safely. Please refer directly to the verified official facts below:
+          </p>
+          <div class="qa-answer">
+            <span id="qa-answer-text"></span>
+          </div>
+          <div id="qa-facts-wrapper">
+            <h4 class="qa-facts-title" data-i18n="verified_facts_title">Verified Reference Facts:</h4>
+            <div id="qa-facts-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Details Drawer (FR-12) -->
+      <details id="res-tech-drawer" class="tech-details">
+        <summary data-i18n="tech_details">Technical Details & Timings</summary>
+        <pre id="tech-details-json" class="tech-pre"></pre>
+      </details>
+    </section>
+
+    <!-- VIEW 4: UNCERTAIN SCREEN (STATUS: UNCERTAIN) (FR-3) -->
+    <section id="view-uncertain" class="hidden">
+      <div class="card center-card">
+        <svg class="status-icon status-icon-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <h2 class="home-title" data-i18n="uncertain_title">Diagnosis Uncertain</h2>
+        <p class="muted" data-i18n="uncertain_desc">The AI model is not confident enough to diagnose this leaf safely.</p>
+        
+        <div id="uncertain-messages" style="margin:16px 0;text-align:left;"></div>
+
+        <ul class="issue-list">
+          <li class="issue-item" data-i18n="uncertain_tip_1">Take a clear, sharp photo of a single affected leaf in bright, natural daylight.</li>
+          <li class="issue-item" data-i18n="uncertain_tip_2">Consult your local Krishi Vigyan Kendra (KVK) or Block Agriculture Officer.</li>
+        </ul>
+
+        <button id="btn-uncertain-retake" class="btn btn-primary" data-i18n="take_another_photo">Take Another Photo</button>
+      </div>
+    </section>
+
+    <!-- VIEW 5: RETAKE PHOTO SCREEN (STATUS: RETAKE_PHOTO) (FR-3) -->
+    <section id="view-retake" class="hidden">
+      <div class="card center-card">
+        <svg class="status-icon status-icon-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <line x1="1" y1="1" x2="23" y2="23"></line>
+        </svg>
+        <h2 class="home-title" data-i18n="retake_title">Please Retake Photo</h2>
+        <p class="muted" data-i18n="retake_desc">The photo quality is not suitable for accurate diagnosis.</p>
+
+        <ul id="retake-issues-list" class="issue-list"></ul>
+
+        <button id="btn-retake-action" class="btn btn-primary" data-i18n="take_another_photo">Take Another Photo</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ABOUT MODAL (FR-10) -->
+  <div id="about-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 data-i18n="about_title">About KrishiRakshak</h2>
+        <button id="btn-modal-close" class="close-btn" aria-label="Close">&times;</button>
+      </div>
+
+      <p class="muted" style="margin-bottom:14px;" data-i18n="about_desc">
+        KrishiRakshak is an offline, on-device crop disease and insect pest advisory system built for Indian farmers as part of the Bharat AI-SoC Challenge.
+      </p>
+
+      <!-- Mandatory Legal Attribution Lines (FR-10) -->
+      <div class="req-line" data-i18n="about_req_icar">Advice from ICAR, NIPHM and TNAU publications</div>
+      <div class="req-line" data-i18n="about_req_llama">Built with Llama</div>
+
+      <h3 style="margin:16px 0 8px;font-size:1.05rem;" data-i18n="sys_details">System & Model Details</h3>
+      <div class="info-row">
+        <span class="info-label" data-i18n="disease_model">Disease Classifier</span>
+        <span id="info-disease-model" class="info-val">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="pest_model">Insect Detector</span>
+        <span id="info-pest-model" class="info-val">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="llama_model">On-device LLM</span>
+        <span id="info-llama-model" class="info-val">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="kb_version">Knowledge Base</span>
+        <span id="info-kb-version" class="info-val">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-i18n="runtime_env">Runtime</span>
+        <span id="info-runtime" class="info-val">—</span>
+      </div>
+
+      <!-- Developer / Host Setting (NFR-5) -->
+      <div style="margin-top:20px;padding-top:14px;border-top:1px dashed var(--line-border);">
+        <label for="setting-api-base" style="font-weight:700;font-size:0.9rem;" data-i18n="api_server_setting">API Server Address</label>
+        <p class="table-note" data-i18n="api_server_hint">Leave empty for same Pi server, or set http://localhost:8080 for mock server.</p>
+        <input type="text" id="setting-api-base" class="input-text" style="width:100%;margin:6px 0;" placeholder="http://localhost:8080">
+        <button id="btn-save-setting" class="btn btn-secondary" style="min-height:44px;font-size:0.95rem;margin-top:6px;" data-i18n="save_setting">Save & Reload</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT SCANS HISTORY MODAL (FR-14) -->
+  <div id="history-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 data-i18n="history_btn">Recent Scans</h2>
+        <button id="btn-history-close" class="close-btn" aria-label="Close">&times;</button>
+      </div>
+      <div id="history-items-container"></div>
+      <button id="btn-clear-history" class="btn btn-secondary" style="margin-top:14px;min-height:44px;font-size:0.9rem;" data-i18n="clear_history">Clear History</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>Bharat AI-SoC Challenge 2026-27 • Problem Statement 1</p>
+  </footer>
+
+  <!-- Application Scripts (Zero External Dependencies) -->
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
