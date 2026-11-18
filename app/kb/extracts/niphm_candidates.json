@@ -1,0 +1,2774 @@
+{
+ "source_id": "NIPHM",
+ "chunks": [
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "The basic components of AESA are: Plant health at different stages. Built-in compensation abilities of plants. Pest and defender population dynamics. Soil conditions. Climatic factors. Farmers past experience.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, basic components, p.12"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Principles of AESA based Integrated Pest Management (IPM): Grow a healthy crop. Select a variety resistant/tolerant to major pests. Treat the seed with recommended pesticides especially biopesticides. Select healthy seeds and seedlings. Follow proper spacing. Soil health improvement (mulching and green manuring). Proper irrigation. Crop rotation.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, principles - grow a healthy crop, p.12-13"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Nutrient management especially organic manures and biofertilizers based on the soil test results. If the dosage of nitrogenous fertilizers is too high the crop becomes too succulent and therefore susceptible to insects and diseases. If the dosage is too low, the crop growth is retarded.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, principles - grow a healthy crop, p.13"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "So, the farmers should apply an adequate for best results. The phosphatic fertilizers should not be applied each and every season as the residual phosphate of the previous season will be available for the current season also.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, principles - grow a healthy crop, p.13"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Farmers should: Monitor the field situation at least once a week (soil, water, plants, pests, natural enemies, weather factors etc.). Make decisions based on the field situation and P: D ratio. Take direct action when needed (e.g. collect egg masses, remove infested plants etc.).",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, observe the field regularly, p.13"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Understand and conserve defenders: Know defenders/natural enemies to understand their role through regular observations of the agro-ecosystem. Avoid the use of chemical pesticides especially with broad-spectrum activity.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, understand and conserve defenders, p.13-14"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Insect zoo concept can be helpful to enhance farmers' skill to identify beneficial and harmful insects. In this method, unfamiliar/unknown predators are collected in plastic containers with brush from the field and brought to a place for study.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, insect zoo, p.14"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Each predator is placed inside a plastic bottle together with parts of the plant and some known insect pests. Insects in the bottle are observed for certain time and determined whether the test insect is a pest (feeds on plant) or a predator (feeds on other insects).",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, insect zoo, p.14"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Identifying the number of pests and beneficial insects helps the farmers to make appropriate pest management decisions. Sweep net, visual counts etc. can be adopted to arrive at the numbers of pests and defenders. The P: D ratio can vary depending on the feeding potential of natural enemy as well as the type of pest.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, Pest: Defender ratio (P: D ratio), p.14"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "The natural enemies of tomato pests can be divided into 3 categories 1. parasitoids; 2. predators; and 3. pathogens.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, Pest: Defender ratio (P: D ratio), p.14"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "The general rule to be adopted for management decisions relying on the P: D ratio is 2: 1. However, some of the parasitoids and predators will be able to control more than 2 pests. Wherever specific P: D ratios are not found, it is safer to adopt the 2: 1, as P: D ratio.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, P: D ratio, p.15"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Whenever the P: D ratio is found to be favourable, there is no need for adoption of other management strategies. In cases where the P: D ratio is found to be unfavourable, the farmers can be advised to resort to inundative release of parasitoids/predators depending upon the type of pest.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, P: D ratio, p.15"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "In addition to inundative release of parasitoids and predators, the usage of microbial biopesticides and biochemical biopesticides such as insect growth regulators, botanicals etc. can be relied upon before resorting to synthetic chemical pesticides.",
+   "locator": "II. AESA based IPM, A. Agro-ecosystem analysis, P: D ratio, p.15"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Lady bird beetle: Predatory rate of adult coccinellid on aphids is 50 aphids per day.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Hover fly: 1st instar larva can consume 15-19 aphids/day. 2nd instar larva can consume 45-52 aphids/day. 3rd instar larva can consume 80-90 aphids/day. In total life cycle they can consume approx. 400 aphids.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Green Lace wing: Each larva can consume 100 aphids, 329 pupa of whitefly and 288 nymphs of jassids.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Reduviid bug: 1st & 2nd nymphal instars can consume 1 small larva/day. 3rd & 4th nymphal instars can consume 2 to 3 medium larvae/day. 5th nymphal instar & adult can consume 3 to 4 big larvae/day. In total life cycle they can consume approx. 250 to 300 larvae.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Spider: 5 big larvae/day.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Predatory mite: Predatory rate of adult is 20-35 phytophagous mites/female/day.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Bracon hebetor: Egg laying capacity is 100-200 eggs/female. 1-8 eggs/larva.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Trichogramma sp: Egg laying capacity is 20-200 eggs/female.",
+   "locator": "II. AESA based IPM, table: Feeding/egg laying potential of different parasitoids/predators, p.16"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Go to the field in groups (about 5 farmers per group). Walk across the field and choose 20 plants/acre randomly. Observe keenly each of these plants and record your observations.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Plant: Observe the plant height, number of branches, crop stage, deficiency symptoms etc. Pests: Observe and count pests at different places on the plant. Defenders (natural enemies): Observe and count parasitoids and predators. Diseases: Observe leaves and stems and identify any visible disease symptoms and severity.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Rats: Count number of plants affected by rats. Weeds: Observe weeds in the field and their intensity. Water: Observe the water situation of the field. Weather: Observe the weather condition.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "While walking in the field, manually collect insects in plastic bags. Use a sweep net to collect additional insects. Collect plant parts with disease symptoms. Find a shady place to sit as a group in a small circle for drawing and discussion. If needed, kill the insects with some chloroform (if available) on a piece of cotton.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Each group will first identify the pests, defenders and diseases collected. Each group will then analyze the field situation in detail and present their observations and analysis in a drawing (the AESA drawing).",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Each drawing will show a plant representing the field situation. The weather condition, water level, disease symptoms, etc. will be shown in the drawing. Pest insects will be drawn on one side. Defenders (beneficial insects) will be drawn on another side. Write the number next to each insect. Indicate the plant part where the pests and defenders were found. Try to show the interaction between pests and defenders.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Each group will discuss the situation and make a crop management recommendation. Formulate a common conclusion. The whole group should support the decision on what field management is required in the AESA plot. Make sure that the required activities (based on the decision) will be carried out. Keep the drawing for comparison purpose in the following weeks.",
+   "locator": "II. AESA based IPM, AESA methodology, p.17"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Farmers should record data in a notebook and drawing on a chart. Keep records of what has happened. Help us making an analysis and draw conclusions.",
+   "locator": "II. AESA based IPM, data recording, p.17-18"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Data to be recorded: Plant growth (weekly) - height of plant, number of leaves. Crop situation (e.g. for AESA) - plant health; pests, diseases, weeds; natural enemies; soil condition; irrigation; weather conditions. Input costs - seeds, fertilizer, pesticides, labour. Harvest - yield (kg/acre), price of produce (Rs./kg).",
+   "locator": "II. AESA based IPM, data to be recorded, p.18"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "AESA requires skill. So only the trained farmers can undertake their exercise. However, other farmers also can do field scouting in their own fields at regular intervals to monitor the major pest situation.",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Surveillance on pest occurrence at the main field should commence soon after crop establishment after transplanting and at weekly intervals thereafter. In each of the fields, select five spots randomly. Select five random plants at each spot for recording counts of insects as per procedure finalized for individual insects.",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "For sucking pests: For aphids, whitefly and mites: Count and record the number of both nymphs and adults on five randomly selected leaves per plant.",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "thrips",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "For thrips: Count and record the number of nymphs and adults of thrips present on five terminal leaves per plant (tapping method also can be used to count thrips).",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "For leaf miner: Only the number of live mines on five randomly selected leaves per plant should be counted and recorded.",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "For Helicoverpa and Spodoptera: Total number of fruits, damaged fruits due to Helicoverpa and Spodoptera and number of larvae on individual plants should be counted and recorded.",
+   "locator": "II. AESA based IPM, B. Field scouting, p.20"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Pheromone traps for two insects viz., Helicoverpa armigera and Spodoptera litura @ 2/fixed field have to be installed. Install the traps for each species separated by a distance of >75 feet in the vicinity of the selected fixed field. Fix the traps to the supporting pole at a height of one foot above the plant canopy. Change of lures should be made at 2-3 week interval (regular interval).",
+   "locator": "II. AESA based IPM, C. Surveillance through pheromone trap catches for Spodoptera and Helicoverpa, p.20-21"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "During each week of surveillance, the number of moths/trap should be counted and entered. Procedure for observation: Total number of moths of Helicoverpa armigera and Spodoptera litura/trap/week should be recorded year round. The trapped moths should be destroyed and removed after each recording.",
+   "locator": "II. AESA based IPM, C. Surveillance through pheromone trap catches for Spodoptera and Helicoverpa, p.20-21"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Set up yellow pan water trap/sticky traps 15 cm above the canopy for monitoring whitefly and blue sticky trap for thrips @ 4-5 traps/acre. Locally available empty tins can be painted yellow/ coated with grease/Vaseline/castor oil on outer surface may also be used.",
+   "locator": "II. AESA based IPM, D. Yellow pan water trap/sticky traps, p.21"
+  },
+  {
+   "topic": "aesa_monitoring",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Set up light traps 1 trap/acre 15 cm above the crop canopy for monitoring and mass trapping insects. Light traps with exit option for natural enemies of smaller size should be installed and operate around the dusk time (6 pm to 10 pm).",
+   "locator": "II. AESA based IPM, E. Light traps, p.21"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Collect 100 to 300 cm3 (200-300 g) soil sample. Mix soil sample and pass through a coarse sieve to remove rocks, roots, etc. Take a 600 cc subsample of soil, pack lightly into a beaker uniformly. Place soil in one of the buckets or pans half filled with water. Mix soil and water by stirring with paddle; allow to stand until water almost stops swirling.",
+   "locator": "II. AESA based IPM, F. Nematode sampling, p.21"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Pour all but heavy sediment through 20-mesh sieve into second bucket; discard residue in first bucket; discard material caught on sieve. Stir material in second bucket; allow to stand until water almost stops swirling. Pour all but heavy sediment through 200-mesh sieve into first bucket; discard residue in second bucket. Backwash material caught on 200-mesh sieve (which includes large nematodes) into 250-ml beaker.",
+   "locator": "II. AESA based IPM, F. Nematode sampling, p.21"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Stir material in first bucket; allow to stand until water almost stops swirling. Pour all but heavy sediment through 325-mesh sieve into second bucket; discard residue in first bucket. Backwash material caught on 325-mesh sieve (which includes small to mid-sized nematodes and silty material) into 250-ml beaker. More than 90% of the live nematodes are recovered in the first 5-8 mm of water drawn from the rubber tubing and the sample is placed in a shallow dish for examination.",
+   "locator": "II. AESA based IPM, F. Nematode sampling, p.21"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Ecological engineering for pest management has recently emerged as a paradigm for considering pest management approaches that rely on the use of cultural techniques to effect habitat manipulation and to enhance biological control.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies may require 1. Food in the form of pollen and nectar for adult natural enemies. 2. Shelters such as overwintering sites, moderate microclimate, etc are needed. 3. Natural enemies may also require alternate host when primary host are not present.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Ecological engineering for pest management - Above ground: Raising the flowering plants / compatible cash crops along the field border by arranging shorter plants towards main crop and taller plants towards the border to attract natural enemies as well as to avoid immigrating pest population. Growing flowering plants on the internal bunds inside the field.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Not to uproot weed plants those are growing naturally like Tridax procumbens, Ageratum sp. Alternanthera sp., which act as nectar source for natural enemies. Not to apply broad spectrum chemical pesticides, when the P: D is favourable. The plant compensation ability should also be considered before applying chemical pesticides.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Ecological engineering for pest management - Below ground: Crop rotations with leguminous plants which enhance nitrogen content. Keeping soils covered year-round with living vegetation and/or crop residue. Adding organic matter in the form of FYM, Vermicompost, crop residue which enhance below ground biodiversity. Reducing tillage intensity so that hibernating natural enemies can be saved.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Applying balanced dose of nutrients using biobiofertilizers. Apply mychorrhiza and PGPR. Applying Trichoderma as seed and nursery treatment and Pseudomonas fluorescens as seed, nursery treatment and soil application (if commercial products are used, check for label claim. However, biopesticides produced by farmers for own consumption in their fields, registration is not required).",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Due to enhancement of biodiversity by the flowering plants, parasitoids and predatory natural enemies number also will increase due to availability of nectar, pollen, fruits, insects, etc. The major predators are a wide variety of spiders, lady bird beetles, long horned grasshoppers, Chrysoperla, earwigs, etc.",
+   "locator": "III. Ecological engineering for pest management, p.22"
+  },
+  {
+   "topic": "natural_enemies",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Good insectary plants belonging to Compositae, Leguminaceae, Umbelliferae, Brassicaceae etc. families: French bean, Marigold, Carrot, Sunflower, Mustard, Caraway, Alfalfa, Dill, Cowpea, Desmodium sp, Chrysanthemum, Buckwheat.",
+   "locator": "III. Ecological engineering, good insectary plants, p.23"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of serpentine leaf miner - Parasitoids: Tetrastichus ovularum (egg), Gronotoma micromorpha (larval and pupal), Diglyphus sp. (larval), Opius sp. (pupal) Chrysocharis sp., Neochrysocharis formosa (larval) etc. Predators: Lacewings, lady beetle, spiders, fire ants, dragonfly, robber fly, praying mantis etc.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, serpentine leaf miner, p.25"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Flowering plants for serpentine leaf miner - Attractant plants: Carrot family, sunflower family, buck wheat, French bean (predatory thrips).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, serpentine leaf miner, p.25"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of gram pod borer - Parasitoids: Trichogramma chilonis (egg), Tetrastichus spp. (egg), Telenomus spp. (egg), Chelonus blackburni (egg-larval), Carcelia spp. (larval-pupal), Campoletis chlorideae (larval), Goniophthalmus halli (larval), Bracon spp. (larval) etc.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, gram pod borer, p.25"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of gram pod borer - Predators: Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc. Ovomermis albicans, a nematode.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, gram pod borer, p.25"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Flowering plants for gram pod borer - Repellant plants: Ocimum/Basil. Attractant plants: Carrot family, sunflower family, buck wheat, alfalfa, corn, shrubs (minute pirate bug and lacewing). Nectar rich plants with small flowers i.e. anise, caraway, dill, parsely, mustard, sunflower, buck wheat and cowpea (wasp).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, gram pod borer, p.25"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of tobacco caterpillar - Parasitoids: Trichogramma chilonis (egg), Tetrastichus spp. (egg), Telenomus spp. (egg), Chelonus blackburni (egg-larval), Carcelia spp. (larval-pupal), Campoletis chlorideae (larval), Eriborus argentiopilosus (larval), Microplitis sp (larval) etc.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, tobacco caterpillar, p.25"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of tobacco caterpillar - Predators: Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc. Ovomermis albicans, a nematode.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, tobacco caterpillar, p.25-26"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Flowering plants for tobacco caterpillar - Repellant plants: Basil. Attractant plants: Carrot family, sunflower family, buck wheat, alfalfa, corn, shrubs (minute pirate bug and lacewing). Nectar rich plants with small flowers i.e anise, caraway, dill, parsely, mustard, sunflower, buck wheat and cowpea (wasp).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, tobacco caterpillar, p.25"
+  },
+  {
+   "topic": "whitefly",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of whitefly - Parasitoids: Encarsia sp, Eretmocerus spp. Predators: Dicyphus hesperus, (mirid bug), dragonfly, spider, robber fly, praying mantis, fire ants, coccinellids, lace wings, big eyed bugs (Geocoris sp) etc.",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, whitefly, p.26"
+  },
+  {
+   "topic": "whitefly",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Flowering plants for whitefly - Repellant plants: Peppermint. Attractant plant: French bean (predatory thrips).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, whitefly, p.26"
+  },
+  {
+   "topic": "mites",
+   "section": "natural_enemies",
+   "source": "NIPHM",
+   "en": "Natural enemies of spider mites - Predators: Anthocorid bugs (Orius spp.), mirid bugs, syrphid/hover flies, green lacewings (Mallada basalis and Chrysoperla carnea), predatory mites (Amblyseius alstoniae, A. womersleyi, A. fallacies and Phytoseiulus persimilis), predatory coccinellids (Stethorus punctillum), staphylinid beetle (Oligota spp.), predatory cecidomyiid fly (Anthrocnodax occidentalis), predatory gall midge (Feltiella minuta) etc. Beauveria bassiana (entomo pathogen).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, spider mites, p.26"
+  },
+  {
+   "topic": "mites",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Flowering plants for spider mites - Attractant plants: Carrot family, bishop's weed (spider mite destroyer). Sunflower family, marigold, buck wheat, spear mint (lady beetle). Carrot family, sunflower family, buck wheat, alfalfa, corn, shrubs (minute pirate bug). Mustard, sweet clove, dill (aphid midge). French bean (predatory mites). Berseem clover (big eyed bugs).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, spider mites, p.26"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Use of biocontrol agents like Paecilomyces lilacinus (egg parasite).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, root knot nematode, p.26"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Intercropping of marigold with tomato reduces nematode population. Repellant plants: Marigold. Crop rotation: Marigold, Chrysanthemum spp., Sesbania spp., Crotalaria spp., Gaillardia sp, castor bean and Desmodium spp., (parasitic nematodes). Boarder crops: Strips of Rye, grains, cover crops and mulch beds (rove beetle).",
+   "locator": "III. Ecological engineering, table: Flowering plants that attract natural enemies/repel pests, root knot nematode, p.26"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Tolerant/resistant varieties for root knot nematode: Pusa-120, Pusa Hybrid-2, Pusa Hybrid-4, Arka Vardan, Hisar Lalit, TNAU Tomato Hybrid Co3.",
+   "locator": "III. A. Resistant/tolerant varieties, p.27"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Tolerant/resistant varieties for bacterial wilt: Arka Ananya, Arka Abhijit, Arka Abha, Arka Alok.",
+   "locator": "III. A. Resistant/tolerant varieties, p.27"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Add well rotten farm yard manure (FYM) @ 8-10 t/acre or vermicompost @ 5 t/acre. Incorporate at the time of field preparation at 1 week (vermicompost) or 2 to 3 weeks (FYM) before transplanting.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, nutrients, p.27"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "At the time of field preparation, adopt stale seed bed technique to minimize the weeds menace in field. Keep the nursery weed free by hand pulling of the weeds.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, weeds, p.27"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Deep summer ploughing of fields to control nematodes and exposes dormant stages (pupa and larva) of Helicoverpa and Spodoptera and subsequently reduces their initial population build up. Apply neem cake @ 100 kg/acre.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, soil-borne fungus and nematodes, resting stages of insects, p.27"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Soil solarization: Cover the beds with polythene sheet of 45 gauge (0.45 mm) thickness for three weeks before sowing for soil solarization which will help in reducing the soil-borne pests including weeds.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, soil-borne fungus and nematodes, resting stages of insects, p.27"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Ecological engineering of tomato with raising African marigold nursery 15 days prior to tomato nursery serves as a trap crop for ovipositing females of Helicoverpa.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, soil-borne fungus and nematodes, resting stages of insects, p.27"
+  },
+  {
+   "topic": "damping_off",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Excessive watering and poorly drained areas of field should be avoided. Use raised beds: 15 cm height is better for water drainage or use pro-trays for raising seedlings.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, damping off, cultural control, p.27-28"
+  },
+  {
+   "topic": "damping_off",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Seed treatment with Trichoderma viride 1 % WP @ 9 g/kg of seed.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, damping off, biological control, p.28"
+  },
+  {
+   "topic": "damping_off",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 75% WS",
+   "dose": "20-30 g/kg seed",
+   "note": "Seed treatment.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, damping off, chemical control, p.28"
+  },
+  {
+   "topic": "damping_off",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 75% WP",
+   "dose": "1000 g in 400 l of water/acre",
+   "note": "Soil drench.",
+   "locator": "IV. Crop stage-wise IPM, pre-sowing stage, damping off, chemical control, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Before sowing, soil testing should be done to find out the soil fertility status. Nutrients should be provided as per soil test recommendations. Generally, tomato needs 40: 24: 24 kg N: P: K/acre-for varieties and 60: 36: 36 kg N: P: K/acre-for hybrids.",
+   "locator": "IV. Crop stage-wise IPM, seed sowing/transplanting stage, nutrients, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "In varieties- Apply 50% of N fertilizer dose as basal before transplanting. Apply entire dose of phosphatic fertilizers at the time of last ploughing/transplanting in case of varieties.",
+   "locator": "IV. Crop stage-wise IPM, seed sowing/transplanting stage, nutrients, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "For hybrids, apply nitrogen fertilizer in three equal split doses. First at the time of last ploughing. For hybrids, apply potassic fertilizers in two equal splits, first at the time of last ploughing.",
+   "locator": "IV. Crop stage-wise IPM, seed sowing/transplanting stage, nutrients, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Based on soil test for micronutrients, the deficient micronutrient should be applied in soil at sowing/transplanting.",
+   "locator": "IV. Crop stage-wise IPM, seed sowing/transplanting stage, nutrients, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Biofertilizers: For seed/seedling treatment with Azotobacter and phosphorous solubilizing bacteria (PSB) cultures @ 8-10 g each/kg seed. For seedling root dip treatment with Azotobacter and phosphorous solubilizing bacteria (PSB) cultures @ 250 g each/acre seedlings.",
+   "locator": "IV. Crop stage-wise IPM, seed sowing/transplanting stage, nutrients, p.28"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Keep the nursery beds weed free by hand weeding. Avoid carrying of weed seedlings along with tomato seedlings. Cultural practices such as crop rotation, line transplanting, intercropping should be adopted to avoid weeds spread and to suppress the weed growth.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, weed management, p.28-29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 50% WP",
+   "dose": "1000 g in 300-400 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 75% WP",
+   "dose": "666.8 g in 400 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Copper oxy chloride 50% WP",
+   "dose": "1000 g in 300-400 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Copper sulphate 2.62% SC",
+   "dose": "400 ml in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Iprodione 50% WP",
+   "dose": "600 g in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Kitazin 48% EC",
+   "dose": "80 ml in 80 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozeb 35% SC",
+   "dose": "200 g in 200 l water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozeb 75% WG",
+   "dose": "400 g in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Pyraclostrobin 20% WG",
+   "dose": "150-200 g in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Zineb 75% WP",
+   "dose": "600-800 g in 300-400 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Ziram 80% WP",
+   "dose": "600-800 g in 300-400 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Famoxadone 16.6% + cymoxanil 22.1% SC",
+   "dose": "200 g in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Metiram 55% + pyraclostrobin 5% WG",
+   "dose": "600-700 g in 200 l of water/acre",
+   "note": "Seed and seedling stage.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, early blight, chemical control, p.29"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Crop rotations, viz., cowpea-maize-cabbage, okra-cowpea-maize, maize-cowpea-maize and finger millet- brinjal are reported effective in reducing bacterial wilt of tomato. Rotate with non-host crops, particularly with paddy.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, bacterial wilt, cultural control, p.29"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Use seedlings from pathogen free seed beds. Restriction of irrigation water flowing from affected field to healthy field.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, bacterial wilt, cultural control, p.29"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Neem cake @ 100 kg/acre.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, bacterial wilt, biological control, p.29"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Seed treatment with Trichoderma viride 1% WP @ 9 g/kg seed.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, fusarium wilt, biological control, p.30"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Root zone application: Mix thoroughly 2.5 kg of the T. viride 1% WP in 150 kg of compost or farmyard manure and apply this mixture in the field after sowing/ transplanting of crops.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, fusarium wilt, biological control, p.30"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Crop rotation with cereal crops. Ecological engineering of tomato with marigold/mustard as intercrops reduces nematode population. Nursery should be raised in nematode free sites or solarized beds.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, nematodes, cultural control, p.30"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Dazomet technical",
+   "dose": "12-16 g/acre (nursery)",
+   "note": "Nursery.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, nematodes, chemical control, p.30"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Avoid excess use of nitrogen. Ecological engineering of tomato with beans as intercrop reduces leaf miner attack.",
+   "locator": "IV. Crop stage-wise IPM, seed and seedling stage, serpentine leaf miner, cultural control, p.30"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "In varieties, apply the second dose of N i.e. 13.5 kg N/acre, at 45 days after transplanting. For hybrids, apply the second dose of N i.e. 20 kg N/acre at 30 days after planting. For hybrids, apply the second dose of potassic fertilizers at 30 days after planting. Micronutrient deficiency should be corrected by foliar spray of particular micronutrient.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, nutrient management, p.31"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Field should be weed free before 30 days crop stage. Two hoeings between the rows plus hand weeding within the row at 15 and 30 days after planting. Mulching with black Low Density Polyethylene (LDPE) sheets of 30 micron thickness by burying both the ends into the soil to a depth of 10 cm will avoid weed growth.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, weed management, p.31"
+  },
+  {
+   "topic": "early_blight",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Alternaria blight and late blight: Field sanitation. Destruction of alternate hosts. Provide light irrigation.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, cultural control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Alternaria blight and late blight: Field sanitation. Destruction of alternate hosts. Provide light irrigation.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, cultural control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozeb 35% SC",
+   "dose": "200 g in 200 l water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozen 75% WP",
+   "dose": "600-800 g in 300 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozen 75% WP",
+   "dose": "600-800 g in 300 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Zineb 75% WP",
+   "dose": "600-800 g in 300-400 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Famoxadone 16.6% + cymoxanil 22.1% SC",
+   "dose": "200 g in 200 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Cymoxanil 8% + mancozeb 64% WP",
+   "dose": "600 g in 200-300 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Azoxystrobin 23% SC",
+   "dose": "200 ml in 200 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 50% WP",
+   "dose": "1000 g in 300-400 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Captan 75% WP",
+   "dose": "666.8 g in 400 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Copper oxy chloride 50% WP",
+   "dose": "1000 g in 300-400 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Copper sulphate 2.62% SC",
+   "dose": "400 ml in 200 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Cyazaphamid 34.5% SC",
+   "dose": "80 ml in 200 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Cyazaphamid 34.5% SC",
+   "dose": "80 ml in 200 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Metrium 75% WG",
+   "dose": "1000 g in 200-300 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Metrium 75% WG",
+   "dose": "1000 g in 200-300 l of water/acre",
+   "note": "Listed for Alternaria blight and late blight, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, Alternaria blight and late blight, chemical control, p.31"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Peppermint can be used as repellant plant for whitefly.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), cultural control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve predators such as Dicyphus hesperus, (mirid bug), dragonfly, spider, robber fly, praying mantis, fire ants, coccinellids, lace wings, big eyed bugs (Geocoris sp) etc.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), biological control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Dimethoate 30% EC",
+   "dose": "396 ml in 200-400 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Imidacloprid 17.8 SL",
+   "dose": "60-70 ml in 200 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage. Spray.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Thiamethoxam 25 WG",
+   "dose": "80 g in 200 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Carbofuran 3% CG",
+   "dose": "16,000 g/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Malathion 50% EC",
+   "dose": "600 ml in 200-400 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Oxydemeton-methyl 25% EC",
+   "dose": "400 ml in 200-400 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Phorate 10% CG",
+   "dose": "6,000 g/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Spiromesifen 22.9% SC",
+   "dose": "250 ml in 200 l of water/acre",
+   "note": "Leaf curl disease (vector - whitefly), vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, leaf curl disease (vector - whitefly), chemical control, p.32"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Spiromesifen 22.9% SC",
+   "dose": "250 ml in 200 l of water/acre",
+   "note": "Spider mites, vegetative stage (listed as alternative to fenzaquin 10% EC).",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, spider mites, chemical control, p.33"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "mechanical",
+   "source": "NIPHM",
+   "en": "Use yellow sticky traps or cards @ 10/acre.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, serpentine leaf miner, cultural and mechanical control, p.33"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve parasitoids such as Tetrastichus ovularum (egg), Gronotoma micromorpha (larval and pupal), Diglyphus sp (larval), Opius phaseoli (pupal), Chrysocharis sp, Neochrysocharis formosa etc. Conserve predators such as lacewings, lady beetles, spiders, fire ants etc.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, serpentine leaf miner, biological control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Field sanitation. Install pheromone traps @ 4-5/acre or monitoring adult moths activity. Replace the lures with fresh lures after every 2-3 weeks. Setting up of light trap @ 1/acre.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, cultural control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Ecological engineering of tomato with growing of ovipositional trap crops such as castor. Erecting of bird perches @ 20/acre for encouraging predatory birds such as king crow, mynah etc.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, cultural control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Release egg parasitoid, Trichogramma pretiosum @ 20,000/acre/week four times.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, biological control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Spray NSKE 5% against eggs and first instar larva or azadirachtin 5% W/W neem extract concentrate @ 80 g in 160 l of water/acre.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, biological control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve parasitoids such as Trichogramma chilonis (egg), Tetrastichus spp. (egg), Telenomus spp. (egg), Chelonus blackburni (egg-larval), Carcelia spp. (larval-pupal), Campoletis chlorideae (larval), Eriborus argentiopilosus (larval), Microplitis sp etc.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, biological control, p.33"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve predators such as Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, biological control, p.33-34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Apply entomopathogenic nematodes (EPNs) @ 2,50,000 infective juveniles of Steinernema feltiae/sq mt area.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, biological control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Trichlorfon 5% GR",
+   "dose": "300 g/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Trichlorfon 5% DUST",
+   "dose": "300 g/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Indoxacarb 14.5% SC",
+   "dose": "160 - 200 ml in 120-240 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Flubendiamide 20% WG",
+   "dose": "40 g in 150-200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Flubendiamide 39.35% M/M SC",
+   "dose": "40 ml in 150-200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Carbaryl 50% WP",
+   "dose": "800 g in 200-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Chlorantranilioprole 18.5% SC",
+   "dose": "60 ml in 200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Lambda-cyhalothrin 4.9% CS",
+   "dose": "120 ml in 200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Lambda-cyhalothrin 5% EC",
+   "dose": "120 ml in 160-200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Methomyl 40% SP",
+   "dose": "300-450 ml in 200-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Novaluron 10 % EC",
+   "dose": "300 ml in 200-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Phosalone 35% EC",
+   "dose": "514 ml in 200-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Quinalphos 20% AF",
+   "dose": "600-700 ml in 300-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Quinalohos 25% EC",
+   "dose": "400 ml in 200-400 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Novaluron 5.25% + indoxacarb 4.5% SC",
+   "dose": "330-350 ml in 200 l of water/acre",
+   "note": "Tobacco caterpillar, vegetative stage.",
+   "locator": "IV. Crop stage-wise IPM, vegetative stage, tobacco caterpillar, chemical control, p.34"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "In varieties, the third dose of N i.e. 13.5 kg N/acre, to be applied at 60 days after transplanting. For hybrids, third dose of N i.e. 20 kg N/acre is applied at 60 days after planting. Micronutrient deficiency, if any, should be corrected by application of particular nutrients.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, nutrients, p.34"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Weeds should be removed from the field to avoid further spread of weed seeds.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, weeds, p.34"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Field sanitation. Ecological engineering of tomato with growing intercrops such as cowpea, onion, maize, coriander, urdbean etc. and with growing sorghum or maize in 4 rows all around tomato crop as guard crop.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, cultural control, p.34"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Rotate the tomato crop with a non host cereal crop, cucurbit, or cruciferous vegetable. Ecological engineering of tomato with repellant plants: Ocimum/Basil and marigold as ovipositional trap crop.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, cultural control, p.34-35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Erecting of bird perches @ 20/acre for encouraging predatory birds such as king crow, mynah etc. Install pheromone traps @ 4-5/acre for monitoring adult moths activity. Replace the lures after every 2-3 weeks. Setting up of light trap @ 1/acre.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, cultural control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Inundatively release T. pretiosum @ 40,000/acre 4-5 times from flower initiation stage at weekly intervals.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve parasitoids such as Tetrastichus spp. (egg), Telenomus spp. (egg), Campoletis chlorideae (larval) etc.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve predators such as Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Spray azadirachtin 1% (10000 ppm) neem based EC @ 400-600 ml in 200 l of water/acre or azadirachtin 5% W/W neem extract concentrate @ 80 g in 160 l of water/acre.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Spray Ha NPV 0.43% AS @ 600 ml in 160-240 l of water/acre or Ha NPV 2% AS @ 100-200 ml in 200 l of water/acre in combination with jaggery @ 1 kg in the evening hours at 10-15 days interval on observing the eggs or early instar larvae.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Spray Bacillus thuringiensis var gallariae @ 400-600 g in 200 l of water/acre.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Apply entomopathogenic nematodes (EPNs) @ 20-120 crore infective juveniles of Steinernema feltiae/acre.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, biological control, p.35"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Indoxacarb 14.5% SC",
+   "dose": "160-200 ml in 120-240 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Flubendiamide 20% WG",
+   "dose": "40 g in 150-200 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Flubendiamide 39.35% M/M SC",
+   "dose": "40 ml in 150-200 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Novaluron 10 % EC",
+   "dose": "300 ml in 200-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Carbaryl 50% WP",
+   "dose": "800 g in 200-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Chlorantranilioprole 18.5% SC",
+   "dose": "60 ml in 200 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Lambda-cyhalothrin 4.9% CS",
+   "dose": "120 ml in 200 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Lambda-cyhalothrin 5% EC",
+   "dose": "120 ml in 160-200 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Methomyl 40% SP",
+   "dose": "300-450 ml in 200-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Phosalone 35% EC",
+   "dose": "514 ml in 200-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Quinalphos 20% AF",
+   "dose": "600-700 ml in 300-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Quinalohos 25% EC",
+   "dose": "400 ml in 200-400 l of water/acre",
+   "note": "Gram pod borer, reproductive stage.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, gram pod borer, chemical control, p.35-36"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Staking of plants to avoid touching fruits on ground.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, leaf curl disease, cultural practices, p.36"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Seeds from disease free healthy plants should be selected for sowing. The seeds should be thoroughly rinsed and dried in shade.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, mosaic, cultural practices, p.36"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "In the nursery all the infected plants should be removed carefully and destroyed. Seedlings infected with the viral disease should not be used for transplanting.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, mosaic, cultural practices, p.36"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Crop rotation with crops other than tobacco, potato, chilli, capsicum, brinjal, and other solanaceous crops should be undertaken.",
+   "locator": "IV. Crop stage-wise IPM, reproductive stage, mosaic, cultural practices, p.36"
+  },
+  {
+   "topic": "leafhoppers",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Soil application of neem cake 100 kg/acre.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, leafhoppers, p.36"
+  },
+  {
+   "topic": "leafhoppers",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve predators such as ladybird beetles and green lacewings and parasitoids such as Anagrus flaveolus and Stethynium triclavatum. Spray NSKE 5%.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, leafhoppers, p.36-37"
+  },
+  {
+   "topic": "cutworm",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Deep summer ploughing. Use well decomposed organic manure. Tillage at least 2 weeks before planting will help destroy plant residue that could harbor larvae. Flood the infested fields.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, cutworm, p.37"
+  },
+  {
+   "topic": "cutworm",
+   "section": "mechanical",
+   "source": "NIPHM",
+   "en": "On a small area, collection of caterpillars from soil around the plants can be done. Collection of moths in the light traps.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, cutworm, p.37"
+  },
+  {
+   "topic": "cutworm",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Conserve biological control agents such as Microgaster sp, Micropilitis dimilis, Bracon kitchener, Broscus punctatus and Liogryllus bimaculatus (Predator).",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, cutworm, p.37"
+  },
+  {
+   "topic": "buckeye_fruit_rot",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Buck eye rot or fruit rot: Use resistant varieties.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, buck eye rot or fruit rot, p.37"
+  },
+  {
+   "topic": "buckeye_fruit_rot",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Seed treatment with Trichoderma spp.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, buck eye rot or fruit rot, p.37"
+  },
+  {
+   "topic": "buckeye_fruit_rot",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Staking and removal of the fruits and leaves touching the ground (up to 30 cm). Provision of good soil drainage. Periodic clipping of lower leaves and mulching.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, buck eye rot or fruit rot, p.37"
+  },
+  {
+   "topic": "buckeye_fruit_rot",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Mancozeb 75% WP",
+   "dose": "600-800 g in 300 l of water/acre",
+   "note": "",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, buck eye rot or fruit rot, p.37"
+  },
+  {
+   "topic": "buckeye_fruit_rot",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Propineb 70% WP",
+   "dose": "120 g in 40 l of water/acre",
+   "note": "",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, buck eye rot or fruit rot, p.37"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Powdery mildew: Growing resistant varieties.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, powdery mildew, p.37"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Adopt early planting, sprinkler irrigation. Immediately remove and destroy them to help prevent the disease from spreading.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, powdery mildew, p.37"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Proper plant spacing of about 3 feet apart to allow for proper air circulation, which helps the foliage dry faster. Periodic clipping of lower leaves and mulching. Organic mulch added around the plants will protect roots while preventing fungal spores from splashing onto the plant.",
+   "locator": "IV. Crop stage-wise IPM, management of regional pests, powdery mildew, p.37"
+  },
+  {
+   "topic": "general",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Triacontanol 0.05% min GR",
+   "dose": "10000 g/acre",
+   "note": "Plant growth regulator recommended for improvement of crop growth in tomato; to be broadcasted and mixed in the soil 2-3 days before sowing.",
+   "locator": "IV. Crop stage-wise IPM, plant growth regulators, p.37"
+  },
+  {
+   "topic": "general",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Gibberellic acid 0.001% L",
+   "dose": "70.8 ml in 180-200 l of water/acre",
+   "note": "Plant growth regulator recommended for improvement of crop growth in tomato; spray at 45 and 65 days after sowing.",
+   "locator": "IV. Crop stage-wise IPM, plant growth regulators, p.37"
+  },
+  {
+   "topic": "general",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Triacontanol 0.05% EC/Triacontanol 0.1% EW",
+   "dose": "100 ml in 160-200 l of water/acre",
+   "note": "Plant growth regulator recommended for improvement of crop growth in tomato; at 25, 45, and 65 days after sowing.",
+   "locator": "IV. Crop stage-wise IPM, plant growth regulators, p.37"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Leaves with serpentine mines. Drying dropping of leaves in severe cases.",
+   "locator": "VII. Description of insect pests, 1) serpentine leaf miner, damage symptoms, p.47"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm weather conditions are favourable for multiplication.",
+   "locator": "VII. Description of insect pests, 1) serpentine leaf miner, favourable conditions, p.47"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Young larva feeds on the leaves for some time and then attacks fruits. Internal tissues are eaten severely and completely hollowed out. While feeding the caterpillar thrust its head inside leaving the rest of the body outside.",
+   "locator": "VII. Description of insect pests, 2) gram pod borer, damage symptoms, p.49"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Bored fruits with round holes. Fed leaves, shoots and buds. The activity of Helicoverpa starts on green gram, summer vegetables and maize and continues their generation by Aug-Sept months synchronizing with main crop.",
+   "locator": "VII. Description of insect pests, 2) gram pod borer, damage symptoms, p.49"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm weather conditions followed by light rains and dry spells are favourable for multiplication.",
+   "locator": "VII. Description of insect pests, 2) gram pod borer, favourable conditions, p.49"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "In early stages, the caterpillars are gregarious and scrape the chlorophyll content of leaf lamina giving it a papery white appearance. Later they become voracious feeders making irregular holes on the leaves.",
+   "locator": "VII. Description of insect pests, 3) tobacco caterpillar, damage symptoms, p.52"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Irregular holes on leaves initially and later skeletonization leaving only veins and petioles. Heavy defoliation. Bored fruits with irregular holes.",
+   "locator": "VII. Description of insect pests, 3) tobacco caterpillar, damage symptoms, p.52"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm weather conditions and rainy conditions are favourable for multiplication.",
+   "locator": "VII. Description of insect pests, 3) tobacco caterpillar, favourable conditions, p.53"
+  },
+  {
+   "topic": "whitefly",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Chlorotic spots. Yellowing. Downward curling and drying of leaves. Vector of tomato leaf curl disease.",
+   "locator": "VII. Description of insect pests, 4) whitefly, damage symptoms, p.54"
+  },
+  {
+   "topic": "whitefly",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm weather conditions are favourable for multiplication.",
+   "locator": "VII. Description of insect pests, 4) whitefly, favourable conditions, p.56"
+  },
+  {
+   "topic": "mites",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves. Leaves wither and dry. Flower and fruit formation affected.",
+   "locator": "VII. Description of insect pests, 5) spider mites, damage symptoms, p.56-57"
+  },
+  {
+   "topic": "mites",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm weather conditions are favourable for multiplication.",
+   "locator": "VII. Description of insect pests, 5) spider mites, favourable conditions, p.58"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Under suitable environmental conditions, the eggs hatch and new larvae emerge to complete the life cycle within 4 to 8 weeks depending on temperature. Nematode development is generally most rapid within an optimal soil temperature range of 70 to 80 degree F.",
+   "locator": "VII. Description of insect pests, 6) root-knot nematode, biology, p.58"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Infected plants in patches in the field. Formation of galls on host root system is the primary symptom. Roots branch profusely starting from the gall tissue causing a 'beard root' symptom. Infected roots become knobby and knotty.",
+   "locator": "VII. Description of insect pests, 6) root-knot nematode, damage symptoms, p.59"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "In severely infected plants the root system is reduced and the rootlets are almost completely absent. The roots are seriously hampered in their function of uptake and transport of water and nutrients. Plants wilt during the hot part of day, especially under dry conditions and are often stunted.",
+   "locator": "VII. Description of insect pests, 6) root-knot nematode, damage symptoms, p.59"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Seedlings infected in nursery do not normally survive transplanting and those surviving have reduced flowering and fruit production. Nematode infection predisposes plants to fungal and bacterial root pathogens.",
+   "locator": "VII. Description of insect pests, 6) root-knot nematode, damage symptoms, p.59"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Cysts and egg masses in infected plant debris and soil or collateral and other hosts like Solonaceous, Malvaceous and Leguminaceous plants act as sources of inoculum. Secondary: Autonomous second stage juveniles that may also be water dispersed. Favourable conditions: Loamy light soils.",
+   "locator": "VII. Description of insect pests, 6) root-knot nematode, survival and spread, favourable conditions, p.59"
+  },
+  {
+   "topic": "damping_off",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Damping off of tomato occurs in two stages, i.e. the pre-emergence and the post-emergence phase. In the pre-emergence the phase the seedlings are killed just before they reach the soil surface. The young radical and the plumule are killed and there is complete rotting of the seedlings.",
+   "locator": "VIII. Description of diseases, 1) damping off, damage symptoms, p.60"
+  },
+  {
+   "topic": "damping_off",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The post-emergence phase is characterized by the infection of the young, juvenile tissues of the collar at the ground level. The infected tissues become soft and water soaked. The seedlings topple over or collapse.",
+   "locator": "VIII. Description of diseases, 1) damping off, damage symptoms, p.60"
+  },
+  {
+   "topic": "damping_off",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: High humidity, high soil moisture, cloudiness and low temperatures below 24 degree C for few days are ideal for infection and development of disease. Crowded seedlings, dampness due to high rainfall, poor drainage and excess of soil solutes hamper plant growth and increase the pathogenic damping-off.",
+   "locator": "VIII. Description of diseases, 1) damping off, favourable conditions, p.61"
+  },
+  {
+   "topic": "damping_off",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Soil, Seed, Water. Secondary: Conidia through rain splash or wind.",
+   "locator": "VIII. Description of diseases, 1) damping off, survival and spread, p.61"
+  },
+  {
+   "topic": "septoria_leaf_spot",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+   "locator": "VIII. Description of diseases, 2) Septoria leaf spot, damage symptoms, p.61"
+  },
+  {
+   "topic": "septoria_leaf_spot",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+   "locator": "VIII. Description of diseases, 2) Septoria leaf spot, damage symptoms, p.61"
+  },
+  {
+   "topic": "septoria_leaf_spot",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Mycelium or conidia in pycnidia in infected plant debris or on solanaceous weeds. Secondary: Conidia through rain splash or wind and also by slimy conidia sticking on to hands and clothing of tomato pickers.",
+   "locator": "VIII. Description of diseases, 2) Septoria leaf spot, survival and spread, p.62"
+  },
+  {
+   "topic": "septoria_leaf_spot",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Poor vigour of plants due to nutrient inadequacy or in late season. High humidity or persistent dew at 25 degree C. Moist weather with intermittent showers.",
+   "locator": "VIII. Description of diseases, 2) Septoria leaf spot, favourable conditions, p.62"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Disease appears as spots on leaves, stems and fruits and as wilting of leaves and shoots. White blister like spots in the margins of leaves. Spots become brown with age and coalesce, but leaves do not fall off. Leaflets on one side of rachis show withering initially.",
+   "locator": "VIII. Description of diseases, 3) bacterial stem and fruit canker, damage symptoms, p.62"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Light coloured streaks on stems and petioles at the joints. Cracks develop in streaks and form cankers. Slimy bacterial ooze through the cracks in humid weather.",
+   "locator": "VIII. Description of diseases, 3) bacterial stem and fruit canker, damage symptoms, p.62"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Small, shallow, water soaked, spots with white halo develop on fruits. The centers of spots become slightly raised, tan coloured and rough. Vascular discolouration is seen in split open stems.",
+   "locator": "VIII. Description of diseases, 3) bacterial stem and fruit canker, damage symptoms, p.62"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Bacterial cells survive on infected plant debris and seed (both internally and externally) and also on solanaceous weeds such as Solanum nigrum. Secondary: Bacterial cells transmitted through rain splash.",
+   "locator": "VIII. Description of diseases, 3) bacterial stem and fruit canker, survival and spread, p.62-63"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Soil temperature of around 28 degree C. High humidity or persistent dew. Moist weather with intermittent showers.",
+   "locator": "VIII. Description of diseases, 3) bacterial stem and fruit canker, favourable conditions, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+   "locator": "VIII. Description of diseases, 4) early blight, damage symptoms, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Spots enlarge, and by the time they are one-fourth inch in diameter or larger, concentric rings in a bull's eye pattern can be seen in the center of the diseased area. Tissue surrounding the spots may turn yellow. If high temperature and humidity occur at this time, much of the foliage is killed.",
+   "locator": "VIII. Description of diseases, 4) early blight, damage symptoms, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Lesions on the stems are similar to those on leaves, sometimes girdling the plant if they occur near the soil line. Transplants showing infection by the late blight fungus often die when set in the field.",
+   "locator": "VIII. Description of diseases, 4) early blight, damage symptoms, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The fungus also infects the fruit, generally through the calyx or stem attachment. Lesions attain considerable size, usually involving nearly the entire fruit; concentric rings are also present on the fruit.",
+   "locator": "VIII. Description of diseases, 4) early blight, damage symptoms, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: The fungus spends the winter in infected plant debris in or on the soil where it can survive at least one and perhaps several years. It can also be seed borne.",
+   "locator": "VIII. Description of diseases, 4) early blight, survival and spread, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Secondary: The spores are transported by water, wind, insects, other animals including man, and machinery. Once the initial infections have occurred, they become the most important source of new spore production and are responsible for rapid disease spread.",
+   "locator": "VIII. Description of diseases, 4) early blight, survival and spread, p.63"
+  },
+  {
+   "topic": "early_blight",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: Warm, rainy and wet weather.",
+   "locator": "VIII. Description of diseases, 4) early blight, favourable conditions, p.63-64"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+   "locator": "VIII. Description of diseases, 5) bacterial leaf spot, damage symptoms, p.64"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The most striking symptoms are on the green fruit. Small, water-soaked spots first appear which later become raised and enlarge until they are one-eighth to one-fourth inch in diameter. Centers of these lesions become irregular, light brown and slightly sunken with a rough, scabby surface.",
+   "locator": "VIII. Description of diseases, 5) bacterial leaf spot, damage symptoms, p.64"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Ripe fruits are not susceptible to the disease. Surface of the seed becomes contaminated with the bacteria, remaining on the seed surface for some time. The organism survives in alternate hosts, on volunteer tomato plants and on infected plant debris.",
+   "locator": "VIII. Description of diseases, 5) bacterial leaf spot, damage symptoms, p.64"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Bacterial cells survive on infected plant debris and seed (both internally and externally) and also on solanaceous weeds such as Solanum nigrum. Secondary: Bacterial cells transmitted through rain splash. Favourable conditions: Moist weather and splattering rains. High humidity or persistent dew.",
+   "locator": "VIII. Description of diseases, 5) bacterial leaf spot, survival and spread, favourable conditions, p.64"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Characteristic symptoms of bacterial wilt are the rapid and complete wilting of normal grown up plants. Lower leaves may drop before wilting. Pathogen is mostly confined to vascular region; in advantage cases, it may invade the cortex and pith and cause yellow brown discolouration of tissues.",
+   "locator": "VIII. Description of diseases, 6) bacterial wilt, damage symptoms, p.65"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Infected plant parts when cut and immersed in clear water, a white streak of bacterial ooze is seen coming out from cut ends.",
+   "locator": "VIII. Description of diseases, 6) bacterial wilt, damage symptoms, p.65"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: The spreads through wounds, soil and implements.",
+   "locator": "VIII. Description of diseases, 6) bacterial wilt, survival and spread, p.65"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+   "locator": "VIII. Description of diseases, 7) leaf curl, damage symptoms, p.65"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Older leaves become leathery and brittle. The nodes and internodes are significantly reduced in size. The infected plants look pale and produce more lateral branches giving a bushy appearance. The infected plants remain stunted.",
+   "locator": "VIII. Description of diseases, 7) leaf curl, damage symptoms, p.65-66"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Favourable conditions: whitefly is the vector for transmitting of leaf curl virus.",
+   "locator": "VIII. Description of diseases, 7) leaf curl, favourable conditions, p.66"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The disease is characterized by light and dark green mottling on the leaves often accompanied by wilting of young leaves in sunny days when plants first become infected.",
+   "locator": "VIII. Description of diseases, 8) mosaic, damage symptoms, p.66"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The leaflets of affected leaves are usually distorted, puckered and smaller than normal. Sometimes the leaflets become indented resulting in \"fern leaf\" symptoms. The affected plant appears stunted, pale green and spindly.",
+   "locator": "VIII. Description of diseases, 8) mosaic, damage symptoms, p.66"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: The virus is spread by contact with clothes, hand of working labour, touching of infected plants with healthy ones, plant debris and implements.",
+   "locator": "VIII. Description of diseases, 8) mosaic, survival and spread, p.66-67"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Symptoms vary among hosts and in a single host species. Stunting is a common symptom of TSWV infection. Chlorotic or necrotic rings form on the leaves of many infected hosts. Thickening of veins and bronzing of young leaves. Growing tips may die-back and terminal branches may be streaked.",
+   "locator": "VIII. Description of diseases, 9) tomato spotted wilt disease, damage symptoms, p.67"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Affected plants may have a one sided growth habit or may be entirely stunted and have drooping leaves, suggesting a wilt. Pale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato are formed. Discoloration of seed.",
+   "locator": "VIII. Description of diseases, 9) tomato spotted wilt disease, damage symptoms, p.67"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Primary: Virus particles in infected plants of many hosts like Acanthospermum hispidum, Aster sp., Boerhaavia diffusa, Chrysanthemum sp., Cleome gynandra, cowpea, Dahlia variabilis, egg plant, French bean, Gerbera sp., groundnut, Lagasca mollis, lettuce, marigold, pea, chilli, pineapple, potato, Trianthema portulacastrum, water melon and Zinnia elegans.",
+   "locator": "VIII. Description of diseases, 9) tomato spotted wilt disease, survival and spread, p.67"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Secondary: Virus particles transmitted by thrips, Frankliniella schultzii, Scirtothrips dorsalis.",
+   "locator": "VIII. Description of diseases, 9) tomato spotted wilt disease, survival and spread, p.67"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "The first symptom of the disease is clearing of the veinlets and chlorosis of the leaves. The younger leaves may die in succession and the entire may wilt and die in a course of few days. Soon the petiole and the leaves droop and wilt.",
+   "locator": "VIII. Description of diseases, 10) Fusarium wilt, damage symptoms, p.67-68"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "In young plants, symptom consists of clearing of veinlet and dropping of petioles. In field, yellowing of the lower leaves first and affected leaflets wilt and die. The symptoms continue in subsequent leaves. At later stage, browning of vascular system occurs. Plants become stunted and die.",
+   "locator": "VIII. Description of diseases, 10) Fusarium wilt, damage symptoms, p.68"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Survival and spread: Soil and implements. Favourable conditions: Relatively high soil moisture and soil temperature.",
+   "locator": "VIII. Description of diseases, 10) Fusarium wilt, survival and spread, favourable conditions, p.68"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Insecticide resistance: Resistance to insecticides may be defined as 'a heritable change in the sensitivity of a pest population that is reflected in the repeated failure of a product to achieve the expected level of control when used according to the label recommendation for that pest species' (IRAC). Cross-resistance occurs when resistance to one insecticide confers resistance to another insecticide, even where the insect has not been exposed to the latter product.",
+   "locator": "X. Insecticide resistance and its management, p.72"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Causes of resistance development: The causes and rate at which insecticide resistance develops depend on several factors, including the initial frequency of resistance alleles present in the population, how rapidly the insects reproduce, the insects' level of resistance, the migration and host range of the insects, the insecticide's persistence and specificity, and the rate, timing and number of applications of insecticide made.",
+   "locator": "X. Insecticide resistance and its management, p.72"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "For instance, insect pests that survive in large populations and breed quickly are at greater advantage of evolving insecticide, especially when insecticides are misused or over-used. The best strategy to avoid insecticide resistance is prevention and including insecticide resistance management tactics as part of a larger integrated pest management (IPM) approach.",
+   "locator": "X. Insecticide resistance and its management, p.72"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Monitor pests: Monitor insect population development in fields to determine if and when control measures are warranted. Monitor and consider natural enemies when making control decisions. After treatment, continue monitoring to assess pest populations and their control.",
+   "locator": "X. Insecticide resistance and its management, general strategy 1, p.72"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Focus on AESA. Insecticides should be used only as a last resort when all other non-chemical management options are exhausted and P: D ratio is above 2: 1. Apply biopesticides/chemical insecticides judiciously after observing unfavourable P: D ratio and when the pests are in most vulnerable life stage. Use application rates and intervals as per label claim.",
+   "locator": "X. Insecticide resistance and its management, general strategy 2, p.73"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Ecological engineering for pest management: Flowering plants that attract natural enemies as well as plants that repel pests can be grown as border/intercrop. Take an integrated approach to managing pests. Use as many different control measures as possible viz., cultural, mechanical, physical, biological etc.",
+   "locator": "X. Insecticide resistance and its management, general strategy 3-4, p.73"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Select insecticides with care and consider the impact on future pest populations and the environment. Avoid broad-spectrum insecticides when a narrow-spectrum or more specific insecticide will work. More preference should be given to green labeled insecticides.",
+   "locator": "X. Insecticide resistance and its management, general strategy 4, p.73"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Mix and apply carefully. While applying insecticides care should be taken for proper application of insecticides in terms of dose, volume, timing, coverage, application techniques as per label claim.",
+   "locator": "X. Insecticide resistance and its management, general strategy 5, p.73"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Alternate different insecticide classes. Avoid the repeated use of the same insecticide, insecticides in the same chemical class, or insecticides in different classes with same mode of action and rotate/alternate insecticide classes and modes of action.",
+   "locator": "X. Insecticide resistance and its management, general strategy 6, p.73"
+  },
+  {
+   "topic": "insecticide_resistance",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Preserve susceptible genes. Preserve susceptible individuals within the target population by providing unsprayed areas within treated fields, adjacent \"refuge\" fields, or habitat attractions within a treated field that facilitate immigration. These susceptible individuals may outcompete and interbreed with resistant individuals, diluting the resistant genes and therefore the impact of resistance.",
+   "locator": "X. Insecticide resistance and its management, general strategy 7, p.73"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Nitrogen: Under N deficiency, older leaves gradually change from green to paler green. As the deficiency progresses these older leaves become uniformly yellow (chlorotic). Leaves approach a yellowish white color under extreme deficiency.",
+   "locator": "XI. Nutritional deficiencies, nitrogen, p.73"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Nitrogen: The young leaves at the top of the plant maintain a green but paler color and tend to become smaller in size. Branching is reduced resulting in short, spindly plants. The yellowing in nitrogen deficiency is uniform over the entire leaf including the veins.",
+   "locator": "XI. Nutritional deficiencies, nitrogen, p.73"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Nitrogen deficiency - Correction Measure: Recovery can be done by top dressing of urea of as recommended on soil test basis or apply 2 % urea solution. Recovery of deficient plants to applied nitrogen is immediate (days) and spectacular.",
+   "locator": "XI. Nutritional deficiencies, nitrogen, correction measure, p.73"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Phosphorus: The symptoms first develop on older leaves showing some necrotic spots and plants are dwarfed or stunted. Phosphorus deficient plants develop very slowly. Plants develop a distinct purpling of the stem, petiole and the under sides of the leaves. Under severe deficiency conditions there is a tendency for leaves to develop a blue-gray luster.",
+   "locator": "XI. Nutritional deficiencies, phosphorus, p.73-74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Phosphorus deficiency - Correction Measure: Soil application of recommended dose of phosphorous should be applied at the time of sowing or planting.",
+   "locator": "XI. Nutritional deficiencies, phosphorus, correction measure, p.73-74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Potassium: Since potassium is very mobile within the plant, symptoms only develop on young leaves in the case of extreme deficiency. Some of the leaves show marginal necrosis (tip burn), and at a more advanced deficiency status show inter-veinal necrosis. This group of symptoms is very characteristic of K deficiency symptoms.",
+   "locator": "XI. Nutritional deficiencies, potassium, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Potassium: As the deficiency progresses, most of the interveinal area becomes necrotic, the veins remain green and the leaves tend to curl and crinkle. In contrast to nitrogen deficiency, chlorosis is irreversible in potassium deficiency, even if potassium is given to the plants.",
+   "locator": "XI. Nutritional deficiencies, potassium, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Potassium deficiency - Correction Measure: Foliar application of K2SO4 @1%.",
+   "locator": "XI. Nutritional deficiencies, potassium, correction measure, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Sulfur: This leaves show a general overall chlorosis. The veins and petioles show a very distinct reddish color. The yellowing is much more uniform over the entire plant including young leaves. The reddish color often found on the underside of the leaves. With advanced sulfur deficiency the leaves tend to become more erect and often twisted and brittle.",
+   "locator": "XI. Nutritional deficiencies, sulfur, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Sulfur deficiency - Correction Measure: Foliar spray of K2SO4 or CaSO4 1% twice at fortnightly interval.",
+   "locator": "XI. Nutritional deficiencies, sulfur, correction measure, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Magnesium: The Mg-deficient leaves show advanced interveinal chlorosis, In its advanced form, magnesium deficiency may superficially resemble potassium deficiency. The symptoms generally start with mottled chlorotic areas developing in the interveinal tissue.",
+   "locator": "XI. Nutritional deficiencies, magnesium, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Magnesium deficiency - Correction Measure: Foliar spray of MgSO4 @2%.",
+   "locator": "XI. Nutritional deficiencies, magnesium, correction measure, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Manganese: The leaves show a light interveinal chlorosis developed under a limited supply of Mn. The early stages of the chlorosis induced by manganese deficiency are somewhat similar to iron deficiency. As the stress increases, the leaves develop dark necrotic areas along the veins.",
+   "locator": "XI. Nutritional deficiencies, manganese, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Manganese deficiency - Correction Measure: Foliar spray of MnSO4 @ 2%.",
+   "locator": "XI. Nutritional deficiencies, manganese, correction measure, p.74"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Molybdenum: The leaves show some mottled spotting along with some interveinal chlorosis. An early symptom for molybdenum deficiency is a general overall chlorosis, similar to the symptom for nitrogen deficiency but generally without the reddish coloration on the undersides of the leaves.",
+   "locator": "XI. Nutritional deficiencies, molybdenum, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Molybdenum deficiency - Correction Measure: Foliar spray of NaMO4 0.05% twice at weekly interval.",
+   "locator": "XI. Nutritional deficiencies, molybdenum, correction measure, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Zinc: The leaves show interveinal necrosis. In the early stages of zinc deficiency the younger leaves become yellow and pitting develops in the interveinal upper surfaces of the mature leaves. As the deficiency progress these symptoms develop into an intense interveinal necrosis but the main veins remain green, as in the symptoms of recovering iron deficiency.",
+   "locator": "XI. Nutritional deficiencies, zinc, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Zinc deficiency - Correction Measure: Foliar spray of ZnSO4 @ 0.5%.",
+   "locator": "XI. Nutritional deficiencies, zinc, correction measure, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Boron: These boron-deficient leaves show a light general chlorosis. Boron deficiency results in necrosis of meristematic tissues in the growing region, leading to loss of apical dominance and the development of a rosette condition. These deficiency symptoms are similar to those caused by calcium deficiency.",
+   "locator": "XI. Nutritional deficiencies, boron, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Boron: The leaves are unusually brittle and tend to break easily. Also, there is often a wilting of the younger leaves even under an adequate water supply, pointing to a disruption of water transport caused by boron deficiency.",
+   "locator": "XI. Nutritional deficiencies, boron, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Boron deficiency - Correction Measure: Foliar spray of borax @ 0.2%.",
+   "locator": "XI. Nutritional deficiencies, boron, correction measure, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Calcium: The calcium-deficient leaves show necrosis around the base of the leaves. The very low mobility of calcium is a major factor determining the expression of calcium deficiency symptoms in plants. Classic symptoms of calcium deficiency include blossom-end rot of tomato.",
+   "locator": "XI. Nutritional deficiencies, calcium, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Calcium: Symptoms show soft dead necrotic tissue at rapidly growing areas, which is generally related to poor translocation of calcium to the tissue rather than a low external supply of calcium. This ultimately results in the margins of the leaves growing more slowly than the rest of the leaf, causing the leaf to cup downward. Plants under chronic calcium deficiency have a much greater tendency to wilt than non-stressed plants.",
+   "locator": "XI. Nutritional deficiencies, calcium, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Calcium deficiency - Correction Measure: Foliar spray of 2% Calcium sulphate twice at weekly intervals.",
+   "locator": "XI. Nutritional deficiencies, calcium, correction measure, p.75"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Copper: The copper-deficient leaves are curled, and their petioles bend downward. Copper deficiency may be expressed as a light overall chlorosis along with the permanent loss of turgor in the young leaves. Recently matured leaves show netted, green veining with areas bleaching to a whitish gray. Some leaves develop sunken necrotic spots and have a tendency to bend downward.",
+   "locator": "XI. Nutritional deficiencies, copper, p.76"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Copper deficiency - Correction Measure: Foliar spray of 0.5% CuSO4 twice at fortnightly interval.",
+   "locator": "XI. Nutritional deficiencies, copper, correction measure, p.76"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Iron: The iron-deficient leaves show strong chlorosis at the base of the leaves with some green netting. The most common symptom for iron deficiency starts out as an interveinal chlorosis of the youngest leaves, evolves into an overall chlorosis, and ends as a totally bleached leaf.",
+   "locator": "XI. Nutritional deficiencies, iron, p.76"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Iron: Because iron has a low mobility, iron deficiency symptoms appear first on the youngest leaves. Iron deficiency is strongly associated with calcareous soils, anaerobic conditions, and it is often induced by an excess of heavy metals.",
+   "locator": "XI. Nutritional deficiencies, iron, p.76"
+  },
+  {
+   "topic": "nutrient_deficiency",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Iron deficiency - Correction Measure: Foliar spray of FeSO4 @ 0.5%.",
+   "locator": "XI. Nutritional deficiencies, iron, correction measure, p.76"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Blossom-end rot (BER) is caused by a localized Ca deficiency in the developing fruit. It begins with light tan, water-soaked areas that can then enlarge and turn black and leathery in appearance. Most often the problem occurs at the blossom end of the fruit.",
+   "locator": "XI. Physiological and nutritional disorders, blossom-end rot, p.77"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "spread",
+   "source": "NIPHM",
+   "en": "Blossom-end rot: Factors like low soil Ca, high N rates, using ammoniacal sources of N, high concentrations of soluble K and Mg in the soil, high salinity, low humidity, inadequate or excess soil moisture, damage to root system by nematodes, diseases etc. increases the BER problem.",
+   "locator": "XI. Physiological and nutritional disorders, blossom-end rot, p.77"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Blossom-end rot - Correction measure: Soil applications of Ca materials, proper fertilization and good water management can prevent the problem.",
+   "locator": "XI. Physiological and nutritional disorders, blossom-end rot, p.77"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Cat-facing is a generic term used to describe a tomato fruit that has a gross deformity and is usually not marketable. The defect is usually located on the blossom end of the fruit. The deformity is starts occurring during the formation of the flower that results in the fruit not developing normally.",
+   "locator": "XI. Physiological and nutritional disorders, cat-face, p.77"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Cat-face: Low temperatures, herbicide drifts, heavy thrips feeding and little leaf disease are some of the causes of cat-faced fruits. Correction measure: Varieties should be selected that historically have had little problem with cat-facing, avoiding spray drift, water logging etc. can reduce the problem.",
+   "locator": "XI. Physiological and nutritional disorders, cat-face, p.77"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Cracking occurs when the internal expansion is faster than the expansion of the epidermis and the epidermis splits. Varieties differ greatly in their susceptibility to cracking.",
+   "locator": "XI. Physiological and nutritional disorders, cracking, p.78"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Cracking - Correction measure: Control is through selecting tolerant varieties or by reducing fluctuations in soil moisture. Cracking may also be reduced by maintaining good foliage cover, since exposed fruit are more susceptible.",
+   "locator": "XI. Physiological and nutritional disorders, cracking, p.78"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Gray wall (blotchy ripening): Internally gray wall is characterized by dark necrotic areas usually in the vascular tissue of the outer walls. Outward symptoms show up as grayish appearance caused by partial collapse of the wall tissue; hence the term gray wall is used to describe. It typically develops on green fruit prior to harvest but can develop later.",
+   "locator": "XI. Physiological and nutritional disorders, gray wall, p.78"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Gray wall: Fruits affected are typically not marketable due to blotchy appearance as fruit ripens. Gray wall is more of a problem during cool and short days. There are variety differences in susceptibility. High N may increase the problem. Correction measure: Application of adequate K may reduce the problem.",
+   "locator": "XI. Physiological and nutritional disorders, gray wall, p.78"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Internal White Tissue: Fruit affected by this disorder usually show no outward symptoms. When ripe fruits are cut, white hard areas especially in the vascular region are present in the outer walls. Under severe conditions, fruit may also show white tissue in cross-wall and center of fruit. High temperatures during the ripening period in the field seem to trigger the symptoms. Correction measure: Application of adequate K fertilization may reduce it.",
+   "locator": "XI. Physiological and nutritional disorders, internal white tissue, p.78"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Irregular ripening is a fruit ripening disorder caused by feeding of nymphs of the silver leaf whitefly (Bemisia argentifolii) on the tomato foliage. Green fruit show no symptoms, but as fruit ripens, color fails to develop uniformly. Color often develops along locule walls with intermediate areas remaining green or yellow, producing a star-burst appearance. Correction measure: This disorder can be controlled if nymphs of white fly are controlled.",
+   "locator": "XI. Physiological and nutritional disorders, irregular ripening, p.79"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Pox and Fleck: In most cases when a fruit is affected both disorders are found together but are considered separate problems. Pox is described as small cuticular disruptions found at random on the fruit surface. Fleck, develops as small irregular shaped green spots at random on the surface of immature fruit, which becomes gold in color as fruit ripens.",
+   "locator": "XI. Physiological and nutritional disorders, pox and fleck, p.79"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Pox and Fleck: Fruits severely affected with pox and fleck are not marketable. Both conditions seem to be genetic in nature, the disorders only show up under certain environmental conditions. There are differences between varieties as to susceptibility to pox and fleck. Correction measure: Control is through selecting tolerant varieties.",
+   "locator": "XI. Physiological and nutritional disorders, pox and fleck, p.79"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Puffiness: When this problem is slight, it may be impossible to detect puffiness until fruit are cut. When fruit are cut, open cavities are observed between the seed gel area and the outer wall. Fruits are also very light in relation to size.",
+   "locator": "XI. Physiological and nutritional disorders, puffiness, p.79"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Puffiness: This problem is caused by any factor that affects fruit set, including inadequate pollination, fertilization, or seed development. Most common causes are too low or high temperatures during fruit set. Other factors such as high N, low light, or rainy conditions can also cause seed set problems. Correction measure: Application of balanced N doses may reduce the problem.",
+   "locator": "XI. Physiological and nutritional disorders, puffiness, p.79-80"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Zebra stripe can be characterized as a series of dark green spots arranged in a line from the stem end to the bloom end. At times it seems the spots coalesce together and form elongated markings. Many times the dark green areas will disappear when fruit ripens. This problem seems to be variety related. It is probably a genetic defect that only develops under certain environmental conditions. Zebra stripe may be linked to pox and fleck.",
+   "locator": "XI. Physiological and nutritional disorders, zebra stripe, p.80"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "symptoms",
+   "source": "NIPHM",
+   "en": "Zippering is described as a fruit having thin scars that extend partially or fully from the stem scar area to the blossom end. The longitudinal scar has small transverse scars along it. At times there may be open holes in the locules in addition to the zipper scar. Usually an anther that is attached to the newly forming fruit causes the zipper scar.",
+   "locator": "XI. Physiological and nutritional disorders, zippering, p.80"
+  },
+  {
+   "topic": "physiological_disorders",
+   "section": "resistant_varieties",
+   "source": "NIPHM",
+   "en": "Zippering: Some people feel that a zipper is formed when the \"blooms\" stick to the fruit and do not shed properly but this may not be a cause. Correction measure: The only control is to select varieties that are not prone to zippering.",
+   "locator": "XI. Physiological and nutritional disorders, zippering, p.80"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Pick tomatoes at 2-3 day intervals during warm weather and at weekly intervals during cool weather. Waiting period for all the pesticides, if any, should be observed without fail. Pick tomatoes from the plants by twisting them rather than pulling them to avoid damage.",
+   "locator": "XII. Safety measures, A. at the time of harvest, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Fruits are generally removed from the upper portion of the plant. Vines and fruit should be completely dry when mature green fruit are harvested. Otherwise, fruit may develop sunken, blackened areas during ripening. Vine-ripes must be hand harvested every other day.",
+   "locator": "XII. Safety measures, A. at the time of harvest, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "A common recommendation for fresh market tomatoes is to harvest green matures when about 10% of the fruit on the first hand is at the breaker stage of maturity. When immature greens are picked, the eating quality is reduced even though these tomatoes can be gassed to redness with ethylene.",
+   "locator": "XII. Safety measures, A. at the time of harvest, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "But the sugar and acid content, which determine the taste of the tomato, are low, resulting in a flavour-less fruit. Mature green tomatoes develop flavour to the same extent as fruit left on the plant another 24 hours, until colour appears.",
+   "locator": "XII. Safety measures, A. at the time of harvest, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Usually, tomatoes are packed after harvest and sent to fresh market. Otherwise, fresh market tomatoes are dropped into a water tank after harvest to clean the fruit. The improper tank procedures can spread the disease and increase storage losses.",
+   "locator": "XII. Safety measures, B. post-harvest storage, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Disease spread can be minimized by not allowing 1) fruit to submerge deeply or to float more than one layer deep in the tank; 2) pressure from deeper submersion forces pathogen-containing water through the stem scar into the fruit; 3) removing fruit after two minutes; 4) slightly chlorinating the water; and 5) warming tank temperature to a few degrees above fruit temperature (cool water constricts the fruit, pulling in pathogens).",
+   "locator": "XII. Safety measures, B. post-harvest storage, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "In general, the length of storage depends on the harvest stage. Mature green fruits can be stored up to 30 days at cool temperatures, e.g. 10 degree C. Ripe fruits can be kept for about a week.",
+   "locator": "XII. Safety measures, B. post-harvest storage, p.81"
+  },
+  {
+   "topic": "harvest_postharvest",
+   "section": "chemical",
+   "source": "NIPHM",
+   "product": "Ethephon 39% SL",
+   "dose": "2500 ppm",
+   "note": "Commercial crops of fresh market tomatoes picked at the mature green stage are ripened artificially and uniformly by dipping the fruits.",
+   "locator": "XII. Safety measures, B. post-harvest storage, p.81"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Deep ploughing is to be done on bright sunny days during the months of May and June. The field should be kept exposed to sun light at least for 2-3 weeks. Do not plant or irrigate the field after ploughing, at least for 2-3 weeks, to allow desiccation of weed's bulbs and/or rhizomes of perennial weeds.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 1, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Adopt crop rotation. Avoid growing monocrop. Grow only recommended varieties. Do not grow varieties not suitable for the season or the region.",
+   "locator": "XIII. Do's and Don'ts in IPM, rows 2-3, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Sow early in the season. Avoid late sowing as this may lead to reduced yields and incidence of white grubs and diseases.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 4, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Always treat the seeds with approved chemicals/bio products for the control of seed borne diseases/pests. Do not use seeds without seed treatment with biocides/chemicals.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 5, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Sow in rows at optimum depths under proper moisture conditions for better establishment. Do not sow seeds beyond 5-7 cm depth.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 6, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Maintain optimum and healthy crop stand which would be capable of competing with weeds at a critical stage of crop weed competition. Crops should not be exposed to moisture deficit stress at their critical growth stages.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 8, p.82"
+  },
+  {
+   "topic": "general",
+   "section": "nutrition",
+   "source": "NIPHM",
+   "en": "Use NPK fertilizers as per the soil test recommendation. Avoid imbalanced use of fertilizers. Use micronutrient mixture after sowing based test recommendations. Do not apply any micronutrient mixture after sowing without test recommendations.",
+   "locator": "XIII. Do's and Don'ts in IPM, rows 9-10, p.83"
+  },
+  {
+   "topic": "general",
+   "section": "monitoring",
+   "source": "NIPHM",
+   "en": "Install pheromone traps at appropriate period. Do not store the pheromone lures at normal room temperature (keep them in refrigerator).",
+   "locator": "XIII. Do's and Don'ts in IPM, row 12, p.83"
+  },
+  {
+   "topic": "general",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Release parasitoids only after noticing adult moth catches in the pheromone trap or as pheromone trap or as per field observation.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 13, p.83"
+  },
+  {
+   "topic": "general",
+   "section": "biological",
+   "source": "NIPHM",
+   "en": "Apply HaNPV or SINPV at recommended dose when a large number of egg masses and early instar larvae are noticed. Apply NPV only in the evening hours after 5 pm. Do not apply NPV on late instar larva and during day time.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 14, p.84"
+  },
+  {
+   "topic": "general",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 15, p.84"
+  },
+  {
+   "topic": "general",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 17, p.84"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "NIPHM",
+   "en": "Follow the recommended procedure of trap crop technology. Do not apply long persistent on trap crop, otherwise it may not attract the pests and natural enemies.",
+   "locator": "XIII. Do's and Don'ts in IPM, row 18, p.84"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Dimethoate (organophosphate insecticide); classification as per insecticide rules: highly toxic; colour of toxicity triangle: yellow; WHO classification of hazard: Class II moderately hazardous. Symptoms of poisoning: mild-anorexia, headache, dizziness, weakness, anxiety, tremors of tongue and eyelids, miosis, impairment of visual acuity. Treatment of poisoning: for extreme symptoms of OP poisoning, injection of atropine (2-4 mg for adults, 0.5-1.0 mg for children) is recommended. Repeated at 5-10 minute intervals until signs of atropinization occur. Waiting period from last application to harvest (days): printed as '--'.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 1, p.85"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Carbofuran (carbamate insecticide); classification as per insecticide rules: extremely toxic; colour of toxicity triangle: red; WHO classification of hazard: Class I b highly hazardous. Symptoms of poisoning: constriction of pupils, salivation, profuse sweating, muscle incordination, nausea, vomiting, diarrhea, epigastric pain, tightness in chest. Treatment of poisoning: atropine injection- 1-4 mg. repeat 2 mg when symptoms begin to recur (15-16 min interval) excessive salivation- good sign, more atropine needed. Waiting period from last application to harvest (days): printed as '--'.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 2, p.85"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Imidacloprid (neonicotinoid); classification as per insecticide rules: highly toxic; colour of toxicity triangle: yellow. First aid measures: have person sip a glass of water if able to swallow. Do not induce vomiting unless told to do so by a doctor, do not give anything by mouth to an unconscious person. Symptoms of poisoning: harmful if swallowed, absorbed through skin or inhaled. Avoid breathing vapor or spray mist. Causes moderate eye irritation. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 3 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 3, p.86"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Thiamethoxam (neonicotinoid). First aid measures: have person sip a glass of water if able to swallow. Do not induce vomiting unless told to do so by a poison control center or doctor. Do not give anything by mouth to an unconscious. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 5 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 4, p.86"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Novaluron (insect growth regulator). First aid measures: have person sip a glass of water if able to swallow. Do not induce vomiting unless told to do so by a poison control center or doctor. Do not give anything by mouth to an unconscious. Symptoms of poisoning: causes substantial but temporary eye injury. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 1-3 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 5, p.86-87"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Flubendiamide (anthranilic diamide); classification as per insecticide rules: slightly toxic; colour of toxicity triangle: green; WHO classification of hazard: unlikely produce acute hazard. Treatment of poisoning: treat symptomatically as there is no known specific antidote. Waiting period from last application to harvest: 5 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 6, p.87"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Indoxacarb (other classes insecticides). First aid measures: have person sip a glass of water if able to swallow. Do not induce vomiting unless told to do so by a doctor. Do not give anything by mouth to an unconscious person. Symptoms of poisoning: altered blood chemistry. Abnormal decrease in number of red blood cells (anaemia) which could produce tiredness, rapid heartbeat, dizziness, pale skin, leg cramps, shortness of breath, Central nervous system effects. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 5 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 7, p.87"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Captan (fungicide); classification as per insecticide rules: moderately toxic; colour of toxicity triangle: blue; WHO classification of hazard: Class III slightly hazardous. Symptoms of poisoning: headache, palpitation, nausea, vomiting, flushed face, irritation of nose, throat, eyes and skin etc. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 6 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 8, p.88"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Mancozeb (fungicide); classification as per insecticide rules: slightly toxic; colour of toxicity triangle: green; WHO classification of hazard: unlikely produce acute hazard. Symptoms of poisoning: headache, palpitation, nausea, vomiting, flushed face, irritation of nose, throat, eyes and skin etc. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest: 10 days.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 9, p.88"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Copper oxychloride (fungicide); classification as per insecticide rules: moderately toxic; colour of toxicity triangle: blue; WHO classification of hazard: Class III slightly hazardous. Symptoms of poisoning: headache, palpitation, nausea, vomiting, flushed face, irritation of nose, throat, eyes and skin etc. Treatment of poisoning: no specific antidote. Treatment is essentially symptomatic. Waiting period from last application to harvest (days): printed as '--'.",
+   "locator": "XIV. Safety parameters in pesticide usage, table, row 10, p.88"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Purchase: Purchase only just required quantity e.g. 100, 250, 500, 1000 g/ml for single application in specified area. Do not purchase leaking containers, loose, unsealed or torn bags. Do not purchase pesticides without proper/approved labels. While purchasing insist for invoice/bill/cash memo.",
+   "locator": "XV. Basic precautions in pesticides usage, A. purchase, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Storage: Avoid storage of pesticides in house premises. Keep only in original container with intact seal. Do not transfer pesticides to other containers. Never keep them together with food or feed/fodder. Keep away from reach of children and livestock. Do not expose to sunlight or rain water. Do not store weedicides along with other pesticides.",
+   "locator": "XV. Basic precautions in pesticides usage, B. storage, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Handling: Never carry/ transport pesticides along with food materials. Avoid carrying bulk pesticides (dust/granules) on head shoulders or on the back.",
+   "locator": "XV. Basic precautions in pesticides usage, C. handling, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Precautions for preparing spray solution: Use clean water. Always protect your nose, eyes, mouth, ears and hands. Use hand gloves, face mask and cover your head with cap. Use polythene bags as hand gloves, handkerchiefs or piece of clean cloth as mask and a cap or towel to cover the head (Do not use polythene bag contaminated with pesticides).",
+   "locator": "XV. Basic precautions in pesticides usage, D. precautions for preparing spray solution, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Read the label on the container before preparing spray solution. Prepare the spray solution as per requirement. Do not mix granules with water. Concentrated pesticides must not fall on hands etc. while opening sealed container. Do not smell pesticides.",
+   "locator": "XV. Basic precautions in pesticides usage, D. precautions for preparing spray solution, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Avoid spilling of pesticides while filling the sprayer tank. Do not eat, drink, smoke or chew while preparing solution. The operator should protect his bare feet and hands with polythene bags.",
+   "locator": "XV. Basic precautions in pesticides usage, D. precautions for preparing spray solution, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Equipment: Select right kind of equipment. Do not use leaky and defective equipment. Select right kind of nozzles. Don't blow/clean clogged nozzle with mouth. Use old tooth brush tied with the sprayer and clean with water. Do not use same sprayer for weedicide and insecticide.",
+   "locator": "XV. Basic precautions in pesticides usage, E. equipment, p.89"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Precautions for applying pesticides: Apply only at recommended dose and dilution. Do not apply on hot sunny day or strong windy condition. Do not apply just before the rains and after the rains. Do not apply against the windy direction.",
+   "locator": "XV. Basic precautions in pesticides usage, F. precautions for applying pesticides, p.89-90"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Emulsifiable concentrate formulations should not be used for spraying with battery operated ULV sprayer. Wash the sprayer and buckets etc. with soap water after spraying. Containers buckets etc. used for mixing pesticides should not be used for domestic purpose. Avoid entry of animals and workers in the field immediately after spraying. Avoid tank mixing of different pesticides.",
+   "locator": "XV. Basic precautions in pesticides usage, F. precautions for applying pesticides, p.90"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Disposal: Left over spray solution should not be drained in ponds or water lines etc. throw it in barren isolated area if possible. The used/empty containers should be crushed with a stone/stick and buried deep into soil away from water source. Never reuse empty pesticides container for any other purpose.",
+   "locator": "XV. Basic precautions in pesticides usage, G. disposal, p.90"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "It is advisable to use protective clothing, face mask and gloves while preparing and applying pesticides. Do not apply pesticides without protective clothing and wash clothes immediately after spray application. Do not apply in hot or windy conditions.",
+   "locator": "XVII. Operational, calibration and maintenance guidelines in brief, items 4-5, p.92"
+  },
+  {
+   "topic": "pesticide_safety",
+   "section": "safety",
+   "source": "NIPHM",
+   "en": "Do not smoke, chew or eat while undertaking the spraying operation. Operator should take proper bath with soap after completing spraying. Do not blow the nozzle with mouth for any blockages. Clean with water and a soft brush.",
+   "locator": "XVII. Operational, calibration and maintenance guidelines in brief, items 7-9, p.93"
+  }
+ ],
+ "new_topics": {
+  "aesa_monitoring": {
+   "name_en": "AESA, field scouting and trap monitoring",
+   "kind": "general"
+  },
+  "natural_enemies": {
+   "name_en": "Natural enemies and ecological engineering",
+   "kind": "general"
+  },
+  "helicoverpa_fruit_borer": {
+   "name_en": "Gram pod borer / fruit borer (Helicoverpa armigera)",
+   "kind": "pest"
+  },
+  "spodoptera_tobacco_caterpillar": {
+   "name_en": "Tobacco caterpillar (Spodoptera litura)",
+   "kind": "pest"
+  },
+  "whitefly": {
+   "name_en": "Whitefly (Bemisia tabaci)",
+   "kind": "pest"
+  },
+  "serpentine_leaf_miner": {
+   "name_en": "Serpentine leaf miner (Liriomyza trifolii)",
+   "kind": "pest"
+  },
+  "root_knot_nematode": {
+   "name_en": "Root-knot nematode (Meloidogyne spp.)",
+   "kind": "pest"
+  },
+  "bacterial_wilt": {
+   "name_en": "Bacterial wilt (Ralstonia solanacearum)",
+   "kind": "disease"
+  },
+  "damping_off": {
+   "name_en": "Damping off (Pythium aphanidermatum)",
+   "kind": "disease"
+  },
+  "fusarium_wilt": {
+   "name_en": "Fusarium wilt",
+   "kind": "disease"
+  },
+  "tomato_mosaic": {
+   "name_en": "Tomato mosaic",
+   "kind": "disease"
+  },
+  "buckeye_fruit_rot": {
+   "name_en": "Buck eye rot / fruit rot",
+   "kind": "disease"
+  },
+  "powdery_mildew": {
+   "name_en": "Powdery mildew (Leveillula taurica)",
+   "kind": "disease"
+  },
+  "cutworm": {
+   "name_en": "Cutworm (Agrotis ipsilon)",
+   "kind": "pest"
+  },
+  "leafhoppers": {
+   "name_en": "Leafhopper (Amrasca biguttula biguttula)",
+   "kind": "pest"
+  },
+  "bacterial_canker": {
+   "name_en": "Bacterial stem and fruit canker (Clavibacter michiganensis subsp. michiganensis)",
+   "kind": "disease"
+  },
+  "tomato_spotted_wilt": {
+   "name_en": "Tomato spotted wilt / bud necrosis (PbNV, TSWV group)",
+   "kind": "disease"
+  },
+  "insecticide_resistance": {
+   "name_en": "Insecticide resistance management",
+   "kind": "general"
+  },
+  "nutrient_deficiency": {
+   "name_en": "Nutrient deficiency symptoms and correction",
+   "kind": "general"
+  },
+  "physiological_disorders": {
+   "name_en": "Physiological fruit disorders",
+   "kind": "general"
+  },
+  "harvest_postharvest": {
+   "name_en": "Harvest and post-harvest safety",
+   "kind": "general"
+  },
+  "pesticide_safety": {
+   "name_en": "Pesticide safety, poisoning first aid and waiting periods",
+   "kind": "general"
+  }
+ },
+ "notes": [
+  "p.16 feeding-potential table: in the text extraction the row labels sit below the photos; rows were assigned by the table's horizontal rule positions in the PDF (e.g. 15-19/45-52/80-90 aphids per instar = Hover fly, 100 aphids/329 whitefly pupae/288 jassid nymphs = Green lace wing, '5 big larvae/day' = Spider). Please spot-check against the PDF.",
+  "p.13 'So, the farmers should apply an adequate for best results' is copied as printed (a word is missing in the source).",
+  "Copied as printed (source spellings not corrected): 'biobiofertilizers', 'mychorrhiza', 'parsely', 'Boarder crops', 'sweet clove', 'A. fallacies'.",
+  "Skipped: insect zoo/FFS/ETL discussion text, AESA discussion questions, facilitator instructions, AESA chart template (p.14-20); photo-caption natural-enemy lists in section VII (they repeat the p.25-26 table); insect biology/life-cycle paragraphs (section VII), except root-knot temperature/development lines.",
+  "Source spellings copied as printed in product names (not corrected): 'Mancozen 75% WP' (p.31), 'Metrium 75% WG' (p.31), 'Cyazaphamid 34.5% SC' (p.31), 'Chlorantranilioprole 18.5% SC' (p.34-35), 'Quinalohos 25% EC' (p.34, 36), 'Kitazin 48% EC' (p.29); also 'fenzaquin' (p.33) in a note. Reviewer may want to decide whether to correct these spellings (mancozeb, metiram, cyazofamid, chlorantraniliprole, quinalphos, fenazaquin).",
+  "Doses copied as printed that look unusual: Mancozeb 35% SC '200 g' (g for an SC); Methomyl 40% SP '300-450 ml' (ml for a powder); Kitazin 48% EC '80 ml in 80 l'; Dazomet technical '12-16 g/acre (nursery)'; Triacontanol 0.05% min GR '10000 g/acre'; Propineb 70% WP '120 g in 40 l of water/acre'; Imidacloprid 17.8 SL and Thiamethoxam 25 WG printed without '%'. Indoxacarb dose printed '160 - 200 ml' at p.34 and '160-200 ml' at p.35.",
+  "The p.31 fungicide list is printed for 'Alternaria blight and late blight' together; it was added to late_blight (except Cymoxanil 8% + mancozeb 64% WP, already in tomato_kb.json) and to early_blight only for products/doses not already listed for early blight at p.29.",
+  "Whitefly chemical/biological management exists in the package only under 'Leaf curl disease (vector - whitefly)'; those entries are under yellow_leaf_curl_virus, not duplicated under whitefly.",
+  "Skipped as already in tomato_kb.json: early blight cultural (p.29), Azoxystrobin for early blight, septoria cultural/chemical, streptocycline for bacterial leaf spot, leaf curl nursery/field cultural, resistant varieties, NSKE/azadirachtin and parasitoid conservation, imidacloprid root dip, mites cultural/biological/fenzaquin, all regional aphid measures (p.36), caterpillar/cutworm generic chunk. 'Same as' rows (p.36) skipped.",
+  "p.37 powdery mildew: 'Immediately remove and destroy them...' has no referent in the source; copied as printed.",
+  "p.30-31 footnote on Trichoderma/Pseudomonas skipped (same text kept once under natural_enemies, p.22).",
+  "The package has no description (symptoms/spread) for late blight, buck eye rot, powdery mildew, cutworm, leafhoppers, thrips or aphids; only management lines exist for those.",
+  "p.63 early blight symptoms say 'Transplants showing infection by the late blight fungus often die...' inside the early blight section; copied as printed (likely a source error).",
+  "p.65 bacterial wilt favourable conditions printed as 'Relatively high soil moisture andto be checked' (unfinished editorial text) - skipped. Survival line 'The spreads through wounds, soil and implements.' is missing a word in the source; copied as printed. 'in advantage cases' (likely 'advanced') copied as printed.",
+  "Other source wording copied as printed: spider mites 'Severe infestation larvae silken webbing on the leaves' (p.57); damping off 'In the pre-emergence the phase' (p.60); Fusarium 'the entire may wilt' (p.68).",
+  "Bacterial leaf spot lines 'Ripe fruits are not susceptible... infected plant debris' are printed under damage symptoms (p.64) but were filed under section 'spread' because they describe survival; text unchanged.",
+  "Disease-cycle diagrams (p.69-72) are images only - skipped.",
+  "XIV safety table (p.85-88): columns were assigned using the PDF's word x-positions against the header. The 'colour of toxicity triangle' column holds images only (no text); colours were read from the image pixels: yellow (dimethoate, imidacloprid), red (carbofuran), green (flubendiamide, mancozeb), blue (captan, copper oxychloride); no triangle for thiamethoxam, novaluron, indoxacarb. Please confirm visually.",
+  "XIV table: blank cells omitted from the sentences; waiting period '--' for dimethoate, carbofuran and copper oxychloride kept as \"printed as '--'\". Thiamethoxam/novaluron first-aid text ends '...to an unconscious' (truncated in source), copied as printed. Flubendiamide symptoms cell is '-----------' (omitted). Carbofuran 'diarrhe a' rejoined to 'diarrhea'.",
+  "XV.D items 5 and 6 are the same sentence in the source; kept once.",
+  "p.81 post-harvest tank list is logically garbled in the source ('not allowing ... 3) removing fruit after two minutes'); copied as printed.",
+  "p.79 irregular ripening: '(Figure 8)' reference dropped (figure not part of the KB).",
+  "p.72 'at greater advantage of evolving insecticide' (word missing in source) copied as printed. p.73 'urea of as recommended', 'NaMO4' copied as printed.",
+  "Skipped: weed descriptions (VI), rodents (V, IX), Do's/Don'ts row 7 (herbicides), row 11 and the Don't parts of rows 13, 15, 16, 17 (already in tomato_kb.json), XVI application techniques, XVII calibration items 1-3 and 6, references, physiological-disorder intro paragraph.",
+  "Short context prefixes taken from the table/section headings were added where a table cell alone would be ambiguous (e.g. \"Natural enemies of gram pod borer - \", \"Flowering plants for whitefly - \", \"Tolerant/resistant varieties for bacterial wilt:\", \"Alternaria blight and late blight:\", \"Zinc deficiency - Correction Measure:\", \"Hover fly:\", \"Gray wall:\"). All other text was checked fragment-by-fragment against niphm.txt; remaining mismatches are only multi-column/page-break layout."
+ ]
+}

@@ -1,0 +1,2369 @@
+{
+ "sources": {
+  "TNAU_EB": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+  },
+  "TNAU_LC": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Leaf curl (updated Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_6.html"
+  },
+  "TNAU_LB": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+  },
+  "TNAU_D1": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Damping off : Pythium aphanidermatum (updated on Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_1.html"
+  },
+  "TNAU_D3": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Fusarium Wilt : Fusarium oxysporum f. sp. lycopersici (updated on Jan 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_3.html"
+  },
+  "TNAU_D5": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Bacterial wilt : Ralstonia solanacearum (updated on Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_5.html"
+  },
+  "TNAU_D7": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Tomato spotted wilt disease : Groundnut bud necrosis virus / Tomato spotted wilt virus (updated on Jan 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_7.html"
+  },
+  "TNAU_D9": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Bacterial stem and fruit canker: Clavibacter michiganensis sub sp. michiganensis (updated on Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_9.html"
+  },
+  "TNAU_D10": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Powdery mildew: Leveillula taurica / Oidiopsis neolycopersici (updated on Jan 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_10.html"
+  },
+  "TNAU_D12": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato: Mosaic : Cucumber mosaic virus (updated on Jun 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_12.html"
+  },
+  "TNAU_PEST_FRUIT_BORER": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Fruit Borer: Helicoverpa armigera (updated on Jun, 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_1.html"
+  },
+  "TNAU_PEST_LEAF_MINER": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Serpentine leaf miner: Liriomyza trifolii (updated on Jun, 2023)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_2.html"
+  },
+  "TNAU_PEST_SPODOPTERA": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Leaf eating caterpillar: Spodoptera litura (no update date printed)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_3.html"
+  },
+  "TNAU_PEST_WHITEFLY": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Whitefly: Bemisia tabaci (no update date printed)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_4.html"
+  },
+  "TNAU_PEST_THRIPS": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Thrips: Thrips tabaci, Frankliniella (no update date printed)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_5.html"
+  },
+  "TNAU_PEST_MEALYBUG": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Striped mealybug: Ferrisia virgata (no update date printed)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_6.html"
+  },
+  "TNAU_PEST_MITE": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Red spider mite: Tetranychus spp (no update date printed)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_7.html"
+  },
+  "TNAU_PEST_PINWORM": {
+   "org": "TNAU",
+   "title": "TNAU Agritech Portal, Crop Protection - Tomato insect pests: Pinworm: Tuta absoluta (updated on October, 2022)",
+   "url": "https://agritech.tnau.ac.in/crop_protection/tomato/tomato_8.html"
+  },
+  "TNAU_IPM_VEG": {
+   "org": "TNAU",
+   "title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+   "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+  },
+  "ICAR_IPM": {
+   "org": "ICAR-NCIPM",
+   "title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+   "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+  },
+  "ICAR_LB": {
+   "org": "ICAR",
+   "title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+   "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+  }
+ },
+ "chunks": [
+  {
+   "topic": "damping_off",
+   "section": "symptoms",
+   "source": "TNAU_D1",
+   "en": "Pre-emergence phase: Complete rotting of seedlings. Post-emergence phase: Infected tissues become soft and water soaked. Seedlings topple over or collapse.",
+   "locator": "Damping off - Symptoms"
+  },
+  {
+   "topic": "damping_off",
+   "section": "spread",
+   "source": "TNAU_D1",
+   "en": "Primary Survival: Soil, Seed, Water. Secondary Spread: Infected debris.",
+   "locator": "Damping off - Survival and Mode of Spread"
+  },
+  {
+   "topic": "damping_off",
+   "section": "spread",
+   "source": "TNAU_D1",
+   "en": "Favourable Conditions: High humidity, high soil moisture, cloudiness and low temperatures below 24 degree C for few days. Crowded seedlings, dampness due to high rainfall, poor drainage and excess of soil solutes.",
+   "locator": "Damping off - Favourable Conditions"
+  },
+  {
+   "topic": "damping_off",
+   "section": "cultural",
+   "source": "TNAU_D1",
+   "en": "Avoid stagnation of water. Use raised beds of 15 cm height.",
+   "locator": "Damping off - Integrated Disease Management - Cultural"
+  },
+  {
+   "topic": "damping_off",
+   "section": "chemical",
+   "source": "TNAU_D1",
+   "product": "Copper oxychloride 50% WP",
+   "dose": "2.5 g/l @ 4 l/sq.m",
+   "note": "Drench.",
+   "locator": "Damping off - Integrated Disease Management - Chemical"
+  },
+  {
+   "topic": "damping_off",
+   "section": "chemical",
+   "source": "TNAU_D1",
+   "product": "Metalaxyl-M 31.8% ES",
+   "dose": "2ml/ kg of seeds",
+   "note": "Treat the seeds 24 hours before sowing.",
+   "locator": "Damping off - Integrated Disease Management - Chemical"
+  },
+  {
+   "topic": "damping_off",
+   "section": "biological",
+   "source": "TNAU_D1",
+   "en": "Treat the seeds with Trichoderma asperellum @ 4 g/kg or Bacillus subtilis @ 10 g/kg of seeds 24 hours before sowing.",
+   "locator": "Damping off - Integrated Disease Management - Biological"
+  },
+  {
+   "topic": "damping_off",
+   "section": "biological",
+   "source": "TNAU_D1",
+   "en": "Soil application of Bacillus subtilis @ 2.5 kg/ha with 50 kg of FYM.",
+   "locator": "Damping off - Integrated Disease Management - Biological"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Iprodione 50% WP",
+   "dose": "600 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Mancozeb 35% SC",
+   "dose": "1 kg/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Metiram 70% WG",
+   "dose": "1.0 kg/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Pyraclostrobin 20% WG",
+   "dose": "200 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Zineb 75% WP",
+   "dose": "800 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+   "dose": "200 ml/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Metiram 55% + Pyraclostrobin 5% WG",
+   "dose": "600 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_EB",
+   "product": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+   "dose": "140 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Early Blight - Integrated Disease Management"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "symptoms",
+   "source": "TNAU_D3",
+   "en": "Clearing of the veinlets and yellowing of the lower leaves. Younger leaves die in succession. Petiole and leaves droop and wilt. Browning of vascular system. Entire plant wilt and die.",
+   "locator": "Fusarium Wilt - Symptom"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "spread",
+   "source": "TNAU_D3",
+   "en": "Survival: In soil as mycelium and chlamydospores. Primary spread: Infected debris. Secondary spread: Water and planting equipment.",
+   "locator": "Fusarium Wilt - Survival and Mode of Spread"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "spread",
+   "source": "TNAU_D3",
+   "en": "Favourable conditions: Dry weather (high soil temperature) and low soil moisture.",
+   "locator": "Fusarium Wilt - Favourable conditions"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "cultural",
+   "source": "TNAU_D3",
+   "en": "Soil solarization. Crop rotation. Removal of infected plant.",
+   "locator": "Fusarium Wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "biological",
+   "source": "TNAU_D3",
+   "en": "Seed treatment with Trichoderma asperellum (viride) @ 4g/kg seeds.",
+   "locator": "Fusarium Wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "biological",
+   "source": "TNAU_D3",
+   "en": "Seedling dip in B. subtilis @ 5g/l and soil application of B. subtilis @ 1.0 kg with 50 kg of FYM/ac at 30 days of transplanting.",
+   "locator": "Fusarium Wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "symptoms",
+   "source": "TNAU_D5",
+   "en": "Rapid and complete wilting of plant. Lower leaves drop before wilting. Yellow brown discolouration of tissues. White bacterial ooze from cut ends.",
+   "locator": "Bacterial wilt - Symptom"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "spread",
+   "source": "TNAU_D5",
+   "en": "Survival: Infected plants and soil. Primary spread: Infected plants. Secondary spread: Wounds, soil and implements.",
+   "locator": "Bacterial wilt - Survival and Mode of Spread"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "spread",
+   "source": "TNAU_D5",
+   "en": "Favourable conditions: High soil moisture.",
+   "locator": "Bacterial wilt - Favourable conditions"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "cultural",
+   "source": "TNAU_D5",
+   "en": "Crop rotation. Disease free seedlings. Restriction of irrigation.",
+   "locator": "Bacterial wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "cultural",
+   "source": "TNAU_D5",
+   "en": "Soil application of neem cake @ 100 kg/acre.",
+   "locator": "Bacterial wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "chemical",
+   "source": "TNAU_D5",
+   "product": "Bleaching powder",
+   "dose": "4 kg/ac",
+   "note": "Drenching.",
+   "locator": "Bacterial wilt - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "spread",
+   "source": "TNAU_LC",
+   "en": "Primary spread: Whiteflies. Secondary spread: Movement of infected plants.",
+   "locator": "Leaf curl - Survival and Mode of Spread"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_LC",
+   "en": "Raising nursery in protected condition. Growing Sorghum, Maize or Bajra as barrier crop. Use of disease free seeds.",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "mechanical",
+   "source": "TNAU_LC",
+   "en": "Yellow sticky traps @ 5nos./ac.",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_LC",
+   "en": "Remove alternate weed host - Abutilon indicum.",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "TNAU_LC",
+   "product": "Dimethoate 30 EC",
+   "dose": "200 ml/ac",
+   "note": "Spraying (one of the listed options).",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "TNAU_LC",
+   "product": "Methyl demeton 25 EC",
+   "dose": "200 ml/ac",
+   "note": "Spraying (one of the listed options).",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "TNAU_LC",
+   "product": "Thiamethoxam 25 WG",
+   "dose": "200 g/ac",
+   "note": "Spraying (one of the listed options).",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "TNAU_LC",
+   "product": "Imidacloprid 17.8 SL",
+   "dose": "200 ml/ac",
+   "note": "Spraying (one of the listed options).",
+   "locator": "Leaf curl - Integrated Disease Management"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "symptoms",
+   "source": "TNAU_D7",
+   "en": "Severe stunting. Chlorotic or necrotic rings on leaves. Thickening of veins and bronzing of young leaves. Growing tips die-back and wilt. Yellow areas with concentric circular markings in fruit. Discoloration of seed.",
+   "locator": "Tomato spotted wilt disease - Symptom"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "spread",
+   "source": "TNAU_D7",
+   "en": "Primary spread: Infected plants. Secondary spread: Thrips, Frankliniella schultzii, Scirtothrips dorsalis.",
+   "locator": "Tomato spotted wilt disease - Survival and Mode of Spread"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "cultural",
+   "source": "TNAU_D7",
+   "en": "Use of healthy seedlings for transplanting. Rouging of infected plants upto 45 days of planting. Growing sorghum, maize or bajra as barrier crop.",
+   "locator": "Tomato spotted wilt disease - Integrated Disease Management - Cultural"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "chemical",
+   "source": "TNAU_D7",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "900 ml/ha",
+   "note": "Apply any one of the listed insecticides.",
+   "locator": "Tomato spotted wilt disease - Integrated Disease Management - Chemical"
+  },
+  {
+   "topic": "tomato_spotted_wilt",
+   "section": "chemical",
+   "source": "TNAU_D7",
+   "product": "Imidachloprid 17.8 SL",
+   "dose": "250 ml / ha",
+   "note": "Apply any one of the listed insecticides.",
+   "locator": "Tomato spotted wilt disease - Integrated Disease Management - Chemical"
+  },
+  {
+   "topic": "late_blight",
+   "section": "spread",
+   "source": "TNAU_LB",
+   "en": "Survival: Infected Debris. Primary spread: Infected debris. Secondary spread: Wind.",
+   "locator": "Late blight - Survival and Mode of Spread"
+  },
+  {
+   "topic": "late_blight",
+   "section": "spread",
+   "source": "TNAU_LB",
+   "en": "Favourable conditions: Cool nights, warm days and extended wet conditions from rain and fog. Optimum temp for sporulation is 18 - 22 degree C.",
+   "locator": "Late blight - Favourable conditions"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_LB",
+   "product": "Azoxystrobin 23% SC",
+   "dose": "200 ml/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Late blight - Integrated Disease Management"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_LB",
+   "product": "Mancozeb 35% SC",
+   "dose": "1000 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Late blight - Integrated Disease Management"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_LB",
+   "product": "Zineb 75% WP",
+   "dose": "800 g/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Late blight - Integrated Disease Management"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_LB",
+   "product": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+   "dose": "200 ml/ac",
+   "note": "Spray (one of the listed options).",
+   "locator": "Late blight - Integrated Disease Management"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "symptoms",
+   "source": "TNAU_D9",
+   "en": "Seedlings, leaves, stem and fruits are affected. Spots on leaves, stems and fruits. White blister like spots in the margins of leaves and turn brown. Wilting of leaves and shoots, streaks on stems and petioles.",
+   "locator": "Bacterial stem and fruit canker - Symptom"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "symptoms",
+   "source": "TNAU_D9",
+   "en": "Small, water soaked spots with white halo on fruits. Centre of spots become slightly raised, tan coloured and rough. Cankers develop and form cracks; slimy bacterial ooze through cracks. Vascular discolouration.",
+   "locator": "Bacterial stem and fruit canker - Symptom"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "spread",
+   "source": "TNAU_D9",
+   "en": "Survival: In Infected debris. Primary spread: Infected plant debris and seed. Secondary spread: Rain splash.",
+   "locator": "Bacterial stem and fruit canker - Survival and Mode of Spread"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "spread",
+   "source": "TNAU_D9",
+   "en": "Favourable conditions: Soil temperature - 28 degree C. High humidity or persistent dew. Moist weather with intermittent showers.",
+   "locator": "Bacterial stem and fruit canker - Favourable conditions"
+  },
+  {
+   "topic": "bacterial_canker",
+   "section": "cultural",
+   "source": "TNAU_D9",
+   "en": "Field sanitation. Crop rotation with non host crops. Use of disease free seeds. Disinfection of tools and implements. Removal of weeds.",
+   "locator": "Bacterial stem and fruit canker - Integrated Disease Management"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "symptoms",
+   "source": "TNAU_D10",
+   "en": "Irregular, bright yellow blotches with yellow halo appear on leaves. Abundant white sporulation in the infected area of leaves.",
+   "locator": "Powdery mildew - Field Diagnostic Symptoms"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "spread",
+   "source": "TNAU_D10",
+   "en": "Survival: Obligate parasite. Primary spread: Infected debris. Secondary spread: Wind.",
+   "locator": "Powdery mildew - Survival and Mode of Spread"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "spread",
+   "source": "TNAU_D10",
+   "en": "Favourable conditions: Warm and dry weather.",
+   "locator": "Powdery mildew - Favourable conditions"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "cultural",
+   "source": "TNAU_D10",
+   "en": "Field sanitation.",
+   "locator": "Powdery mildew - Integrated Disease Management"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "chemical",
+   "source": "TNAU_D10",
+   "product": "Propiconazole 25% EC",
+   "dose": "200 ml/ac",
+   "note": "Spray.",
+   "locator": "Powdery mildew - Integrated Disease Management"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "biological",
+   "source": "TNAU_D10",
+   "en": "Seed treatment with Bacillus subtilis @ 10 g/kg seeds.",
+   "locator": "Powdery mildew - Integrated Disease Management"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "symptoms",
+   "source": "TNAU_D12",
+   "en": "Light and dark green mottling on leaves. Wilting of young leaves. Leaflets distorted and puckered. Fern leaf symptoms. Stunted growth.",
+   "locator": "Mosaic - Symptom"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "spread",
+   "source": "TNAU_D12",
+   "en": "Survival: Infected debris. Primary spread: In infected debris. Secondary spread: Contact with clothes, hand of labourers and implements.",
+   "locator": "Mosaic - Survival and Mode of Spread"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "spread",
+   "source": "TNAU_D12",
+   "en": "Favourable conditions: Temperature, day length and light intensity, variety, age of the plant at infection and the virulence of the strain of CMV.",
+   "locator": "Mosaic - Favourable conditions"
+  },
+  {
+   "topic": "tomato_mosaic",
+   "section": "cultural",
+   "source": "TNAU_D12",
+   "en": "Disease free seeds. Removal of infected plants. Crop rotation.",
+   "locator": "Mosaic - Integrated Disease Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "symptoms",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Young larvae feed on tender foliage. Mature larvae bore circular holes. Thrust only a part of its body into fruit and eat the inner content.",
+   "locator": "Fruit Borer - Symptoms of damage"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "mechanical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Collect and destroy the infected fruits and grown up larvae.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Grow simultaneously 40 days old American tall marigold and 25 days old tomato seedling at 1:16 rows.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "monitoring",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Setup pheromone trap with Helilure at 12/ha.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Release Trichogramma pretiosum @ 1 lakh/ha at an interval of 7 days starting from flower initiation stage.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Spray HaNPV 1.5 x 10^12 POBs/ha. For Helicoverpa armigera: HaNPV 1.5 x 10^12 POBs/ha i.e. NPV of H. armigera 0.43% AS @ 3.0 ml/lit or 2 % AS @ 1.0 ml per lit.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "en": "Spray Azadirachtin 1.0 % EC (10000 ppm) 2.0 ml/ lit. or apply Bacillus thuringiensis 2g/lit. during evening hours.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Carbaryl 50 WP",
+   "dose": "1.25 kg",
+   "note": "Provide poison bait with carbaryl 50 WP 1.25 kg, rice bran 12.5 kg, jaggery 1.25 kg and water 7.5 lit/ha.",
+   "locator": "Fruit Borer - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Indoxacarb 14.5 SC",
+   "dose": "8 ml/ 10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Flubendiamide 39.35 SC",
+   "dose": "2 ml/10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Flubendiamide 20 WG",
+   "dose": "2 g/10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Novaluron 10 % EC",
+   "dose": "7.5 ml/10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Phosalone 35 % EC",
+   "dose": "13 ml/10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Quinalphos 25 % EC",
+   "dose": "1.0 ml/ lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Chlorantraniliprole 18.5 SC",
+   "dose": "3.0 ml/ 10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_PEST_FRUIT_BORER",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "18 ml/ 10 lit",
+   "note": "Spray any one of the listed insecticides.",
+   "locator": "Fruit Borer - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "symptoms",
+   "source": "TNAU_PEST_LEAF_MINER",
+   "en": "Leaves with serpentine mines. Drying and dropping of leaves.",
+   "locator": "Serpentine leaf miner - Symptoms of damage"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "mechanical",
+   "source": "TNAU_PEST_LEAF_MINER",
+   "en": "Collect and destroy mined leaves.",
+   "locator": "Serpentine leaf miner - Management"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "biological",
+   "source": "TNAU_PEST_LEAF_MINER",
+   "en": "Spray Neem Seed Kernel Extract 5 %.",
+   "locator": "Serpentine leaf miner - Management"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "TNAU_PEST_LEAF_MINER",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "1.8ml/lit.",
+   "note": "",
+   "locator": "Serpentine leaf miner - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "symptoms",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Young larva scrap leaves on ventral surface. Grownups defoliate crops.",
+   "locator": "Leaf eating caterpillar - Symptoms of damage"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "cultural",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Grow castor as trap crop. Collect and destroy egg masses and early instar larvae.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "monitoring",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Set up pheromone traps @ 12/ha.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Spray SlNPV 1.5 x 10^12 POBs/ha.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Spray Azadirachtin 1.0 % EC (10000 ppm) 2.0 ml/ lit. or apply Bacillus thuringiensis 2g/lit. during evening hours.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "cultural",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Plough the soil to expose and kill the pupae. Grow castor along border and irrigation channel as trap crop.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "mechanical",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Set up light trap @1/ha. Pheromone traps (Pherodin SL) @15/ ha to attract male moths.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "mechanical",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Collect and destroy egg masses in castor and tomato. Hand pick grown up larvae and kill them.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "en": "Spray Sl NPV @ 1.5 X 10^12 POBs / ha+2.5 Kg crude sugar+0.1 % teepol.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "product": "Carbaryl 50 WP",
+   "dose": "500g",
+   "note": "Poison bait: Rice bran 5 Kg + Molasses or Brown sugar 500g + Carbaryl 50 WP 500g+ 3lit of water/ha. Mix the ingredients well and are kept around the field in the evening hours.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "chemical",
+   "source": "TNAU_PEST_SPODOPTERA",
+   "product": "Chlorpyriphos 20 EC",
+   "dose": "2 lit/ha",
+   "note": "Spray.",
+   "locator": "Leaf eating caterpillar - Management"
+  },
+  {
+   "topic": "whitefly",
+   "section": "symptoms",
+   "source": "TNAU_PEST_WHITEFLY",
+   "en": "Chlorotic spots. Yellowing. Downward curling and drying of leaves. Vector of tomato leaf curl disease.",
+   "locator": "Whitefly - Symptoms of damage"
+  },
+  {
+   "topic": "whitefly",
+   "section": "mechanical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "en": "Install yellow sticky traps @ 12 /ha to attract the adult.",
+   "locator": "Whitefly - Management"
+  },
+  {
+   "topic": "whitefly",
+   "section": "cultural",
+   "source": "TNAU_PEST_WHITEFLY",
+   "en": "Remove alternate weed host Abutilon indicum. Uproot and destroy the diseased leaf curl plants. Use nitrogen and irrigation judiciously.",
+   "locator": "Whitefly - Management"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "product": "Carbofuran 3 CG",
+   "dose": "40 kg/ha",
+   "note": "Apply carbofuran 3% G @ 40 kg /ha or spray any one of the listed insecticides.",
+   "locator": "Whitefly - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "product": "Methl demeton 25 EC",
+   "dose": "1.0 ml/ lit.",
+   "note": "Apply carbofuran 3% G @ 40 kg /ha or spray any one of the listed insecticides.",
+   "locator": "Whitefly - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "1.8ml/lit.",
+   "note": "Apply carbofuran 3% G @ 40 kg /ha or spray any one of the listed insecticides.",
+   "locator": "Whitefly - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "product": "Imidacloprid 17.8 SL",
+   "dose": "3.0ml/10lit.",
+   "note": "Apply carbofuran 3% G @ 40 kg /ha or spray any one of the listed insecticides.",
+   "locator": "Whitefly - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_PEST_WHITEFLY",
+   "product": "Spiromesifen 22.9 SC",
+   "dose": "1.25ml/lit.",
+   "note": "Apply carbofuran 3% G @ 40 kg /ha or spray any one of the listed insecticides.",
+   "locator": "Whitefly - Management - Insecticide / Dose table"
+  },
+  {
+   "topic": "thrips",
+   "section": "symptoms",
+   "source": "TNAU_PEST_THRIPS",
+   "en": "Silvery streaks on leaf surface. Pre-mature dropping of flowers. Bud necrosis. Vector of tomato spotted wilt virus.",
+   "locator": "Thrips - Symptoms of damage"
+  },
+  {
+   "topic": "thrips",
+   "section": "mechanical",
+   "source": "TNAU_PEST_THRIPS",
+   "en": "Mechanically uproot the diseased plants and destroy them.",
+   "locator": "Thrips - Management"
+  },
+  {
+   "topic": "thrips",
+   "section": "mechanical",
+   "source": "TNAU_PEST_THRIPS",
+   "en": "Use yellow sticky traps @ 15/ha.",
+   "locator": "Thrips - Management"
+  },
+  {
+   "topic": "thrips",
+   "section": "biological",
+   "source": "TNAU_PEST_THRIPS",
+   "en": "Release larvae of Chrysoperla cornea @10,000/ha.",
+   "locator": "Thrips - Management"
+  },
+  {
+   "topic": "thrips",
+   "section": "chemical",
+   "source": "TNAU_PEST_THRIPS",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "1.8ml/lit.",
+   "note": "",
+   "locator": "Thrips - Management"
+  },
+  {
+   "topic": "thrips",
+   "section": "chemical",
+   "source": "TNAU_PEST_THRIPS",
+   "product": "Methyl demeton 25 EC",
+   "dose": "1lit/ha",
+   "note": "Spray.",
+   "locator": "Thrips - Management"
+  },
+  {
+   "topic": "mealybug",
+   "section": "symptoms",
+   "source": "TNAU_PEST_MEALYBUG",
+   "en": "Presence of white, cottony mealy bugs on the leaves and twigs. Stunted growth.",
+   "locator": "Striped mealybug - Symptoms of damage"
+  },
+  {
+   "topic": "mealybug",
+   "section": "biological",
+   "source": "TNAU_PEST_MEALYBUG",
+   "en": "Spray FORS 25g/lit or neem oil 0.5% along with teepol 1 ml/lit.",
+   "locator": "Striped mealybug - Management"
+  },
+  {
+   "topic": "mites",
+   "section": "symptoms",
+   "source": "TNAU_PEST_MITE",
+   "en": "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves, wither and dry. Flower and fruit formation affected.",
+   "locator": "Red spider mite - Symptoms of damage"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_PEST_MITE",
+   "product": "Wettable sulphur 50 WP",
+   "dose": "2g/lit",
+   "note": "Spray.",
+   "locator": "Red spider mite - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "symptoms",
+   "source": "TNAU_PEST_PINWORM",
+   "en": "Mining of leaves, stem and pinholes on fruits.",
+   "locator": "Pinworm - Symptoms"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "cultural",
+   "source": "TNAU_PEST_PINWORM",
+   "en": "Collect and destroy the pinworm affected plants and fruits. Avoid solanaceous crops after tomato. Use healthy seedlings for transplanting.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "mechanical",
+   "source": "TNAU_PEST_PINWORM",
+   "en": "Keep pheromone traps @ 16 nos./ac to attract and kill the adult moths.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Cyantraniliprole 10.26 OD",
+   "dose": "1.8ml/lit.",
+   "note": "",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Chlorantraniliprole 18.5% SC",
+   "dose": "60 ml",
+   "note": "If needed, spray Chlorantraniliprole 18.5% SC @ 60 ml or Cyantraniliprole 10% OD @ 60 ml or Flubendiamide 20% WG @ 60 ml or Indoxacarb 14.5% SC @ 100ml or Neem formulation (Azadirachtin 1% or 5%) @ 400 - 600 ml/ac.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Cyantraniliprole 10% OD",
+   "dose": "60 ml",
+   "note": "If needed, spray Chlorantraniliprole 18.5% SC @ 60 ml or Cyantraniliprole 10% OD @ 60 ml or Flubendiamide 20% WG @ 60 ml or Indoxacarb 14.5% SC @ 100ml or Neem formulation (Azadirachtin 1% or 5%) @ 400 - 600 ml/ac.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Flubendiamide 20% WG",
+   "dose": "60 ml",
+   "note": "If needed, spray Chlorantraniliprole 18.5% SC @ 60 ml or Cyantraniliprole 10% OD @ 60 ml or Flubendiamide 20% WG @ 60 ml or Indoxacarb 14.5% SC @ 100ml or Neem formulation (Azadirachtin 1% or 5%) @ 400 - 600 ml/ac.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Indoxacarb 14.5% SC",
+   "dose": "100ml",
+   "note": "If needed, spray Chlorantraniliprole 18.5% SC @ 60 ml or Cyantraniliprole 10% OD @ 60 ml or Flubendiamide 20% WG @ 60 ml or Indoxacarb 14.5% SC @ 100ml or Neem formulation (Azadirachtin 1% or 5%) @ 400 - 600 ml/ac.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "TNAU_PEST_PINWORM",
+   "product": "Neem formulation (Azadirachtin 1% or 5%)",
+   "dose": "400 - 600 ml/ac",
+   "note": "If needed, spray Chlorantraniliprole 18.5% SC @ 60 ml or Cyantraniliprole 10% OD @ 60 ml or Flubendiamide 20% WG @ 60 ml or Indoxacarb 14.5% SC @ 100ml or Neem formulation (Azadirachtin 1% or 5%) @ 400 - 600 ml/ac.",
+   "locator": "Pinworm - Management"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Eggs hatch in about 3-4 days and the first instars larvae initially feed on the leaves and migrate to the developing green fruit later. The larvae bore into the fruits with the posterior end outside the hole.",
+   "locator": "Insect management - Tomato - Fruit Borer - description (p. 3)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Under Open Conditions: Effective management can be done by adopting marigold as trap crop.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Under Open Conditions: Giving sprays of Ha NPV @ 250 LE /ha at 28,35 and 42 days after transplanting.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Mechanical collection and destruction of bored fruit at periodic intervals (3-4 times) brings down the borer incidence to less than 2 per cent.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Under Protected Conditions: Spray Ha NPV at 250 LE/ha + 1% jaggery along with sticker (0.5 ml/litre) during evenings when the larvae are young.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Indoxacarb 14.5 SC",
+   "dose": "0.5 ml/l",
+   "note": "Under protected conditions, for grown up larvae.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Thiodicarb 75 WP",
+   "dose": "1g/l",
+   "note": "Under protected conditions, for grown up larvae.",
+   "locator": "Insect management - Tomato - Fruit Borer - Management (p. 4)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "monitoring",
+   "source": "TNAU_IPM_VEG",
+   "en": "Fruit Borer (Helicoverpa armigera) - Economic Threshold Level (ETL): 8 eggs in 15 plants or single larva per plant or 2% fruit infestation.",
+   "locator": "Annexure VI - Economic threshold level for some vegetable crop pests (Tomato row)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "The tiny, metallic fly punctures the leaf lamina and feeds on the oozing sap. Typical serpentine shaped tunnels are formed in the leaf lamina indicating the path of feeding by the maggots.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - description (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Often the incidence starts from nursery itself. Hence, remove infected leaves at the time of planting or within a week of transplanting.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Apply neem cake to furrows (open)/beds (polyhouse) @ 250 kg/ha at planting and repeat after 25 days.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Spray neem seed powder extract 4% or neem soap 1% at 15-20 DAPS.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Triazophos 40 EC",
+   "dose": "1ml mixed with 7.5 g neem/l",
+   "note": "In open conditions, if the incidence is high, remove infected leaves and spray.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "safety",
+   "source": "TNAU_IPM_VEG",
+   "en": "Under protected conditions avoid frequent spraying of synthetic pesticides.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Deltamethrin 2.8 EC",
+   "dose": "1ml/l",
+   "note": "Under protected conditions: at the most, one spray may be given, if required.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Cypermethrin 25 EC",
+   "dose": "0.5 ml/l",
+   "note": "Under protected conditions: at the most, one spray may be given, if required.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Triazophos 40 EC",
+   "dose": "2ml/l",
+   "note": "Under protected conditions: at the most, one spray may be given, if required.",
+   "locator": "Insect management - Tomato - Serpentine Leaf Miner - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Whitefly is a well-known vector, which transmits tomato leaf curl virus. It has piercing and sucking mouthpart and both nymphs and adults feed on lower surface of the leaves causing deformation of young leaves. Whiteflies also excrete honeydew, causing sooty mold.",
+   "locator": "Insect management - Tomato - Whiteflies - description (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "resistant_varieties",
+   "source": "TNAU_IPM_VEG",
+   "en": "Use virus resistant hybrids.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Raise nurseries in seedling trays under nylon nets or polyhouses.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Imidacloprid 200 SL",
+   "dose": "0.3ml/l",
+   "note": "Spray in nursery at 15 days after sowing.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Thiomethoxam 25 WP",
+   "dose": "0.3 g/l",
+   "note": "Spray in nursery at 15 days after sowing.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Remove the leaf curl infested plants as soon as disease symptoms are expressed. This helps in reducing source of inoculums of the disease.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Imidacloprid 200 SL",
+   "dose": "0.03ml/l",
+   "note": "Drench the base of the seedlings before transplanting. If protreys are used for raising nursery, drench the protreys with the chemicals one day before transplanting.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Thiomethoxam 25 WP",
+   "dose": "0.3 g/l",
+   "note": "Drench the base of the seedlings before transplanting. If protreys are used for raising nursery, drench the protreys with the chemicals one day before transplanting.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Imidacloprid 20 SL",
+   "dose": "0.3ml/l",
+   "note": "After transplanting give need-based sprays at 15 days after planting and do not repeat after fruiting stage as this may leave harmful residues in fruits.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Thiomethoxam 25 WP",
+   "dose": "0.3 g/l",
+   "note": "After transplanting give need-based sprays at 15 days after planting and do not repeat after fruiting stage as this may leave harmful residues in fruits.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 4)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "monitoring",
+   "source": "TNAU_IPM_VEG",
+   "en": "Install yellow sticky traps coated with adhesive or sticky glue at crop canopy level for monitoring adult whitefly population.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 5)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Dimethoate 30EC",
+   "dose": "2ml/l",
+   "note": "If the traps indicate the whitefly activity.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 5)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "If the traps indicate the whitefly activity, spray neem seed kernel extract 4% (NSKE) or pongamia or neem oil (8-10 ml/l) or neem soap (10g/l).",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 5)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Rogue out the virus affected plants as soon as the symptoms are observed.",
+   "locator": "Insect management - Tomato - Whiteflies - Management (p. 5)"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "This is a minor pest under open conditions and assumes severe form under protected cultivation particularly in ill managed playhouses. Eggs are laid in clusters on foliage. Young larvae feed gregariously on leaves. Mature larvae, migrate and cause extensive damage to leaves and fruits. They hide in soil and crop debris during the day time.",
+   "locator": "Insect management - Tomato - Tobacco Caterpillar - description (p. 5)"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Collection and destruction of egg masses and gregarious larvae.",
+   "locator": "Insect management - Tomato - Tobacco Caterpillar - Management (p. 5)"
+  },
+  {
+   "topic": "spodoptera_tobacco_caterpillar",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Spray Spodoptera NPV 250 LE/ha + 1% jaggery along with sticker (0.5 ml/litre) during evenings.",
+   "locator": "Insect management - Tomato - Tobacco Caterpillar - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Red spider mites thrive under high temperature, dry weather and are more serious under protected conditions. They are generally found on the lower surface of older leaves. However, when the infestation is very high they attack all parts of the plant and are observed in colonies covered by white-silky webs. Adults and nymphs lacerate the leaves causing yellowing and discoloration.",
+   "locator": "Insect management - Tomato - Red Spider Mites - description (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Remove and destroy the affected leaves.",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Wettable sulphur 80 WP",
+   "dose": "3g/l",
+   "note": "Under open conditions. Spray lower leaves and lower leaf surface thoroughly as mites are generally observed there.",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "As an alternative to the chemical acaricides spray neem oil/neem soap/ pongamia soap 1%.",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Abamectin 1.9 EC",
+   "dose": "0.5 ml/l",
+   "note": "Under polyhouse conditions, need-based, in rotation with plant products like pongamia oil or neem oil (8-10 ml/l) or neem soap (10 g/l).",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Fenazaquin 10 EC",
+   "dose": "1 ml/l",
+   "note": "Under polyhouse conditions, need-based, in rotation with plant products like pongamia oil or neem oil (8-10 ml/l) or neem soap (10 g/l).",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "mites",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "When incidence is severe, remove and destroy all severely infected leaves followed by a spray of mixture of an acaricide with botanicals mentioned above.",
+   "locator": "Insect management - Tomato - Red Spider Mites - Management (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling. This affects the uptake of nutrition and water and the plants show wilting during warmer part of the day. This causes stunted plants with yellow foliage resulting in yield reduction.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - description (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "resistant_varieties",
+   "source": "TNAU_IPM_VEG",
+   "en": "Use nematode resistant variety/hybrid if available.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - Management (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Follow crop rotation with marigold, wherever possible.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - Management (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Seed treatment with bio-pesticides- Pseudomonas fluorescens @ 10g/kg seed. Nursery bed treatment with T. harzianum @ 50 g/ sq. m.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - Management (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "For the management of nematodes in the main field apply 2 tons of farmyard manure enriched with T. harzianum and Paecilomyces lilacinus per acre before planting, along with 100-200 kg of neem or pongamia cake.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - Management (p. 5)"
+  },
+  {
+   "topic": "root_knot_nematode",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Carbofuran 3G",
+   "dose": "1 kg ai/ha",
+   "note": "At transplanting.",
+   "locator": "Insect management - Tomato - Root-knot Nematodes - Management (p. 5)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "IPM package in tomato under polyhouse: Raise seedlings in protreys in polyhouse. 15 DAS (Days after seed sowing): Spray the plants with Imidacloprid or Thiomethoam. One day before transplanting: Drench the base of seedlings with Imidacloprid or Thiomethoxam.",
+   "locator": "IPM package in tomato under polyhouse (p. 6) - flow chart"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "At transplanting: Apply neem cake 250 kg/ha. 15 DAP (days after planting): Spray the seedlings with Imidacloprid or Thiomethoxam. 25 DAP (days after planting): Apply neem cake 250 kg/ha.",
+   "locator": "IPM package in tomato under polyhouse (p. 6) - flow chart"
+  },
+  {
+   "topic": "general",
+   "section": "monitoring",
+   "source": "TNAU_IPM_VEG",
+   "en": "Post flowering and fruiting stage: Monitor for pest like fruit borer, tobacco caterpillar, leaf miner, whitefly and red spider mite. Erect yellow sticky traps to monitor whitefly. Spray NPV according to the pest. Remove leaves severely infected with leaf miner/red spider mite.",
+   "locator": "IPM package in tomato under polyhouse (p. 6) - flow chart"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Post flowering and fruiting stage: Spray neem seed powder/neem soap for leaf miner. Spray synthetic acaricide/botanical in rotation to control red spider mite, spray systemic insecticide/botanical to control whitefly.",
+   "locator": "IPM package in tomato under polyhouse (p. 6) - flow chart"
+  },
+  {
+   "topic": "early_blight",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+   "locator": "Disease management - Tomato - Alternaria Blight - Symptoms (p. 23)"
+  },
+  {
+   "topic": "early_blight",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection.",
+   "locator": "Disease management - Tomato - Alternaria Blight - Management (p. 23)"
+  },
+  {
+   "topic": "early_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Chlorothalonil",
+   "dose": "0.2%",
+   "note": "Two spray at 8 days interval is effective against the disease but spray must be started soon after infection on floral part.",
+   "locator": "Disease management - Tomato - Alternaria Blight - Management (p. 23)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+   "locator": "Disease management - Tomato - Late Blight - Symptoms (p. 23)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+   "locator": "Disease management - Tomato - Late Blight - Symptoms (p. 23)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Crop rotation with non-solanaceous host is essential for effective reduction of inoculum. Healthy seeds should be collected only from disease-free fruits. Always use healthy and certified seeds collected from disease-free area.",
+   "locator": "Disease management - Tomato - Late Blight - Management (pp. 23-24)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Infected crop debris and fruits must be collected from the field and burnt. Staking of plant reduces all phytophthora diseases of tomato.",
+   "locator": "Disease management - Tomato - Late Blight - Management (p. 24)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Mancozeb",
+   "dose": "0.25%",
+   "note": "Preventive sprays provide good control in cloudy, cold and drizzling weather but spray interval should be 5 to 7 days.",
+   "locator": "Disease management - Tomato - Late Blight - Management (p. 24)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Metalaxyl + Mancozeb",
+   "dose": "0.2%",
+   "note": "One spray is very effective when applied within two days of infection but repetitive sprays should not be given.",
+   "locator": "Disease management - Tomato - Late Blight - Management (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "The first symptom of disease is observed as soft tissue necrosis of bark of the stem near soil line. White, cottony and silvery mycelial growth is clearly visible on the affected portion. Later on white to light brown mustard like sclerotium is observed on the same portion.",
+   "locator": "Disease management - Tomato - Collar Rot - Symptoms (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Progressive dropping and yellowing followed by wilting of the entire plant is observed. Sometime plants collapse soon after infection. The disease is soil borne where pathogen survives in the form of sclerotia.",
+   "locator": "Disease management - Tomato - Collar Rot - Symptoms (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Use crop rotation with cereals, corn, sorghum and millets. Remove all the weeds from field. Avoid use of infested farmyard manure, soil crop debris and compost in the field.",
+   "locator": "Disease management - Tomato - Collar Rot - Management (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Irrigate the soil in summer and plough the field to destroy germinating sclerotia. Avoid dense planting and maintain proper aeration near collar region. Use Ammonium Nitrate as a fertilizer for nitrogen source.",
+   "locator": "Disease management - Tomato - Collar Rot - Management (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Green manuring followed by application of Trichoderma @ 5 kg/ha within a week of ploughing. Seedlings dip in Trichoderma @ 1% for 10 minutes.",
+   "locator": "Disease management - Tomato - Collar Rot - Management (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Copper Oxychloride",
+   "dose": "0.3%",
+   "note": "Drench near the collar region followed by carbendazim @ 0.1% for immediate control. Fungicide drenching should be done preferably in evening.",
+   "locator": "Disease management - Tomato - Collar Rot - Management (p. 24)"
+  },
+  {
+   "topic": "collar_rot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Carbendazim",
+   "dose": "0.1%",
+   "note": "Drench near the collar region after Copper Oxychloride @ 0.3% for immediate control. Fungicide drenching should be done preferably in evening.",
+   "locator": "Disease management - Tomato - Collar Rot - Management (p. 24)"
+  },
+  {
+   "topic": "pseudocercospora_leaf_blight",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Olivacious black sooty growth of fungus was observed on the lower surface of the leaves. Symptoms are only observed on the leaves. Leaf defoliate soon after infection. No discoloration was observed on the corresponding upper side of the leaves.",
+   "locator": "Disease management - Tomato - Pseudocercospora Leaf Blight - Symptoms (p. 24)"
+  },
+  {
+   "topic": "pseudocercospora_leaf_blight",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Collect and burn the infected leaves. Be careful for selecting exotic hybrids and varieties.",
+   "locator": "Disease management - Tomato - Pseudocercospora Leaf Blight - Management (p. 25)"
+  },
+  {
+   "topic": "pseudocercospora_leaf_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Hexaconazole",
+   "dose": "0.05%",
+   "note": "One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval.",
+   "locator": "Disease management - Tomato - Pseudocercospora Leaf Blight - Management (p. 25)"
+  },
+  {
+   "topic": "pseudocercospora_leaf_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Triademefon",
+   "dose": "0.05%",
+   "note": "One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval.",
+   "locator": "Disease management - Tomato - Pseudocercospora Leaf Blight - Management (p. 25)"
+  },
+  {
+   "topic": "pseudocercospora_leaf_blight",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Bitertanol",
+   "dose": "0.05%",
+   "note": "One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval.",
+   "locator": "Disease management - Tomato - Pseudocercospora Leaf Blight - Management (p. 25)"
+  },
+  {
+   "topic": "white_rot",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Infection starts during flowering stage. Soft, wet, water soaked rotting of stem, leaves, fruits, and flowers are observed followed by white fungal growth over it. Fruits are severely affected where sclerotia formed inside and outside of the fruits.",
+   "locator": "Disease management - Tomato - White Rot - Symptoms (p. 25)"
+  },
+  {
+   "topic": "white_rot",
+   "section": "spread",
+   "source": "TNAU_IPM_VEG",
+   "en": "The disease is observed in December to January during low temperature, cloudy weather and high atmospheric humidity accompanied by soil moisture.",
+   "locator": "Disease management - Tomato - White Rot - Symptoms (p. 25)"
+  },
+  {
+   "topic": "white_rot",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Cut the infected plant parts along with some healthy portion in morning and carefully collect in polythene to avoid falling of sclerotia in the field. Burn all these materials away from field.",
+   "locator": "Disease management - Tomato - White Rot - Management (p. 25)"
+  },
+  {
+   "topic": "white_rot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Carbendazim",
+   "dose": "0.1%",
+   "note": "Foliar spray at flowering stage followed by spray of mancozeb @ 0.25% in cool, cloudy and humid weather.",
+   "locator": "Disease management - Tomato - White Rot - Management (p. 25)"
+  },
+  {
+   "topic": "white_rot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Mancozeb",
+   "dose": "0.25%",
+   "note": "Spray after the carbendazim @ 0.1% flowering-stage spray, in cool, cloudy and humid weather.",
+   "locator": "Disease management - Tomato - White Rot - Management (p. 25)"
+  },
+  {
+   "topic": "fruit_rots",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Rhizoctonia fruit rot is most serious disease of kharif tomato. Symptoms appear as rhythmic rotting of fruits coming with the soil contact. Rotting is immediately followed by cracking and fungal growth over it. Generally lower portion of fruits are infected which are coming in soil contact.",
+   "locator": "Disease management - Tomato - Fruit Rots - Symptoms (p. 25)"
+  },
+  {
+   "topic": "fruit_rots",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Avoid the contact of fruit from soil by staking of plant. Provide proper drainage in the field.",
+   "locator": "Disease management - Tomato - Fruit Rots - Management (p. 26)"
+  },
+  {
+   "topic": "fruit_rots",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Green manuring followed by soil application of Trichoderma @ 5 kg/ha in soil is very effective in checking most of the fruit rotting.",
+   "locator": "Disease management - Tomato - Fruit Rots - Management (p. 26)"
+  },
+  {
+   "topic": "grey_leaf_spot",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Small circular dark brown necrotic, numerous spots appear all over the leaf lamina that is uniformly distributed on entire foliage. Sometimes clear narrow yellow halo is visible around the spots. Usually these spots are isolated but in later stage they coalesce to each other. Severely infected older leaves blight and fall down.",
+   "locator": "Disease management - Tomato - Grey Leaf Spot - Symptoms (p. 26)"
+  },
+  {
+   "topic": "grey_leaf_spot",
+   "section": "monitoring",
+   "source": "TNAU_IPM_VEG",
+   "en": "Periodical monitoring of the crop for initiation of disease from last fortnight of December to first week of January.",
+   "locator": "Disease management - Tomato - Grey Leaf Spot - Management (p. 26)"
+  },
+  {
+   "topic": "grey_leaf_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Mancozeb",
+   "dose": "0.25%",
+   "note": "Foliar spray of either Mancozeb @ 0.25% or Chlorothalonil @ 0.2% two to three times at 7-10 days interval.",
+   "locator": "Disease management - Tomato - Grey Leaf Spot - Management (p. 26)"
+  },
+  {
+   "topic": "grey_leaf_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Chlorothalonil",
+   "dose": "0.2%",
+   "note": "Foliar spray of either Mancozeb @ 0.25% or Chlorothalonil @ 0.2% two to three times at 7-10 days interval.",
+   "locator": "Disease management - Tomato - Grey Leaf Spot - Management (p. 26)"
+  },
+  {
+   "topic": "grey_leaf_spot",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Removal and burning of all crop debris after senescence of the crop.",
+   "locator": "Disease management - Tomato - Grey Leaf Spot - Management (p. 26)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Symptoms (p. 26)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "spread",
+   "source": "TNAU_IPM_VEG",
+   "en": "Disease appear in rainy season and continued up to fruit initiation stage. The disease in prevalent in warm humid weather when RH is more than 90% and temperature is between 25 and 35 degree C.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Symptoms (p. 26)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Summer ploughing to desiccate the bacteria and host. Soil solarization in nursery bed to avoid seedling infection. Rotation of nursery seedbed and main field. Seed should be collected from disease free plants.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Adopt intercropping of urd and mung as mulches to prevent rain splash.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "resistant_varieties",
+   "source": "TNAU_IPM_VEG",
+   "en": "Use tolerant line of tomato like LE-415.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Streptocycline (seed dip)",
+   "dose": "100 ppm",
+   "note": "Seed dipped in streptocycline solution @ 100 ppm.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Streptocycline",
+   "dose": "150-200 ppm",
+   "note": "One spray followed by one spray of Copper Oxychloride @ 0.2% in afternoon.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Copper Oxychloride",
+   "dose": "0.2%",
+   "note": "One spray following the Streptocycline @ 150-200 ppm spray, in afternoon.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_spot",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Copper oxychloride",
+   "dose": "0.3%",
+   "note": "One spray after fifteen days of antibiotic application.",
+   "locator": "Disease management - Tomato - Bacterial Spot - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "The spots are necrotic, circular to roughly circular. As the fruit approaches the pink stage, the tissue around the spot retains its green colour longer than normal. Small black spots appear on leaf, petiole, pedicel, and peduncle while irregular, elongated lesions appear on stem.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Symptoms (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "spread",
+   "source": "TNAU_IPM_VEG",
+   "en": "Bacterial speck is favoured by cool, moist, weather and temperature range between 15 and 25 degree C. Generally, disease is observed in winter season when fruit starts ripening.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Symptoms (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Summer ploughing to desiccate the bacteria and host. Seed should be collected from disease free plants.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Streptocycline (seed dip)",
+   "dose": "100 ppm",
+   "note": "Seed dipping in Streptocycline solution @ 100 ppm.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Streptocycline",
+   "dose": "150-200 ppm",
+   "note": "One spray in afternoon.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Management (p. 27)"
+  },
+  {
+   "topic": "bacterial_speck",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Copper Oxychloride",
+   "dose": "0.3%",
+   "note": "One spray after 10 days of antibiotic application.",
+   "locator": "Disease management - Tomato - Bacterial Speck - Management (p. 27)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "symptoms",
+   "source": "TNAU_IPM_VEG",
+   "en": "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Symptoms (p. 27)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Removal of weed host from field near surrounding areas. Nursery should be grown in nylone net to check the white fly infection.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Management (pp. 27-28)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Imidacloprid (root dip)",
+   "dose": "4-5 ml per litre of water",
+   "note": "Root dipping for one hour during transplanting of the seedlings.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Management (p. 27)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Seed treatment with hot water at 50 degree C or 10% trisodium phosphate solution for 25 minutes.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Management (p. 28)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Use barrier crop of taller non-host crops like maize, bajra and sorghum. Collect healthy seeds from disease free plants.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Management (p. 28)"
+  },
+  {
+   "topic": "yellow_leaf_curl_virus",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Periodical sprays of systemic insecticides up to flower setting. Avoid mechanical injury during intercultural operations. Use tolerant varieties. Roughing of infected plants soon after infection at initial stage of growth.",
+   "locator": "Disease management - Tomato - Leaf Curl Complex - Management (p. 28)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Raise marigold (tall African variety golden age bearing yellow and orange flower) nursery 15-20 days before tomato nursery.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Nursery (p. 57)"
+  },
+  {
+   "topic": "damping_off",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Prepare raised nursery beds about 10 cm above ground level for good drainage to avoid damping off.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Nursery (p. 57)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Cover the beds with polythene sheet of 45 gauge (0.45 mm) thickness for three weeks before sowing for soil solarisation for reducing the soil borne pests. Sufficient moisture should be present in the soil.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Nursery (p. 57)"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Imidacloprid (root dip)",
+   "dose": "0.3 ml/litre",
+   "note": "Before transplanting dip the roots of seedlings for 15 minutes for management of aphids, white fly & leaf miner.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Nursery (p. 57)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Transplant a row of marigold after every 16 rows of tomato as a trap crop. Marigold should be 15 days older than tomato plants so that they flower at the same time. Maximum egg laying by borer is observed on marigold flowers. First and last row of plots should be marigold and it should be sprayed with HaNPV.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Adopt wide spacing of 60 x 45 cm (for varieties) and 90x 60 cm (for hybrids) to reduce the chance of spread of diseases.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Apply neem cake @ 250 kg/ha at 20 DAP to reduce fruit borer, leaf miner and nematode.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "general",
+   "section": "natural_enemies",
+   "source": "TNAU_IPM_VEG",
+   "en": "Bird perches @ 10/ acre should be erected for facilitating field visits of predatory birds.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Spray of 5% NSKE at 15 DAP has also been found to be effective against leaf-miner & white fly. Spray Imidacloprid or Thiomethoxam at 15 DAP for leaf miner & white fly control, if needed.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "monitoring",
+   "source": "TNAU_IPM_VEG",
+   "en": "Pheromone traps @ 5/ ha be installed for monitoring fruit borer activity. Replace the lures with fresh lures after every 20-25 day interval. ETL for fruit borer is 8 to10 moths /day/trap. Monitor top three leaves for Helicoverpa eggs.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Release of T. chilonis, T. braziliensis and T. pretiosum @ 1.0 lakh/ha 4-5 times from flower initiation stage at weekly intervals for fruit borer.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - (p. 57)"
+  },
+  {
+   "topic": "general",
+   "section": "resistant_varieties",
+   "source": "TNAU_IPM_VEG",
+   "en": "Showing of resistant variety (Fruit borer-Avinash-2, Bacterial wilt- Arka Abha, Arka Alok, Shakti, Arka Abhijit, Arka Shreshta, Leaf Curl-Parbhani, Yeshree, H.24; Root-knot Nematodes, Hissar Anmol, SL 120, Pusa Hybrid 2; Powdery Mildew- Arka Ashish, Early Blight-Devgiri, Fusarium wilt-Pant Bahar).",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 57)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "Spray HaNPV 250 LE/ha (2 x 10^9 POB) + 1% jaggery along with sticker 0.5 ml/ liter 3 times at 28, 35 and 42 DAP during evening to reduce borer damage.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "mechanical",
+   "source": "TNAU_IPM_VEG",
+   "en": "Regular collection & destruction of damaged fruits i.e. clean cultivation helps in management of borer effectively.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "TNAU_IPM_VEG",
+   "en": "Rouge out and destroy leaf-curl and wilt affected plants.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "mites",
+   "section": "biological",
+   "source": "TNAU_IPM_VEG",
+   "en": "If red spider mite is noticed, spray neem soap or neem oil (0.1%).",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Ethion EC",
+   "dose": "1.5 ml/l",
+   "note": "If red spider mite is noticed.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "TNAU_IPM_VEG",
+   "product": "Sulphur 80 WP",
+   "dose": "3g/l",
+   "note": "If red spider mite is noticed.",
+   "locator": "Recommended IPM practices for important vegetable crops - Tomato - Main crop (p. 58)"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "ICAR_IPM",
+   "en": "Deep summer ploughing to expose soil borne pathogens and insect pupae to sunlight and natural enemies.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "biological",
+   "source": "ICAR_IPM",
+   "en": "Seed treatment with IIHR patented Organic Formulation (talc formulation of Pseudomonas fluorescens + Trichoderma harzianum) @ 15- 20 g/kg of seeds or Trichoderma viride or Pseudomonas fluorescens @ 200 g/ kg of seeds and shade-dried for half an hour before sowing against soil and seed borne fungal diseases and nematodes.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "biological",
+   "source": "ICAR_IPM",
+   "en": "Application of well decomposed enriched farmyard manure @ 2 t/ha, enriched with Trichoderma viride or Pseudomonas fluorescens @ 2 kg/t of well decomposed FYM against fungal diseases and nematodes.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "ICAR_IPM",
+   "en": "Soil application of 500 kg of Neem cake against bacterial wilt, serpentine leaf miner and root knot nematodes and 1 tonne of vermin-compost per hectare to the main field before transplanting (induced resistance against biotic stress - pest incidence).",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "ICAR_IPM",
+   "en": "Plastic mulching to reduce pupation in the soil, repels whiteflies in case of silver coloured sheets and also avoids weed growth. Polythene sheets of 25-30 micron thickness (black or silver coloured) should be spread on the raised beds as mulch before transplanting.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "cultural",
+   "source": "ICAR_IPM",
+   "en": "Round holes should be made as per the recommended spacing (4 ft x 1.5 ft or 120 cm x 45 cm) using a punch or a large diameter pipe and a hammer and the seedlings should be placed in the holes.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "cultural",
+   "source": "ICAR_IPM",
+   "en": "Intercropping a tall variety of marigold as a trap crop @ 16:1 ratio. Plant 45 days old marigold seedlings and 25 days old tomato seedlings to synchronize flowering in both the crops. Eggs and larvae are manually collected and destructed from field along with the flowers. This trap cropping system also helps in reducing the root knot nematode infestation.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "general",
+   "section": "natural_enemies",
+   "source": "ICAR_IPM",
+   "en": "Install bird percher @ 15-20 bird perches (T shaped) per ha to attract insectivorous birds to feed on different stages of insect pests.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "whitefly",
+   "section": "mechanical",
+   "source": "ICAR_IPM",
+   "en": "Installation of Yellow sticky traps @ 10 traps/ha, 15 cm above the canopy against white fly. Locally available empty tins can be painted yellow or blue / coated with grease / vaseline/ castor oil on outer surface may also be used as yellow/blue sticky traps.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "monitoring",
+   "source": "ICAR_IPM",
+   "en": "Installation of specific lures in pheromone traps for South American tomato pinworm, fruit borer and tobacco/leaf eating caterpillar @ 10-12 traps/ ha (replace the lures with fresh ones after every 2-3 weeks). Trap should be installed in the field in such a way that the position of the lure is always 2 to 3 feet above the crop canopy. The trapped moth should be collected and killed on regular intervals.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "mechanical",
+   "source": "ICAR_IPM",
+   "en": "Installation of indigenously prepared light trap by hanging one incandescent bulb @ one bulb on a tub of water. Such traps may be installed @ 2-3 traps/ ha for monitoring and mass trapping of adult moths of South American tomato pinworm.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "fruit_fly",
+   "section": "mechanical",
+   "source": "ICAR_IPM",
+   "en": "Installation of fruit fly traps @ 20-25 traps/ha for monitoring and mass trapping of fruit flies.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "biological",
+   "source": "ICAR_IPM",
+   "en": "Releasing of egg parasitoids Trichogramma achaea / Trichogramma pretiosum / Trichogrammatoidea bactrae at weekly intervals @ 50,000/ha for 6 times at an interval of 7 days against South American tomato pinworm.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Captan 50% WP",
+   "dose": "1 g/litre",
+   "note": "Remove the infected plants and drench the soil against Sclerotium rot and Fusarium wilt.",
+   "locator": "Synthesized deliverable IPM technology in tomato - p. 41"
+  },
+  {
+   "topic": "fusarium_wilt",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Carbendazim 50% WP",
+   "dose": "1 g/litre",
+   "note": "Label claim for Fusarium wilt, sclerotium rot and powdery mildew.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 7"
+  },
+  {
+   "topic": "powdery_mildew",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Carbendazim 50% WP",
+   "dose": "1 g/litre",
+   "note": "Label claim for Fusarium wilt, sclerotium rot and powdery mildew.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 7"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Indoxacarb 14.5% SC",
+   "dose": "0.8 ml/litre",
+   "note": "Label claim for South American pin worm and Tomato fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 1"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Indoxacarb 14.5% SC",
+   "dose": "0.8 ml/litre",
+   "note": "Label claim for South American pin worm and Tomato fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 1"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Chlorantraniliprole 18.5% SC",
+   "dose": "0.25 ml/litre",
+   "note": "Label claim for Tomato fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 2"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Thiomethoxam 25% WP",
+   "dose": "0.4 g/litre",
+   "note": "Label claim for Whitefly.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 3"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Imidacloprid 17.80% SL",
+   "dose": "0.5 ml/litre",
+   "note": "Label claim for Whitefly.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 3"
+  },
+  {
+   "topic": "tuta_absoluta_pinworm",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Cyantraniliprole 10.26% OD",
+   "dose": "1.2 ml/litre",
+   "note": "Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 4"
+  },
+  {
+   "topic": "serpentine_leaf_miner",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Cyantraniliprole 10.26% OD",
+   "dose": "1.2 ml/litre",
+   "note": "Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 4"
+  },
+  {
+   "topic": "whitefly",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Cyantraniliprole 10.26% OD",
+   "dose": "1.2 ml/litre",
+   "note": "Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 4"
+  },
+  {
+   "topic": "helicoverpa_fruit_borer",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Cyantraniliprole 10.26% OD",
+   "dose": "1.2 ml/litre",
+   "note": "Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 4"
+  },
+  {
+   "topic": "mites",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Spiromesifen 22.9% SC",
+   "dose": "1.5 ml/litre",
+   "note": "Label claim for Red spider mite.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 5"
+  },
+  {
+   "topic": "bacterial_wilt",
+   "section": "chemical",
+   "source": "ICAR_IPM",
+   "product": "Copper oxychloride 50% WP",
+   "dose": "2-3 g/litre",
+   "note": "Label claim for Late and early blight, leaf spot and bacterial wilt.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - row 6"
+  },
+  {
+   "topic": "general",
+   "section": "safety",
+   "source": "ICAR_IPM",
+   "en": "Note: Spray solution required per hectare in tomato crop = 500 litres.",
+   "locator": "Table 3. List of label claim pesticides (Source: CIB&RC) - note"
+  },
+  {
+   "topic": "late_blight",
+   "section": "symptoms",
+   "source": "ICAR_LB",
+   "en": "Leaves: Water-soaked spots that turn dark brown with white fuzz underneath. Stems: Dark, greasy-looking patches that spread and kill the plant. Fruits: Sunken brown spots that develop white mold in humid conditions.",
+   "locator": "Late blight disease of tomato - Symptoms of late blight (p. 34)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "monitoring",
+   "source": "ICAR_LB",
+   "en": "Farmers should check their tomato plants regularly and look for these warning signs and symptoms.",
+   "locator": "Late blight disease of tomato - Symptoms of late blight (p. 34)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "monitoring",
+   "source": "ICAR_LB",
+   "en": "Temperature 15-18 degree C: Monitor weather forecasts, adjust planting time.",
+   "locator": "Late blight disease of tomato - Table 1. Environmental conditions favouring late blight outbreaks (p. 34)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "chemical",
+   "source": "ICAR_LB",
+   "product": "Copper Hydroxide 77% WP",
+   "dose": "2.0 g (per liter of water)",
+   "note": "Contact (Preventive). Apply before disease onset.",
+   "locator": "Table 2. Recommended copper-based organic fungicides (p. 35)"
+  },
+  {
+   "topic": "late_blight",
+   "section": "cultural",
+   "source": "ICAR_LB",
+   "en": "Preventive sprays: Apply copper-based fungicides before the disease appears.",
+   "locator": "Late blight disease of tomato - Organic fungicides (p. 35)"
+  }
+ ],
+ "new_topics": {
+  "damping_off": {
+   "name_en": "Damping off",
+   "kind": "disease"
+  },
+  "fusarium_wilt": {
+   "name_en": "Fusarium wilt",
+   "kind": "disease"
+  },
+  "bacterial_wilt": {
+   "name_en": "Bacterial wilt",
+   "kind": "disease"
+  },
+  "tomato_spotted_wilt": {
+   "name_en": "Tomato spotted wilt",
+   "kind": "disease"
+  },
+  "bacterial_canker": {
+   "name_en": "Bacterial stem and fruit canker",
+   "kind": "disease"
+  },
+  "powdery_mildew": {
+   "name_en": "Powdery mildew",
+   "kind": "disease"
+  },
+  "tomato_mosaic": {
+   "name_en": "Mosaic",
+   "kind": "disease"
+  },
+  "collar_rot": {
+   "name_en": "Collar rot",
+   "kind": "disease"
+  },
+  "pseudocercospora_leaf_blight": {
+   "name_en": "Pseudocercospora leaf blight",
+   "kind": "disease"
+  },
+  "white_rot": {
+   "name_en": "White rot",
+   "kind": "disease"
+  },
+  "fruit_rots": {
+   "name_en": "Fruit rots",
+   "kind": "disease"
+  },
+  "grey_leaf_spot": {
+   "name_en": "Grey leaf spot",
+   "kind": "disease"
+  },
+  "bacterial_speck": {
+   "name_en": "Bacterial speck",
+   "kind": "disease"
+  },
+  "helicoverpa_fruit_borer": {
+   "name_en": "Fruit borer (Helicoverpa armigera)",
+   "kind": "pest"
+  },
+  "spodoptera_tobacco_caterpillar": {
+   "name_en": "Tobacco caterpillar / leaf eating caterpillar (Spodoptera litura)",
+   "kind": "pest"
+  },
+  "whitefly": {
+   "name_en": "Whitefly (Bemisia tabaci)",
+   "kind": "pest"
+  },
+  "serpentine_leaf_miner": {
+   "name_en": "Serpentine leaf miner (Liriomyza trifolii)",
+   "kind": "pest"
+  },
+  "tuta_absoluta_pinworm": {
+   "name_en": "South American tomato pinworm (Tuta absoluta)",
+   "kind": "pest"
+  },
+  "root_knot_nematode": {
+   "name_en": "Root-knot nematode (Meloidogyne spp.)",
+   "kind": "pest"
+  },
+  "mealybug": {
+   "name_en": "Striped mealybug (Ferrisia virgata)",
+   "kind": "pest"
+  },
+  "fruit_fly": {
+   "name_en": "Fruit fly",
+   "kind": "pest"
+  }
+ },
+ "notes": [
+  "TNAU_LB (tomato_diseases_8): skipped 'Sporangia formed when RH is < 90%' - the HTML prints '< 90%', which looks inverted (ICAR_LB gives humidity >90%); needs human check.",
+  "TNAU_D10: favourable conditions printed as 'Warm and dry weatherC' (stray 'C' in HTML); stored as 'Warm and dry weather.'.",
+  "TNAU_D7: page heading says 'Tomato spotted wilt virus (TMV)' (wrong acronym in source); vector line prints 'Scirtothrips dorsali' and spread line 'dorsalis'. Kept spread-line spelling. 'ringson' split to 'rings on' (space normalisation). Product kept as printed 'Imidachloprid 17.8 SL'.",
+  "TNAU_D7: skipped 'Thiamethoxam 70 WS @ 300 ml / ha' - WS is a seed-treatment powder but dose is given in ml for spraying; doubtful.",
+  "TNAU_D12: heading says 'Mosaic : Cucumber mosaic virus' but causal organism line says 'Tomato Mosaic Virus' and favourable conditions mention CMV; stored under topic tomato_mosaic - conflicting in source.",
+  "TNAU_D9 symptom fragments 'Centre of spots become slightly raised / tan coloured and rough / Cankers develop and form cracks / slimy bacterial ooze through cracks' were separate bullets; joined with comma/semicolon.",
+  "TNAU_EB / TNAU_LB: the existing KB bundles the other TNAU fungicides inside the note of one chunk; here they are split into one chunk per product (the existing note omits Mancozeb 35% SC @ 1 kg/ac for early blight). Pages 4 (Septoria) and 11 (bacterial leaf spot) had nothing new beyond the existing KB.",
+  "Disease pages give doses mostly per acre (ac), some per ha (D7) - kept as printed.",
+  "TNAU pest pages FOUND. Path: crop_protection/crop_prot.html -> crop_prot_crop_insect_pest.html -> crop_prot_crop_insect_horti_pest.html -> crop_prot_crop_insect_horti_pest_vegetables.html -> crop_prot_crop_insect-veg_tomato.html (index, updated Jun 2023) -> crop_protection/tomato/tomato_1..8.html. The URLs suggested in the brief return 404. Raw HTML saved in data/kb_sources/tnau_pests/. Index cites sites.aces.edu, www.colostate.edu, www.dpi.qld.gov.au as sources.",
+  "Pest pages: superscript exponents written as '10^12' (HTML prints 10<sup>12</sup>). Duplicate bullets on the same page were kept once.",
+  "TNAU_PEST_FRUIT_BORER: 'For Spodoptera litura: Sl NPV 1.5 x 10^12 POBs/ha' on the fruit-borer page skipped (same as Spodoptera page). Pinworm page: per-acre unit printed only after the last item ('@ 60 ml ... @ 400 - 600 ml/ac'); doses kept as printed, full sentence in note.",
+  "TNAU_PEST_THRIPS: management list is garbled in the HTML ('Thiamethoxam 70 WS 6ml/10 lit. Two Spotted spider', '... Fenazaquin 10 EC 2.5ml/lit. mite', 'Spiromesifen 22.9 SC 1.25ml/lit' - apparently text from a mite table). Skipped Thiamethoxam, Fenazaquin and Spiromesifen from this page. 'Chrysoperla cornea' kept as printed (usual spelling carnea).",
+  "TNAU_PEST_MEALYBUG: skipped 'Imidacloprid 80.5 SC 0.6 ml/lit' (unusual formulation) and 'Thiamethoxam 25 WSG 0.6 mg/lit' (mg likely an error). Note: TNAU page is about striped mealybug Ferrisia virgata.",
+  "TNAU_PEST_WHITEFLY: product kept as printed 'Methl demeton 25 EC'. Carbofuran 3G is a restricted-use insecticide in India; please check current registration before showing. TNAU_PEST_MITE: 'Wettable sulphur 50 WP' as printed (other sources give 80 WP). Symptom text 'Severe infestation larvae silken webbing...' kept as printed.",
+  "TNAU_PEST_SPODOPTERA: species printed 'Spodoptera litur a' (HTML split) - title uses 'litura'. Pages 3-7 have no 'updated on' date.",
+  "TNAU_IPM_VEG is a 2012 bulletin; several products (Dimethoate, Triazophos, Thiodicarb, Carbofuran, Methyl demeton) may now be restricted or under review - check current CIB&RC status before showing.",
+  "TNAU_IPM_VEG SKIPPED (banned in India since 2023 per govt order - please verify): Dicofol 18.5 EC (red spider mite: '@ 2.5 ml' open field, '@ 2.5 ml/l' polyhouse, '1.5 ml/l' in the IPM practices page) and the tobacco-caterpillar poison bait with '250 gm of Methomyl or Thiodicarb formulation'.",
+  "TNAU_IPM_VEG SKIPPED as garbled/unclear in the source itself: nursery seed treatment 'Trichoderma viride @ 4g/kg of seed ... seed borne fungal 1 kg of FYM. Mix in 1m2'; orphan item 'Spray nursery with it if insect is noticed'; 'Spray Dithane M 45 or Ridomyl against Downy Mildew' (brand names, no dose); 'If the borer incidence crosses ETL (5% damage), apply Emmamectin Benzoate (proclaim) or Indoxacarb' (no dose); 'Spray 0.02% Chlorothalonil/Mancozeb/Captan @ 1.25-1.5 kg a.i./ha in 700 L of water' (0.02% conflicts with the a.i. rate).",
+  "TNAU_IPM_VEG: pdftotext order was wrong on pp. 24-27 (columns); assignment of management blocks checked against rendered page images (p. 25 left block = Pseudocercospora, right = White rot; p. 27 left = Bacterial Spot, right = Bacterial Speck). Pseudocercospora management: 'One spray ... at 7-10 days interval' is self-contradictory but kept.",
+  "TNAU_IPM_VEG: typos kept as printed: 'Thiomethoxam', 'Thiomethoam', 'Triademefon', 'nylone', 'Showing of resistant variety' (=sowing), 'Rouge out', 'Roughing', 'The disease in prevalent', '1.0 lakh'. Degree signs written as 'degree C' ('350 C'/'250 C' in the text layer are 35/25 degree C with superscript o). 'HaNPV ... (2 x 109 POB)' written as 2 x 10^9. Fruit rots: skipped 'Collect affected fruit and buy them' (typo for bury). Collar-rot/white-rot symptom text trimmed to the farmer-relevant sentences; microscopy and pathogen-list sentences skipped.",
+  "TNAU_IPM_VEG: Alternaria blight mapped to early_blight, Bacterial Spot (X. campestris pv. vesicatoria) to bacterial_spot, Leaf Curl Complex to yellow_leaf_curl_virus. The ETL chunk is assembled from a table row (crop/pest/ETL columns). Polyhouse flow chart rows joined as 'stage: action'.",
+  "ICAR_IPM: seed treatment rate 'Trichoderma viride or Pseudomonas fluorescens @ 200 g/ kg of seeds' is printed so in the PDF (checked); looks high but kept. Skipped the second seedling dip '(Thiamethoxam 25 WG + Captan 75% WP @ 1g/L Copper Oxychloride @ 2.5 g/L)' - connector between products missing in the PDF, unclear which dose applies to what.",
+  "ICAR_IPM Table 3: products/doses already in the KB were re-added only under new topics (pinworm, fruit borer, whitefly, leaf miner, fusarium wilt, powdery mildew, bacterial wilt) and Spiromesifen as its own mites chunk (in the KB it sits in a note). Product spelling 'Thiomethoxam' kept as printed.",
+  "ICAR_LB Table 1 row assembled as 'Temperature 15-18 degree C: <preventive action>'. ICAR_LB: most content was already in the KB; added symptoms (leaves/stems/fruits), the monitoring line, Table 1 temperature row, Copper hydroxide 77% WP (Table 2) and the preventive-spray line.",
+  "Not used: NIPHM, IIHR files (out of scope for this task)."
+ ]
+}

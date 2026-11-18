@@ -16,7 +16,9 @@ import re
 import sqlite3
 from pathlib import Path
 
-SECTION_ORDER = ["symptoms", "spread", "cultural", "biological", "resistant_varieties", "chemical", "safety"]
+SECTION_ORDER = ["symptoms", "spread", "cultural", "mechanical", "biological", "natural_enemies", "resistant_varieties",
+                 "monitoring", "nutrition", "chemical", "safety"]
+MAX_PER_SECTION = 3     # extracts shown per section for one diagnosis (same rule as the C++ knowledge_base.cpp)
 # Spray options are shown with a per-litre dose first (easiest for a farmer to measure), then per-acre/ha ones
 SOURCE_PRIORITY = {"ICAR_LB": 0, "ICAR_IPM": 1, "NIPHM": 2}
 
@@ -67,7 +69,15 @@ class KnowledgeBase:
                         key=lambda c: (SOURCE_PRIORITY.get(c["source_id"], 9), c["id"]))[:max_sprays]
         others = sorted((c for c in rows if c["section"] != "chemical"),
                         key=lambda c: (SECTION_ORDER.index(c["section"]), c["id"]))
-        chunks = [c for c in others if c["section"] != "safety"] + sprays
+        per_section = {}
+        kept = []
+        for c in others:
+            if c["section"] == "safety":
+                continue
+            per_section[c["section"]] = per_section.get(c["section"], 0) + 1
+            if per_section[c["section"]] <= MAX_PER_SECTION:
+                kept.append(c)
+        chunks = kept + sprays
         if sprays:  # safety rules always follow spray advice
             chunks += [self._row(r, lang) for r in self.con.execute(
                 "SELECT * FROM chunks WHERE topic = 'general' AND section = 'safety' ORDER BY id")]
