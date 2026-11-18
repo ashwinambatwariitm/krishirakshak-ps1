@@ -1,0 +1,76 @@
+{
+  "accepted": false,
+  "answer": null,
+  "dropped_sentences": [
+    "You can harvest tomatoes 5 days after spraying."
+  ],
+  "facts": [
+    {
+      "dose": "",
+      "id": 643,
+      "note": "",
+      "product": "",
+      "section": "safety",
+      "source_id": "NIPHM",
+      "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+      "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+      "text": "Usually, tomatoes are packed after harvest and sent to fresh market. Otherwise, fresh market tomatoes are dropped into a water tank after harvest to clean the fruit. The improper tank procedures can spread the disease and increase storage losses.",
+      "topic": "harvest_postharvest",
+      "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+      "dose": "",
+      "id": 639,
+      "note": "",
+      "product": "",
+      "section": "safety",
+      "source_id": "NIPHM",
+      "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+      "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+      "text": "Pick tomatoes at 2-3 day intervals during warm weather and at weekly intervals during cool weather. Waiting period for all the pesticides, if any, should be observed without fail. Pick tomatoes from the plants by twisting them rather than pulling them to avoid damage.",
+      "topic": "harvest_postharvest",
+      "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+      "dose": "",
+      "id": 665,
+      "note": "",
+      "product": "",
+      "section": "safety",
+      "source_id": "NIPHM",
+      "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+      "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+      "text": "Flubendiamide (anthranilic diamide); classification as per insecticide rules: slightly toxic; colour of toxicity triangle: green; WHO classification of hazard: unlikely produce acute hazard. Treatment of poisoning: treat symptomatically as there is no known specific antidote. Waiting period from last application to harvest: 5 days.",
+      "topic": "pesticide_safety",
+      "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+      "dose": "",
+      "id": 60,
+      "note": "",
+      "product": "",
+      "section": "safety",
+      "source_id": "NIPHM",
+      "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+      "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+      "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+      "topic": "general",
+      "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+  ],
+  "question": "when can I harvest after spraying?",
+  "raw_text": "You can harvest tomatoes 5 days after spraying.",
+  "rejected_reasons": [
+    "empty_or_too_short",
+    "no_grounded_sentence"
+  ],
+  "stats": {
+    "generated_tokens": 20,
+    "ok": true,
+    "prompt_tokens": 351,
+    "stopped_on_repeat": false,
+    "time_to_first_token_s": 8.694,
+    "tokens_per_s": 14.914243102162565,
+    "total_s": 10.035491768
+  }
+}
