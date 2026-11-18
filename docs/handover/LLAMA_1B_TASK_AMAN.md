@@ -26,9 +26,12 @@ fine-tuned model (LoRA). Making the check weaker is not allowed.
 
 ## 2. Why a laptop is enough (the "simulator")
 
-The application uses greedy decoding (temperature 0). The same `.pte` model file run by the same ExecuTorch runtime on a
-laptop CPU produces the same text as on the Pi; only the speed differs. So the laptop is a faithful simulator for answer
-quality. The Pi is needed only for timing and memory, which the core team measures after your changes.
+The application uses greedy decoding (temperature 0) and the same `.pte` model file and ExecuTorch runtime run on a
+laptop CPU, so the laptop is a good simulator for answer quality. It is not exact: different CPUs (laptop x86, cloud x86,
+the Pi's Arm cores) use different math kernels, and a tiny numeric difference can change one word, after which the text
+goes its own way. Measured on 18 November: the same model and prompt gave a faithful late-blight answer on one x86
+machine and a different (rejected) one on another. So: judge a prompt by the totals over all topics (`--topics all`),
+not by one answer, and the core team confirms the final prompt on the Pi.
 
 The tool `llm/eval_advisor.py` builds exactly the prompt the application builds (diagnosis line + the facts Llama
 receives, including the application's retry after a refusal), runs the model, and scores every answer with a Python

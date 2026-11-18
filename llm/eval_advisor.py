@@ -10,8 +10,9 @@ application's grounding check (llm/grounding.py, identical to cpp/src/output_gua
   grounded          number of sentences kept (each supported by one source sentence)
   dropped           sentences removed (invented, reversed, stitched, other wording)
 
-Greedy decoding gives the same text on a laptop as on the Pi (only the speed differs), so prompt and model changes
-can be measured here and confirmed on the Pi later.
+Greedy decoding with the same .pte gives very similar text on a laptop and on the Pi, so prompt and model changes can
+be measured here; the text is not bit-identical across CPUs (different math kernels can change a word and the rest of
+the answer), so compare totals over many topics and confirm the final choice on the Pi.
 
 Usage:
     python -m llm.eval_advisor --pte models/llama3_2_1b_instruct_8da4w.pte --tokenizer models/llama3_2_tokenizer.model
