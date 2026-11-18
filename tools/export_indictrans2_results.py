@@ -27,10 +27,16 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
     # Self-contained browser preview; no servers, fonts, or network requests.
+    evaluated = json.loads((target / "results/translations.json").read_text())
+    withheld = {(a["id"], a["language"]) for a in evaluated["answers"]
+                if any(s["status"] in {"withheld", "error"} for s in a["sentences"])}
     cells = []
     for row in rows:
-        cells.append("<tr>" + "".join("<td>" + html.escape(row[key]) + "</td>"
-                                    for key in ["id", "language", "english", "translation"]) + "</tr>")
+        warning = (row["id"], row["language"]) in withheld
+        cells.append(("<tr class=withheld>" if warning else "<tr>") + "".join(
+            "<td>" + html.escape(row[key]) + "</td>"
+            for key in ["id", "language", "english", "translation"])
+            + "<td>" + ("Contains withheld sentence" if warning else "Unreviewed") + "</td></tr>")
     quality = json.loads((target / "results/summary.json").read_text())
     speed = json.loads((target / "results/bench_summary.json").read_text())
     measurements = []
@@ -44,7 +50,7 @@ def main():
     page = ("<!doctype html><html lang=en><meta charset=utf-8><title>IndicTrans2 review</title>"
             "<style>body{font:18px sans-serif;margin:2rem}table{border-collapse:collapse}"
             "td,th{border:1px solid #aaa;padding:.7rem;vertical-align:top}"
-            "td:nth-child(3),td:nth-child(4){min-width:22rem}</style>"
+            "td:nth-child(3),td:nth-child(4){min-width:22rem}.withheld{background:#ffe7c2}</style>"
             "<h1>IndicTrans2 WSL review</h1><p>Unreviewed machine translations. This is a review artifact, "
             "not farmer-facing output. Check meaning, negation, quantities and farmer comprehension. "
             "Candidates withheld by automated checks remain visible here for review. "
@@ -59,7 +65,7 @@ def main():
             + "".join(measurements) + "</table><p>Seconds are warm medians for one two-sentence "
             "late-blight answer, not the full dataset. See TRANSLATION_INDICTRANS2.md for methodology, "
             "RSS and limitations.</p><h2>Fluent-speaker review</h2><table>"
-            "<tr><th>ID</th><th>Language</th><th>English</th><th>Translation</th></tr>"
+            "<tr><th>ID</th><th>Language</th><th>English</th><th>Translation</th><th>Status</th></tr>"
             + "".join(cells) + "</table></html>")
     (target / "review.html").write_text(page, encoding="utf-8")
     print(str(target))

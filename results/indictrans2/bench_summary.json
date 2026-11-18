@@ -1,0 +1,175 @@
+{
+  "environment": "WSL2 x86_64, Intel Core i5-12500H, four inference threads",
+  "sample": "Pi late-blight accepted answer, two sentences, one answer per language",
+  "timing": "First traversal and median of the following two traversals; no concurrent inference",
+  "rss_units": "MiB (Linux ru_maxrss / 1024), includes imports, loading and quantization",
+  "pi": {
+    "measured": false,
+    "reason": "WSL-only per project owner; no Pi downloads or inference"
+  },
+  "backends": {
+    "fp32": {
+      "model": "ai4bharat/indictrans2-en-indic-dist-200M",
+      "revision": "2cfd0a20057756d756bf3e53528f492afc52f91a",
+      "backend": "fp32",
+      "threads": 4,
+      "beams": 5,
+      "batch_size": 1,
+      "load_seconds": 7.012852579002356,
+      "load_peak_rss_mb": 710.390625,
+      "parameter_count": 211776512,
+      "peak_rss_mb": 1673.30078125
+    },
+    "dynamic-int8": {
+      "model": "ai4bharat/indictrans2-en-indic-dist-200M",
+      "revision": "2cfd0a20057756d756bf3e53528f492afc52f91a",
+      "backend": "dynamic-int8",
+      "threads": 4,
+      "beams": 5,
+      "batch_size": 1,
+      "load_seconds": 8.626637912999286,
+      "load_peak_rss_mb": 1792.6796875,
+      "parameter_count": 211776512,
+      "peak_rss_mb": 1971.671875
+    }
+  },
+  "languages": {
+    "hi": {
+      "fp32_first_seconds": 0.9737953750009183,
+      "fp32_warm_median_seconds": 1.1015346164986113,
+      "int8_first_seconds": 0.7573458820006636,
+      "int8_warm_median_seconds": 1.4230453509990184,
+      "fp32_int8_chrf": 80.73085512896684,
+      "exact_sentence_matches": 1,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        2.846090701998037,
+        7.115226754995092
+      ]
+    },
+    "te": {
+      "fp32_first_seconds": 0.7269886819995008,
+      "fp32_warm_median_seconds": 1.070848813500561,
+      "int8_first_seconds": 0.9094302439989406,
+      "int8_warm_median_seconds": 1.0222465490005561,
+      "fp32_int8_chrf": 63.40175154486523,
+      "exact_sentence_matches": 0,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        2.0444930980011122,
+        5.111232745002781
+      ]
+    },
+    "mr": {
+      "fp32_first_seconds": 0.7041699939982209,
+      "fp32_warm_median_seconds": 1.096427278000192,
+      "int8_first_seconds": 0.9267126749982708,
+      "int8_warm_median_seconds": 1.2591369004985609,
+      "fp32_int8_chrf": 100.0,
+      "exact_sentence_matches": 2,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        2.5182738009971217,
+        6.295684502492804
+      ]
+    },
+    "kn": {
+      "fp32_first_seconds": 0.7209313639978063,
+      "fp32_warm_median_seconds": 1.2906587745001161,
+      "int8_first_seconds": 0.8651352999986557,
+      "int8_warm_median_seconds": 0.9942235740018077,
+      "fp32_int8_chrf": 89.76703787910687,
+      "exact_sentence_matches": 1,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        1.9884471480036154,
+        4.971117870009039
+      ]
+    },
+    "ta": {
+      "fp32_first_seconds": 0.7623064399995201,
+      "fp32_warm_median_seconds": 1.5933604489982827,
+      "int8_first_seconds": 0.9439904850005405,
+      "int8_warm_median_seconds": 0.9237231125007384,
+      "fp32_int8_chrf": 78.23640970577486,
+      "exact_sentence_matches": 1,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        1.8474462250014767,
+        4.618615562503692
+      ]
+    },
+    "bn": {
+      "fp32_first_seconds": 0.7342603719989711,
+      "fp32_warm_median_seconds": 1.5253104675011855,
+      "int8_first_seconds": 0.9762191779991554,
+      "int8_warm_median_seconds": 0.9321808260010584,
+      "fp32_int8_chrf": 82.91399781102044,
+      "exact_sentence_matches": 1,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        1.864361652002117,
+        4.660904130005292
+      ]
+    },
+    "gu": {
+      "fp32_first_seconds": 0.7441319829995336,
+      "fp32_warm_median_seconds": 1.5434745785005362,
+      "int8_first_seconds": 1.0501384300005157,
+      "int8_warm_median_seconds": 1.0700460044990905,
+      "fp32_int8_chrf": 52.358449640166285,
+      "exact_sentence_matches": 0,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        2.140092008998181,
+        5.350230022495452
+      ]
+    },
+    "or": {
+      "fp32_first_seconds": 0.6888453659994411,
+      "fp32_warm_median_seconds": 1.3482789685003809,
+      "int8_first_seconds": 0.7960505010014458,
+      "int8_warm_median_seconds": 0.8489427005006291,
+      "fp32_int8_chrf": 100.0,
+      "exact_sentence_matches": 2,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        1.6978854010012583,
+        4.244713502503146
+      ]
+    },
+    "pa": {
+      "fp32_first_seconds": 7.261413165000704,
+      "fp32_warm_median_seconds": 14.686774540501574,
+      "int8_first_seconds": 13.469642007999937,
+      "int8_warm_median_seconds": 14.561555882999528,
+      "fp32_int8_chrf": 89.82218725109594,
+      "exact_sentence_matches": 1,
+      "sentences_compared": 2,
+      "fp32_repeat_candidates_identical": true,
+      "int8_repeat_candidates_identical": true,
+      "pi_int8_seconds_scenario_not_measurement": [
+        29.123111765999056,
+        72.80777941499764
+      ]
+    }
+  },
+  "pi_estimate_caveat": "2x-5x laptop warm time is an illustrative slowdown scenario, not a calibrated prediction. ARM kernels, cooling, runtime support and memory may invalidate it. No Pi speed claim follows.",
+  "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+}

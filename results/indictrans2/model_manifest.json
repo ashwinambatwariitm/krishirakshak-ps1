@@ -1,0 +1,62 @@
+{
+  ".gitattributes": {
+    "bytes": 1565,
+    "sha256": "20fcfeb45de304335307c1ba9af2c6b4ec6d0b781f4b909d7dc804c34871fbef"
+  },
+  "LICENSE": {
+    "bytes": 1128,
+    "sha256": "383258420065a19d9fef0daf00d10792d3f8a5ccf783d94a91f5d6755386615b"
+  },
+  "README.md": {
+    "bytes": 4595,
+    "sha256": "facd405782577b68ec1b0703fe42e947009c05a2387d5d70ab1f74d2d4a387f3"
+  },
+  "config.json": {
+    "bytes": 1371,
+    "sha256": "1429519f3b36f8bab631ed632b328a3422c19c4225c825dcde27c545746f475e"
+  },
+  "configuration_indictrans.py": {
+    "bytes": 14155,
+    "sha256": "d7e4ce84efacc18981228f5071b00dba6e3bf165f8ea7bcc8ecdada8942e1a52"
+  },
+  "dict.SRC.json": {
+    "bytes": 645314,
+    "sha256": "c6f65113581422c8777991d3770123c63447fe63dc5f3e8f4187eeff7553a689"
+  },
+  "dict.TGT.json": {
+    "bytes": 3390440,
+    "sha256": "f7817850c9e4b99c59fad57d0611c7720f1921f215e6f247cf25d52eff7f1146"
+  },
+  "generation_config.json": {
+    "bytes": 163,
+    "sha256": "6c8b29ae72e680d5a2d9e849567f6f556d3f4e9bbd42434964a646f49b556972"
+  },
+  "model.SRC": {
+    "bytes": 759425,
+    "sha256": "3cedc5cbcc740369b76201942a0f096fec7287fee039b55bdb956f301235b914"
+  },
+  "model.TGT": {
+    "bytes": 3256903,
+    "sha256": "ac9257c8e76b8b607705b959cc3d075656ea33032f7a974e467b8941df6e98d4"
+  },
+  "model.safetensors": {
+    "bytes": 1098427592,
+    "sha256": "0039e4304e9889acc5c8350a193311d07aa5399b6d9fb0445e8fde19e3533bb5"
+  },
+  "modeling_indictrans.py": {
+    "bytes": 79786,
+    "sha256": "99a90c287f959ad4ad30c2dcfbd0bb0675e8658d6d40c1db3a218615a08f706f"
+  },
+  "special_tokens_map.json": {
+    "bytes": 96,
+    "sha256": "9046da57c270c8e74d0f38832b4adce269c9d914ef21d2a0925e7772152dd793"
+  },
+  "tokenization_indictrans.py": {
+    "bytes": 8044,
+    "sha256": "35396cf65b9fdc21379f8bc12cd658eec32fbe5de87a25fa5f4df190c5ffc4e3"
+  },
+  "tokenizer_config.json": {
+    "bytes": 1106,
+    "sha256": "283f76ffdd7e553ec7f108ad8eeb0124052db4bdadd924b3c291c591c8dd6625"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "inputs": [
+    {
+      "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_Early_blight_leaf.json",
+      "sha256": "d288586d9de4643abde2a6800f93a515172fef7909a726b2986e1b2e356d0da8"
+    },
+    {
+      "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_Septoria_leaf_spot.json",
+      "sha256": "88495cc3d7d95b7bfa29766e5aede6b0fda8b6697938801e441857a901a73564"
+    },
+    {
+      "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf.json",
+      "sha256": "189909ec624548d27cd78cc05fbdbb29de0777910094099c9ebca216bd80342e"
+    },
+    {
+      "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf_late_blight.json",
+      "sha256": "42eceaf9fed45fae721b2024a749c0fd88d03fcba5bb9a4e784815c6efbd39ef"
+    },
+    {
+      "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf_yellow_virus.json",
+      "sha256": "e8a02b096013f29c6e2c52078b90f93638ee789a04d321444785faed35fb7cab"
+    },
+    {
+      "path": "results/llama_lora/kaggle_full_run/eval_lora_1b_pte_int4.json",
+      "sha256": "a9f6c1803623fed4a2b71d29171379b44b4c6eb5134c5fa102989a1fc87a3d9b"
+    }
+  ],
+  "reference_commit": "faa26afdfe7e96e6124fcf652c6264872ad5acb1",
+  "reference_sha256": "375cac32253118a94a1e3945f46988814d608726381f68aa2c72597d52ab84d3",
+  "accepted_answers": 21,
+  "excluded_answers": [
+    {
+      "id": "eval_lora_1b_pte_int4_8",
+      "reason": "not accepted or empty",
+      "kept": ""
+    },
+    {
+      "id": "eval_lora_1b_pte_int4_13",
+      "reason": "not accepted or empty",
+      "kept": "Use disease-free seed."
+    }
+  ],
+  "reference_extracts": 38,
+  "excluded_chemical_rows": [
+    "kb_5",
+    "kb_6",
+    "kb_7",
+    "kb_8",
+    "kb_9",
+    "kb_15",
+    "kb_16",
+    "kb_17",
+    "kb_18",
+    "kb_23",
+    "kb_24",
+    "kb_25",
+    "kb_30",
+    "kb_31",
+    "kb_37",
+    "kb_38",
+    "kb_42",
+    "kb_43",
+    "kb_47",
+    "kb_50",
+    "kb_51",
+    "kb_54",
+    "kb_55"
+  ],
+  "both_translation_sets_reviewed": false
+}

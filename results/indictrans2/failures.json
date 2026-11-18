@@ -1,0 +1,46 @@
+{
+  "attempts": [
+    {
+      "step": "Initial git fetch inside network-restricted environment",
+      "error": "ssh: Could not resolve hostname github.com: Temporary failure in name resolution\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.",
+      "resolution": "Retried with authorized network access; fetch succeeded."
+    },
+    {
+      "step": "Default Python executable",
+      "error": "/bin/bash: line 1: python: command not found",
+      "resolution": "Used python3 or the isolated environment's python executable."
+    },
+    {
+      "step": "Model configuration download inside network-restricted environment",
+      "error": "Failed to resolve 'huggingface.co' (Name or service not known: huggingface.co using 1 resolver(s))",
+      "resolution": "Retried with authorized network access. Existing Hugging Face credentials had model access. Downloaded only the pinned 200M distilled checkpoint outside the repository."
+    },
+    {
+      "step": "Initial CTranslate2 converter code cache",
+      "error": "OSError: [Errno 30] Read-only file system: '/home/studinstru/.cache/huggingface/modules'",
+      "resolution": "Retried with HF_MODULES_CACHE=/tmp/indictrans2_modules and authorized execution."
+    },
+    {
+      "step": "CTranslate2 4.6.0 Transformers conversion with --quantization int8 --trust_remote_code",
+      "error": "ValueError: No conversion is registered for the model configuration IndicTransConfig (supported configurations are: BartConfig, BertConfig, BloomConfig, CamembertConfig, CodeGenConfig, DistilBertConfig, FalconConfig, GPT2Config, GPTBigCodeConfig, GPTJConfig, GPTNeoXConfig, Gemma2Config, GemmaConfig, LlamaConfig, M2M100Config, MBartConfig, MPTConfig, MT5Config, MarianConfig, MistralConfig, MixFormerSequentialConfig, OPTConfig, PegasusConfig, Phi3Config, PhiConfig, Qwen2Config, RWConfig, RobertaConfig, T5Config, Wav2Vec2BertConfig, Wav2Vec2Config, WhisperConfig, XLMRobertaConfig)",
+      "resolution": "Tested the requested PyTorch dynamic INT8 fallback. No CT2 artifact or CT2 measurements are claimed."
+    },
+    {
+      "step": "Initial evaluation inventory construction",
+      "error": "KeyError: 'en'",
+      "resolution": "Chemical rows have product/dose fields rather than en. Exclude chemical rows before accessing sentence text; reran successfully."
+    },
+    {
+      "step": "Initial IndicTransToolkit repository lookup",
+      "error": "Failed to fetch https://github.com/AI4Bharat/IndicTransToolkit: (404) Not Found",
+      "resolution": "Followed the official IndicTrans2 link to https://github.com/VarunGumma/IndicTransToolkit."
+    },
+    {
+      "step": "Initial Hindi-only smoke measurement",
+      "error": "Unnecessary TensorFlow imports increased initialization and RSS; this was a successful run, not a model failure.",
+      "resolution": "Disabled TensorFlow and Flax imports. Discarded preliminary timing; recorded isolated full nine-language runs instead."
+    }
+  ],
+  "runtime_sentence_failures": "See status, number_check, protected_text_check, repetition_check and error in translations.json. Failed candidates are retained for research but excluded from display_text.",
+  "pi_execution": "Not attempted: project owner requested WSL-only downloads and inference."
+}

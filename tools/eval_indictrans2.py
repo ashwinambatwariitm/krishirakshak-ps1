@@ -89,6 +89,9 @@ def summarize(out, answers, references, translated, metadata):
             "number_bearing_pass_rate": sum(s["number_check"]["passed"] for s in with_numbers) / len(with_numbers) if with_numbers else None,
             "withheld": sum(s["status"] == "withheld" for s in sentences),
             "errors": sum(s["status"] == "error" for s in sentences),
+            "protected_text_or_completion_failures": sum(s.get("protected_text_check") is False for s in sentences),
+            "repetition_failures": sum(s.get("repetition_check") is False for s in sentences),
+            "digit_scripts": dict(Counter(script for s in checked for script in s["number_check"]["digit_scripts"])),
             "reference_extracts_scored": len(complete),
             "reference_chrf": metric.corpus_score(hypotheses, [refs]).score if hypotheses else None}
     metadata["chrf_signature"] = str(metric.get_signature())
@@ -99,7 +102,7 @@ def summarize(out, answers, references, translated, metadata):
     for a in answers:
         chosen.setdefault(a["topic"], a["id"])
     with (out / "review_sheet.csv").open("w", encoding="ascii", newline="") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["id", "language", "english", "translation", "meaning_correct",
                          "understandable_for_farmer", "comment"])
         for row in translated:
@@ -128,7 +131,9 @@ def main():
     metadata = dict(inventory, model=MODEL_ID, revision=REVISION, backend=args.backend,
                     platform=platform.platform(), threads=4, beams=5, batch_size=1,
                     packages={p: importlib.metadata.version(p) for p in
-                              ["torch", "transformers", "indictranstoolkit", "sacrebleu", "ctranslate2"]})
+                              ["torch", "transformers", "indictranstoolkit", "sacrebleu", "ctranslate2",
+                               "sentencepiece", "huggingface-hub", "tokenizers", "safetensors",
+                               "sacremoses", "indic-nlp-library-itt", "numpy", "regex"]})
     translated = []
     if args.resume and (out / "translations.json").exists():
         prior = json.loads((out / "translations.json").read_text())
