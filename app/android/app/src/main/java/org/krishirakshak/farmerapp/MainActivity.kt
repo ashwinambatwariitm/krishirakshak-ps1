@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var cameraImageUri: Uri? = null
 
-    // Default target: Raspberry Pi hotspot address (or localhost / mock for development)
-    private val defaultTargetUrl = "http://10.42.0.1:8080"
-
     private val fileChooserLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -53,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
-        // Camera permission result
+        // Camera permission handling
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -73,6 +70,9 @@ class MainActivity : AppCompatActivity() {
                 loadWithOverviewMode = true
                 cacheMode = WebSettings.LOAD_DEFAULT
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+                // Allow local HTML assets to fetch data from the Pi HTTP server
+                allowFileAccessFromFileURLs = true
+                allowUniversalAccessFromFileURLs = true
             }
 
             webViewClient = object : WebViewClient() {
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
                     val chooserIntent = Intent(Intent.ACTION_CHOOSER).apply {
                         putExtra(Intent.EXTRA_INTENT, contentSelectionIntent)
-                        putExtra(Intent.EXTRA_TITLE, "Choose Leaf Photo")
+                        putExtra(Intent.EXTRA_TITLE, "Capture or Choose Leaf Photo")
                         putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(takePictureIntent))
                     }
 
@@ -129,7 +129,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         setContentView(webView)
-        webView.loadUrl(defaultTargetUrl)
+        // Load embedded farmer interface
+        webView.loadUrl("file:///android_asset/web/index.html")
     }
 
     private fun checkPermissions() {
