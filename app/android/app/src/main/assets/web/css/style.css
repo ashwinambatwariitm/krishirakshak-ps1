@@ -916,9 +916,16 @@ body {
 .translation-original p { margin: 6px 0 0; }
 
 /* Result screen: back button on the left, language switch on the right */
-.result-topbar { display: flex; gap: 10px; align-items: flex-start; }
-.result-topbar .btn-home-back { flex: 1; }
-.btn-result-lang { min-height: 44px; font-size: 0.95rem; font-weight: 700; padding: 0 16px; margin-bottom: 12px; white-space: nowrap; }
+/* Both are compact one-line buttons of the same height (the big .btn style made "Back to Home" wrap to 3 lines) */
+.result-topbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.btn.btn-toolbar { width: auto; min-height: 42px; padding: 0 14px; gap: 6px; font-size: 0.95rem; white-space: nowrap;
+  border-radius: 21px; flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.btn-result-lang { margin-left: auto; }
+
+/* Result card: disease name and badges on the left, voice button on the right (wraps below on narrow phones) */
+.result-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.result-header-row > div:first-child { flex: 1 1 180px; min-width: 0; }
+.result-header-row .btn-voice { flex: 0 0 auto; white-space: nowrap; }
 
 /* Short message at the bottom (e.g. no voice installed for the language) */
 .kr-toast { position: fixed; left: 16px; right: 16px; bottom: 84px; z-index: 50; background: #1d2a1d; color: #fff;

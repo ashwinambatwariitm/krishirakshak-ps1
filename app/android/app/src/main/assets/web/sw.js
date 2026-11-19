@@ -4,7 +4,7 @@
  */
 
 // Version of the offline copy: changing it makes browsers drop older copies (activate handler below)
-const CACHE_NAME = "krishirakshak-v2";
+const CACHE_NAME = "krishirakshak-v3";
 const STATIC_ASSETS = [
   "./",
   "./index.html",

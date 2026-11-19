@@ -50,7 +50,9 @@ class PestCanvas {
 
           // Label text
           const conf = pest.confidence ? ` ${Math.round(pest.confidence * 100)}%` : "";
-          const label = `${pest.name || "Pest"}${conf}`;
+          // Short name on the photo: "Mava - sap-sucking pest (Aphids)" -> "Mava (Aphids)"
+          const name = (pest.name || "Pest").replace(/ - [^(]*(?=\(|$)/, " ").replace(/\s+/g, " ").trim();
+          const label = `${name}${conf}`;
 
           ctx.font = "bold 13px system-ui, sans-serif";
           const textMetrics = ctx.measureText(label);

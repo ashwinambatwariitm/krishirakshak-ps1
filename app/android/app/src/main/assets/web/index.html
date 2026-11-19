@@ -134,15 +134,15 @@
       <!-- VIEW 3: RESULT SCREEN (STATUS: ANSWERED) (FR-4 - FR-8, FR-15) -->
       <section id="view-result" class="hidden">
         <div class="result-topbar">
-        <button class="btn btn-secondary btn-home-back" style="margin-bottom:12px;min-height:44px;font-size:0.95rem;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="btn btn-secondary btn-home-back btn-toolbar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           <span data-i18n="back_to_home">Back to Home</span>
         </button>
         <!-- Switch this result between the chosen language and English (no new analysis) -->
-        <button id="btn-result-lang" class="btn btn-secondary btn-result-lang hidden" title="Switch language"></button>
+        <button id="btn-result-lang" class="btn btn-secondary btn-result-lang btn-toolbar hidden" title="Switch language"></button>
         </div>
 
         <!-- Canvas for Pest Bounding Boxes Overlay (FR-13) -->
@@ -152,7 +152,7 @@
 
         <!-- Result Header Card (FR-4) -->
         <div class="card result-header-card">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="result-header-row">
             <div>
               <h2 id="res-disease-name" class="disease-title">Disease Name</h2>
               <div class="meta-tags-row">

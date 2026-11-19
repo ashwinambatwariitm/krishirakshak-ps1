@@ -367,12 +367,16 @@ function renderAnsweredScreen(data) {
   }
 
   if (Array.isArray(data.pests) && data.pests.length > 0) {
-    const pestStrings = data.pests.map(p => {
-      if (p.species_reliable && p.species) {
-        return `${p.name} (${p.species})`;
-      }
-      return p.name;
+    // One entry per insect type with a count ("Aphids x 3"); the species is added only when the name does not
+    // already contain it (the name is often "Aphids (Aphids)" style already)
+    const counts = new Map();
+    data.pests.forEach(p => {
+      let label = p.name || "";
+      if (p.species_reliable && p.species && !label.toLowerCase().includes(String(p.species).toLowerCase()))
+        label = `${label} (${p.species})`;
+      counts.set(label, (counts.get(label) || 0) + 1);
     });
+    const pestStrings = [...counts].map(([label, n]) => (n > 1 ? `${label} \u00d7 ${n}` : label));
     pestsBadge.textContent = `${window.t("insect_found")}: ${pestStrings.join(", ")}`;
     pestsBadge.classList.remove("hidden");
   } else {

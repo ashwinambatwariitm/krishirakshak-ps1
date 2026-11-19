@@ -142,7 +142,91 @@ class KbTranslator:
         return out
 
 
-def translate_ui(tr, ui_path, js_path, langs):
+# Interface labels whose plain English is ambiguous without context (checked on the phone, Marathi): "Back to Home"
+# became "go back to your house", "Model confidence" became "ideal self-confidence", "Cultural" (crop practices)
+# became culture in the sense of art, "Runtime" became "running time". Only the text sent to the translator changes;
+# the English label in the app stays as it is.
+UI_SOURCE = {
+    "back_to_home": "Home page",
+    "confidence": "Certainty of the result",
+    "section_cultural": "Crop practices and field cleanliness",
+    "runtime_env": "Software",
+    "spray_favorable": "Good weather for spraying pesticide",
+    "spray_unfavorable": "Do not spray pesticide now",
+}
+
+# The app name in each script, written once by hand: the model spells it differently from label to label
+# (Marathi got both "kRshIrakShak" with the wrong sibilant and "kRShI rakShak" in two words).
+BRAND = "KrishiRakshak"
+BRAND_SCRIPT = {
+    "hi": "\u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915",
+    "mr": "\u0915\u0943\u0937\u0940\u0930\u0915\u094d\u0937\u0915",
+    "te": "\u0c15\u0c43\u0c37\u0c3f\u0c30\u0c15\u0c4d\u0c37\u0c15\u0c4d",
+    "kn": "\u0c95\u0cc3\u0cb7\u0cbf\u0cb0\u0c95\u0ccd\u0cb7\u0c95\u0ccd",
+    "ta": "\u0b95\u0bbf\u0bb0\u0bc1\u0bb7\u0bbf\u0bb0\u0b95\u0bcd\u0bb7\u0b95\u0bcd",
+    "bn": "\u0995\u09c3\u09b7\u09bf\u09b0\u0995\u09cd\u09b7\u0995",
+    "gu": "\u0a95\u0ac3\u0ab7\u0abf\u0ab0\u0a95\u0acd\u0ab7\u0a95",
+    "or": "\u0b15\u0b43\u0b37\u0b3f\u0b30\u0b15\u0b4d\u0b37\u0b15",
+    "pa": "\u0a15\u0a4d\u0a30\u0a3f\u0a38\u0a3c\u0a40\u0a30\u0a15\u0a38\u0a3c\u0a15",
+}
+
+
+def ui_source(key, text):
+    """English text sent to the translator for one interface label: the context rewrite if there is one, and
+    ALL-CAPS labels in sentence case (the model read "SPRAYING" as "praying" in all nine languages)."""
+    text = UI_SOURCE.get(key, text)
+    letters = re.sub(r"[^A-Za-z]", "", text)
+    if letters and letters.isupper() and len(letters) > 6:
+        text = text[0] + text[1:].lower()
+    return text
+
+
+def ui_cleanup(english, text):
+    """A label without a full stop in English keeps none: short labels came back as "High." or "Try again."."""
+    if not re.search(r"[.!?]$", english.strip()):
+        text = re.sub(r"[\s.\u0964]+$", "", text)
+    return text
+
+
+def apply_local_names(kb, files, names_path):
+    """Disease and pest names shown as a result: the hand-written farmer names (local_names.json) replace the machine
+    translation, in the same "name (English)" form. Returns the number of names replaced."""
+    if not Path(names_path).exists():
+        return 0
+    names = json.loads(Path(names_path).read_text(encoding="utf-8"))["names"]
+    n = 0
+    for lang, f in files.items():
+        for topic, name in names.get(lang, {}).items():
+            if topic in kb["topics"]:
+                f.setdefault("topics", {})[topic] = f"{name} ({kb['topics'][topic]['name']['en']})"
+                n += 1
+    return n
+
+
+def apply_ui_fixes(labels, names_path):
+    """Hand-written interface labels and word fixes from local_names.json over the machine translation
+    ({lang: {key: text}}, changed in place). Returns the number of labels changed."""
+    if not names_path or not Path(names_path).exists():
+        return 0
+    d = json.loads(Path(names_path).read_text(encoding="utf-8"))
+    n = 0
+    for lang, fixed in d.get("ui_labels", {}).items():
+        for k, text in fixed.items():
+            if lang in labels and labels[lang].get(k) != text:
+                labels[lang][k] = text
+                n += 1
+    for lang, pairs in d.get("ui_replace", {}).items():
+        for k, text in labels.get(lang, {}).items():
+            new = text
+            for a, b in pairs:
+                new = new.replace(a, b)
+            if new != text:
+                labels[lang][k] = new
+                n += 1
+    return n
+
+
+def translate_ui(tr, ui_path, js_path, langs, names_path=None):
     """Interface labels of the farmer app in the other languages, written as a JavaScript file the app loads.
     {placeholders} are protected with a number that must come back exactly once; otherwise the label stays English."""
     en = json.loads(Path(ui_path).read_text(encoding="utf-8"))
@@ -152,7 +236,9 @@ def translate_ui(tr, ui_path, js_path, langs):
     # -> "tomato plant" (the app is about tomato plants)
     def ui_context(t):
         return re.sub(r"\b(?<!tomato )plants?\b", lambda m: "tomato " + m.group(0).lower(), t, flags=re.I)
-    src = [re.sub(r"\{\w+\}", marker, ui_context(simplify(en[k]))) for k in keys]
+    src = [re.sub(r"\{\w+\}", marker, ui_context(simplify(ui_source(k, en[k])))) for k in keys]
+    # How the model spells the app name in each language, to replace it with the fixed spelling everywhere
+    brand_mt = dict(zip(langs, [tr.translate([BRAND], lang)[0] for lang in langs]))
     out = {}
     for lang in langs:
         out[lang] = {}
@@ -164,8 +250,13 @@ def translate_ui(tr, ui_path, js_path, langs):
                 if t.count(marker) != 1 or len(ph) != 1:
                     continue
                 t = t.replace(marker, ph[0])
+            t = ui_cleanup(en[k], t)
+            if BRAND in en[k] and lang in BRAND_SCRIPT:
+                t = t.replace(brand_mt[lang], BRAND_SCRIPT[lang]) if brand_mt[lang] else t
+                t = BRAND_SCRIPT[lang] if k == "app_title" else t
             out[lang][k] = t
         print(f"ui {lang}: {len(out[lang])}/{len(keys)} labels", flush=True)
+    print("hand-written label fixes:", apply_ui_fixes(out, names_path), flush=True)
     Path(js_path).write_text(
         "/* GENERATED by tools/translate_kb.py (IndicTrans2, machine translation, not yet reviewed): interface labels\n"
         " * of the farmer app in the regional languages; English and Hindi are in i18n.js. */\n"
@@ -273,12 +364,16 @@ def main():
         "review": "Machine translations; to be reviewed by fluent speakers (see <lang>_reviewed).",
         "known_wrong_renderings_left": bad,
     }
-    if args.ui and args.ui_js:
-        translate_ui(tr, args.ui, args.ui_js, [l for l in args.langs if l != "hi"])   # Hindi labels: team version
+    # Hand-written names and label fixes: in the repository's translations folder, or next to the input KB (Kaggle)
+    src = Path(args.kb).parent
+    names = next((p for p in (src / "translations" / "local_names.json", src / "local_names.json") if p.exists()), "")
+    if args.ui and args.ui_js:   # Hindi labels: team version
+        translate_ui(tr, args.ui, args.ui_js, [l for l in args.langs if l != "hi"], names)
     out = Path(args.out or args.kb)
     kb, files = split_by_language(kb, args.langs)
     out.write_text(json.dumps(kb, ensure_ascii=True, indent=1) + "\n", encoding="ascii")
     tdir = out.parent / "translations"
+    print("hand-written result names:", apply_local_names(kb, files, names) if names else 0)
     tdir.mkdir(parents=True, exist_ok=True)
     for lang, f in files.items():
         (tdir / f"{out.stem}.{lang}.json").write_text(json.dumps(f, ensure_ascii=True, indent=1) + "\n",
