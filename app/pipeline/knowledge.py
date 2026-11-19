@@ -40,6 +40,7 @@ class KnowledgeBase:
         self.con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True, check_same_thread=False)
         self.con.row_factory = sqlite3.Row
         kb = json.loads(Path(json_path).read_text())
+        self._merge_translations(kb, Path(json_path))
         self.chunks_json = kb["chunks"]         # translations per extract (tools/translate_kb.py); id = index + 1
         self.messages = kb["messages"]
         self.topics = kb["topics"]
@@ -47,6 +48,25 @@ class KnowledgeBase:
         self.meta = {r["key"]: json.loads(r["value"]) for r in self.con.execute("SELECT * FROM meta")}
         # Map IP102 species ids to a pest topic (aphids, thrips, mites, caterpillars); others -> insect_other
         self.pest_topic_by_species = {sid: tid for tid, t in self.topics.items() for sid in t.get("species_ids", [])}
+
+    @staticmethod
+    def _merge_translations(kb, json_path):
+        """Per-language translation files (app/kb/translations/<kb>.<lang>.json) merged into the knowledge base."""
+        for f in sorted((json_path.parent / "translations").glob(json_path.stem + ".*.json")):
+            t = json.loads(f.read_text())
+            lang = t["lang"]
+            for i, text in t["chunks"].items():
+                kb["chunks"][int(i)][lang] = text
+            for i, note in t["notes"].items():
+                kb["chunks"][int(i)].setdefault("note_i18n", {})[lang] = note
+            for tid, name in t["topics"].items():
+                if tid in kb["topics"]:
+                    kb["topics"][tid]["name"][lang] = name
+            for path, text in t["messages"].items():
+                node = kb["messages"]
+                for part in path.split(".")[:-1]:
+                    node = node.setdefault(part, {})
+                node.setdefault(path.split(".")[-1], {})[lang] = text
 
     @staticmethod
     def _in_language(entry, lang):

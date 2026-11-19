@@ -74,8 +74,35 @@ std::string chunkText(const nlohmann::json& c) {
 
 }  // namespace
 
+// Merges the per-language translation files (app/kb/translations/<kb>.<lang>.json, tools/translate_kb.py) into the
+// knowledge base: extract text -> chunk[lang], spray note -> note_i18n[lang], names, messages ("a.b" = nested path).
+static void mergeTranslations(nlohmann::json& kb, const std::string& jsonPath) {
+    const auto slash = jsonPath.find_last_of('/');
+    const std::string dir = slash == std::string::npos ? "." : jsonPath.substr(0, slash);
+    std::string stem = jsonPath.substr(slash == std::string::npos ? 0 : slash + 1);
+    stem = stem.substr(0, stem.rfind('.'));
+    for (const char* lang : {"hi", "te", "mr", "kn", "ta", "bn", "gu", "or", "pa"}) {
+        std::ifstream in(dir + "/translations/" + stem + "." + lang + ".json");
+        if (!in) continue;
+        const auto t = nlohmann::json::parse(in);
+        auto& chunks = kb.at("chunks");
+        for (const auto& [idx, text] : t.at("chunks").items()) chunks.at(std::stoul(idx))[lang] = text;
+        for (const auto& [idx, note] : t.at("notes").items()) chunks.at(std::stoul(idx))["note_i18n"][lang] = note;
+        for (const auto& [tid, name] : t.at("topics").items())
+            if (kb.at("topics").contains(tid)) kb["topics"][tid]["name"][lang] = name;
+        for (const auto& [path, text] : t.at("messages").items()) {
+            nlohmann::json* node = &kb["messages"];
+            size_t start = 0;
+            for (size_t dot; (dot = path.find('.', start)) != std::string::npos; start = dot + 1)
+                node = &(*node)[path.substr(start, dot - start)];
+            (*node)[path.substr(start)][lang] = text;
+        }
+    }
+}
+
 KnowledgeBase::KnowledgeBase(const std::string& jsonPath) {
     kb_ = nlohmann::json::parse(readFile(jsonPath));
+    mergeTranslations(kb_, jsonPath);
     if (sqlite3_open(":memory:", &db_) != SQLITE_OK) throw std::runtime_error("cannot open in-memory sqlite");
     exec(db_, "CREATE TABLE sources (id TEXT PRIMARY KEY, org TEXT, title TEXT, url TEXT);"
               "CREATE TABLE chunks (id INTEGER PRIMARY KEY, topic TEXT, section TEXT, source TEXT, text_en TEXT,"
