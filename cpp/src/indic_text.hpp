@@ -49,6 +49,9 @@ bool hasRepetition(const std::string& text);
 // Returns an empty string for a language the translator does not support.
 std::string floresCode(const std::string& lang);
 
+// Technical English rewritten in plain English before translation (same glossary as tools/translate_kb.py).
+std::string plainEnglish(const std::string& english);
+
 // Intermediate steps, exposed for the parity test.
 std::string mosesNormalize(const std::string& text);
 std::string mosesTokenize(const std::string& text);

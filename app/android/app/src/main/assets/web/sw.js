@@ -11,6 +11,7 @@ const STATIC_ASSETS = [
   "./manifest.json",
   "./css/style.css",
   "./js/config.js",
+  "./js/i18n_regional.js",
   "./js/i18n.js",
   "./js/api.js",
   "./js/canvas.js",

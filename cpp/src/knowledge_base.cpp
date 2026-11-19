@@ -124,9 +124,9 @@ std::vector<KbChunk> KnowledgeBase::query(const std::string& sql, const std::vec
         c.id = sqlite3_column_int(st.s, 0);
         c.topic = st.col(1); c.section = st.col(2); c.sourceId = st.col(3);
         c.textEn = st.col(4);
-        const std::string hi = st.col(5);
-        c.text = (lang == "hi" && !hi.empty()) ? hi : c.textEn;
+        c.text = c.textEn;
         c.product = st.col(6); c.dose = st.col(7); c.note = st.col(8);
+        localize(c, lang);
         const auto& src = kb_.at("sources").at(c.sourceId);
         c.sourceOrg = src.at("org"); c.sourceTitle = src.at("title"); c.url = src.at("url");
         out.push_back(std::move(c));
@@ -216,14 +216,42 @@ bool KnowledgeBase::findChunk(const std::string& topic, const std::string& phras
     return true;
 }
 
+// Text of a {"en": ..., "<lang>": ...} entry in the requested language, English if that language is missing
+static std::string inLanguage(const nlohmann::json& entry, const std::string& lang) {
+    const auto it = entry.find(lang);
+    return (it != entry.end() && it->is_string() && !it->get<std::string>().empty()) ? it->get<std::string>()
+                                                                                     : entry.at("en").get<std::string>();
+}
+
+void KnowledgeBase::localize(KbChunk& c, const std::string& lang) const {
+    // Translations are stored with each extract in the JSON (tools/translate_kb.py); textEn is never changed (Llama
+    // and the grounding check work on the published English). Spray products and doses are never translated.
+    c.text = c.textEn;
+    if (lang == "en" || c.id < 1) return;
+    const auto& j = kb_.at("chunks").at(static_cast<size_t>(c.id - 1));
+    if (c.section == "chemical") {
+        const auto notes = j.find("note_i18n");
+        if (notes != j.end() && notes->contains(lang)) c.note = notes->at(lang).get<std::string>();
+        else c.note = j.value("note", "");
+        return;
+    }
+    const auto it = j.find(lang);
+    if (it != j.end() && it->is_string() && !it->get<std::string>().empty()) c.text = it->get<std::string>();
+}
+
+KbChunk KnowledgeBase::localized(KbChunk c, const std::string& lang) const {
+    localize(c, lang);
+    return c;
+}
+
 std::string KnowledgeBase::topicName(const std::string& topic, const std::string& lang) const {
-    return kb_.at("topics").at(topic).at("name").at(lang);
+    return inLanguage(kb_.at("topics").at(topic).at("name"), lang);
 }
 std::string KnowledgeBase::message(const std::string& key, const std::string& lang) const {
-    return kb_.at("messages").at(key).at(lang);
+    return inLanguage(kb_.at("messages").at(key), lang);
 }
 std::string KnowledgeBase::qualityMessage(const std::string& issue, const std::string& lang) const {
-    return kb_.at("messages").at("quality").at(issue).at(lang);
+    return inLanguage(kb_.at("messages").at("quality").at(issue), lang);
 }
 std::string KnowledgeBase::reliability(const std::string& topic) const {
     return kb_.at("topics").at(topic).value("model_reliability", "");

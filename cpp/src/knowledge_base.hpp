@@ -45,6 +45,11 @@ public:
     // e.g. the NIPHM scouting method); false if there is none.
     bool findChunk(const std::string& topic, const std::string& phrase, const std::string& lang, KbChunk& out) const;
 
+    // An extract shown in another language: text (and spray-row note) from the translations stored in the JSON,
+    // English where a translation is missing; textEn, product and dose stay as published.
+    KbChunk localized(KbChunk c, const std::string& lang) const;
+
+    // Names and fixed messages in lang (en, hi or a translation language), English where a translation is missing
     std::string topicName(const std::string& topic, const std::string& lang) const;
     std::string message(const std::string& key, const std::string& lang) const;          // fixed reviewed text
     std::string qualityMessage(const std::string& issue, const std::string& lang) const;
@@ -57,6 +62,7 @@ public:
 private:
     std::vector<KbChunk> query(const std::string& sql, const std::vector<std::string>& args,
                                const std::string& lang) const;
+    void localize(KbChunk& c, const std::string& lang) const;
     nlohmann::json kb_;
     sqlite3* db_ = nullptr;
     std::map<int, std::string> pestTopicBySpecies_;

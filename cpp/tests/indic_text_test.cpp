@@ -109,8 +109,14 @@ int main(int argc, char** argv) {
         detok.check(d == c["detokenized"].get<std::string>(), input, d, c["detokenized"]);
     }
 
+    Counter gloss{"glossary"};
+    for (const auto& c : oracle.value("glossary", nlohmann::json::array())) {
+        const std::string got = it::plainEnglish(c["input"]);
+        gloss.check(got == c["expected"].get<std::string>(), c["input"], got, c["expected"]);
+    }
+
     int fails = 0;
-    for (const Counter* k : {&norm, &tok, &pre, &dec, &post, &rep, &xl, &detok}) {
+    for (const Counter* k : {&norm, &tok, &pre, &dec, &post, &rep, &xl, &detok, &gloss}) {
         k->report();
         fails += k->fail;
     }

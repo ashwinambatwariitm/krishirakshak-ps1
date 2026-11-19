@@ -58,6 +58,7 @@ const I18N = {
     mt_title: "Machine translation on this device - not yet checked by a speaker of this language",
     mt_withheld: "Some sentences failed the translation check and are shown in English.",
     mt_show_english: "Show the English original",
+    kb_mt_note: "Text from ICAR, NIPHM and TNAU publications, machine-translated (not yet checked by a speaker of this language). Spray products and doses are as published.",
     mt_unavailable: "The AI explanation did not pass the safety check, so there is no translation for this photo. The verified advice below is in English.",
     pest_sev_title: "Insects in this photo",
     pest_sev_photo_only: "Level for this photo only - check the field before spraying.",
@@ -85,6 +86,10 @@ const I18N = {
     section_monitoring: "Monitoring & Trapping (ETL)",
     section_safety: "Safety & Handling Precautions",
     section_general: "General Recommendations",
+    section_resistant_varieties: "Resistant Varieties",
+    section_nutrition: "Nutrition",
+    section_natural_enemies: "Natural Enemies (Friendly Insects)",
+    section_chemical: "Spray Options",
     
     // Spray Table
     spray_title: "Spray Options (Official Recommendations)",
@@ -228,6 +233,7 @@ const I18N = {
     mt_title: "\u0907\u0938 \u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 \u092e\u0936\u0940\u0928 \u0905\u0928\u0941\u0935\u093e\u0926 - \u0905\u092d\u0940 \u091c\u093e\u0901\u091a\u093e \u0928\u0939\u0940\u0902 \u0917\u092f\u093e",
     mt_withheld: "\u0915\u0941\u091b \u0935\u093e\u0915\u094d\u092f \u0905\u0928\u0941\u0935\u093e\u0926 \u091c\u093e\u0901\u091a \u092e\u0947\u0902 \u0935\u093f\u092b\u0932 \u0930\u0939\u0947, \u0935\u0947 \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0947\u0902 \u0926\u093f\u0916\u093e\u090f \u0917\u090f \u0939\u0948\u0902\u0964",
     mt_show_english: "\u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0942\u0932 \u092a\u093e\u0920 \u0926\u093f\u0916\u093e\u090f\u0901",
+    kb_mt_note: "ICAR, NIPHM \u0914\u0930 TNAU \u0915\u0947 \u092a\u094d\u0930\u0915\u093e\u0936\u0928\u094b\u0902 \u0938\u0947 \u0932\u093f\u092f\u093e \u0917\u092f\u093e \u092a\u093e\u0920, \u092e\u0936\u0940\u0928 \u0905\u0928\u0941\u0935\u093e\u0926 (\u0905\u092d\u0940 \u091c\u093e\u0901\u091a\u093e \u0928\u0939\u0940\u0902 \u0917\u092f\u093e)\u0964 \u0926\u0935\u093e\u0913\u0902 \u0915\u0947 \u0928\u093e\u092e \u0914\u0930 \u092e\u093e\u0924\u094d\u0930\u093e \u092a\u094d\u0930\u0915\u093e\u0936\u093f\u0924 \u0930\u0942\u092a \u092e\u0947\u0902 \u0939\u0948\u0902\u0964",
     mt_unavailable: "AI \u0935\u094d\u092f\u093e\u0916\u094d\u092f\u093e \u0938\u0941\u0930\u0915\u094d\u0937\u093e \u091c\u093e\u0901\u091a \u092e\u0947\u0902 \u092a\u093e\u0938 \u0928\u0939\u0940\u0902 \u0939\u0941\u0908, \u0907\u0938\u0932\u093f\u090f \u0907\u0938 \u092b\u094b\u091f\u094b \u0915\u093e \u0905\u0928\u0941\u0935\u093e\u0926 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u0928\u0940\u091a\u0947 \u0926\u0940 \u0917\u0908 \u0938\u0924\u094d\u092f\u093e\u092a\u093f\u0924 \u0938\u0932\u093e\u0939 \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0947\u0902 \u0939\u0948\u0964",
     pest_sev_title: "\u0907\u0938 \u092b\u094b\u091f\u094b \u092e\u0947\u0902 \u0915\u0940\u091f",
     pest_sev_photo_only: "\u092f\u0939 \u0938\u094d\u0924\u0930 \u0915\u0947\u0935\u0932 \u0907\u0938 \u092b\u094b\u091f\u094b \u0915\u093e \u0939\u0948 - \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0938\u0947 \u092a\u0939\u0932\u0947 \u0916\u0947\u0924 \u0915\u0940 \u091c\u093e\u0901\u091a \u0915\u0930\u0947\u0902\u0964",
@@ -255,6 +261,10 @@ const I18N = {
     section_monitoring: "\u0928\u093f\u0917\u0930\u093e\u0928\u0940 \u090f\u0935\u0902 \u091f\u094d\u0930\u0948\u092a\u093f\u0902\u0917 (\u0906\u0930\u094d\u0925\u093f\u0915 \u0938\u0940\u092e\u093e)",
     section_safety: "\u0938\u0941\u0930\u0915\u094d\u0937\u093e \u090f\u0935\u0902 \u0938\u093e\u0935\u0927\u093e\u0928\u0940",
     section_general: "\u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0938\u093f\u092b\u093e\u0930\u093f\u0936\u0947\u0902",
+    section_resistant_varieties: "\u0930\u094b\u0917 \u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927\u0940 \u0915\u093f\u0938\u094d\u092e\u0947\u0902",
+    section_nutrition: "\u092a\u094b\u0937\u0923",
+    section_natural_enemies: "\u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u0936\u0924\u094d\u0930\u0941 (\u092e\u093f\u0924\u094d\u0930 \u0915\u0940\u091f)",
+    section_chemical: "\u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0915\u0947 \u0935\u093f\u0915\u0932\u094d\u092a",
     
     // Spray Table
     spray_title: "\u0915\u0940\u091f\u0928\u093e\u0936\u0915 / \u0915\u0935\u0915\u0928\u093e\u0936\u0940 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0935\u093f\u0915\u0932\u094d\u092a (\u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915)",
@@ -348,7 +358,7 @@ const I18N = {
 let currentLanguage = window.CONFIG ? window.CONFIG.DEFAULT_LANG : "en";
 
 function setLanguage(lang) {
-  if (lang !== "en" && lang !== "hi") lang = "en";
+  if (!I18N[lang]) lang = "en";
   currentLanguage = lang;
   localStorage.setItem("KR_LANG", lang);
   updateStaticDOMText();
@@ -359,6 +369,12 @@ function setLanguage(lang) {
 
 function getLanguage() {
   return currentLanguage;
+}
+
+// Interface labels in the regional languages (te mr kn ta bn gu or pa): machine translations generated by
+// tools/translate_kb.py into i18n_regional.js. A label missing there is shown in English.
+if (window.I18N_REGIONAL) {
+  Object.keys(window.I18N_REGIONAL).forEach(lang => { if (!I18N[lang]) I18N[lang] = window.I18N_REGIONAL[lang]; });
 }
 
 function t(key) {

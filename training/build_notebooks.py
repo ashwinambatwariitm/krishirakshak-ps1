@@ -50,6 +50,9 @@ NOTEBOOKS = [
     dict(src="lesion_seg.py", slug="ps1-lesion-seg", title="PS1 Lesion Seg",
          datasets=["ashwinambatwar/tomato-leaf-lesion-seg-rf", "fakhrealam9537/leaf-disease-segmentation-dataset",
                    PLANTDOC_FOLDERS]),
+    # Knowledge base in 9 regional languages (IndicTrans2 on CTranslate2, GPU FP16; inputs uploaded from the repo)
+    dict(src="kb_translate.py", slug="ps1-kb-translate", title="PS1 KB Translate",
+         datasets=["ashwinambatwar/krishirakshak-kb-translate-inputs"]),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]

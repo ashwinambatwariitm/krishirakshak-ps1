@@ -11,6 +11,7 @@
 #include "text_tables.hpp"
 
 #include <algorithm>
+#include <cctype>
 #include <map>
 #include <regex>
 #include <stdexcept>
@@ -825,6 +826,64 @@ std::string floresCode(const std::string& lang) {
         {"bn", "ben_Beng"}, {"gu", "guj_Gujr"}, {"or", "ory_Orya"}, {"pa", "pan_Guru"}};
     const auto it = m.find(lang);
     return it == m.end() ? std::string() : it->second;
+}
+
+std::string plainEnglish(const std::string& english) {
+    // Same rules as GLOSSARY in tools/translate_kb.py (the knowledge-base translations): technical terms rewritten
+    // in plain English that the model translates correctly ("bull's eye" was translated literally, "necrotic" as
+    // "impure", "margin" as "retail"). Applied only to the input of the translator.
+    static const std::vector<std::pair<std::regex, std::string>> rules = [] {
+        const std::vector<std::pair<const char*, const char*>> g = {
+        {R"(bull'?s[- ]eye pattern)", "target-like pattern"},
+        {R"(bull'?s[- ]eye)", "target-like"},
+        {R"(concentric rings)", "rings inside each other"},
+        {R"(necrotic)", "dead and dry"},
+        {R"(necrosis)", "drying and death of the tissue"},
+        {R"(water-soaked)", "wet-looking"},
+        {R"(chlorotic)", "yellowish"},
+        {R"(chlorosis)", "yellowing"},
+        {R"(sporulation)", "fungal growth"},
+        {R"(downy)", "soft, fluffy"},
+        {R"(defoliation)", "falling of leaves"},
+        {R"(foliage)", "leaves"},
+        {R"(inoculum)", "source of infection"},
+        {R"(vegetative (phase|stage))", "leafy growth stage"},
+        {R"(lesions)", "spots"},
+        {R"(lesion)", "spot"},
+        {R"((the )?marginal portions? of( the)?)", "the edges of the"},
+        {R"(marginal)", "edge"},
+        {R"(margins)", "edges"},
+        {R"(margin)", "edge"},
+        {R"(mycelium)", "fungal threads"},
+        {R"(sclerotia)", "small hard fungal bodies"},
+        {R"(pycnidia)", "tiny dark fungal dots"},
+        {R"(ooze)", "sticky liquid"},
+        {R"(mottling)", "patchy colouring"},
+        {R"(stunting)", "poor growth"},
+        };
+        std::vector<std::pair<std::regex, std::string>> r;
+        for (const auto& [pattern, plain] : g)
+            r.emplace_back(std::regex(std::string("\\b") + pattern + "\\b", std::regex::icase | std::regex::ECMAScript),
+                           plain);
+        return r;
+    }();
+    std::string s = english;
+    for (const auto& [re, plain] : rules) {
+        std::string out;
+        auto begin = std::sregex_iterator(s.begin(), s.end(), re);
+        size_t last = 0;
+        for (auto it = begin; it != std::sregex_iterator(); ++it) {
+            out.append(s, last, static_cast<size_t>(it->position()) - last);
+            std::string rep = plain;
+            if (!it->str().empty() && std::isupper(static_cast<unsigned char>(it->str()[0])))
+                rep[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(rep[0])));   // keep sentence case
+            out += rep;
+            last = static_cast<size_t>(it->position() + it->length());
+        }
+        out.append(s, last, std::string::npos);
+        s = out;
+    }
+    return s;
 }
 
 std::string mosesNormalize(const std::string& text) { return toU8(mosesNormalizeU(toU32(text))); }

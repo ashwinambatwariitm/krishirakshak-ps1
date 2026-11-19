@@ -130,6 +130,15 @@ function initApp() {
       if (!res || !res.disease) return;
       const lang = window.getLanguage();
       let textToRead = "";
+      const pct = Math.round((res.disease.top[0]?.probability || 0.9) * 100);
+      const english = `Diagnosis Result: ${res.disease.name}. Model confidence: ${pct} percent.` +
+                      (res.disease.urgent ? " Urgent: act today." : "");
+      if (lang !== "en" && lang !== "hi") {
+        textToRead = `${window.t("diagnosis_result")}: ${res.disease.name}. ${window.t("confidence")}: ${pct}%.` +
+                     (res.disease.urgent ? ` ${window.t("urgent_badge")}.` : "");
+        window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag, english);
+        return;
+      }
       if (lang === "hi") {
         textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
         if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
@@ -150,7 +159,7 @@ function initApp() {
       if (tr && tr.text) {
         window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
       } else {
-        window.voiceAdvisor.toggle(res.llama.text, window.getLanguage(), btnVoiceLlama);
+        window.voiceAdvisor.toggle(res.llama.text, "en", btnVoiceLlama);
       }
     });
   }
@@ -164,7 +173,7 @@ function initApp() {
       if (tr && tr.text) {
         window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceAi, ansEl.textContent);
       } else {
-        window.voiceAdvisor.toggle(ansEl.textContent, window.getLanguage(), btnVoiceAi);
+        window.voiceAdvisor.toggle(ansEl.textContent, "en", btnVoiceAi);
       }
     });
   }
@@ -421,6 +430,14 @@ function renderAnsweredScreen(data) {
           blockTitle.textContent = block.name;
           blockEl.appendChild(blockTitle);
         }
+        // Extracts shown from the knowledge-base translations (machine translation, not yet reviewed)
+        const translated = nonChemicalChunks.filter(c => c.text_en && c.text !== c.text_en);
+        if (translated.length > 0) {
+          const mtNote = document.createElement("div");
+          mtNote.className = "translation-label";
+          mtNote.textContent = window.t("kb_mt_note");
+          blockEl.appendChild(mtNote);
+        }
 
         const grouped = {};
         nonChemicalChunks.forEach(c => {
@@ -474,6 +491,20 @@ function renderAnsweredScreen(data) {
           secWrapper.appendChild(listEl);
           blockEl.appendChild(secWrapper);
         });
+
+        if (translated.length > 0) {   // the published English, one tap away
+          const original = document.createElement("details");
+          original.className = "translation-original";
+          const summary = document.createElement("summary");
+          summary.textContent = window.t("mt_show_english");
+          original.appendChild(summary);
+          nonChemicalChunks.forEach(c => {
+            const p = document.createElement("p");
+            p.textContent = `${c.text_en || c.text} [${c.source_org || ""}]`;
+            original.appendChild(p);
+          });
+          blockEl.appendChild(original);
+        }
 
         adviceContainer.appendChild(blockEl);
       }
@@ -910,10 +941,9 @@ async function setupTranslatePicker() {
   const select = document.getElementById("select-translate");
   if (!picker || !select) return;
   select.value = window.CONFIG.TRANSLATE_LANG || "";
-  // One language choice for the whole app: interface labels exist in English and Hindi, so Hindi switches the
-  // labels too; the other languages keep English labels (the advice itself is shown in the chosen language)
+  // One language choice for the whole app: labels, advice and the verified practices in the chosen language
   const applyInterfaceLanguage = () => {
-    window.setLanguage(select.value === "hi" ? "hi" : "en");
+    window.setLanguage(select.value || "en");   // labels in the chosen language (English where one is missing)
     if (typeof updateWeatherUI === "function") updateWeatherUI();
   };
   select.addEventListener("change", () => {
