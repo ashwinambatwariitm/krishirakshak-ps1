@@ -1,0 +1,49 @@
+{
+  "advice_blocks": [],
+  "disease": {
+    "answered": false,
+    "name": null,
+    "reliability": null,
+    "top": [
+      {
+        "class": "early_blight",
+        "probability": 0.7398271560668945
+      },
+      {
+        "class": "yellow_leaf_curl_virus",
+        "probability": 0.13775373995304108
+      },
+      {
+        "class": "septoria_leaf_spot",
+        "probability": 0.06743468344211578
+      }
+    ],
+    "topic": null,
+    "urgent": false
+  },
+  "lang": "en",
+  "llama": null,
+  "messages": [
+    "The photo does not show the problem clearly enough for a reliable answer. Take a clearer photo of one affected leaf in daylight, or show the plant to your local KVK or agriculture officer."
+  ],
+  "pests": [],
+  "quality": {
+    "issues": [],
+    "metrics": {
+      "brightness": 111.9031016031901,
+      "height": 600,
+      "sharpness": 248.04731737066888,
+      "width": 800
+    },
+    "ok": true
+  },
+  "status": "uncertain",
+  "timings_ms": {
+    "disease": 17.331216,
+    "pest": 75.310337,
+    "quality": 1.691427,
+    "retrieval": 0.000386,
+    "total": 77.314644,
+    "vision_wall": 75.588799
+  }
+}

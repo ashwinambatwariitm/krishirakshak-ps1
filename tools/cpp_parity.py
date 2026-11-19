@@ -18,7 +18,7 @@ import pandas as pd
 
 from app.pipeline.coordinator import DEFAULT_CONFIG
 from app.pipeline.quality import check_quality, decode_image
-from app.pipeline.severity import estimate_severity
+from app.pipeline.severity import SeverityModel
 from app.pipeline.vision import DiseaseClassifier, PestDetector
 
 REPO = Path(__file__).resolve().parent.parent
@@ -55,6 +55,7 @@ def main():
     suffix = "_int8" if args.int8 else ""
     disease = DiseaseClassifier(str(DEFAULT_CONFIG["disease_onnx"]).replace(".onnx", f"{suffix}.onnx"),
                                 DEFAULT_CONFIG["disease_spec"])
+    severity = SeverityModel(DEFAULT_CONFIG["severity_onnx"], DEFAULT_CONFIG["severity_spec"])
     pest = PestDetector(str(DEFAULT_CONFIG["pest_onnx"]).replace(".onnx", f"{suffix}.onnx"), DEFAULT_CONFIG["pest_spec"],
                         DEFAULT_CONFIG["pest_labels"], DEFAULT_CONFIG["pest_config"])
 
@@ -78,7 +79,7 @@ def main():
         cpp_correct += disease.classes.index(c["disease"][0]["class"]) == label
 
         if "severity" in c:
-            s = estimate_severity(img)
+            s = severity.estimate(img, c["disease"][0]["class"])   # severity is computed for the top class
             sev_same += s["level"] == c["severity"]["level"]
             if s["lesion_share"] is not None and c["severity"]["lesion_share"] is not None:
                 max_share_diff = max(max_share_diff, abs(s["lesion_share"] - c["severity"]["lesion_share"]))

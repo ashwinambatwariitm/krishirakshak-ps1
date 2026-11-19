@@ -1,0 +1,126 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 58,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+     "topic": "healthy",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "",
+     "id": 59,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA.",
+     "topic": "healthy",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Healthy leaf",
+   "topic": "healthy"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Healthy leaf",
+  "reliability": "good",
+  "top": [
+   {
+    "class": "healthy",
+    "probability": 0.9448142647743225
+   },
+   {
+    "class": "early_blight",
+    "probability": 0.013568226248025894
+   },
+   {
+    "class": "septoria_leaf_spot",
+    "probability": 0.013104424811899662
+   }
+  ],
+  "topic": "healthy",
+  "urgent": false
+ },
+ "lang": "en",
+ "llama": {
+  "accepted": false,
+  "dropped_sentences": [
+   "1.",
+   "Don't grow tomatoes in the same field for three years in a row.",
+   "2.",
+   "Rotate your crops with other plants, like wheat or beans.",
+   "3.",
+   "Don't plant tomatoes with chilies or eggplants.",
+   "4.",
+   "Use drip irrigation to keep your plants healthy.",
+   "5.",
+   "Remove infected leaves, stems, and fruits.",
+   "6.",
+   "Use pesticides only when you need them, and only when they're safe for the environment.",
+   "Let me know if you'd like me to simplify it further!"
+  ],
+  "raw_text": "1. Don't grow tomatoes in the same field for three years in a row.\n2. Rotate your crops with other plants, like wheat or beans.\n3. Don't plant tomatoes with chilies or eggplants.\n4. Use drip irrigation to keep your plants healthy.\n5. Remove infected leaves, stems, and fruits.\n6. Use pesticides only when you need them, and only when they're safe for the environment.\n\nLet me know if you'd like me to simplify it further!",
+  "rejected_reasons": [
+   "empty_or_too_short",
+   "too_few_grounded_sentences:0"
+  ],
+  "stats": {
+   "first_attempt": {
+    "refused": true,
+    "stats": {
+     "generated_tokens": 101,
+     "ok": true,
+     "prompt_tokens": 334,
+     "stopped_on_repeat": false,
+     "time_to_first_token_s": 2.891,
+     "tokens_per_s": 13.794045342802512,
+     "total_s": 10.213604461000001
+    },
+    "text": "I can't provide a rewritten version of the text that contains inaccurate information. \n\n1. Avoid growing tomato in the same field season after season; \n2. Rotate with non-host crops such as cereals and legumes, \n3. Do not follow tomato with chilli or brinjal. \n4. Stake plants and use drip irrigation to reduce leaf wetness. \n5. Collect and destroy infected leaves, shoots and fruits. \n6. Spray only need-based, label-claim pesticides."
+   },
+   "generated_tokens": 114,
+   "ok": true,
+   "prompt_tokens": 157,
+   "stopped_on_repeat": false,
+   "time_to_first_token_s": 1.245,
+   "tokens_per_s": 14.764926822950395,
+   "total_s": 8.965486593
+  },
+  "text": null
+ },
+ "messages": [],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 169.34848718475877,
+   "height": 631,
+   "sharpness": 41.8037958961151,
+   "width": 563
+  },
+  "ok": true
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 49.447943,
+  "llama": 19179.159454,
+  "pest": 119.165817,
+  "quality": 3.559204,
+  "retrieval": 0.232514,
+  "total": 19302.483096,
+  "vision_wall": 119.324502
+ }
+}

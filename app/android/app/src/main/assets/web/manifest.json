@@ -1,0 +1,18 @@
+{
+  "name": "KrishiRakshak Plant Health Advisor",
+  "short_name": "KrishiRakshak",
+  "description": "On-Device Offline Tomato Disease and Insect Pest Advisor",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1c5220",
+  "theme_color": "#1c5220",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

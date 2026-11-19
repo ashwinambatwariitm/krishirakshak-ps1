@@ -7,6 +7,7 @@
  *   - OpenCV: photo decoding, quality gate, estimated severity
  *   - SQLite + FTS5 (compiled in): verified advice extracts from ICAR, NIPHM and TNAU publications
  *   - ExecuTorch (C++ runtime, XNNPACK): Llama 3.2 1B Instruct, 4-bit weights, explains the verified advice
+ *   - CTranslate2 (C++ API): IndicTrans2 200M, INT8, translates the checked advice into 9 Indian languages
  *
  * Usage:
  *   krishirakshak [options] photo.jpg [photo2.jpg ...]     analyse photos, print the result as JSON (one per line)
@@ -15,13 +16,26 @@
  *   krishirakshak [options] --serve 8080                  farmer web page at http://<pi-ip>:8080/
  * Options:
  *   --bind ADDR        address for --serve; default 0.0.0.0 (reachable over the Pi's Wi-Fi hotspot)
+ *   --web DIR          with --serve: serve the farmer app folder (app/web, relative to --root) at /;
+ *                      the built-in page stays at /basic
  *   --root DIR         repository root (models/, results/, app/kb/); default "."
  *   --lang en|hi       answer language; default en
- *   --int8             use the INT8 ONNX vision models
+ *   --int8 / --fp32    INT8 or FP32 ONNX vision models (default: INT8 on the Raspberry Pi build, where it is about
+ *                      twice as fast with the same answers; FP32 on the development build, used by the parity test)
  *   --no-llama         vision + knowledge base only
  *   --sequential       run the two vision models one after the other (default: in parallel)
  *   --threads N        ONNX Runtime threads per vision model; default 2
  *   --llama-threads N  XNNPACK threads for Llama; default 4
+ *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_krishirakshak_lora_8da4w.pte
+ *                      (LoRA-tuned 1B; base model: models/llama3_2_1b_instruct_8da4w.pte)
+ *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
+ *   --translate LANG   also translate the accepted English advice into LANG (hi te mr kn ta bn gu or pa);
+ *                      the web page chooses the language per request instead
+ *   --no-translate     do not load the translation model
+ *   --translate-threads N  CTranslate2 threads; default 2 (4 is several times slower on the Pi 5)
+ *   --translate-model DIR  CTranslate2 model folder relative to --root;
+ *                      default models/indictrans2_en_indic_200M_ct2_int8 (with models/indictrans2_model.SRC)
+ *   --ort-spin         let ONNX Runtime threads busy-wait after each run (off by default; for A/B timing)
  *   --brief            print only the fields used by the parity test
  */
 #include "common.hpp"
@@ -38,8 +52,10 @@
 namespace {
 
 void usage() {
-    std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8] [--no-llama] [--sequential] [--threads N]\n"
-                 "                     [--brief] (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
+    std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
+                 "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
+                 "                     [--translate LANG] [--no-translate] [--translate-threads N] [--translate-model DIR] [--web DIR]\n"
+                 "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
 
 // Reduced result for the parity test against the Python reference (tools/cpp_parity.py)
@@ -60,10 +76,15 @@ nlohmann::json brief(const std::string& path, const nlohmann::json& r) {
 
 int main(int argc, char** argv) {
     kr::PipelineConfig cfg;
-    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0";
+    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0", translateTo, webDir;
     bool briefOut = false;
     int servePort = 0;
     std::vector<std::string> photos;
+#ifdef KR_DEFAULT_INT8
+    bool useInt8 = true;     // Raspberry Pi build: INT8 vision 125 ms vs FP32 269 ms per photo, same diagnoses
+#else
+    bool useInt8 = false;
+#endif
 
     for (int i = 1; i < argc; ++i) {
         const std::string a = argv[i];
@@ -73,22 +94,31 @@ int main(int argc, char** argv) {
         };
         if (a == "--root") cfg.repoRoot = next();
         else if (a == "--lang") lang = next();
-        else if (a == "--int8") {
-            cfg.diseaseOnnx = "models/tomato_disease_v5_effb0_6class_int8.onnx";
-            cfg.pestOnnx = "models/pest_yolov8n_ip102_negatives_int8.onnx";
-        }
+        else if (a == "--int8") useInt8 = true;
+        else if (a == "--fp32") useInt8 = false;
         else if (a == "--no-llama") cfg.useLlama = false;
         else if (a == "--sequential") cfg.parallelVision = false;
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
+        else if (a == "--llama-pte") cfg.llamaPte = next();
+        else if (a == "--translate") translateTo = next();
+        else if (a == "--no-translate") cfg.useTranslator = false;
+        else if (a == "--translate-threads") cfg.translateThreads = std::stoi(next());
+        else if (a == "--translate-model") cfg.translateModel = next();
+        else if (a == "--ort-spin") cfg.ortSpin = true;
         else if (a == "--brief") briefOut = true;
         else if (a == "--list") listFile = next();
         else if (a == "--ask") question = next();
         else if (a == "--topic") topic = next();
         else if (a == "--serve") servePort = std::stoi(next());
         else if (a == "--bind") bindAddr = next();
+        else if (a == "--web") webDir = next();
         else if (a == "-h" || a == "--help") { usage(); return 0; }
         else photos.push_back(a);
+    }
+    if (useInt8) {
+        cfg.diseaseOnnx = "models/tomato_disease_v5_effb0_6class_int8.onnx";
+        cfg.pestOnnx = "models/pest_yolov8n_ip102_negatives_int8.onnx";
     }
     if (!listFile.empty()) {
         std::ifstream in(listFile);
@@ -102,17 +132,20 @@ int main(int argc, char** argv) {
         if (servePort > 0) {
             web::Server server(servePort);
             server.pageHtml = [] { return web::farmerPageHtml(); };
+            if (!webDir.empty())
+                server.webRoot = (webDir[0] == '/') ? webDir : cfg.repoRoot + "/" + webDir;
             server.getInfo = [&] { return pipe.info().dump(); };
-            server.analyse = [&](const std::string& bytes, const std::string& l) {
+            server.analyse = [&](const std::string& bytes, const std::string& l, const std::string& tr) {
                 const cv::Mat img = kr::decodeImageRgb(bytes);
                 const std::string useLang = (l == "hi") ? "hi" : "en";
                 if (img.empty()) return nlohmann::json({{"status", "not_an_image"}, {"messages", nlohmann::json::array()}}).dump();
-                return pipe.analyse(img, useLang).dump();
+                return pipe.analyse(img, useLang, tr).dump();   // unknown translation codes are ignored
             };
             server.ask = [&](const std::string& body) {
                 const auto j = nlohmann::json::parse(body);
                 const std::string t = j.contains("topic") && j["topic"].is_string() ? j["topic"].get<std::string>() : "";
-                return pipe.followUp(j.value("question", ""), t, j.value("lang", "en")).dump();
+                const std::string tr = j.contains("translate") && j["translate"].is_string() ? j["translate"].get<std::string>() : "";
+                return pipe.followUp(j.value("question", ""), t, j.value("lang", "en"), tr).dump();
             };
             if (!server.start(bindAddr)) { std::cerr << "cannot listen on port " << servePort << "\n"; return 1; }
             std::cerr << "serving on http://" << bindAddr << ":" << servePort << "/\n";
@@ -120,7 +153,7 @@ int main(int argc, char** argv) {
             return 0;
         }
         if (!question.empty()) {
-            std::cout << pipe.followUp(question, topic, lang).dump(1) << "\n";
+            std::cout << pipe.followUp(question, topic, lang, translateTo).dump(1) << "\n";
             return 0;
         }
         for (const auto& path : photos) {
@@ -130,7 +163,7 @@ int main(int argc, char** argv) {
                 std::cout << nlohmann::json({{"image", path}, {"error", "not an image"}}).dump() << "\n";
                 continue;
             }
-            const auto r = pipe.analyse(img, lang);
+            const auto r = pipe.analyse(img, lang, translateTo);
             std::cout << (briefOut ? brief(path, r).dump() : r.dump(1)) << "\n";
         }
     } catch (const std::exception& e) {

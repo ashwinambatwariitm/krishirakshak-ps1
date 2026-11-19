@@ -1,0 +1,9 @@
+vision x5 no-spin: 6.87 s wall, 15.97 s user CPU, 0.26 s system CPU
+vision x5 --ort-spin: 6.86 s wall, 17.06 s user CPU, 0.14 s system CPU
+mode run time_to_first_token_s tokens_per_s total_ms
+off 1 2.451 13.72 14303
+off 2 2.455 13.84 14211
+off 3 2.451 13.66 14363
+on 1 2.457 13.71 14315
+on 2 2.457 13.64 14384
+on 3 2.462 13.77 14279

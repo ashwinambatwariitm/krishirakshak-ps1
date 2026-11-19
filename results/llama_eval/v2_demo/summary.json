@@ -1,0 +1,17 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v2_explain.txt",
+  "options": "",
+  "topics": 6,
+  "accepted": 2,
+  "refused_first": 5,
+  "mean_grounded": 2.33,
+  "mean_dropped": 8.0,
+  "rejected_topics": [
+    "healthy",
+    "early_blight",
+    "late_blight",
+    "yellow_leaf_curl_virus"
+  ]
+}

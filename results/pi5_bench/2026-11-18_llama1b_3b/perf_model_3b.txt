@@ -1,0 +1,31 @@
+== Llama weights ==
+layers 28, dim 3072, heads 24 (KV heads 8), feed-forward 8192, vocabulary 128256
+  layers          1512.0 MiB
+  output_layer     211.4 MiB
+  embedding        211.4 MiB
+  norms              0.7 MiB
+  .pte file       1960.5 MiB
+  hypotheses (closest first):
+    scales 2 B, output layer int4:   1935.4 MiB  (-1.3%)
+    scales 2 B, output layer int8:   2123.3 MiB  (+8.3%)
+    scales 4 B, output layer int4:   2150.4 MiB  (+9.7%)
+    scales 4 B, output layer int8:   2338.2 MiB  (+19.3%)
+    scales 2 B, output layer fp32:   3227.0 MiB  (+64.6%)
+    scales 4 B, output layer fp32:   3418.5 MiB  (+74.4%)
+
+== KV cache ==
+  1024 positions x 4 B:    224.0 MiB (with 24 KV heads instead of 8 it would be    672.0 MiB)
+
+== Hardware ==
+  read bandwidth: 12.62 GB/s (membw, 4 threads)
+  peak int8 compute: 307 GMAC/s (theoretical Pi 5)
+
+== Predicted limits vs measured ==
+  Tomato_Early_blight_leaf_llama3b_en.json: prompt 338 tokens, generated 145
+    prefill    962.9 GMAC -> >=   3.13 s | measured   7.88 s | efficiency  39.8%
+    decode    1813.8 MiB/token -> <=   6.64 tok/s | measured   4.79 tok/s | efficiency  72.2%
+  Tomato_leaf_late_blight_llama3b_en.json: prompt 400 tokens, generated 159
+    prefill   1141.6 GMAC -> >=   3.72 s | measured   9.41 s | efficiency  39.5%
+    decode    1828.9 MiB/token -> <=   6.58 tok/s | measured   4.49 tok/s | efficiency  68.2%
+
+wrote bench/perf_model_3b.json

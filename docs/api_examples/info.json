@@ -1,0 +1,11 @@
+{
+  "disease_model": "tomato_disease_v5_effb0_6class.onnx",
+  "kb_reviewed": false,
+  "kb_version": "tomato_kb_v3",
+  "llama": "models/llama3_2_1b_instruct_8da4w.pte",
+  "load_ms": 4193.150841,
+  "ort_spinning": false,
+  "pest_model": "pest_yolov8n_ip102_negatives.onnx",
+  "runtime": "C++",
+  "vision_threads_per_model": 2
+}

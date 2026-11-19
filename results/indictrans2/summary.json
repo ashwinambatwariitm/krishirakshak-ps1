@@ -1,0 +1,264 @@
+{
+  "metadata": {
+    "inputs": [
+      {
+        "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_Early_blight_leaf.json",
+        "sha256": "d288586d9de4643abde2a6800f93a515172fef7909a726b2986e1b2e356d0da8"
+      },
+      {
+        "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_Septoria_leaf_spot.json",
+        "sha256": "88495cc3d7d95b7bfa29766e5aede6b0fda8b6697938801e441857a901a73564"
+      },
+      {
+        "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf.json",
+        "sha256": "189909ec624548d27cd78cc05fbdbb29de0777910094099c9ebca216bd80342e"
+      },
+      {
+        "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf_late_blight.json",
+        "sha256": "42eceaf9fed45fae721b2024a749c0fd88d03fcba5bb9a4e784815c6efbd39ef"
+      },
+      {
+        "path": "results/pi5_bench/2026-11-18_llama1b_lora/lora_Tomato_leaf_yellow_virus.json",
+        "sha256": "e8a02b096013f29c6e2c52078b90f93638ee789a04d321444785faed35fb7cab"
+      },
+      {
+        "path": "results/llama_lora/kaggle_full_run/eval_lora_1b_pte_int4.json",
+        "sha256": "a9f6c1803623fed4a2b71d29171379b44b4c6eb5134c5fa102989a1fc87a3d9b"
+      }
+    ],
+    "reference_commit": "faa26afdfe7e96e6124fcf652c6264872ad5acb1",
+    "reference_sha256": "375cac32253118a94a1e3945f46988814d608726381f68aa2c72597d52ab84d3",
+    "accepted_answers": 21,
+    "excluded_answers": [
+      {
+        "id": "eval_lora_1b_pte_int4_8",
+        "reason": "not accepted or empty",
+        "kept": ""
+      },
+      {
+        "id": "eval_lora_1b_pte_int4_13",
+        "reason": "not accepted or empty",
+        "kept": "Use disease-free seed."
+      }
+    ],
+    "reference_extracts": 38,
+    "excluded_chemical_rows": [
+      "kb_5",
+      "kb_6",
+      "kb_7",
+      "kb_8",
+      "kb_9",
+      "kb_15",
+      "kb_16",
+      "kb_17",
+      "kb_18",
+      "kb_23",
+      "kb_24",
+      "kb_25",
+      "kb_30",
+      "kb_31",
+      "kb_37",
+      "kb_38",
+      "kb_42",
+      "kb_43",
+      "kb_47",
+      "kb_50",
+      "kb_51",
+      "kb_54",
+      "kb_55"
+    ],
+    "both_translation_sets_reviewed": false,
+    "model": "ai4bharat/indictrans2-en-indic-dist-200M",
+    "revision": "2cfd0a20057756d756bf3e53528f492afc52f91a",
+    "backend": "fp32",
+    "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "threads": 4,
+    "beams": 5,
+    "batch_size": 1,
+    "packages": {
+      "torch": "2.5.1+cu121",
+      "transformers": "4.51.3",
+      "indictranstoolkit": "1.1.1",
+      "sacrebleu": "2.5.1",
+      "ctranslate2": "4.6.0",
+      "sentencepiece": "0.2.1",
+      "huggingface-hub": "0.36.2",
+      "tokenizers": "0.21.4",
+      "safetensors": "0.8.0",
+      "sacremoses": "0.2.0",
+      "indic-nlp-library-itt": "0.1.1",
+      "numpy": "2.2.6",
+      "regex": "2026.5.9"
+    },
+    "load_seconds": 3.6177328650010168,
+    "load_peak_rss_mb": 713.22265625,
+    "parameter_count": 211776512,
+    "resumed_answer_languages": 135,
+    "sentence_cache": "Identical input/language/protected terms reused; cache_hit records lookup timing",
+    "current_session_seconds": 1338.2176723099983,
+    "cache_hits": 99,
+    "answer_seconds_total": 1722.7965804599517,
+    "peak_rss_mb": 1645.68359375,
+    "evaluated_on": "2026-11-18",
+    "source_code_sha256": {
+      "tools/translate_indictrans2.py": "f8eb9839ba482a859d1601cd8b5a6e1a4ddb1700e16a3206da54b649697c4b3a",
+      "tools/eval_indictrans2.py": "4b87db89dd2fc7fda6d761e001c099608fbf65ec2db6fcc7466d63d08f371361"
+    },
+    "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.5.1"
+  },
+  "languages": {
+    "hi": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 158,
+      "number_pass_rate": 0.9937106918238994,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.967741935483871,
+      "withheld": 1,
+      "errors": 0,
+      "protected_text_or_completion_failures": 1,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 44.91395479463984
+    },
+    "te": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 157,
+      "number_pass_rate": 0.9874213836477987,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.9354838709677419,
+      "withheld": 2,
+      "errors": 0,
+      "protected_text_or_completion_failures": 0,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 57.041699332873186
+    },
+    "mr": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 158,
+      "number_pass_rate": 0.9937106918238994,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.967741935483871,
+      "withheld": 1,
+      "errors": 0,
+      "protected_text_or_completion_failures": 0,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 55.499924643556554
+    },
+    "kn": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 153,
+      "number_pass_rate": 0.9622641509433962,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.8064516129032258,
+      "withheld": 6,
+      "errors": 0,
+      "protected_text_or_completion_failures": 5,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 29
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 58.69720420657861
+    },
+    "ta": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 153,
+      "number_pass_rate": 0.9622641509433962,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.8064516129032258,
+      "withheld": 6,
+      "errors": 0,
+      "protected_text_or_completion_failures": 1,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 62.969019502188786
+    },
+    "bn": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 152,
+      "number_pass_rate": 0.9559748427672956,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.7741935483870968,
+      "withheld": 7,
+      "errors": 0,
+      "protected_text_or_completion_failures": 4,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 58.423102603658585
+    },
+    "gu": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 158,
+      "number_pass_rate": 0.9937106918238994,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.967741935483871,
+      "withheld": 1,
+      "errors": 0,
+      "protected_text_or_completion_failures": 0,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 56.909708344249175
+    },
+    "or": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 152,
+      "number_pass_rate": 0.9559748427672956,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.7741935483870968,
+      "withheld": 7,
+      "errors": 0,
+      "protected_text_or_completion_failures": 3,
+      "repetition_failures": 0,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 44.7488254642442
+    },
+    "pa": {
+      "sentences": 159,
+      "number_checked": 159,
+      "number_passed": 158,
+      "number_pass_rate": 0.9937106918238994,
+      "sentences_with_numbers": 31,
+      "number_bearing_pass_rate": 0.967741935483871,
+      "withheld": 4,
+      "errors": 0,
+      "protected_text_or_completion_failures": 1,
+      "repetition_failures": 3,
+      "digit_scripts": {
+        "ASCII": 31
+      },
+      "reference_extracts_scored": 38,
+      "reference_chrf": 55.7145656525024
+    }
+  }
+}

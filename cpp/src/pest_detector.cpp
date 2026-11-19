@@ -61,8 +61,9 @@ float iou(const cv::Rect2f& a, const cv::Rect2f& b) {
 }  // namespace
 
 PestDetector::PestDetector(const std::string& onnxPath, const std::string& specJsonPath,
-                           const std::string& labelsJsonPath, const std::string& pestConfigJsonPath, int threads)
-    : session_(onnxPath, threads), modelName_(baseName(onnxPath)) {
+                           const std::string& labelsJsonPath, const std::string& pestConfigJsonPath, int threads,
+                           bool allowSpinning)
+    : session_(onnxPath, threads, allowSpinning), modelName_(baseName(onnxPath)) {
     const auto spec = nlohmann::json::parse(readFile(specJsonPath));
     size_ = spec.at("img_size").get<int>();
     confThreshold_ = spec.at("conf_threshold").get<float>();

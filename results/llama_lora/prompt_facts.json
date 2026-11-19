@@ -1,0 +1,2795 @@
+{
+ "grounding": {
+  "cause_stems": [
+   "caus",
+   "cause",
+   "due"
+  ],
+  "min_overlap": 0.75,
+  "min_word_length": 4,
+  "negations": [
+   "avoid",
+   "don't",
+   "dont",
+   "never",
+   "no",
+   "nor",
+   "not",
+   "without"
+  ],
+  "same_meaning": {
+   "attach": "attach",
+   "attachment": "attach",
+   "border": "margin",
+   "center": "centre",
+   "centre": "centre",
+   "circle": "ring",
+   "circular": "ring",
+   "complete": "entire",
+   "completely": "entire",
+   "concentric": "ring",
+   "damag": "damag",
+   "damage": "damag",
+   "death": "kill",
+   "debri": "debris",
+   "debris": "debris",
+   "decay": "rot",
+   "die": "kill",
+   "dies": "kill",
+   "dwarf": "stunt",
+   "edge": "margin",
+   "entire": "entire",
+   "fast": "rapid",
+   "foliage": "leaf",
+   "harm": "damag",
+   "hurt": "damag",
+   "infect": "infect",
+   "infection": "infect",
+   "injur": "damag",
+   "injury": "damag",
+   "kill": "kill",
+   "leaf": "leaf",
+   "leaflet": "leaf",
+   "leav": "leaf",
+   "leftover": "debris",
+   "lesion": "spot",
+   "margin": "margin",
+   "middle": "centre",
+   "minute": "small",
+   "move": "progress",
+   "patch": "spot",
+   "progress": "progress",
+   "quick": "rapid",
+   "quickly": "rapid",
+   "rain": "rain",
+   "rainfall": "rain",
+   "rainy": "rain",
+   "rapid": "rapid",
+   "rapidly": "rapid",
+   "residue": "debris",
+   "ring": "ring",
+   "rot": "rot",
+   "rotate": "rotation",
+   "rotation": "rotation",
+   "rott": "rot",
+   "rotten": "rot",
+   "shap": "shape",
+   "shape": "shape",
+   "small": "small",
+   "speck": "spot",
+   "spor": "spore",
+   "spore": "spore",
+   "sporulation": "spore",
+   "spot": "spot",
+   "stunt": "stunt",
+   "tiny": "small",
+   "whole": "entire",
+   "yellow": "yellow",
+   "yellowish": "yellow"
+  },
+  "stem_suffixes": [
+   "ing",
+   "ed",
+   "es",
+   "s"
+  ],
+  "stop_words": [
+   "about",
+   "action",
+   "also",
+   "because",
+   "could",
+   "dear",
+   "disease",
+   "farmer",
+   "first",
+   "from",
+   "good",
+   "have",
+   "help",
+   "important",
+   "into",
+   "keep",
+   "make",
+   "more",
+   "most",
+   "news",
+   "plant",
+   "plants",
+   "please",
+   "should",
+   "some",
+   "step",
+   "such",
+   "sure",
+   "take",
+   "than",
+   "that",
+   "their",
+   "them",
+   "then",
+   "there",
+   "these",
+   "they",
+   "this",
+   "those",
+   "tomato",
+   "very",
+   "what",
+   "when",
+   "which",
+   "while",
+   "will",
+   "with",
+   "would",
+   "your"
+  ]
+ },
+ "kb_version": "tomato_kb_v3",
+ "topics": [
+  {
+   "grounding_facts": [
+    {
+     "section": "monitoring",
+     "text": "The basic components of AESA are: Plant health at different stages. Built-in compensation abilities of plants. Pest and defender population dynamics. Soil conditions. Climatic factors. Farmers past experience."
+    },
+    {
+     "section": "monitoring",
+     "text": "Farmers should: Monitor the field situation at least once a week (soil, water, plants, pests, natural enemies, weather factors etc.). Make decisions based on the field situation and P: D ratio. Take direct action when needed (e.g. collect egg masses, remove infested plants etc.)."
+    },
+    {
+     "section": "monitoring",
+     "text": "Identifying the number of pests and beneficial insects helps the farmers to make appropriate pest management decisions. Sweep net, visual counts etc. can be adopted to arrive at the numbers of pests and defenders. The P: D ratio can vary depending on the feeding potential of natural enemy as well as the type of pest."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [],
+   "name": "AESA, field scouting and trap monitoring",
+   "reliability": "",
+   "topic": "aesa_monitoring",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Aphids (Myzus persicae, Aphis gossypii) are sucking pests of tomato."
+    },
+    {
+     "section": "cultural",
+     "text": "Install yellow sticky traps @ 4-5/acre. Use nitrogen fertilizer judiciously."
+    },
+    {
+     "section": "biological",
+     "text": "Spray azadirachtin 5% W/W neem extract concentrate @ 80 g in 160 l of water/acre. Release first instar larvae of green lacewing (Chrysoperla carnea) @ 4000/acre. Conserve lady bird beetles and parasitoids such as Aphidius colemani."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim (CIB&RC) for pinworm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Dimethoate 30% EC @ 264 ml in 200-400 l of water/acre. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Aphids (Myzus persicae, Aphis gossypii) are sucking pests of tomato.",
+    "Install yellow sticky traps @ 4-5/acre. Use nitrogen fertilizer judiciously."
+   ],
+   "name": "Aphids",
+   "reliability": "",
+   "topic": "aphids",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Seedlings, leaves, stem and fruits are affected. Spots on leaves, stems and fruits. White blister like spots in the margins of leaves and turn brown. Wilting of leaves and shoots, streaks on stems and petioles."
+    },
+    {
+     "section": "symptoms",
+     "text": "Small, water soaked spots with white halo on fruits. Centre of spots become slightly raised, tan coloured and rough. Cankers develop and form cracks; slimy bacterial ooze through cracks. Vascular discolouration."
+    },
+    {
+     "section": "symptoms",
+     "text": "Disease appears as spots on leaves, stems and fruits and as wilting of leaves and shoots. White blister like spots in the margins of leaves. Spots become brown with age and coalesce, but leaves do not fall off. Leaflets on one side of rachis show withering initially."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: In Infected debris. Primary spread: Infected plant debris and seed. Secondary spread: Rain splash."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Soil temperature - 28 degree C. High humidity or persistent dew. Moist weather with intermittent showers."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Primary: Bacterial cells survive on infected plant debris and seed (both internally and externally) and also on solanaceous weeds such as Solanum nigrum. Secondary: Bacterial cells transmitted through rain splash."
+    },
+    {
+     "section": "cultural",
+     "text": "Field sanitation. Crop rotation with non host crops. Use of disease free seeds. Disinfection of tools and implements. Removal of weeds."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Seedlings, leaves, stem and fruits are affected. Spots on leaves, stems and fruits. White blister like spots in the margins of leaves and turn brown. Wilting of leaves and shoots, streaks on stems and petioles.",
+    "Small, water soaked spots with white halo on fruits. Centre of spots become slightly raised, tan coloured and rough. Cankers develop and form cracks; slimy bacterial ooze through cracks. Vascular discolouration.",
+    "Disease appears as spots on leaves, stems and fruits and as wilting of leaves and shoots. White blister like spots in the margins of leaves. Spots become brown with age and coalesce, but leaves do not fall off. Leaflets on one side of rachis show withering initially.",
+    "Field sanitation. Crop rotation with non host crops. Use of disease free seeds. Disinfection of tools and implements. Removal of weeds."
+   ],
+   "name": "Bacterial stem and fruit canker",
+   "reliability": "",
+   "topic": "bacterial_canker",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "The spots are necrotic, circular to roughly circular. As the fruit approaches the pink stage, the tissue around the spot retains its green colour longer than normal. Small black spots appear on leaf, petiole, pedicel, and peduncle while irregular, elongated lesions appear on stem."
+    },
+    {
+     "section": "spread",
+     "text": "Bacterial speck is favoured by cool, moist, weather and temperature range between 15 and 25 degree C. Generally, disease is observed in winter season when fruit starts ripening."
+    },
+    {
+     "section": "cultural",
+     "text": "Summer ploughing to desiccate the bacteria and host. Seed should be collected from disease free plants."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Streptocycline (seed dip) @ 100 ppm. Seed dipping in Streptocycline solution @ 100 ppm."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Streptocycline @ 150-200 ppm. One spray in afternoon."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper Oxychloride @ 0.3%. One spray after 10 days of antibiotic application."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "The spots are necrotic, circular to roughly circular. As the fruit approaches the pink stage, the tissue around the spot retains its green colour longer than normal. Small black spots appear on leaf, petiole, pedicel, and peduncle while irregular, elongated lesions appear on stem.",
+    "Summer ploughing to desiccate the bacteria and host. Seed should be collected from disease free plants."
+   ],
+   "name": "Bacterial speck",
+   "reliability": "",
+   "topic": "bacterial_speck",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby."
+    },
+    {
+     "section": "symptoms",
+     "text": "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot."
+    },
+    {
+     "section": "symptoms",
+     "text": "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation."
+    },
+    {
+     "section": "spread",
+     "text": "Survives in infected debris; primary spread through infected plant debris and seed, secondary spread by rain splash. Favoured by moist weather, splattering rains, high humidity or persistent dew."
+    },
+    {
+     "section": "spread",
+     "text": "Disease appear in rainy season and continued up to fruit initiation stage. The disease in prevalent in warm humid weather when RH is more than 90% and temperature is between 25 and 35 degree C."
+    },
+    {
+     "section": "spread",
+     "text": "Ripe fruits are not susceptible to the disease. Surface of the seed becomes contaminated with the bacteria, remaining on the seed surface for some time. The organism survives in alternate hosts, on volunteer tomato plants and on infected plant debris."
+    },
+    {
+     "section": "cultural",
+     "text": "Use disease-free seed."
+    },
+    {
+     "section": "cultural",
+     "text": "Summer ploughing to desiccate the bacteria and host. Soil solarization in nursery bed to avoid seedling infection. Rotation of nursery seedbed and main field. Seed should be collected from disease free plants."
+    },
+    {
+     "section": "cultural",
+     "text": "Adopt intercropping of urd and mung as mulches to prevent rain splash."
+    },
+    {
+     "section": "biological",
+     "text": "Before transplanting, dip seedlings first in a bio-control solution (IIHR organic formulation of Pseudomonas fluorescens + Trichoderma harzianum @ 5 g/litre, or Trichoderma viride or Pseudomonas fluorescens @ 5 g/litre) for 10-15 minutes."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Use tolerant line of tomato like LE-415."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Streptomycin sulfate 9% + tetracycline hydrochloride 1% SP (streptocycline) @ 40-100 ppm. Two sprays: one in the seed bed after the first true leaves, one after transplanting in the main field."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Streptocycline @ 40-100 ppm (20 g/ac)."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Streptocycline (seed dip) @ 100 ppm. Seed dipped in streptocycline solution @ 100 ppm."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+    "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+    "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+    "Use disease-free seed."
+   ],
+   "name": "Bacterial leaf spot",
+   "reliability": "low",
+   "topic": "bacterial_spot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Rapid and complete wilting of plant. Lower leaves drop before wilting. Yellow brown discolouration of tissues. White bacterial ooze from cut ends."
+    },
+    {
+     "section": "symptoms",
+     "text": "Characteristic symptoms of bacterial wilt are the rapid and complete wilting of normal grown up plants. Lower leaves may drop before wilting. Pathogen is mostly confined to vascular region; in advantage cases, it may invade the cortex and pith and cause yellow brown discolouration of tissues."
+    },
+    {
+     "section": "symptoms",
+     "text": "Infected plant parts when cut and immersed in clear water, a white streak of bacterial ooze is seen coming out from cut ends."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: Infected plants and soil. Primary spread: Infected plants. Secondary spread: Wounds, soil and implements."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: High soil moisture."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: The spreads through wounds, soil and implements."
+    },
+    {
+     "section": "cultural",
+     "text": "Crop rotation. Disease free seedlings. Restriction of irrigation."
+    },
+    {
+     "section": "cultural",
+     "text": "Soil application of neem cake @ 100 kg/acre."
+    },
+    {
+     "section": "cultural",
+     "text": "Crop rotations, viz., cowpea-maize-cabbage, okra-cowpea-maize, maize-cowpea-maize and finger millet- brinjal are reported effective in reducing bacterial wilt of tomato. Rotate with non-host crops, particularly with paddy."
+    },
+    {
+     "section": "biological",
+     "text": "Neem cake @ 100 kg/acre."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Tolerant/resistant varieties for bacterial wilt: Arka Ananya, Arka Abhijit, Arka Abha, Arka Alok."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim for Late and early blight, leaf spot and bacterial wilt."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Bleaching powder @ 4 kg/ac. Drenching."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Rapid and complete wilting of plant. Lower leaves drop before wilting. Yellow brown discolouration of tissues. White bacterial ooze from cut ends.",
+    "Characteristic symptoms of bacterial wilt are the rapid and complete wilting of normal grown up plants. Lower leaves may drop before wilting. Pathogen is mostly confined to vascular region; in advantage cases, it may invade the cortex and pith and cause yellow brown discolouration of tissues.",
+    "Infected plant parts when cut and immersed in clear water, a white streak of bacterial ooze is seen coming out from cut ends.",
+    "Crop rotation. Disease free seedlings. Restriction of irrigation."
+   ],
+   "name": "Bacterial wilt",
+   "reliability": "",
+   "topic": "bacterial_wilt",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Staking and removal of the fruits and leaves touching the ground (up to 30 cm). Provision of good soil drainage. Periodic clipping of lower leaves and mulching."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with Trichoderma spp."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Buck eye rot or fruit rot: Use resistant varieties."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Mancozeb 75% WP @ 600-800 g in 300 l of water/acre. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Propineb 70% WP @ 120 g in 40 l of water/acre."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Staking and removal of the fruits and leaves touching the ground (up to 30 cm). Provision of good soil drainage. Periodic clipping of lower leaves and mulching."
+   ],
+   "name": "Buck eye rot / fruit rot",
+   "reliability": "",
+   "topic": "buckeye_fruit_rot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Deep summer ploughing exposes larvae and pupae. Field sanitation. Install pheromone traps @ 4-5/acre for monitoring moths (replace lures every 2-3 weeks); one light trap per acre; bird perches @ 20/acre. For cutworms: tillage at least 2 weeks before planting, use well decomposed manure, flood infested fields, and on small areas collect caterpillars from the soil around plants."
+    },
+    {
+     "section": "biological",
+     "text": "Spray Bacillus thuringiensis var. kurstaki @ 500 g/ha against leaf-eating caterpillars. Spray Ha/Sl NPV 250 LE with 1% jaggery at 28, 35 and 42 days after transplanting in the evening. Collect and destroy larvae by hand at regular intervals."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Chlorantraniliprole 18.5% SC @ 0.25 ml/litre. Label claim (CIB&RC) for tomato fruit borer. Indoxacarb 14.5% SC 0.8 ml/litre for pinworm and fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Indoxacarb 14.5% SC @ 160-200 ml in 120-240 l of water/acre. Listed for tobacco caterpillar (Spodoptera) in the NIPHM package, among other options."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Deep summer ploughing exposes larvae and pupae. Field sanitation. Install pheromone traps @ 4-5/acre for monitoring moths (replace lures every 2-3 weeks); one light trap per acre; bird perches @ 20/acre. For cutworms: tillage at least 2 weeks before planting, use well decomposed manure, flood infested fields, and on small areas collect caterpillars from the soil around plants."
+   ],
+   "name": "Caterpillars (cutworm, armyworm / tobacco caterpillar)",
+   "reliability": "",
+   "topic": "caterpillars",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "The first symptom of disease is observed as soft tissue necrosis of bark of the stem near soil line. White, cottony and silvery mycelial growth is clearly visible on the affected portion. Later on white to light brown mustard like sclerotium is observed on the same portion."
+    },
+    {
+     "section": "symptoms",
+     "text": "Progressive dropping and yellowing followed by wilting of the entire plant is observed. Sometime plants collapse soon after infection. The disease is soil borne where pathogen survives in the form of sclerotia."
+    },
+    {
+     "section": "cultural",
+     "text": "Use crop rotation with cereals, corn, sorghum and millets. Remove all the weeds from field. Avoid use of infested farmyard manure, soil crop debris and compost in the field."
+    },
+    {
+     "section": "cultural",
+     "text": "Irrigate the soil in summer and plough the field to destroy germinating sclerotia. Avoid dense planting and maintain proper aeration near collar region. Use Ammonium Nitrate as a fertilizer for nitrogen source."
+    },
+    {
+     "section": "biological",
+     "text": "Green manuring followed by application of Trichoderma @ 5 kg/ha within a week of ploughing. Seedlings dip in Trichoderma @ 1% for 10 minutes."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper Oxychloride @ 0.3%. Drench near the collar region followed by carbendazim @ 0.1% for immediate control. Fungicide drenching should be done preferably in evening."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Carbendazim @ 0.1%. Drench near the collar region after Copper Oxychloride @ 0.3% for immediate control. Fungicide drenching should be done preferably in evening."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "The first symptom of disease is observed as soft tissue necrosis of bark of the stem near soil line. White, cottony and silvery mycelial growth is clearly visible on the affected portion. Later on white to light brown mustard like sclerotium is observed on the same portion.",
+    "Progressive dropping and yellowing followed by wilting of the entire plant is observed. Sometime plants collapse soon after infection. The disease is soil borne where pathogen survives in the form of sclerotia.",
+    "Use crop rotation with cereals, corn, sorghum and millets. Remove all the weeds from field. Avoid use of infested farmyard manure, soil crop debris and compost in the field.",
+    "Irrigate the soil in summer and plough the field to destroy germinating sclerotia. Avoid dense planting and maintain proper aeration near collar region. Use Ammonium Nitrate as a fertilizer for nitrogen source."
+   ],
+   "name": "Collar rot",
+   "reliability": "",
+   "topic": "collar_rot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Deep summer ploughing. Use well decomposed organic manure. Tillage at least 2 weeks before planting will help destroy plant residue that could harbor larvae. Flood the infested fields."
+    },
+    {
+     "section": "mechanical",
+     "text": "On a small area, collection of caterpillars from soil around the plants can be done. Collection of moths in the light traps."
+    },
+    {
+     "section": "biological",
+     "text": "Conserve biological control agents such as Microgaster sp, Micropilitis dimilis, Bracon kitchener, Broscus punctatus and Liogryllus bimaculatus (Predator)."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Deep summer ploughing. Use well decomposed organic manure. Tillage at least 2 weeks before planting will help destroy plant residue that could harbor larvae. Flood the infested fields."
+   ],
+   "name": "Cutworm (Agrotis ipsilon)",
+   "reliability": "",
+   "topic": "cutworm",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Pre-emergence phase: Complete rotting of seedlings. Post-emergence phase: Infected tissues become soft and water soaked. Seedlings topple over or collapse."
+    },
+    {
+     "section": "symptoms",
+     "text": "Damping off of tomato occurs in two stages, i.e. the pre-emergence and the post-emergence phase. In the pre-emergence the phase the seedlings are killed just before they reach the soil surface. The young radical and the plumule are killed and there is complete rotting of the seedlings."
+    },
+    {
+     "section": "symptoms",
+     "text": "The post-emergence phase is characterized by the infection of the young, juvenile tissues of the collar at the ground level. The infected tissues become soft and water soaked. The seedlings topple over or collapse."
+    },
+    {
+     "section": "spread",
+     "text": "Primary Survival: Soil, Seed, Water. Secondary Spread: Infected debris."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable Conditions: High humidity, high soil moisture, cloudiness and low temperatures below 24 degree C for few days. Crowded seedlings, dampness due to high rainfall, poor drainage and excess of soil solutes."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: High humidity, high soil moisture, cloudiness and low temperatures below 24 degree C for few days are ideal for infection and development of disease. Crowded seedlings, dampness due to high rainfall, poor drainage and excess of soil solutes hamper plant growth and increase the pathogenic damping-off."
+    },
+    {
+     "section": "cultural",
+     "text": "Avoid stagnation of water. Use raised beds of 15 cm height."
+    },
+    {
+     "section": "cultural",
+     "text": "Prepare raised nursery beds about 10 cm above ground level for good drainage to avoid damping off."
+    },
+    {
+     "section": "cultural",
+     "text": "Excessive watering and poorly drained areas of field should be avoided. Use raised beds: 15 cm height is better for water drainage or use pro-trays for raising seedlings."
+    },
+    {
+     "section": "biological",
+     "text": "Treat the seeds with Trichoderma asperellum @ 4 g/kg or Bacillus subtilis @ 10 g/kg of seeds 24 hours before sowing."
+    },
+    {
+     "section": "biological",
+     "text": "Soil application of Bacillus subtilis @ 2.5 kg/ha with 50 kg of FYM."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with Trichoderma viride 1 % WP @ 9 g/kg of seed."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Captan 75% WS @ 20-30 g/kg seed. Seed treatment."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Captan 75% WP @ 1000 g in 400 l of water/acre. Soil drench."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper oxychloride 50% WP @ 2.5 g/l @ 4 l/sq.m. Drench."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Pre-emergence phase: Complete rotting of seedlings. Post-emergence phase: Infected tissues become soft and water soaked. Seedlings topple over or collapse.",
+    "Damping off of tomato occurs in two stages, i.e. the pre-emergence and the post-emergence phase. In the pre-emergence the phase the seedlings are killed just before they reach the soil surface. The young radical and the plumule are killed and there is complete rotting of the seedlings.",
+    "The post-emergence phase is characterized by the infection of the young, juvenile tissues of the collar at the ground level. The infected tissues become soft and water soaked. The seedlings topple over or collapse.",
+    "Avoid stagnation of water. Use raised beds of 15 cm height."
+   ],
+   "name": "Damping off",
+   "reliability": "",
+   "topic": "damping_off",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits."
+    },
+    {
+     "section": "symptoms",
+     "text": "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering."
+    },
+    {
+     "section": "symptoms",
+     "text": "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage."
+    },
+    {
+     "section": "spread",
+     "text": "Survives in infected plant debris. Primary spread through infected seed; secondary spread by spores carried by rain and wind. Favoured by warm, humid (24-29 degree C), rainy and wet weather."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Primary: The fungus spends the winter in infected plant debris in or on the soil where it can survive at least one and perhaps several years. It can also be seed borne."
+    },
+    {
+     "section": "spread",
+     "text": "Secondary: The spores are transported by water, wind, insects, other animals including man, and machinery. Once the initial infections have occurred, they become the most important source of new spore production and are responsible for rapid disease spread."
+    },
+    {
+     "section": "cultural",
+     "text": "Remove and destroy crop debris. Follow crop rotation."
+    },
+    {
+     "section": "cultural",
+     "text": "Use resistant or tolerant cultivars. Change the nursery bed location every season, eradicate weeds and volunteer tomato plants, fertilize properly. Avoid planting overlapping crops in adjacent area."
+    },
+    {
+     "section": "cultural",
+     "text": "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Mancozeb @ 2 ml/litre. Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+    "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+    "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "Remove and destroy crop debris. Follow crop rotation."
+   ],
+   "name": "Early blight",
+   "reliability": "medium",
+   "topic": "early_blight",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "mechanical",
+     "text": "Installation of fruit fly traps @ 20-25 traps/ha for monitoring and mass trapping of fruit flies."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [],
+   "name": "Fruit fly",
+   "reliability": "",
+   "topic": "fruit_fly",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Rhizoctonia fruit rot is most serious disease of kharif tomato. Symptoms appear as rhythmic rotting of fruits coming with the soil contact. Rotting is immediately followed by cracking and fungal growth over it. Generally lower portion of fruits are infected which are coming in soil contact."
+    },
+    {
+     "section": "cultural",
+     "text": "Avoid the contact of fruit from soil by staking of plant. Provide proper drainage in the field."
+    },
+    {
+     "section": "biological",
+     "text": "Green manuring followed by soil application of Trichoderma @ 5 kg/ha in soil is very effective in checking most of the fruit rotting."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Rhizoctonia fruit rot is most serious disease of kharif tomato. Symptoms appear as rhythmic rotting of fruits coming with the soil contact. Rotting is immediately followed by cracking and fungal growth over it. Generally lower portion of fruits are infected which are coming in soil contact.",
+    "Avoid the contact of fruit from soil by staking of plant. Provide proper drainage in the field."
+   ],
+   "name": "Fruit rots",
+   "reliability": "",
+   "topic": "fruit_rots",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Clearing of the veinlets and yellowing of the lower leaves. Younger leaves die in succession. Petiole and leaves droop and wilt. Browning of vascular system. Entire plant wilt and die."
+    },
+    {
+     "section": "symptoms",
+     "text": "The first symptom of the disease is clearing of the veinlets and chlorosis of the leaves. The younger leaves may die in succession and the entire may wilt and die in a course of few days. Soon the petiole and the leaves droop and wilt."
+    },
+    {
+     "section": "symptoms",
+     "text": "In young plants, symptom consists of clearing of veinlet and dropping of petioles. In field, yellowing of the lower leaves first and affected leaflets wilt and die. The symptoms continue in subsequent leaves. At later stage, browning of vascular system occurs. Plants become stunted and die."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: In soil as mycelium and chlamydospores. Primary spread: Infected debris. Secondary spread: Water and planting equipment."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Dry weather (high soil temperature) and low soil moisture."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Soil and implements. Favourable conditions: Relatively high soil moisture and soil temperature."
+    },
+    {
+     "section": "cultural",
+     "text": "Soil solarization. Crop rotation. Removal of infected plant."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with Trichoderma asperellum (viride) @ 4g/kg seeds."
+    },
+    {
+     "section": "biological",
+     "text": "Seedling dip in B. subtilis @ 5g/l and soil application of B. subtilis @ 1.0 kg with 50 kg of FYM/ac at 30 days of transplanting."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with Trichoderma viride 1% WP @ 9 g/kg seed."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Captan 50% WP @ 1 g/litre. Remove the infected plants and drench the soil against Sclerotium rot and Fusarium wilt."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Carbendazim 50% WP @ 1 g/litre. Label claim for Fusarium wilt, sclerotium rot and powdery mildew."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Clearing of the veinlets and yellowing of the lower leaves. Younger leaves die in succession. Petiole and leaves droop and wilt. Browning of vascular system. Entire plant wilt and die.",
+    "The first symptom of the disease is clearing of the veinlets and chlorosis of the leaves. The younger leaves may die in succession and the entire may wilt and die in a course of few days. Soon the petiole and the leaves droop and wilt.",
+    "In young plants, symptom consists of clearing of veinlet and dropping of petioles. In field, yellowing of the lower leaves first and affected leaflets wilt and die. The symptoms continue in subsequent leaves. At later stage, browning of vascular system occurs. Plants become stunted and die.",
+    "Soil solarization. Crop rotation. Removal of infected plant."
+   ],
+   "name": "Fusarium wilt",
+   "reliability": "",
+   "topic": "fusarium_wilt",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "IPM package in tomato under polyhouse: Raise seedlings in protreys in polyhouse. 15 DAS (Days after seed sowing): Spray the plants with Imidacloprid or Thiomethoam. One day before transplanting: Drench the base of seedlings with Imidacloprid or Thiomethoxam."
+    },
+    {
+     "section": "cultural",
+     "text": "At transplanting: Apply neem cake 250 kg/ha. 15 DAP (days after planting): Spray the seedlings with Imidacloprid or Thiomethoxam. 25 DAP (days after planting): Apply neem cake 250 kg/ha."
+    },
+    {
+     "section": "cultural",
+     "text": "Post flowering and fruiting stage: Spray neem seed powder/neem soap for leaf miner. Spray synthetic acaricide/botanical in rotation to control red spider mite, spray systemic insecticide/botanical to control whitefly."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with IIHR patented Organic Formulation (talc formulation of Pseudomonas fluorescens + Trichoderma harzianum) @ 15- 20 g/kg of seeds or Trichoderma viride or Pseudomonas fluorescens @ 200 g/ kg of seeds and shade-dried for half an hour before sowing against soil and seed borne fungal diseases and nematodes."
+    },
+    {
+     "section": "biological",
+     "text": "Application of well decomposed enriched farmyard manure @ 2 t/ha, enriched with Trichoderma viride or Pseudomonas fluorescens @ 2 kg/t of well decomposed FYM against fungal diseases and nematodes."
+    },
+    {
+     "section": "biological",
+     "text": "Release parasitoids only after noticing adult moth catches in the pheromone trap or as pheromone trap or as per field observation."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Bird perches @ 10/ acre should be erected for facilitating field visits of predatory birds."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Install bird percher @ 15-20 bird perches (T shaped) per ha to attract insectivorous birds to feed on different stages of insect pests."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Showing of resistant variety (Fruit borer-Avinash-2, Bacterial wilt- Arka Abha, Arka Alok, Shakti, Arka Abhijit, Arka Shreshta, Leaf Curl-Parbhani, Yeshree, H.24; Root-knot Nematodes, Hissar Anmol, SL 120, Pusa Hybrid 2; Powdery Mildew- Arka Ashish, Early Blight-Devgiri, Fusarium wilt-Pant Bahar)."
+    },
+    {
+     "section": "monitoring",
+     "text": "Post flowering and fruiting stage: Monitor for pest like fruit borer, tobacco caterpillar, leaf miner, whitefly and red spider mite. Erect yellow sticky traps to monitor whitefly. Spray NPV according to the pest. Remove leaves severely infected with leaf miner/red spider mite."
+    },
+    {
+     "section": "monitoring",
+     "text": "Install pheromone traps at appropriate period. Do not store the pheromone lures at normal room temperature (keep them in refrigerator)."
+    },
+    {
+     "section": "nutrition",
+     "text": "Nutrient management especially organic manures and biofertilizers based on the soil test results. If the dosage of nitrogenous fertilizers is too high the crop becomes too succulent and therefore susceptible to insects and diseases. If the dosage is too low, the crop growth is retarded."
+    },
+    {
+     "section": "nutrition",
+     "text": "So, the farmers should apply an adequate for best results. The phosphatic fertilizers should not be applied each and every season as the residual phosphate of the previous season will be available for the current season also."
+    },
+    {
+     "section": "nutrition",
+     "text": "Add well rotten farm yard manure (FYM) @ 8-10 t/acre or vermicompost @ 5 t/acre. Incorporate at the time of field preparation at 1 week (vermicompost) or 2 to 3 weeks (FYM) before transplanting."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Triacontanol 0.05% min GR @ 10000 g/acre. Plant growth regulator recommended for improvement of crop growth in tomato; to be broadcasted and mixed in the soil 2-3 days before sowing."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Gibberellic acid 0.001% L @ 70.8 ml in 180-200 l of water/acre. Plant growth regulator recommended for improvement of crop growth in tomato; spray at 45 and 65 days after sowing."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Triacontanol 0.05% EC/Triacontanol 0.1% EW @ 100 ml in 160-200 l of water/acre. Plant growth regulator recommended for improvement of crop growth in tomato; at 25, 45, and 65 days after sowing."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [
+    "IPM package in tomato under polyhouse: Raise seedlings in protreys in polyhouse. 15 DAS (Days after seed sowing): Spray the plants with Imidacloprid or Thiomethoam. One day before transplanting: Drench the base of seedlings with Imidacloprid or Thiomethoxam.",
+    "At transplanting: Apply neem cake 250 kg/ha. 15 DAP (days after planting): Spray the seedlings with Imidacloprid or Thiomethoxam. 25 DAP (days after planting): Apply neem cake 250 kg/ha.",
+    "Post flowering and fruiting stage: Spray neem seed powder/neem soap for leaf miner. Spray synthetic acaricide/botanical in rotation to control red spider mite, spray systemic insecticide/botanical to control whitefly."
+   ],
+   "name": "General tomato IPM and safety",
+   "reliability": "",
+   "topic": "general",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Small circular dark brown necrotic, numerous spots appear all over the leaf lamina that is uniformly distributed on entire foliage. Sometimes clear narrow yellow halo is visible around the spots. Usually these spots are isolated but in later stage they coalesce to each other. Severely infected older leaves blight and fall down."
+    },
+    {
+     "section": "cultural",
+     "text": "Removal and burning of all crop debris after senescence of the crop."
+    },
+    {
+     "section": "monitoring",
+     "text": "Periodical monitoring of the crop for initiation of disease from last fortnight of December to first week of January."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Mancozeb @ 0.25%. Foliar spray of either Mancozeb @ 0.25% or Chlorothalonil @ 0.2% two to three times at 7-10 days interval. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Chlorothalonil @ 0.2%. Foliar spray of either Mancozeb @ 0.25% or Chlorothalonil @ 0.2% two to three times at 7-10 days interval."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Small circular dark brown necrotic, numerous spots appear all over the leaf lamina that is uniformly distributed on entire foliage. Sometimes clear narrow yellow halo is visible around the spots. Usually these spots are isolated but in later stage they coalesce to each other. Severely infected older leaves blight and fall down.",
+    "Removal and burning of all crop debris after senescence of the crop."
+   ],
+   "name": "Grey leaf spot",
+   "reliability": "",
+   "topic": "grey_leaf_spot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Fruits are generally removed from the upper portion of the plant. Vines and fruit should be completely dry when mature green fruit are harvested. Otherwise, fruit may develop sunken, blackened areas during ripening. Vine-ripes must be hand harvested every other day."
+    },
+    {
+     "section": "cultural",
+     "text": "A common recommendation for fresh market tomatoes is to harvest green matures when about 10% of the fruit on the first hand is at the breaker stage of maturity. When immature greens are picked, the eating quality is reduced even though these tomatoes can be gassed to redness with ethylene."
+    },
+    {
+     "section": "cultural",
+     "text": "But the sugar and acid content, which determine the taste of the tomato, are low, resulting in a flavour-less fruit. Mature green tomatoes develop flavour to the same extent as fruit left on the plant another 24 hours, until colour appears."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Ethephon 39% SL @ 2500 ppm. Commercial crops of fresh market tomatoes picked at the mature green stage are ripened artificially and uniformly by dipping the fruits."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [
+    "Fruits are generally removed from the upper portion of the plant. Vines and fruit should be completely dry when mature green fruit are harvested. Otherwise, fruit may develop sunken, blackened areas during ripening. Vine-ripes must be hand harvested every other day.",
+    "A common recommendation for fresh market tomatoes is to harvest green matures when about 10% of the fruit on the first hand is at the breaker stage of maturity. When immature greens are picked, the eating quality is reduced even though these tomatoes can be gassed to redness with ethylene.",
+    "But the sugar and acid content, which determine the taste of the tomato, are low, resulting in a flavour-less fruit. Mature green tomatoes develop flavour to the same extent as fruit left on the plant another 24 hours, until colour appears."
+   ],
+   "name": "Harvest and post-harvest safety",
+   "reliability": "",
+   "topic": "harvest_postharvest",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides."
+    },
+    {
+     "section": "cultural",
+     "text": "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+    "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+   ],
+   "name": "Healthy leaf",
+   "reliability": "good",
+   "topic": "healthy",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Young larvae feed on tender foliage. Mature larvae bore circular holes. Thrust only a part of its body into fruit and eat the inner content."
+    },
+    {
+     "section": "symptoms",
+     "text": "Eggs hatch in about 3-4 days and the first instars larvae initially feed on the leaves and migrate to the developing green fruit later. The larvae bore into the fruits with the posterior end outside the hole."
+    },
+    {
+     "section": "symptoms",
+     "text": "Young larva feeds on the leaves for some time and then attacks fruits. Internal tissues are eaten severely and completely hollowed out. While feeding the caterpillar thrust its head inside leaving the rest of the body outside."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm weather conditions followed by light rains and dry spells are favourable for multiplication."
+    },
+    {
+     "section": "cultural",
+     "text": "Grow simultaneously 40 days old American tall marigold and 25 days old tomato seedling at 1:16 rows."
+    },
+    {
+     "section": "cultural",
+     "text": "Under Open Conditions: Effective management can be done by adopting marigold as trap crop."
+    },
+    {
+     "section": "cultural",
+     "text": "Raise marigold (tall African variety golden age bearing yellow and orange flower) nursery 15-20 days before tomato nursery."
+    },
+    {
+     "section": "mechanical",
+     "text": "Collect and destroy the infected fruits and grown up larvae."
+    },
+    {
+     "section": "mechanical",
+     "text": "Mechanical collection and destruction of bored fruit at periodic intervals (3-4 times) brings down the borer incidence to less than 2 per cent."
+    },
+    {
+     "section": "mechanical",
+     "text": "Regular collection & destruction of damaged fruits i.e. clean cultivation helps in management of borer effectively."
+    },
+    {
+     "section": "biological",
+     "text": "Release Trichogramma pretiosum @ 1 lakh/ha at an interval of 7 days starting from flower initiation stage."
+    },
+    {
+     "section": "biological",
+     "text": "Spray HaNPV 1.5 x 10^12 POBs/ha. For Helicoverpa armigera: HaNPV 1.5 x 10^12 POBs/ha i.e. NPV of H. armigera 0.43% AS @ 3.0 ml/lit or 2 % AS @ 1.0 ml per lit."
+    },
+    {
+     "section": "biological",
+     "text": "Spray Azadirachtin 1.0 % EC (10000 ppm) 2.0 ml/ lit. or apply Bacillus thuringiensis 2g/lit. during evening hours."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of gram pod borer - Parasitoids: Trichogramma chilonis (egg), Tetrastichus spp. (egg), Telenomus spp. (egg), Chelonus blackburni (egg-larval), Carcelia spp. (larval-pupal), Campoletis chlorideae (larval), Goniophthalmus halli (larval), Bracon spp. (larval) etc."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of gram pod borer - Predators: Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc. Ovomermis albicans, a nematode."
+    },
+    {
+     "section": "monitoring",
+     "text": "Setup pheromone trap with Helilure at 12/ha."
+    },
+    {
+     "section": "monitoring",
+     "text": "Fruit Borer (Helicoverpa armigera) - Economic Threshold Level (ETL): 8 eggs in 15 plants or single larva per plant or 2% fruit infestation."
+    },
+    {
+     "section": "monitoring",
+     "text": "Pheromone traps @ 5/ ha be installed for monitoring fruit borer activity. Replace the lures with fresh lures after every 20-25 day interval. ETL for fruit borer is 8 to10 moths /day/trap. Monitor top three leaves for Helicoverpa eggs."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Indoxacarb 14.5% SC @ 0.8 ml/litre. Label claim for South American pin worm and Tomato fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Chlorantraniliprole 18.5% SC @ 0.25 ml/litre. Label claim for Tomato fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Young larvae feed on tender foliage. Mature larvae bore circular holes. Thrust only a part of its body into fruit and eat the inner content.",
+    "Eggs hatch in about 3-4 days and the first instars larvae initially feed on the leaves and migrate to the developing green fruit later. The larvae bore into the fruits with the posterior end outside the hole.",
+    "Young larva feeds on the leaves for some time and then attacks fruits. Internal tissues are eaten severely and completely hollowed out. While feeding the caterpillar thrust its head inside leaving the rest of the body outside.",
+    "Grow simultaneously 40 days old American tall marigold and 25 days old tomato seedling at 1:16 rows."
+   ],
+   "name": "Fruit borer (Helicoverpa armigera)",
+   "reliability": "",
+   "topic": "helicoverpa_fruit_borer",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m., and take management decisions based on the pest and natural-enemy counts only."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m., and take management decisions based on the pest and natural-enemy counts only."
+   ],
+   "name": "Insect pest",
+   "reliability": "",
+   "topic": "insect_other",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "monitoring",
+     "text": "Monitor pests: Monitor insect population development in fields to determine if and when control measures are warranted. Monitor and consider natural enemies when making control decisions. After treatment, continue monitoring to assess pest populations and their control."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [],
+   "name": "Insecticide resistance management",
+   "reliability": "",
+   "topic": "insecticide_resistance",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits."
+    },
+    {
+     "section": "symptoms",
+     "text": "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection."
+    },
+    {
+     "section": "symptoms",
+     "text": "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour."
+    },
+    {
+     "section": "spread",
+     "text": "Spreads through tiny air-borne spores and thrives in wet, humid conditions (15-18 degree C, humidity above 90%). In just 4-5 days the infection spreads widely, causing outbreaks."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: Infected Debris. Primary spread: Infected debris. Secondary spread: Wind."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Cool nights, warm days and extended wet conditions from rain and fog. Optimum temp for sporulation is 18 - 22 degree C."
+    },
+    {
+     "section": "cultural",
+     "text": "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+    },
+    {
+     "section": "cultural",
+     "text": "Proper drainage. Crop rotation."
+    },
+    {
+     "section": "cultural",
+     "text": "Crop rotation with non-solanaceous host is essential for effective reduction of inoculum. Healthy seeds should be collected only from disease-free fruits. Always use healthy and certified seeds collected from disease-free area."
+    },
+    {
+     "section": "biological",
+     "text": "Soil application of Trichoderma asperellum (viride) @ 1.0 kg/ac."
+    },
+    {
+     "section": "monitoring",
+     "text": "Farmers should check their tomato plants regularly and look for these warning signs and symptoms."
+    },
+    {
+     "section": "monitoring",
+     "text": "Temperature 15-18 degree C: Monitor weather forecasts, adjust planting time."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper oxychloride 50% WP @ 2.5 g/litre. Apply 6 times at 6-day intervals along with soil mulching (preventive, before or at first symptoms)."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper Hydroxide 77% WP @ 2.0 g (per liter of water). Contact (Preventive). Apply before disease onset."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+    "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+    "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+    "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+   ],
+   "name": "Late blight",
+   "reliability": "medium",
+   "topic": "late_blight",
+   "urgent": true
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Soil application of neem cake 100 kg/acre."
+    },
+    {
+     "section": "biological",
+     "text": "Conserve predators such as ladybird beetles and green lacewings and parasitoids such as Anagrus flaveolus and Stethynium triclavatum. Spray NSKE 5%."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Soil application of neem cake 100 kg/acre."
+   ],
+   "name": "Leafhopper (Amrasca biguttula biguttula)",
+   "reliability": "",
+   "topic": "leafhoppers",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Presence of white, cottony mealy bugs on the leaves and twigs. Stunted growth."
+    },
+    {
+     "section": "biological",
+     "text": "Spray FORS 25g/lit or neem oil 0.5% along with teepol 1 ml/lit."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Presence of white, cottony mealy bugs on the leaves and twigs. Stunted growth."
+   ],
+   "name": "Striped mealybug (Ferrisia virgata)",
+   "reliability": "",
+   "topic": "mealybug",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves, wither and dry. Flower and fruit formation affected."
+    },
+    {
+     "section": "symptoms",
+     "text": "Red spider mites thrive under high temperature, dry weather and are more serious under protected conditions. They are generally found on the lower surface of older leaves. However, when the infestation is very high they attack all parts of the plant and are observed in colonies covered by white-silky webs. Adults and nymphs lacerate the leaves causing yellowing and discoloration."
+    },
+    {
+     "section": "symptoms",
+     "text": "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves. Leaves wither and dry. Flower and fruit formation affected."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm weather conditions are favourable for multiplication."
+    },
+    {
+     "section": "cultural",
+     "text": "Field sanitation; rogue out affected plants. Plant tall border crops such as maize or sorghum. Spray thoroughly on the underside of the leaves."
+    },
+    {
+     "section": "cultural",
+     "text": "Flowering plants for spider mites - Attractant plants: Carrot family, bishop's weed (spider mite destroyer). Sunflower family, marigold, buck wheat, spear mint (lady beetle). Carrot family, sunflower family, buck wheat, alfalfa, corn, shrubs (minute pirate bug). Mustard, sweet clove, dill (aphid midge). French bean (predatory mites). Berseem clover (big eyed bugs)."
+    },
+    {
+     "section": "mechanical",
+     "text": "Remove and destroy the affected leaves."
+    },
+    {
+     "section": "mechanical",
+     "text": "When incidence is severe, remove and destroy all severely infected leaves followed by a spray of mixture of an acaricide with botanicals mentioned above."
+    },
+    {
+     "section": "biological",
+     "text": "Conserve predators such as predatory mites (Phytoseiulus, Amblyseius), lady bird beetles, lacewings, predatory thrips, anthocorid bugs and hover flies."
+    },
+    {
+     "section": "biological",
+     "text": "As an alternative to the chemical acaricides spray neem oil/neem soap/ pongamia soap 1%."
+    },
+    {
+     "section": "biological",
+     "text": "If red spider mite is noticed, spray neem soap or neem oil (0.1%)."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of spider mites - Predators: Anthocorid bugs (Orius spp.), mirid bugs, syrphid/hover flies, green lacewings (Mallada basalis and Chrysoperla carnea), predatory mites (Amblyseius alstoniae, A. womersleyi, A. fallacies and Phytoseiulus persimilis), predatory coccinellids (Stethorus punctillum), staphylinid beetle (Oligota spp.), predatory cecidomyiid fly (Anthrocnodax occidentalis), predatory gall midge (Feltiella minuta) etc. Beauveria bassiana (entomo pathogen)."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Fenazaquin 10% EC @ 2.5 ml/litre. Label claim (CIB&RC) for red spider mite. Alternative: Spiromesifen 22.9% SC 1.5 ml/litre."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Spiromesifen 22.9% SC @ 1.5 ml/litre. Label claim for Red spider mite."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Fenazaquin 10% EC @ 500 ml in 200 l of water/acre. Alternative: Spiromesifen 22.9% SC 250 ml in 200 l of water/acre."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves, wither and dry. Flower and fruit formation affected.",
+    "Red spider mites thrive under high temperature, dry weather and are more serious under protected conditions. They are generally found on the lower surface of older leaves. However, when the infestation is very high they attack all parts of the plant and are observed in colonies covered by white-silky webs. Adults and nymphs lacerate the leaves causing yellowing and discoloration.",
+    "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves. Leaves wither and dry. Flower and fruit formation affected.",
+    "Field sanitation; rogue out affected plants. Plant tall border crops such as maize or sorghum. Spray thoroughly on the underside of the leaves."
+   ],
+   "name": "Red spider mite",
+   "reliability": "",
+   "topic": "mites",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "cultural",
+     "text": "Ecological engineering for pest management - Above ground: Raising the flowering plants / compatible cash crops along the field border by arranging shorter plants towards main crop and taller plants towards the border to attract natural enemies as well as to avoid immigrating pest population. Growing flowering plants on the internal bunds inside the field."
+    },
+    {
+     "section": "cultural",
+     "text": "Not to uproot weed plants those are growing naturally like Tridax procumbens, Ageratum sp. Alternanthera sp., which act as nectar source for natural enemies. Not to apply broad spectrum chemical pesticides, when the P: D is favourable. The plant compensation ability should also be considered before applying chemical pesticides."
+    },
+    {
+     "section": "cultural",
+     "text": "Ecological engineering for pest management - Below ground: Crop rotations with leguminous plants which enhance nitrogen content. Keeping soils covered year-round with living vegetation and/or crop residue. Adding organic matter in the form of FYM, Vermicompost, crop residue which enhance below ground biodiversity. Reducing tillage intensity so that hibernating natural enemies can be saved."
+    },
+    {
+     "section": "biological",
+     "text": "Applying balanced dose of nutrients using biobiofertilizers. Apply mychorrhiza and PGPR. Applying Trichoderma as seed and nursery treatment and Pseudomonas fluorescens as seed, nursery treatment and soil application (if commercial products are used, check for label claim. However, biopesticides produced by farmers for own consumption in their fields, registration is not required)."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Understand and conserve defenders: Know defenders/natural enemies to understand their role through regular observations of the agro-ecosystem. Avoid the use of chemical pesticides especially with broad-spectrum activity."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "The natural enemies of tomato pests can be divided into 3 categories 1. parasitoids; 2. predators; and 3. pathogens."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Lady bird beetle: Predatory rate of adult coccinellid on aphids is 50 aphids per day."
+    },
+    {
+     "section": "monitoring",
+     "text": "Insect zoo concept can be helpful to enhance farmers' skill to identify beneficial and harmful insects. In this method, unfamiliar/unknown predators are collected in plastic containers with brush from the field and brought to a place for study."
+    },
+    {
+     "section": "monitoring",
+     "text": "Each predator is placed inside a plastic bottle together with parts of the plant and some known insect pests. Insects in the bottle are observed for certain time and determined whether the test insect is a pest (feeds on plant) or a predator (feeds on other insects)."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [
+    "Ecological engineering for pest management - Above ground: Raising the flowering plants / compatible cash crops along the field border by arranging shorter plants towards main crop and taller plants towards the border to attract natural enemies as well as to avoid immigrating pest population. Growing flowering plants on the internal bunds inside the field.",
+    "Not to uproot weed plants those are growing naturally like Tridax procumbens, Ageratum sp. Alternanthera sp., which act as nectar source for natural enemies. Not to apply broad spectrum chemical pesticides, when the P: D is favourable. The plant compensation ability should also be considered before applying chemical pesticides.",
+    "Ecological engineering for pest management - Below ground: Crop rotations with leguminous plants which enhance nitrogen content. Keeping soils covered year-round with living vegetation and/or crop residue. Adding organic matter in the form of FYM, Vermicompost, crop residue which enhance below ground biodiversity. Reducing tillage intensity so that hibernating natural enemies can be saved."
+   ],
+   "name": "Natural enemies and ecological engineering",
+   "reliability": "",
+   "topic": "natural_enemies",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Nitrogen: Under N deficiency, older leaves gradually change from green to paler green. As the deficiency progresses these older leaves become uniformly yellow (chlorotic). Leaves approach a yellowish white color under extreme deficiency."
+    },
+    {
+     "section": "symptoms",
+     "text": "Nitrogen: The young leaves at the top of the plant maintain a green but paler color and tend to become smaller in size. Branching is reduced resulting in short, spindly plants. The yellowing in nitrogen deficiency is uniform over the entire leaf including the veins."
+    },
+    {
+     "section": "symptoms",
+     "text": "Phosphorus: The symptoms first develop on older leaves showing some necrotic spots and plants are dwarfed or stunted. Phosphorus deficient plants develop very slowly. Plants develop a distinct purpling of the stem, petiole and the under sides of the leaves. Under severe deficiency conditions there is a tendency for leaves to develop a blue-gray luster."
+    },
+    {
+     "section": "nutrition",
+     "text": "Nitrogen deficiency - Correction Measure: Recovery can be done by top dressing of urea of as recommended on soil test basis or apply 2 % urea solution. Recovery of deficient plants to applied nitrogen is immediate (days) and spectacular."
+    },
+    {
+     "section": "nutrition",
+     "text": "Phosphorus deficiency - Correction Measure: Soil application of recommended dose of phosphorous should be applied at the time of sowing or planting."
+    },
+    {
+     "section": "nutrition",
+     "text": "Potassium deficiency - Correction Measure: Foliar application of K2SO4 @1%."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [
+    "Nitrogen: Under N deficiency, older leaves gradually change from green to paler green. As the deficiency progresses these older leaves become uniformly yellow (chlorotic). Leaves approach a yellowish white color under extreme deficiency.",
+    "Nitrogen: The young leaves at the top of the plant maintain a green but paler color and tend to become smaller in size. Branching is reduced resulting in short, spindly plants. The yellowing in nitrogen deficiency is uniform over the entire leaf including the veins.",
+    "Phosphorus: The symptoms first develop on older leaves showing some necrotic spots and plants are dwarfed or stunted. Phosphorus deficient plants develop very slowly. Plants develop a distinct purpling of the stem, petiole and the under sides of the leaves. Under severe deficiency conditions there is a tendency for leaves to develop a blue-gray luster."
+   ],
+   "name": "Nutrient deficiency symptoms and correction",
+   "reliability": "",
+   "topic": "nutrient_deficiency",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [],
+   "kind": "general",
+   "llama_facts": [],
+   "name": "Pesticide safety, poisoning first aid and waiting periods",
+   "reliability": "",
+   "topic": "pesticide_safety",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Blossom-end rot (BER) is caused by a localized Ca deficiency in the developing fruit. It begins with light tan, water-soaked areas that can then enlarge and turn black and leathery in appearance. Most often the problem occurs at the blossom end of the fruit."
+    },
+    {
+     "section": "symptoms",
+     "text": "Cat-facing is a generic term used to describe a tomato fruit that has a gross deformity and is usually not marketable. The defect is usually located on the blossom end of the fruit. The deformity is starts occurring during the formation of the flower that results in the fruit not developing normally."
+    },
+    {
+     "section": "symptoms",
+     "text": "Cracking occurs when the internal expansion is faster than the expansion of the epidermis and the epidermis splits. Varieties differ greatly in their susceptibility to cracking."
+    },
+    {
+     "section": "spread",
+     "text": "Blossom-end rot: Factors like low soil Ca, high N rates, using ammoniacal sources of N, high concentrations of soluble K and Mg in the soil, high salinity, low humidity, inadequate or excess soil moisture, damage to root system by nematodes, diseases etc. increases the BER problem."
+    },
+    {
+     "section": "cultural",
+     "text": "Cat-face: Low temperatures, herbicide drifts, heavy thrips feeding and little leaf disease are some of the causes of cat-faced fruits. Correction measure: Varieties should be selected that historically have had little problem with cat-facing, avoiding spray drift, water logging etc. can reduce the problem."
+    },
+    {
+     "section": "cultural",
+     "text": "Cracking - Correction measure: Control is through selecting tolerant varieties or by reducing fluctuations in soil moisture. Cracking may also be reduced by maintaining good foliage cover, since exposed fruit are more susceptible."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Pox and Fleck: Fruits severely affected with pox and fleck are not marketable. Both conditions seem to be genetic in nature, the disorders only show up under certain environmental conditions. There are differences between varieties as to susceptibility to pox and fleck. Correction measure: Control is through selecting tolerant varieties."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Zippering: Some people feel that a zipper is formed when the \"blooms\" stick to the fruit and do not shed properly but this may not be a cause. Correction measure: The only control is to select varieties that are not prone to zippering."
+    },
+    {
+     "section": "nutrition",
+     "text": "Blossom-end rot - Correction measure: Soil applications of Ca materials, proper fertilization and good water management can prevent the problem."
+    },
+    {
+     "section": "nutrition",
+     "text": "Puffiness: This problem is caused by any factor that affects fruit set, including inadequate pollination, fertilization, or seed development. Most common causes are too low or high temperatures during fruit set. Other factors such as high N, low light, or rainy conditions can also cause seed set problems. Correction measure: Application of balanced N doses may reduce the problem."
+    }
+   ],
+   "kind": "general",
+   "llama_facts": [
+    "Blossom-end rot (BER) is caused by a localized Ca deficiency in the developing fruit. It begins with light tan, water-soaked areas that can then enlarge and turn black and leathery in appearance. Most often the problem occurs at the blossom end of the fruit.",
+    "Cat-facing is a generic term used to describe a tomato fruit that has a gross deformity and is usually not marketable. The defect is usually located on the blossom end of the fruit. The deformity is starts occurring during the formation of the flower that results in the fruit not developing normally.",
+    "Cracking occurs when the internal expansion is faster than the expansion of the epidermis and the epidermis splits. Varieties differ greatly in their susceptibility to cracking.",
+    "Cat-face: Low temperatures, herbicide drifts, heavy thrips feeding and little leaf disease are some of the causes of cat-faced fruits. Correction measure: Varieties should be selected that historically have had little problem with cat-facing, avoiding spray drift, water logging etc. can reduce the problem."
+   ],
+   "name": "Physiological fruit disorders",
+   "reliability": "",
+   "topic": "physiological_disorders",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Irregular, bright yellow blotches with yellow halo appear on leaves. Abundant white sporulation in the infected area of leaves."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: Obligate parasite. Primary spread: Infected debris. Secondary spread: Wind."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm and dry weather."
+    },
+    {
+     "section": "cultural",
+     "text": "Field sanitation."
+    },
+    {
+     "section": "cultural",
+     "text": "Adopt early planting, sprinkler irrigation. Immediately remove and destroy them to help prevent the disease from spreading."
+    },
+    {
+     "section": "cultural",
+     "text": "Proper plant spacing of about 3 feet apart to allow for proper air circulation, which helps the foliage dry faster. Periodic clipping of lower leaves and mulching. Organic mulch added around the plants will protect roots while preventing fungal spores from splashing onto the plant."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with Bacillus subtilis @ 10 g/kg seeds."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Powdery mildew: Growing resistant varieties."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Carbendazim 50% WP @ 1 g/litre. Label claim for Fusarium wilt, sclerotium rot and powdery mildew."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Propiconazole 25% EC @ 200 ml/ac. Spray."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Irregular, bright yellow blotches with yellow halo appear on leaves. Abundant white sporulation in the infected area of leaves.",
+    "Field sanitation.",
+    "Adopt early planting, sprinkler irrigation. Immediately remove and destroy them to help prevent the disease from spreading.",
+    "Proper plant spacing of about 3 feet apart to allow for proper air circulation, which helps the foliage dry faster. Periodic clipping of lower leaves and mulching. Organic mulch added around the plants will protect roots while preventing fungal spores from splashing onto the plant."
+   ],
+   "name": "Powdery mildew",
+   "reliability": "",
+   "topic": "powdery_mildew",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Olivacious black sooty growth of fungus was observed on the lower surface of the leaves. Symptoms are only observed on the leaves. Leaf defoliate soon after infection. No discoloration was observed on the corresponding upper side of the leaves."
+    },
+    {
+     "section": "cultural",
+     "text": "Collect and burn the infected leaves. Be careful for selecting exotic hybrids and varieties."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Hexaconazole @ 0.05%. One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Triademefon @ 0.05%. One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Bitertanol @ 0.05%. One spray of hexaconazole or triademefon or bitertanol @ 0.05% at 7-10 days interval."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Olivacious black sooty growth of fungus was observed on the lower surface of the leaves. Symptoms are only observed on the leaves. Leaf defoliate soon after infection. No discoloration was observed on the corresponding upper side of the leaves.",
+    "Collect and burn the infected leaves. Be careful for selecting exotic hybrids and varieties."
+   ],
+   "name": "Pseudocercospora leaf blight",
+   "reliability": "",
+   "topic": "pseudocercospora_leaf_blight",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling. This affects the uptake of nutrition and water and the plants show wilting during warmer part of the day. This causes stunted plants with yellow foliage resulting in yield reduction."
+    },
+    {
+     "section": "symptoms",
+     "text": "Infected plants in patches in the field. Formation of galls on host root system is the primary symptom. Roots branch profusely starting from the gall tissue causing a 'beard root' symptom. Infected roots become knobby and knotty."
+    },
+    {
+     "section": "symptoms",
+     "text": "In severely infected plants the root system is reduced and the rootlets are almost completely absent. The roots are seriously hampered in their function of uptake and transport of water and nutrients. Plants wilt during the hot part of day, especially under dry conditions and are often stunted."
+    },
+    {
+     "section": "spread",
+     "text": "Under suitable environmental conditions, the eggs hatch and new larvae emerge to complete the life cycle within 4 to 8 weeks depending on temperature. Nematode development is generally most rapid within an optimal soil temperature range of 70 to 80 degree F."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Primary: Cysts and egg masses in infected plant debris and soil or collateral and other hosts like Solonaceous, Malvaceous and Leguminaceous plants act as sources of inoculum. Secondary: Autonomous second stage juveniles that may also be water dispersed. Favourable conditions: Loamy light soils."
+    },
+    {
+     "section": "cultural",
+     "text": "Follow crop rotation with marigold, wherever possible."
+    },
+    {
+     "section": "cultural",
+     "text": "Intercropping of marigold with tomato reduces nematode population. Repellant plants: Marigold. Crop rotation: Marigold, Chrysanthemum spp., Sesbania spp., Crotalaria spp., Gaillardia sp, castor bean and Desmodium spp., (parasitic nematodes). Boarder crops: Strips of Rye, grains, cover crops and mulch beds (rove beetle)."
+    },
+    {
+     "section": "cultural",
+     "text": "Crop rotation with cereal crops. Ecological engineering of tomato with marigold/mustard as intercrops reduces nematode population. Nursery should be raised in nematode free sites or solarized beds."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment with bio-pesticides- Pseudomonas fluorescens @ 10g/kg seed. Nursery bed treatment with T. harzianum @ 50 g/ sq. m."
+    },
+    {
+     "section": "biological",
+     "text": "For the management of nematodes in the main field apply 2 tons of farmyard manure enriched with T. harzianum and Paecilomyces lilacinus per acre before planting, along with 100-200 kg of neem or pongamia cake."
+    },
+    {
+     "section": "biological",
+     "text": "Use of biocontrol agents like Paecilomyces lilacinus (egg parasite)."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Use nematode resistant variety/hybrid if available."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Tolerant/resistant varieties for root knot nematode: Pusa-120, Pusa Hybrid-2, Pusa Hybrid-4, Arka Vardan, Hisar Lalit, TNAU Tomato Hybrid Co3."
+    },
+    {
+     "section": "monitoring",
+     "text": "Collect 100 to 300 cm3 (200-300 g) soil sample. Mix soil sample and pass through a coarse sieve to remove rocks, roots, etc. Take a 600 cc subsample of soil, pack lightly into a beaker uniformly. Place soil in one of the buckets or pans half filled with water. Mix soil and water by stirring with paddle; allow to stand until water almost stops swirling."
+    },
+    {
+     "section": "monitoring",
+     "text": "Pour all but heavy sediment through 20-mesh sieve into second bucket; discard residue in first bucket; discard material caught on sieve. Stir material in second bucket; allow to stand until water almost stops swirling. Pour all but heavy sediment through 200-mesh sieve into first bucket; discard residue in second bucket. Backwash material caught on 200-mesh sieve (which includes large nematodes) into 250-ml beaker."
+    },
+    {
+     "section": "monitoring",
+     "text": "Stir material in first bucket; allow to stand until water almost stops swirling. Pour all but heavy sediment through 325-mesh sieve into second bucket; discard residue in first bucket. Backwash material caught on 325-mesh sieve (which includes small to mid-sized nematodes and silty material) into 250-ml beaker. More than 90% of the live nematodes are recovered in the first 5-8 mm of water drawn from the rubber tubing and the sample is placed in a shallow dish for examination."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Dazomet technical @ 12-16 g/acre (nursery). Nursery. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Carbofuran 3G @ 1 kg ai/ha. At transplanting. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling. This affects the uptake of nutrition and water and the plants show wilting during warmer part of the day. This causes stunted plants with yellow foliage resulting in yield reduction.",
+    "Infected plants in patches in the field. Formation of galls on host root system is the primary symptom. Roots branch profusely starting from the gall tissue causing a 'beard root' symptom. Infected roots become knobby and knotty.",
+    "In severely infected plants the root system is reduced and the rootlets are almost completely absent. The roots are seriously hampered in their function of uptake and transport of water and nutrients. Plants wilt during the hot part of day, especially under dry conditions and are often stunted.",
+    "Follow crop rotation with marigold, wherever possible."
+   ],
+   "name": "Root-knot nematode (Meloidogyne spp.)",
+   "reliability": "",
+   "topic": "root_knot_nematode",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected."
+    },
+    {
+     "section": "symptoms",
+     "text": "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards."
+    },
+    {
+     "section": "symptoms",
+     "text": "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked."
+    },
+    {
+     "section": "spread",
+     "text": "Survives in infected plant debris; spreads by spores through rain splash or wind. Favoured by high humidity."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Primary: Mycelium or conidia in pycnidia in infected plant debris or on solanaceous weeds. Secondary: Conidia through rain splash or wind and also by slimy conidia sticking on to hands and clothing of tomato pickers."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Poor vigour of plants due to nutrient inadequacy or in late season. High humidity or persistent dew at 25 degree C. Moist weather with intermittent showers."
+    },
+    {
+     "section": "cultural",
+     "text": "Removal and destruction of the affected plant parts."
+    },
+    {
+     "section": "biological",
+     "text": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for leaf spot."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Mancozeb 75% WP @ 600-800 g in 300 l of water/acre. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Fluxapyroxad 250 g/l + Pyraclostrobin 250 g/l SC @ 200-250 ml/ha."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+    "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+    "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+    "Removal and destruction of the affected plant parts."
+   ],
+   "name": "Septoria leaf spot",
+   "reliability": "medium",
+   "topic": "septoria_leaf_spot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Leaves with serpentine mines. Drying and dropping of leaves."
+    },
+    {
+     "section": "symptoms",
+     "text": "The tiny, metallic fly punctures the leaf lamina and feeds on the oozing sap. Typical serpentine shaped tunnels are formed in the leaf lamina indicating the path of feeding by the maggots."
+    },
+    {
+     "section": "symptoms",
+     "text": "Leaves with serpentine mines. Drying dropping of leaves in severe cases."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm weather conditions are favourable for multiplication."
+    },
+    {
+     "section": "cultural",
+     "text": "Apply neem cake to furrows (open)/beds (polyhouse) @ 250 kg/ha at planting and repeat after 25 days."
+    },
+    {
+     "section": "cultural",
+     "text": "Flowering plants for serpentine leaf miner - Attractant plants: Carrot family, sunflower family, buck wheat, French bean (predatory thrips)."
+    },
+    {
+     "section": "cultural",
+     "text": "Avoid excess use of nitrogen. Ecological engineering of tomato with beans as intercrop reduces leaf miner attack."
+    },
+    {
+     "section": "mechanical",
+     "text": "Collect and destroy mined leaves."
+    },
+    {
+     "section": "mechanical",
+     "text": "Often the incidence starts from nursery itself. Hence, remove infected leaves at the time of planting or within a week of transplanting."
+    },
+    {
+     "section": "mechanical",
+     "text": "Use yellow sticky traps or cards @ 10/acre."
+    },
+    {
+     "section": "biological",
+     "text": "Spray Neem Seed Kernel Extract 5 %."
+    },
+    {
+     "section": "biological",
+     "text": "Spray neem seed powder extract 4% or neem soap 1% at 15-20 DAPS."
+    },
+    {
+     "section": "biological",
+     "text": "Spray of 5% NSKE at 15 DAP has also been found to be effective against leaf-miner & white fly. Spray Imidacloprid or Thiomethoxam at 15 DAP for leaf miner & white fly control, if needed."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of serpentine leaf miner - Parasitoids: Tetrastichus ovularum (egg), Gronotoma micromorpha (larval and pupal), Diglyphus sp. (larval), Opius sp. (pupal) Chrysocharis sp., Neochrysocharis formosa (larval) etc. Predators: Lacewings, lady beetle, spiders, fire ants, dragonfly, robber fly, praying mantis etc."
+    },
+    {
+     "section": "monitoring",
+     "text": "For leaf miner: Only the number of live mines on five randomly selected leaves per plant should be counted and recorded."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26 OD @ 1.8ml/lit.."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Deltamethrin 2.8 EC @ 1ml/l. Under protected conditions: at the most, one spray may be given, if required."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Leaves with serpentine mines. Drying and dropping of leaves.",
+    "The tiny, metallic fly punctures the leaf lamina and feeds on the oozing sap. Typical serpentine shaped tunnels are formed in the leaf lamina indicating the path of feeding by the maggots.",
+    "Leaves with serpentine mines. Drying dropping of leaves in severe cases.",
+    "Apply neem cake to furrows (open)/beds (polyhouse) @ 250 kg/ha at planting and repeat after 25 days."
+   ],
+   "name": "Serpentine leaf miner (Liriomyza trifolii)",
+   "reliability": "",
+   "topic": "serpentine_leaf_miner",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Young larva scrap leaves on ventral surface. Grownups defoliate crops."
+    },
+    {
+     "section": "symptoms",
+     "text": "This is a minor pest under open conditions and assumes severe form under protected cultivation particularly in ill managed playhouses. Eggs are laid in clusters on foliage. Young larvae feed gregariously on leaves. Mature larvae, migrate and cause extensive damage to leaves and fruits. They hide in soil and crop debris during the day time."
+    },
+    {
+     "section": "symptoms",
+     "text": "In early stages, the caterpillars are gregarious and scrape the chlorophyll content of leaf lamina giving it a papery white appearance. Later they become voracious feeders making irregular holes on the leaves."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm weather conditions and rainy conditions are favourable for multiplication."
+    },
+    {
+     "section": "cultural",
+     "text": "Grow castor as trap crop. Collect and destroy egg masses and early instar larvae."
+    },
+    {
+     "section": "cultural",
+     "text": "Plough the soil to expose and kill the pupae. Grow castor along border and irrigation channel as trap crop."
+    },
+    {
+     "section": "cultural",
+     "text": "Flowering plants for tobacco caterpillar - Repellant plants: Basil. Attractant plants: Carrot family, sunflower family, buck wheat, alfalfa, corn, shrubs (minute pirate bug and lacewing). Nectar rich plants with small flowers i.e anise, caraway, dill, parsely, mustard, sunflower, buck wheat and cowpea (wasp)."
+    },
+    {
+     "section": "mechanical",
+     "text": "Set up light trap @1/ha. Pheromone traps (Pherodin SL) @15/ ha to attract male moths."
+    },
+    {
+     "section": "mechanical",
+     "text": "Collect and destroy egg masses in castor and tomato. Hand pick grown up larvae and kill them."
+    },
+    {
+     "section": "mechanical",
+     "text": "Collection and destruction of egg masses and gregarious larvae."
+    },
+    {
+     "section": "biological",
+     "text": "Spray SlNPV 1.5 x 10^12 POBs/ha."
+    },
+    {
+     "section": "biological",
+     "text": "Spray Azadirachtin 1.0 % EC (10000 ppm) 2.0 ml/ lit. or apply Bacillus thuringiensis 2g/lit. during evening hours."
+    },
+    {
+     "section": "biological",
+     "text": "Spray Sl NPV @ 1.5 X 10^12 POBs / ha+2.5 Kg crude sugar+0.1 % teepol."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of tobacco caterpillar - Parasitoids: Trichogramma chilonis (egg), Tetrastichus spp. (egg), Telenomus spp. (egg), Chelonus blackburni (egg-larval), Carcelia spp. (larval-pupal), Campoletis chlorideae (larval), Eriborus argentiopilosus (larval), Microplitis sp (larval) etc."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of tobacco caterpillar - Predators: Chrysoperla carnea, coccinellids, King crow, common mynah, wasp, dragonfly, spider, robber fly, reduviid bug, praying mantis, fire ants, big eyed bugs (Geocoris sp), pentatomid bug (Eocanthecona furcellata), earwigs, ground beetles, rove beetles etc. Ovomermis albicans, a nematode."
+    },
+    {
+     "section": "monitoring",
+     "text": "Set up pheromone traps @ 12/ha."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Indoxacarb 14.5% SC @ 160 - 200 ml in 120-240 l of water/acre. Tobacco caterpillar, vegetative stage."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Flubendiamide 20% WG @ 40 g in 150-200 l of water/acre. Tobacco caterpillar, vegetative stage."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Flubendiamide 39.35% M/M SC @ 40 ml in 150-200 l of water/acre. Tobacco caterpillar, vegetative stage."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Young larva scrap leaves on ventral surface. Grownups defoliate crops.",
+    "This is a minor pest under open conditions and assumes severe form under protected cultivation particularly in ill managed playhouses. Eggs are laid in clusters on foliage. Young larvae feed gregariously on leaves. Mature larvae, migrate and cause extensive damage to leaves and fruits. They hide in soil and crop debris during the day time.",
+    "In early stages, the caterpillars are gregarious and scrape the chlorophyll content of leaf lamina giving it a papery white appearance. Later they become voracious feeders making irregular holes on the leaves.",
+    "Grow castor as trap crop. Collect and destroy egg masses and early instar larvae."
+   ],
+   "name": "Tobacco caterpillar / leaf eating caterpillar (Spodoptera litura)",
+   "reliability": "",
+   "topic": "spodoptera_tobacco_caterpillar",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Thrips (Thrips tabaci, Frankliniella schultzei) are sucking pests of tomato."
+    },
+    {
+     "section": "symptoms",
+     "text": "Silvery streaks on leaf surface. Pre-mature dropping of flowers. Bud necrosis. Vector of tomato spotted wilt virus."
+    },
+    {
+     "section": "cultural",
+     "text": "Install blue sticky traps @ 10 traps/ha against thrips; locally available empty tins painted blue and coated with grease, vaseline or castor oil can also be used. Grow 5-6 rows of sorghum or maize around the field as a barrier crop."
+    },
+    {
+     "section": "mechanical",
+     "text": "Mechanically uproot the diseased plants and destroy them."
+    },
+    {
+     "section": "mechanical",
+     "text": "Use yellow sticky traps @ 15/ha."
+    },
+    {
+     "section": "biological",
+     "text": "Spray entomopathogens such as Beauveria bassiana, Lecanicillium lecanii or Metarhizium anisopliae @ 1 x 10^8 cfu/ml against sucking pests. Neem oil (Azadirachtin 5% EC) @ 2 ml/litre is effective against sucking pests."
+    },
+    {
+     "section": "biological",
+     "text": "Release larvae of Chrysoperla cornea @10,000/ha."
+    },
+    {
+     "section": "monitoring",
+     "text": "For thrips: Count and record the number of nymphs and adults of thrips present on five terminal leaves per plant (tapping method also can be used to count thrips)."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim (CIB&RC) for pinworm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26 OD @ 1.8ml/lit.."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Methyl demeton 25 EC @ 1lit/ha. Spray."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Thrips (Thrips tabaci, Frankliniella schultzei) are sucking pests of tomato.",
+    "Silvery streaks on leaf surface. Pre-mature dropping of flowers. Bud necrosis. Vector of tomato spotted wilt virus.",
+    "Install blue sticky traps @ 10 traps/ha against thrips; locally available empty tins painted blue and coated with grease, vaseline or castor oil can also be used. Grow 5-6 rows of sorghum or maize around the field as a barrier crop."
+   ],
+   "name": "Thrips",
+   "reliability": "",
+   "topic": "thrips",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Light and dark green mottling on leaves. Wilting of young leaves. Leaflets distorted and puckered. Fern leaf symptoms. Stunted growth."
+    },
+    {
+     "section": "symptoms",
+     "text": "The disease is characterized by light and dark green mottling on the leaves often accompanied by wilting of young leaves in sunny days when plants first become infected."
+    },
+    {
+     "section": "symptoms",
+     "text": "The leaflets of affected leaves are usually distorted, puckered and smaller than normal. Sometimes the leaflets become indented resulting in \"fern leaf\" symptoms. The affected plant appears stunted, pale green and spindly."
+    },
+    {
+     "section": "spread",
+     "text": "Survival: Infected debris. Primary spread: In infected debris. Secondary spread: Contact with clothes, hand of labourers and implements."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Temperature, day length and light intensity, variety, age of the plant at infection and the virulence of the strain of CMV."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: The virus is spread by contact with clothes, hand of working labour, touching of infected plants with healthy ones, plant debris and implements."
+    },
+    {
+     "section": "cultural",
+     "text": "Disease free seeds. Removal of infected plants. Crop rotation."
+    },
+    {
+     "section": "cultural",
+     "text": "Seeds from disease free healthy plants should be selected for sowing. The seeds should be thoroughly rinsed and dried in shade."
+    },
+    {
+     "section": "cultural",
+     "text": "In the nursery all the infected plants should be removed carefully and destroyed. Seedlings infected with the viral disease should not be used for transplanting."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Light and dark green mottling on leaves. Wilting of young leaves. Leaflets distorted and puckered. Fern leaf symptoms. Stunted growth.",
+    "The disease is characterized by light and dark green mottling on the leaves often accompanied by wilting of young leaves in sunny days when plants first become infected.",
+    "The leaflets of affected leaves are usually distorted, puckered and smaller than normal. Sometimes the leaflets become indented resulting in \"fern leaf\" symptoms. The affected plant appears stunted, pale green and spindly.",
+    "Disease free seeds. Removal of infected plants. Crop rotation."
+   ],
+   "name": "Mosaic",
+   "reliability": "",
+   "topic": "tomato_mosaic",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Severe stunting. Chlorotic or necrotic rings on leaves. Thickening of veins and bronzing of young leaves. Growing tips die-back and wilt. Yellow areas with concentric circular markings in fruit. Discoloration of seed."
+    },
+    {
+     "section": "symptoms",
+     "text": "Symptoms vary among hosts and in a single host species. Stunting is a common symptom of TSWV infection. Chlorotic or necrotic rings form on the leaves of many infected hosts. Thickening of veins and bronzing of young leaves. Growing tips may die-back and terminal branches may be streaked."
+    },
+    {
+     "section": "symptoms",
+     "text": "Affected plants may have a one sided growth habit or may be entirely stunted and have drooping leaves, suggesting a wilt. Pale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato are formed. Discoloration of seed."
+    },
+    {
+     "section": "spread",
+     "text": "Primary spread: Infected plants. Secondary spread: Thrips, Frankliniella schultzii, Scirtothrips dorsalis."
+    },
+    {
+     "section": "spread",
+     "text": "Survival and spread: Primary: Virus particles in infected plants of many hosts like Acanthospermum hispidum, Aster sp., Boerhaavia diffusa, Chrysanthemum sp., Cleome gynandra, cowpea, Dahlia variabilis, egg plant, French bean, Gerbera sp., groundnut, Lagasca mollis, lettuce, marigold, pea, chilli, pineapple, potato, Trianthema portulacastrum, water melon and Zinnia elegans."
+    },
+    {
+     "section": "spread",
+     "text": "Secondary: Virus particles transmitted by thrips, Frankliniella schultzii, Scirtothrips dorsalis."
+    },
+    {
+     "section": "cultural",
+     "text": "Use of healthy seedlings for transplanting. Rouging of infected plants upto 45 days of planting. Growing sorghum, maize or bajra as barrier crop."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26 OD @ 900 ml/ha. Apply any one of the listed insecticides."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Imidachloprid 17.8 SL @ 250 ml / ha. Apply any one of the listed insecticides."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Severe stunting. Chlorotic or necrotic rings on leaves. Thickening of veins and bronzing of young leaves. Growing tips die-back and wilt. Yellow areas with concentric circular markings in fruit. Discoloration of seed.",
+    "Symptoms vary among hosts and in a single host species. Stunting is a common symptom of TSWV infection. Chlorotic or necrotic rings form on the leaves of many infected hosts. Thickening of veins and bronzing of young leaves. Growing tips may die-back and terminal branches may be streaked.",
+    "Affected plants may have a one sided growth habit or may be entirely stunted and have drooping leaves, suggesting a wilt. Pale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato are formed. Discoloration of seed.",
+    "Use of healthy seedlings for transplanting. Rouging of infected plants upto 45 days of planting. Growing sorghum, maize or bajra as barrier crop."
+   ],
+   "name": "Tomato spotted wilt",
+   "reliability": "",
+   "topic": "tomato_spotted_wilt",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Mining of leaves, stem and pinholes on fruits."
+    },
+    {
+     "section": "cultural",
+     "text": "Collect and destroy the pinworm affected plants and fruits. Avoid solanaceous crops after tomato. Use healthy seedlings for transplanting."
+    },
+    {
+     "section": "mechanical",
+     "text": "Keep pheromone traps @ 16 nos./ac to attract and kill the adult moths."
+    },
+    {
+     "section": "mechanical",
+     "text": "Installation of indigenously prepared light trap by hanging one incandescent bulb @ one bulb on a tub of water. Such traps may be installed @ 2-3 traps/ ha for monitoring and mass trapping of adult moths of South American tomato pinworm."
+    },
+    {
+     "section": "biological",
+     "text": "Releasing of egg parasitoids Trichogramma achaea / Trichogramma pretiosum / Trichogrammatoidea bactrae at weekly intervals @ 50,000/ha for 6 times at an interval of 7 days against South American tomato pinworm."
+    },
+    {
+     "section": "monitoring",
+     "text": "Installation of specific lures in pheromone traps for South American tomato pinworm, fruit borer and tobacco/leaf eating caterpillar @ 10-12 traps/ ha (replace the lures with fresh ones after every 2-3 weeks). Trap should be installed in the field in such a way that the position of the lure is always 2 to 3 feet above the crop canopy. The trapped moth should be collected and killed on regular intervals."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Indoxacarb 14.5% SC @ 0.8 ml/litre. Label claim for South American pin worm and Tomato fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26 OD @ 1.8ml/lit.."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Mining of leaves, stem and pinholes on fruits.",
+    "Collect and destroy the pinworm affected plants and fruits. Avoid solanaceous crops after tomato. Use healthy seedlings for transplanting."
+   ],
+   "name": "South American tomato pinworm (Tuta absoluta)",
+   "reliability": "",
+   "topic": "tuta_absoluta_pinworm",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Infection starts during flowering stage. Soft, wet, water soaked rotting of stem, leaves, fruits, and flowers are observed followed by white fungal growth over it. Fruits are severely affected where sclerotia formed inside and outside of the fruits."
+    },
+    {
+     "section": "spread",
+     "text": "The disease is observed in December to January during low temperature, cloudy weather and high atmospheric humidity accompanied by soil moisture."
+    },
+    {
+     "section": "mechanical",
+     "text": "Cut the infected plant parts along with some healthy portion in morning and carefully collect in polythene to avoid falling of sclerotia in the field. Burn all these materials away from field."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Carbendazim @ 0.1%. Foliar spray at flowering stage followed by spray of mancozeb @ 0.25% in cool, cloudy and humid weather."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Mancozeb @ 0.25%. Spray after the carbendazim @ 0.1% flowering-stage spray, in cool, cloudy and humid weather. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Infection starts during flowering stage. Soft, wet, water soaked rotting of stem, leaves, fruits, and flowers are observed followed by white fungal growth over it. Fruits are severely affected where sclerotia formed inside and outside of the fruits."
+   ],
+   "name": "White rot",
+   "reliability": "",
+   "topic": "white_rot",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Chlorotic spots. Yellowing. Downward curling and drying of leaves. Vector of tomato leaf curl disease."
+    },
+    {
+     "section": "symptoms",
+     "text": "Whitefly is a well-known vector, which transmits tomato leaf curl virus. It has piercing and sucking mouthpart and both nymphs and adults feed on lower surface of the leaves causing deformation of young leaves. Whiteflies also excrete honeydew, causing sooty mold."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: Warm weather conditions are favourable for multiplication."
+    },
+    {
+     "section": "cultural",
+     "text": "Remove alternate weed host Abutilon indicum. Uproot and destroy the diseased leaf curl plants. Use nitrogen and irrigation judiciously."
+    },
+    {
+     "section": "cultural",
+     "text": "Raise nurseries in seedling trays under nylon nets or polyhouses."
+    },
+    {
+     "section": "cultural",
+     "text": "Remove the leaf curl infested plants as soon as disease symptoms are expressed. This helps in reducing source of inoculums of the disease."
+    },
+    {
+     "section": "mechanical",
+     "text": "Install yellow sticky traps @ 12 /ha to attract the adult."
+    },
+    {
+     "section": "mechanical",
+     "text": "Installation of Yellow sticky traps @ 10 traps/ha, 15 cm above the canopy against white fly. Locally available empty tins can be painted yellow or blue / coated with grease / vaseline/ castor oil on outer surface may also be used as yellow/blue sticky traps."
+    },
+    {
+     "section": "biological",
+     "text": "If the traps indicate the whitefly activity, spray neem seed kernel extract 4% (NSKE) or pongamia or neem oil (8-10 ml/l) or neem soap (10g/l)."
+    },
+    {
+     "section": "natural_enemies",
+     "text": "Natural enemies of whitefly - Parasitoids: Encarsia sp, Eretmocerus spp. Predators: Dicyphus hesperus, (mirid bug), dragonfly, spider, robber fly, praying mantis, fire ants, coccinellids, lace wings, big eyed bugs (Geocoris sp) etc."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Use virus resistant hybrids."
+    },
+    {
+     "section": "monitoring",
+     "text": "Install yellow sticky traps coated with adhesive or sticky glue at crop canopy level for monitoring adult whitefly population."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Thiomethoxam 25% WP @ 0.4 g/litre. Label claim for Whitefly."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Imidacloprid 17.80% SL @ 0.5 ml/litre. Label claim for Whitefly."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Cyantraniliprole 10.26% OD @ 1.2 ml/litre. Label claim for South American pin worm, leaf miner, aphids, thrips, whitefly and fruit borer."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "pest",
+   "llama_facts": [
+    "Chlorotic spots. Yellowing. Downward curling and drying of leaves. Vector of tomato leaf curl disease.",
+    "Whitefly is a well-known vector, which transmits tomato leaf curl virus. It has piercing and sucking mouthpart and both nymphs and adults feed on lower surface of the leaves causing deformation of young leaves. Whiteflies also excrete honeydew, causing sooty mold.",
+    "Remove alternate weed host Abutilon indicum. Uproot and destroy the diseased leaf curl plants. Use nitrogen and irrigation judiciously.",
+    "Raise nurseries in seedling trays under nylon nets or polyhouses."
+   ],
+   "name": "Whitefly (Bemisia tabaci)",
+   "reliability": "",
+   "topic": "whitefly",
+   "urgent": false
+  },
+  {
+   "grounding_facts": [
+    {
+     "section": "symptoms",
+     "text": "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci)."
+    },
+    {
+     "section": "symptoms",
+     "text": "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms."
+    },
+    {
+     "section": "symptoms",
+     "text": "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms."
+    },
+    {
+     "section": "spread",
+     "text": "Primary spread: Whiteflies. Secondary spread: Movement of infected plants."
+    },
+    {
+     "section": "spread",
+     "text": "Favourable conditions: whitefly is the vector for transmitting of leaf curl virus."
+    },
+    {
+     "section": "cultural",
+     "text": "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+    },
+    {
+     "section": "cultural",
+     "text": "Use 100-mesh nylon net on nursery beds to stop whitefly entry and leaf curl transmission. Grow 5-6 rows of sorghum or maize around the tomato field at least 2 months before transplanting as a barrier against whiteflies, thrips and aphids."
+    },
+    {
+     "section": "cultural",
+     "text": "Raising nursery in protected condition. Growing Sorghum, Maize or Bajra as barrier crop. Use of disease free seeds."
+    },
+    {
+     "section": "mechanical",
+     "text": "Yellow sticky traps @ 5nos./ac."
+    },
+    {
+     "section": "biological",
+     "text": "Conserve whitefly parasitoids (Encarsia, Eretmocerus) and predators. Spray neem seed kernel extract (NSKE) 5% or azadirachtin 5% W/W neem extract concentrate @ 80 g in 160 l of water/acre."
+    },
+    {
+     "section": "biological",
+     "text": "Conserve predators such as Dicyphus hesperus, (mirid bug), dragonfly, spider, robber fly, praying mantis, fire ants, coccinellids, lace wings, big eyed bugs (Geocoris sp) etc."
+    },
+    {
+     "section": "resistant_varieties",
+     "text": "Tolerant/resistant varieties for tomato leaf curl virus: Arka Ananya, Kashi Vishesh, Kashi Amrit, COTH 2, TNAU Tomato Hybrid Co3."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Imidacloprid 17.8% SL @ 0.5 ml/litre. Label claim (CIB&RC) against the whitefly vector. Alternative: Thiamethoxam 25% WP 0.4 g/litre."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Imidacloprid 17.8% SL (seedling root dip) @ 60-70 ml in 200 l of water/acre, roots dipped for 15 minutes before transplanting. For management of the leaf curl vector."
+    },
+    {
+     "section": "chemical",
+     "text": "Spray Dimethoate 30% EC @ 396 ml in 200-400 l of water/acre. Leaf curl disease (vector - whitefly), vegetative stage. Restricted use in India: confirm with your KVK or agriculture officer before use."
+    },
+    {
+     "section": "safety",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids."
+    },
+    {
+     "section": "safety",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted."
+    },
+    {
+     "section": "safety",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres."
+    },
+    {
+     "section": "safety",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night."
+    },
+    {
+     "section": "safety",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce."
+    }
+   ],
+   "kind": "disease",
+   "llama_facts": [
+    "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+    "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+    "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+    "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+   ],
+   "name": "Tomato leaf curl virus",
+   "reliability": "good",
+   "topic": "yellow_leaf_curl_virus",
+   "urgent": false
+  }
+ ]
+}

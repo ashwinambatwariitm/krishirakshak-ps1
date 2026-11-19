@@ -1,0 +1,96 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 58,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+     "topic": "healthy",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "",
+     "id": 59,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA.",
+     "topic": "healthy",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Healthy leaf",
+   "topic": "healthy"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Healthy leaf",
+  "reliability": "good",
+  "top": [
+   {
+    "class": "healthy",
+    "probability": 0.9448142647743225
+   },
+   {
+    "class": "early_blight",
+    "probability": 0.013568226248025894
+   },
+   {
+    "class": "septoria_leaf_spot",
+    "probability": 0.013104424811899662
+   }
+  ],
+  "topic": "healthy",
+  "urgent": false
+ },
+ "lang": "en",
+ "llama": {
+  "accepted": true,
+  "dropped_sentences": [],
+  "raw_text": "Rotate tomato with non-host crops like cereals and legumes. Do not plant tomato with chilli or brinjal.",
+  "rejected_reasons": [],
+  "stats": {
+   "generated_tokens": 25,
+   "ok": true,
+   "prompt_tokens": 334,
+   "stopped_on_repeat": false,
+   "time_to_first_token_s": 2.83,
+   "tokens_per_s": 13.804527885146328,
+   "total_s": 4.640600276
+  },
+  "text": "Rotate tomato with non-host crops like cereals and legumes. Do not plant tomato with chilli or brinjal."
+ },
+ "messages": [],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 169.34848718475877,
+   "height": 631,
+   "sharpness": 41.8037958961151,
+   "width": 563
+  },
+  "ok": true
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 55.382225,
+  "llama": 4640.629519,
+  "pest": 117.030293,
+  "quality": 2.558519,
+  "retrieval": 0.22859,
+  "total": 4760.794392,
+  "vision_wall": 117.190045
+ }
+}

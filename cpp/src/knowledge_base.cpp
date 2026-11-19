@@ -16,8 +16,12 @@ namespace kr {
 
 namespace {
 
-const std::vector<std::string> kSectionOrder = {"symptoms", "spread", "cultural", "biological",
-                                                "resistant_varieties", "chemical", "safety"};
+const std::vector<std::string> kSectionOrder = {"symptoms", "spread", "cultural", "mechanical", "biological",
+                                                "natural_enemies", "resistant_varieties", "monitoring", "nutrition",
+                                                "chemical", "safety"};
+// Extracts shown per section for one diagnosis (the knowledge base has up to ~35 per topic since tomato_kb_v3);
+// the oldest extracts come first, so the facts given to Llama are unchanged. Follow-up search sees all extracts.
+constexpr int kMaxPerSection = 3;
 // Spray options: per-litre ICAR doses first (easiest for a farmer to measure), then NIPHM, then the rest
 const std::map<std::string, int> kSourcePriority = {{"ICAR_LB", 0}, {"ICAR_IPM", 1}, {"NIPHM", 2}};
 
@@ -149,7 +153,9 @@ std::vector<KbChunk> KnowledgeBase::retrieveForDiagnosis(const std::string& topi
     std::stable_sort(others.begin(), others.end(), [&](const KbChunk& a, const KbChunk& b) { return secIdx(a) < secIdx(b); });
 
     std::vector<KbChunk> out;
-    for (auto& c : others) if (c.section != "safety") out.push_back(c);
+    std::map<std::string, int> perSection;
+    for (auto& c : others)
+        if (c.section != "safety" && ++perSection[c.section] <= kMaxPerSection) out.push_back(c);
     out.insert(out.end(), sprays.begin(), sprays.end());
     if (!sprays.empty()) {   // the safety rules always follow spray advice
         auto safety = query("SELECT * FROM chunks WHERE topic = 'general' AND section = 'safety' ORDER BY id", {}, lang);
@@ -198,6 +204,16 @@ std::vector<KbChunk> KnowledgeBase::search(const std::string& question, const st
         out.insert(out.end(), rows.begin(), rows.end());
     }
     return out;
+}
+
+bool KnowledgeBase::findChunk(const std::string& topic, const std::string& phrase, const std::string& lang,
+                              KbChunk& out) const {
+    // instr() is an exact, case-sensitive substring test (LIKE would treat % and _ in the phrase as wildcards)
+    const auto rows = query("SELECT * FROM chunks WHERE topic = ? AND instr(text_en, ?) > 0 ORDER BY id LIMIT 1",
+                            {topic, phrase}, lang);
+    if (rows.empty()) return false;
+    out = rows.front();
+    return true;
 }
 
 std::string KnowledgeBase::topicName(const std::string& topic, const std::string& lang) const {

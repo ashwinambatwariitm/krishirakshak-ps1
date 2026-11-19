@@ -1,0 +1,16 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v8_no_numbering.txt",
+  "options": "--block-cause-words",
+  "topics": 27,
+  "accepted": 24,
+  "refused_first": 0,
+  "mean_grounded": 7.19,
+  "mean_dropped": 1.15,
+  "rejected_topics": [
+    "bacterial_speck",
+    "tuta_absoluta_pinworm",
+    "whitefly"
+  ]
+}

@@ -54,11 +54,13 @@ def main():
         return
     rows = []
     for pte in args.pte:
+        # The runner also prints the generated tokens to stdout as raw bytes; a Hindi character split across two
+        # tokens is not valid UTF-8 on its own, so decode leniently and pick out the JSON result lines
         out = subprocess.run([sys.executable, "-m", "llm.bench_llm", pte, "--tokenizer", args.tokenizer, "--child"],
-                             capture_output=True, text=True, check=True).stdout
+                             capture_output=True, check=True).stdout.decode("utf-8", errors="replace")
         for line in out.splitlines():
-            if line.startswith("{"):
-                rows.append(json.loads(line))
+            if '{"pte"' in line:
+                rows.append(json.loads(line[line.index('{"pte"'):]))
                 r = rows[-1]
                 print(f"{r['pte']:40s} {r['topic']:24s} {r['lang']} ttft {r.get('time_to_first_token_s')} s  "
                       f"{r.get('tokens_per_s')} tok/s  rss {r['peak_rss_mb']} MB  check {r['check_ok']}")

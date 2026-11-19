@@ -1,0 +1,27 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v3_no_keyword_list.txt",
+  "options": "--block-cause-words",
+  "topics": 27,
+  "accepted": 13,
+  "refused_first": 0,
+  "mean_grounded": 3.11,
+  "mean_dropped": 5.63,
+  "rejected_topics": [
+    "aphids",
+    "bacterial_canker",
+    "bacterial_spot",
+    "bacterial_wilt",
+    "damping_off",
+    "fruit_rots",
+    "grey_leaf_spot",
+    "helicoverpa_fruit_borer",
+    "mites",
+    "powdery_mildew",
+    "serpentine_leaf_miner",
+    "spodoptera_tobacco_caterpillar",
+    "tomato_spotted_wilt",
+    "tuta_absoluta_pinworm"
+  ]
+}

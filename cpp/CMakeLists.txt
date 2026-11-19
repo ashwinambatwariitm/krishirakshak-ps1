@@ -11,8 +11,14 @@
 #   OPENCV_ROOT       OpenCV for the target (ARM only; the x86 build uses the system OpenCV)
 #   THIRD_PARTY_SRC   folder with sqlite-amalgamation-*/ and json.hpp (see cpp/README.md)
 #   EXECUTORCH_ROOT   ExecuTorch install prefix; when set, the Llama advisor is compiled in (KR_WITH_LLM)
+#   CT2_ROOT, SPM_ROOT  CTranslate2 4.6.0 and SentencePiece 0.2.1 installs (cpp/tools/build_translation_deps.sh);
+#                     when both are found, the IndicTrans2 translator is compiled in (KR_WITH_TRANSLATION)
 cmake_minimum_required(VERSION 3.16)
 project(KrishiRakshak VERSION 0.1 LANGUAGES C CXX)
+# find_package(executorch) may also use EXECUTORCH_ROOT as a search prefix (CMake >= 3.27); it is the install prefix
+if(POLICY CMP0144)
+    cmake_policy(SET CMP0144 NEW)
+endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -37,6 +43,8 @@ if(CMAKE_CROSSCOMPILING)
     set(OpenCV_INCLUDE_DIRS "${OPENCV_ROOT}/usr/include/opencv4")
     link_directories(${OPENCV_ROOT}/usr/lib/aarch64-linux-gnu)
     set(OpenCV_LIBS opencv_core opencv_imgproc opencv_imgcodecs)
+    set(CT2_ROOT "$ENV{HOME}/arm_libs/ctranslate2_arm" CACHE PATH "CTranslate2 for aarch64")
+    set(SPM_ROOT "$ENV{HOME}/arm_libs/sentencepiece_arm" CACHE PATH "SentencePiece for aarch64")
     # Libraries of the Pi's own OS are resolved at run time on the Pi (same approach as road-anomaly-detection)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--allow-shlib-undefined -Wl,--unresolved-symbols=ignore-in-shared-libs")
 else()
@@ -44,6 +52,8 @@ else()
     set(TARGET_ARCH "native")
     set(ORT_ROOT "$ENV{HOME}/x86_libs/onnxruntime-linux-x64-1.23.2" CACHE PATH "ONNX Runtime")
     find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)
+    set(CT2_ROOT "$ENV{HOME}/x86_libs/ctranslate2" CACHE PATH "CTranslate2")
+    set(SPM_ROOT "$ENV{HOME}/x86_libs/sentencepiece" CACHE PATH "SentencePiece")
 endif()
 
 # SQLite compiled into the binary (single-binary deployment), with the FTS5 full-text index enabled
@@ -56,13 +66,18 @@ set(KR_SOURCES
     src/severity.cpp
     src/disease_classifier.cpp
     src/pest_detector.cpp
+    src/pest_severity.cpp
     src/knowledge_base.cpp
     src/output_guard.cpp
     src/pipeline.cpp
+    src/indic_text.cpp      # IndicTrans2 text pre/post-processing (no dependencies; tested without the model)
 )
 
 add_library(krishirakshak_core STATIC ${KR_SOURCES})
-target_include_directories(krishirakshak_core PUBLIC src ${ORT_ROOT}/include ${OpenCV_INCLUDE_DIRS} ${THIRD_PARTY_SRC})
+target_include_directories(krishirakshak_core PUBLIC src)
+# Third-party headers as system headers: with ExecuTorch, Abseil raises the language level to C++20 and GCC then
+# warns about code inside the OpenCV 4.10 headers (166 warnings on the ARM build, none in project code)
+target_include_directories(krishirakshak_core SYSTEM PUBLIC ${ORT_ROOT}/include ${OpenCV_INCLUDE_DIRS} ${THIRD_PARTY_SRC})
 target_link_directories(krishirakshak_core PUBLIC ${ORT_ROOT}/lib)
 target_link_libraries(krishirakshak_core PUBLIC onnxruntime ${OpenCV_LIBS} sqlite3_static pthread dl)
 
@@ -112,20 +127,60 @@ else()
     message(STATUS "Llama advisor: OFF (set EXECUTORCH_ROOT to enable)")
 endif()
 
+# IndicTrans2 translation (English -> 9 Indian languages) on the CTranslate2 C++ runtime. libctranslate2 is a shared
+# library (OpenBLAS + Ruy + GNU OpenMP compiled in); SentencePiece is linked statically.
+set(KR_WITH_TRANSLATION OFF)
+if(EXISTS "${CT2_ROOT}/include/ctranslate2/translator.h" AND EXISTS "${SPM_ROOT}/lib/libsentencepiece.a")
+    set(KR_WITH_TRANSLATION ON)
+    target_sources(krishirakshak_core PRIVATE src/translator.cpp)
+    target_compile_definitions(krishirakshak_core PUBLIC KR_WITH_TRANSLATION)
+    target_include_directories(krishirakshak_core SYSTEM PUBLIC ${CT2_ROOT}/include ${SPM_ROOT}/include)
+    target_link_libraries(krishirakshak_core PUBLIC ${CT2_ROOT}/lib/libctranslate2.so ${SPM_ROOT}/lib/libsentencepiece.a)
+    message(STATUS "Translator: ON (CTranslate2 at ${CT2_ROOT})")
+else()
+    message(STATUS "Translator: OFF (run cpp/tools/build_translation_deps.sh, or set CT2_ROOT and SPM_ROOT)")
+endif()
+
 add_executable(krishirakshak src/main.cpp)
+if(CMAKE_CROSSCOMPILING)
+    # Measured on the Pi 5: INT8 vision 125 ms vs FP32 269 ms per photo with the same diagnoses (--fp32 overrides)
+    target_compile_definitions(krishirakshak PRIVATE KR_DEFAULT_INT8)
+endif()
+
+# Memory bandwidth benchmark (no dependencies); its result feeds tools/perf_model.py
+add_executable(membw tools/membw.cpp)
+target_link_libraries(membw PRIVATE pthread)
 
 # Regression test of the Llama output grounding check (no models needed): build/<dir>/grounding_test <repo root>
 enable_testing()
 add_executable(grounding_test tests/grounding_test.cpp)
 target_link_libraries(grounding_test PRIVATE krishirakshak_core)
 add_test(NAME grounding COMMAND grounding_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
+# Parity test of the IndicTrans2 text processing against the Python reference (no model needed)
+# Per-photo pest severity rule on constructed detections, with the real knowledge base
+add_executable(pest_severity_test tests/pest_severity_test.cpp)
+target_link_libraries(pest_severity_test PRIVATE krishirakshak_core)
+add_test(NAME pest_severity COMMAND pest_severity_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
+add_executable(indic_text_test tests/indic_text_test.cpp)
+target_link_libraries(indic_text_test PRIVATE krishirakshak_core)
+add_test(NAME indic_text COMMAND indic_text_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
+if(KR_WITH_TRANSLATION)
+    # Timing / parity run of the translator on saved Llama answers
+    add_executable(translate_bench tools/translate_bench.cpp)
+    target_link_libraries(translate_bench PRIVATE krishirakshak_core)
+endif()
 target_link_libraries(krishirakshak PRIVATE krishirakshak_core)
 # Library search path: on the development machine the ONNX Runtime folder; on the Pi the lib/ folder next to the
 # binary (cpp/package_pi.sh puts libonnxruntime there; OpenCV comes from the Pi's own apt packages)
+set(KR_BINARIES krishirakshak grounding_test indic_text_test pest_severity_test)
+if(KR_WITH_TRANSLATION)
+    list(APPEND KR_BINARIES translate_bench)
+endif()
 if(CMAKE_CROSSCOMPILING)
-    set_target_properties(krishirakshak grounding_test PROPERTIES BUILD_RPATH "\$ORIGIN/lib" INSTALL_RPATH "\$ORIGIN/lib")
+    set_target_properties(${KR_BINARIES} PROPERTIES BUILD_RPATH "\$ORIGIN/lib" INSTALL_RPATH "\$ORIGIN/lib")
 else()
-    set_target_properties(krishirakshak PROPERTIES BUILD_RPATH "${ORT_ROOT}/lib" INSTALL_RPATH "\$ORIGIN/lib")
+    set_target_properties(${KR_BINARIES} PROPERTIES BUILD_RPATH "${ORT_ROOT}/lib;${CT2_ROOT}/lib"
+                          INSTALL_RPATH "\$ORIGIN/lib")
 endif()
 
 message(STATUS "===========================================")

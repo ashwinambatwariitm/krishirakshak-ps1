@@ -1,0 +1,20 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v1_per_sentence.txt",
+  "options": "",
+  "topics": 27,
+  "accepted": 20,
+  "refused_first": 0,
+  "mean_grounded": 5.0,
+  "mean_dropped": 3.81,
+  "rejected_topics": [
+    "aphids",
+    "bacterial_speck",
+    "grey_leaf_spot",
+    "mites",
+    "pseudocercospora_leaf_blight",
+    "root_knot_nematode",
+    "tomato_spotted_wilt"
+  ]
+}

@@ -1,0 +1,1858 @@
+{
+  "metadata": {
+    "model": "ai4bharat/indictrans2-en-indic-dist-200M",
+    "revision": "2cfd0a20057756d756bf3e53528f492afc52f91a",
+    "backend": "dynamic-int8",
+    "threads": 4,
+    "beams": 5,
+    "batch_size": 1,
+    "load_seconds": 8.626637912999286,
+    "load_peak_rss_mb": 1792.6796875,
+    "parameter_count": 211776512,
+    "peak_rss_mb": 1971.671875
+  },
+  "runs": [
+    [
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "hi",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.31221877899952233,
+            "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.44225997099783854,
+            "display_text": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964 \u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+        "seconds": 0.7573458820006636
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "te",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.38153599399811355,
+            "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5246256829996128,
+            "display_text": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+        "seconds": 0.9094302439989406
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "mr",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.3768354339990765,
+            "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5452512760020909,
+            "display_text": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947. \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+        "seconds": 0.9267126749982708
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "kn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.36523185400074,
+            "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4960402990000148,
+            "display_text": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+        "seconds": 0.8651352999986557
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "ta",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4742238919970987,
+            "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.46609154700126965,
+            "display_text": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+        "seconds": 0.9439904850005405
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "bn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.47191074100192054,
+            "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5005319209994923,
+            "display_text": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964 \u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+        "seconds": 0.9762191779991554
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "gu",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4749404920003144,
+            "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5711602560004394,
+            "display_text": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7. \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+        "seconds": 1.0501384300005157
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "or",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.3635807749997184,
+            "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.42896099900099216,
+            "display_text": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964 \u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+        "seconds": 0.7960505010014458
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "pa",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4967982859998301,
+            "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0a2a\u0a71\u0a24\u0a3f\u0a06\u0a02 \u0a09\u0a71\u0a24\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a2a\u0a71\u0a24\u0a47 \u0a26\u0a3f\u0a16\u0a3e\u0a08 \u0a26\u0a3f\u0a70\u0a26\u0a47 \u0a39\u0a28\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 12.969288509000762,
+            "display_text": "",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": false,
+            "status": "withheld"
+          }
+        ],
+        "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+        "seconds": 13.469642007999937
+      }
+    ],
+    [
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "hi",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.754457094000827,
+            "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.6326772790016548,
+            "display_text": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964 \u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+        "seconds": 1.3910657769993122
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "te",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4524167999989004,
+            "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.47594482799831894,
+            "display_text": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+        "seconds": 0.9320671089990356
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "mr",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.46008355199955986,
+            "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.7993051099983859,
+            "display_text": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947. \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+        "seconds": 1.2635186049992626
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "kn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.40052012000160175,
+            "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5248142529999313,
+            "display_text": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+        "seconds": 0.929670965000696
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "ta",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.43923002399969846,
+            "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.46375366500069504,
+            "display_text": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+        "seconds": 0.9065897050022613
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "bn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4182468090002658,
+            "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4747861969990481,
+            "display_text": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964 \u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+        "seconds": 0.8964843300018401
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "gu",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4694091210003535,
+            "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5409531829973275,
+            "display_text": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7. \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+        "seconds": 1.0138822919980157
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "or",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.36836931600191747,
+            "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.472075257999677,
+            "display_text": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964 \u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+        "seconds": 0.8441103760014812
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "pa",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5167648030001146,
+            "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0a2a\u0a71\u0a24\u0a3f\u0a06\u0a02 \u0a09\u0a71\u0a24\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a2a\u0a71\u0a24\u0a47 \u0a26\u0a3f\u0a16\u0a3e\u0a08 \u0a26\u0a3f\u0a70\u0a26\u0a47 \u0a39\u0a28\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 14.292151175999606,
+            "display_text": "",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": false,
+            "status": "withheld"
+          }
+        ],
+        "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+        "seconds": 14.812609480999527
+      }
+    ],
+    [
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "hi",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5862548260010954,
+            "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "language": "hi",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.8643198610006948,
+            "display_text": "\u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u092a\u0942\u0930\u093e \u092a\u0924\u094d\u0924\u093e \u0928\u093e\u092a\u093e\u0915 \u0939\u094b \u091c\u093e\u0924\u093e \u0939\u0948\u0964 \u092a\u0924\u094d\u0924\u093f\u092f\u094b\u0902 \u092a\u0930 \u0938\u092b\u093c\u0947\u0926 \u092c\u093f\u091a\u094d\u091b\u0941\u0930\u0923 \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0924\u093e \u0939\u0948\u0964",
+        "seconds": 1.4550249249987246
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "te",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.558594746999006,
+            "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "language": "te",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5495234030022402,
+            "display_text": "\u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c06\u0c15\u0c41 \u0c2e\u0c4a\u0c24\u0c4d\u0c24\u0c02 \u0c28\u0c46\u0c15\u0c4d\u0c30\u0c4b\u0c1f\u0c3f\u0c15\u0c4d\u0c17\u0c3e \u0c2e\u0c3e\u0c30\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f. \u0c06\u0c15\u0c41\u0c32\u0c2a\u0c48 \u0c24\u0c46\u0c32\u0c4d\u0c32\u0c28\u0c3f \u0c38\u0c4d\u0c2a\u0c4b\u0c30\u0c4d\u0c2f\u0c41\u0c32\u0c47\u0c37\u0c28\u0c4d \u0c15\u0c28\u0c3f\u0c2a\u0c3f\u0c38\u0c4d\u0c24\u0c41\u0c02\u0c26\u0c3f.",
+        "seconds": 1.1124259890020767
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "mr",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.43210377500145114,
+            "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "language": "mr",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.8184848689998034,
+            "display_text": "\u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0938\u0902\u092a\u0942\u0930\u094d\u0923 \u092a\u093e\u0928 \u0905\u0936\u0941\u0927\u094d\u0926 \u0939\u094b\u0924\u0947. \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u0909\u0927\u0933\u092a\u091f\u094d\u091f\u0940 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947.",
+        "seconds": 1.2547551959978591
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "kn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4874395840015495,
+            "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "language": "kn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5668002080019505,
+            "display_text": "\u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0c87\u0ca1\u0cc0 \u0c8e\u0cb2\u0cc6 \u0ca8\u0cc6\u0c95\u0ccd\u0cb0\u0ccb\u0c9f\u0cbf\u0c95\u0ccd \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0c8e\u0cb2\u0cc6\u0c97\u0cb3 \u0cae\u0cc7\u0cb2\u0cc6 \u0cac\u0cbf\u0cb3\u0cbf \u0c9a\u0cbf\u0caa\u0ccd\u0caa\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0c82\u0ca1\u0cc1\u0cac\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6.",
+        "seconds": 1.0587761830029194
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "ta",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4372394079982769,
+            "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "language": "ta",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.49980589199913084,
+            "display_text": "\u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0bae\u0bc1\u0bb4\u0bc1 \u0b87\u0bb2\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0ba8\u0bc6\u0b95\u0bcd\u0bb0\u0bcb\u0b9f\u0bbf\u0b95\u0bcd \u0b86\u0b95\u0bbf\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd. \u0b87\u0bb2\u0bc8\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bb5\u0bc6\u0bb3\u0bcd\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1 \u0ba4\u0bc1\u0bb0\u0bcd\u0ba8\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd \u0b95\u0bbe\u0ba3\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.",
+        "seconds": 0.9408565199992154
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "bn",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.4563951210002415,
+            "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "language": "bn",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5074610720002966,
+            "display_text": "\u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u09aa\u09c1\u09b0\u09cb \u09aa\u09be\u09a4\u09be\u099f\u09bf \u09a8\u09c8\u09b0\u09cd\u09ac\u09cd\u09af\u0995\u09cd\u09a4\u09bf\u0995 \u09b9\u09af\u09bc\u09c7 \u09af\u09be\u09af\u09bc\u0964 \u09aa\u09be\u09a4\u09be\u09af\u09bc \u09b8\u09be\u09a6\u09be \u09ac\u09bf\u099a\u09cd\u099b\u09c1\u09b0\u09a3 \u09a6\u09c7\u0996\u09be \u09af\u09be\u09af\u09bc\u0964",
+        "seconds": 0.9678773220002768
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "gu",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.516408567000326,
+            "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "language": "gu",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.6054758339996624,
+            "display_text": "\u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0a86\u0a96\u0ac1\u0a82 \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0ac1\u0a82 \u0aa8\u0ac7\u0a95\u0acd\u0ab0\u0acb\u0a9f\u0abf\u0a95 \u0aac\u0aa8\u0ac0 \u0a9c\u0abe\u0aaf \u0a9b\u0ac7. \u0aaa\u0abe\u0a82\u0aa6\u0aa1\u0abe\u0a93 \u0aaa\u0ab0 \u0ab8\u0aab\u0ac7\u0aa6 \u0ab8\u0acd\u0aaa\u0acb\u0ab0\u0acd\u0aaf\u0ac1\u0ab2\u0ac7\u0ab6\u0aa8 \u0a9c\u0acb\u0ab5\u0abe \u0aae\u0ab3\u0ac7 \u0a9b\u0ac7.",
+        "seconds": 1.1262097170001653
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "or",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.3918127340002684,
+            "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "language": "or",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.45817570199869806,
+            "display_text": "\u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          }
+        ],
+        "display_text": "\u0b38\u0b2e\u0b4d\u0b2a\u0b42\u0b30\u0b4d\u0b23\u0b4d\u0b23 \u0b2a\u0b24\u0b4d\u0b30\u0b1f\u0b3f \u0b28\u0b3f\u0b37\u0b4d\u0b15\u0b4d\u0b30\u0b3f\u0b2f\u0b3c \u0b39\u0b4b\u0b07\u0b2f\u0b3e\u0b0f\u0964 \u0b2a\u0b24\u0b4d\u0b30\u0b30\u0b47 \u0b27\u0b33\u0b3e \u0b2c\u0b3f\u0b1a\u0b4d\u0b1b\u0b41\u0b30\u0b23 \u0b26\u0b47\u0b16\u0b3e\u0b2f\u0b3e\u0b0f\u0964",
+        "seconds": 0.8537750249997771
+      },
+      {
+        "id": "lora_Tomato_leaf_late_blight",
+        "topic": "late_blight",
+        "language": "pa",
+        "input_accepted": true,
+        "sentences": [
+          {
+            "index": 0,
+            "english": "The entire leaf becomes necrotic.",
+            "translation": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "Lesions expand rapidly and the entire leaf becomes necrotic."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 0.5450893659981375,
+            "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": true,
+            "status": "machine_translated"
+          },
+          {
+            "index": 1,
+            "english": "White sporulation is seen on leaves.",
+            "translation": "\u0a2a\u0a71\u0a24\u0a3f\u0a06\u0a02 \u0a09\u0a71\u0a24\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a1a\u0a3f\u0a71\u0a1f\u0a47 \u0a2a\u0a71\u0a24\u0a47 \u0a26\u0a3f\u0a16\u0a3e\u0a08 \u0a26\u0a3f\u0a70\u0a26\u0a47 \u0a39\u0a28\u0964",
+            "language": "pa",
+            "source": {
+              "method": "reconstructed_guard_match",
+              "extract_id": 11,
+              "source_id": "TNAU_LB",
+              "section": "symptoms",
+              "english": "White sporulation on leaves."
+            },
+            "number_check": {
+              "passed": true,
+              "expected": [],
+              "observed": [],
+              "normalized": [],
+              "digit_scripts": [],
+              "missing": [],
+              "extra": [],
+              "invalid_digits": []
+            },
+            "seconds": 13.761734743999114,
+            "display_text": "",
+            "cache_hit": false,
+            "protected_text_check": true,
+            "repetition_check": false,
+            "status": "withheld"
+          }
+        ],
+        "display_text": "\u0a2a\u0a42\u0a30\u0a3e \u0a2a\u0a71\u0a24\u0a3e \u0a05\u0a38\u0a3c\u0a41\u0a71\u0a27 \u0a39\u0a4b \u0a1c\u0a3e\u0a02\u0a26\u0a3e \u0a39\u0a48\u0964",
+        "seconds": 14.31050228499953
+      }
+    ]
+  ]
+}

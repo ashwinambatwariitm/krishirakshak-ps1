@@ -1,0 +1,84 @@
+{
+ "shape": {
+  "dim": 3072,
+  "layers": 28,
+  "heads": 24,
+  "kv_heads": 8,
+  "vocab": 128256,
+  "hidden": 8192,
+  "head_dim": 128
+ },
+ "weights": {
+  "layers": 1585446912.0,
+  "output_layer": 221626368.0,
+  "embedding": 221626368.0,
+  "norms": 700416
+ },
+ "hypotheses": [
+  {
+   "scale_bytes": 2,
+   "output_layer": "int4",
+   "model_bytes": 2029400064.0,
+   "error": -0.012796230781214528
+  },
+  {
+   "scale_bytes": 2,
+   "output_layer": "int8",
+   "model_bytes": 2226401280.0,
+   "error": 0.08303521538152892
+  },
+  {
+   "scale_bytes": 4,
+   "output_layer": "int4",
+   "model_bytes": 2254811136.0,
+   "error": 0.09685521934412017
+  },
+  {
+   "scale_bytes": 4,
+   "output_layer": "int8",
+   "model_bytes": 2451812352.0,
+   "error": 0.1926866655068636
+  },
+  {
+   "scale_bytes": 2,
+   "output_layer": "fp32",
+   "model_bytes": 3383783424.0,
+   "error": 0.6460449615876467
+  },
+  {
+   "scale_bytes": 4,
+   "output_layer": "fp32",
+   "model_bytes": 3584569344.0,
+   "error": 0.7437174809426385
+  }
+ ],
+ "kv_cache_bytes": 234881024,
+ "runs": [
+  {
+   "file": "Tomato_Early_blight_leaf_llama3b_en.json",
+   "prompt_tokens": 338,
+   "generated_tokens": 145,
+   "decode_bytes_per_token": 1901932544.0,
+   "prefill_macs": 962898247680.0,
+   "predicted_prefill_s": 3.1344344,
+   "measured_prefill_s": 7.878,
+   "prefill_efficiency": 0.39787184564610306,
+   "predicted_tokens_per_s": 6.6353562537284185,
+   "measured_tokens_per_s": 4.787848770018161,
+   "decode_efficiency": 0.721566195835809
+  },
+  {
+   "file": "Tomato_leaf_late_blight_llama3b_en.json",
+   "prompt_tokens": 400,
+   "generated_tokens": 159,
+   "decode_bytes_per_token": 1917759488.0,
+   "prefill_macs": 1141585477632.0,
+   "predicted_prefill_s": 3.71609856,
+   "measured_prefill_s": 9.411,
+   "prefill_efficiency": 0.39486755498884285,
+   "predicted_tokens_per_s": 6.580595783239321,
+   "measured_tokens_per_s": 4.485696552502398,
+   "decode_efficiency": 0.6816550811291889
+  }
+ ]
+}

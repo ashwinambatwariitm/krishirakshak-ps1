@@ -39,6 +39,10 @@ build/
 outputs/
 # Llama tokenizer: published with the .pte as a release asset (Llama 3.2 licence), not stored in git
 models/*.model
+# IndicTrans2 translation model (CTranslate2 INT8, ~210 MB) and its SentencePiece model: built with
+# tools/convert_indictrans2_ct2.py from the public Hugging Face checkpoint, not stored in git
+models/indictrans2_*
 
 # Pi deployment bundle (cpp/package_pi.sh)
 dist/
+*.apk

@@ -1,0 +1,357 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 11,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 229,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_IPM_VEG",
+     "source_org": "TNAU",
+     "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+     "text": "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+    },
+    {
+     "dose": "",
+     "id": 230,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_IPM_VEG",
+     "source_org": "TNAU",
+     "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+     "text": "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+    },
+    {
+     "dose": "",
+     "id": 12,
+     "note": "",
+     "product": "",
+     "section": "spread",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Spreads through tiny air-borne spores and thrives in wet, humid conditions (15-18 degree C, humidity above 90%). In just 4-5 days the infection spreads widely, causing outbreaks.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "",
+     "id": 103,
+     "note": "",
+     "product": "",
+     "section": "spread",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Survival: Infected Debris. Primary spread: Infected debris. Secondary spread: Wind.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 104,
+     "note": "",
+     "product": "",
+     "section": "spread",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Favourable conditions: Cool nights, warm days and extended wet conditions from rain and fog. Optimum temp for sporulation is 18 - 22 degree C.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 13,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "",
+     "id": 14,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Proper drainage. Crop rotation.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 231,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "TNAU_IPM_VEG",
+     "source_org": "TNAU",
+     "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+     "text": "Crop rotation with non-solanaceous host is essential for effective reduction of inoculum. Healthy seeds should be collected only from disease-free fruits. Always use healthy and certified seeds collected from disease-free area.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+    },
+    {
+     "dose": "",
+     "id": 15,
+     "note": "",
+     "product": "",
+     "section": "biological",
+     "source_id": "TNAU_LB",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Late blight (updated Jan 2023)",
+     "text": "Soil application of Trichoderma asperellum (viride) @ 1.0 kg/ac.",
+     "topic": "late_blight",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_8.html"
+    },
+    {
+     "dose": "",
+     "id": 328,
+     "note": "",
+     "product": "",
+     "section": "monitoring",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Farmers should check their tomato plants regularly and look for these warning signs and symptoms.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "",
+     "id": 329,
+     "note": "",
+     "product": "",
+     "section": "monitoring",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Temperature 15-18 degree C: Monitor weather forecasts, adjust planting time.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "2.5 g/litre",
+     "id": 16,
+     "note": "Apply 6 times at 6-day intervals along with soil mulching (preventive, before or at first symptoms).",
+     "product": "Copper oxychloride 50% WP",
+     "section": "chemical",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Spray Copper oxychloride 50% WP @ 2.5 g/litre. Apply 6 times at 6-day intervals along with soil mulching (preventive, before or at first symptoms).",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "2.0 g (per liter of water)",
+     "id": 330,
+     "note": "Contact (Preventive). Apply before disease onset.",
+     "product": "Copper Hydroxide 77% WP",
+     "section": "chemical",
+     "source_id": "ICAR_LB",
+     "source_org": "ICAR",
+     "source_title": "Raghuveer Singh: Late blight disease of tomato: a serious problem for Indian tomato farmers. Indian Horticulture (ICAR), Jan-Feb 2026, pp. 34-35",
+     "text": "Spray Copper Hydroxide 77% WP @ 2.0 g (per liter of water). Contact (Preventive). Apply before disease onset.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/164935"
+    },
+    {
+     "dose": "0.75 g/litre",
+     "id": 17,
+     "note": "Label claim (CIB&RC) for early blight, leaf spot and late blight.",
+     "product": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+     "section": "chemical",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight.",
+     "topic": "late_blight",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "",
+     "id": 60,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 61,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 326,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Note: Spray solution required per hectare in tomato crop = 500 litres.",
+     "topic": "general",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "",
+     "id": 657,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 658,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Late blight",
+   "topic": "late_blight"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Late blight",
+  "reliability": "medium",
+  "top": [
+   {
+    "class": "late_blight",
+    "probability": 0.9456426501274109
+   },
+   {
+    "class": "bacterial_spot",
+    "probability": 0.013115915469825268
+   },
+   {
+    "class": "healthy",
+    "probability": 0.011412430554628372
+   }
+  ],
+  "topic": "late_blight",
+  "urgent": true
+ },
+ "lang": "en",
+ "llama": {
+  "accepted": false,
+  "dropped_sentences": [
+   "I.",
+   "The disease is caused by a fungus that infects the leaves and stems of the tomato plant.",
+   "II.",
+   "The fungus causes black lesions on the leaves and stems, which can spread rapidly.",
+   "III.",
+   "The fungus also causes white sporulation on the leaves, and can lead to the death of the entire leaf.",
+   "IV.",
+   "The disease is highly contagious and can spread quickly through the air.",
+   "V.",
+   "The disease is also highly destructive, causing the entire fruit to rot and become infested with the fungus.",
+   "VI.",
+   "The disease can also cause the fruit to become discolored and develop a bad odor.",
+   "VII.",
+   "The disease is also highly contagious and can spread quickly through the air.",
+   "VIII."
+  ],
+  "raw_text": "I. The disease is caused by a fungus that infects the leaves and stems of the tomato plant.\nII. The fungus causes black lesions on the leaves and stems, which can spread rapidly.\nIII. The fungus also causes white sporulation on the leaves, and can lead to the death of the entire leaf.\nIV. The disease is highly contagious and can spread quickly through the air.\nV. The disease is also highly destructive, causing the entire fruit to rot and become infested with the fungus.\nVI. The disease can also cause the fruit to become discolored and develop a bad odor.\nVII. The disease is also highly contagious and can spread quickly through the air.\nVIII.",
+  "rejected_reasons": [
+   "empty_or_too_short",
+   "too_few_grounded_sentences:0"
+  ],
+  "stats": {
+   "generated_tokens": 159,
+   "ok": true,
+   "prompt_tokens": 400,
+   "stopped_on_repeat": false,
+   "time_to_first_token_s": 3.439,
+   "tokens_per_s": 13.27987972939113,
+   "total_s": 15.411544386
+  },
+  "text": null
+ },
+ "messages": [
+  "The spray options below are copied from ICAR, NIPHM and TNAU publications. Use only one product, follow the label, observe the waiting period before harvest and wear protective clothing. Confirm with your KVK or agriculture officer if unsure."
+ ],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 121.63623621323529,
+   "height": 499,
+   "sharpness": 342.5343672702552,
+   "width": 750
+  },
+  "ok": true
+ },
+ "severity": {
+  "lesion_share": 0.10232365918113133,
+  "level": "moderate",
+  "method": "hsv_colour_ratio"
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 45.253316,
+  "llama": 15411.581629,
+  "pest": 121.882586,
+  "quality": 2.401116,
+  "retrieval": 0.636837,
+  "severity": 2.239383,
+  "total": 15539.469488,
+  "vision_wall": 122.0453
+ }
+}

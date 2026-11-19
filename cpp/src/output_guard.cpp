@@ -162,6 +162,43 @@ std::string stem(std::string w) {
     return w;
 }
 
+// Plain-language words that Llama uses for the same thing as the extension text (added after tests with Llama 3.2
+// 3B, which rephrases faithfully: "yellow edge" for "yellow margin", "spots" for "lesions", "leftover crop debris").
+// Each word maps to one shared token, applied to the source and the answer alike, so the 0.75 overlap bar is
+// unchanged. Only same-meaning words are grouped; on purpose there is no entry for cause words such as "fungus"
+// (late blight is a water mould) and none that could merge two different instructions.
+const std::map<std::string, std::string> kSameMeaning = {
+    {"leaf", "leaf"}, {"leav", "leaf"}, {"foliage", "leaf"}, {"leaflet", "leaf"},
+    {"spot", "spot"}, {"lesion", "spot"}, {"patch", "spot"}, {"speck", "spot"},
+    {"edge", "margin"}, {"margin", "margin"}, {"border", "margin"},
+    {"ring", "ring"}, {"circle", "ring"}, {"circular", "ring"}, {"concentric", "ring"},
+    {"hurt", "damag"}, {"damag", "damag"}, {"damage", "damag"}, {"injur", "damag"}, {"injury", "damag"},
+    {"harm", "damag"},
+    {"debri", "debris"}, {"debris", "debris"}, {"residue", "debris"}, {"leftover", "debris"},
+    {"fast", "rapid"}, {"quick", "rapid"}, {"quickly", "rapid"}, {"rapid", "rapid"}, {"rapidly", "rapid"},
+    {"whole", "entire"}, {"entire", "entire"}, {"complete", "entire"}, {"completely", "entire"},
+    {"kill", "kill"}, {"death", "kill"}, {"die", "kill"}, {"dies", "kill"},
+    {"rotate", "rotation"}, {"rotation", "rotation"},
+    {"rain", "rain"}, {"rainy", "rain"}, {"rainfall", "rain"},
+    {"small", "small"}, {"tiny", "small"}, {"minute", "small"},
+    {"middle", "centre"}, {"centre", "centre"}, {"center", "centre"},
+    {"move", "progress"}, {"progress", "progress"},
+    {"infect", "infect"}, {"infection", "infect"},
+    {"attach", "attach"}, {"attachment", "attach"},
+    {"yellow", "yellow"}, {"yellowish", "yellow"},
+    {"stunt", "stunt"}, {"dwarf", "stunt"},
+    {"rot", "rot"}, {"rotten", "rot"}, {"rott", "rot"}, {"decay", "rot"},
+    {"spor", "spore"}, {"spore", "spore"}, {"sporulation", "spore"},
+    {"shape", "shape"}, {"shap", "shape"},
+};
+
+// stem() followed by the same-meaning mapping
+std::string token(const std::string& w) {
+    const std::string s = stem(w);
+    const auto it = kSameMeaning.find(s);
+    return it == kSameMeaning.end() ? s : it->second;
+}
+
 std::vector<std::string> words(const std::string& s) {
     std::vector<std::string> out;
     std::string w;
@@ -191,12 +228,26 @@ std::vector<std::string> splitSentences(const std::string& text) {
     return out;
 }
 
+// A sentence that states a cause must be supported by a source sentence that states one (added after Llama 3.2 3B
+// wrote "This is caused by whiteflies" from "The virus is spread by whiteflies": the carrier became the cause, while
+// three of four content words still matched)
+const std::set<std::string> kCauseStems = {"caus", "cause", "due"};
+bool hasCause(const std::vector<std::string>& ws) {
+    for (const auto& w : ws) if (kCauseStems.count(stem(w))) return true;
+    return false;
+}
+
 bool hasNegation(const std::vector<std::string>& ws) {
     for (const auto& w : ws) if (kNegations.count(w) || (w.size() > 3 && w.compare(w.size() - 3, 3, "n't") == 0)) return true;
     return false;
 }
 
 }  // namespace
+
+nlohmann::json groundingConfig() {
+    return {{"stop_words", kGroundStop}, {"negations", kNegations}, {"same_meaning", kSameMeaning},
+            {"stem_suffixes", {"ing", "ed", "es", "s"}}, {"cause_stems", kCauseStems}, {"min_overlap", 0.75}, {"min_word_length", 4}};
+}
 
 GroundingResult keepGroundedSentences(const std::string& text, const std::vector<KbChunk>& facts, double minOverlap) {
     // Each source sentence is kept separately: an answer sentence must be supported by ONE source sentence.
@@ -207,13 +258,15 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
         std::vector<std::string> words;
         std::set<std::string> stems;
         bool negated;
+        bool cause;
     };
     std::vector<Source> sources;
     for (const auto& c : facts)
         for (const auto& s : splitSentences(c.textEn)) {
-            Source src{s, words(s), {}, false};
-            for (const auto& w : src.words) src.stems.insert(stem(w));
+            Source src{s, words(s), {}, false, false};
+            for (const auto& w : src.words) src.stems.insert(token(w));
             src.negated = hasNegation(src.words);
+            src.cause = hasCause(src.words);
             sources.push_back(std::move(src));
         }
 
@@ -238,7 +291,7 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
         if (!seen.insert(key).second) { r.dropped.push_back(sentence); continue; }
         std::vector<std::string> content;
         for (const auto& w : ws) {
-            const std::string s = stem(w);
+            const std::string s = token(w);
             if (w.size() >= 4 && !kGroundStop.count(w) && !kGroundStop.count(s) && !kNegations.count(w))
                 content.push_back(s);
         }
@@ -254,6 +307,7 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
         }
         bool grounded = best && static_cast<double>(bestHits) / content.size() >= minOverlap;
         if (grounded && hasNegation(ws)) grounded = best->negated;          // never reverse an instruction
+        if (grounded && hasCause(ws)) grounded = best->cause;               // never invent a cause
         if (grounded)
             for (const auto& n : numbers(sentence))
                 if (best->raw.find(n) == std::string::npos) { grounded = false; break; }   // no invented numbers
@@ -266,5 +320,7 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
     }
     return r;
 }
+
+std::vector<std::string> sentencesOf(const std::string& text) { return splitSentences(text); }
 
 }  // namespace kr

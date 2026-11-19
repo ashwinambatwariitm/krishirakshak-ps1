@@ -1,0 +1,324 @@
+model: Raspberry Pi 5 Model B Rev 1.1
+kernel: 6.12.62+rpt-rpi-2712
+temp=47.2'C
+throttled=0x0
+I tokenizers:regex.cpp:40] Registering override fallback regex
+PASS kept    Remove infected plant parts.
+PASS kept    Avoid overhead irrigation.
+PASS dropped The disease is caused by a fungus that grows on the leaves and stems.
+PASS dropped Do not try to remove the infected leaf or destroy it.
+PASS kept    Remove and destroy infected plants in the nursery.
+PASS dropped The tomato leaf curl virus is not spreading quickly.
+PASS dropped You can harvest tomatoes 28 days after transplanting, but only after the first true leaves appear.
+PASS kept    Do not apply pesticides during the 7 days before harvest.
+PASS dropped Do not apply pesticides during the 3 days before harvest.
+0 failures
+memory bandwidth ...
+{
+  "tool": "membw",
+  "buffer_mb": 256,
+  "repetitions": 5,
+  "hardware_threads": 4,
+  "read_gbps": {"1": 14.11, "2": 13.50, "3": 13.08, "4": 12.62},
+  "copy_gbps": {"1": 11.77, "2": 10.39, "3": 9.10, "4": 8.50},
+  "sweep_read_gbps_1thread": {"16": 19.37, "32": 19.29, "64": 19.22, "128": 19.20, "256": 19.20, "512": 19.19, "1024": 19.18, "2048": 18.89, "4096": 18.78, "8192": 17.94, "16384": 15.85, "32768": 14.90, "65536": 14.46, "131072": 14.23, "262144": 14.16},
+  "checksum": 799
+}
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:56.563802814 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":95.325947,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+0.68 s wall, peak RSS 166240 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:57.248054671 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":234.237114,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+0.49 s wall, peak RSS 145872 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:57.746536375 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":94.636165,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+0.48 s wall, peak RSS 165088 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:58.238017277 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":235.328142,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+0.50 s wall, peak RSS 147888 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:58.743163600 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":95.036761,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+0.49 s wall, peak RSS 166704 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:59.235001129 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":234.881228,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+0.50 s wall, peak RSS 146816 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:27:59.741236337 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":94.987353,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+0.48 s wall, peak RSS 165600 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:28:00.230072807 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":235.989848,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+0.50 s wall, peak RSS 145312 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:28:00.733187912 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":95.14028,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+0.49 s wall, peak RSS 166864 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:28:01.227034254 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"not loaded (template mode)","load_ms":236.627277,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+0.50 s wall, peak RSS 145808 KB
+vision x5 no-spin: 3.47 s wall, 7.89 s user CPU, 0.25 s system CPU
+vision x5 --ort-spin: 3.44 s wall, 9.07 s user CPU, 0.16 s system CPU
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:28:08.657223251 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.235940 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.235977 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.235987 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.236022 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.236036 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.236049 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.236189 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.334222 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.334264 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.334357 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.334362 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.334366 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.334369 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.334372 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.334379 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.334381 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.334395 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_1b_instruct_8da4w.pte","load_ms":2601.89851,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+I 00:00:02.738021 executorch:text_llm_runner.cpp:89] RSS after loading model: 1078.062500 MiB (0 if unsupported)
+I 00:00:06.213731 executorch:text_prefiller.cpp:121] Prefill token result numel(): 128256
+I 00:00:06.213875 executorch:text_llm_runner.cpp:201] Max new tokens resolved: 160, given pos_ 400, num_prompt_tokens 400, max_context_len 1024
+I 00:00:06.213892 executorch:text_llm_runner.cpp:228] RSS after prompt prefill: 1078.062500 MiB (0 if unsupported)
+I 00:00:18.284683 executorch:text_llm_runner.cpp:258] RSS after finishing text generation: 1078.062500 MiB (0 if unsupported)
+I 00:00:18.284728 executorch:text_llm_runner.cpp:264] Max new tokens 160 reached!
+I 00:00:18.284754 executorch:stats.h:175] 	Prompt Tokens: 400    Generated Tokens: 159
+I 00:00:18.284758 executorch:stats.h:181] 	Model Load Time:		0.000000 (seconds)
+I 00:00:18.284760 executorch:stats.h:188] 	Total inference time:		15.547000 (seconds)		 Rate: 	10.227053 (tokens/second)
+I 00:00:18.284763 executorch:stats.h:197] 		Prompt evaluation:	3.476000 (seconds)		 Rate: 	115.074799 (tokens/second)
+I 00:00:18.284766 executorch:stats.h:207] 		Generated 159 tokens:	12.071000 (seconds)		 Rate: 	13.172065 (tokens/second)
+I 00:00:18.284768 executorch:stats.h:219] 	Time to first generated token:	3.476000 (seconds)
+I 00:00:18.284770 executorch:stats.h:225] 	Sampling time over 559 tokens:	0.014000 (seconds)
+18.43 s wall, peak RSS 1103936 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:28:27.090722017 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.233957 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.233992 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.233999 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.234029 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.234044 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.234054 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.234185 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.330540 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.330574 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.330662 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.330667 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.330670 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.330674 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.330677 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.330684 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.330686 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.330693 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_1b_instruct_8da4w.pte","load_ms":2598.334067,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+I 00:00:02.729754 executorch:text_llm_runner.cpp:89] RSS after loading model: 1078.203125 MiB (0 if unsupported)
+I 00:00:05.596729 executorch:text_prefiller.cpp:121] Prefill token result numel(): 128256
+I 00:00:05.596897 executorch:text_llm_runner.cpp:201] Max new tokens resolved: 160, given pos_ 338, num_prompt_tokens 338, max_context_len 1024
+I 00:00:05.596916 executorch:text_llm_runner.cpp:228] RSS after prompt prefill: 1078.203125 MiB (0 if unsupported)
+I 00:00:13.395852 executorch:text_llm_runner.cpp:258] RSS after finishing text generation: 1078.203125 MiB (0 if unsupported)
+I 00:00:13.395917 executorch:stats.h:175] 	Prompt Tokens: 338    Generated Tokens: 106
+I 00:00:13.395920 executorch:stats.h:181] 	Model Load Time:		0.000000 (seconds)
+I 00:00:13.395922 executorch:stats.h:188] 	Total inference time:		10.666000 (seconds)		 Rate: 	9.938121 (tokens/second)
+I 00:00:13.395925 executorch:stats.h:197] 		Prompt evaluation:	2.867000 (seconds)		 Rate: 	117.893268 (tokens/second)
+I 00:00:13.395928 executorch:stats.h:207] 		Generated 106 tokens:	7.799000 (seconds)		 Rate: 	13.591486 (tokens/second)
+I 00:00:13.395930 executorch:stats.h:219] 	Time to first generated token:	2.867000 (seconds)
+I 00:00:13.395932 executorch:stats.h:225] 	Sampling time over 444 tokens:	0.008000 (seconds)
+13.54 s wall, peak RSS 1104080 KB
+mode run time_to_first_token_s tokens_per_s total_ms
+off 1 3.466 13.28 15564
+off 2 3.439 13.28 15539
+off 3 3.452 13.34 15497
+on 1 3.444 13.26 15560
+on 2 3.483 13.23 15623
+on 3 3.456 13.36 15481
+temp=63.1'C
+throttled=0x0
+== Llama weights ==
+layers 16, dim 2048, heads 32 (KV heads 8), feed-forward 8192, vocabulary 128256
+  layers           522.0 MiB
+  output_layer     140.9 MiB
+  embedding        140.9 MiB
+  norms              0.3 MiB
+  .pte file        820.6 MiB
+  hypotheses (closest first):
+    scales 2 B, output layer int4:    804.1 MiB  (-2.0%)
+    scales 4 B, output layer int4:    893.4 MiB  (+8.9%)
+    scales 2 B, output layer int8:    929.3 MiB  (+13.3%)
+    scales 4 B, output layer int8:   1018.6 MiB  (+24.1%)
+    scales 2 B, output layer fp32:   1665.2 MiB  (+102.9%)
+    scales 4 B, output layer fp32:   1738.8 MiB  (+111.9%)
+
+== KV cache ==
+  1024 positions x 4 B:     64.0 MiB (with 32 KV heads instead of 8 it would be    256.0 MiB)
+
+== Hardware ==
+  read bandwidth: 12.62 GB/s (membw, 4 threads)
+  peak int8 compute: 307 GMAC/s (theoretical Pi 5)
+
+== Predicted limits vs measured ==
+  Tomato_Early_blight_leaf_llama_en.json: prompt 338 tokens, generated 106
+    prefill    332.9 GMAC -> >=   1.08 s | measured   2.87 s | efficiency  37.8%
+    decode     687.6 MiB/token -> <=  17.50 tok/s | measured  13.59 tok/s | efficiency  77.7%
+  Tomato_leaf_late_blight_llama_en.json: prompt 400 tokens, generated 159
+    prefill    394.7 GMAC -> >=   1.28 s | measured   3.48 s | efficiency  37.0%
+    decode     693.1 MiB/token -> <=  17.36 tok/s | measured  13.17 tok/s | efficiency  75.9%
+
+wrote bench/perf_model.json
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:30:30.560341143 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.232300 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.232335 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.232341 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.232371 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.232382 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.232392 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.232521 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.324850 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.324888 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.324983 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.324989 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.324992 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.324996 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.324999 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.325007 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.325008 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.325016 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_3b_instruct_8da4w.pte","load_ms":6182.099808,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+I 00:00:06.319499 executorch:text_llm_runner.cpp:89] RSS after loading model: 2377.703125 MiB (0 if unsupported)
+I 00:00:15.730385 executorch:text_prefiller.cpp:121] Prefill token result numel(): 128256
+I 00:00:15.730534 executorch:text_llm_runner.cpp:201] Max new tokens resolved: 160, given pos_ 400, num_prompt_tokens 400, max_context_len 1024
+I 00:00:15.730554 executorch:text_llm_runner.cpp:228] RSS after prompt prefill: 2377.703125 MiB (0 if unsupported)
+I 00:00:51.176599 executorch:text_llm_runner.cpp:258] RSS after finishing text generation: 2377.703125 MiB (0 if unsupported)
+I 00:00:51.176639 executorch:text_llm_runner.cpp:264] Max new tokens 160 reached!
+I 00:00:51.176664 executorch:stats.h:175] 	Prompt Tokens: 400    Generated Tokens: 159
+I 00:00:51.176669 executorch:stats.h:181] 	Model Load Time:		0.000000 (seconds)
+I 00:00:51.176671 executorch:stats.h:188] 	Total inference time:		44.857000 (seconds)		 Rate: 	3.544597 (tokens/second)
+I 00:00:51.176674 executorch:stats.h:197] 		Prompt evaluation:	9.411000 (seconds)		 Rate: 	42.503453 (tokens/second)
+I 00:00:51.176680 executorch:stats.h:207] 		Generated 159 tokens:	35.446000 (seconds)		 Rate: 	4.485697 (tokens/second)
+I 00:00:51.176683 executorch:stats.h:219] 	Time to first generated token:	9.411000 (seconds)
+I 00:00:51.176684 executorch:stats.h:225] 	Sampling time over 559 tokens:	0.016000 (seconds)
+51.35 s wall, peak RSS 2434768 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:31:21.912347140 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.233793 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.233827 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.233833 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.233863 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.233873 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.233884 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.234015 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.326421 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.326453 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.326541 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.326547 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.326550 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.326553 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.326557 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.326564 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.326566 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.326573 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_3b_instruct_8da4w.pte","load_ms":6184.478713,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+6.49 s wall, peak RSS 2437008 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:31:28.409335744 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.231195 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.231228 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.231235 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.231266 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.231277 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.231288 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.231413 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.323651 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.323683 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.323772 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.323778 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.323781 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.323784 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.323788 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.323796 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.323797 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.323804 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_3b_instruct_8da4w.pte","load_ms":6174.931404,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+I 00:00:06.307861 executorch:text_llm_runner.cpp:89] RSS after loading model: 2379.875000 MiB (0 if unsupported)
+I 00:00:14.185121 executorch:text_prefiller.cpp:121] Prefill token result numel(): 128256
+I 00:00:14.185266 executorch:text_llm_runner.cpp:201] Max new tokens resolved: 160, given pos_ 338, num_prompt_tokens 338, max_context_len 1024
+I 00:00:14.185283 executorch:text_llm_runner.cpp:228] RSS after prompt prefill: 2379.875000 MiB (0 if unsupported)
+I 00:00:44.470988 executorch:text_token_generator.h:181] 
+Reached to the end of generation
+I 00:00:44.471024 executorch:text_llm_runner.cpp:258] RSS after finishing text generation: 2379.875000 MiB (0 if unsupported)
+I 00:00:44.471059 executorch:stats.h:175] 	Prompt Tokens: 338    Generated Tokens: 145
+I 00:00:44.471062 executorch:stats.h:181] 	Model Load Time:		0.000000 (seconds)
+I 00:00:44.471064 executorch:stats.h:188] 	Total inference time:		38.163000 (seconds)		 Rate: 	3.799492 (tokens/second)
+I 00:00:44.471067 executorch:stats.h:197] 		Prompt evaluation:	7.878000 (seconds)		 Rate: 	42.904290 (tokens/second)
+I 00:00:44.471070 executorch:stats.h:207] 		Generated 145 tokens:	30.285000 (seconds)		 Rate: 	4.787849 (tokens/second)
+I 00:00:44.471072 executorch:stats.h:219] 	Time to first generated token:	7.878000 (seconds)
+I 00:00:44.471074 executorch:stats.h:225] 	Sampling time over 483 tokens:	0.017000 (seconds)
+44.65 s wall, peak RSS 2436992 KB
+I tokenizers:regex.cpp:40] Registering override fallback regex
+[0;93m2026-11-18 13:32:13.058878395 [W:onnxruntime:krishirakshak, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"[m
+I 00:00:00.238293 executorch:cpuinfo_utils.cpp:71] Reading file /sys/devices/soc0/image_version
+I 00:00:00.238327 executorch:cpuinfo_utils.cpp:87] Failed to open midr file /sys/devices/soc0/image_version
+I 00:00:00.238333 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu0/regs/identification/midr_el1
+I 00:00:00.238363 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu1/regs/identification/midr_el1
+I 00:00:00.238375 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu2/regs/identification/midr_el1
+I 00:00:00.238385 executorch:cpuinfo_utils.cpp:100] Reading file /sys/devices/system/cpu/cpu3/regs/identification/midr_el1
+I 00:00:00.238511 executorch:threadpool.cpp:66] Resetting threadpool to 4 threads.
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+I 00:00:00.334131 executorch:llm_runner_helper.cpp:72] Loaded TikToken tokenizer
+I 00:00:00.334165 executorch:llm_runner_helper.cpp:258] Reading metadata from model
+I 00:00:00.334257 executorch:llm_runner_helper.cpp:137] Metadata: use_kv_cache = 1
+I 00:00:00.334267 executorch:llm_runner_helper.cpp:137] Metadata: get_max_context_len = 1024
+I 00:00:00.334271 executorch:llm_runner_helper.cpp:137] Metadata: get_max_seq_len = 1024
+I 00:00:00.334274 executorch:llm_runner_helper.cpp:137] Metadata: use_sdpa_with_kv_cache = 1
+I 00:00:00.334277 executorch:llm_runner_helper.cpp:137] Metadata: enable_dynamic_shape = 1
+I 00:00:00.334285 executorch:llm_runner_helper.cpp:179] eos_id = 128009
+I 00:00:00.334287 executorch:llm_runner_helper.cpp:179] eos_id = 128001
+I 00:00:00.334294 executorch:llm_runner_helper.cpp:294] Using method: forward
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class_int8.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_3b_instruct_8da4w.pte","load_ms":6190.235156,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives_int8.onnx","runtime":"C++","vision_threads_per_model":2}
+6.49 s wall, peak RSS 2434736 KB
+== Llama weights ==
+layers 28, dim 3072, heads 24 (KV heads 8), feed-forward 8192, vocabulary 128256
+  layers          1512.0 MiB
+  output_layer     211.4 MiB
+  embedding        211.4 MiB
+  norms              0.7 MiB
+  .pte file       1960.5 MiB
+  hypotheses (closest first):
+    scales 2 B, output layer int4:   1935.4 MiB  (-1.3%)
+    scales 2 B, output layer int8:   2123.3 MiB  (+8.3%)
+    scales 4 B, output layer int4:   2150.4 MiB  (+9.7%)
+    scales 4 B, output layer int8:   2338.2 MiB  (+19.3%)
+    scales 2 B, output layer fp32:   3227.0 MiB  (+64.6%)
+    scales 4 B, output layer fp32:   3418.5 MiB  (+74.4%)
+
+== KV cache ==
+  1024 positions x 4 B:    224.0 MiB (with 24 KV heads instead of 8 it would be    672.0 MiB)
+
+== Hardware ==
+  read bandwidth: 12.62 GB/s (membw, 4 threads)
+  peak int8 compute: 307 GMAC/s (theoretical Pi 5)
+
+== Predicted limits vs measured ==
+  Tomato_Early_blight_leaf_llama3b_en.json: prompt 338 tokens, generated 145
+    prefill    962.9 GMAC -> >=   3.13 s | measured   7.88 s | efficiency  39.8%
+    decode    1813.8 MiB/token -> <=   6.64 tok/s | measured   4.79 tok/s | efficiency  72.2%
+  Tomato_leaf_late_blight_llama3b_en.json: prompt 400 tokens, generated 159
+    prefill   1141.6 GMAC -> >=   3.72 s | measured   9.41 s | efficiency  39.5%
+    decode    1828.9 MiB/token -> <=   6.58 tok/s | measured   4.49 tok/s | efficiency  68.2%
+
+wrote bench/perf_model_3b.json
+results in bench/

@@ -1,0 +1,78 @@
+{
+ "summary": [
+  {
+   "model": "base 1B",
+   "answers": 18,
+   "accepted": 17,
+   "mean_grounded_sentences": 4.33,
+   "mean_dropped_sentences": 7.61
+  },
+  {
+   "model": "LoRA 1B",
+   "answers": 18,
+   "accepted": 16,
+   "mean_grounded_sentences": 3.06,
+   "mean_dropped_sentences": 0.39
+  },
+  {
+   "model": "LoRA 1B, exported INT4 .pte",
+   "answers": 18,
+   "accepted": 16,
+   "mean_grounded_sentences": 2.39
+  }
+ ],
+ "holdout_topics": [
+  "healthy",
+  "early_blight",
+  "late_blight",
+  "septoria_leaf_spot",
+  "bacterial_spot",
+  "yellow_leaf_curl_virus"
+ ],
+ "train_topics": [
+  "aphids",
+  "bacterial_canker",
+  "bacterial_speck",
+  "bacterial_wilt",
+  "collar_rot",
+  "damping_off",
+  "fruit_rots",
+  "fusarium_wilt",
+  "grey_leaf_spot",
+  "helicoverpa_fruit_borer",
+  "mites",
+  "powdery_mildew",
+  "pseudocercospora_leaf_blight",
+  "root_knot_nematode",
+  "serpentine_leaf_miner",
+  "spodoptera_tobacco_caterpillar",
+  "thrips",
+  "tomato_mosaic",
+  "tomato_spotted_wilt",
+  "tuta_absoluta_pinworm",
+  "whitefly"
+ ],
+ "train_examples": 153,
+ "lora": {
+  "rank": 16,
+  "alpha": 32,
+  "targets": [
+   "wq",
+   "wk",
+   "wv",
+   "wo",
+   "w1",
+   "w2",
+   "w3"
+  ],
+  "lr": 0.0002,
+  "epochs": 3,
+  "grad_accum": 8
+ },
+ "pilot": false,
+ "packages": [
+  "torch==2.14.1",
+  "torchao==0.18.0",
+  "executorch==1.5.1"
+ ]
+}

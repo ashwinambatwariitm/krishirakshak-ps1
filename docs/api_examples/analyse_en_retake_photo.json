@@ -1,0 +1,25 @@
+{
+  "lang": "en",
+  "messages": [
+    "The photo is too dark. Take it in daylight.",
+    "The photo is blurred. Hold the camera still and focus on one leaf."
+  ],
+  "quality": {
+    "issues": [
+      "too_dark",
+      "too_blurred"
+    ],
+    "metrics": {
+      "brightness": 9.274885110294118,
+      "height": 499,
+      "sharpness": 1.9527515807036298,
+      "width": 750
+    },
+    "ok": false
+  },
+  "status": "retake_photo",
+  "timings_ms": {
+    "quality": 6.720706,
+    "total": 6.765696
+  }
+}

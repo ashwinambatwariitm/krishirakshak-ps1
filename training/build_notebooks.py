@@ -26,7 +26,7 @@ IP102 = "parserpixy/ip102-dataset"
 DISEASE_DATA = [PLANTVILLAGE, PLANTDOC_BOXES, PLANTDOC_FOLDERS]
 
 # One entry per Kaggle notebook. "after" names one or more notebooks whose outputs (trained weights) must be attached;
-# "gpu": False runs the notebook on CPU only (no GPU quota used).
+# "gpu": False runs the notebook on CPU only (no GPU quota used); "models" lists Kaggle model instances to attach.
 NOTEBOOKS = [
     dict(src="tomato_disease.py", slug="ps1-tomato-disease", title="PS1 Tomato Disease", datasets=DISEASE_DATA),
     dict(src="tomato_disease_v2.py", slug="ps1-tomato-disease-v2", title="PS1 Tomato Disease v2", datasets=DISEASE_DATA),
@@ -39,6 +39,17 @@ NOTEBOOKS = [
          after="ps1-tomato-disease-v4"),
     dict(src="disease_v5_threshold.py", slug="ps1-disease-v5-threshold", title="PS1 Disease v5 Threshold",
          datasets=DISEASE_DATA, after="ps1-tomato-disease-v5", gpu=False),
+    # Private dataset with Meta's original 3B checkpoint (Kaggle's own copy, metaresearch/llama-3.2, was not
+    # accepting access requests); the notebook also finds the checkpoint in that Kaggle model if it is attached
+    dict(src="llama3b_export.py", slug="ps1-llama3b-export", title="PS1 Llama3B Export",
+         datasets=["ashwinambatwar/llama32-3b-instruct-original"], gpu=False),
+    dict(src="llama_lora_distill.py", slug="ps1-llama-lora-distill", title="PS1 Llama LoRA Distill",
+         datasets=["ashwinambatwar/llama32-1b-instruct-original", "ashwinambatwar/llama32-3b-instruct-original",
+                   "ashwinambatwar/krishirakshak-lora-inputs"]),
+    # Disease severity: leaf + lesion segmentation (Roboflow CC BY 4.0 copy, field lesion masks, PlantDoc backgrounds)
+    dict(src="lesion_seg.py", slug="ps1-lesion-seg", title="PS1 Lesion Seg",
+         datasets=["ashwinambatwar/tomato-leaf-lesion-seg-rf", "fakhrealam9537/leaf-disease-segmentation-dataset",
+                   PLANTDOC_FOLDERS]),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]
@@ -88,7 +99,8 @@ def main():
                     "language": "python", "kernel_type": "notebook", "is_private": True,
                     "enable_gpu": nb.get("gpu", True),
                     "enable_internet": True, "dataset_sources": nb["datasets"], "competition_sources": [],
-                    "kernel_sources": [f"{args.kaggle_user}/{a}" for a in after]}
+                    "kernel_sources": [f"{args.kaggle_user}/{a}" for a in after],
+                    "model_sources": nb.get("models", [])}
             (folder / "kernel-metadata.json").write_text(json.dumps(meta, indent=2) + "\n")
         print(folder / notebook_file)
 

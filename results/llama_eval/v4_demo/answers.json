@@ -1,0 +1,119 @@
+[
+  {
+    "topic": "healthy",
+    "accepted": true,
+    "grounded": 7,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 14.0,
+    "facts": [
+      "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+      "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+    ],
+    "answer": "Avoid growing tomato in the same field season after season\nRotate with non-host crops such as cereals and legumes\nDo not follow tomato with chilli or brinjal\nStake plants and use drip irrigation to reduce leaf wetness\nCollect and destroy infected leaves, shoots and fruits\nSpray only need-based, label-claim pesticides\nConduct agro-ecosystem analysis weekly",
+    "kept": "Avoid growing tomato in the same field season after season Rotate with non-host crops such as cereals and legumes Do not follow tomato with chilli or brinjal Stake plants and use drip irrigation to reduce leaf wetness Collect and destroy infected leaves, shoots and fruits Spray only need-based, label-claim pesticides Conduct agro-ecosystem analysis weekly",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "early_blight",
+    "accepted": true,
+    "grounded": 10,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 20.8,
+    "facts": [
+      "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+      "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+      "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+      "Remove and destroy crop debris. Follow crop rotation."
+    ],
+    "answer": "Brown spots with concentric rings in a bull's eye pattern with yellow margin on the photographed leaf.\n\nEarly blight on a tomato leaf.\n\nFruit gets infected through calyx or stem attachment.\n\nIrregular leaf spots mostly appear from marginal portion of leaves.\n\nSymptoms are V shaped and progress towards midrib.\n\nThese lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen.\n\nMostly disease appears in vegetative phase of plant growth before flowering.\n\nThis is a common disease of tomato occurring on the foliage at any stage of the growth.\n\nThe fungus attacks the foliage causing characteristic leaf spots and blight.\n\nEarly blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "kept": "Brown spots with concentric rings in a bull's eye pattern with yellow margin on the photographed leaf. Early blight on a tomato leaf. Fruit gets infected through calyx or stem attachment. Irregular leaf spots mostly appear from marginal portion of leaves. Symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering. This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "late_blight",
+    "accepted": true,
+    "grounded": 12,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 24.8,
+    "facts": [
+      "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+      "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+      "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+      "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+    ],
+    "answer": "Water-soaked black lesions on leaves and stems\n\nLesions expand rapidly and the entire leaf becomes necrotic\n\nWhite sporulation on leaves\n\nDark brown lesions on fruit\n\nSoft rot and disintegration of fruits\n\nLight-pale green water soaked dead area\n\nWet in morning and dried, shriveled in daylight\n\nEnlarges rapidly until entire leaves are killed and exposing all the fruits for infection\n\nDowny white fungus develops near the outer margin of lesion on underside of the leaves\n\nGreen and ripe fruit affected by the blight appear as greenish brown\n\nInternal tissues become spongy with bad odour\n\nGrow resistant variety/hybrid Arka Abhed F1",
+    "kept": "Water-soaked black lesions on leaves and stems Lesions expand rapidly and the entire leaf becomes necrotic White sporulation on leaves Dark brown lesions on fruit Soft rot and disintegration of fruits Light-pale green water soaked dead area Wet in morning and dried, shriveled in daylight Enlarges rapidly until entire leaves are killed and exposing all the fruits for infection Downy white fungus develops near the outer margin of lesion on underside of the leaves Green and ripe fruit affected by the blight appear as greenish brown Internal tissues become spongy with bad odour Grow resistant variety/hybrid Arka Abhed F1",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "septoria_leaf_spot",
+    "accepted": true,
+    "grounded": 7,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 1,
+    "seconds": 10.7,
+    "facts": [
+      "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+      "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+      "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+      "Removal and destruction of the affected plant parts."
+    ],
+    "answer": "Small, round to irregular spots with grey centre and dark margin on leaves.\n\nSpots join and leaves are blighted; complete defoliation.\n\nStems and flowers are also affected.\n\nComplete defoliation of affected leaves.\n\nStems and flowers are sometimes attacked.\n\nFruits are rarely attacked.\n\nRemove affected plant parts.",
+    "kept": "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+    "dropped_sentences": [
+      "Remove affected plant parts."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "bacterial_spot",
+    "accepted": true,
+    "grounded": 5,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 16.6,
+    "facts": [
+      "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+      "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+      "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+      "Use disease-free seed."
+    ],
+    "answer": "Small, brown, water-soaked, circular spots with yellow halo on leaves\nSmall, dark spots appear on leaflets and stems of seedlings transplanted crop\nMoist weather and splattering rains are conducive to disease development\nMost outbreaks of the disease can be traced back to heavy rainstorms that occur in the area\nInfected leaves show small, brown, water-soaked, circular spots surrounded with yellowish halo",
+    "kept": "Small, brown, water-soaked, circular spots with yellow halo on leaves Small, dark spots appear on leaflets and stems of seedlings transplanted crop Moist weather and splattering rains are conducive to disease development Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area Infected leaves show small, brown, water-soaked, circular spots surrounded with yellowish halo",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "yellow_leaf_curl_virus",
+    "accepted": true,
+    "grounded": 6,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 2,
+    "seconds": 13.4,
+    "facts": [
+      "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+      "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+      "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+      "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+    ],
+    "answer": "Severe stunting of plants\nDownward rolling and crinkling of the leaves\nOlder leaves become leathery and brittle\nShortened internodes and more side branches give a bushy appearance\nThe virus is spread by whiteflies\nBemisia tabaci\nMedium spread on the photographed leaf\nDownward rolling and crinkling of the leaves",
+    "kept": "Severe stunting of plants Downward rolling and crinkling of the leaves Older leaves become leathery and brittle Shortened internodes and more side branches give a bushy appearance The virus is spread by whiteflies Bemisia tabaci",
+    "dropped_sentences": [
+      "Medium spread on the photographed leaf",
+      "Downward rolling and crinkling of the leaves"
+    ],
+    "rejected_reasons": []
+  }
+]

@@ -20,7 +20,11 @@
 #include <unistd.h>
 
 #include <algorithm>
+#include <cctype>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <set>
 #include <thread>
 
 namespace kr {
@@ -93,6 +97,53 @@ std::string factsBlock(const std::vector<KbChunk>& facts) {
     return out;
 }
 
+void replaceAll(std::string& s, const std::string& from, const std::string& to) {
+    for (size_t p = s.find(from); p != std::string::npos; p = s.find(from, p + to.size())) s.replace(p, from.size(), to);
+}
+
+// True for the short refusals Llama 3.2 1B produces ("I can't fulfill this request.", "I cannot help with that.")
+bool looksLikeRefusal(const std::string& text) {
+    std::string low;
+    for (unsigned char ch : text.substr(0, 60)) low += static_cast<char>(std::tolower(ch));
+    for (const char* p : {"i can't", "i cannot", "i can not", "i'm unable", "i am unable", "i won't"})
+        if (low.rfind(p, 0) == 0) return true;
+    return false;
+}
+
+// Detects a repeated sentence while tokens stream in. Text is split at '.', '!', '?', ';' and new lines; each
+// completed sentence is normalised (lower-case letters only, list markers such as "IV." are too short to count) and
+// compared with the sentences seen before in this answer.
+class RepeatDetector {
+public:
+    // Adds the next token piece; returns true when it completes a sentence that was already written.
+    bool addAndCheck(const std::string& piece) {
+        for (char ch : piece) {
+            if (ch == '.' || ch == '!' || ch == '?' || ch == ';' || ch == '\n') {
+                const bool repeated = finishSentence();
+                current_.clear();
+                if (repeated) return true;
+            } else {
+                current_ += ch;
+            }
+        }
+        return false;
+    }
+
+private:
+    bool finishSentence() {
+        std::string key;
+        int letters = 0;
+        for (unsigned char ch : current_) {
+            if (std::isalpha(ch)) { key += static_cast<char>(std::tolower(ch)); ++letters; }
+            else if (std::isspace(ch) && !key.empty() && key.back() != ' ') key += ' ';
+        }
+        if (letters < 12) return false;          // list markers ("IV"), fragments: not a sentence
+        return !seen_.insert(key).second;
+    }
+    std::string current_;
+    std::set<std::string> seen_;
+};
+
 class ExecuTorchLlama final : public LlamaAdvisor {
 public:
     ExecuTorchLlama(std::unique_ptr<llm::TextLLMRunner> runner, int maxNewTokens, float temperature)
@@ -102,17 +153,62 @@ public:
                        const std::string& lang) override {
         // Rephrase-only prompt (tests showed the 1B model refusing on "do not name pesticides" wording and reversing
         // instructions when asked to "explain"): Llama rewrites each fact in simple words and nothing else.
+        // The one-shot example is deliberately about another topic (grain storage): on the Raspberry Pi 5 the
+        // earlier example (crop debris, overhead irrigation - also late blight advice) was copied as the answer and
+        // repeated until the token limit. Copied example sentences are not in the extracts, so the grounding check
+        // drops them.
+        // "Keep the key words" (2026-11-18): Llama 3.2 3B rewrote faithfully but in its own words ("yellow edge" for
+        // "yellow margin"), so the grounding check dropped correct sentences; asking it to keep the technical terms
+        // raised the accepted answers on the five test photos from 6/10 to 7/10 (1B + 3B) with no distortion.
+        // The same text is in prompts/advise_keep_words.txt for experiments with KR_ADVISOR_PROMPT.
         const std::string system =
             std::string("You rewrite agricultural extension text for tomato farmers in India. Rewrite each FACT in "
                         "simple ") +
-            languageName(lang) + " as one short sentence. Keep the meaning of every fact exactly: do not add new "
-            "advice, do not leave out an instruction and never turn an instruction into its opposite. Write each "
-            "fact once, as plain sentences without a title, list markers or an introduction.\n\n"
-            "Example.\nFACTS:\n1. Removal and destruction of crop debris.\n2. Avoid overhead irrigation.\n"
-            "Rewritten facts:\nRemove the old plant waste from the field and destroy it. Do not water the plants "
-            "from above.";
-        const std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
-        return generate(llama3Chat(system, user), lang);
+            languageName(lang) + " as one short sentence. Keep the key words of the fact: the names of symptoms, "
+            "plant parts, pests and actions (for example \"concentric rings\", \"margin\", \"lesions\", \"crop "
+            "debris\", \"crop rotation\") stay as they are; only make the sentence shorter and easier to read. Keep "
+            "the meaning of every fact exactly: do not add new advice, causes, months or numbers, do not leave out an "
+            "instruction and never turn an instruction into its opposite. Write each fact once, as plain sentences "
+            "without a title, list markers or an introduction.\n\n"
+            "Example (a different topic, only to show the style).\nFACTS:\n1. Cleaning of storage bins before "
+            "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the storage bins "
+            "before filling them with grain. Avoid storing grain in damp bags.";
+        std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
+
+        // Development option: KR_ADVISOR_PROMPT=<file> replaces the prompt above, so prompt variants can be tried on
+        // the Pi without rebuilding. File format: system text, a line "----USER----", user template; placeholders
+        // {language}, {diagnosis}, {facts}.
+        std::string sys = system;
+        if (const char* path = std::getenv("KR_ADVISOR_PROMPT")) {
+            const std::string file = readFile(path);
+            const auto sep = file.find("----USER----");
+            if (sep != std::string::npos) {
+                auto fill = [&](std::string s) {
+                    replaceAll(s, "{language}", languageName(lang));
+                    replaceAll(s, "{diagnosis}", diagnosisLine);
+                    replaceAll(s, "{facts}", factsBlock(facts));
+                    const auto b = s.find_first_not_of("\n"), e = s.find_last_not_of("\n");
+                    return b == std::string::npos ? std::string() : s.substr(b, e - b + 1);
+                };
+                sys = fill(file.substr(0, sep));
+                user = fill(file.substr(sep + std::strlen("----USER----")));
+            }
+        }
+
+        LlamaOutput out = generate(llama3Chat(sys, user), lang);
+        // Llama 3.2 1B sometimes refuses this harmless task outright ("I can't fulfill this request."), measured on
+        // the Pi for 2 of 5 diseases. A refusal is short (about 2.5 s), so one retry with a plain fallback prompt
+        // costs little; the stats report both attempts.
+        if (looksLikeRefusal(out.text)) {
+            const std::string fallbackSystem = "You are a helpful agricultural extension worker in India.";
+            const std::string fallbackUser = "Here is advice for a tomato farmer:\n" + factsBlock(facts) +
+                                             "\nSay the same advice again in simple " + languageName(lang) +
+                                             ", one short sentence for each point.";
+            LlamaOutput retry = generate(llama3Chat(fallbackSystem, fallbackUser), lang);
+            retry.stats["first_attempt"] = {{"refused", true}, {"text", out.text}, {"stats", out.stats}};
+            return retry;
+        }
+        return out;
     }
 
     LlamaOutput answer(const std::string& question, const std::vector<KbChunk>& facts,
@@ -147,8 +243,20 @@ private:
         runner_->reset();                       // clear the KV cache of the previous request
         Timer t;
         StdoutSilencer quiet;
+        // Repetition stop: when a sentence is completed that was already written, the 1B model is looping
+        // (seen on the Pi: two sentences alternated until the token limit, 11 s of wasted decoding). Generation is
+        // stopped there; the grounding check removes the duplicate afterwards.
+        RepeatDetector repeats;
+        bool stoppedOnRepeat = false;
         const auto err = runner_->generate(
-            prompt, cfg, [&](const std::string& piece) { out.text += piece; },
+            prompt, cfg,
+            [&](const std::string& piece) {
+                out.text += piece;
+                if (!stoppedOnRepeat && repeats.addAndCheck(piece)) {
+                    stoppedOnRepeat = true;
+                    runner_->stop();
+                }
+            },
             [&](const llm::Stats& s) {
                 st.inferenceStart = s.inference_start_ms;
                 st.firstToken = s.first_token_ms;
@@ -180,7 +288,8 @@ private:
                      {"generated_tokens", st.generatedTokens},
                      {"time_to_first_token_s", (st.firstToken - st.inferenceStart) / 1000.0},
                      {"tokens_per_s", st.generatedTokens * 1000.0 / genMs},
-                     {"total_s", totalMs / 1000.0}};
+                     {"total_s", totalMs / 1000.0},
+                     {"stopped_on_repeat", stoppedOnRepeat}};
         return out;
     }
 

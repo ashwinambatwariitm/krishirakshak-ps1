@@ -1,0 +1,16 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "built-in",
+  "options": "",
+  "topics": 6,
+  "accepted": 3,
+  "refused_first": 0,
+  "mean_grounded": 3.0,
+  "mean_dropped": 9.33,
+  "rejected_topics": [
+    "healthy",
+    "late_blight",
+    "bacterial_spot"
+  ]
+}

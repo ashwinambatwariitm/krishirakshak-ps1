@@ -1,0 +1,247 @@
+[
+ {
+  "topic": "healthy",
+  "facts": [
+   "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+   "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+  ],
+  "text": "Rotate tomato crops with non-host crops like cereals and legumes. Do not plant tomato with chillies or brinjals. Spray only necessary, label-claim pesticides.",
+  "kept": "Rotate tomato crops with non-host crops like cereals and legumes. Do not plant tomato with chillies or brinjals. Spray only necessary, label-claim pesticides.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "healthy",
+  "facts": [
+   "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA.",
+   "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides."
+  ],
+  "text": "Rotate your tomato crop with non-host crops like cereals and legumes. Do not grow tomato in the same field season after season.",
+  "kept": "Rotate your tomato crop with non-host crops like cereals and legumes. Do not grow tomato in the same field season after season.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "healthy",
+  "facts": [
+   "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+   "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+  ],
+  "text": "Rotate tomato crops with non-host crops like cereals and legumes. Do not plant tomato with chillies or brinjals. Spray only necessary, label-claim pesticides.",
+  "kept": "Rotate tomato crops with non-host crops like cereals and legumes. Do not plant tomato with chillies or brinjals. Spray only necessary, label-claim pesticides.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "facts": [
+   "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+   "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+   "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+   "Remove and destroy crop debris. Follow crop rotation."
+  ],
+  "text": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin appear on the leaf. The disease spreads through the calyx or stem attachment. Irregular leaf spots mostly appear from the marginal portion of the leaves. The lesions have prominent yellowing on their outer margin due to a host-specific toxin. The disease appears in the vegetative phase of plant growth before flowering.",
+  "kept": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin appear on the leaf. The disease spreads through the calyx or stem attachment. Irregular leaf spots mostly appear from the marginal portion of the leaves. The lesions have prominent yellowing on their outer margin due to a host-specific toxin. The disease appears in the vegetative phase of plant growth before flowering.",
+  "kept_sentences": 5,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "facts": [
+   "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection.",
+   "Remove and destroy crop debris. Follow crop rotation."
+  ],
+  "text": "Remove and destroy the crop debris. Follow crop rotation.",
+  "kept": "Remove and destroy the crop debris. Follow crop rotation.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "early_blight",
+  "facts": [
+   "Remove and destroy crop debris. Follow crop rotation.",
+   "Use resistant or tolerant cultivars. Change the nursery bed location every season, eradicate weeds and volunteer tomato plants, fertilize properly. Avoid planting overlapping crops in adjacent area.",
+   "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection."
+  ],
+  "text": "Remove and destroy crop debris. Rotate the crop every season. Use resistant or tolerant cultivars. Change the nursery bed location every season.",
+  "kept": "Remove and destroy crop debris. Use resistant or tolerant cultivars. Change the nursery bed location every season.",
+  "kept_sentences": 3,
+  "dropped": [
+   "Rotate the crop every season."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "facts": [
+   "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+   "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+   "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+   "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+  ],
+  "text": "White sporulation appears on leaves. Blight appears as a light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight.",
+  "kept": "White sporulation appears on leaves. Blight appears as a light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "facts": [
+   "Crop rotation with non-solanaceous host is essential for effective reduction of inoculum. Healthy seeds should be collected only from disease-free fruits. Always use healthy and certified seeds collected from disease-free area.",
+   "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+  ],
+  "text": "Rotate your tomato crop with a non-solanaceous host to reduce the number of inoculum. Use healthy and certified seeds collected from disease-free area. Plant resistant variety Arka Abhed F1. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron).",
+  "kept": "Use healthy and certified seeds collected from disease-free area. Plant resistant variety Arka Abhed F1. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron).",
+  "kept_sentences": 4,
+  "dropped": [
+   "Rotate your tomato crop with a non-solanaceous host to reduce the number of inoculum."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "late_blight",
+  "facts": [
+   "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season.",
+   "Proper drainage. Crop rotation.",
+   "Crop rotation with non-solanaceous host is essential for effective reduction of inoculum. Healthy seeds should be collected only from disease-free fruits. Always use healthy and certified seeds collected from disease-free area."
+  ],
+  "text": "Rotate your tomato crop with a non-solanaceous host to reduce the inoculum. Use healthy seeds only from disease-free fruits.",
+  "kept": "Rotate your tomato crop with a non-solanaceous host to reduce the inoculum. Use healthy seeds only from disease-free fruits.",
+  "kept_sentences": 2,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "facts": [
+   "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+   "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+   "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+   "Removal and destruction of the affected plant parts."
+  ],
+  "text": "Small, round to irregular spots with a grey center and dark margin appear on leaves. Spots join and leaves are blighted; complete defoliation occurs. Stems and flowers are also affected.",
+  "kept": "Small, round to irregular spots with a grey center and dark margin appear on leaves. Spots join and leaves are blighted; Stems and flowers are also affected.",
+  "kept_sentences": 3,
+  "dropped": [
+   "complete defoliation occurs."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "facts": [
+   "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+   "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+   "Removal and destruction of the affected plant parts."
+  ],
+  "text": "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advances upwards.",
+  "kept": "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advances upwards.",
+  "kept_sentences": 6,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "septoria_leaf_spot",
+  "facts": [
+   "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+   "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked."
+  ],
+  "text": "Small, round to irregular spots with a grey centre and dark margin appear on leaves. Spots join and leaves are blighted; complete defoliation occurs. Stems and flowers are also affected. Fruits are rarely attacked.",
+  "kept": "Small, round to irregular spots with a grey centre and dark margin appear on leaves. Spots join and leaves are blighted; Stems and flowers are also affected. Fruits are rarely attacked.",
+  "kept_sentences": 4,
+  "dropped": [
+   "complete defoliation occurs."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "bacterial_spot",
+  "facts": [
+   "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+   "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+   "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+   "Use disease-free seed."
+  ],
+  "text": "Small, brown, water-soaked, circular spots with a yellow halo appear on leaves. Small, dark spots appear on leaflets and stems of seedlings. Use disease-free seed.",
+  "kept": "Small, brown, water-soaked, circular spots with a yellow halo appear on leaves. Small, dark spots appear on leaflets and stems of seedlings. Use disease-free seed.",
+  "kept_sentences": 3,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "bacterial_spot",
+  "facts": [
+   "Adopt intercropping of urd and mung as mulches to prevent rain splash.",
+   "Use disease-free seed."
+  ],
+  "text": "Use disease-free seed.",
+  "kept": "Use disease-free seed.",
+  "kept_sentences": 1,
+  "dropped": [],
+  "accepted": false
+ },
+ {
+  "topic": "bacterial_spot",
+  "facts": [
+   "Use disease-free seed.",
+   "Summer ploughing to desiccate the bacteria and host. Soil solarization in nursery bed to avoid seedling infection. Rotation of nursery seedbed and main field. Seed should be collected from disease free plants.",
+   "Adopt intercropping of urd and mung as mulches to prevent rain splash."
+  ],
+  "text": "Use disease-free seed. Summer ploughing to dry out the bacteria and the plant. Plant seed from healthy plants.",
+  "kept": "Use disease-free seed. Summer ploughing to dry out the bacteria and the plant.",
+  "kept_sentences": 2,
+  "dropped": [
+   "Plant seed from healthy plants."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "facts": [
+   "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+   "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+   "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+   "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+  ],
+  "text": "Whiteflies spread the virus. Choose healthy, disease-free seedlings. Remove and destroy infected plants. Plant maize or sorghum as a barrier crop around the field.",
+  "kept": "Whiteflies spread the virus. Remove and destroy infected plants. Plant maize or sorghum as a barrier crop around the field.",
+  "kept_sentences": 3,
+  "dropped": [
+   "Choose healthy, disease-free seedlings."
+  ],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "facts": [
+   "Raising nursery in protected condition. Growing Sorghum, Maize or Bajra as barrier crop. Use of disease free seeds.",
+   "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+  ],
+  "text": "Plant Sorghum, Maize, or Bajra as a barrier crop. Use disease-free, healthy seeds. Remove and destroy infected plants in the nursery. Plant maize or sorghum around the field. Use yellow sticky traps at 10 acres.",
+  "kept": "Plant Sorghum, Maize, or Bajra as a barrier crop. Use disease-free, healthy seeds. Remove and destroy infected plants in the nursery. Plant maize or sorghum around the field. Use yellow sticky traps at 10 acres.",
+  "kept_sentences": 5,
+  "dropped": [],
+  "accepted": true
+ },
+ {
+  "topic": "yellow_leaf_curl_virus",
+  "facts": [
+   "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre.",
+   "Use 100-mesh nylon net on nursery beds to stop whitefly entry and leaf curl transmission. Grow 5-6 rows of sorghum or maize around the tomato field at least 2 months before transplanting as a barrier against whiteflies, thrips and aphids.",
+   "Raising nursery in protected condition. Growing Sorghum, Maize or Bajra as barrier crop. Use of disease free seeds."
+  ],
+  "text": "Whiteflies can be kept out of the nursery by using a 100-mesh nylon net. Plant sorghum or maize around the tomato field at least 2 months before transplanting to prevent whiteflies, thrips, and aphids.",
+  "kept": "Plant sorghum or maize around the tomato field at least 2 months before transplanting to prevent whiteflies, thrips, and aphids.",
+  "kept_sentences": 1,
+  "dropped": [
+   "Whiteflies can be kept out of the nursery by using a 100-mesh nylon net."
+  ],
+  "accepted": false
+ }
+]

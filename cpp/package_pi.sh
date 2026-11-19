@@ -3,7 +3,11 @@
 # root so the binary runs with "--root .":
 #
 #   krishirakshak, grounding_test       aarch64 binaries (build/arm, see cpp/README.md)
+#   membw                               memory bandwidth benchmark (input of the performance model)
+#   tools/perf_model.py                 predicted limits vs measured speed (Python standard library only)
 #   lib/libonnxruntime.so*              ONNX Runtime 1.23.2 for aarch64
+#   lib/libctranslate2.so*, models/indictrans2_*, indic_text_test, translate_bench
+#                                       IndicTrans2 translation (only if built with CTranslate2)
 #   models/                             ONNX vision models (FP32 + INT8), Llama .pte + tokenizer
 #   results/...json                     model input/output specifications and thresholds
 #   app/kb/tomato_kb.json               advice knowledge base (ICAR, NIPHM, TNAU extracts)
@@ -20,18 +24,44 @@ OUT="${REPO}/dist/krishirakshak-pi"
 ORT="${ORT_ROOT:-$HOME/arm_libs/onnxruntime-linux-aarch64-1.23.2}"
 
 mkdir -p "${OUT}/lib" "${OUT}/models" "${OUT}/results/int8_ptq" "${OUT}/results/pest_yolov8n_with_negatives" \
-         "${OUT}/app/kb" "${OUT}/photos"
+         "${OUT}/app/kb" "${OUT}/photos" "${OUT}/tools"
 
-cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${OUT}/"
+cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${REPO}/build/arm/membw" "${OUT}/"
+# IndicTrans2 translation (built when CTranslate2 is installed, cpp/tools/build_translation_deps.sh):
+#   lib/libctranslate2.so.4   CTranslate2 4.6.0 for aarch64 (OpenBLAS + Ruy inside; libgomp comes with the Pi's OS)
+#   models/indictrans2_*      CTranslate2 INT8 model folder, SentencePiece model, MIT licence of IndicTrans2
+#   indic_text_test, translate_bench, results/indictrans2/{indic_text_oracle,translations}.json   parity + timing
+CT2="${CT2_ROOT:-$HOME/arm_libs/ctranslate2_arm}"
+if [ -f "${REPO}/build/arm/translate_bench" ]; then
+  mkdir -p "${OUT}/results/indictrans2"
+  cp "${REPO}/build/arm/indic_text_test" "${REPO}/build/arm/translate_bench" "${OUT}/"
+  cp -P "${CT2}"/lib/libctranslate2.so* "${OUT}/lib/"
+  cp -r "${REPO}/models/indictrans2_en_indic_200M_ct2_int8" "${OUT}/models/"
+  cp "${REPO}/models/indictrans2_model.SRC" "${REPO}/models/indictrans2_LICENSE" "${OUT}/models/"
+  cp "${REPO}"/results/indictrans2/{indic_text_oracle,translations}.json "${OUT}/results/indictrans2/"
+fi
+cp "${REPO}/tools/perf_model.py" "${OUT}/tools/"
 cp -P "${ORT}"/lib/libonnxruntime.so* "${OUT}/lib/"
 for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
          pest_yolov8n_ip102_negatives pest_yolov8n_ip102_negatives_int8; do
   cp "${REPO}/models/${m}.onnx" "${OUT}/models/"
 done
-cp "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
+# LoRA-tuned 1B (application default) and the base 1B (--llama-pte, comparisons); same tokenizer
+cp "${REPO}/models/llama3_2_1b_krishirakshak_lora_8da4w.pte" "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" \
+   "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
+# Llama 3.2 3B (exported on Kaggle, training/src/llama3b_export.py), if present; select it with --llama-pte
+if [ -f "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" ]; then
+  cp "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" "${REPO}/models/llama3_2_3b_params.json" "${OUT}/models/"
+fi
 cp "${REPO}"/results/int8_ptq/*.json "${OUT}/results/int8_ptq/"
+# Disease severity model (leaf + lesion segmentation) and its specification
+mkdir -p "${OUT}/results/severity"
+cp "${REPO}/models/severity_lraspp_mnv3.onnx" "${OUT}/models/"
+cp "${REPO}/results/severity/severity_spec.json" "${OUT}/results/severity/"
 cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
 cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
+# Farmer web app (served with --serve 8080 --web app/web), if present
+if [ -d "${REPO}/app/web" ]; then rm -rf "${OUT}/app/web"; cp -r "${REPO}/app/web" "${OUT}/app/web"; fi
 
 # A few labelled field photos for the first run on the Pi (optional; skipped if the data folder is absent)
 DATA="${KR_DATA:-$HOME/ARM_AgriTech/data/plantdoc_cls/test}"
@@ -42,29 +72,86 @@ if [ -d "${DATA}" ]; then
   done
 fi
 
+# Offline hotspot and start-at-boot service (run on the Pi with sudo, see the script header)
+cp "${REPO}/cpp/pi/kr_pi.sh" "${OUT}/"
+
 cat > "${OUT}/run_benchmarks.sh" <<'EOF'
 #!/usr/bin/env bash
-# Run on the Pi from this folder. Prints the device state, then times the pipeline (FP32 and INT8 vision,
-# with Llama). Results are written to bench/ as JSON, one file per run.
+# Run on the Pi from this folder. Prints the device state, measures the memory bandwidth, then times the pipeline
+# (FP32 and INT8 vision, ONNX Runtime spinning off/on, Llama). Results are written to bench/, one file per run, and
+# the performance model compares the Llama runs with the limits of the hardware (bench/perf_model.txt).
 set -u
 cd "$(dirname "$0")"
 mkdir -p bench
 echo "model: $(tr -d '\0' < /proc/device-tree/model)"; echo "kernel: $(uname -r)"
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
 ./grounding_test . || exit 1
+echo "memory bandwidth ..."
+./membw --mb 256 --threads 4 > bench/membw.json && cat bench/membw.json
 for p in photos/*.jpg; do
   n="$(basename "$p" .jpg)"
-  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama "$p" > "bench/${n}_fp32_vision.json"
+  /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --fp32 "$p" > "bench/${n}_fp32_vision.json"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --no-llama --int8 "$p" > "bench/${n}_int8_vision.json"
 done
+# ONNX Runtime spinning A/B: every photo 5 times in one process. Wall time should be about equal; the user CPU time
+# shows what spinning threads burn after each run (time that Llama gets when spinning is off)
+PHOTOS="$(for i in 1 2 3 4 5; do ls photos/*.jpg; done | tr '\n' ' ')"
+for mode in "" "--ort-spin"; do
+  /usr/bin/time -f "vision x5 ${mode:-no-spin}: %e s wall, %U s user CPU, %S s system CPU" \
+    ./krishirakshak --root . --no-llama --brief $mode $PHOTOS > /dev/null
+done 2>&1 | grep wall | tee bench/ort_spin_ab.txt
 for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg; do
   n="$(basename "$p" .jpg)"
   /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . "$p" > "bench/${n}_llama_en.json"
 done
+# The same A/B with Llama, the case that matters: does spinning after vision slow Llama down on 4 cores?
+# The order alternates (off-on, on-off, off-on) so that warm caches and clock boost do not favour one mode.
+P=photos/Tomato_leaf_late_blight.jpg
+for i in 1 2 3; do
+  if [ $((i % 2)) -eq 1 ]; then order="off on"; else order="on off"; fi
+  for mode in $order; do
+    flag=""; [ "$mode" = on ] && flag="--ort-spin"
+    ./krishirakshak --root . $flag "$P" > "bench/llama_spin_${mode}_${i}.json" 2>/dev/null
+  done
+done
+python3 -c '
+import glob, json
+print("mode run time_to_first_token_s tokens_per_s total_ms")
+for f in sorted(glob.glob("bench/llama_spin_*.json")):
+    d = json.load(open(f)); s = (d.get("llama") or {}).get("stats") or {}
+    mode, run = f[:-5].split("_")[-2:]
+    print(mode, run, s.get("time_to_first_token_s"), round(s.get("tokens_per_s", 0), 2), round(d["timings_ms"]["total"]))
+' | tee -a bench/ort_spin_ab.txt
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
+# Translation (if bundled): parity of the text processing, the translator on 108 saved answers (12 per language,
+# 2 threads, whole answer per batch), then the full pipeline with Llama + translation into Hindi and Tamil
+if [ -x ./translate_bench ]; then
+  ./indic_text_test . | tail -2
+  ./translate_bench --model models/indictrans2_en_indic_200M_ct2_int8 --spm models/indictrans2_model.SRC \
+    --answers results/indictrans2/translations.json --threads 2 --per-lang 12 --out bench/translate_108.json
+  for tr in hi ta; do
+    /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --translate $tr \
+      photos/Tomato_leaf_late_blight.jpg > "bench/Tomato_leaf_late_blight_llama_en_${tr}.json"
+  done
+fi
+python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
+  --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt
+# Llama 3.2 3B, if it is in the bundle: the same photos in English and Hindi, and its own performance model
+B3=models/llama3_2_3b_instruct_8da4w.pte
+if [ -f "$B3" ]; then
+  for p in photos/Tomato_leaf_late_blight.jpg photos/Tomato_Early_blight_leaf.jpg; do
+    n="$(basename "$p" .jpg)"
+    for lang in en hi; do
+      /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --llama-pte "$B3" --lang $lang "$p" \
+        > "bench/${n}_llama3b_${lang}.json"
+    done
+  done
+  python3 tools/perf_model.py --pte "$B3" --params models/llama3_2_3b_params.json --membw bench/membw.json \
+    --measured 'bench/*_llama3b_en.json' --json bench/perf_model_3b.json | tee bench/perf_model_3b.txt
+fi
 echo "results in bench/"
 EOF
-chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test"
+chmod +x "${OUT}/run_benchmarks.sh" "${OUT}/krishirakshak" "${OUT}/grounding_test" "${OUT}/membw"
 
 du -sh "${OUT}"
 echo "Copy to the Pi:  rsync -a ${OUT}/ pi@<pi-ip>:~/krishirakshak/"

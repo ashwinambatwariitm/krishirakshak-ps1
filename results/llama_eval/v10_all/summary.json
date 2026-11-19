@@ -1,0 +1,16 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v10_no_diagnosis.txt",
+  "options": "",
+  "topics": 27,
+  "accepted": 24,
+  "refused_first": 0,
+  "mean_grounded": 8.15,
+  "mean_dropped": 1.81,
+  "rejected_topics": [
+    "aphids",
+    "serpentine_leaf_miner",
+    "tuta_absoluta_pinworm"
+  ]
+}

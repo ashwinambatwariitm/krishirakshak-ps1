@@ -63,5 +63,10 @@ for f in llama3_2_1b_instruct_8da4w.pte llama3_2_1b_instruct_fp32.pte; do
   [ -f "${f}" ] && mv "${f}" "${OUT}/"
 done
 cp -n "${TOKENIZER}" "${OUT}/llama3_2_tokenizer.model"
+cp -n "${PARAMS}" "${OUT}/llama3_2_params.json"     # model shape, read by tools/perf_model.py --params
+# Every heavy operator should run inside the XNNPACK delegate; anything left outside runs on slow generic kernels
+for f in "${OUT}"/llama3_2_1b_instruct_*.pte; do
+  [ -f "${f}" ] && { python -m llm.inspect_pte "${f}" || echo "llm/inspect_pte.py failed for ${f}"; }
+done
 ls -la "${OUT}"
 echo "Copy the INT4 .pte and the tokenizer into models/ (the application loads them from there)."
