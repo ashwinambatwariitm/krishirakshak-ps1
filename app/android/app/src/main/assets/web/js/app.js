@@ -375,6 +375,9 @@ function renderAnsweredScreen(data) {
     messagesContainer.classList.add("hidden");
   }
 
+  // 3a. Disease severity of the photographed leaf
+  renderDiseaseSeverity(document.getElementById("res-disease-severity"), data.severity, disease);
+
   // 3b. Pest severity (level for this photo only, with the published scouting method)
   renderPestSeverity(document.getElementById("res-pest-severity"), data.pest_severity);
 
@@ -897,4 +900,62 @@ async function setupTranslatePicker() {
   } catch (e) {
     picker.classList.add("hidden");   // device not reachable or no translator: keep the picker hidden
   }
+}
+
+
+/**
+ * Disease severity (device field "severity"): level of the photographed leaf from the share of the leaf area with
+ * disease, measured by the segmentation model on the Pi. Shown only from the validated model ("validated": true);
+ * virus diseases get "not_applicable" (their symptoms are curling and mottling, not lesion areas).
+ */
+function renderDiseaseSeverity(container, sev, disease) {
+  if (!container) return;
+  container.innerHTML = "";
+  const show = sev && ((sev.validated === true && sev.level && sev.level !== "unknown") ||
+                       sev.level === "not_applicable");
+  if (!show || !disease || !disease.answered) {
+    container.classList.add("hidden");
+    return;
+  }
+  const title = document.createElement("h3");
+  title.textContent = window.t("sev_title");
+  container.appendChild(title);
+  if (sev.level === "not_applicable") {
+    const p = document.createElement("p");
+    p.textContent = window.t("sev_not_applicable");
+    container.appendChild(p);
+  } else {
+    const head = document.createElement("div");
+    head.className = "pest-sev-head";
+    const badge = document.createElement("span");
+    badge.className = `tag-badge pest-level-${sev.level}`;
+    badge.textContent = window.t(`level_${sev.level}`) || sev.level;
+    head.appendChild(badge);
+    if (typeof sev.lesion_share === "number") {
+      const pct = document.createElement("strong");
+      pct.textContent = window.t("sev_share").replace("{pct}", Math.round(sev.lesion_share * 100));
+      head.appendChild(pct);
+    }
+    container.appendChild(head);
+    if (typeof sev.lesion_share === "number") {
+      const bar = document.createElement("div");
+      bar.className = "sev-bar";
+      const fill = document.createElement("div");
+      fill.className = `sev-bar-fill pest-level-${sev.level}`;
+      fill.style.width = `${Math.min(100, Math.round(sev.lesion_share * 100))}%`;
+      bar.appendChild(fill);
+      container.appendChild(bar);
+    }
+    const scale = document.createElement("div");
+    scale.className = "pest-sev-note";
+    scale.textContent = window.t("sev_scale");
+    container.appendChild(scale);
+  }
+  if (sev.level !== "not_applicable") {
+    const note = document.createElement("div");
+    note.className = "pest-sev-note";
+    note.textContent = window.t("sev_note");
+    container.appendChild(note);
+  }
+  container.classList.remove("hidden");
 }

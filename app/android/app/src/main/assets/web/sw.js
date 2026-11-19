@@ -3,7 +3,8 @@
  * Pre-caches UI assets so the app loads instantly offline on the Pi Wi-Fi hotspot.
  */
 
-const CACHE_NAME = "krishirakshak-v1";
+// Version of the offline copy: changing it makes browsers drop older copies (activate handler below)
+const CACHE_NAME = "krishirakshak-v2";
 const STATIC_ASSETS = [
   "./",
   "./index.html",
@@ -51,22 +52,15 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Cache-first for static UI assets
+  // Network-first for the app files: when the Pi is reachable the phone always gets the current app (a cache-first
+  // worker kept showing an old copy after updates); the cached copy is used only when the Pi cannot be reached
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== "basic") {
-          return networkResponse;
-        }
+    fetch(event.request).then((networkResponse) => {
+      if (networkResponse && networkResponse.status === 200 && networkResponse.type === "basic") {
         const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-        return networkResponse;
-      });
-    })
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache));
+      }
+      return networkResponse;
+    }).catch(() => caches.match(event.request))
   );
 });

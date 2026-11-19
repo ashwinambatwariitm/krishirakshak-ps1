@@ -25,7 +25,7 @@ main{max-width:860px;margin:0 auto;padding:16px}
 button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 18px;font-size:1rem}
 .row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
 .thumb{max-width:220px;border-radius:8px}.diag{font-size:1.4rem;font-weight:700}
-.urgent{color:var(--bad);font-weight:700}.note{border-left:4px solid var(--warn);padding:6px 10px;background:#fff8ec;margin:8px 0}
+.urgent{color:var(--bad);font-weight:700}.diag-sev{font-weight:600;margin-top:4px}.note{border-left:4px solid var(--warn);padding:6px 10px;background:#fff8ec;margin:8px 0}
 .llama{border-left:4px solid var(--accent);padding:8px 12px;background:#f0f7ef}
 .mt{border-left:4px solid var(--warn);padding:8px 12px;background:#fffaf0}.mt p{font-size:1.1rem}
 table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{text-align:left;border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
@@ -88,6 +88,10 @@ function render(r, img, lang) {
     info.appendChild(el('div', 'diag', r.disease.name || 'Not certain'));
     if (r.disease.answered) info.appendChild(el('div', 'muted', 'Model confidence ' + Math.round(r.disease.top[0].probability * 100) + '%'));
     if (r.disease.urgent) info.appendChild(el('div', 'urgent', 'Urgent - act today'));
+    if (r.severity && r.severity.validated) info.appendChild(el('div', 'diag-sev', 'Disease severity on this leaf: ' +
+        r.severity.level + ' (about ' + Math.round(r.severity.lesion_share * 100) + '% of the leaf; estimate from the photo)'));
+    else if (r.severity && r.severity.level === 'not_applicable') info.appendChild(el('div', 'muted',
+        'No severity level for virus diseases (curling and mottling, not spots)'));
   }
   (r.pests || []).forEach(p => info.appendChild(el('div', '', 'Insect found: ' + p.name + ' (' + p.species + ', ' + Math.round(p.confidence * 100) + '%)')));
   (r.messages || []).forEach(m => head.appendChild(el('div', 'note', m)));

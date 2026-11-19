@@ -901,3 +901,11 @@ body {
 .pest-level-low { background: #e8f5e9; color: #1b5e20; }
 .pest-level-moderate { background: #fff3e0; color: #9a5b00; }
 .pest-level-high { background: #fdecea; color: #a12a2a; }
+
+/* Disease severity of the photographed leaf */
+.severity-card h3 { margin-top: 0; }
+.sev-bar { height: 10px; border-radius: 6px; background: #e6e9e2; margin: 10px 0 4px; overflow: hidden; }
+.sev-bar-fill { height: 100%; border-radius: 6px; }
+.sev-bar-fill.pest-level-low { background: #43a047; }
+.sev-bar-fill.pest-level-moderate { background: #fb8c00; }
+.sev-bar-fill.pest-level-high { background: #e53935; }
