@@ -11,6 +11,7 @@
 #   sudo ./kr_pi.sh autostart-on            start the app at boot (systemd service krishirakshak)
 #   sudo ./kr_pi.sh autostart-off           stop starting it at boot
 #   ./kr_pi.sh status                       network, hotspot and app state
+#   sudo ./kr_pi.sh diagnose                append the radio state to /var/lib/krishirakshak/hotspot_diagnostics.txt
 #
 # Settings (environment variables): KR_SSID (KrishiRakshak), KR_PSK (Wi-Fi password, default krishi2026, at least
 # 8 characters), KR_DIR (app folder, default: this script's folder), KR_USER (user that runs the app, default: the
@@ -35,17 +36,35 @@ home_wifi() {
     nmcli -t -f NAME,TYPE con show | awk -F: -v ap="$AP" '$2=="802-11-wireless" && $1!=ap {print $1; exit}'
 }
 
+CHANNEL=${KR_CHANNEL:-6}
+
 ensure_ap_profile() {
     [ ${#PSK} -ge 8 ] || { echo "KR_PSK must have at least 8 characters"; exit 1; }
-    if ! nmcli -t -f NAME con show | grep -qx "$AP"; then
-        # ipv4.method shared: the Pi is 10.42.0.1 and gives phones addresses by DHCP (NetworkManager's dnsmasq)
-        # band bg (2.4 GHz): every phone can join; WPA2 with a password
-        nmcli con add type wifi ifname wlan0 con-name "$AP" autoconnect no ssid "$SSID" \
-            802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv6.method disabled \
-            wifi-sec.key-mgmt wpa-psk wifi-sec.proto rsn wifi-sec.pairwise ccmp wifi-sec.psk "$PSK" > /dev/null
-    else
-        nmcli con modify "$AP" 802-11-wireless.ssid "$SSID" wifi-sec.psk "$PSK"
-    fi
+    # Profile with the settings of NetworkManager's own hotspot command (nmcli device wifi hotspot, the method of the
+    # Raspberry Pi documentation: WPA2 with CCMP only, no PMF), plus:
+    #   channel 6 (2.4 GHz): every phone scans it. With channel 0 (automatic) the Pi may choose 12 or 13, which many
+    #   phones do not scan - the first test ran a hotspot that no phone could see.
+    #   ipv4 shared: the Pi is 10.42.0.1 and gives phones addresses (NetworkManager's dnsmasq).
+    nmcli con delete "$AP" > /dev/null 2>&1 || true   # always recreated with the current settings
+    nmcli con add type wifi ifname wlan0 con-name "$AP" autoconnect no ssid "$SSID" \
+        802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel "$CHANNEL" \
+        ipv4.method shared ipv6.method disabled \
+        wifi-sec.key-mgmt wpa-psk wifi-sec.proto rsn wifi-sec.pairwise ccmp wifi-sec.group ccmp \
+        wifi-sec.pmf disable wifi-sec.psk "$PSK" > /dev/null
+}
+
+# What the radio is doing (read after the test: the Pi is not reachable over Wi-Fi while the hotspot runs)
+diagnose() {
+    mkdir -p "$STATE"
+    {
+        echo "== $(date)"
+        nmcli -f GENERAL.STATE,GENERAL.CONNECTION,IP4.ADDRESS device show wlan0
+        nmcli -f 802-11-wireless.ssid,802-11-wireless.mode,802-11-wireless.band,802-11-wireless.channel con show "$AP"
+        nmcli -f IN-USE,SSID,CHAN,FREQ,SIGNAL device wifi list ifname wlan0 --rescan no 2>/dev/null | head -5
+        cat /sys/class/net/wlan0/operstate
+        journalctl -u NetworkManager --since "-2min" --no-pager | grep -E "wlan0|$AP" | tail -15
+        journalctl -u wpa_supplicant --since "-2min" --no-pager | tail -10
+    } >> "$STATE/hotspot_diagnostics.txt" 2>&1
 }
 
 save_home_wifi() {
@@ -60,7 +79,8 @@ hotspot_up() {
     ensure_ap_profile
     save_home_wifi
     nmcli con up "$AP" > /dev/null
-    echo "hotspot on: Wi-Fi \"$SSID\" (password $PSK) -> open http://10.42.0.1:8080 on the phone"
+    echo "hotspot on: Wi-Fi \"$SSID\" (password $PSK, channel $CHANNEL) -> open http://10.42.0.1:8080 on the phone"
+    sleep 5; diagnose
 }
 
 hotspot_down() {
@@ -90,6 +110,8 @@ case "${1:-status}" in
         # detached, so the switch back also happens if this terminal or SSH session is lost
         systemd-run --unit=krishirakshak-hotspot-revert --on-active="${secs}s" --quiet \
             /bin/bash "$DIR/$(basename "$0")" hotspot-off
+        # a second snapshot one minute in (phones joining or not); file: /var/lib/krishirakshak/hotspot_diagnostics.txt
+        systemd-run --unit=krishirakshak-hotspot-diag --on-active=60s --quiet /bin/bash "$DIR/$(basename "$0")" diagnose
         ;;
     hotspot-on)
         need_root "$@"
@@ -130,5 +152,6 @@ EOF
         echo "app no longer starts at boot"
         ;;
     status) status ;;
+    diagnose) need_root "$@"; diagnose ;;
     *) sed -n '2,20p' "$0"; exit 2 ;;
 esac
