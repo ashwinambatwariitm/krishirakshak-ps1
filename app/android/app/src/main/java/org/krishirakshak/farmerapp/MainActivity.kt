@@ -2,8 +2,10 @@ package org.krishirakshak.farmerapp
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -51,10 +53,10 @@ class MainActivity : AppCompatActivity() {
         filePathCallback = null
     }
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted ->
-        // Camera permission handling
+    private val requestMultiplePermissionsLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { _ ->
+        // Permissions granted/handled
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -78,10 +80,13 @@ class MainActivity : AppCompatActivity() {
                 // Allow local HTML assets to fetch data from the Pi HTTP server
                 allowFileAccessFromFileURLs = true
                 allowUniversalAccessFromFileURLs = true
+                // Enable Geolocation in WebView
+                setGeolocationEnabled(true)
             }
 
-            // Expose native Text-to-Speech bridge to JavaScript
+            // Expose native Text-to-Speech & Location bridges to JavaScript
             addJavascriptInterface(AndroidTTSBridge(), "AndroidTTS")
+            addJavascriptInterface(AndroidLocationBridge(), "AndroidLocation")
 
             webViewClient = object : WebViewClient() {
                 override fun onReceivedError(
@@ -94,6 +99,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             webChromeClient = object : WebChromeClient() {
+                override fun onGeolocationPermissionsShowPrompt(
+                    origin: String?,
+                    callback: GeolocationPermissions.Callback?
+                ) {
+                    callback?.invoke(origin, true, false)
+                }
+
                 override fun onShowFileChooser(
                     mWebView: WebView?,
                     filePathCallback: ValueCallback<Array<Uri>>?,
@@ -179,13 +191,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    inner class AndroidLocationBridge {
+        @JavascriptInterface
+        fun getLastLocation(): String {
+            return try {
+                val lm = getSystemService(Context.LOCATION_SERVICE) as? LocationManager ?: return ""
+                var loc = if (ContextCompat.checkSelfPermission(
+                        this@MainActivity,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+                    lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                } else null
+
+                if (loc == null && (ContextCompat.checkSelfPermission(
+                        this@MainActivity,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(
+                        this@MainActivity,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ) == PackageManager.PERMISSION_GRANTED)
+                ) {
+                    loc = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                }
+
+                if (loc != null) {
+                    """{"lat": ${loc.latitude}, "lon": ${loc.longitude}}"""
+                } else ""
+            } catch (e: Exception) {
+                ""
+            }
+        }
+    }
+
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+        val permissions = mutableListOf(Manifest.permission.CAMERA)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
+        val needed = permissions.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }
+        if (needed.isNotEmpty()) {
+            requestMultiplePermissionsLauncher.launch(needed.toTypedArray())
         }
     }
 

@@ -191,14 +191,31 @@ function initApp() {
     window.appState.mockExample = mockParam;
   }
 
-  // Initialize weather assessment
+  // Initialize Worldwide weather assessment
   const btnGps = document.getElementById("btn-weather-gps");
   if (btnGps) {
     btnGps.addEventListener("click", async () => {
-      btnGps.textContent = "...";
-      await window.fieldWeather.fetchByGPS();
-      btnGps.textContent = "Live GPS";
+      btnGps.innerHTML = `<span>⏳ Detecting...</span>`;
+      await window.fieldWeather.detectWorldwideLocation();
+      btnGps.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg><span>📍 Auto-Detect Location</span>`;
       updateWeatherUI();
+    });
+  }
+
+  const btnSearch = document.getElementById("btn-weather-search");
+  const inputSearch = document.getElementById("input-weather-search");
+  if (btnSearch && inputSearch) {
+    const handleSearch = async () => {
+      const q = inputSearch.value.trim();
+      if (!q) return;
+      btnSearch.textContent = "...";
+      await window.fieldWeather.searchWorldwideCity(q);
+      btnSearch.textContent = "Search";
+      updateWeatherUI();
+    };
+    btnSearch.addEventListener("click", handleSearch);
+    inputSearch.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleSearch();
     });
   }
 
@@ -210,8 +227,8 @@ function initApp() {
     });
   }
 
-  // Auto-fetch city weather initially
-  window.fieldWeather.fetchCityWeather("pune").then(() => updateWeatherUI());
+  // Auto-detect location worldwide on startup
+  window.fieldWeather.detectWorldwideLocation().then(() => updateWeatherUI());
 
   // Register Service Worker for offline PWA
   if ("serviceWorker" in navigator) {
@@ -676,12 +693,14 @@ function updateWeatherUI() {
   const windEl = document.getElementById("weather-wind");
   const rainEl = document.getElementById("weather-rain");
   const locEl = document.getElementById("weather-location-name");
+  const badgeEl = document.getElementById("weather-condition-badge");
 
   if (tempEl) tempEl.textContent = `${data.temp}°C`;
   if (humEl) humEl.textContent = `${data.humidity}%`;
   if (windEl) windEl.textContent = `${data.windSpeed} km/h`;
   if (rainEl) rainEl.textContent = `${data.rainProb}%`;
   if (locEl) locEl.textContent = `📍 ${data.locationName}`;
+  if (badgeEl) badgeEl.textContent = `${data.weatherIcon || "📡"} ${data.weatherCondition || "Global Live"}`;
 
   if (!banner || !statusText || !issuesBox) return;
 
