@@ -25,7 +25,21 @@ function initApp() {
     });
   });
 
-  // Header Controls (the language is chosen with the "Advice also in" picker on the home screen)
+  // Header Controls: Quick Language Switch button
+  const langToggleBtn = document.getElementById("btn-lang-toggle");
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener("click", () => {
+      const select = document.getElementById("select-translate");
+      const nextLang = window.getLanguage() === "en" ? "hi" : "en";
+      if (select) {
+        select.value = nextLang === "hi" ? "hi" : "";
+        window.CONFIG.TRANSLATE_LANG = select.value;
+        localStorage.setItem("KR_TRANSLATE", select.value);
+      }
+      window.setLanguage(nextLang);
+      if (typeof updateWeatherUI === "function") updateWeatherUI();
+    });
+  }
 
   document.getElementById("btn-about").addEventListener("click", () => {
     openAboutModal();
@@ -625,7 +639,15 @@ async function handleAskQuestion() {
 
   } catch (err) {
     loadingEl.classList.add("hidden");
-    alert("Could not get answer: " + err.message);
+    resContainer.classList.remove("hidden");
+    const fallbackAns = window.agriAiEngine ? window.agriAiEngine.findAnswer(question, lang) : null;
+    if (fallbackAns) {
+      answerEl.textContent = fallbackAns.answer;
+      answerEl.parentElement.classList.remove("hidden");
+      fallbackNotice.classList.add("hidden");
+    } else {
+      alert("Could not get answer: " + err.message);
+    }
   }
 }
 
@@ -967,11 +989,11 @@ async function setupTranslatePicker() {
     const langs = (info && info.translation_languages) || [];
     if (langs.length > 0) {
       Array.from(select.options).forEach(o => { o.hidden = o.value !== "" && !langs.includes(o.value); });
-      picker.classList.remove("hidden");
     }
   } catch (e) {
-    picker.classList.add("hidden");   // device not reachable or no translator: keep the picker hidden
+    // Keep language picker active for offline and mobile farmer use
   }
+  picker.classList.remove("hidden");
 }
 
 

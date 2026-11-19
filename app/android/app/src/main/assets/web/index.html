@@ -27,6 +27,7 @@
       </div>
       <div class="header-actions">
         <!-- Language Switch English / Hindi (FR-1) -->
+        <button id="btn-lang-toggle" class="icon-btn btn-lang" title="Toggle English / Hindi">हिन्दी</button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -86,20 +87,22 @@
             </button>
           </div>
 
-          <!-- Machine translation of the advice (shown only when the device has the translator) -->
-          <div id="translate-picker" class="translate-picker hidden">
-            <label for="select-translate" data-i18n="translate_label">Advice also in</label>
-            <select id="select-translate">
+          <!-- Machine translation of the advice & whole-app language picker -->
+          <div id="translate-picker" class="translate-picker" style="margin-top:16px;text-align:left;background:#f1f8f0;border:1.5px solid #a5d6a7;border-radius:12px;padding:12px 14px;">
+            <label for="select-translate" style="font-weight:800;color:var(--primary);font-size:0.95rem;display:flex;align-items:center;gap:6px;" data-i18n="translate_label">
+              🌐 Select Language / भाषा चुनें
+            </label>
+            <select id="select-translate" class="input-text" style="width:100%;min-height:44px;margin-top:8px;font-weight:700;background:#ffffff;">
               <option value="" data-i18n="translate_none">English only</option>
-              <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
-              <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)</option>
-              <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
-              <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)</option>
-              <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)</option>
-              <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494; (Bengali)</option>
-              <option value="gu">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)</option>
-              <option value="or">&#2835;&#2849;&#2876;&#2879;&#2822; (Odia)</option>
-              <option value="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624; (Punjabi)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+              <option value="mr">मराठी (Marathi)</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+              <option value="kn">ಕನ್ನಡ (Kannada)</option>
+              <option value="bn">বাংলা (Bengali)</option>
+              <option value="gu">ગુજરાતી (Gujarati)</option>
+              <option value="or">ଓଡ଼ିଆ (Odia)</option>
+              <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
             </select>
           </div>
         </div>
@@ -566,6 +569,7 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tts.js"></script>
+  <script src="js/agri_ai.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/api.js"></script>
   <script src="js/canvas.js"></script>

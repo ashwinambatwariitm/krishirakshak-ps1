@@ -53,7 +53,7 @@ const I18N = {
     sev_note: "Estimate from this photo, measured on the device. Check other leaves and plants too.",
     sev_not_applicable: "No severity level for virus diseases: the symptoms are curling and mottling of the whole plant, not spots. Follow the advice below.",
     insect_found: "Insect detected",
-    translate_label: "Advice also in",
+    translate_label: "Select Language / भाषा चुनें",
     translate_none: "English only",
     mt_title: "Machine translation on this device - not yet checked by a speaker of this language",
     mt_withheld: "Some sentences failed the translation check and are shown in English.",
