@@ -640,7 +640,13 @@ body {
 .qa-input-row {
   display: flex;
   gap: 8px;
+  align-items: stretch;
 }
+
+/* Ask button as tall as the text box and only as wide as its label (the full-width .btn took half the row) */
+.qa-input-row .btn { width: auto; flex: 0 0 auto; min-height: 48px; padding: 0 16px; font-size: 0.95rem;
+  white-space: nowrap; }
+.qa-input-row .input-text { min-width: 0; }
 
 .input-text {
   flex: 1;
