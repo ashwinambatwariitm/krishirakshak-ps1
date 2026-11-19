@@ -25,12 +25,7 @@ function initApp() {
     });
   });
 
-  // Header Controls
-  document.getElementById("btn-lang-toggle").addEventListener("click", () => {
-    const nextLang = window.getLanguage() === "en" ? "hi" : "en";
-    window.setLanguage(nextLang);
-    updateWeatherUI();
-  });
+  // Header Controls (the language is chosen with the "Advice also in" picker on the home screen)
 
   document.getElementById("btn-about").addEventListener("click", () => {
     openAboutModal();
@@ -269,7 +264,8 @@ async function startAnalysis(blob) {
   document.getElementById("waiting-progress").classList.remove("hidden");
   document.getElementById("waiting-error-box").classList.add("hidden");
 
-  const lang = window.getLanguage();
+  // The device always runs the advice in English (Llama and its checks) and translates it into the chosen language
+  const lang = "en";
 
   try {
     const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample,
@@ -555,7 +551,7 @@ async function handleAskQuestion() {
   factsContainer.innerHTML = "";
 
   const topic = window.appState.lastTopic;
-  const lang = window.getLanguage();
+  const lang = "en";   // see startAnalysis
 
   try {
     const res = await window.apiService.askQuestion(question, topic, lang, window.CONFIG.TRANSLATE_LANG || "");
@@ -914,10 +910,18 @@ async function setupTranslatePicker() {
   const select = document.getElementById("select-translate");
   if (!picker || !select) return;
   select.value = window.CONFIG.TRANSLATE_LANG || "";
+  // One language choice for the whole app: interface labels exist in English and Hindi, so Hindi switches the
+  // labels too; the other languages keep English labels (the advice itself is shown in the chosen language)
+  const applyInterfaceLanguage = () => {
+    window.setLanguage(select.value === "hi" ? "hi" : "en");
+    if (typeof updateWeatherUI === "function") updateWeatherUI();
+  };
   select.addEventListener("change", () => {
     window.CONFIG.TRANSLATE_LANG = select.value;
     localStorage.setItem("KR_TRANSLATE", select.value);
+    applyInterfaceLanguage();
   });
+  applyInterfaceLanguage();
   try {
     const info = await window.apiService.getInfo();
     const langs = (info && info.translation_languages) || [];
