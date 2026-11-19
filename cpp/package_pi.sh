@@ -60,6 +60,8 @@ cp "${REPO}/models/severity_lraspp_mnv3.onnx" "${OUT}/models/"
 cp "${REPO}/results/severity/severity_spec.json" "${OUT}/results/severity/"
 cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
 cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
+# Knowledge base in the regional languages (one file per language, merged at load time)
+if [ -d "${REPO}/app/kb/translations" ]; then mkdir -p "${OUT}/app/kb/translations"; cp "${REPO}"/app/kb/translations/*.json "${OUT}/app/kb/translations/"; fi
 # Farmer web app (served with --serve 8080 --web app/web), if present
 if [ -d "${REPO}/app/web" ]; then rm -rf "${OUT}/app/web"; cp -r "${REPO}/app/web" "${OUT}/app/web"; fi
 

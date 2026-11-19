@@ -187,6 +187,48 @@ Recommendation for Phase 2: C with B underneath. Only one disease model is loade
   a tomato spray could be returned for a chilli question.
 - Topic keys change from `late_blight` to `tomato.late_blight`, `potato.late_blight`; small change in the C++ code.
 
+### 7.4a Advice database size, storage and translation
+
+The verified extracts are translated once, offline, into the regional languages and stored with the English
+(`tools/translate_kb.py`, Kaggle notebook `ps1-kb-translate`); the device shows them from the file in the farmer's
+language. Spray products and doses are never translated.
+
+Size (tomato measured; other crops scaled by the number of extracts):
+
+| | Tomato (today) | 20 crops | 100 crops |
+|---|---|---|---|
+| Verified extracts | 681 | about 14,000 | about 70,000 |
+| English text | 110 KB | about 2 MB | about 11 MB |
+| With 9 languages (UTF-8) | about 4 MB | about 80 MB | about 400 MB |
+
+Storage is not a constraint (the Pi has a 128 GB SD card); how the data is loaded is:
+
+- Today the application reads the whole JSON file at start-up and builds an in-memory SQLite database. This is fine
+  for one crop, not for 100 (hundreds of MB of RAM, slow start).
+- For many crops: the editable source stays one JSON file per crop in git (small files for reviewers); a build step
+  creates one on-disk SQLite database indexed by crop + disease + language. The device reads only the few extracts of
+  the current diagnosis: a few milliseconds at 700 or 70,000 extracts, memory a few MB.
+
+Translation time (build time only, never on the device):
+
+- Measured for the tomato knowledge base (681 extracts, 179 spray notes, 43 names, 19 messages): 237 s for all 9
+  languages on a Kaggle Tesla T4 (FP16, notebook `ps1-kb-translate`), about 25 s per language; on a laptop CPU
+  (INT8) about 10 minutes per language (Hindi: 586 s). The GPU notebook is the normal route: a new crop in 9
+  languages is a few minutes.
+- Only new or changed extracts need translating (a fingerprint of the English text per extract).
+- Only the languages of the regions where a crop is grown are needed (e.g. cotton: Marathi, Telugu, Gujarati,
+  Punjabi, Hindi), which roughly halves translation and review work.
+- On the device only the short Llama explanation is translated live (about 1-2 s per answer).
+
+The work that grows with every crop is human, not computing:
+
+- Collecting extracts: NIPHM publishes AESA IPM packages in the same format for many crops, ICAR and TNAU have
+  per-crop pages; extraction can be scripted as for tomato, but every extract is checked against its source.
+- Spray safety: label claims (CIB&RC) are crop-specific, so spray rows are keyed by crop + disease and retrieval
+  filters by crop (section 7.4).
+- Translation review: every language needs a fluent speaker once per extract. Sentences repeat across crops
+  ("Remove and destroy crop debris"), so a translation memory reduces this work over time.
+
 ### 7.5 Pests
 
 - The IP102 detector already covers 102 insects across many crops; it scales without change.

@@ -33,7 +33,7 @@ const I18N = {
     
     // Waiting Screen
     checking_plant: "Checking your plant...",
-    waiting_desc: "On-device AI is analyzing disease, insects, and severity. This may take 15\u201345 seconds.",
+    waiting_desc: "On-device AI is checking for disease, insects and severity. This takes about 5-10 seconds.",
     device_error: "Cannot connect to KrishiRakshak device. Please ensure you are connected to the device Wi-Fi hotspot.",
     timeout_error: "Analysis took longer than 60 seconds. Please check the device and try again.",
     
@@ -57,6 +57,11 @@ const I18N = {
     translate_none: "English only",
     mt_title: "Machine translation on this device - not yet checked by a speaker of this language",
     mt_withheld: "Some sentences failed the translation check and are shown in English.",
+    mt_show_english: "Show the English original",
+    tts_no_voice: "No {lang} voice on this phone, so the English is read. To install it: Settings > Text-to-speech > Speech Services by Google > Install voice data.",
+    tts_not_started: "Speech did not start. Check that a text-to-speech voice for this language is installed and downloaded for offline use.",
+    tts_unsupported: "Text-to-speech is not supported on this browser.",
+    kb_mt_note: "Text from ICAR, NIPHM and TNAU publications, machine-translated (not yet checked by a speaker of this language). Spray products and doses are as published.",
     mt_unavailable: "The AI explanation did not pass the safety check, so there is no translation for this photo. The verified advice below is in English.",
     pest_sev_title: "Insects in this photo",
     pest_sev_photo_only: "Level for this photo only - check the field before spraying.",
@@ -84,6 +89,10 @@ const I18N = {
     section_monitoring: "Monitoring & Trapping (ETL)",
     section_safety: "Safety & Handling Precautions",
     section_general: "General Recommendations",
+    section_resistant_varieties: "Resistant Varieties",
+    section_nutrition: "Nutrition",
+    section_natural_enemies: "Natural Enemies (Friendly Insects)",
+    section_chemical: "Spray Options",
     
     // Spray Table
     spray_title: "Spray Options (Official Recommendations)",
@@ -96,7 +105,7 @@ const I18N = {
     // Q&A & Kisan AI
     ask_title: "Kisan AI Assistant (On-Device Llama)",
     ask_desc: "Ask any follow-up question about tomato diseases, pest control, or harvest intervals.",
-    ask_placeholder: "Type or tap a suggestion below...",
+    ask_placeholder: "Type your question...",
     ask_waiting: "Finding verified answer on device...",
     verified_facts_title: "Verified Reference Facts:",
     llama_rejected_notice: "A simplified explanation could not be verified safely. Please refer directly to the verified official facts below:",
@@ -202,7 +211,7 @@ const I18N = {
     
     // Waiting Screen
     checking_plant: "\u0906\u092a\u0915\u0947 \u092a\u094c\u0927\u0947 \u0915\u0940 \u091c\u093e\u0902\u091a \u0939\u094b \u0930\u0939\u0940 \u0939\u0948...",
-    waiting_desc: "\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 AI \u092e\u0949\u0921\u0932 \u0930\u094b\u0917, \u0915\u0940\u091f \u0914\u0930 \u0917\u0902\u092d\u0940\u0930\u0924\u093e \u0915\u0940 \u091c\u093e\u0902\u091a \u0915\u0930 \u0930\u0939\u093e \u0939\u0948\u0964 \u0915\u0943\u092a\u092f\u093e 15\u201345 \u0938\u0947\u0915\u0902\u0921 \u092a\u094d\u0930\u0924\u0940\u0915\u094d\u0937\u093e \u0915\u0930\u0947\u0902\u0964",
+    waiting_desc: "\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 AI \u0930\u094b\u0917, \u0915\u0940\u091f \u0914\u0930 \u0917\u0902\u092d\u0940\u0930\u0924\u093e \u0915\u0940 \u091c\u093e\u0901\u091a \u0915\u0930 \u0930\u0939\u093e \u0939\u0948\u0964 \u0907\u0938\u092e\u0947\u0902 \u0932\u0917\u092d\u0917 5-10 \u0938\u0947\u0915\u0902\u0921 \u0932\u0917\u0924\u0947 \u0939\u0948\u0902\u0964",
     device_error: "\u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915 \u0921\u093f\u0935\u093e\u0907\u0938 \u0938\u0947 \u0938\u0902\u092a\u0930\u094d\u0915 \u0928\u0939\u0940\u0902 \u0939\u094b \u0938\u0915\u093e\u0964 \u0915\u0943\u092a\u092f\u093e \u091c\u093e\u0902\u091a\u0947\u0902 \u0915\u093f \u092b\u094b\u0928 \u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915 \u0935\u093e\u0908-\u092b\u093c\u093e\u0908 \u0939\u0949\u091f\u0938\u094d\u092a\u0949\u091f \u0938\u0947 \u091c\u0941\u0921\u093c\u093e \u0939\u0948\u0964",
     timeout_error: "\u091c\u093e\u0902\u091a \u092e\u0947\u0902 60 \u0938\u0947\u0915\u0902\u0921 \u0938\u0947 \u0905\u0927\u093f\u0915 \u0938\u092e\u092f \u0932\u0917\u093e\u0964 \u0915\u0943\u092a\u092f\u093e \u092a\u0941\u0928\u0903 \u092a\u094d\u0930\u092f\u093e\u0938 \u0915\u0930\u0947\u0902\u0964",
     
@@ -226,6 +235,11 @@ const I18N = {
     translate_none: "\u0915\u0947\u0935\u0932 \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940",
     mt_title: "\u0907\u0938 \u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 \u092e\u0936\u0940\u0928 \u0905\u0928\u0941\u0935\u093e\u0926 - \u0905\u092d\u0940 \u091c\u093e\u0901\u091a\u093e \u0928\u0939\u0940\u0902 \u0917\u092f\u093e",
     mt_withheld: "\u0915\u0941\u091b \u0935\u093e\u0915\u094d\u092f \u0905\u0928\u0941\u0935\u093e\u0926 \u091c\u093e\u0901\u091a \u092e\u0947\u0902 \u0935\u093f\u092b\u0932 \u0930\u0939\u0947, \u0935\u0947 \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0947\u0902 \u0926\u093f\u0916\u093e\u090f \u0917\u090f \u0939\u0948\u0902\u0964",
+    mt_show_english: "\u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0942\u0932 \u092a\u093e\u0920 \u0926\u093f\u0916\u093e\u090f\u0901",
+    tts_no_voice: "\u0907\u0938 \u092b\u094b\u0928 \u092e\u0947\u0902 {lang} \u0906\u0935\u093e\u091c\u093c \u0928\u0939\u0940\u0902 \u0939\u0948, \u0907\u0938\u0932\u093f\u090f \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092a\u0922\u093c\u0940 \u091c\u093e \u0930\u0939\u0940 \u0939\u0948\u0964 \u0907\u0902\u0938\u094d\u091f\u0949\u0932 \u0915\u0930\u0947\u0902: Settings > Text-to-speech > Speech Services by Google > Install voice data\u0964",
+    tts_not_started: "\u0906\u0935\u093e\u091c\u093c \u0936\u0941\u0930\u0942 \u0928\u0939\u0940\u0902 \u0939\u0941\u0908\u0964 \u091c\u093e\u0901\u091a\u0947\u0902 \u0915\u093f \u0907\u0938 \u092d\u093e\u0937\u093e \u0915\u0940 \u0906\u0935\u093e\u091c\u093c \u0907\u0902\u0938\u094d\u091f\u0949\u0932 \u0939\u0948 \u0914\u0930 \u0911\u092b\u093c\u0932\u093e\u0907\u0928 \u0909\u092a\u092f\u094b\u0917 \u0915\u0947 \u0932\u093f\u090f \u0921\u093e\u0909\u0928\u0932\u094b\u0921 \u0939\u0948\u0964",
+    tts_unsupported: "\u0907\u0938 \u092c\u094d\u0930\u093e\u0909\u091c\u093c\u0930 \u092e\u0947\u0902 \u0906\u0935\u093e\u091c\u093c \u092a\u0922\u093c\u0928\u0947 \u0915\u0940 \u0938\u0941\u0935\u093f\u0927\u093e \u0928\u0939\u0940\u0902 \u0939\u0948\u0964",
+    kb_mt_note: "ICAR, NIPHM \u0914\u0930 TNAU \u0915\u0947 \u092a\u094d\u0930\u0915\u093e\u0936\u0928\u094b\u0902 \u0938\u0947 \u0932\u093f\u092f\u093e \u0917\u092f\u093e \u092a\u093e\u0920, \u092e\u0936\u0940\u0928 \u0905\u0928\u0941\u0935\u093e\u0926 (\u0905\u092d\u0940 \u091c\u093e\u0901\u091a\u093e \u0928\u0939\u0940\u0902 \u0917\u092f\u093e)\u0964 \u0926\u0935\u093e\u0913\u0902 \u0915\u0947 \u0928\u093e\u092e \u0914\u0930 \u092e\u093e\u0924\u094d\u0930\u093e \u092a\u094d\u0930\u0915\u093e\u0936\u093f\u0924 \u0930\u0942\u092a \u092e\u0947\u0902 \u0939\u0948\u0902\u0964",
     mt_unavailable: "AI \u0935\u094d\u092f\u093e\u0916\u094d\u092f\u093e \u0938\u0941\u0930\u0915\u094d\u0937\u093e \u091c\u093e\u0901\u091a \u092e\u0947\u0902 \u092a\u093e\u0938 \u0928\u0939\u0940\u0902 \u0939\u0941\u0908, \u0907\u0938\u0932\u093f\u090f \u0907\u0938 \u092b\u094b\u091f\u094b \u0915\u093e \u0905\u0928\u0941\u0935\u093e\u0926 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u0928\u0940\u091a\u0947 \u0926\u0940 \u0917\u0908 \u0938\u0924\u094d\u092f\u093e\u092a\u093f\u0924 \u0938\u0932\u093e\u0939 \u0905\u0902\u0917\u094d\u0930\u0947\u091c\u093c\u0940 \u092e\u0947\u0902 \u0939\u0948\u0964",
     pest_sev_title: "\u0907\u0938 \u092b\u094b\u091f\u094b \u092e\u0947\u0902 \u0915\u0940\u091f",
     pest_sev_photo_only: "\u092f\u0939 \u0938\u094d\u0924\u0930 \u0915\u0947\u0935\u0932 \u0907\u0938 \u092b\u094b\u091f\u094b \u0915\u093e \u0939\u0948 - \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0938\u0947 \u092a\u0939\u0932\u0947 \u0916\u0947\u0924 \u0915\u0940 \u091c\u093e\u0901\u091a \u0915\u0930\u0947\u0902\u0964",
@@ -253,6 +267,10 @@ const I18N = {
     section_monitoring: "\u0928\u093f\u0917\u0930\u093e\u0928\u0940 \u090f\u0935\u0902 \u091f\u094d\u0930\u0948\u092a\u093f\u0902\u0917 (\u0906\u0930\u094d\u0925\u093f\u0915 \u0938\u0940\u092e\u093e)",
     section_safety: "\u0938\u0941\u0930\u0915\u094d\u0937\u093e \u090f\u0935\u0902 \u0938\u093e\u0935\u0927\u093e\u0928\u0940",
     section_general: "\u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0938\u093f\u092b\u093e\u0930\u093f\u0936\u0947\u0902",
+    section_resistant_varieties: "\u0930\u094b\u0917 \u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927\u0940 \u0915\u093f\u0938\u094d\u092e\u0947\u0902",
+    section_nutrition: "\u092a\u094b\u0937\u0923",
+    section_natural_enemies: "\u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u0936\u0924\u094d\u0930\u0941 (\u092e\u093f\u0924\u094d\u0930 \u0915\u0940\u091f)",
+    section_chemical: "\u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0915\u0947 \u0935\u093f\u0915\u0932\u094d\u092a",
     
     // Spray Table
     spray_title: "\u0915\u0940\u091f\u0928\u093e\u0936\u0915 / \u0915\u0935\u0915\u0928\u093e\u0936\u0940 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0935\u093f\u0915\u0932\u094d\u092a (\u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915)",
@@ -265,7 +283,7 @@ const I18N = {
     // Q&A & Kisan AI
     ask_title: "\u0915\u093f\u0938\u093e\u0928 AI \u092e\u093f\u0924\u094d\u0930 (\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 Llama \u092e\u0949\u0921\u0932)",
     ask_desc: "\u091f\u092e\u093e\u091f\u0930 \u0915\u0947 \u0930\u094b\u0917, \u0915\u0940\u091f \u0928\u093f\u092f\u0902\u0924\u094d\u0930\u0923 \u092f\u093e \u0924\u0941\u0921\u093c\u093e\u0908 \u0938\u092e\u092f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u092d\u0940 \u092a\u094d\u0930\u0936\u094d\u0928 \u092a\u0942\u091b\u0947\u0902\u0964",
-    ask_placeholder: "\u0932\u093f\u0916\u0947\u0902 \u092f\u093e \u0928\u0940\u091a\u0947 \u0926\u093f\u090f \u0917\u090f \u0938\u0941\u091d\u093e\u0935 \u092a\u0930 \u091f\u0948\u092a \u0915\u0930\u0947\u0902...",
+    ask_placeholder: "\u0905\u092a\u0928\u093e \u0938\u0935\u093e\u0932 \u0932\u093f\u0916\u0947\u0902...",
     ask_waiting: "\u0921\u093f\u0935\u093e\u0907\u0938 \u0938\u0947 \u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 \u0909\u0924\u094d\u0924\u0930 \u0916\u094b\u091c\u093e \u091c\u093e \u0930\u0939\u093e \u0939\u0948...",
     verified_facts_title: "\u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 \u0938\u0902\u0926\u0930\u094d\u092d \u0924\u0925\u094d\u092f:",
     llama_rejected_notice: "\u0938\u0930\u0932 \u092d\u093e\u0937\u093e \u092e\u0947\u0902 \u0935\u094d\u092f\u093e\u0916\u094d\u092f\u093e \u0938\u0924\u094d\u092f\u093e\u092a\u093f\u0924 \u0928\u0939\u0940\u0902 \u0939\u094b \u0938\u0915\u0940\u0964 \u0915\u0943\u092a\u092f\u093e \u0928\u0940\u091a\u0947 \u0926\u093f\u090f \u0917\u090f \u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 \u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915 \u0924\u0925\u094d\u092f\u094b\u0902 \u0915\u094b \u092a\u0922\u093c\u0947\u0902:",
@@ -346,7 +364,7 @@ const I18N = {
 let currentLanguage = window.CONFIG ? window.CONFIG.DEFAULT_LANG : "en";
 
 function setLanguage(lang) {
-  if (lang !== "en" && lang !== "hi") lang = "en";
+  if (!I18N[lang]) lang = "en";
   currentLanguage = lang;
   localStorage.setItem("KR_LANG", lang);
   updateStaticDOMText();
@@ -357,6 +375,12 @@ function setLanguage(lang) {
 
 function getLanguage() {
   return currentLanguage;
+}
+
+// Interface labels in the regional languages (te mr kn ta bn gu or pa): machine translations generated by
+// tools/translate_kb.py into i18n_regional.js. A label missing there is shown in English.
+if (window.I18N_REGIONAL) {
+  Object.keys(window.I18N_REGIONAL).forEach(lang => { if (!I18N[lang]) I18N[lang] = window.I18N_REGIONAL[lang]; });
 }
 
 function t(key) {

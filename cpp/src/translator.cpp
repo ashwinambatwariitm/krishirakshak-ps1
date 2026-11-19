@@ -55,7 +55,8 @@ public:
         out.sentences.resize(sentences.size());
         for (size_t i = 0; i < sentences.size(); ++i) {
             out.sentences[i].english = sentences[i];
-            const indic_text::Prepared p = indic_text::preprocessEnglish(sentences[i], flores);
+            // glossary first (plain English translates correctly), then the IndicTrans2 pre-processing
+            const indic_text::Prepared p = indic_text::preprocessEnglish(indic_text::plainEnglish(sentences[i]), flores);
             // p.text = "eng_Latn <tgt> <text>": the two tags are tokens of their own, the text goes to SentencePiece
             const size_t a = p.text.find(' '), b = p.text.find(' ', a + 1);
             const std::string body = b == std::string::npos ? std::string() : p.text.substr(b + 1);

@@ -27,7 +27,6 @@
       </div>
       <div class="header-actions">
         <!-- Language Switch English / Hindi (FR-1) -->
-        <button id="btn-lang-toggle" class="icon-btn btn-lang" title="Toggle English / Hindi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -118,7 +117,7 @@
           <div id="waiting-progress">
             <div class="spinner"></div>
             <h2 class="waiting-title" data-i18n="checking_plant">Checking your plant...</h2>
-            <p class="waiting-desc" data-i18n="waiting_desc">On-device AI is analyzing disease, insects, and severity. This may take 15&#8211;45 seconds.</p>
+            <p class="waiting-desc" data-i18n="waiting_desc">On-device AI is checking for disease, insects and severity. This takes about 5-10 seconds.</p>
           </div>
 
           <!-- Error State -->
@@ -134,13 +133,17 @@
 
       <!-- VIEW 3: RESULT SCREEN (STATUS: ANSWERED) (FR-4 - FR-8, FR-15) -->
       <section id="view-result" class="hidden">
-        <button class="btn btn-secondary btn-home-back" style="margin-bottom:12px;min-height:44px;font-size:0.95rem;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="result-topbar">
+        <button class="btn btn-secondary btn-home-back btn-toolbar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
           <span data-i18n="back_to_home">Back to Home</span>
         </button>
+        <!-- Switch this result between the chosen language and English (no new analysis) -->
+        <button id="btn-result-lang" class="btn btn-secondary btn-result-lang btn-toolbar hidden" title="Switch language"></button>
+        </div>
 
         <!-- Canvas for Pest Bounding Boxes Overlay (FR-13) -->
         <div class="result-photo-wrapper">
@@ -149,7 +152,7 @@
 
         <!-- Result Header Card (FR-4) -->
         <div class="card result-header-card">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="result-header-row">
             <div>
               <h2 id="res-disease-name" class="disease-title">Disease Name</h2>
               <div class="meta-tags-row">
@@ -282,8 +285,8 @@
         </div>
 
         <div class="qa-input-row">
-          <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="Type or tap a suggestion above...">
-          <button id="btn-ask" class="btn btn-primary" style="min-width:88px;font-size:0.95rem;" data-i18n="ask">Ask AI</button>
+          <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="Type your question...">
+          <button id="btn-ask" class="btn btn-primary" data-i18n="ask">Ask AI</button>
         </div>
 
         <div id="qa-loading" class="muted text-center hidden" style="margin-top:14px;" data-i18n="ask_waiting">
@@ -532,6 +535,7 @@
 
   <!-- Application Scripts -->
   <script src="js/config.js"></script>
+  <script src="js/i18n_regional.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tts.js"></script>
   <script src="js/weather.js"></script>

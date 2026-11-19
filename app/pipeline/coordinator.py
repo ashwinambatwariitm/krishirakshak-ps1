@@ -24,6 +24,7 @@ from .severity import SeverityModel      # noqa: E402
 from .pest_severity import pest_severity      # noqa: E402
 from .vision import DiseaseClassifier, PestDetector   # noqa: E402
 
+KB_LANGUAGES = {"hi", "te", "mr", "kn", "ta", "bn", "gu", "or", "pa"}   # knowledge-base translations
 REPO = Path(__file__).resolve().parents[2]
 
 DEFAULT_CONFIG = {
@@ -76,8 +77,13 @@ class Pipeline:
                 "kb_version": self.kb.meta["version"], "kb_reviewed": self.kb.meta["content_reviewed"],
                 "load_seconds": self.load_seconds}
 
-    def analyse(self, image_rgb, lang="en"):
-        """Full pipeline for one RGB photo; returns a JSON-serialisable result dictionary."""
+    def analyse(self, image_rgb, lang="en", translate_to=""):
+        """Full pipeline for one RGB photo; returns a JSON-serialisable result dictionary.
+
+        translate_to: language of the texts shown to the farmer (knowledge-base translations); Llama and its checks
+        always use the extracts in lang (the published English for "en").
+        """
+        show = translate_to if translate_to in KB_LANGUAGES else lang
         timings = {}
         result = {"lang": lang, "timings_ms": timings}
 
@@ -87,7 +93,8 @@ class Pipeline:
         result["quality"] = quality
         if not quality["ok"]:
             result["status"] = "retake_photo"
-            result["messages"] = [self.kb.messages["quality"][issue][lang] for issue in quality["issues"]]
+            result["messages"] = [self.kb._in_language(self.kb.messages["quality"][issue], show)
+                                  for issue in quality["issues"]]
             return result
 
         t = time.perf_counter()
@@ -101,15 +108,15 @@ class Pipeline:
         answered = top["probability"] >= self.cfg["disease_threshold"]
         topic = top["class"] if answered else None
         result["disease"] = {"top": ranking[:3], "answered": answered, "topic": topic,
-                             "name": self.kb.topic_name(topic, lang) if topic else None,
+                             "name": self.kb.topic_name(topic, show) if topic else None,
                              "reliability": self.kb.topics[topic]["model_reliability"] if topic else None,
                              "urgent": bool(topic and self.kb.topics[topic]["urgent"])}
         for p in pests:
             p["topic"] = self.kb.pest_topic(p["species_id"], p["species_reliable"])
-            p["name"] = self.kb.topic_name(p["topic"], lang)
+            p["name"] = self.kb.topic_name(p["topic"], show)
         result["pests"] = pests
         # Pest severity of this photo (one level per pest topic, with the published scouting method)
-        result["pest_severity"] = pest_severity(pests, self.kb, image_rgb.shape[1], image_rgb.shape[0], lang)
+        result["pest_severity"] = pest_severity(pests, self.kb, image_rgb.shape[1], image_rgb.shape[0], show)
 
         if topic and topic != "healthy":
             t = time.perf_counter()
@@ -119,19 +126,19 @@ class Pipeline:
         # Verified extracts: the diagnosed disease first, then each distinct pest topic
         t = time.perf_counter()
         topics = ([topic] if topic else []) + sorted({p["topic"] for p in pests})
-        result["advice_blocks"] = [{"topic": tp, "name": self.kb.topic_name(tp, lang),
-                                    "chunks": self.kb.retrieve_for_diagnosis(tp, lang)} for tp in topics]
+        result["advice_blocks"] = [{"topic": tp, "name": self.kb.topic_name(tp, show),
+                                    "chunks": self.kb.retrieve_for_diagnosis(tp, show)} for tp in topics]
         timings["retrieval"] = _ms(t)
 
         messages = []
         if not answered:
-            messages.append(self.kb.message("uncertain", lang))
+            messages.append(self.kb.message("uncertain", show))
         if topic and self.kb.topics[topic]["model_reliability"] == "low":
-            messages.append(self.kb.message("expert_confirm", lang))
+            messages.append(self.kb.message("expert_confirm", show))
         if any(not p["species_reliable"] for p in pests):
-            messages.append(self.kb.message("pest_species_uncertain", lang))
+            messages.append(self.kb.message("pest_species_uncertain", show))
         if any(c["section"] == "chemical" for b in result["advice_blocks"] for c in b["chunks"]):
-            messages.append(self.kb.message("chemical_rule", lang))
+            messages.append(self.kb.message("chemical_rule", show))
         result["messages"] = messages
         result["status"] = "answered" if topics else "uncertain"
 
@@ -141,9 +148,10 @@ class Pipeline:
             block = result["advice_blocks"][0]
             line = self._diagnosis_line(result, block["topic"], lang)
             t = time.perf_counter()
-            text, stats = self.advisor.advise(line, block["chunks"], lang)
+            facts = self.kb.retrieve_for_diagnosis(block["topic"], lang)   # Llama works on the extracts in lang
+            text, stats = self.advisor.advise(line, facts, lang)
             timings["llama"] = _ms(t)
-            ok, reasons = check_output(text, block["chunks"], lang, diagnosed_topic=block["topic"])
+            ok, reasons = check_output(text, facts, lang, diagnosed_topic=block["topic"])
             result["llama"] = {"text": text if ok else None, "accepted": ok, "rejected_reasons": reasons,
                                "raw_text": text, "stats": stats}
         timings["total"] = sum(v for v in timings.values())

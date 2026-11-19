@@ -640,7 +640,13 @@ body {
 .qa-input-row {
   display: flex;
   gap: 8px;
+  align-items: stretch;
 }
+
+/* Ask button as tall as the text box and only as wide as its label (the full-width .btn took half the row) */
+.qa-input-row .btn { width: auto; flex: 0 0 auto; min-height: 48px; padding: 0 16px; font-size: 0.95rem;
+  white-space: nowrap; }
+.qa-input-row .input-text { min-width: 0; }
 
 .input-text {
   flex: 1;
@@ -909,3 +915,26 @@ body {
 .sev-bar-fill.pest-level-low { background: #43a047; }
 .sev-bar-fill.pest-level-moderate { background: #fb8c00; }
 .sev-bar-fill.pest-level-high { background: #e53935; }
+
+/* English original under a translation (folded) */
+.translation-original { margin-top: 8px; font-size: 0.9rem; color: #5d6b5d; }
+.translation-original summary { cursor: pointer; }
+.translation-original p { margin: 6px 0 0; }
+
+/* Result screen: back button on the left, language switch on the right */
+/* Both are compact one-line buttons of the same height (the big .btn style made "Back to Home" wrap to 3 lines) */
+.result-topbar { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.btn.btn-toolbar { width: auto; min-height: 42px; padding: 0 14px; gap: 6px; font-size: 0.95rem; white-space: nowrap;
+  border-radius: 21px; flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.btn-result-lang { margin-left: auto; }
+
+/* Result card: disease name and badges on the left, voice button on the right (wraps below on narrow phones) */
+.result-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.result-header-row > div:first-child { flex: 1 1 180px; min-width: 0; }
+.result-header-row .btn-voice { flex: 0 0 auto; white-space: nowrap; }
+
+/* Short message at the bottom (e.g. no voice installed for the language) */
+.kr-toast { position: fixed; left: 16px; right: 16px; bottom: 84px; z-index: 50; background: #1d2a1d; color: #fff;
+  padding: 12px 14px; border-radius: 10px; font-size: 0.92rem; line-height: 1.4; opacity: 0; pointer-events: none;
+  transform: translateY(10px); transition: opacity .25s, transform .25s; }
+.kr-toast.show { opacity: 1; transform: none; }

@@ -21,9 +21,18 @@ namespace {
 // Below this many source-supported sentences the Llama text is not shown (the verified extracts still are)
 constexpr int kMinGroundedSentences = 2;
 
+// Languages of the knowledge-base translations (app/kb/tomato_kb.json, tools/translate_kb.py)
+const std::set<std::string> kKbLanguages = {"hi", "te", "mr", "kn", "ta", "bn", "gu", "or", "pa"};
+
+// Language the farmer reads: the chosen translation language, otherwise the page language (en / hi)
+std::string displayLanguage(const std::string& lang, const std::string& translateTo) {
+    return kKbLanguages.count(translateTo) ? translateTo : lang;
+}
+
 nlohmann::json chunkJson(const KbChunk& c) {
-    return {{"id", c.id}, {"topic", c.topic}, {"section", c.section}, {"text", c.text}, {"product", c.product},
-            {"dose", c.dose}, {"note", c.note}, {"source_id", c.sourceId}, {"source_org", c.sourceOrg},
+    return {{"id", c.id}, {"topic", c.topic}, {"section", c.section}, {"text", c.text}, {"text_en", c.textEn},
+            {"product", c.product},
+            {"dose", c.dose}, {"note", c.note}, {"note_en", c.noteEn}, {"source_id", c.sourceId}, {"source_org", c.sourceOrg},
             {"source_title", c.sourceTitle}, {"url", c.url}};
 }
 
@@ -90,7 +99,8 @@ nlohmann::json Pipeline::info() const {
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const std::string& translateTo) {
-    nlohmann::json result = {{"lang", lang}, {"translation", nullptr}};
+    const std::string show = displayLanguage(lang, translateTo);   // texts shown to the farmer
+    nlohmann::json result = {{"lang", lang}, {"display_lang", show}, {"translation", nullptr}};
     nlohmann::json timings;
     Timer total;
 
@@ -103,7 +113,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     if (!q.ok) {
         result["status"] = "retake_photo";
         nlohmann::json msgs = nlohmann::json::array();
-        for (const auto& issue : q.issues) msgs.push_back(kb_->qualityMessage(issue, lang));
+        for (const auto& issue : q.issues) msgs.push_back(kb_->qualityMessage(issue, show));
         result["messages"] = msgs;
         timings["total"] = total.ms();
         result["timings_ms"] = timings;
@@ -136,7 +146,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     for (size_t i = 0; i < std::min<size_t>(3, ranking.size()); ++i)
         topK.push_back({{"class", ranking[i].label}, {"probability", ranking[i].probability}});
     result["disease"] = {{"top", topK}, {"answered", answered}, {"topic", answered ? nlohmann::json(topic) : nullptr},
-                         {"name", answered ? nlohmann::json(kb_->topicName(topic, lang)) : nullptr},
+                         {"name", answered ? nlohmann::json(kb_->topicName(topic, show)) : nullptr},
                          {"reliability", answered ? nlohmann::json(kb_->reliability(topic)) : nullptr},
                          {"urgent", answered && kb_->urgent(topic)}};
 
@@ -148,13 +158,13 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         pestTopics.insert(pt);
         anyUnreliable |= !p.speciesReliable;
         pestJson.push_back({{"species_id", p.speciesId}, {"species", p.species}, {"species_reliable", p.speciesReliable},
-                            {"confidence", p.confidence}, {"topic", pt}, {"name", kb_->topicName(pt, lang)},
+                            {"confidence", p.confidence}, {"topic", pt}, {"name", kb_->topicName(pt, show)},
                             {"box_xyxy", {p.box.x, p.box.y, p.box.x + p.box.width, p.box.y + p.box.height}}});
     }
     result["pests"] = pestJson;
     // Pest severity of this photo: one level per pest topic, with the published scouting method / threshold
     const std::vector<PestSeverity> pestSev = pestSeverity(pests, *kb_, imageRgb.cols, imageRgb.rows);
-    result["pest_severity"] = pestSeverityJson(pestSev, *kb_, lang);
+    result["pest_severity"] = pestSeverityJson(pestSev, *kb_, show);
 
     if (answered && topic != "healthy") {
         t.reset();
@@ -178,20 +188,39 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         blockChunks.push_back(kb_->retrieveForDiagnosis(tp, lang));
         nlohmann::json chunks = nlohmann::json::array();
         for (const auto& c : blockChunks.back()) {
-            chunks.push_back(chunkJson(c));
+            chunks.push_back(chunkJson(kb_->localized(c, show)));
             anySpray |= c.section == "chemical";
         }
-        blocks.push_back({{"topic", tp}, {"name", kb_->topicName(tp, lang)}, {"chunks", chunks}});
+        blocks.push_back({{"topic", tp}, {"name", kb_->topicName(tp, show)}, {"chunks", chunks}});
     }
     result["advice_blocks"] = blocks;
     timings["retrieval"] = t.ms();
 
-    nlohmann::json msgs = nlohmann::json::array();
-    if (!answered) msgs.push_back(kb_->message("uncertain", lang));
-    if (answered && kb_->reliability(topic) == "low") msgs.push_back(kb_->message("expert_confirm", lang));
-    if (anyUnreliable) msgs.push_back(kb_->message("pest_species_uncertain", lang));
-    if (anySpray) msgs.push_back(kb_->message("chemical_rule", lang));
-    result["messages"] = msgs;
+    auto messagesIn = [&](const std::string& l) {
+        nlohmann::json m = nlohmann::json::array();
+        if (!answered) m.push_back(kb_->message("uncertain", l));
+        if (answered && kb_->reliability(topic) == "low") m.push_back(kb_->message("expert_confirm", l));
+        if (anyUnreliable) m.push_back(kb_->message("pest_species_uncertain", l));
+        if (anySpray) m.push_back(kb_->message("chemical_rule", l));
+        return m;
+    };
+    result["messages"] = messagesIn(show);
+
+    // English version of every text shown in another language, so the app can switch the result to English and
+    // back without analysing the photo again (Llama's English text is in llama.text)
+    if (show != "en") {
+        nlohmann::json enBlocks = nlohmann::json::array();
+        for (size_t b = 0; b < topics.size(); ++b) {
+            nlohmann::json chunks = nlohmann::json::array();
+            for (const auto& c : blockChunks[b]) chunks.push_back(chunkJson(kb_->localized(c, "en")));
+            enBlocks.push_back({{"topic", topics[b]}, {"name", kb_->topicName(topics[b], "en")}, {"chunks", chunks}});
+        }
+        nlohmann::json pestNames = nlohmann::json::array();
+        for (const auto& p : pests) pestNames.push_back(kb_->topicName(kb_->pestTopic(p.speciesId, p.speciesReliable), "en"));
+        result["en"] = {{"disease_name", answered ? nlohmann::json(kb_->topicName(topic, "en")) : nullptr},
+                        {"pest_names", pestNames}, {"messages", messagesIn("en")}, {"advice_blocks", enBlocks},
+                        {"pest_severity", pestSeverityJson(pestSev, *kb_, "en")}};
+    }
     result["status"] = topics.empty() ? "uncertain" : "answered";
     result["llama"] = nullptr;
 
@@ -248,10 +277,11 @@ nlohmann::json Pipeline::followUp(const std::string& question, const std::string
     const auto facts = kb_->search(question, topic, 4, lang);
     nlohmann::json out = {{"question", question}, {"answer", nullptr}, {"accepted", false}, {"translation", nullptr}};
     nlohmann::json f = nlohmann::json::array();
-    for (const auto& c : facts) f.push_back(chunkJson(c));
+    const std::string show = displayLanguage(lang, translateTo);
+    for (const auto& c : facts) f.push_back(chunkJson(kb_->localized(c, show)));
     out["facts"] = f;
     if (facts.empty()) {
-        out["answer"] = kb_->message("uncertain", lang);
+        out["answer"] = kb_->message("uncertain", show);
         return out;
     }
 #ifdef KR_WITH_LLM

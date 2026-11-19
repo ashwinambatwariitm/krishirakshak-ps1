@@ -22821,5 +22821,35 @@
 "transliterated": "` \u0a09\u0a26\u0a4d\u0a27\u0a30\u0a23 ` \u0a14\u0a30 \u0a2b\u0a3f\u0a30 ` \u0a26\u0a42\u0a38\u0a30\u0a3e",
 "detokenized": "`\u0909\u0926\u094d\u0927\u0930\u0923` \u0914\u0930 \u092b\u093f\u0930 `\u0926\u0942\u0938\u0930\u093e"
 }
+],
+"glossary": [
+{
+"input": "Brown spots with concentric rings in a bull's eye pattern with yellow margin.",
+"expected": "Brown spots with rings inside each other in a target-like pattern with yellow edge."
+},
+{
+"input": "Irregular leaf spots mostly appear from marginal portion of leaves.",
+"expected": "Irregular leaf spots mostly appear from the edges of the leaves."
+},
+{
+"input": "Lesions expand rapidly and the entire leaf becomes necrotic.",
+"expected": "Spots expand rapidly and the entire leaf becomes dead and dry."
+},
+{
+"input": "Necrosis of the stem; chlorotic leaves; water-soaked lesions on foliage.",
+"expected": "Drying and death of the tissue of the stem; yellowish leaves; wet-looking spots on leaves."
+},
+{
+"input": "White sporulation and downy growth; sclerotia and mycelium in soil; bacterial ooze.",
+"expected": "White fungal growth and soft, fluffy growth; small hard fungal bodies and fungal threads in soil; bacterial sticky liquid."
+},
+{
+"input": "This disease appears in the vegetative phase before flowering.",
+"expected": "This disease appears in the leafy growth stage before flowering."
+},
+{
+"input": "Remove infected plant parts.",
+"expected": "Remove infected plant parts."
+}
 ]
 }

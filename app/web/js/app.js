@@ -25,12 +25,7 @@ function initApp() {
     });
   });
 
-  // Header Controls
-  document.getElementById("btn-lang-toggle").addEventListener("click", () => {
-    const nextLang = window.getLanguage() === "en" ? "hi" : "en";
-    window.setLanguage(nextLang);
-    updateWeatherUI();
-  });
+  // Header Controls (the language is chosen with the "Advice also in" picker on the home screen)
 
   document.getElementById("btn-about").addEventListener("click", () => {
     openAboutModal();
@@ -102,6 +97,10 @@ function initApp() {
   document.querySelectorAll(".btn-home-back").forEach(btn => {
     btn.addEventListener("click", () => {
       if (window.voiceAdvisor) window.voiceAdvisor.stop();
+      if (window.appState.viewingEnglish) {   // leave the English view: back to the chosen language
+        window.appState.viewingEnglish = false;
+        window.setLanguage(window.CONFIG.TRANSLATE_LANG || "en");
+      }
       showView("home");
     });
   });
@@ -135,6 +134,15 @@ function initApp() {
       if (!res || !res.disease) return;
       const lang = window.getLanguage();
       let textToRead = "";
+      const pct = Math.round((res.disease.top[0]?.probability || 0.9) * 100);
+      const english = `Diagnosis Result: ${res.disease.name}. Model confidence: ${pct} percent.` +
+                      (res.disease.urgent ? " Urgent: act today." : "");
+      if (lang !== "en" && lang !== "hi") {
+        textToRead = `${window.t("diagnosis_result")}: ${res.disease.name}. ${window.t("confidence")}: ${pct}%.` +
+                     (res.disease.urgent ? ` ${window.t("urgent_badge")}.` : "");
+        window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag, english);
+        return;
+      }
       if (lang === "hi") {
         textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
         if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
@@ -151,8 +159,12 @@ function initApp() {
     btnVoiceLlama.addEventListener("click", () => {
       const res = window.appState.analysisResult;
       if (!res || !res.llama || !res.llama.text) return;
-      const lang = window.getLanguage();
-      window.voiceAdvisor.toggle(res.llama.text, lang, btnVoiceLlama);
+      const tr = window.appState.viewingEnglish ? null : res.translation;
+      if (tr && tr.text) {
+        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
+      } else {
+        window.voiceAdvisor.toggle(res.llama.text, "en", btnVoiceLlama);
+      }
     });
   }
 
@@ -161,8 +173,12 @@ function initApp() {
     btnVoiceAi.addEventListener("click", () => {
       const ansEl = document.getElementById("qa-answer-text");
       if (!ansEl || !ansEl.textContent) return;
-      const lang = window.getLanguage();
-      window.voiceAdvisor.toggle(ansEl.textContent, lang, btnVoiceAi);
+      const tr = window.appState.lastAnswerTranslation;
+      if (tr && tr.text) {
+        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceAi, ansEl.textContent);
+      } else {
+        window.voiceAdvisor.toggle(ansEl.textContent, "en", btnVoiceAi);
+      }
     });
   }
 
@@ -261,13 +277,16 @@ async function startAnalysis(blob) {
   document.getElementById("waiting-progress").classList.remove("hidden");
   document.getElementById("waiting-error-box").classList.add("hidden");
 
-  const lang = window.getLanguage();
+  // The device always runs the advice in English (Llama and its checks) and translates it into the chosen language
+  const lang = "en";
 
   try {
     const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample,
                                                       window.CONFIG.TRANSLATE_LANG || "");
     window.appState.setResult(data);
+    window.appState.viewingEnglish = false;
     routeResultStatus(data);
+    updateResultLanguageButton();
   } catch (err) {
     console.error("Analysis error:", err);
     document.getElementById("waiting-progress").classList.add("hidden");
@@ -348,12 +367,16 @@ function renderAnsweredScreen(data) {
   }
 
   if (Array.isArray(data.pests) && data.pests.length > 0) {
-    const pestStrings = data.pests.map(p => {
-      if (p.species_reliable && p.species) {
-        return `${p.name} (${p.species})`;
-      }
-      return p.name;
+    // One entry per insect type with a count ("Aphids x 3"); the species is added only when the name does not
+    // already contain it (the name is often "Aphids (Aphids)" style already)
+    const counts = new Map();
+    data.pests.forEach(p => {
+      let label = p.name || "";
+      if (p.species_reliable && p.species && !label.toLowerCase().includes(String(p.species).toLowerCase()))
+        label = `${label} (${p.species})`;
+      counts.set(label, (counts.get(label) || 0) + 1);
     });
+    const pestStrings = [...counts].map(([label, n]) => (n > 1 ? `${label} \u00d7 ${n}` : label));
     pestsBadge.textContent = `${window.t("insect_found")}: ${pestStrings.join(", ")}`;
     pestsBadge.classList.remove("hidden");
   } else {
@@ -390,7 +413,7 @@ function renderAnsweredScreen(data) {
   } else {
     llamaContainer.classList.add("hidden");
   }
-  renderTranslation(document.getElementById("res-llama-translation"), data.translation);
+  renderTranslation(document.getElementById("res-llama-translation"), data.translation, llamaTextEl);
   // A translation was asked for, but the AI explanation did not pass the device's safety check (only checked
   // text is translated): say so instead of showing nothing
   const mtNote = document.getElementById("res-mt-unavailable");
@@ -416,6 +439,14 @@ function renderAnsweredScreen(data) {
           blockTitle.className = "advice-block-title";
           blockTitle.textContent = block.name;
           blockEl.appendChild(blockTitle);
+        }
+        // Extracts shown from the knowledge-base translations (machine translation, not yet reviewed)
+        const translated = nonChemicalChunks.filter(c => c.text_en && c.text !== c.text_en);
+        if (translated.length > 0) {
+          const mtNote = document.createElement("div");
+          mtNote.className = "translation-label";
+          mtNote.textContent = window.t("kb_mt_note");
+          blockEl.appendChild(mtNote);
         }
 
         const grouped = {};
@@ -470,6 +501,20 @@ function renderAnsweredScreen(data) {
           secWrapper.appendChild(listEl);
           blockEl.appendChild(secWrapper);
         });
+
+        if (translated.length > 0) {   // the published English, one tap away
+          const original = document.createElement("details");
+          original.className = "translation-original";
+          const summary = document.createElement("summary");
+          summary.textContent = window.t("mt_show_english");
+          original.appendChild(summary);
+          nonChemicalChunks.forEach(c => {
+            const p = document.createElement("p");
+            p.textContent = `${c.text_en || c.text} [${c.source_org || ""}]`;
+            original.appendChild(p);
+          });
+          blockEl.appendChild(original);
+        }
 
         adviceContainer.appendChild(blockEl);
       }
@@ -547,7 +592,7 @@ async function handleAskQuestion() {
   factsContainer.innerHTML = "";
 
   const topic = window.appState.lastTopic;
-  const lang = window.getLanguage();
+  const lang = "en";   // see startAnalysis
 
   try {
     const res = await window.apiService.askQuestion(question, topic, lang, window.CONFIG.TRANSLATE_LANG || "");
@@ -561,10 +606,15 @@ async function handleAskQuestion() {
       qaTranslation.className = "translation-block hidden";
       answerEl.insertAdjacentElement("afterend", qaTranslation);
     }
-    renderTranslation(qaTranslation, res.accepted !== false ? res.translation : null);
-
     if (res.answer && res.accepted !== false) {
       answerEl.textContent = res.answer;
+      renderTranslation(qaTranslation, res.translation, answerEl);
+    } else {
+      renderTranslation(qaTranslation, null, answerEl);
+    }
+    window.appState.lastAnswerTranslation = res.accepted !== false ? res.translation : null;
+
+    if (res.answer && res.accepted !== false) {
       answerEl.parentElement.classList.remove("hidden");
       fallbackNotice.classList.add("hidden");
     } else {
@@ -805,9 +855,10 @@ function renderHistoryList() {
  * Machine translation of the checked English advice (device field "translation"), shown under the English text
  * and marked as not reviewed. Sentences that failed the device's translation check stay in English.
  */
-function renderTranslation(container, tr) {
+function renderTranslation(container, tr, englishEl) {
   if (!container) return;
   container.innerHTML = "";
+  if (englishEl) englishEl.classList.remove("hidden");
   if (!tr || !tr.text) {
     container.classList.add("hidden");
     return;
@@ -826,6 +877,20 @@ function renderTranslation(container, tr) {
     note.className = "translation-note";
     note.textContent = window.t("mt_withheld");
     container.appendChild(note);
+  }
+  // The translation replaces the English text on screen; the English stays one tap away (the translation is not
+  // yet reviewed, so a helper or extension worker can check it)
+  if (englishEl && englishEl.textContent) {
+    const original = document.createElement("details");
+    original.className = "translation-original";
+    const summary = document.createElement("summary");
+    summary.textContent = window.t("mt_show_english");
+    const en = document.createElement("p");
+    en.textContent = englishEl.textContent;
+    original.appendChild(summary);
+    original.appendChild(en);
+    container.appendChild(original);
+    englishEl.classList.add("hidden");
   }
   container.classList.remove("hidden");
 }
@@ -886,10 +951,17 @@ async function setupTranslatePicker() {
   const select = document.getElementById("select-translate");
   if (!picker || !select) return;
   select.value = window.CONFIG.TRANSLATE_LANG || "";
+  // One language choice for the whole app: labels, advice and the verified practices in the chosen language
+  const applyInterfaceLanguage = () => {
+    window.setLanguage(select.value || "en");   // labels in the chosen language (English where one is missing)
+    if (typeof updateWeatherUI === "function") updateWeatherUI();
+  };
   select.addEventListener("change", () => {
     window.CONFIG.TRANSLATE_LANG = select.value;
     localStorage.setItem("KR_TRANSLATE", select.value);
+    applyInterfaceLanguage();
   });
+  applyInterfaceLanguage();
   try {
     const info = await window.apiService.getInfo();
     const langs = (info && info.translation_languages) || [];
@@ -959,3 +1031,53 @@ function renderDiseaseSeverity(container, sev, disease) {
   }
   container.classList.remove("hidden");
 }
+
+
+/**
+ * Result language switch (top right of the result screen): the chosen language <-> English, without analysing the
+ * photo again. The device sends the English of every translated text in data.en (and Llama's English in
+ * llama.text), so the result is only drawn again.
+ */
+function englishView(data) {
+  const v = JSON.parse(JSON.stringify(data));
+  const en = data.en || {};
+  v.translation = null;                        // Llama's English text is shown
+  v.display_lang = "en";
+  if (v.disease && en.disease_name) v.disease.name = en.disease_name;
+  if (Array.isArray(v.pests) && Array.isArray(en.pest_names)) v.pests.forEach((p, i) => { p.name = en.pest_names[i] || p.name; });
+  if (en.messages) v.messages = en.messages;
+  if (en.advice_blocks) v.advice_blocks = en.advice_blocks;
+  if (en.pest_severity) v.pest_severity = en.pest_severity;
+  return v;
+}
+
+function languageLabel(code) {
+  const opt = Array.from(document.querySelectorAll("#select-translate option")).find(o => o.value === code);
+  return opt ? opt.textContent.split(" (")[0] : code;     // e.g. the native name of the chosen language
+}
+
+function updateResultLanguageButton() {
+  const btn = document.getElementById("btn-result-lang");
+  const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
+  if (!btn) return;
+  const available = data && chosen && data.display_lang && data.display_lang !== "en";
+  btn.classList.toggle("hidden", !available);
+  if (available) btn.textContent = window.appState.viewingEnglish ? languageLabel(chosen) : "English";
+}
+
+function toggleResultLanguage() {
+  const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
+  if (!data || !chosen) return;
+  if (window.voiceAdvisor) window.voiceAdvisor.stop();
+  window.appState.viewingEnglish = !window.appState.viewingEnglish;
+  window.setLanguage(window.appState.viewingEnglish ? "en" : chosen);      // interface labels too
+  renderAnsweredScreen(window.appState.viewingEnglish ? englishView(data) : data);
+  updateResultLanguageButton();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btn-result-lang");
+  if (btn) btn.addEventListener("click", toggleResultLanguage);
+});

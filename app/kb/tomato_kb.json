@@ -5704,5 +5704,32 @@
  "pesticide_regulation": {
   "reference": "List of pesticides banned, withdrawn, refused registration and restricted in use in India, as compiled from Gazette notifications (S.O. 3951(E) 2018, S.O. 4294(E) 2023 and earlier) at https://en.wikipedia.org/wiki/List_of_banned_and_restricted_pesticides_in_India . The official CIB&RC/PPQS PDF (https://ppqs.gov.in/divisions/cib-rc/registered-products) could not be downloaded from the build machine (HTTP 403); the team must confirm against it before submission.",
   "checked": "2026-11-17"
+ },
+ "translations": {
+  "languages": [
+   "hi",
+   "te",
+   "mr",
+   "kn",
+   "ta",
+   "bn",
+   "gu",
+   "or",
+   "pa"
+  ],
+  "method": "IndicTrans2 en-indic 200M (CTranslate2, cuda float16) with a plain-English glossary (tools/translate_kb.py)",
+  "machine_translated": "items list their machine-translated languages in 'mt'; Hindi without 'mt' is the team translation",
+  "never_translated": "spray product names, doses, sources",
+  "messages_left_in_english": [
+   "estimated_severity"
+  ],
+  "review": "Machine translations; to be reviewed by fluent speakers (see <lang>_reviewed).",
+  "known_wrong_renderings_left": {
+   "mr: retail (for marginal)": 0,
+   "hi: impure (for necrotic)": 0,
+   "hi: ox's eye (for bull's eye)": 0,
+   "mr: ox's (for bull's eye)": 0,
+   "kn: botanical (for vegetative)": 0
+  }
  }
 }
