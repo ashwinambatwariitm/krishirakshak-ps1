@@ -25,18 +25,17 @@ function initApp() {
     });
   });
 
-  // Header Controls: Quick Language Switch button
-  const langToggleBtn = document.getElementById("btn-lang-toggle");
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener("click", () => {
-      const select = document.getElementById("select-translate");
-      const nextLang = window.getLanguage() === "en" ? "hi" : "en";
-      if (select) {
-        select.value = nextLang === "hi" ? "hi" : "";
-        window.CONFIG.TRANSLATE_LANG = select.value;
-        localStorage.setItem("KR_TRANSLATE", select.value);
+  // Header Controls: Regional Language Selector (10 Languages)
+  const headerLangSelect = document.getElementById("header-lang-select");
+  if (headerLangSelect) {
+    headerLangSelect.value = window.getLanguage() || "en";
+    headerLangSelect.addEventListener("change", () => {
+      const chosenLang = headerLangSelect.value;
+      const selectTranslate = document.getElementById("select-translate");
+      if (selectTranslate) {
+        selectTranslate.value = chosenLang === "en" ? "" : chosenLang;
       }
-      window.setLanguage(nextLang);
+      window.setLanguage(chosenLang);
       if (typeof updateWeatherUI === "function") updateWeatherUI();
     });
   }
@@ -142,15 +141,12 @@ function initApp() {
     btnVoiceDiag.addEventListener("click", () => {
       const res = window.appState.analysisResult;
       if (!res || !res.disease) return;
-      const lang = window.getLanguage();
-      let textToRead = "";
-      if (lang === "hi") {
-        textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
-        if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
-      } else {
-        textToRead = `Diagnosis Result: ${res.disease.name}. Model confidence: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} percent.`;
-        if (res.disease.urgent) textToRead += " Urgent: act today.";
-      }
+      const lang = window.getLanguage() || "en";
+      const diagPrefix = window.t("diagnosis_result") || "Diagnosis Result";
+      const confLabel = window.t("confidence") || "Model confidence";
+      const prob = Math.round((res.disease.top && res.disease.top[0]?.probability ? res.disease.top[0].probability : 0.9) * 100);
+      const urgentText = res.disease.urgent ? ` - ${window.t("urgent_badge") || "Urgent: act today"}` : "";
+      const textToRead = `${diagPrefix}: ${res.disease.name}. ${confLabel}: ${prob}%.${urgentText}`;
       window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag);
     });
   }
@@ -159,12 +155,16 @@ function initApp() {
   if (btnVoiceLlama) {
     btnVoiceLlama.addEventListener("click", () => {
       const res = window.appState.analysisResult;
-      if (!res || !res.llama || !res.llama.text) return;
+      if (!res) return;
+      const lang = window.getLanguage() || "en";
       const tr = res.translation;
       if (tr && tr.text) {
-        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
-      } else {
-        window.voiceAdvisor.toggle(res.llama.text, window.getLanguage(), btnVoiceLlama);
+        window.voiceAdvisor.toggle(tr.text, tr.lang || lang, btnVoiceLlama, res.llama?.text);
+      } else if (res.llama && res.llama.text) {
+        window.voiceAdvisor.toggle(res.llama.text, lang, btnVoiceLlama);
+      } else if (Array.isArray(res.practices) && res.practices.length > 0) {
+        const practiceText = res.practices.map(p => `${p.title || ""}: ${p.content || ""}`).join(". ");
+        window.voiceAdvisor.toggle(practiceText, lang, btnVoiceLlama);
       }
     });
   }
@@ -174,11 +174,12 @@ function initApp() {
     btnVoiceAi.addEventListener("click", () => {
       const ansEl = document.getElementById("qa-answer-text");
       if (!ansEl || !ansEl.textContent) return;
+      const lang = window.getLanguage() || "en";
       const tr = window.appState.lastAnswerTranslation;
       if (tr && tr.text) {
-        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceAi, ansEl.textContent);
+        window.voiceAdvisor.toggle(tr.text, tr.lang || lang, btnVoiceAi, ansEl.textContent);
       } else {
-        window.voiceAdvisor.toggle(ansEl.textContent, window.getLanguage(), btnVoiceAi);
+        window.voiceAdvisor.toggle(ansEl.textContent, lang, btnVoiceAi);
       }
     });
   }
@@ -584,6 +585,7 @@ async function handleAskQuestion() {
   factsContainer.innerHTML = "";
 
   const topic = window.appState.lastTopic;
+  const userLang = window.getLanguage() || "en";
   const lang = "en";   // see startAnalysis
 
   try {
@@ -610,8 +612,16 @@ async function handleAskQuestion() {
       answerEl.parentElement.classList.remove("hidden");
       fallbackNotice.classList.add("hidden");
     } else {
-      answerEl.parentElement.classList.add("hidden");
-      fallbackNotice.classList.remove("hidden");
+      // If Pi Llama rejected or had no answer, fall back to verified regional engine
+      const regionalFallback = window.agriAiEngine ? window.agriAiEngine.findAnswer(question, userLang) : null;
+      if (regionalFallback) {
+        answerEl.textContent = regionalFallback.answer;
+        answerEl.parentElement.classList.remove("hidden");
+        fallbackNotice.classList.add("hidden");
+      } else {
+        answerEl.parentElement.classList.add("hidden");
+        fallbackNotice.classList.remove("hidden");
+      }
     }
 
     if (Array.isArray(res.facts) && res.facts.length > 0) {
@@ -640,7 +650,7 @@ async function handleAskQuestion() {
   } catch (err) {
     loadingEl.classList.add("hidden");
     resContainer.classList.remove("hidden");
-    const fallbackAns = window.agriAiEngine ? window.agriAiEngine.findAnswer(question, lang) : null;
+    const fallbackAns = window.agriAiEngine ? window.agriAiEngine.findAnswer(question, userLang) : null;
     if (fallbackAns) {
       answerEl.textContent = fallbackAns.answer;
       answerEl.parentElement.classList.remove("hidden");
@@ -690,7 +700,7 @@ function updateWeatherUI() {
     evaluation.issues.forEach(issue => {
       const p = document.createElement("div");
       p.className = "alert-note";
-      p.textContent = lang === "hi" ? issue.hi : issue.en;
+      p.textContent = issue[lang] || issue.hi || issue.en;
       issuesBox.appendChild(p);
     });
   }
@@ -785,18 +795,10 @@ async function openAboutModal() {
     inputBase.value = window.apiService.getBaseUrl();
   }
 
-  const inputAiKey = document.getElementById("setting-ai-key");
-  if (inputAiKey) {
-    inputAiKey.value = window.apiService.getCustomAiKey();
-  }
-
   const saveBtn = document.getElementById("btn-save-setting");
   if (saveBtn) {
     saveBtn.onclick = () => {
       window.apiService.setBaseUrl(inputBase.value.trim());
-      if (inputAiKey) {
-        window.apiService.setCustomAiKey(inputAiKey.value.trim());
-      }
       alert("Settings Saved.");
       closeModal();
     };
@@ -972,10 +974,9 @@ async function setupTranslatePicker() {
   const select = document.getElementById("select-translate");
   if (!picker || !select) return;
   select.value = window.CONFIG.TRANSLATE_LANG || "";
-  // One language choice for the whole app: interface labels exist in English and Hindi, so Hindi switches the
-  // labels too; the other languages keep English labels (the advice itself is shown in the chosen language)
   const applyInterfaceLanguage = () => {
-    window.setLanguage(select.value === "hi" ? "hi" : "en");
+    const lang = select.value || "en";
+    window.setLanguage(lang);
     if (typeof updateWeatherUI === "function") updateWeatherUI();
   };
   select.addEventListener("change", () => {

@@ -40,7 +40,13 @@ class VoiceAdvisor {
       lang = "en";
     }
 
-    const cleanText = text.replace(/\[.*?\]/g, "").trim();
+    const cleanText = text
+      .replace(/\[.*?\]/g, "")
+      .replace(/\*\*/g, "")
+      .replace(/\*/g, "")
+      .replace(/•/g, "")
+      .replace(/#+/g, "")
+      .trim();
     if (!cleanText) return;
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
