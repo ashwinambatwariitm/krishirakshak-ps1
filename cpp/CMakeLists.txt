@@ -66,6 +66,7 @@ set(KR_SOURCES
     src/severity.cpp
     src/disease_classifier.cpp
     src/pest_detector.cpp
+    src/pest_severity.cpp
     src/knowledge_base.cpp
     src/output_guard.cpp
     src/pipeline.cpp
@@ -156,6 +157,10 @@ add_executable(grounding_test tests/grounding_test.cpp)
 target_link_libraries(grounding_test PRIVATE krishirakshak_core)
 add_test(NAME grounding COMMAND grounding_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
 # Parity test of the IndicTrans2 text processing against the Python reference (no model needed)
+# Per-photo pest severity rule on constructed detections, with the real knowledge base
+add_executable(pest_severity_test tests/pest_severity_test.cpp)
+target_link_libraries(pest_severity_test PRIVATE krishirakshak_core)
+add_test(NAME pest_severity COMMAND pest_severity_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
 add_executable(indic_text_test tests/indic_text_test.cpp)
 target_link_libraries(indic_text_test PRIVATE krishirakshak_core)
 add_test(NAME indic_text COMMAND indic_text_test ${CMAKE_CURRENT_SOURCE_DIR}/..)
@@ -167,7 +172,7 @@ endif()
 target_link_libraries(krishirakshak PRIVATE krishirakshak_core)
 # Library search path: on the development machine the ONNX Runtime folder; on the Pi the lib/ folder next to the
 # binary (cpp/package_pi.sh puts libonnxruntime there; OpenCV comes from the Pi's own apt packages)
-set(KR_BINARIES krishirakshak grounding_test indic_text_test)
+set(KR_BINARIES krishirakshak grounding_test indic_text_test pest_severity_test)
 if(KR_WITH_TRANSLATION)
     list(APPEND KR_BINARIES translate_bench)
 endif()

@@ -21,6 +21,7 @@ from .guard import check_output              # noqa: E402
 from .knowledge import KnowledgeBase         # noqa: E402
 from .quality import check_quality           # noqa: E402
 from .severity import estimate_severity      # noqa: E402
+from .pest_severity import pest_severity      # noqa: E402
 from .vision import DiseaseClassifier, PestDetector   # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
@@ -104,6 +105,8 @@ class Pipeline:
             p["topic"] = self.kb.pest_topic(p["species_id"], p["species_reliable"])
             p["name"] = self.kb.topic_name(p["topic"], lang)
         result["pests"] = pests
+        # Pest severity of this photo (one level per pest topic, with the published scouting method)
+        result["pest_severity"] = pest_severity(pests, self.kb, image_rgb.shape[1], image_rgb.shape[0], lang)
 
         if topic and topic != "healthy":
             t = time.perf_counter()
@@ -163,15 +166,17 @@ class Pipeline:
         if d["answered"] and topic == d["topic"]:
             line = (f"Diagnosis: {self.kb.topic_name(topic, 'en')} on a tomato leaf "
                     f"(model confidence {d['top'][0]['probability']:.0%}).")
-            sev = result.get("severity")
-            if sev and sev["level"] != "unknown":
-                line += f" Estimated spread on the photographed leaf: {sev['level']}."
+            # The colour-based disease severity is not given to Llama: on 181 expert-annotated field photos its
+            # level matched the expert level only 31% of the time (results/severity_plantseg/README.md)
             if d["urgent"]:
                 line += " This disease is urgent: it spreads very fast."
             if d["reliability"] == "low":
                 line += " The photo result is not certain; the farmer should confirm with the local KVK."
         else:
             line = f"An insect pest was found on the tomato plant: {self.kb.topic_name(topic, 'en')}."
+            for ps in result.get("pest_severity", []):
+                if ps["topic"] == topic:
+                    line += f" Insects of this kind counted in the photo: {ps['count']} ({ps['level']} for one photo)."
         return line
 
 

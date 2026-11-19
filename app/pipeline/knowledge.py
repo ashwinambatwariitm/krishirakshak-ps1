@@ -62,6 +62,12 @@ class KnowledgeBase:
                 "product": r["product"], "dose": r["dose"], "note": r["note"],
                 "source_id": r["source"], "source_org": src["org"], "source_title": src["title"], "url": src["url"]}
 
+    def find_chunk(self, topic, phrase, lang="en"):
+        """The first extract of a topic whose English text contains `phrase` (quotes one published rule), or None."""
+        r = self.con.execute("SELECT * FROM chunks WHERE topic = ? AND instr(text_en, ?) > 0 ORDER BY id LIMIT 1",
+                             (topic, phrase)).fetchone()
+        return self._row(r, lang) if r else None
+
     def retrieve_for_diagnosis(self, topic, lang="en", max_sprays=3):
         """Verified extracts for one diagnosed disease or pest, in reading order."""
         rows = [self._row(r, lang) for r in self.con.execute("SELECT * FROM chunks WHERE topic = ?", (topic,))]

@@ -33,7 +33,7 @@ def estimate_severity(image_rgb):
 
     plant_px = int(plant.sum())
     if plant_px < 0.05 * plant.size:        # almost no leaf found: do not guess
-        return {"level": "unknown", "lesion_share": None, "method": "hsv_colour_ratio"}
+        return {"level": "unknown", "lesion_share": None, "method": "hsv_colour_ratio", "validated": False}
     share = float((plant & ~green).sum()) / plant_px
     level = next(name for bound, name in LEVELS if share < bound)
-    return {"level": level, "lesion_share": round(share, 3), "method": "hsv_colour_ratio"}
+    return {"level": level, "lesion_share": round(share, 3), "method": "hsv_colour_ratio", "validated": False}

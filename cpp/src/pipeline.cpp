@@ -6,6 +6,7 @@
 #include "common.hpp"
 #include "llama_advisor.hpp"
 #include "output_guard.hpp"
+#include "pest_severity.hpp"
 #include "translator.hpp"
 
 #include <algorithm>
@@ -148,6 +149,9 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
                             {"box_xyxy", {p.box.x, p.box.y, p.box.x + p.box.width, p.box.y + p.box.height}}});
     }
     result["pests"] = pestJson;
+    // Pest severity of this photo: one level per pest topic, with the published scouting method / threshold
+    const std::vector<PestSeverity> pestSev = pestSeverity(pests, *kb_, imageRgb.cols, imageRgb.rows);
+    result["pest_severity"] = pestSeverityJson(pestSev, *kb_, lang);
 
     if (answered && topic != "healthy") {
         t.reset();
@@ -155,7 +159,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         timings["severity"] = t.ms();
         result["severity"] = {{"level", s.level},
                               {"lesion_share", s.lesionShare < 0 ? nlohmann::json(nullptr) : nlohmann::json(s.lesionShare)},
-                              {"method", "hsv_colour_ratio"}};
+                              {"method", "hsv_colour_ratio"}, {"validated", false}};
     }
 
     // Verified extracts: the diagnosed disease first, then each distinct pest topic (sorted, like the reference)
@@ -195,13 +199,17 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
             char conf[16];
             std::snprintf(conf, sizeof(conf), "%.0f%%", top.probability * 100.0);
             line = "Diagnosis: " + kb_->topicName(topic, "en") + " on a tomato leaf (model confidence " + conf + ").";
-            if (result.contains("severity") && result["severity"]["level"] != "unknown")
-                line += " Estimated spread on the photographed leaf: " + result["severity"]["level"].get<std::string>() + ".";
+            // The colour-based disease severity is not given to Llama: on 181 expert-annotated field photos its
+            // level matched the expert level only 31% of the time (results/severity_plantseg/README.md)
             if (kb_->urgent(topic)) line += " This disease is urgent: it spreads very fast.";
             if (kb_->reliability(topic) == "low")
                 line += " The photo result is not certain; the farmer should confirm with the local KVK.";
         } else {
             line = "An insect pest was found on the tomato plant: " + kb_->topicName(topics.front(), "en") + ".";
+            for (const auto& ps : pestSev)
+                if (ps.topic == topics.front())
+                    line += " Insects of this kind counted in the photo: " + std::to_string(ps.count) +
+                            " (" + ps.level + " for one photo).";
         }
         t.reset();
         const LlamaOutput out = llama_->advise(line, blockChunks.front(), lang);

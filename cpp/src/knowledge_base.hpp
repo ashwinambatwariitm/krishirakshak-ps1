@@ -41,6 +41,9 @@ public:
     std::vector<KbChunk> retrieveForDiagnosis(const std::string& topic, const std::string& lang, int maxSprays = 3) const;
     std::vector<KbChunk> search(const std::string& question, const std::string& topic, int k,
                                 const std::string& lang) const;
+    // The first extract of a topic whose English text contains `phrase` (used to quote a specific published rule,
+    // e.g. the NIPHM scouting method); false if there is none.
+    bool findChunk(const std::string& topic, const std::string& phrase, const std::string& lang, KbChunk& out) const;
 
     std::string topicName(const std::string& topic, const std::string& lang) const;
     std::string message(const std::string& key, const std::string& lang) const;          // fixed reviewed text

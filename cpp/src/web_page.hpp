@@ -88,11 +88,22 @@ function render(r, img, lang) {
     info.appendChild(el('div', 'diag', r.disease.name || 'Not certain'));
     if (r.disease.answered) info.appendChild(el('div', 'muted', 'Model confidence ' + Math.round(r.disease.top[0].probability * 100) + '%'));
     if (r.disease.urgent) info.appendChild(el('div', 'urgent', 'Urgent - act today'));
-    if (r.severity && r.severity.level !== 'unknown') info.appendChild(el('div', 'muted', 'Estimated spread on this leaf: ' + r.severity.level + ' (rough estimate from photo colours)'));
   }
   (r.pests || []).forEach(p => info.appendChild(el('div', '', 'Insect found: ' + p.name + ' (' + p.species + ', ' + Math.round(p.confidence * 100) + '%)')));
   (r.messages || []).forEach(m => head.appendChild(el('div', 'note', m)));
   out.appendChild(head);
+  // Pest severity: level for this photo only, with the published way to check the field before spraying
+  if ((r.pest_severity || []).length) {
+    const c = el('div', 'card'); c.appendChild(el('b', '', 'Insects in this photo'));
+    r.pest_severity.forEach(s => {
+      const p = el('p'); p.appendChild(el('b', '', s.name + ': ' + s.count + ' - ' + s.level));
+      p.appendChild(el('span', 'muted', ' (level for this photo only' + (s.group === 'uncertain' ? ', species not certain' : '') + ')'));
+      c.appendChild(p);
+      if (s.threshold) c.appendChild(el('div', 'note', 'Published action level: ' + s.threshold.text + ' [' + s.threshold.source_org + ']'));
+      if (s.scouting) c.appendChild(el('div', 'src', 'Check your field before spraying: ' + s.scouting.text + ' [' + s.scouting.source_org + ']'));
+    });
+    out.appendChild(c);
+  }
   lastTopic = r.disease ? r.disease.topic : null;
   if (r.llama && r.llama.text) {
     const c = el('div', 'card llama'); c.appendChild(el('b', '', 'Advice (Llama 3.2 1B on this device, from the sources below)'));
@@ -118,7 +129,8 @@ function render(r, img, lang) {
   const ask = el('div', 'card'); ask.innerHTML = '<b>Ask a question</b><div class="row"><input id="q" style="flex:1;min-width:200px;padding:8px" placeholder="e.g. when can I harvest after spraying?"><button onclick="askQ()">Ask</button></div><div id="ans"></div>';
   out.appendChild(ask);
   const d = el('details', 'card'); d.appendChild(el('summary', '', 'Technical details'));
-  d.appendChild(el('pre', 'muted', JSON.stringify({timings_ms: r.timings_ms, llama: r.llama && {stats: r.llama.stats, accepted: r.llama.accepted, rejected: r.llama.rejected_reasons},
+  d.appendChild(el('pre', 'muted', JSON.stringify({timings_ms: r.timings_ms,
+    disease_colour_estimate_not_validated: r.severity, llama: r.llama && {stats: r.llama.stats, accepted: r.llama.accepted, rejected: r.llama.rejected_reasons},
     translation: r.translation && {lang: r.translation.lang, ms: r.translation.ms, withheld: r.translation.withheld}}, null, 1)));
   out.appendChild(d);
   window._lang = lang;

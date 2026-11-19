@@ -206,6 +206,16 @@ std::vector<KbChunk> KnowledgeBase::search(const std::string& question, const st
     return out;
 }
 
+bool KnowledgeBase::findChunk(const std::string& topic, const std::string& phrase, const std::string& lang,
+                              KbChunk& out) const {
+    // instr() is an exact, case-sensitive substring test (LIKE would treat % and _ in the phrase as wildcards)
+    const auto rows = query("SELECT * FROM chunks WHERE topic = ? AND instr(text_en, ?) > 0 ORDER BY id LIMIT 1",
+                            {topic, phrase}, lang);
+    if (rows.empty()) return false;
+    out = rows.front();
+    return true;
+}
+
 std::string KnowledgeBase::topicName(const std::string& topic, const std::string& lang) const {
     return kb_.at("topics").at(topic).at("name").at(lang);
 }
