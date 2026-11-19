@@ -1,0 +1,19 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v9_all_sentences.txt",
+  "options": "",
+  "topics": 27,
+  "accepted": 21,
+  "refused_first": 0,
+  "mean_grounded": 6.07,
+  "mean_dropped": 4.19,
+  "rejected_topics": [
+    "grey_leaf_spot",
+    "mites",
+    "powdery_mildew",
+    "serpentine_leaf_miner",
+    "spodoptera_tobacco_caterpillar",
+    "whitefly"
+  ]
+}

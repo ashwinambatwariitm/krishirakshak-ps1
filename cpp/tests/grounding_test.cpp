@@ -93,14 +93,50 @@ int main(int argc, char** argv) {
         // Llama 3.2 3B faithful rewrites in plain words (same-meaning groups: edge = margin, spots = lesions)
         {"septoria_leaf_spot", nullptr, "Small, round spots with a grey center and dark edge on leaves.", true},
         {"early_blight", nullptr, "Get rid of the leftover crop debris.", true},
+        // Faithful Llama 3.2 1B rewrites that must stay (laptop evaluation by Aman, docs/llama_1b_quality.md)
+        {"healthy", nullptr, "Use only necessary, label-claimed pesticides.", true},
+        {"septoria_leaf_spot", nullptr, "Spots start on lower leaves and gradually advance upwards.", true},
+        {"fruit_rots", nullptr, "Staking of plant to avoid fruit contact.", true},
+    };
+    // Known gaps (docs/llama_1b_quality.md): unsafe 1B sentences the check still KEEPS. They should be dropped; they
+    // are reported here but do not fail the test, so the count shows progress as the gaps are closed (short words
+    // such as "rot" not checked, "plant" a stop word, a negated rewrite matched to an "avoid" source, a symptom
+    // turned into an instruction, a changed or invented word allowed when 3 of 4 words match, one-word headers).
+    const Case knownGaps[] = {
+        {"collar_rot", nullptr, "The disease is not spread through the use of infested farmyard manure, soil crop debris, and compost in the field.", false},
+        {"late_blight", nullptr, "The disease is a black rot on tomato leaves.", false},
+        {"late_blight", nullptr, "The disease is killing the entire plant.", false},
+        {"damping_off", nullptr, "Prevent seedlings from rotting completely.", false},
+        {"damping_off", nullptr, "Infect young, juvenile tissues of the collar.", false},
+        {"damping_off", nullptr, "Use raised beds of 15 cm height to dry grain.", false},
+        {"serpentine_leaf_miner", nullptr, "Apply neem cake to furrows (open)/beds (polyhouse) every 25 days.", false},
+        {"bacterial_canker", nullptr, "Spots become slightly wrinkled.", false},
+        {"bacterial_wilt", nullptr, "The wilting is happening on the lower leaves.", false},
+        {"fruit_rots", nullptr, "The disease is most severe in the lower portion of the fruit.", false},
+        {"early_blight", nullptr, "Fruit blight observed on plants as small black lesions.", false},
+        {"yellow_leaf_curl_virus", nullptr, "Disease appears in September.", false},
+        {"helicoverpa_fruit_borer", nullptr, "Larvae feed on the leaves while feeding the caterpillar.", false},
+        {"helicoverpa_fruit_borer", nullptr, "Leave the rest of the body outside.", false},
+        {"helicoverpa_fruit_borer", nullptr, "Grow simultaneously 40.", false},
+        {"tuta_absoluta_pinworm", nullptr, "**Pests**", false},
+    };
+    auto keptBy = [&kb](const Case& c) {
+        const auto facts = c.question ? kb.search(c.question, c.topic, 4, "en") : kb.retrieveForDiagnosis(c.topic, "en");
+        return kr::keepGroundedSentences(c.text, facts).keptCount == 1;
     };
     int fails = 0;
     for (const auto& c : cases) {
-        const auto facts = c.question ? kb.search(c.question, c.topic, 4, "en") : kb.retrieveForDiagnosis(c.topic, "en");
-        const bool kept = kr::keepGroundedSentences(c.text, facts).keptCount == 1;
+        const bool kept = keptBy(c);
         fails += kept != c.expectKept;
         std::cout << (kept == c.expectKept ? "PASS " : "FAIL ") << (kept ? "kept    " : "dropped ") << c.text << "\n";
     }
-    std::cout << fails << " failures\n";
+    int gapsOpen = 0;
+    for (const auto& c : knownGaps) {
+        const bool kept = keptBy(c);
+        gapsOpen += kept;
+        std::cout << (kept ? "GAP  kept    " : "OK   dropped ") << c.text << "\n";
+    }
+    std::cout << fails << " failures; known grounding gaps still open: " << gapsOpen << " of "
+              << sizeof(knownGaps) / sizeof(knownGaps[0]) << "\n";
     return fails != 0;
 }

@@ -388,6 +388,11 @@ function renderAnsweredScreen(data) {
     llamaContainer.classList.add("hidden");
   }
   renderTranslation(document.getElementById("res-llama-translation"), data.translation);
+  // A translation was asked for, but the AI explanation did not pass the device's safety check (only checked
+  // text is translated): say so instead of showing nothing
+  const mtNote = document.getElementById("res-mt-unavailable");
+  const llamaRejected = data.llama && (data.llama.accepted === false || !data.llama.text);
+  if (mtNote) mtNote.classList.toggle("hidden", !(window.CONFIG.TRANSLATE_LANG && llamaRejected));
 
   // 5. Advice Blocks (FR-7)
   const adviceContainer = document.getElementById("res-advice-blocks");

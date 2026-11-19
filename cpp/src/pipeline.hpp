@@ -40,7 +40,10 @@ struct PipelineConfig {
     std::string pestLabels = "results/pest_yolov8n_with_negatives/pest_labels.json";
     std::string pestConfig = "results/pest_yolov8n_with_negatives/pest_config.json";
     std::string kbJson = "app/kb/tomato_kb.json";
-    std::string llamaPte = "models/llama3_2_1b_instruct_8da4w.pte";
+    // LoRA-tuned Llama 3.2 1B (training/src/llama_lora_distill.py): on the Pi 5 it gave more accepted answers than
+    // the base 1B (5/5 vs 3/5 photos) in half the time (results/pi5_bench/2026-11-18_llama1b_lora/).
+    // The base model stays available: --llama-pte models/llama3_2_1b_instruct_8da4w.pte
+    std::string llamaPte = "models/llama3_2_1b_krishirakshak_lora_8da4w.pte";
     std::string llamaTokenizer = "models/llama3_2_tokenizer.model";
     std::string translateModel = "models/indictrans2_en_indic_200M_ct2_int8";   // CTranslate2 model folder
     std::string translateSpm = "models/indictrans2_model.SRC";                  // SentencePiece source model

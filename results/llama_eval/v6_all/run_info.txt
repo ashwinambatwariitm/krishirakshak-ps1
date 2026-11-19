@@ -1,0 +1,1 @@
+prompt=prompts/aman_v6_full_stop.txt options=

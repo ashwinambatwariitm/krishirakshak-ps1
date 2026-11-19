@@ -1,0 +1,18 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v4_no_example.txt",
+  "options": "--block-cause-words",
+  "topics": 27,
+  "accepted": 22,
+  "refused_first": 0,
+  "mean_grounded": 6.37,
+  "mean_dropped": 2.11,
+  "rejected_topics": [
+    "aphids",
+    "mites",
+    "powdery_mildew",
+    "serpentine_leaf_miner",
+    "thrips"
+  ]
+}

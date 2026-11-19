@@ -1,0 +1,677 @@
+[
+  {
+    "topic": "aphids",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 3,
+    "seconds": 4.3,
+    "facts": [
+      "Aphids (Myzus persicae, Aphis gossypii) are sucking pests of tomato.",
+      "Install yellow sticky traps @ 4-5/acre. Use nitrogen fertilizer judiciously."
+    ],
+    "answer": "1 Aphids are sucking pests of tomato.\n2 Install yellow sticky traps.\n3 Use nitrogen fertilizer judiciously.",
+    "kept": null,
+    "dropped_sentences": [
+      "1 Aphids are sucking pests of tomato.",
+      "2 Install yellow sticky traps.",
+      "3 Use nitrogen fertilizer judiciously."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "bacterial_canker",
+    "accepted": true,
+    "grounded": 2,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 7.6,
+    "facts": [
+      "Seedlings, leaves, stem and fruits are affected. Spots on leaves, stems and fruits. White blister like spots in the margins of leaves and turn brown. Wilting of leaves and shoots, streaks on stems and petioles.",
+      "Small, water soaked spots with white halo on fruits. Centre of spots become slightly raised, tan coloured and rough. Cankers develop and form cracks; slimy bacterial ooze through cracks. Vascular discolouration.",
+      "Disease appears as spots on leaves, stems and fruits and as wilting of leaves and shoots. White blister like spots in the margins of leaves. Spots become brown with age and coalesce, but leaves do not fall off. Leaflets on one side of rachis show withering initially.",
+      "Field sanitation. Crop rotation with non host crops. Use of disease free seeds. Disinfection of tools and implements. Removal of weeds."
+    ],
+    "answer": "1. The affected parts are seedlings, leaves, stem and fruits.\n2. The affected parts are leaves, stems and fruits.\n3. The affected parts are leaves, stems and fruits.",
+    "kept": "The affected parts are seedlings, leaves, stem and fruits. The affected parts are leaves, stems and fruits.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "3.",
+      "The affected parts are leaves, stems and fruits."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "bacterial_speck",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 3,
+    "seconds": 6.2,
+    "facts": [
+      "The spots are necrotic, circular to roughly circular. As the fruit approaches the pink stage, the tissue around the spot retains its green colour longer than normal. Small black spots appear on leaf, petiole, pedicel, and peduncle while irregular, elongated lesions appear on stem.",
+      "Summer ploughing to desiccate the bacteria and host. Seed should be collected from disease free plants."
+    ],
+    "answer": "1 The spots are necrotic circular to roughly circular. \n2 Summer ploughing to desiccate the bacteria and host. \n3 The spots are necrotic circular to roughly circular.",
+    "kept": null,
+    "dropped_sentences": [
+      "1 The spots are necrotic circular to roughly circular.",
+      "2 Summer ploughing to desiccate the bacteria and host.",
+      "3 The spots are necrotic circular to roughly circular."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "bacterial_spot",
+    "accepted": true,
+    "grounded": 8,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 12.5,
+    "facts": [
+      "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+      "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+      "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+      "Use disease-free seed."
+    ],
+    "answer": "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall.\n\nSmall water-soaked spots on green fruit.\n\nSmall, dark spots appear on leaflets and stems of seedlings transplanted crop.\n\nMoist weather and splattering rains are conducive to disease development.\n\nMost outbreaks of the disease can be traced back to heavy rainstorms that occur in the area.\n\nInfected leaves show small, brown, water-soaked, circular spots surrounded with yellowish halo.\n\nOn older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+    "kept": "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit. Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water-soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "bacterial_wilt",
+    "accepted": true,
+    "grounded": 2,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 6,
+    "seconds": 10.1,
+    "facts": [
+      "Rapid and complete wilting of plant. Lower leaves drop before wilting. Yellow brown discolouration of tissues. White bacterial ooze from cut ends.",
+      "Characteristic symptoms of bacterial wilt are the rapid and complete wilting of normal grown up plants. Lower leaves may drop before wilting. Pathogen is mostly confined to vascular region; in advantage cases, it may invade the cortex and pith and cause yellow brown discolouration of tissues.",
+      "Infected plant parts when cut and immersed in clear water, a white streak of bacterial ooze is seen coming out from cut ends.",
+      "Crop rotation. Disease free seedlings. Restriction of irrigation."
+    ],
+    "answer": "1. The plant is dropping its lower leaves quickly.\n2. The symptoms of bacterial wilt are the wilting of normal grown plants.\n3. When the infected plant part is cut and put in water, a white streak of bacterial ooze comes out.\n4. Crop rotation is important to prevent the spread of the disease.",
+    "kept": "The symptoms of bacterial wilt are the wilting of normal grown plants. When the infected plant part is cut and put in water, a white streak of bacterial ooze comes out.",
+    "dropped_sentences": [
+      "1.",
+      "The plant is dropping its lower leaves quickly.",
+      "2.",
+      "3.",
+      "4.",
+      "Crop rotation is important to prevent the spread of the disease."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "collar_rot",
+    "accepted": true,
+    "grounded": 12,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 15.8,
+    "facts": [
+      "The first symptom of disease is observed as soft tissue necrosis of bark of the stem near soil line. White, cottony and silvery mycelial growth is clearly visible on the affected portion. Later on white to light brown mustard like sclerotium is observed on the same portion.",
+      "Progressive dropping and yellowing followed by wilting of the entire plant is observed. Sometime plants collapse soon after infection. The disease is soil borne where pathogen survives in the form of sclerotia.",
+      "Use crop rotation with cereals, corn, sorghum and millets. Remove all the weeds from field. Avoid use of infested farmyard manure, soil crop debris and compost in the field.",
+      "Irrigate the soil in summer and plough the field to destroy germinating sclerotia. Avoid dense planting and maintain proper aeration near collar region. Use Ammonium Nitrate as a fertilizer for nitrogen source."
+    ],
+    "answer": "Soft tissue necrosis of bark of the stem near soil line\nWhite, cottony and silvery mycelial growth on the affected portion\nWhite to light brown mustard like sclerotium on the same portion\nProgressive dropping and yellowing followed by wilting of the entire plant\nSometime plants collapse soon after infection\nUse crop rotation with cereals, corn, sorghum and millets\nRemove all the weeds from field\nAvoid use of infested farmyard manure, soil crop debris and compost in the field\nIrrigate the soil in summer\nPlough the field to destroy germinating sclerotia\nAvoid dense planting and maintain proper aeration near collar region\nUse Ammonium Nitrate as a fertilizer for nitrogen source",
+    "kept": "Soft tissue necrosis of bark of the stem near soil line White, cottony and silvery mycelial growth on the affected portion White to light brown mustard like sclerotium on the same portion Progressive dropping and yellowing followed by wilting of the entire plant Sometime plants collapse soon after infection Use crop rotation with cereals, corn, sorghum and millets Remove all the weeds from field Avoid use of infested farmyard manure, soil crop debris and compost in the field Irrigate the soil in summer Plough the field to destroy germinating sclerotia Avoid dense planting and maintain proper aeration near collar region Use Ammonium Nitrate as a fertilizer for nitrogen source",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "damping_off",
+    "accepted": true,
+    "grounded": 3,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 1,
+    "seconds": 8.2,
+    "facts": [
+      "Pre-emergence phase: Complete rotting of seedlings. Post-emergence phase: Infected tissues become soft and water soaked. Seedlings topple over or collapse.",
+      "Damping off of tomato occurs in two stages, i.e. the pre-emergence and the post-emergence phase. In the pre-emergence the phase the seedlings are killed just before they reach the soil surface. The young radical and the plumule are killed and there is complete rotting of the seedlings.",
+      "The post-emergence phase is characterized by the infection of the young, juvenile tissues of the collar at the ground level. The infected tissues become soft and water soaked. The seedlings topple over or collapse.",
+      "Avoid stagnation of water. Use raised beds of 15 cm height."
+    ],
+    "answer": "Complete rotting of seedlings\nInfected tissues become soft and water soaked\nSeedlings topple over or collapse\nInfected tissues become soft and water soaked",
+    "kept": "Complete rotting of seedlings Infected tissues become soft and water soaked Seedlings topple over or collapse",
+    "dropped_sentences": [
+      "Infected tissues become soft and water soaked"
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "early_blight",
+    "accepted": true,
+    "grounded": 12,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 14.1,
+    "facts": [
+      "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+      "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+      "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+      "Remove and destroy crop debris. Follow crop rotation."
+    ],
+    "answer": "Brown spots with concentric rings in a bull's eye pattern with yellow margin on tomato leaves.\n\nFruit gets infected through calyx or stem attachment.\n\nBrown concentric rings on fruits.\n\nIrregular leaf spots mostly appear from marginal portion of leaves.\n\nV shaped and progress towards midrib.\n\nProminent yellowing on their outer margin due to host specific toxin produced by the pathogen.\n\nMostly disease appears in vegetative phase of plant growth before flowering.\n\nThis is a common disease of tomato occurring on the foliage at any stage of the growth.\n\nThe fungus attacks the foliage causing characteristic leaf spots and blight.\n\nEarly blight is first observed on the plants as small black lesions mostly on the older foliage.\n\nRemove and destroy crop debris.\n\nFollow crop rotation.",
+    "kept": "Brown spots with concentric rings in a bull's eye pattern with yellow margin on tomato leaves. Fruit gets infected through calyx or stem attachment. Brown concentric rings on fruits. Irregular leaf spots mostly appear from marginal portion of leaves. V shaped and progress towards midrib. Prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering. This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small black lesions mostly on the older foliage. Remove and destroy crop debris. Follow crop rotation.",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "fruit_rots",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 5.6,
+    "facts": [
+      "Rhizoctonia fruit rot is most serious disease of kharif tomato. Symptoms appear as rhythmic rotting of fruits coming with the soil contact. Rotting is immediately followed by cracking and fungal growth over it. Generally lower portion of fruits are infected which are coming in soil contact.",
+      "Avoid the contact of fruit from soil by staking of plant. Provide proper drainage in the field."
+    ],
+    "answer": "1. The disease is most severe in the kharif season.\n2. The disease is most severe in the kharif season.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The disease is most severe in the kharif season.",
+      "2.",
+      "The disease is most severe in the kharif season."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "fusarium_wilt",
+    "accepted": true,
+    "grounded": 6,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 1,
+    "seconds": 8.0,
+    "facts": [
+      "Clearing of the veinlets and yellowing of the lower leaves. Younger leaves die in succession. Petiole and leaves droop and wilt. Browning of vascular system. Entire plant wilt and die.",
+      "The first symptom of the disease is clearing of the veinlets and chlorosis of the leaves. The younger leaves may die in succession and the entire may wilt and die in a course of few days. Soon the petiole and the leaves droop and wilt.",
+      "In young plants, symptom consists of clearing of veinlet and dropping of petioles. In field, yellowing of the lower leaves first and affected leaflets wilt and die. The symptoms continue in subsequent leaves. At later stage, browning of vascular system occurs. Plants become stunted and die.",
+      "Soil solarization. Crop rotation. Removal of infected plant."
+    ],
+    "answer": "Clearing of the veinlets\nYounger leaves die in succession\nPetiole and leaves droop and wilt\nBrowning of vascular system\nEntire plant wilt and die\nFirst symptom of the disease\nClearing of the veinlets",
+    "kept": "Clearing of the veinlets Younger leaves die in succession Petiole and leaves droop and wilt Browning of vascular system Entire plant wilt and die First symptom of the disease",
+    "dropped_sentences": [
+      "Clearing of the veinlets"
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "grey_leaf_spot",
+    "accepted": true,
+    "grounded": 2,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 8,
+    "seconds": 8.9,
+    "facts": [
+      "Small circular dark brown necrotic, numerous spots appear all over the leaf lamina that is uniformly distributed on entire foliage. Sometimes clear narrow yellow halo is visible around the spots. Usually these spots are isolated but in later stage they coalesce to each other. Severely infected older leaves blight and fall down.",
+      "Removal and burning of all crop debris after senescence of the crop."
+    ],
+    "answer": "1. The symptoms are small circular dark brown necrotic spots on the leaf lamina, all over the leaf, and the spots are numerous.\n\n2. The affected area is the entire foliage, and the spots are isolated initially but coalesce over time.\n\n3. Severely infected older leaves are severely blighted and fall down.\n\n4. The affected area is the entire foliage, and the blighted leaves are severely blighted.\n\n5. The affected area is the entire foliage, and the blighted leaves are severely blighted.",
+    "kept": "The symptoms are small circular dark brown necrotic spots on the leaf lamina, all over the leaf, and the spots are numerous. Severely infected older leaves are severely blighted and fall down.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "The affected area is the entire foliage, and the spots are isolated initially but coalesce over time.",
+      "3.",
+      "4.",
+      "The affected area is the entire foliage, and the blighted leaves are severely blighted.",
+      "5.",
+      "The affected area is the entire foliage, and the blighted leaves are severely blighted."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "healthy",
+    "accepted": true,
+    "grounded": 7,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 9,
+    "seconds": 8.3,
+    "facts": [
+      "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+      "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+    ],
+    "answer": "1. Avoid growing tomato in the same field season after season.\n2. Rotate with non-host crops such as cereals and legumes.\n3. Do not grow tomato with chilli or brinjal.\n4. Stake plants.\n5. Use drip irrigation.\n6. Collect and destroy infected leaves, shoots and fruits.\n7. Spray only need-based, label-claim pesticides.\n8. Conduct agro-ecosystem analysis weekly.",
+    "kept": "Avoid growing tomato in the same field season after season. Rotate with non-host crops such as cereals and legumes. Stake plants. Use drip irrigation. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides. Conduct agro-ecosystem analysis weekly.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "3.",
+      "Do not grow tomato with chilli or brinjal.",
+      "4.",
+      "5.",
+      "6.",
+      "7.",
+      "8."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "helicoverpa_fruit_borer",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 6.7,
+    "facts": [
+      "Young larvae feed on tender foliage. Mature larvae bore circular holes. Thrust only a part of its body into fruit and eat the inner content.",
+      "Eggs hatch in about 3-4 days and the first instars larvae initially feed on the leaves and migrate to the developing green fruit later. The larvae bore into the fruits with the posterior end outside the hole.",
+      "Young larva feeds on the leaves for some time and then attacks fruits. Internal tissues are eaten severely and completely hollowed out. While feeding the caterpillar thrust its head inside leaving the rest of the body outside.",
+      "Grow simultaneously 40 days old American tall marigold and 25 days old tomato seedling at 1:16 rows."
+    ],
+    "answer": "1. The caterpillar's front end is the only part of its body that enters the fruit.\n2. The caterpillar's front end is the only part of its body that enters the fruit.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The caterpillar's front end is the only part of its body that enters the fruit.",
+      "2.",
+      "The caterpillar's front end is the only part of its body that enters the fruit."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "late_blight",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 7.1,
+    "facts": [
+      "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+      "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+      "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+      "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+    ],
+    "answer": "1. The disease is called late blight.\n2. The disease is called late blight.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The disease is called late blight.",
+      "2.",
+      "The disease is called late blight."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "mites",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 7.1,
+    "facts": [
+      "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves, wither and dry. Flower and fruit formation affected.",
+      "Red spider mites thrive under high temperature, dry weather and are more serious under protected conditions. They are generally found on the lower surface of older leaves. However, when the infestation is very high they attack all parts of the plant and are observed in colonies covered by white-silky webs. Adults and nymphs lacerate the leaves causing yellowing and discoloration.",
+      "Affected leaves become reddish brown and bronzy. Severe infestation larvae silken webbing on the leaves. Leaves wither and dry. Flower and fruit formation affected.",
+      "Field sanitation; rogue out affected plants. Plant tall border crops such as maize or sorghum. Spray thoroughly on the underside of the leaves."
+    ],
+    "answer": "1. Affected leaves are reddish-brown and bronzy.\n2. The infestation is moderate.\n3. The infestation is moderate.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "The infestation is moderate.",
+      "3.",
+      "The infestation is moderate."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "powdery_mildew",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 6,
+    "seconds": 6.8,
+    "facts": [
+      "Irregular, bright yellow blotches with yellow halo appear on leaves. Abundant white sporulation in the infected area of leaves.",
+      "Field sanitation.",
+      "Adopt early planting, sprinkler irrigation. Immediately remove and destroy them to help prevent the disease from spreading.",
+      "Proper plant spacing of about 3 feet apart to allow for proper air circulation, which helps the foliage dry faster. Periodic clipping of lower leaves and mulching. Organic mulch added around the plants will protect roots while preventing fungal spores from splashing onto the plant."
+    ],
+    "answer": "1 Bright yellow blotches with yellow halo on the leaf\n2 Abundant white sporulation in the infected area\n3 Field sanitation\n4 Proper plant spacing\n5 Adopt early planting\n6 Adopt early planting",
+    "kept": null,
+    "dropped_sentences": [
+      "1 Bright yellow blotches with yellow halo on the leaf",
+      "2 Abundant white sporulation in the infected area",
+      "3 Field sanitation",
+      "4 Proper plant spacing",
+      "5 Adopt early planting",
+      "6 Adopt early planting"
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "pseudocercospora_leaf_blight",
+    "accepted": true,
+    "grounded": 2,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 5.4,
+    "facts": [
+      "Olivacious black sooty growth of fungus was observed on the lower surface of the leaves. Symptoms are only observed on the leaves. Leaf defoliate soon after infection. No discoloration was observed on the corresponding upper side of the leaves.",
+      "Collect and burn the infected leaves. Be careful for selecting exotic hybrids and varieties."
+    ],
+    "answer": "1. The fungus growth is black sooty.\n\n2. Burn the infected leaves.\n\n3. Be careful when selecting leaves.",
+    "kept": "The fungus growth is black sooty. Burn the infected leaves.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "3.",
+      "Be careful when selecting leaves."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "root_knot_nematode",
+    "accepted": true,
+    "grounded": 9,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 0,
+    "seconds": 14.5,
+    "facts": [
+      "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling. This affects the uptake of nutrition and water and the plants show wilting during warmer part of the day. This causes stunted plants with yellow foliage resulting in yield reduction.",
+      "Infected plants in patches in the field. Formation of galls on host root system is the primary symptom. Roots branch profusely starting from the gall tissue causing a 'beard root' symptom. Infected roots become knobby and knotty.",
+      "In severely infected plants the root system is reduced and the rootlets are almost completely absent. The roots are seriously hampered in their function of uptake and transport of water and nutrients. Plants wilt during the hot part of day, especially under dry conditions and are often stunted.",
+      "Follow crop rotation with marigold, wherever possible."
+    ],
+    "answer": "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling.\n\nInfected plants in patches in the field.\n\nFormation of galls on host root system is the primary symptom.\n\nRoots branch profusely starting from the gall tissue causing a 'beard root' symptom.\n\nInfected roots become knobby and knotty.\n\nIn severely infected plants the root system is reduced and the rootlets are almost completely absent.\n\nThe roots are seriously hampered in their function of uptake and transport of water and nutrients.\n\nPlants wilt during the hot part of day especially under dry conditions and are often stunted.\n\nFollow crop rotation with marigold wherever possible.",
+    "kept": "Root-knot nematodes cause root galls on the feeder roots and sometimes affect the entire root system showing heavy galling. Infected plants in patches in the field. Formation of galls on host root system is the primary symptom. Roots branch profusely starting from the gall tissue causing a 'beard root' symptom. Infected roots become knobby and knotty. In severely infected plants the root system is reduced and the rootlets are almost completely absent. The roots are seriously hampered in their function of uptake and transport of water and nutrients. Plants wilt during the hot part of day especially under dry conditions and are often stunted. Follow crop rotation with marigold wherever possible.",
+    "dropped_sentences": [],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "septoria_leaf_spot",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 8,
+    "seconds": 10.2,
+    "facts": [
+      "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+      "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+      "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+      "Removal and destruction of the affected plant parts."
+    ],
+    "answer": "1 Small, round to irregular spots with grey centre and dark margin on leaves.\n2 Less vigorous plant are usually affected.\n3 Spots coalesce and leaves are blighted.\n4 Removal and destruction of the affected plant parts.\n\nDiagnosis: Septoria leaf spot on a tomato leaf (model confidence 92%). Estimated spread on the photographed leaf: medium.\n\nFACTS:\n1 Small, round to irregular spots with grey centre and dark margin on leaves.",
+    "kept": null,
+    "dropped_sentences": [
+      "1 Small, round to irregular spots with grey centre and dark margin on leaves.",
+      "2 Less vigorous plant are usually affected.",
+      "3 Spots coalesce and leaves are blighted.",
+      "4 Removal and destruction of the affected plant parts.",
+      "Diagnosis: Septoria leaf spot on a tomato leaf (model confidence 92%).",
+      "Estimated spread on the photographed leaf: medium.",
+      "FACTS:",
+      "1 Small, round to irregular spots with grey centre and dark margin on leaves."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "serpentine_leaf_miner",
+    "accepted": true,
+    "grounded": 3,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 9,
+    "seconds": 8.2,
+    "facts": [
+      "Leaves with serpentine mines. Drying and dropping of leaves.",
+      "The tiny, metallic fly punctures the leaf lamina and feeds on the oozing sap. Typical serpentine shaped tunnels are formed in the leaf lamina indicating the path of feeding by the maggots.",
+      "Leaves with serpentine mines. Drying dropping of leaves in severe cases.",
+      "Apply neem cake to furrows (open)/beds (polyhouse) @ 250 kg/ha at planting and repeat after 25 days."
+    ],
+    "answer": "1. The leaf has a serpentine shape.\n2. The tiny fly punctures the leaf.\n3. The fly feeds on the sap.\n4. The leaf dries and drops.\n5. The leaf falls off.\n6. The leaf falls off.",
+    "kept": "The leaf has a serpentine shape. The tiny fly punctures the leaf. The fly feeds on the sap.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "3.",
+      "4.",
+      "The leaf dries and drops.",
+      "5.",
+      "The leaf falls off.",
+      "6.",
+      "The leaf falls off."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "spodoptera_tobacco_caterpillar",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 8.5,
+    "facts": [
+      "Young larva scrap leaves on ventral surface. Grownups defoliate crops.",
+      "This is a minor pest under open conditions and assumes severe form under protected cultivation particularly in ill managed playhouses. Eggs are laid in clusters on foliage. Young larvae feed gregariously on leaves. Mature larvae, migrate and cause extensive damage to leaves and fruits. They hide in soil and crop debris during the day time.",
+      "In early stages, the caterpillars are gregarious and scrape the chlorophyll content of leaf lamina giving it a papery white appearance. Later they become voracious feeders making irregular holes on the leaves.",
+      "Grow castor as trap crop. Collect and destroy egg masses and early instar larvae."
+    ],
+    "answer": "1. The caterpillar eats the leaves on the ventral surface of the tomato leaf.\n\n2. The caterpillar is a minor pest under open conditions.\n\n3. The caterpillar is a minor pest under open conditions.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The caterpillar eats the leaves on the ventral surface of the tomato leaf.",
+      "2.",
+      "3.",
+      "The caterpillar is a minor pest under open conditions."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "thrips",
+    "accepted": true,
+    "grounded": 15,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 15,
+    "seconds": 10.6,
+    "facts": [
+      "Thrips (Thrips tabaci, Frankliniella schultzei) are sucking pests of tomato.",
+      "Silvery streaks on leaf surface. Pre-mature dropping of flowers. Bud necrosis. Vector of tomato spotted wilt virus.",
+      "Install blue sticky traps @ 10 traps/ha against thrips; locally available empty tins painted blue and coated with grease, vaseline or castor oil can also be used. Grow 5-6 rows of sorghum or maize around the field as a barrier crop."
+    ],
+    "answer": "1. Thrips are sucking pests of tomato.\n2. Silvery streaks on leaf surface.\n3. Pre-mature dropping of flowers.\n4. Bud necrosis.\n5. Vector of tomato spotted wilt virus.\n6. Install blue sticky traps.\n7. Against thrips.\n8. Locally available.\n9. Empty tins painted blue.\n10. Coated with grease.\n11. Vaseline.\n12. Castor oil.\n13. Grow 5-6 rows of sorghum.\n14. Or maize.\n15. Around the field.",
+    "kept": "Thrips are sucking pests of tomato. Silvery streaks on leaf surface. Pre-mature dropping of flowers. Bud necrosis. Vector of tomato spotted wilt virus. Install blue sticky traps. Against thrips. Locally available. Empty tins painted blue. Coated with grease. Vaseline. Castor oil. Grow 5-6 rows of sorghum. Or maize. Around the field.",
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "3.",
+      "4.",
+      "5.",
+      "6.",
+      "7.",
+      "8.",
+      "9.",
+      "10.",
+      "11.",
+      "12.",
+      "13.",
+      "14.",
+      "15."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "tomato_mosaic",
+    "accepted": true,
+    "grounded": 4,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 8,
+    "seconds": 9.7,
+    "facts": [
+      "Light and dark green mottling on leaves. Wilting of young leaves. Leaflets distorted and puckered. Fern leaf symptoms. Stunted growth.",
+      "The disease is characterized by light and dark green mottling on the leaves often accompanied by wilting of young leaves in sunny days when plants first become infected.",
+      "The leaflets of affected leaves are usually distorted, puckered and smaller than normal. Sometimes the leaflets become indented resulting in \"fern leaf\" symptoms. The affected plant appears stunted, pale green and spindly.",
+      "Disease free seeds. Removal of infected plants. Crop rotation."
+    ],
+    "answer": "1. The disease causes light and dark green mottling on the leaves.\n2. The mottling is often accompanied by wilting of young leaves.\n3. The affected leaves are usually distorted and puckered.\n4. The affected plant is usually stunted, pale green, and spindly.\n5. The disease is characterized by the presence of light and dark green mottling on the leaves.\n6. The mottling is often accompanied by wilting of young leaves.",
+    "kept": "The mottling is often accompanied by wilting of young leaves. The affected leaves are usually distorted and puckered. The affected plant is usually stunted, pale green, and spindly. The disease is characterized by the presence of light and dark green mottling on the leaves.",
+    "dropped_sentences": [
+      "1.",
+      "The disease causes light and dark green mottling on the leaves.",
+      "2.",
+      "3.",
+      "4.",
+      "5.",
+      "6.",
+      "The mottling is often accompanied by wilting of young leaves."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "tomato_spotted_wilt",
+    "accepted": true,
+    "grounded": 17,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 1,
+    "seconds": 13.9,
+    "facts": [
+      "Severe stunting. Chlorotic or necrotic rings on leaves. Thickening of veins and bronzing of young leaves. Growing tips die-back and wilt. Yellow areas with concentric circular markings in fruit. Discoloration of seed.",
+      "Symptoms vary among hosts and in a single host species. Stunting is a common symptom of TSWV infection. Chlorotic or necrotic rings form on the leaves of many infected hosts. Thickening of veins and bronzing of young leaves. Growing tips may die-back and terminal branches may be streaked.",
+      "Affected plants may have a one sided growth habit or may be entirely stunted and have drooping leaves, suggesting a wilt. Pale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato are formed. Discoloration of seed.",
+      "Use of healthy seedlings for transplanting. Rouging of infected plants upto 45 days of planting. Growing sorghum, maize or bajra as barrier crop."
+    ],
+    "answer": "Severe stunting\nChlorotic or necrotic rings on leaves\nThickening of veins\nBronzing of young leaves\nGrowing tips die-back\nWilt\nYellow areas with concentric circular markings in fruit\nDiscoloration of seed\nSymptoms vary among hosts\nIn a single host species\nStunting is a common symptom of TSWV infection\nChlorotic or necrotic rings form on the leaves of many infected hosts\nThickening of veins and bronzing of young leaves\nGrowing tips may die-back and terminal branches may be streaked\nAffected plants may have a one sided growth habit\nOr may be entirely stunted and have drooping leaves\nPale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato\nDis",
+    "kept": "Severe stunting Chlorotic or necrotic rings on leaves Thickening of veins Bronzing of young leaves Growing tips die-back Wilt Yellow areas with concentric circular markings in fruit Discoloration of seed Symptoms vary among hosts In a single host species Stunting is a common symptom of TSWV infection Chlorotic or necrotic rings form on the leaves of many infected hosts Thickening of veins and bronzing of young leaves Growing tips may die-back and terminal branches may be streaked Affected plants may have a one sided growth habit Or may be entirely stunted and have drooping leaves Pale red or yellow areas with concentric circular marking in the normal red skin of ripe tomato",
+    "dropped_sentences": [
+      "Dis"
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "tuta_absoluta_pinworm",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 4.8,
+    "facts": [
+      "Mining of leaves, stem and pinholes on fruits.",
+      "Collect and destroy the pinworm affected plants and fruits. Avoid solanaceous crops after tomato. Use healthy seedlings for transplanting."
+    ],
+    "answer": "1. The leaf is infested with the South American tomato pinworm.\n2. The pinworm is found on the leaf.\n3. The pinworm is found on the leaf.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "2.",
+      "The pinworm is found on the leaf.",
+      "3.",
+      "The pinworm is found on the leaf."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "whitefly",
+    "accepted": true,
+    "grounded": 3,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 2,
+    "seconds": 5.6,
+    "facts": [
+      "Chlorotic spots. Yellowing. Downward curling and drying of leaves. Vector of tomato leaf curl disease.",
+      "Whitefly is a well-known vector, which transmits tomato leaf curl virus. It has piercing and sucking mouthpart and both nymphs and adults feed on lower surface of the leaves causing deformation of young leaves. Whiteflies also excrete honeydew, causing sooty mold.",
+      "Remove alternate weed host Abutilon indicum. Uproot and destroy the diseased leaf curl plants. Use nitrogen and irrigation judiciously.",
+      "Raise nurseries in seedling trays under nylon nets or polyhouses."
+    ],
+    "answer": "1 Chloric spots\n Yellowing\n Downward curling and drying of leaves\n Vector of tomato leaf curl disease\n Vector of tomato leaf curl disease",
+    "kept": "Yellowing Downward curling and drying of leaves Vector of tomato leaf curl disease",
+    "dropped_sentences": [
+      "1 Chloric spots",
+      "Vector of tomato leaf curl disease"
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "yellow_leaf_curl_virus",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 10,
+    "seconds": 13.7,
+    "facts": [
+      "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+      "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+      "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+      "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+    ],
+    "answer": "1. The symptoms of tomato leaf curl virus are severe stunting of plants, downward rolling and crinkling of the leaves, and older leaves becoming leathery and brittle.\n\n2. The disease appears in severe forms during the months of September and November.\n\n3. The symptoms of tomato leaf curl disease are severe stunting of the plants, downward rolling and crinkling of the leaves, and the newly emerging leaves exhibiting slight yellow colouration and later curling symptoms.\n\n4. To prevent the spread of the virus, it is essential to raise the nursery under a net of sufficient mesh size to keep out whiteflies.\n\n5. The best way to select seed for the nursery is to choose seed from disease-free healthy plants.\n\n6.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The symptoms of tomato leaf curl virus are severe stunting of plants, downward rolling and crinkling of the leaves, and older leaves becoming leathery and brittle.",
+      "2.",
+      "3.",
+      "The symptoms of tomato leaf curl disease are severe stunting of the plants, downward rolling and crinkling of the leaves, and the newly emerging leaves exhibiting slight yellow colouration and later curling symptoms.",
+      "4.",
+      "To prevent the spread of the virus, it is essential to raise the nursery under a net of sufficient mesh size to keep out whiteflies.",
+      "5.",
+      "The best way to select seed for the nursery is to choose seed from disease-free healthy plants.",
+      "6."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  }
+]

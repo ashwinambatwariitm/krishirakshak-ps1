@@ -1,0 +1,152 @@
+[
+  {
+    "topic": "healthy",
+    "accepted": true,
+    "grounded": 6,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 1,
+    "seconds": 21.1,
+    "facts": [
+      "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+      "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+    ],
+    "answer": "Avoid growing tomato in the same field season after season.\nRotate with non-host crops such as cereals and legumes.\nDo not grow tomato with chilli or brinjal.\nStake plants and use drip irrigation to reduce leaf wetness.\nCollect and destroy infected leaves, shoots and fruits.\nSpray only need-based, label-claim pesticides.\nConduct agro-ecosystem analysis weekly in the morning.",
+    "kept": "Avoid growing tomato in the same field season after season. Rotate with non-host crops such as cereals and legumes. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides. Conduct agro-ecosystem analysis weekly in the morning.",
+    "dropped_sentences": [
+      "Do not grow tomato with chilli or brinjal."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "early_blight",
+    "accepted": true,
+    "grounded": 6,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 2,
+    "seconds": 29.7,
+    "facts": [
+      "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+      "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+      "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+      "Remove and destroy crop debris. Follow crop rotation."
+    ],
+    "answer": "Brown spots with concentric rings in a bull's eye pattern with yellow margin are signs of early blight on a tomato leaf.\n\nFruit gets infected through calyx or stem attachment.\n\nBrown concentric rings on fruits are a symptom of early blight.\n\nIrregular leaf spots mostly appear from marginal portion of leaves.\n\nIn many tomato cultivars, symptoms are V shaped and progress towards midrib.\n\nThese lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen.\n\nMostly disease appears in vegetative phase of plant growth before flowering.\n\nEarly blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "kept": "Fruit gets infected through calyx or stem attachment. Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "dropped_sentences": [
+      "Brown spots with concentric rings in a bull's eye pattern with yellow margin are signs of early blight on a tomato leaf.",
+      "Brown concentric rings on fruits are a symptom of early blight."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "late_blight",
+    "accepted": true,
+    "grounded": 7,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 3,
+    "seconds": 32.5,
+    "facts": [
+      "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+      "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+      "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+      "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+    ],
+    "answer": "Dry the grain well in the sun before storing it.\nClean the storage bins before filling them with grain.\nAvoid storing grain in damp bags.\nWater-soaked black lesions on leaves and stems.\nLesions expand rapidly, and the entire leaf becomes necrotic.\nWhite sporulation on leaves.\nBlight appears on foliage as light-pale green water soaked dead area.\nThe lesions are wet in morning and dried, shriveled in daylight.\nIt enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.\nIn moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves.",
+    "kept": "Water-soaked black lesions on leaves and stems. Lesions expand rapidly, and the entire leaf becomes necrotic. White sporulation on leaves. Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection. In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves.",
+    "dropped_sentences": [
+      "Dry the grain well in the sun before storing it.",
+      "Clean the storage bins before filling them with grain.",
+      "Avoid storing grain in damp bags."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "septoria_leaf_spot",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 4,
+    "seconds": 15.8,
+    "facts": [
+      "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+      "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+      "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+      "Removal and destruction of the affected plant parts."
+    ],
+    "answer": "Dry the grain well in the sun before storing it.\nAvoid storing grain in damp bags.\nClean the storage bins before filling them with grain.\nAvoid storing grain in damp bags.",
+    "kept": null,
+    "dropped_sentences": [
+      "Dry the grain well in the sun before storing it.",
+      "Avoid storing grain in damp bags.",
+      "Clean the storage bins before filling them with grain.",
+      "Avoid storing grain in damp bags."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "bacterial_spot",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 32.2,
+    "facts": [
+      "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+      "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+      "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+      "Use disease-free seed."
+    ],
+    "answer": "Dry the grain well in the sun before storage.\nAvoid storing grain in damp bags.\nClean the storage bins before filling them with grain.\nUse disease-free seed.\nDry the grain well in the sun before storing it.\nAvoid storing grain in damp bags.",
+    "kept": null,
+    "dropped_sentences": [
+      "Dry the grain well in the sun before storage.",
+      "Avoid storing grain in damp bags.",
+      "Clean the storage bins before filling them with grain.",
+      "Dry the grain well in the sun before storing it.",
+      "Avoid storing grain in damp bags."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "yellow_leaf_curl_virus",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 9,
+    "seconds": 86.9,
+    "facts": [
+      "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+      "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+      "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+      "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+    ],
+    "answer": "1. The symptoms of tomato leaf curl virus include severe stunting of plants, downward rolling and crinkling of the leaves, and older leaves becoming leathery and brittle.\n2. The virus is spread by whiteflies, which are attracted to the plant's sap and can be easily controlled by removing infested plants.\n3. The disease appears in severe forms during the months of September and October, and can be controlled by raising the nursery under a net of sufficient mesh size.\n4. To prevent the spread of the virus, it is essential to select seed from disease-free healthy plants, and remove and destroy infected plants in the nursery.\n5.",
+    "kept": null,
+    "dropped_sentences": [
+      "1.",
+      "The symptoms of tomato leaf curl virus include severe stunting of plants, downward rolling and crinkling of the leaves, and older leaves becoming leathery and brittle.",
+      "2.",
+      "The virus is spread by whiteflies, which are attracted to the plant's sap and can be easily controlled by removing infested plants.",
+      "3.",
+      "The disease appears in severe forms during the months of September and October, and can be controlled by raising the nursery under a net of sufficient mesh size.",
+      "4.",
+      "To prevent the spread of the virus, it is essential to select seed from disease-free healthy plants, and remove and destroy infected plants in the nursery.",
+      "5."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  }
+]

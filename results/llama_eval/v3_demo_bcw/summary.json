@@ -1,0 +1,14 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v3_no_keyword_list.txt",
+  "options": "--block-cause-words",
+  "topics": 6,
+  "accepted": 5,
+  "refused_first": 0,
+  "mean_grounded": 5.5,
+  "mean_dropped": 5.33,
+  "rejected_topics": [
+    "bacterial_spot"
+  ]
+}

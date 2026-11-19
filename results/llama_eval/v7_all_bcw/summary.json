@@ -1,0 +1,16 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v7_task_in_user.txt",
+  "options": "--block-cause-words",
+  "topics": 27,
+  "accepted": 24,
+  "refused_first": 0,
+  "mean_grounded": 5.78,
+  "mean_dropped": 2.89,
+  "rejected_topics": [
+    "mites",
+    "spodoptera_tobacco_caterpillar",
+    "yellow_leaf_curl_virus"
+  ]
+}

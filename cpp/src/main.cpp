@@ -26,7 +26,8 @@
  *   --sequential       run the two vision models one after the other (default: in parallel)
  *   --threads N        ONNX Runtime threads per vision model; default 2
  *   --llama-threads N  XNNPACK threads for Llama; default 4
- *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_instruct_8da4w.pte
+ *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_krishirakshak_lora_8da4w.pte
+ *                      (LoRA-tuned 1B; base model: models/llama3_2_1b_instruct_8da4w.pte)
  *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
  *   --translate LANG   also translate the accepted English advice into LANG (hi te mr kn ta bn gu or pa);
  *                      the web page chooses the language per request instead

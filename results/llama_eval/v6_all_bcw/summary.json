@@ -1,0 +1,24 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v6_full_stop.txt",
+  "options": "--block-cause-words",
+  "topics": 27,
+  "accepted": 16,
+  "refused_first": 0,
+  "mean_grounded": 4.11,
+  "mean_dropped": 4.63,
+  "rejected_topics": [
+    "aphids",
+    "bacterial_speck",
+    "fruit_rots",
+    "helicoverpa_fruit_borer",
+    "late_blight",
+    "mites",
+    "powdery_mildew",
+    "septoria_leaf_spot",
+    "spodoptera_tobacco_caterpillar",
+    "tuta_absoluta_pinworm",
+    "yellow_leaf_curl_virus"
+  ]
+}

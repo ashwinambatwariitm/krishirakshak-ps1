@@ -1,0 +1,18 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v13_capital.txt",
+  "options": "",
+  "topics": 27,
+  "accepted": 22,
+  "refused_first": 0,
+  "mean_grounded": 4.7,
+  "mean_dropped": 5.81,
+  "rejected_topics": [
+    "aphids",
+    "fruit_rots",
+    "healthy",
+    "late_blight",
+    "serpentine_leaf_miner"
+  ]
+}

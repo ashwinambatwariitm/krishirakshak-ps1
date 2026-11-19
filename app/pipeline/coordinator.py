@@ -37,7 +37,7 @@ DEFAULT_CONFIG = {
     "kb_json": REPO / "app" / "kb" / "tomato_kb.json",
     # KR_LLAMA_PTE selects another .pte (e.g. models/llama3_2_3b_instruct_8da4w.pte); the tokenizer is shared
     "llama_pte": Path(os.environ["KR_LLAMA_PTE"]) if os.environ.get("KR_LLAMA_PTE")
-                 else REPO / "models" / "llama3_2_1b_instruct_8da4w.pte",
+                 else REPO / "models" / "llama3_2_1b_krishirakshak_lora_8da4w.pte",   # LoRA-tuned 1B (default)
     "llama_tokenizer": REPO / "models" / "llama3_2_tokenizer.model",
     "disease_threshold": 0.85,     # results/disease_v5_threshold/threshold.json
     "threads": 4,                  # Raspberry Pi 5: four Cortex-A76 cores

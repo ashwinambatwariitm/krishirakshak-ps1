@@ -46,7 +46,9 @@ for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
          pest_yolov8n_ip102_negatives pest_yolov8n_ip102_negatives_int8; do
   cp "${REPO}/models/${m}.onnx" "${OUT}/models/"
 done
-cp "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
+# LoRA-tuned 1B (application default) and the base 1B (--llama-pte, comparisons); same tokenizer
+cp "${REPO}/models/llama3_2_1b_krishirakshak_lora_8da4w.pte" "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" \
+   "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
 # Llama 3.2 3B (exported on Kaggle, training/src/llama3b_export.py), if present; select it with --llama-pte
 if [ -f "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" ]; then
   cp "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" "${REPO}/models/llama3_2_3b_params.json" "${OUT}/models/"
