@@ -1,0 +1,1036 @@
+{
+ "valid": {
+  "lesion_iou": 0.838,
+  "leaf_iou": 0.967,
+  "level_agreement": 0.963,
+  "median_share_error": 0.013,
+  "confusion": {
+   "moderate->moderate": 21,
+   "high->high": 28,
+   "low->low": 3,
+   "moderate->low": 1,
+   "low->moderate": 1
+  },
+  "images": 54
+ },
+ "test": {
+  "lesion_iou": 0.868,
+  "leaf_iou": 0.968,
+  "level_agreement": 0.944,
+  "median_share_error": 0.016,
+  "confusion": {
+   "high->high": 30,
+   "moderate->moderate": 18,
+   "high->moderate": 1,
+   "low->low": 3,
+   "moderate->high": 1,
+   "low->moderate": 1
+  },
+  "images": 54
+ },
+ "field_lesion_heldout": {
+  "lesion_iou": 0.812
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 1.574,
+   "lesion_iou": 0.186,
+   "leaf_iou": 0.464,
+   "level_agreement": 0.519,
+   "median_share_error": 0.458,
+   "confusion": {
+    "moderate->high": 22,
+    "high->high": 28,
+    "low->high": 4
+   },
+   "images": 54
+  },
+  {
+   "epoch": 2,
+   "loss": 0.8867,
+   "lesion_iou": 0.607,
+   "leaf_iou": 0.854,
+   "level_agreement": 0.648,
+   "median_share_error": 0.097,
+   "confusion": {
+    "moderate->high": 15,
+    "high->high": 28,
+    "low->moderate": 4,
+    "moderate->moderate": 7
+   },
+   "images": 54
+  },
+  {
+   "epoch": 3,
+   "loss": 0.5194,
+   "lesion_iou": 0.772,
+   "leaf_iou": 0.902,
+   "level_agreement": 0.944,
+   "median_share_error": 0.021,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 28,
+    "low->low": 3,
+    "moderate->high": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 4,
+   "loss": 0.4071,
+   "lesion_iou": 0.81,
+   "leaf_iou": 0.923,
+   "level_agreement": 0.944,
+   "median_share_error": 0.019,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->high": 1,
+    "high->moderate": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 5,
+   "loss": 0.3504,
+   "lesion_iou": 0.786,
+   "leaf_iou": 0.94,
+   "level_agreement": 0.907,
+   "median_share_error": 0.021,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 3,
+    "high->moderate": 2,
+    "moderate->low": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 6,
+   "loss": 0.3248,
+   "lesion_iou": 0.767,
+   "leaf_iou": 0.936,
+   "level_agreement": 0.759,
+   "median_share_error": 0.034,
+   "confusion": {
+    "moderate->moderate": 18,
+    "high->moderate": 9,
+    "low->low": 4,
+    "high->high": 19,
+    "moderate->low": 4
+   },
+   "images": 54
+  },
+  {
+   "epoch": 7,
+   "loss": 0.3132,
+   "lesion_iou": 0.812,
+   "leaf_iou": 0.95,
+   "level_agreement": 0.87,
+   "median_share_error": 0.019,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 8,
+   "loss": 0.2813,
+   "lesion_iou": 0.804,
+   "leaf_iou": 0.952,
+   "level_agreement": 0.907,
+   "median_share_error": 0.022,
+   "confusion": {
+    "moderate->high": 3,
+    "high->high": 28,
+    "low->low": 2,
+    "moderate->moderate": 19,
+    "low->moderate": 2
+   },
+   "images": 54
+  },
+  {
+   "epoch": 9,
+   "loss": 0.2634,
+   "lesion_iou": 0.816,
+   "leaf_iou": 0.956,
+   "level_agreement": 0.815,
+   "median_share_error": 0.024,
+   "confusion": {
+    "moderate->moderate": 19,
+    "high->high": 21,
+    "low->low": 4,
+    "high->moderate": 7,
+    "moderate->low": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 10,
+   "loss": 0.2522,
+   "lesion_iou": 0.819,
+   "leaf_iou": 0.96,
+   "level_agreement": 0.907,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 11,
+   "loss": 0.2592,
+   "lesion_iou": 0.817,
+   "leaf_iou": 0.959,
+   "level_agreement": 0.944,
+   "median_share_error": 0.017,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->high": 1,
+    "high->moderate": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 12,
+   "loss": 0.2699,
+   "lesion_iou": 0.823,
+   "leaf_iou": 0.961,
+   "level_agreement": 0.815,
+   "median_share_error": 0.022,
+   "confusion": {
+    "moderate->moderate": 19,
+    "high->moderate": 7,
+    "low->low": 4,
+    "high->high": 21,
+    "moderate->low": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 13,
+   "loss": 0.2575,
+   "lesion_iou": 0.81,
+   "leaf_iou": 0.954,
+   "level_agreement": 0.815,
+   "median_share_error": 0.019,
+   "confusion": {
+    "moderate->moderate": 19,
+    "high->high": 21,
+    "low->low": 4,
+    "high->moderate": 7,
+    "moderate->low": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 14,
+   "loss": 0.2524,
+   "lesion_iou": 0.827,
+   "leaf_iou": 0.963,
+   "level_agreement": 0.944,
+   "median_share_error": 0.014,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 27,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 15,
+   "loss": 0.24,
+   "lesion_iou": 0.832,
+   "leaf_iou": 0.961,
+   "level_agreement": 0.87,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 23,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 5
+   },
+   "images": 54
+  },
+  {
+   "epoch": 16,
+   "loss": 0.2275,
+   "lesion_iou": 0.803,
+   "leaf_iou": 0.959,
+   "level_agreement": 0.944,
+   "median_share_error": 0.015,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 28,
+    "low->low": 3,
+    "moderate->low": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 17,
+   "loss": 0.2471,
+   "lesion_iou": 0.778,
+   "leaf_iou": 0.958,
+   "level_agreement": 0.889,
+   "median_share_error": 0.027,
+   "confusion": {
+    "moderate->moderate": 18,
+    "high->high": 28,
+    "low->low": 2,
+    "moderate->high": 4,
+    "low->moderate": 2
+   },
+   "images": 54
+  },
+  {
+   "epoch": 18,
+   "loss": 0.2293,
+   "lesion_iou": 0.833,
+   "leaf_iou": 0.964,
+   "level_agreement": 0.944,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 27,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 19,
+   "loss": 0.2256,
+   "lesion_iou": 0.841,
+   "leaf_iou": 0.963,
+   "level_agreement": 0.944,
+   "median_share_error": 0.009,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 28,
+    "low->low": 3,
+    "moderate->low": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 20,
+   "loss": 0.2135,
+   "lesion_iou": 0.84,
+   "leaf_iou": 0.948,
+   "level_agreement": 0.889,
+   "median_share_error": 0.016,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->high": 1,
+    "moderate->low": 1,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 21,
+   "loss": 0.2262,
+   "lesion_iou": 0.831,
+   "leaf_iou": 0.962,
+   "level_agreement": 0.944,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->low": 1,
+    "high->moderate": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 22,
+   "loss": 0.2069,
+   "lesion_iou": 0.825,
+   "leaf_iou": 0.966,
+   "level_agreement": 0.926,
+   "median_share_error": 0.014,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 1,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 23,
+   "loss": 0.224,
+   "lesion_iou": 0.841,
+   "leaf_iou": 0.965,
+   "level_agreement": 0.889,
+   "median_share_error": 0.015,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 4
+   },
+   "images": 54
+  },
+  {
+   "epoch": 24,
+   "loss": 0.2019,
+   "lesion_iou": 0.846,
+   "leaf_iou": 0.966,
+   "level_agreement": 0.907,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 25,
+   "loss": 0.2106,
+   "lesion_iou": 0.846,
+   "leaf_iou": 0.965,
+   "level_agreement": 0.907,
+   "median_share_error": 0.012,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 26,
+   "loss": 0.2075,
+   "lesion_iou": 0.835,
+   "leaf_iou": 0.962,
+   "level_agreement": 0.889,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 27,
+   "loss": 0.2038,
+   "lesion_iou": 0.834,
+   "leaf_iou": 0.966,
+   "level_agreement": 0.907,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 28,
+   "loss": 0.1966,
+   "lesion_iou": 0.836,
+   "leaf_iou": 0.966,
+   "level_agreement": 0.926,
+   "median_share_error": 0.012,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 2
+   },
+   "images": 54
+  },
+  {
+   "epoch": 29,
+   "loss": 0.1919,
+   "lesion_iou": 0.842,
+   "leaf_iou": 0.969,
+   "level_agreement": 0.907,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 30,
+   "loss": 0.1857,
+   "lesion_iou": 0.839,
+   "leaf_iou": 0.968,
+   "level_agreement": 0.926,
+   "median_share_error": 0.012,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->low": 2,
+    "low->moderate": 1,
+    "high->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 31,
+   "loss": 0.1772,
+   "lesion_iou": 0.83,
+   "leaf_iou": 0.966,
+   "level_agreement": 0.907,
+   "median_share_error": 0.009,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 3
+   },
+   "images": 54
+  },
+  {
+   "epoch": 32,
+   "loss": 0.1764,
+   "lesion_iou": 0.84,
+   "leaf_iou": 0.965,
+   "level_agreement": 0.889,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 33,
+   "loss": 0.1826,
+   "lesion_iou": 0.838,
+   "leaf_iou": 0.968,
+   "level_agreement": 0.907,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 34,
+   "loss": 0.1706,
+   "lesion_iou": 0.851,
+   "leaf_iou": 0.968,
+   "level_agreement": 0.926,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 35,
+   "loss": 0.1728,
+   "lesion_iou": 0.836,
+   "leaf_iou": 0.969,
+   "level_agreement": 0.944,
+   "median_share_error": 0.012,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 27,
+    "low->low": 3,
+    "moderate->low": 1,
+    "high->moderate": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 36,
+   "loss": 0.1832,
+   "lesion_iou": 0.838,
+   "leaf_iou": 0.967,
+   "level_agreement": 0.963,
+   "median_share_error": 0.013,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 28,
+    "low->low": 3,
+    "moderate->low": 1,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 37,
+   "loss": 0.1747,
+   "lesion_iou": 0.844,
+   "leaf_iou": 0.969,
+   "level_agreement": 0.889,
+   "median_share_error": 0.009,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 38,
+   "loss": 0.1641,
+   "lesion_iou": 0.849,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.926,
+   "median_share_error": 0.012,
+   "confusion": {
+    "moderate->moderate": 21,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 1,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 39,
+   "loss": 0.1704,
+   "lesion_iou": 0.849,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.889,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 40,
+   "loss": 0.1634,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.969,
+   "level_agreement": 0.87,
+   "median_share_error": 0.009,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 41,
+   "loss": 0.1614,
+   "lesion_iou": 0.854,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.889,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 42,
+   "loss": 0.1576,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.907,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 26,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 2,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 43,
+   "loss": 0.1567,
+   "lesion_iou": 0.854,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.889,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 25,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 3,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 44,
+   "loss": 0.154,
+   "lesion_iou": 0.855,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.889,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 4,
+    "moderate->low": 2,
+    "high->moderate": 4
+   },
+   "images": 54
+  },
+  {
+   "epoch": 45,
+   "loss": 0.1521,
+   "lesion_iou": 0.855,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 46,
+   "loss": 0.157,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 47,
+   "loss": 0.1515,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 48,
+   "loss": 0.1513,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 49,
+   "loss": 0.1504,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 50,
+   "loss": 0.147,
+   "lesion_iou": 0.854,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 51,
+   "loss": 0.1486,
+   "lesion_iou": 0.853,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 52,
+   "loss": 0.148,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 53,
+   "loss": 0.1465,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 54,
+   "loss": 0.1512,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.97,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 55,
+   "loss": 0.152,
+   "lesion_iou": 0.857,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 56,
+   "loss": 0.1443,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 57,
+   "loss": 0.1453,
+   "lesion_iou": 0.857,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 58,
+   "loss": 0.1483,
+   "lesion_iou": 0.857,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.009,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 59,
+   "loss": 0.1467,
+   "lesion_iou": 0.856,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.011,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  },
+  {
+   "epoch": 60,
+   "loss": 0.1442,
+   "lesion_iou": 0.858,
+   "leaf_iou": 0.971,
+   "level_agreement": 0.87,
+   "median_share_error": 0.01,
+   "confusion": {
+    "moderate->moderate": 20,
+    "high->high": 24,
+    "low->low": 3,
+    "moderate->low": 2,
+    "high->moderate": 4,
+    "low->moderate": 1
+   },
+   "images": 54
+  }
+ ],
+ "train_images": {
+  "roboflow": 429,
+  "field_lesion": 530
+ }
+}

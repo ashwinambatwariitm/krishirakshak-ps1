@@ -10,6 +10,7 @@
 #include "translator.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <future>
 #include <set>
 
@@ -42,6 +43,8 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     pest_ = std::make_unique<PestDetector>(path(cfg_.pestOnnx), path(cfg_.pestSpec), path(cfg_.pestLabels),
                                            path(cfg_.pestConfig), cfg_.visionThreads, cfg_.ortSpin);
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
+    severity_ = std::make_unique<SeverityModel>(path(cfg_.severityOnnx), path(cfg_.severitySpec),
+                                                cfg_.severityThreads, cfg_.ortSpin);
 #ifdef KR_WITH_LLM
     if (cfg_.useLlama)
         llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), 160, 0.0f, cfg_.llamaThreads);
@@ -72,7 +75,7 @@ nlohmann::json Pipeline::translate(const std::string& english, const std::string
 }
 
 nlohmann::json Pipeline::info() const {
-    return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()},
+    return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()}, {"severity_model", severity_->modelName()},
             {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
             {"translator", translatorReady() ? cfg_.translateModel : "not loaded"},
 #ifdef KR_WITH_TRANSLATION
@@ -155,11 +158,12 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
 
     if (answered && topic != "healthy") {
         t.reset();
-        const SeverityResult s = estimateSeverity(imageRgb);
+        const SeverityResult s = severity_->estimate(imageRgb, topic);
         timings["severity"] = t.ms();
-        result["severity"] = {{"level", s.level},
-                              {"lesion_share", s.lesionShare < 0 ? nlohmann::json(nullptr) : nlohmann::json(s.lesionShare)},
-                              {"method", "hsv_colour_ratio"}, {"validated", false}};
+        auto share = [](double v) { return v < 0 ? nlohmann::json(nullptr) : nlohmann::json(std::round(v * 1000) / 1000); };
+        result["severity"] = {{"level", s.level}, {"lesion_share", share(s.lesionShare)},
+                              {"leaf_share", share(s.leafShare)}, {"method", "lesion_segmentation"},
+                              {"model", severity_->modelName()}, {"validated", s.validated}};
     }
 
     // Verified extracts: the diagnosed disease first, then each distinct pest topic (sorted, like the reference)
@@ -199,8 +203,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
             char conf[16];
             std::snprintf(conf, sizeof(conf), "%.0f%%", top.probability * 100.0);
             line = "Diagnosis: " + kb_->topicName(topic, "en") + " on a tomato leaf (model confidence " + conf + ").";
-            // The colour-based disease severity is not given to Llama: on 181 expert-annotated field photos its
-            // level matched the expert level only 31% of the time (results/severity_plantseg/README.md)
+            // Severity from the validated lesion model only (61% level agreement with plant pathologists on
+            // held-out field photos; the colour rule used before, 31%, is no longer used)
+            if (result.contains("severity") && result["severity"]["validated"] == true)
+                line += " Estimated spread on the photographed leaf: " + result["severity"]["level"].get<std::string>() + ".";
             if (kb_->urgent(topic)) line += " This disease is urgent: it spreads very fast.";
             if (kb_->reliability(topic) == "low")
                 line += " The photo result is not certain; the farmer should confirm with the local KVK.";

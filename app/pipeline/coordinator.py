@@ -20,7 +20,7 @@ from .advisor import LlamaAdvisor            # noqa: E402
 from .guard import check_output              # noqa: E402
 from .knowledge import KnowledgeBase         # noqa: E402
 from .quality import check_quality           # noqa: E402
-from .severity import estimate_severity      # noqa: E402
+from .severity import SeverityModel      # noqa: E402
 from .pest_severity import pest_severity      # noqa: E402
 from .vision import DiseaseClassifier, PestDetector   # noqa: E402
 
@@ -39,6 +39,8 @@ DEFAULT_CONFIG = {
     "llama_pte": Path(os.environ["KR_LLAMA_PTE"]) if os.environ.get("KR_LLAMA_PTE")
                  else REPO / "models" / "llama3_2_1b_krishirakshak_lora_8da4w.pte",   # LoRA-tuned 1B (default)
     "llama_tokenizer": REPO / "models" / "llama3_2_tokenizer.model",
+    "severity_onnx": REPO / "models" / "severity_lraspp_mnv3.onnx",
+    "severity_spec": REPO / "results" / "severity" / "severity_spec.json",
     "disease_threshold": 0.85,     # results/disease_v5_threshold/threshold.json
     "threads": 4,                  # Raspberry Pi 5: four Cortex-A76 cores
     "use_llama": True,
@@ -59,6 +61,7 @@ class Pipeline:
             from app.kb.build_kb import build      # (re)build the SQLite file from the reviewed JSON
             build(cfg["kb_json"], cfg["kb_db"])
         self.kb = KnowledgeBase(cfg["kb_db"], cfg["kb_json"])
+        self.severity = SeverityModel(cfg["severity_onnx"], cfg["severity_spec"])
         self.advisor = LlamaAdvisor(cfg["llama_pte"], cfg["llama_tokenizer"]) if cfg["use_llama"] else None
         self.load_seconds = round(time.perf_counter() - t0, 2)
 
@@ -110,7 +113,7 @@ class Pipeline:
 
         if topic and topic != "healthy":
             t = time.perf_counter()
-            result["severity"] = estimate_severity(image_rgb)
+            result["severity"] = self.severity.estimate(image_rgb, topic)
             timings["severity"] = _ms(t)
 
         # Verified extracts: the diagnosed disease first, then each distinct pest topic
@@ -166,8 +169,10 @@ class Pipeline:
         if d["answered"] and topic == d["topic"]:
             line = (f"Diagnosis: {self.kb.topic_name(topic, 'en')} on a tomato leaf "
                     f"(model confidence {d['top'][0]['probability']:.0%}).")
-            # The colour-based disease severity is not given to Llama: on 181 expert-annotated field photos its
-            # level matched the expert level only 31% of the time (results/severity_plantseg/README.md)
+            # Severity from the validated lesion model only (the colour rule used before is no longer used)
+            sev = result.get("severity")
+            if sev and sev.get("validated"):
+                line += f" Estimated spread on the photographed leaf: {sev['level']}."
             if d["urgent"]:
                 line += " This disease is urgent: it spreads very fast."
             if d["reliability"] == "low":

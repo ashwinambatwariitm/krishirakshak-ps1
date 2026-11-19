@@ -54,6 +54,10 @@ if [ -f "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" ]; then
   cp "${REPO}/models/llama3_2_3b_instruct_8da4w.pte" "${REPO}/models/llama3_2_3b_params.json" "${OUT}/models/"
 fi
 cp "${REPO}"/results/int8_ptq/*.json "${OUT}/results/int8_ptq/"
+# Disease severity model (leaf + lesion segmentation) and its specification
+mkdir -p "${OUT}/results/severity"
+cp "${REPO}/models/severity_lraspp_mnv3.onnx" "${OUT}/models/"
+cp "${REPO}/results/severity/severity_spec.json" "${OUT}/results/severity/"
 cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
 cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
 # Farmer web app (served with --serve 8080 --web app/web), if present

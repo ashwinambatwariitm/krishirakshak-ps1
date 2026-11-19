@@ -46,6 +46,10 @@ NOTEBOOKS = [
     dict(src="llama_lora_distill.py", slug="ps1-llama-lora-distill", title="PS1 Llama LoRA Distill",
          datasets=["ashwinambatwar/llama32-1b-instruct-original", "ashwinambatwar/llama32-3b-instruct-original",
                    "ashwinambatwar/krishirakshak-lora-inputs"]),
+    # Disease severity: leaf + lesion segmentation (Roboflow CC BY 4.0 copy, field lesion masks, PlantDoc backgrounds)
+    dict(src="lesion_seg.py", slug="ps1-lesion-seg", title="PS1 Lesion Seg",
+         datasets=["ashwinambatwar/tomato-leaf-lesion-seg-rf", "fakhrealam9537/leaf-disease-segmentation-dataset",
+                   PLANTDOC_FOLDERS]),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]

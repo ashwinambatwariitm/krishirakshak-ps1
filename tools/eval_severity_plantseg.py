@@ -15,8 +15,11 @@ Methods (all on a 512 px copy, OpenCV HSV, hue 0-179; same constants as app/pipe
   M0 whole photo   plant = S>=40 & V>=40 (7x7 close); lesion = plant & not green(H 35-85, S>=40)  [current rule]
   M1 main leaf     leaf = largest connected plant region, holes filled; lesion = leaf & not green
   M2 large leaves  leaf = all plant regions >= 5% of the image, holes filled; lesion = leaf & not green
+  MODEL            the leaf + lesion segmentation model (--onnx, training/src/lesion_seg.py): leaf = leaf output,
+                   lesion = lesion output inside the leaf (sigmoid > 0.5)
 
 Usage: python tools/eval_severity_plantseg.py --root <PlantSeg_test folder> --out results/severity_plantseg/eval.json
+       [--onnx severity_lraspp_mnv3.onnx --spec severity_spec.json]   (adds the MODEL method)
 """
 import argparse
 import hashlib
@@ -47,7 +50,33 @@ def fill_holes(mask):
     return (m | holes) > 0
 
 
+class OnnxSeverity:
+    """Leaf + lesion segmentation model exported by training/src/lesion_seg.py."""
+
+    def __init__(self, onnx_path, spec_path):
+        import onnxruntime as ort
+        self.spec = json.loads(Path(spec_path).read_text())
+        self.sess = ort.InferenceSession(str(onnx_path), providers=["CPUExecutionProvider"])
+        self.size = self.spec["input"]["size"]
+        self.mean = np.array(self.spec["input"]["mean"], np.float32)
+        self.std = np.array(self.spec["input"]["std"], np.float32)
+
+    def __call__(self, rgb):
+        h, w = rgb.shape[:2]
+        x = cv2.resize(rgb, (self.size, self.size), interpolation=cv2.INTER_AREA).astype(np.float32) / 255.0
+        x = ((x - self.mean) / self.std).transpose(2, 0, 1)[None]
+        logits = self.sess.run(None, {self.spec["input"]["name"]: x})[0][0]
+        leaf = cv2.resize(logits[0], (w, h)) > 0          # sigmoid > 0.5  <=>  logit > 0
+        lesion = (cv2.resize(logits[1], (w, h)) > 0) & leaf
+        return leaf, lesion
+
+
+MODEL = None
+
+
 def masks(rgb, method):
+    if method == "MODEL":
+        return MODEL(rgb)
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
     hue, sat, val = hsv[..., 0], hsv[..., 1], hsv[..., 2]
     plant = (sat >= SAT_MIN) & (val >= VAL_MIN)
@@ -83,7 +112,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--onnx", help="severity model (adds method MODEL)")
+    ap.add_argument("--spec", help="its severity_spec.json")
     args = ap.parse_args()
+    global MODEL
+    methods = ["M0", "M1", "M2"]
+    if args.onnx:
+        MODEL = OnnxSeverity(args.onnx, args.spec)
+        methods.append("MODEL")
     root = Path(args.root)
     samples = json.loads((root / "tomato_samples.json").read_text())
 
@@ -100,7 +136,7 @@ def main():
         name = Path(s["filepath"]).name
         split = "tune" if int(hashlib.sha1(name.encode()).hexdigest(), 16) % 2 == 0 else "test"
         row = {"image": name, "disease": s["disease"], "split": split, "gt_image_share": float(gt.mean())}
-        for m in ("M0", "M1", "M2"):
+        for m in methods:
             leaf, les = masks(small, m)
             tp = int((les & gt).sum())
             row[m] = {"tp": tp, "pred": int(les.sum()), "gt": int(gt.sum()), "leaf": int(leaf.sum()),
@@ -116,7 +152,7 @@ def main():
     for split in ("tune", "test", "all"):
         sel = [r for r in rows if split == "all" or r["split"] == split]
         summary[split] = {"images": len(sel)}
-        for m in ("M0", "M1", "M2"):
+        for m in methods:
             tp = sum(r[m]["tp"] for r in sel)
             pred = sum(r[m]["pred"] for r in sel)
             gt = sum(r[m]["gt"] for r in sel)
@@ -136,7 +172,7 @@ def main():
     Path(args.out).write_text(json.dumps({"summary": summary, "images": rows}, indent=1))
     for split in ("tune", "test"):
         print(f"== {split} ({summary[split]['images']} images)")
-        for m in ("M0", "M1", "M2"):
+        for m in methods:
             v = summary[split][m]
             print(f"  {m}: lesion P {v['lesion_precision']:.2f} R {v['lesion_recall']:.2f} IoU {v['lesion_iou']:.2f} | "
                   f"expert lesion inside leaf {v['expert_lesion_inside_leaf_mask']:.2f} | level agreement "

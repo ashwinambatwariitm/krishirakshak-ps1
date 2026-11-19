@@ -1,0 +1,42 @@
+{
+ "model": "severity_lraspp_mnv3",
+ "input": {
+  "name": "image",
+  "size": 448,
+  "color_order": "RGB",
+  "scale": "pixel / 255",
+  "mean": [
+   0.48500001430511475,
+   0.4560000002384186,
+   0.4059999883174896
+  ],
+  "std": [
+   0.2290000021457672,
+   0.2240000069141388,
+   0.22499999403953552
+  ],
+  "resize": "INTER_AREA, no letterbox"
+ },
+ "output": {
+  "name": "logits",
+  "channels": [
+   "leaf",
+   "lesion"
+  ],
+  "activation": "sigmoid",
+  "threshold": 0.5
+ },
+ "severity": {
+  "share": "lesion pixels inside the leaf / leaf pixels",
+  "levels": {
+   "low": "< 0.10",
+   "moderate": "0.10 - 0.25",
+   "high": ">= 0.25"
+  }
+ },
+ "data": [
+  "Roboflow Universe 'tomato' by A Tomato segment, v7, CC BY 4.0",
+  "Kaggle fakhrealam9537/leaf-disease-segmentation-dataset (masks CC0, images from PlantDoc CC BY 4.0)",
+  "PlantDoc backgrounds (CC BY 4.0)"
+ ]
+}

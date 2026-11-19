@@ -1,39 +1,54 @@
-"""Estimated disease severity from the share of discoloured leaf area (OpenCV colour thresholds).
+"""Disease severity of the photographed leaf: a segmentation model finds the leaf and the diseased area on it.
 
-This is an estimate, not a measured severity: no dataset with expert severity labels was available, and the colour
-rule cannot separate the leaf from a busy field background. The result is always reported as "estimated" and is
-never used to change the diagnosis.
+Severity = lesion area / leaf area; levels low (< 10%), moderate (10-25%), high (>= 25%). Same method as the C++
+application (cpp/src/severity.cpp); model and data: training/src/lesion_seg.py, results/severity/.
 
-Method (on a 512 px copy of the photo, HSV colour space, OpenCV hue range 0-179):
-1. Plant tissue = pixels that are reasonably saturated and not very dark (removes grey/black backgrounds).
-2. Healthy tissue = plant pixels with a green hue (35-85).
-3. Lesion share = plant pixels that are not green (yellow, brown, black spots) / all plant pixels.
+Validation on 91 held-out tomato field photos with lesion masks checked by plant pathologists (PlantSeg, evaluation
+only, results/severity_plantseg/README.md): level agrees with the expert level on 61% of the photos (colour rule
+used before: 31%), 74% without the two virus diseases. Virus diseases (leaf curl, mosaic) get no level
+("not_applicable"): their symptoms are curling and mottling, not lesion areas.
 """
+import json
+from pathlib import Path
+
 import cv2
 import numpy as np
+import onnxruntime as ort
 
-ANALYSIS_SIDE = 512
-SAT_MIN, VAL_MIN = 40, 40     # plant tissue mask
-GREEN_HUE = (35, 85)          # healthy green in OpenCV hue units
+NO_AREA_LEVEL = {"healthy", "yellow_leaf_curl_virus", "tomato_mosaic", "mosaic_virus"}
+MIN_LEAF_SHARE = 0.02
 LEVELS = [(0.10, "low"), (0.25, "moderate"), (1.01, "high")]   # lesion share upper bounds
 
 
-def estimate_severity(image_rgb):
-    """Return {"level": low|moderate|high|unknown, "lesion_share": float or None, "method": str}."""
-    h, w = image_rgb.shape[:2]
-    scale = ANALYSIS_SIDE / max(h, w)
-    small = cv2.resize(image_rgb, (max(1, int(w * scale)), max(1, int(h * scale))), interpolation=cv2.INTER_AREA)
-    hsv = cv2.cvtColor(small, cv2.COLOR_RGB2HSV)
-    hue, sat, val = hsv[..., 0], hsv[..., 1], hsv[..., 2]
+class SeverityModel:
+    def __init__(self, onnx_path, spec_path, threads=4):
+        spec = json.loads(Path(spec_path).read_text())
+        self.size = spec["input"]["size"]
+        self.mean = np.array(spec["input"]["mean"], np.float32)
+        self.std = np.array(spec["input"]["std"], np.float32)
+        options = ort.SessionOptions()
+        options.intra_op_num_threads = threads
+        self.sess = ort.InferenceSession(str(onnx_path), sess_options=options, providers=["CPUExecutionProvider"])
+        self.input_name = self.sess.get_inputs()[0].name
+        self.name = Path(onnx_path).name
 
-    plant = (sat >= SAT_MIN) & (val >= VAL_MIN)
-    # Close small holes so dark lesion centres inside the leaf still count as leaf
-    plant = cv2.morphologyEx(plant.astype(np.uint8), cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8)).astype(bool)
-    green = (hue >= GREEN_HUE[0]) & (hue <= GREEN_HUE[1]) & (sat >= SAT_MIN)
-
-    plant_px = int(plant.sum())
-    if plant_px < 0.05 * plant.size:        # almost no leaf found: do not guess
-        return {"level": "unknown", "lesion_share": None, "method": "hsv_colour_ratio", "validated": False}
-    share = float((plant & ~green).sum()) / plant_px
-    level = next(name for bound, name in LEVELS if share < bound)
-    return {"level": level, "lesion_share": round(share, 3), "method": "hsv_colour_ratio", "validated": False}
+    def estimate(self, image_rgb, topic):
+        """Return {"level", "lesion_share", "leaf_share", "method", "model", "validated"}."""
+        out = {"level": "unknown", "lesion_share": None, "leaf_share": None, "method": "lesion_segmentation",
+               "model": self.name, "validated": False}
+        if topic in NO_AREA_LEVEL:
+            out["level"] = "not_applicable"
+            return out
+        x = cv2.resize(image_rgb, (self.size, self.size), interpolation=cv2.INTER_AREA).astype(np.float32) / 255.0
+        x = ((x - self.mean) / self.std).transpose(2, 0, 1)[None]
+        logits = self.sess.run(None, {self.input_name: x})[0][0]
+        leaf = logits[0] > 0
+        lesion = (logits[1] > 0) & leaf
+        leaf_share = float(leaf.mean())
+        out["leaf_share"] = round(leaf_share, 3)
+        if leaf_share < MIN_LEAF_SHARE:      # no leaf found: do not guess
+            return out
+        share = float(lesion.sum()) / float(leaf.sum())
+        out.update(level=next(name for bound, name in LEVELS if share < bound), lesion_share=round(share, 3),
+                   validated=True)
+        return out

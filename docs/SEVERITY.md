@@ -28,15 +28,28 @@ One level per pest topic found in the photo, from the number of insects the pest
 - Result JSON: `pest_severity` (topic, group, count, box_share, level, basis, scouting, threshold). The web page shows
   it in "Insects in this photo"; the Llama prompt includes the count and level of the main pest.
 
-## Disease severity (open)
+## Disease severity (in the application)
 
-The first method, a colour rule (share of non-green pixels, `cpp/src/severity.cpp`), was validated on 181 tomato
-field photos with expert lesion masks (PlantSeg): its level agrees with the expert level in only 31% of the photos,
-the same as a random guess, and isolating the leaf or tuning the colours does not help
-(`results/severity_plantseg/README.md`). It is therefore no longer shown to the farmer or given to Llama; it remains
-in the result as `"validated": false`.
+Code: `cpp/src/severity.cpp` (application), `app/pipeline/severity.py` (Python reference, same method; C++ and
+Python give identical levels on 185/185 test photos). Training: `training/src/lesion_seg.py` (Kaggle notebook
+`ps1-lesion-seg`); model `models/severity_lraspp_mnv3.onnx` (12.9 MB, release asset); specification and training
+metrics in `results/severity/`.
 
-Planned: a small segmentation model for lesions and leaf area (severity = lesion area / leaf area, levels below 10%,
-10-25%, above 25%), trained on data whose licence allows training and shipping the weights, and evaluated on the
-same held-out PlantSeg photos. For the virus diseases (leaf curl, mosaic) an area-based level may not be meaningful;
-their advice does not depend on a level (remove infected plants, control the vector).
+- Method: a small segmentation network (LR-ASPP MobileNetV3-Large, input 448 x 448) marks the leaf and the diseased
+  area on it; severity = lesion area / leaf area; low < 10%, moderate 10-25%, high >= 25%. About 130 ms on the
+  Raspberry Pi 5 (4 threads).
+- Training data, licences allow training and publishing the weights: Roboflow Universe "tomato" by A Tomato
+  segment, version 7 (537 leaves with leaf and disease-area polygons, CC BY 4.0); Kaggle "Leaf disease segmentation
+  dataset" (field photos from PlantDoc, CC BY 4.0, with lesion masks, CC0; lesion output only); PlantDoc field
+  photos as blurred backgrounds behind the Roboflow leaves.
+- Validation on 91 held-out tomato field photos with lesion masks checked by plant pathologists (PlantSeg test
+  split, evaluation only; `results/severity_plantseg/README.md`): level agrees with the expert level on **61%** of
+  the photos (colour rule used before: 31%), **74%** without the virus diseases; lesion IoU 0.37 (colour rule 0.17).
+  On the Roboflow test split (same photo style as training) 94%.
+- Virus diseases (leaf curl, mosaic) get no level (`"not_applicable"`): their symptoms are curling and mottling, not
+  lesion areas, and the model's level agreed with the expert only 4 of 20 times.
+- The level is called an estimate for the photographed leaf. It is shown in the app ("Estimated spread on leaf",
+  `"validated": true`) and given to Llama in the diagnosis line.
+
+History: the first method, a colour rule (share of non-green pixels), agreed with the expert level on only 31% of
+the held-out photos (a random guess: 33%) and was withdrawn.

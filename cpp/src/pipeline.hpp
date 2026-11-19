@@ -39,6 +39,8 @@ struct PipelineConfig {
     std::string pestSpec = "results/int8_ptq/pest_yolov8n_ip102_negatives.json";
     std::string pestLabels = "results/pest_yolov8n_with_negatives/pest_labels.json";
     std::string pestConfig = "results/pest_yolov8n_with_negatives/pest_config.json";
+    std::string severityOnnx = "models/severity_lraspp_mnv3.onnx";            // leaf + lesion segmentation
+    std::string severitySpec = "results/severity/severity_spec.json";
     std::string kbJson = "app/kb/tomato_kb.json";
     // LoRA-tuned Llama 3.2 1B (training/src/llama_lora_distill.py): on the Pi 5 it gave more accepted answers than
     // the base 1B (5/5 vs 3/5 photos) in half the time (results/pi5_bench/2026-11-18_llama1b_lora/).
@@ -48,7 +50,8 @@ struct PipelineConfig {
     std::string translateModel = "models/indictrans2_en_indic_200M_ct2_int8";   // CTranslate2 model folder
     std::string translateSpm = "models/indictrans2_model.SRC";                  // SentencePiece source model
     float diseaseThreshold = 0.85f;   // results/disease_v5_threshold/threshold.json
-    int visionThreads = 2;            // per model; disease and pest run in parallel -> 4 cores
+    int visionThreads = 2;
+    int severityThreads = 4;          // runs after the two vision models, alone on the four cores            // per model; disease and pest run in parallel -> 4 cores
     int llamaThreads = 4;             // XNNPACK thread pool for Llama (runs after vision, so it gets all 4 cores)
     // Translation runs after Llama. 2 threads, whole answer in one batch: fastest on the Pi 5 (4 threads is several
     // times slower; results/indictrans2/ct2_pi5/README.md)
@@ -82,6 +85,7 @@ private:
     PipelineConfig cfg_;
     std::unique_ptr<DiseaseClassifier> disease_;
     std::unique_ptr<PestDetector> pest_;
+    std::unique_ptr<SeverityModel> severity_;
     std::unique_ptr<KnowledgeBase> kb_;
     std::unique_ptr<LlamaAdvisor> llama_;
     std::unique_ptr<Translator> translator_;
