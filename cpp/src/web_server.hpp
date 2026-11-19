@@ -6,7 +6,10 @@
  * it over the Pi's own Wi-Fi hotspot; no internet is involved.
  *
  * Endpoints:
- *   GET  /                      farmer web page
+ *   GET  /                      farmer web page: the built-in page, or index.html of the farmer app when webRoot is
+ *                               set (krishirakshak --web app/web); other GET paths then serve files of that folder
+ *   GET  /basic                 the built-in page (always available)
+ *   OPTIONS *                   CORS pre-flight; every reply allows any origin (Android app inside the APK)
  *   GET  /api/info              JSON: models, runtime, knowledge-base version
  *   POST /api/analyse?lang=en&translate=ta   body = raw JPEG/PNG bytes of the photo -> JSON result
  *                               (translate: optional, translates the accepted English advice; hi te mr kn ta bn gu or pa)
@@ -26,8 +29,10 @@
 #include <atomic>
 #include <csignal>
 #include <cstdint>
+#include <fstream>
 #include <functional>
 #include <mutex>
+#include <sstream>
 #include <string>
 #include <thread>
 
@@ -41,6 +46,8 @@ public:
         analyse;
     std::function<std::string(const std::string& jsonBody)> ask;
     std::function<std::string()> pageHtml;
+    // Folder of the farmer web app (app/web: index.html, js/, css/, manifest, service worker). Empty: built-in page.
+    std::string webRoot;
 
     static constexpr size_t kMaxBody = 15 * 1024 * 1024;   // 15 MB photo limit
 
@@ -158,7 +165,12 @@ private:
 
         // 3. Route
         try {
-            if (method == "GET" && (route == "/" || route == "/index.html")) {
+            if (method == "OPTIONS") {
+                // CORS pre-flight: the Android app (page inside the APK) calls the Pi from another origin; a photo
+                // POST with Content-Type image/jpeg is not a "simple" request, so the browser engine asks first
+                reply(fd, "204 No Content", "text/plain", "");
+            } else if (method == "GET" && (route == "/basic" ||
+                                    (webRoot.empty() && (route == "/" || route == "/index.html")))) {
                 reply(fd, "200 OK", "text/html; charset=utf-8", pageHtml ? pageHtml() : "");
             } else if (method == "GET" && route == "/api/info") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
@@ -170,6 +182,8 @@ private:
             } else if (method == "POST" && route == "/api/ask") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
                 reply(fd, "200 OK", "application/json; charset=utf-8", ask(body));
+            } else if (method == "GET" && !webRoot.empty()) {
+                serveFile(fd, route);
             } else {
                 reply(fd, "404 Not Found", "text/plain", "not found");
             }
@@ -178,10 +192,48 @@ private:
         }
     }
 
+    // Static file of the farmer app. Only plain relative paths below webRoot are served ("..", backslashes and
+    // empty path parts are refused), so a request cannot read files outside the app folder.
+    void serveFile(int fd, std::string route) {
+        if (route.empty() || route == "/") route = "/index.html";
+        const std::string rel = route.substr(1);
+        if (rel.empty() || rel.find("..") != std::string::npos || rel.find('\\') != std::string::npos ||
+            rel.find("//") != std::string::npos || rel.find('\0') != std::string::npos || rel[0] == '/') {
+            reply(fd, "404 Not Found", "text/plain", "not found");
+            return;
+        }
+        std::ifstream in(webRoot + "/" + rel, std::ios::binary);
+        if (!in) {
+            reply(fd, "404 Not Found", "text/plain", "not found");
+            return;
+        }
+        std::ostringstream ss;
+        ss << in.rdbuf();
+        reply(fd, "200 OK", contentType(rel), ss.str());
+    }
+
+    static const char* contentType(const std::string& path) {
+        const auto dot = path.rfind('.');
+        const std::string ext = dot == std::string::npos ? "" : path.substr(dot + 1);
+        if (ext == "html") return "text/html; charset=utf-8";
+        if (ext == "js") return "text/javascript; charset=utf-8";
+        if (ext == "css") return "text/css; charset=utf-8";
+        if (ext == "json" || ext == "webmanifest") return "application/manifest+json";
+        if (ext == "svg") return "image/svg+xml";
+        if (ext == "png") return "image/png";
+        if (ext == "jpg" || ext == "jpeg") return "image/jpeg";
+        if (ext == "ico") return "image/x-icon";
+        return "application/octet-stream";
+    }
+
     void reply(int fd, const char* status, const char* ctype, const std::string& body) {
         std::string hdr = "HTTP/1.1 " + std::string(status) + "\r\nContent-Type: " + ctype +
                           "\r\nContent-Length: " + std::to_string(body.size()) +
-                          "\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n";
+                          "\r\nCache-Control: no-store\r\nConnection: close"
+                          // Any origin may call the API: the device is offline, on its own hotspot, and has no
+                          // login or private data (the Android app is served from inside the APK)
+                          "\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: GET, POST, OPTIONS"
+                          "\r\nAccess-Control-Allow-Headers: Content-Type\r\n\r\n";
         if (sendAll(fd, hdr.data(), hdr.size())) sendAll(fd, body.data(), body.size());
         ::close(fd);
     }

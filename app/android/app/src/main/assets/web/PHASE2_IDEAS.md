@@ -13,7 +13,7 @@
 
 ## 2. Offline Text-to-Speech (TTS) Voice Advisor (FR-15)
 * Implement Android's native offline Text-to-Speech engine (`android.speech.tts.TextToSpeech`) for both Hindi (`hi_IN`) and regional languages (Marathi `mr_IN`, Telugu `te_IN`, Tamil `ta_IN`).
-* Farmers can tap a prominent speaker button (🔊) to listen to Llama's simplified advice and spray warnings aloud in their field without needing to read small text.
+* Farmers can tap a prominent speaker button ((speaker)) to listen to Llama's simplified advice and spray warnings aloud in their field without needing to read small text.
 
 ## 3. Audio & Voice Q&A Input
 * Add offline voice input using Android's native speech recognizer (`SpeechRecognizer`) for asking follow-up questions in spoken Hindi or regional dialects.

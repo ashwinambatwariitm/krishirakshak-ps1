@@ -16,6 +16,10 @@ const CONFIG = {
   // Default interface language ("en" or "hi")
   DEFAULT_LANG: localStorage.getItem("KR_LANG") || "en",
 
+  // Machine translation of the checked Llama advice: "" = none, or hi te mr kn ta bn gu or pa
+  // (the device translates on the Pi with IndicTrans2; the English advice is always shown too)
+  TRANSLATE_LANG: localStorage.getItem("KR_TRANSLATE") || "",
+
   // Version
   APP_VERSION: "1.0.0 (Phase 1)"
 };

@@ -882,3 +882,22 @@ body {
 .text-center {
   text-align: center;
 }
+
+
+/* Machine translation of the advice (marked as not reviewed) */
+.translation-picker, .translate-picker { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.translate-picker select { padding: 10px; border-radius: 10px; font-size: 1rem; min-height: 48px; }
+.translation-block { margin-top: 12px; padding: 10px 12px; border-left: 4px solid #b26a00; background: #fff8ec; border-radius: 8px; }
+.translation-label { font-size: 0.8rem; color: #7a5200; margin-bottom: 4px; }
+.translation-text { font-size: 1.1rem; line-height: 1.6; margin: 0; }
+.translation-note { font-size: 0.8rem; color: #7a5200; margin-top: 6px; }
+
+/* Pest severity (level for this photo only) */
+.pest-severity-card h3 { margin-top: 0; }
+.pest-sev-row { padding: 10px 0; border-top: 1px solid #e6e9e2; }
+.pest-sev-row:first-of-type { border-top: 0; }
+.pest-sev-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pest-sev-note, .pest-sev-scouting { font-size: 0.85rem; color: #5d6b5d; margin-top: 6px; }
+.pest-level-low { background: #e8f5e9; color: #1b5e20; }
+.pest-level-moderate { background: #fff3e0; color: #9a5b00; }
+.pest-level-high { background: #fdecea; color: #a12a2a; }

@@ -16,6 +16,8 @@
  *   krishirakshak [options] --serve 8080                  farmer web page at http://<pi-ip>:8080/
  * Options:
  *   --bind ADDR        address for --serve; default 0.0.0.0 (reachable over the Pi's Wi-Fi hotspot)
+ *   --web DIR          with --serve: serve the farmer app folder (app/web, relative to --root) at /;
+ *                      the built-in page stays at /basic
  *   --root DIR         repository root (models/, results/, app/kb/); default "."
  *   --lang en|hi       answer language; default en
  *   --int8 / --fp32    INT8 or FP32 ONNX vision models (default: INT8 on the Raspberry Pi build, where it is about
@@ -51,7 +53,7 @@ namespace {
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
                  "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
-                 "                     [--translate LANG] [--no-translate] [--translate-threads N] [--translate-model DIR]\n"
+                 "                     [--translate LANG] [--no-translate] [--translate-threads N] [--translate-model DIR] [--web DIR]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
 
@@ -73,7 +75,7 @@ nlohmann::json brief(const std::string& path, const nlohmann::json& r) {
 
 int main(int argc, char** argv) {
     kr::PipelineConfig cfg;
-    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0", translateTo;
+    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0", translateTo, webDir;
     bool briefOut = false;
     int servePort = 0;
     std::vector<std::string> photos;
@@ -109,6 +111,7 @@ int main(int argc, char** argv) {
         else if (a == "--topic") topic = next();
         else if (a == "--serve") servePort = std::stoi(next());
         else if (a == "--bind") bindAddr = next();
+        else if (a == "--web") webDir = next();
         else if (a == "-h" || a == "--help") { usage(); return 0; }
         else photos.push_back(a);
     }
@@ -128,6 +131,8 @@ int main(int argc, char** argv) {
         if (servePort > 0) {
             web::Server server(servePort);
             server.pageHtml = [] { return web::farmerPageHtml(); };
+            if (!webDir.empty())
+                server.webRoot = (webDir[0] == '/') ? webDir : cfg.repoRoot + "/" + webDir;
             server.getInfo = [&] { return pipe.info().dump(); };
             server.analyse = [&](const std::string& bytes, const std::string& l, const std::string& tr) {
                 const cv::Mat img = kr::decodeImageRgb(bytes);

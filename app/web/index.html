@@ -27,7 +27,7 @@
       </div>
       <div class="header-actions">
         <!-- Language Switch English / Hindi (FR-1) -->
-        <button id="btn-lang-toggle" class="icon-btn btn-lang" title="Toggle English / Hindi">हिन्दी</button>
+        <button id="btn-lang-toggle" class="icon-btn btn-lang" title="Toggle English / Hindi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -60,7 +60,7 @@
             <path d="M12 8v8M8 12h8" stroke="#2e7d32" stroke-linecap="round"/>
           </svg>
           <h2 class="home-title" data-i18n="app_title">KrishiRakshak</h2>
-          <p class="home-tagline" data-i18n="tagline">Runs 100% offline on Raspberry Pi • Zero internet required</p>
+          <p class="home-tagline" data-i18n="tagline">Runs 100% offline on Raspberry Pi &#8226; Zero internet required</p>
 
           <!-- Hidden Native Inputs for Camera and Gallery -->
           <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
@@ -86,6 +86,23 @@
               <span data-i18n="choose_gallery">Choose from Gallery</span>
             </button>
           </div>
+
+          <!-- Machine translation of the advice (shown only when the device has the translator) -->
+          <div id="translate-picker" class="translate-picker hidden">
+            <label for="select-translate" data-i18n="translate_label">Advice also in</label>
+            <select id="select-translate">
+              <option value="" data-i18n="translate_none">English only</option>
+              <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
+              <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)</option>
+              <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
+              <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)</option>
+              <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)</option>
+              <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494; (Bengali)</option>
+              <option value="gu">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)</option>
+              <option value="or">&#2835;&#2849;&#2876;&#2879;&#2822; (Odia)</option>
+              <option value="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624; (Punjabi)</option>
+            </select>
+          </div>
         </div>
       </section>
 
@@ -101,7 +118,7 @@
           <div id="waiting-progress">
             <div class="spinner"></div>
             <h2 class="waiting-title" data-i18n="checking_plant">Checking your plant...</h2>
-            <p class="waiting-desc" data-i18n="waiting_desc">On-device AI is analyzing disease, insects, and severity. This may take 15–45 seconds.</p>
+            <p class="waiting-desc" data-i18n="waiting_desc">On-device AI is analyzing disease, insects, and severity. This may take 15&#8211;45 seconds.</p>
           </div>
 
           <!-- Error State -->
@@ -156,6 +173,9 @@
         <!-- Official Messages Banner (FR-5) -->
         <div id="res-messages-container" class="hidden"></div>
 
+        <!-- Pest severity: level for this photo only, with the published scouting method -->
+        <div id="res-pest-severity" class="card pest-severity-card hidden"></div>
+
         <!-- Llama Advice Card (FR-6: Rendered only when llama.text is not null) -->
         <div id="res-llama-card" class="card llama-card hidden">
           <div class="llama-header">
@@ -163,6 +183,8 @@
             <span class="pill-ai" data-i18n="llama_badge">AI Simplified</span>
           </div>
           <p id="res-llama-text" class="llama-body"></p>
+          <!-- Machine translation of the advice above (marked as not reviewed) -->
+          <div id="res-llama-translation" class="translation-block hidden"></div>
           <button id="btn-voice-llama" class="btn-voice" style="margin-top:10px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -314,7 +336,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2">
               <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
             </svg>
-            <div id="weather-temp" class="weather-metric-val">28°C</div>
+            <div id="weather-temp" class="weather-metric-val">28&#176;C</div>
             <div class="weather-metric-lbl" data-i18n="temp_label">Temperature</div>
           </div>
 
@@ -349,7 +371,7 @@
         <!-- Practical Spray Tip -->
         <div class="alert-note" style="border-left-color:var(--primary);">
           <strong data-i18n="spray_tip_title">Agronomy Spray Tip:</strong>
-          <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM – 10:00 AM or 4:00 PM – 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
+          <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM &#8211; 10:00 AM or 4:00 PM &#8211; 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
         </div>
       </div>
     </div>
@@ -359,7 +381,7 @@
       <!-- Toll Free Helplines -->
       <div class="card helpline-box">
         <h3 style="color:#004d40;font-weight:800;" data-i18n="helpline_title">Government Farmer Helplines</h3>
-        <span class="helpline-number">📞 1800-180-1551</span>
+        <span class="helpline-number">&#128222; 1800-180-1551</span>
         <p class="muted" data-i18n="kisan_call_center">Kisan Call Center: 1800-180-1551 (Toll Free, 6 AM - 10 PM)</p>
         <p class="muted" style="margin-top:6px;" data-i18n="kvk_contact">Contact your local District Krishi Vigyan Kendra (KVK) for on-field soil & leaf tests.</p>
       </div>
@@ -372,28 +394,28 @@
           <svg class="triangle-symbol" viewBox="0 0 24 24" fill="#d32f2f">
             <polygon points="12 2 22 20 2 20"></polygon>
           </svg>
-          <div data-i18n="toxic_red">Red Triangle: Extremely Toxic (Class I) — Highest hazard, use maximum protective gear.</div>
+          <div data-i18n="toxic_red">Red Triangle: Extremely Toxic (Class I) &#8212; Highest hazard, use maximum protective gear.</div>
         </div>
 
         <div class="toxic-box yellow">
           <svg class="triangle-symbol" viewBox="0 0 24 24" fill="#fbc02d">
             <polygon points="12 2 22 20 2 20"></polygon>
           </svg>
-          <div data-i18n="toxic_yellow">Yellow Triangle: Highly Toxic (Class II) — Strict precautions needed.</div>
+          <div data-i18n="toxic_yellow">Yellow Triangle: Highly Toxic (Class II) &#8212; Strict precautions needed.</div>
         </div>
 
         <div class="toxic-box blue">
           <svg class="triangle-symbol" viewBox="0 0 24 24" fill="#1976d2">
             <polygon points="12 2 22 20 2 20"></polygon>
           </svg>
-          <div data-i18n="toxic_blue">Blue Triangle: Moderately Toxic (Class III) — Follow label safety rules.</div>
+          <div data-i18n="toxic_blue">Blue Triangle: Moderately Toxic (Class III) &#8212; Follow label safety rules.</div>
         </div>
 
         <div class="toxic-box green">
           <svg class="triangle-symbol" viewBox="0 0 24 24" fill="#388e3c">
             <polygon points="12 2 22 20 2 20"></polygon>
           </svg>
-          <div data-i18n="toxic_green">Green Triangle: Slightly Toxic (Class IV) — Safer bio-rational or organic choice.</div>
+          <div data-i18n="toxic_green">Green Triangle: Slightly Toxic (Class IV) &#8212; Safer bio-rational or organic choice.</div>
         </div>
       </div>
 
@@ -461,23 +483,23 @@
       <h3 style="margin:16px 0 8px;font-size:1.05rem;" data-i18n="sys_details">System & Model Details</h3>
       <div class="info-row">
         <span class="info-label" data-i18n="disease_model">Disease Classifier</span>
-        <span id="info-disease-model" class="info-val">—</span>
+        <span id="info-disease-model" class="info-val">&#8212;</span>
       </div>
       <div class="info-row">
         <span class="info-label" data-i18n="pest_model">Insect Detector</span>
-        <span id="info-pest-model" class="info-val">—</span>
+        <span id="info-pest-model" class="info-val">&#8212;</span>
       </div>
       <div class="info-row">
         <span class="info-label" data-i18n="llama_model">On-device LLM</span>
-        <span id="info-llama-model" class="info-val">—</span>
+        <span id="info-llama-model" class="info-val">&#8212;</span>
       </div>
       <div class="info-row">
         <span class="info-label" data-i18n="kb_version">Knowledge Base</span>
-        <span id="info-kb-version" class="info-val">—</span>
+        <span id="info-kb-version" class="info-val">&#8212;</span>
       </div>
       <div class="info-row">
         <span class="info-label" data-i18n="runtime_env">Runtime</span>
-        <span id="info-runtime" class="info-val">—</span>
+        <span id="info-runtime" class="info-val">&#8212;</span>
       </div>
 
       <!-- Developer / Host Setting (NFR-5) -->

@@ -136,8 +136,8 @@ function initApp() {
       const lang = window.getLanguage();
       let textToRead = "";
       if (lang === "hi") {
-        textToRead = `जांच परिणाम: ${res.disease.name}। मॉडल सटीकता: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} प्रतिशत।`;
-        if (res.disease.urgent) textToRead += " ध्यान दें: तत्काल कार्रवाई करें।";
+        textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
+        if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
       } else {
         textToRead = `Diagnosis Result: ${res.disease.name}. Model confidence: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} percent.`;
         if (res.disease.urgent) textToRead += " Urgent: act today.";
@@ -181,8 +181,8 @@ function initApp() {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
   }
 
-  // Warm up /api/info
-  window.apiService.getInfo().catch(() => {});
+  // Warm up /api/info; also shows the "Advice also in" picker when the device has the translator
+  setupTranslatePicker();
 }
 
 /**
@@ -264,7 +264,8 @@ async function startAnalysis(blob) {
   const lang = window.getLanguage();
 
   try {
-    const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample);
+    const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample,
+                                                      window.CONFIG.TRANSLATE_LANG || "");
     window.appState.setResult(data);
     routeResultStatus(data);
   } catch (err) {
@@ -335,7 +336,9 @@ function renderAnsweredScreen(data) {
     urgentBadge.classList.add("hidden");
   }
 
-  if (data.severity && data.severity.level && data.severity.level !== "unknown") {
+  // Disease spread is shown only from a validated method: the earlier colour estimate is sent with
+  // validated=false (it matched the expert level in 31% of field photos, results/severity_plantseg/README.md)
+  if (data.severity && data.severity.validated === true && data.severity.level && data.severity.level !== "unknown") {
     const lvl = data.severity.level.toLowerCase();
     const localizedLvl = window.t(`spread_${lvl}`) || lvl;
     spreadBadge.textContent = `${window.t("spread_level")}: ${localizedLvl}`;
@@ -372,6 +375,9 @@ function renderAnsweredScreen(data) {
     messagesContainer.classList.add("hidden");
   }
 
+  // 3b. Pest severity (level for this photo only, with the published scouting method)
+  renderPestSeverity(document.getElementById("res-pest-severity"), data.pest_severity);
+
   // 4. Llama Advice Card (FR-6)
   const llamaContainer = document.getElementById("res-llama-card");
   const llamaTextEl = document.getElementById("res-llama-text");
@@ -381,6 +387,7 @@ function renderAnsweredScreen(data) {
   } else {
     llamaContainer.classList.add("hidden");
   }
+  renderTranslation(document.getElementById("res-llama-translation"), data.translation);
 
   // 5. Advice Blocks (FR-7)
   const adviceContainer = document.getElementById("res-advice-blocks");
@@ -492,7 +499,7 @@ function renderAnsweredScreen(data) {
       }
 
       const tdDose = document.createElement("td");
-      tdDose.textContent = spray.dose || "—";
+      tdDose.textContent = spray.dose || "\u2014";
 
       const tdSrc = document.createElement("td");
       tdSrc.className = "source-cell";
@@ -535,9 +542,18 @@ async function handleAskQuestion() {
   const lang = window.getLanguage();
 
   try {
-    const res = await window.apiService.askQuestion(question, topic, lang);
+    const res = await window.apiService.askQuestion(question, topic, lang, window.CONFIG.TRANSLATE_LANG || "");
     loadingEl.classList.add("hidden");
     resContainer.classList.remove("hidden");
+
+    let qaTranslation = document.getElementById("qa-answer-translation");
+    if (!qaTranslation) {
+      qaTranslation = document.createElement("div");
+      qaTranslation.id = "qa-answer-translation";
+      qaTranslation.className = "translation-block hidden";
+      answerEl.insertAdjacentElement("afterend", qaTranslation);
+    }
+    renderTranslation(qaTranslation, res.accepted !== false ? res.translation : null);
 
     if (res.answer && res.accepted !== false) {
       answerEl.textContent = res.answer;
@@ -709,9 +725,9 @@ async function openAboutModal() {
 
   try {
     const info = await window.apiService.getInfo();
-    document.getElementById("info-disease-model").textContent = info.disease_model || "—";
-    document.getElementById("info-pest-model").textContent = info.pest_model || "—";
-    document.getElementById("info-llama-model").textContent = info.llama || "—";
+    document.getElementById("info-disease-model").textContent = info.disease_model || "\u2014";
+    document.getElementById("info-pest-model").textContent = info.pest_model || "\u2014";
+    document.getElementById("info-llama-model").textContent = info.llama || "\u2014";
     
     const kbText = `${info.kb_version || "tomato_kb"} (${info.kb_reviewed ? window.t("kb_reviewed") : window.t("kb_draft")})`;
     document.getElementById("info-kb-version").textContent = kbText;
@@ -768,10 +784,112 @@ function renderHistoryList() {
     metaDiv.style.color = "var(--ink-muted)";
     const date = new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const conf = Math.round(item.confidence * 100);
-    metaDiv.textContent = `${date} • ${window.t("confidence")}: ${conf}%`;
+    metaDiv.textContent = `${date} \u2022 ${window.t("confidence")}: ${conf}%`;
 
     row.appendChild(titleDiv);
     row.appendChild(metaDiv);
     container.appendChild(row);
   });
+}
+
+
+/**
+ * Machine translation of the checked English advice (device field "translation"), shown under the English text
+ * and marked as not reviewed. Sentences that failed the device's translation check stay in English.
+ */
+function renderTranslation(container, tr) {
+  if (!container) return;
+  container.innerHTML = "";
+  if (!tr || !tr.text) {
+    container.classList.add("hidden");
+    return;
+  }
+  const label = document.createElement("div");
+  label.className = "translation-label";
+  label.textContent = window.t("mt_title");
+  const body = document.createElement("p");
+  body.className = "translation-text";
+  body.lang = tr.lang || "";
+  body.textContent = tr.text;
+  container.appendChild(label);
+  container.appendChild(body);
+  if (tr.withheld) {
+    const note = document.createElement("div");
+    note.className = "translation-note";
+    note.textContent = window.t("mt_withheld");
+    container.appendChild(note);
+  }
+  container.classList.remove("hidden");
+}
+
+/**
+ * Pest severity (device field "pest_severity"): one row per pest found in the photo with its count and level for
+ * this photo only, the published economic threshold where one exists, and the published way to check the field.
+ */
+function renderPestSeverity(container, rows) {
+  if (!container) return;
+  container.innerHTML = "";
+  if (!Array.isArray(rows) || rows.length === 0) {
+    container.classList.add("hidden");
+    return;
+  }
+  const title = document.createElement("h3");
+  title.textContent = window.t("pest_sev_title");
+  container.appendChild(title);
+  rows.forEach(r => {
+    const row = document.createElement("div");
+    row.className = "pest-sev-row";
+    const head = document.createElement("div");
+    head.className = "pest-sev-head";
+    const name = document.createElement("strong");
+    name.textContent = `${r.name}: ${r.count}`;
+    const badge = document.createElement("span");
+    badge.className = `tag-badge pest-level-${r.level}`;
+    badge.textContent = window.t(`level_${r.level}`) || r.level;
+    head.appendChild(name);
+    head.appendChild(badge);
+    row.appendChild(head);
+    const basis = document.createElement("div");
+    basis.className = "pest-sev-note";
+    basis.textContent = window.t("pest_sev_photo_only") + (r.group === "uncertain" ? " " + window.t("pest_sev_uncertain") : "");
+    row.appendChild(basis);
+    if (r.threshold && r.threshold.text) {
+      const thr = document.createElement("div");
+      thr.className = "alert-note";
+      thr.textContent = `${window.t("pest_threshold")}: ${r.threshold.text} [${r.threshold.source_org}]`;
+      row.appendChild(thr);
+    }
+    if (r.scouting && r.scouting.text) {
+      const sc = document.createElement("div");
+      sc.className = "pest-sev-scouting";
+      sc.textContent = `${window.t("pest_scouting")}: ${r.scouting.text} [${r.scouting.source_org}]`;
+      row.appendChild(sc);
+    }
+    container.appendChild(row);
+  });
+  container.classList.remove("hidden");
+}
+
+/**
+ * "Advice also in" picker: shown only when the device reports translation languages (GET /api/info).
+ */
+async function setupTranslatePicker() {
+  const picker = document.getElementById("translate-picker");
+  const select = document.getElementById("select-translate");
+  if (!picker || !select) return;
+  select.value = window.CONFIG.TRANSLATE_LANG || "";
+  select.addEventListener("change", () => {
+    window.CONFIG.TRANSLATE_LANG = select.value;
+    localStorage.setItem("KR_TRANSLATE", select.value);
+  });
+  try {
+    const info = await window.apiService.getInfo();
+    const langs = (info && info.translation_languages) || [];
+    if (langs.length > 0) {
+      Array.from(select.options).forEach(o => { o.hidden = o.value !== "" && !langs.includes(o.value); });
+      picker.classList.remove("hidden");
+    }
+  } catch (e) {
+    picker.classList.add("hidden");   // device not reachable or no translator: keep the picker hidden
+  }
 }

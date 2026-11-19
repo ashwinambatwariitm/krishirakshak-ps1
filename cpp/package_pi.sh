@@ -54,6 +54,8 @@ fi
 cp "${REPO}"/results/int8_ptq/*.json "${OUT}/results/int8_ptq/"
 cp "${REPO}"/results/pest_yolov8n_with_negatives/{pest_labels,pest_config}.json "${OUT}/results/pest_yolov8n_with_negatives/"
 cp "${REPO}/app/kb/tomato_kb.json" "${OUT}/app/kb/"
+# Farmer web app (served with --serve 8080 --web app/web), if present
+if [ -d "${REPO}/app/web" ]; then rm -rf "${OUT}/app/web"; cp -r "${REPO}/app/web" "${OUT}/app/web"; fi
 
 # A few labelled field photos for the first run on the Pi (optional; skipped if the data folder is absent)
 DATA="${KR_DATA:-$HOME/ARM_AgriTech/data/plantdoc_cls/test}"

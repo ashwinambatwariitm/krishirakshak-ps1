@@ -3,8 +3,8 @@
  * 
  * Complies with docs/APP_API.md:
  * - GET /api/info
- * - POST /api/analyse?lang=en|hi (Raw photo bytes in body)
- * - POST /api/ask (JSON body: { question, topic, lang })
+ * - POST /api/analyse?lang=en|hi&translate=ta (Raw photo bytes in body; translate is optional)
+ * - POST /api/ask (JSON body: { question, topic, lang, translate })
  * 
  * 60s timeout handling for on-device inference (FR-2).
  */
@@ -55,9 +55,13 @@ class ApiService {
    * @param {Blob|File} imageBlob Raw binary image
    * @param {string} lang "en" or "hi"
    * @param {string} [exampleParam] Optional mock selector (e.g. "uncertain", "retake", "pest")
+   * @param {string} [translate] Optional language for the machine translation of the advice ("" = none)
    */
-  async analyseImage(imageBlob, lang = "en", exampleParam = "") {
+  async analyseImage(imageBlob, lang = "en", exampleParam = "", translate = "") {
     let query = `?lang=${encodeURIComponent(lang)}`;
+    if (translate) {
+      query += `&translate=${encodeURIComponent(translate)}`;
+    }
     if (exampleParam) {
       query += `&example=${encodeURIComponent(exampleParam)}`;
     }
@@ -100,8 +104,9 @@ class ApiService {
    * @param {string} question 
    * @param {string|null} topic 
    * @param {string} lang 
+   * @param {string} [translate] Optional language for the machine translation of the answer
    */
-  async askQuestion(question, topic = null, lang = "en") {
+  async askQuestion(question, topic = null, lang = "en", translate = "") {
     const url = `${this.getBaseUrl()}/api/ask`;
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 45000);
@@ -115,7 +120,8 @@ class ApiService {
         body: JSON.stringify({
           question: question.trim(),
           topic: topic || "",
-          lang: lang
+          lang: lang,
+          translate: translate || ""
         }),
         signal: controller.signal
       });
