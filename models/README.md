@@ -2,21 +2,47 @@
 
 Model weights are not stored in git. They are published as GitHub Release assets of this repository:
 
-- `models-v2` (current): the v5 six-class tomato disease models (PyTorch) and all ONNX files (FP32 and INT8) for the
+- `models-v3`: the disease severity model and the IndicTrans2 translation model (CTranslate2 INT8).
+- `llm-v2`: the LoRA-tuned Llama 3.2 1B `.pte` (default advisor model); `llm-v1`: the base Llama 3.2 1B `.pte` and the
+  tokenizer (needed by both).
+- `models-v2`: the v5 six-class tomato disease models (PyTorch) and all ONNX files (FP32 and INT8) for the
   Raspberry Pi application.
 - `models-v1`: the earlier PyTorch checkpoints (v3, v4 and the pest detector).
 
 Download into this folder and check each file against its SHA-256 checksum:
 
 ```
+gh release download models-v3 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
+gh release download llm-v2 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
+gh release download llm-v1 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download models-v2 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download models-v1 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
-sha256sum models/*.pt models/*.onnx
+tar -xzf models/indictrans2_en_indic_200M_ct2_int8.tar.gz -C models
+sha256sum models/*.pt models/*.onnx models/*.pte
 ```
 
 Then try them on a photo: `python tools/predict.py leaf.jpg`. To export a checkpoint to ONNX:
 `python tools/export_onnx.py --disease-model models/tomato_disease_v4_effb0_10class.pt --pest-model models/pest_yolov8n_ip102_negatives.pt --check-images some_photos/`
 To measure size, RAM and latency of ONNX files: `python tools/bench_onnx.py models/*.onnx --threads 4`.
+
+## Release models-v3
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `severity_lraspp_mnv3.onnx` | Disease severity: leaf + lesion segmentation, input 448 (docs/SEVERITY.md) | `1a9ca939cfc3890cbf095317578c457793ffe2fe6b3db92651a022a1b29c1642` |
+| `indictrans2_en_indic_200M_ct2_int8.tar.gz` | IndicTrans2 en-indic 200M, CTranslate2 INT8 (extract into models/) | `e2bd68362cb1b127e8f180b1982a2000fd2834245c0df7d7b7c3615762058f9a` |
+| `indictrans2_model.SRC` | SentencePiece source model of IndicTrans2 | `3cedc5cbcc740369b76201942a0f096fec7287fee039b55bdb956f301235b914` |
+
+The severity model was trained on Roboflow Universe "tomato" by A Tomato segment (v7, CC BY 4.0), the Kaggle "Leaf
+disease segmentation dataset" (masks CC0, PlantDoc images CC BY 4.0) and PlantDoc backgrounds (CC BY 4.0).
+IndicTrans2 is by AI4Bharat, MIT licence (`INDICTRANS2_LICENSE.txt` in the release).
+
+## Release llm-v2
+
+`llama3_2_1b_krishirakshak_lora_8da4w.pte` (SHA-256 `236a022621730a1387aec86b3e6209c4be110eb84e9e6bb2f8504234999c58e8`):
+LoRA-tuned Llama 3.2 1B Instruct, ExecuTorch 8da4w, default advisor model (training/src/llama_lora_distill.py). Uses
+the tokenizer of llm-v1. Llama 3.2 is licensed under the Llama 3.2 Community License, Copyright (c) Meta Platforms,
+Inc. All Rights Reserved; licence, use policy and notice are in the release. Built with Llama.
 
 ## Release models-v2
 

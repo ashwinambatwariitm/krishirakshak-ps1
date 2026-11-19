@@ -72,6 +72,9 @@ if [ -d "${DATA}" ]; then
   done
 fi
 
+# Offline hotspot and start-at-boot service (run on the Pi with sudo, see the script header)
+cp "${REPO}/cpp/pi/kr_pi.sh" "${OUT}/"
+
 cat > "${OUT}/run_benchmarks.sh" <<'EOF'
 #!/usr/bin/env bash
 # Run on the Pi from this folder. Prints the device state, measures the memory bandwidth, then times the pipeline
