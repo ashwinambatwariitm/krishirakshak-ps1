@@ -1,5 +1,5 @@
 /**
- * KrishiRakshak App Configuration (embedded in the Android APK: API defaults to the Pi hotspot)
+ * KrishiRakshak App Configuration
  * 
  * NFR-5 requirement: The API base address is configured in ONE setting.
  * Empty string ("") means same server (used when Pi serves the static files).
@@ -7,7 +7,7 @@
  * or use the in-app settings override in the About screen.
  */
 const CONFIG = {
-  // Base URL for the KrishiRakshak API (e.g., "" on Pi, or "http://localhost:8080" for mock server)
+  // Base URL for the KrishiRakshak API (defaults to Pi hotspot IP in Android APK)
   API_BASE: localStorage.getItem("KR_API_BASE") || "http://10.42.0.1:8080",
 
   // Timeout in milliseconds (FR-2: Pi ExecuTorch Llama 3B inference can take ~45s)
