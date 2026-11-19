@@ -86,8 +86,8 @@ sentences" (v9), "never write the same sentence twice" (v12) and "start every li
 
 ## Distortions found (all kept by the current check)
 
-All are now "dropped" cases in `cpp/tests/grounding_test.cpp`. **The test fails on purpose (16 failures)** until the
-grounding gaps are closed; the previously existing cases and the three new "kept" cases pass.
+All are now "dropped" cases in `cpp/tests/grounding_test.cpp`; since the check update below, all 16 are dropped and
+the test passes.
 
 | Run | Topic | Kept sentence | Source | Problem |
 |---|---|---|---|---|
@@ -115,6 +115,42 @@ Grounding gaps these show (for the core team; the check was not changed in this 
 - **A one-word line passes (1 of 1) and counts towards the two grounded sentences**, so an answer of markdown headers
   and fragments can be accepted. Suggest a minimum of 2 content words per kept sentence.
 
+### Check update (19 Nov 2026)
+
+The grounding check (`cpp/src/output_guard.cpp` and its Python copy `llm/grounding.py`, same word lists through
+`results/llama_lora/prompt_facts.json`) now closes these gaps. The 0.75 threshold stays for sentences with five or more
+content words. One rule per kind of distortion:
+
+| Rule | Distortions it drops |
+|---|---|
+| Words of three letters are compared ("rot", "dry", "air"); three-letter function words are stop words | black rot, dry grain |
+| "plant" is no longer a stop word | entire plant |
+| A kept sentence needs two different content words | `**Pests**`, one-word fragments |
+| Fewer than five content words: all must be in the source sentence | wrinkled, most severe, wilting on lower leaves, caterpillar nonsense |
+| A negation must be of the same kind as in the source (instruction: avoid, do not, never; statement: is not) | collar rot reversal |
+| An instruction (starts with an action verb) is not supported by a symptoms or spread extract | prevent rotting, infect tissues, leave the body outside |
+| Numbers and months: none invented, and none of the source left out once one is used | neem cake schedule without dose, "Grow simultaneously 40", September |
+| A word before blight, canker, mildew or mosaic must be the one in the source | fruit blight |
+
+Plain-language words added to the same-meaning groups so faithful rewrites stay: removal / rid = remove,
+discoloration = discolouration, larva = larvae, necessary = need; "only", "found", "seen", "appear", "become" and
+"time" are stop words. A kept sentence without a full stop gets one, so the joined text reads as sentences.
+
+Replay of all saved answers (`grounding_test . --replay`, full application rule: grounding, safety checks, at least two
+grounded sentences); C++ and Python give the same result on all 661 answers (`tools/check_grounding_port.py`):
+
+| Answers | Accepted before | Accepted after |
+|---|---|---|
+| v8, all 27 topics | 24 | 24 |
+| v4, all 27 | 22 | 22 |
+| v10, all 27 | 24 | 24 |
+| baseline, all 27 | 15 | 14 (damping_off: one framing sentence, "Damping off occurs when ...", now below the bar) |
+| baseline + bcw, all 27 | 17 | 16 |
+| LoRA 1B on the Pi, 5 photos (`results/pi5_bench/2026-11-18_llama1b_lora`) | 5 | 4 |
+
+The LoRA answer now rejected is `healthy`: "Do not plant tomato with chilli or brinjal." from "do not follow tomato
+with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app then shows the knowledge-base text.
+
 ## Known limits of v8
 
 - **Fragments.** v8 keeps the facts but some answers are lists of short noun phrases rather than sentences. Worst case
@@ -126,7 +162,8 @@ Grounding gaps these show (for the core team; the check was not changed in this 
 - **Retry prompt.** With v8 there are no refusals, so the retry prompt (hard-coded in `llama_advisor.cpp`) is not used.
   In the baseline runs its answers invented facts ("February or March", "Burn infected leaves", another disease name);
   most were dropped by the check. If the built-in prompt changes to v8, the retry could reuse the v8 wording.
-- `healthy` is accepted with v8 but is provisional until the healthy evaluation fix.
+- `healthy`: `llm/eval_advisor.py` now builds the healthy prompt without a spread line, like the application;
+  the C++ `--eval-advisor` (branch `llama-quality-speed`, not yet in main) still needs the same fix.
 - Measured on the laptop only. The Pi uses the same `.pte` and greedy decoding, so the text should be the same, but
   speed needs measuring there.
 

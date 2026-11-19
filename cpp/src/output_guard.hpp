@@ -25,11 +25,16 @@ GuardResult checkOutput(const std::string& text, const std::vector<KbChunk>& fac
 
 // Sentence-level grounding check for English Llama text (added after tests where Llama 3.2 1B reversed a source
 // instruction: "do not remove the infected leaf"). A sentence is kept only if
-//   - at least minOverlap of its content words (4+ letters, not stop words, simple suffix stemming) occur in the
-//     retrieved extracts, and
-//   - if it contains a negation (not, never, avoid, don't ...), the best-matching source sentence contains one too.
+//   - it has at least two different content words (3+ letters, not stop words, simple suffix stemming), and at
+//     least minOverlap of them occur in ONE source sentence, all of them when it has fewer than five,
+//   - a negation is matched by the same kind of negation in that source sentence (instruction: avoid, do not,
+//     never; statement: is not, no, without), and a stated cause by a stated cause,
+//   - an instruction (starts with an action verb) is not supported by a symptoms or spread extract,
+//   - its numbers and month names are those of the source sentence (none invented, none left out once one is
+//     used), and a disease name in it ("early blight") is the one in the source sentence.
+// The rules and their test cases come from the 1B evaluation in docs/llama_1b_quality.md.
 struct GroundingResult {
-    std::string kept;                       // grounded sentences, in their original order
+    std::string kept;                       // grounded sentences in their original order, each ending with punctuation
     std::vector<std::string> dropped;       // sentences removed, for the technical panel and the report
     int keptCount = 0;
 };

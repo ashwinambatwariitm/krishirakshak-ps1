@@ -146,12 +146,44 @@ GuardResult checkOutput(const std::string& text, const std::vector<KbChunk>& fac
 
 namespace {
 
+// "plant" is not a stop word (Llama 3.2 1B wrote "killing the entire plant" from "entire leaves are killed"). Words
+// of three letters are compared ("rot", "dry", "air"), so the three-letter function words are stop words.
 const std::set<std::string> kGroundStop = {
     "this", "that", "these", "those", "with", "from", "your", "they", "them", "their", "there", "have", "will",
     "should", "would", "could", "about", "into", "also", "very", "more", "most", "some", "such", "than", "then",
-    "when", "what", "which", "while", "because", "make", "sure", "help", "farmer", "dear", "tomato", "plant",
-    "plants", "disease", "first", "step", "important", "please", "keep", "good", "news", "take", "action"};
+    "when", "what", "which", "while", "because", "make", "sure", "help", "farmer", "dear", "tomato", "disease",
+    "first", "step", "important", "please", "keep", "good", "news", "take", "action", "only", "found", "seen", "appear", "become", "time",
+    "the", "and", "for", "are", "was", "can", "may", "its", "has", "had", "but", "you", "all", "any", "our", "out",
+    "own", "per", "via", "yet", "how", "why", "who", "use", "get", "let", "put", "see", "way", "too", "now", "due",
+    "etc", "few", "off", "one", "his", "her", "she", "him", "ask"};
 const std::set<std::string> kNegations = {"not", "never", "avoid", "dont", "don't", "no", "without", "nor"};
+// Negations that make an instruction ("avoid ...", "do not ...", "never ..."); the others make a statement ("is not")
+const std::set<std::string> kInstructionNegations = {"avoid", "never", "dont", "don't"};
+constexpr size_t kMinWordLength = 3;
+// A kept sentence needs two different content words: headers and one-word fragments ("**Pests**", "Wilting") are
+// not advice, and one matching word was 100% of their content words.
+constexpr size_t kMinContentWords = 2;
+// Below five content words every word must come from the source sentence: with four words the 0.75 bar let one
+// changed word through ("Spots become slightly wrinkled" from "... slightly raised").
+constexpr size_t kFullMatchBelow = 5;
+// A sentence that starts with one of these verbs is an instruction. It must not be supported by a description of
+// the disease (symptoms, spread): "Prevent seedlings from rotting completely" came from "Complete rotting of
+// seedlings", "Leave the rest of the body outside" from a description of the caterpillar.
+const std::set<std::string> kActionVerbs = {
+    "add", "adopt", "allow", "apply", "avoid", "burn", "check", "clean", "collect", "cover", "cut", "dip", "discard",
+    "dispose", "do", "don't", "dont", "drench", "ensure", "erect", "fix", "follow", "get", "give", "grow", "improve",
+    "increase", "infect", "inspect", "install", "irrigate", "keep", "leave", "maintain", "make", "minimise",
+    "minimize", "mix", "monitor", "mulch", "never", "pick", "place", "plant", "practice", "practise", "prevent",
+    "provide", "prune", "put", "reduce", "release", "remove", "rotate", "select", "soak", "sow", "spray", "stake",
+    "stop", "take", "transplant", "treat", "try", "uproot", "use", "wash"};
+const std::set<std::string> kDescriptionSections = {"spread", "symptoms"};
+// A sentence that names a month must name all months of its source ("Disease appears in September" from
+// "... September to November"). "may" is left out: it is mostly the verb.
+const std::set<std::string> kMonths = {"january", "february", "march", "april", "june", "july", "august",
+                                       "september", "october", "november", "december"};
+// A word before one of these is part of a disease name and must be the same as in the source ("Fruit blight" was
+// written for "Early blight", with 6 of 7 words matching).
+const std::set<std::string> kNameHeads = {"blight", "canker", "mildew", "mosaic"};
 
 // Very small stemmer: enough to match "removing"/"removed"/"removes" with "remove", "leaves" with "leaf" roughly
 std::string stem(std::string w) {
@@ -190,6 +222,10 @@ const std::map<std::string, std::string> kSameMeaning = {
     {"rot", "rot"}, {"rotten", "rot"}, {"rott", "rot"}, {"decay", "rot"},
     {"spor", "spore"}, {"spore", "spore"}, {"sporulation", "spore"},
     {"shape", "shape"}, {"shap", "shape"},
+    {"remove", "remove"}, {"remov", "remove"}, {"removal", "remove"}, {"rid", "remove"},
+    {"discoloration", "discolour"}, {"discolouration", "discolour"},
+    {"larva", "larva"}, {"larvae", "larva"},
+    {"need", "need"}, {"necessary", "need"},
 };
 
 // stem() followed by the same-meaning mapping
@@ -237,16 +273,66 @@ bool hasCause(const std::vector<std::string>& ws) {
     return false;
 }
 
-bool hasNegation(const std::vector<std::string>& ws) {
-    for (const auto& w : ws) if (kNegations.count(w) || (w.size() > 3 && w.compare(w.size() - 3, 3, "n't") == 0)) return true;
-    return false;
+bool isNegation(const std::string& w) {
+    return kNegations.count(w) || (w.size() > 3 && w.compare(w.size() - 3, 3, "n't") == 0);
+}
+
+// Kinds of negation in a sentence: 1 = instruction ("avoid", "do not", "never"), 2 = statement ("is not", "no")
+int negationKinds(const std::vector<std::string>& ws) {
+    int kinds = 0;
+    for (size_t i = 0; i < ws.size(); ++i) {
+        if (kInstructionNegations.count(ws[i]) || (ws[i] == "not" && i > 0 && ws[i - 1] == "do")) kinds |= 1;
+        else if (isNegation(ws[i])) kinds |= 2;
+    }
+    return kinds;
+}
+
+bool isInstruction(const std::vector<std::string>& ws) { return !ws.empty() && kActionVerbs.count(ws[0]) > 0; }
+
+std::set<std::string> monthsOf(const std::vector<std::string>& ws) {
+    std::set<std::string> out;
+    for (const auto& w : ws) if (kMonths.count(w)) out.insert(w);
+    return out;
+}
+
+// Disease names: a content word followed by a name head word ("early blight")
+std::set<std::string> namesOf(const std::vector<std::string>& ws) {
+    std::set<std::string> out;
+    for (size_t i = 1; i < ws.size(); ++i)
+        if (kNameHeads.count(ws[i]) && ws[i - 1].size() >= kMinWordLength && !kGroundStop.count(ws[i - 1]))
+            out.insert(ws[i - 1] + " " + ws[i]);
+    return out;
+}
+
+// Numbers written in a sentence (e.g. "28", "2.5")
+std::set<std::string> numbersOf(const std::string& s) {
+    std::set<std::string> out;
+    std::string cur;
+    for (char ch : s + " ") {
+        if (std::isdigit(static_cast<unsigned char>(ch)) || (!cur.empty() && (ch == '.' || ch == ','))) {
+            cur += ch;
+            continue;
+        }
+        while (!cur.empty() && !std::isdigit(static_cast<unsigned char>(cur.back()))) cur.pop_back();
+        if (!cur.empty()) out.insert(cur);
+        cur.clear();
+    }
+    return out;
+}
+
+template <class T> bool subset(const std::set<T>& a, const std::set<T>& b) {
+    return std::includes(b.begin(), b.end(), a.begin(), a.end());
 }
 
 }  // namespace
 
 nlohmann::json groundingConfig() {
     return {{"stop_words", kGroundStop}, {"negations", kNegations}, {"same_meaning", kSameMeaning},
-            {"stem_suffixes", {"ing", "ed", "es", "s"}}, {"cause_stems", kCauseStems}, {"min_overlap", 0.75}, {"min_word_length", 4}};
+            {"stem_suffixes", {"ing", "ed", "es", "s"}}, {"cause_stems", kCauseStems}, {"min_overlap", 0.75},
+            {"min_word_length", kMinWordLength}, {"min_content_words", kMinContentWords},
+            {"full_match_below", kFullMatchBelow}, {"instruction_negations", kInstructionNegations},
+            {"action_verbs", kActionVerbs}, {"description_sections", kDescriptionSections}, {"months", kMonths},
+            {"name_heads", kNameHeads}};
 }
 
 GroundingResult keepGroundedSentences(const std::string& text, const std::vector<KbChunk>& facts, double minOverlap) {
@@ -254,33 +340,19 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
     // (Checking against the combined vocabulary of all extracts let a stitched answer through in testing:
     //  "You can harvest tomatoes 28 days after transplanting" = NPV spray schedule + bacterial-spot nursery text.)
     struct Source {
-        std::string raw;
-        std::vector<std::string> words;
-        std::set<std::string> stems;
-        bool negated;
-        bool cause;
+        std::set<std::string> stems, numbers, months, names;
+        int negation;
+        bool cause, describes;
     };
     std::vector<Source> sources;
     for (const auto& c : facts)
         for (const auto& s : splitSentences(c.textEn)) {
-            Source src{s, words(s), {}, false, false};
-            for (const auto& w : src.words) src.stems.insert(token(w));
-            src.negated = hasNegation(src.words);
-            src.cause = hasCause(src.words);
+            const auto ws = words(s);
+            Source src{{}, numbersOf(s), monthsOf(ws), namesOf(ws), negationKinds(ws), hasCause(ws),
+                       kDescriptionSections.count(c.section) > 0};
+            for (const auto& w : ws) src.stems.insert(token(w));
             sources.push_back(std::move(src));
         }
-
-    // Numbers written in a sentence (e.g. "28", "2.5"); each must appear in the supporting source sentence
-    auto numbers = [](const std::string& s) {
-        std::vector<std::string> out;
-        std::string cur;
-        for (char ch : s + " ") {
-            if (std::isdigit(static_cast<unsigned char>(ch)) || (!cur.empty() && (ch == '.' || ch == ','))) cur += ch;
-            else { while (!cur.empty() && !std::isdigit(static_cast<unsigned char>(cur.back()))) cur.pop_back();
-                   if (!cur.empty()) out.push_back(cur); cur.clear(); }
-        }
-        return out;
-    };
 
     GroundingResult r;
     std::set<std::string> seen;        // normalised sentences already kept (the 1B model sometimes repeats itself)
@@ -289,13 +361,14 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
         std::string key;
         for (const auto& w : ws) key += w + " ";
         if (!seen.insert(key).second) { r.dropped.push_back(sentence); continue; }
-        std::vector<std::string> content;
+        std::vector<std::string> content;          // different content words, in order of first use
         for (const auto& w : ws) {
             const std::string s = token(w);
-            if (w.size() >= 4 && !kGroundStop.count(w) && !kGroundStop.count(s) && !kNegations.count(w))
+            if (w.size() >= kMinWordLength && !kGroundStop.count(w) && !kGroundStop.count(s) && !kNegations.count(w) &&
+                std::find(content.begin(), content.end(), s) == content.end())
                 content.push_back(s);
         }
-        if (content.empty()) { r.dropped.push_back(sentence); continue; }
+        if (content.size() < kMinContentWords) { r.dropped.push_back(sentence); continue; }
 
         // Best single supporting source sentence
         const Source* best = nullptr;
@@ -305,14 +378,30 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
             for (const auto& w : content) h += src.stems.count(w) > 0;
             if (h > bestHits) bestHits = h, best = &src;
         }
-        bool grounded = best && static_cast<double>(bestHits) / content.size() >= minOverlap;
-        if (grounded && hasNegation(ws)) grounded = best->negated;          // never reverse an instruction
-        if (grounded && hasCause(ws)) grounded = best->cause;               // never invent a cause
-        if (grounded)
-            for (const auto& n : numbers(sentence))
-                if (best->raw.find(n) == std::string::npos) { grounded = false; break; }   // no invented numbers
+        const double need = content.size() < kFullMatchBelow ? static_cast<double>(content.size())
+                                                             : minOverlap * static_cast<double>(content.size());
+        bool grounded = best && static_cast<double>(bestHits) >= need;
+        const int negation = negationKinds(ws);
+        if (grounded && negation) grounded = (negation & best->negation) != 0;   // never reverse an instruction
+        if (grounded && hasCause(ws)) grounded = best->cause;                    // never invent a cause
+        if (grounded && isInstruction(ws)) grounded = !best->describes;          // never turn a symptom into advice
+        if (grounded) {                                     // no invented number, and no number left out of a schedule
+            const auto nums = numbersOf(sentence);
+            grounded = subset(nums, best->numbers) && (nums.empty() || subset(best->numbers, nums));
+        }
         if (grounded) {
-            r.kept += (r.kept.empty() ? "" : " ") + sentence;
+            const auto months = monthsOf(ws);
+            grounded = subset(months, best->months) && (months.empty() || subset(best->months, months));
+        }
+        if (grounded) grounded = subset(namesOf(ws), best->names);               // never rename the disease
+        if (grounded) {
+            // Sentences written one per line often have no full stop; add one so the joined text reads as sentences
+            std::string s = sentence;
+            if (std::strchr(".!?;:", s.back()) == nullptr) {
+                while (!s.empty() && (s.back() == ',' || s.back() == ' ')) s.pop_back();
+                s += '.';
+            }
+            r.kept += (r.kept.empty() ? "" : " ") + s;
             ++r.keptCount;
         } else {
             r.dropped.push_back(sentence);

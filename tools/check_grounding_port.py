@@ -20,7 +20,7 @@ def main():
     binary, facts_path, *results = sys.argv[1:]
     data = json.load(open(facts_path, encoding="utf-8"))
     g = Grounding(data["grounding"])
-    facts = {t["topic"]: [f["text"] for f in t["grounding_facts"]] for t in data["topics"]}
+    facts = {t["topic"]: t["grounding_facts"] for t in data["topics"]}   # text and section
     out = subprocess.run([binary, ".", "--replay", *results], capture_output=True, text=True, check=True).stdout
     # C++ prints "ACCEPT|REJECT <file> (<topic>): kept N, ..." followed by "    kept: <text>"
     cpp = dict(re.findall(r"^(?:ACCEPT|REJECT) (\S+) \(.*?\): kept \d+.*\n    kept: (.*)$", out, re.M))
