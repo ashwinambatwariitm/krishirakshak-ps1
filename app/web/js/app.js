@@ -177,7 +177,26 @@ function initApp() {
   }
 
   // Initialize weather assessment
-  updateWeatherUI();
+  const btnGps = document.getElementById("btn-weather-gps");
+  if (btnGps) {
+    btnGps.addEventListener("click", async () => {
+      btnGps.textContent = "...";
+      await window.fieldWeather.fetchByGPS();
+      btnGps.textContent = "Live GPS";
+      updateWeatherUI();
+    });
+  }
+
+  const citySelect = document.getElementById("select-weather-city");
+  if (citySelect) {
+    citySelect.addEventListener("change", async (e) => {
+      await window.fieldWeather.fetchCityWeather(e.target.value);
+      updateWeatherUI();
+    });
+  }
+
+  // Auto-fetch city weather initially
+  window.fieldWeather.fetchCityWeather("pune").then(() => updateWeatherUI());
 
   // Register Service Worker for offline PWA
   if ("serviceWorker" in navigator) {
@@ -621,6 +640,19 @@ function updateWeatherUI() {
   const statusText = document.getElementById("spray-status-text");
   const issuesBox = document.getElementById("spray-issues-box");
 
+  const data = evaluation.data || window.fieldWeather.currentData;
+  const tempEl = document.getElementById("weather-temp");
+  const humEl = document.getElementById("weather-humidity");
+  const windEl = document.getElementById("weather-wind");
+  const rainEl = document.getElementById("weather-rain");
+  const locEl = document.getElementById("weather-location-name");
+
+  if (tempEl) tempEl.textContent = `${data.temp}°C`;
+  if (humEl) humEl.textContent = `${data.humidity}%`;
+  if (windEl) windEl.textContent = `${data.windSpeed} km/h`;
+  if (rainEl) rainEl.textContent = `${data.rainProb}%`;
+  if (locEl) locEl.textContent = `📍 ${data.locationName}`;
+
   if (!banner || !statusText || !issuesBox) return;
 
   const lang = window.getLanguage();
@@ -731,11 +763,19 @@ async function openAboutModal() {
     inputBase.value = window.apiService.getBaseUrl();
   }
 
+  const inputAiKey = document.getElementById("setting-ai-key");
+  if (inputAiKey) {
+    inputAiKey.value = window.apiService.getCustomAiKey();
+  }
+
   const saveBtn = document.getElementById("btn-save-setting");
   if (saveBtn) {
     saveBtn.onclick = () => {
       window.apiService.setBaseUrl(inputBase.value.trim());
-      alert("API Base Address Saved.");
+      if (inputAiKey) {
+        window.apiService.setCustomAiKey(inputAiKey.value.trim());
+      }
+      alert("Settings Saved.");
       closeModal();
     };
   }
