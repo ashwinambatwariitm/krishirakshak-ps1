@@ -97,6 +97,10 @@ function initApp() {
   document.querySelectorAll(".btn-home-back").forEach(btn => {
     btn.addEventListener("click", () => {
       if (window.voiceAdvisor) window.voiceAdvisor.stop();
+      if (window.appState.viewingEnglish) {   // leave the English view: back to the chosen language
+        window.appState.viewingEnglish = false;
+        window.setLanguage(window.CONFIG.TRANSLATE_LANG || "en");
+      }
       showView("home");
     });
   });
@@ -155,7 +159,7 @@ function initApp() {
     btnVoiceLlama.addEventListener("click", () => {
       const res = window.appState.analysisResult;
       if (!res || !res.llama || !res.llama.text) return;
-      const tr = res.translation;
+      const tr = window.appState.viewingEnglish ? null : res.translation;
       if (tr && tr.text) {
         window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
       } else {
@@ -280,7 +284,9 @@ async function startAnalysis(blob) {
     const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample,
                                                       window.CONFIG.TRANSLATE_LANG || "");
     window.appState.setResult(data);
+    window.appState.viewingEnglish = false;
     routeResultStatus(data);
+    updateResultLanguageButton();
   } catch (err) {
     console.error("Analysis error:", err);
     document.getElementById("waiting-progress").classList.add("hidden");
@@ -1021,3 +1027,53 @@ function renderDiseaseSeverity(container, sev, disease) {
   }
   container.classList.remove("hidden");
 }
+
+
+/**
+ * Result language switch (top right of the result screen): the chosen language <-> English, without analysing the
+ * photo again. The device sends the English of every translated text in data.en (and Llama's English in
+ * llama.text), so the result is only drawn again.
+ */
+function englishView(data) {
+  const v = JSON.parse(JSON.stringify(data));
+  const en = data.en || {};
+  v.translation = null;                        // Llama's English text is shown
+  v.display_lang = "en";
+  if (v.disease && en.disease_name) v.disease.name = en.disease_name;
+  if (Array.isArray(v.pests) && Array.isArray(en.pest_names)) v.pests.forEach((p, i) => { p.name = en.pest_names[i] || p.name; });
+  if (en.messages) v.messages = en.messages;
+  if (en.advice_blocks) v.advice_blocks = en.advice_blocks;
+  if (en.pest_severity) v.pest_severity = en.pest_severity;
+  return v;
+}
+
+function languageLabel(code) {
+  const opt = Array.from(document.querySelectorAll("#select-translate option")).find(o => o.value === code);
+  return opt ? opt.textContent.split(" (")[0] : code;     // e.g. the native name of the chosen language
+}
+
+function updateResultLanguageButton() {
+  const btn = document.getElementById("btn-result-lang");
+  const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
+  if (!btn) return;
+  const available = data && chosen && data.display_lang && data.display_lang !== "en";
+  btn.classList.toggle("hidden", !available);
+  if (available) btn.textContent = window.appState.viewingEnglish ? languageLabel(chosen) : "English";
+}
+
+function toggleResultLanguage() {
+  const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
+  if (!data || !chosen) return;
+  if (window.voiceAdvisor) window.voiceAdvisor.stop();
+  window.appState.viewingEnglish = !window.appState.viewingEnglish;
+  window.setLanguage(window.appState.viewingEnglish ? "en" : chosen);      // interface labels too
+  renderAnsweredScreen(window.appState.viewingEnglish ? englishView(data) : data);
+  updateResultLanguageButton();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btn-result-lang");
+  if (btn) btn.addEventListener("click", toggleResultLanguage);
+});

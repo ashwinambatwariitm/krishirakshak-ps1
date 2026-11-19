@@ -914,3 +914,8 @@ body {
 .translation-original { margin-top: 8px; font-size: 0.9rem; color: #5d6b5d; }
 .translation-original summary { cursor: pointer; }
 .translation-original p { margin: 6px 0 0; }
+
+/* Result screen: back button on the left, language switch on the right */
+.result-topbar { display: flex; gap: 10px; align-items: flex-start; }
+.result-topbar .btn-home-back { flex: 1; }
+.btn-result-lang { min-height: 44px; font-size: 0.95rem; font-weight: 700; padding: 0 16px; margin-bottom: 12px; white-space: nowrap; }

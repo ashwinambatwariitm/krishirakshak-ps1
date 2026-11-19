@@ -28,6 +28,7 @@ struct KbChunk {
     int id = 0;
     std::string topic, section, text, textEn;
     std::string product, dose, note;                 // only for section == "chemical"
+    std::string noteEn;                              // the published note (note may be a translation)
     std::string sourceId, sourceOrg, sourceTitle, url;
 };
 

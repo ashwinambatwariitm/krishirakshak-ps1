@@ -152,7 +152,7 @@ std::vector<KbChunk> KnowledgeBase::query(const std::string& sql, const std::vec
         c.topic = st.col(1); c.section = st.col(2); c.sourceId = st.col(3);
         c.textEn = st.col(4);
         c.text = c.textEn;
-        c.product = st.col(6); c.dose = st.col(7); c.note = st.col(8);
+        c.product = st.col(6); c.dose = st.col(7); c.note = st.col(8); c.noteEn = c.note;
         localize(c, lang);
         const auto& src = kb_.at("sources").at(c.sourceId);
         c.sourceOrg = src.at("org"); c.sourceTitle = src.at("title"); c.url = src.at("url");
