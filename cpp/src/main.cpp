@@ -7,6 +7,7 @@
  *   - OpenCV: photo decoding, quality gate, estimated severity
  *   - SQLite + FTS5 (compiled in): verified advice extracts from ICAR, NIPHM and TNAU publications
  *   - ExecuTorch (C++ runtime, XNNPACK): Llama 3.2 1B Instruct, 4-bit weights, explains the verified advice
+ *   - CTranslate2 (C++ API): IndicTrans2 200M, INT8, translates the checked advice into 9 Indian languages
  *
  * Usage:
  *   krishirakshak [options] photo.jpg [photo2.jpg ...]     analyse photos, print the result as JSON (one per line)
@@ -25,6 +26,12 @@
  *   --llama-threads N  XNNPACK threads for Llama; default 4
  *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_instruct_8da4w.pte
  *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
+ *   --translate LANG   also translate the accepted English advice into LANG (hi te mr kn ta bn gu or pa);
+ *                      the web page chooses the language per request instead
+ *   --no-translate     do not load the translation model
+ *   --translate-threads N  CTranslate2 threads; default 2 (4 is several times slower on the Pi 5)
+ *   --translate-model DIR  CTranslate2 model folder relative to --root;
+ *                      default models/indictrans2_en_indic_200M_ct2_int8 (with models/indictrans2_model.SRC)
  *   --ort-spin         let ONNX Runtime threads busy-wait after each run (off by default; for A/B timing)
  *   --brief            print only the fields used by the parity test
  */
@@ -44,6 +51,7 @@ namespace {
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
                  "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
+                 "                     [--translate LANG] [--no-translate] [--translate-threads N] [--translate-model DIR]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC])\n";
 }
 
@@ -65,7 +73,7 @@ nlohmann::json brief(const std::string& path, const nlohmann::json& r) {
 
 int main(int argc, char** argv) {
     kr::PipelineConfig cfg;
-    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0";
+    std::string lang = "en", listFile, question, topic, bindAddr = "0.0.0.0", translateTo;
     bool briefOut = false;
     int servePort = 0;
     std::vector<std::string> photos;
@@ -90,6 +98,10 @@ int main(int argc, char** argv) {
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
         else if (a == "--llama-pte") cfg.llamaPte = next();
+        else if (a == "--translate") translateTo = next();
+        else if (a == "--no-translate") cfg.useTranslator = false;
+        else if (a == "--translate-threads") cfg.translateThreads = std::stoi(next());
+        else if (a == "--translate-model") cfg.translateModel = next();
         else if (a == "--ort-spin") cfg.ortSpin = true;
         else if (a == "--brief") briefOut = true;
         else if (a == "--list") listFile = next();
@@ -117,16 +129,17 @@ int main(int argc, char** argv) {
             web::Server server(servePort);
             server.pageHtml = [] { return web::farmerPageHtml(); };
             server.getInfo = [&] { return pipe.info().dump(); };
-            server.analyse = [&](const std::string& bytes, const std::string& l) {
+            server.analyse = [&](const std::string& bytes, const std::string& l, const std::string& tr) {
                 const cv::Mat img = kr::decodeImageRgb(bytes);
                 const std::string useLang = (l == "hi") ? "hi" : "en";
                 if (img.empty()) return nlohmann::json({{"status", "not_an_image"}, {"messages", nlohmann::json::array()}}).dump();
-                return pipe.analyse(img, useLang).dump();
+                return pipe.analyse(img, useLang, tr).dump();   // unknown translation codes are ignored
             };
             server.ask = [&](const std::string& body) {
                 const auto j = nlohmann::json::parse(body);
                 const std::string t = j.contains("topic") && j["topic"].is_string() ? j["topic"].get<std::string>() : "";
-                return pipe.followUp(j.value("question", ""), t, j.value("lang", "en")).dump();
+                const std::string tr = j.contains("translate") && j["translate"].is_string() ? j["translate"].get<std::string>() : "";
+                return pipe.followUp(j.value("question", ""), t, j.value("lang", "en"), tr).dump();
             };
             if (!server.start(bindAddr)) { std::cerr << "cannot listen on port " << servePort << "\n"; return 1; }
             std::cerr << "serving on http://" << bindAddr << ":" << servePort << "/\n";
@@ -134,7 +147,7 @@ int main(int argc, char** argv) {
             return 0;
         }
         if (!question.empty()) {
-            std::cout << pipe.followUp(question, topic, lang).dump(1) << "\n";
+            std::cout << pipe.followUp(question, topic, lang, translateTo).dump(1) << "\n";
             return 0;
         }
         for (const auto& path : photos) {
@@ -144,7 +157,7 @@ int main(int argc, char** argv) {
                 std::cout << nlohmann::json({{"image", path}, {"error", "not an image"}}).dump() << "\n";
                 continue;
             }
-            const auto r = pipe.analyse(img, lang);
+            const auto r = pipe.analyse(img, lang, translateTo);
             std::cout << (briefOut ? brief(path, r).dump() : r.dump(1)) << "\n";
         }
     } catch (const std::exception& e) {

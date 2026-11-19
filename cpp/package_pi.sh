@@ -6,6 +6,8 @@
 #   membw                               memory bandwidth benchmark (input of the performance model)
 #   tools/perf_model.py                 predicted limits vs measured speed (Python standard library only)
 #   lib/libonnxruntime.so*              ONNX Runtime 1.23.2 for aarch64
+#   lib/libctranslate2.so*, models/indictrans2_*, indic_text_test, translate_bench
+#                                       IndicTrans2 translation (only if built with CTranslate2)
 #   models/                             ONNX vision models (FP32 + INT8), Llama .pte + tokenizer
 #   results/...json                     model input/output specifications and thresholds
 #   app/kb/tomato_kb.json               advice knowledge base (ICAR, NIPHM, TNAU extracts)
@@ -25,6 +27,19 @@ mkdir -p "${OUT}/lib" "${OUT}/models" "${OUT}/results/int8_ptq" "${OUT}/results/
          "${OUT}/app/kb" "${OUT}/photos" "${OUT}/tools"
 
 cp "${REPO}/build/arm/krishirakshak" "${REPO}/build/arm/grounding_test" "${REPO}/build/arm/membw" "${OUT}/"
+# IndicTrans2 translation (built when CTranslate2 is installed, cpp/tools/build_translation_deps.sh):
+#   lib/libctranslate2.so.4   CTranslate2 4.6.0 for aarch64 (OpenBLAS + Ruy inside; libgomp comes with the Pi's OS)
+#   models/indictrans2_*      CTranslate2 INT8 model folder, SentencePiece model, MIT licence of IndicTrans2
+#   indic_text_test, translate_bench, results/indictrans2/{indic_text_oracle,translations}.json   parity + timing
+CT2="${CT2_ROOT:-$HOME/arm_libs/ctranslate2_arm}"
+if [ -f "${REPO}/build/arm/translate_bench" ]; then
+  mkdir -p "${OUT}/results/indictrans2"
+  cp "${REPO}/build/arm/indic_text_test" "${REPO}/build/arm/translate_bench" "${OUT}/"
+  cp -P "${CT2}"/lib/libctranslate2.so* "${OUT}/lib/"
+  cp -r "${REPO}/models/indictrans2_en_indic_200M_ct2_int8" "${OUT}/models/"
+  cp "${REPO}/models/indictrans2_model.SRC" "${REPO}/models/indictrans2_LICENSE" "${OUT}/models/"
+  cp "${REPO}"/results/indictrans2/{indic_text_oracle,translations}.json "${OUT}/results/indictrans2/"
+fi
 cp "${REPO}/tools/perf_model.py" "${OUT}/tools/"
 cp -P "${ORT}"/lib/libonnxruntime.so* "${OUT}/lib/"
 for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
@@ -97,6 +112,17 @@ for f in sorted(glob.glob("bench/llama_spin_*.json")):
     print(mode, run, s.get("time_to_first_token_s"), round(s.get("tokens_per_s", 0), 2), round(d["timings_ms"]["total"]))
 ' | tee -a bench/ort_spin_ab.txt
 vcgencmd measure_temp 2>/dev/null; vcgencmd get_throttled 2>/dev/null
+# Translation (if bundled): parity of the text processing, the translator on 108 saved answers (12 per language,
+# 2 threads, whole answer per batch), then the full pipeline with Llama + translation into Hindi and Tamil
+if [ -x ./translate_bench ]; then
+  ./indic_text_test . | tail -2
+  ./translate_bench --model models/indictrans2_en_indic_200M_ct2_int8 --spm models/indictrans2_model.SRC \
+    --answers results/indictrans2/translations.json --threads 2 --per-lang 12 --out bench/translate_108.json
+  for tr in hi ta; do
+    /usr/bin/time -f "%e s wall, peak RSS %M KB" ./krishirakshak --root . --translate $tr \
+      photos/Tomato_leaf_late_blight.jpg > "bench/Tomato_leaf_late_blight_llama_en_${tr}.json"
+  done
+fi
 python3 tools/perf_model.py --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
   --measured 'bench/*_llama_en.json' --json bench/perf_model.json | tee bench/perf_model.txt
 # Llama 3.2 3B, if it is in the bundle: the same photos in English and Hindi, and its own performance model

@@ -23,6 +23,18 @@ ONNX Runtime pipeline.
 | SQLite amalgamation | 3.54.1 | `~/third_party_src/sqlite-amalgamation-3540100` |
 | nlohmann/json | 3.12.0 (`json.hpp`) | `~/third_party_src/json.hpp` |
 | ExecuTorch (optional, for Llama) | 1.5.1, built from source with `tools/cmake/preset/llm.cmake` | `~/x86_libs/executorch`, `~/arm_libs/executorch` |
+| CTranslate2 + SentencePiece (optional, for translation) | 4.6.0 + 0.2.1, `cpp/tools/build_translation_deps.sh` | `~/x86_libs/{ctranslate2,sentencepiece}`, `~/arm_libs/{ctranslate2_arm,sentencepiece_arm}` |
+
+Translation (IndicTrans2 200M, English to hi te mr kn ta bn gu or pa) is compiled in when CTranslate2 and SentencePiece
+are found (`KR_WITH_TRANSLATION`). `cpp/tools/build_translation_deps.sh all` builds both for x86 and the Pi; the script
+explains why CTranslate2 is built exactly like its Python wheel and linked with `-Bsymbolic`. The model is converted
+once from the public Hugging Face checkpoint and is not stored in git:
+
+```
+python tools/convert_indictrans2_ct2.py <snapshot of ai4bharat/indictrans2-en-indic-dist-200M> \
+    models/indictrans2_en_indic_200M_ct2_int8 --quantization int8
+cp <snapshot>/model.SRC models/indictrans2_model.SRC; cp <snapshot>/LICENSE models/indictrans2_LICENSE
+```
 
 ExecuTorch must be cloned into a folder named exactly `executorch`. Build it with CMake >= 3.24, e.g.:
 
@@ -61,10 +73,18 @@ build/x86-llm/krishirakshak --root . leaf.jpg                 # JSON result (Eng
 build/x86-llm/krishirakshak --root . --lang hi leaf.jpg       # Hindi (reviewed Hindi extracts)
 build/x86-llm/krishirakshak --root . --ask "when can I harvest after spraying" --topic late_blight
 build/x86-llm/krishirakshak --root . --serve 8080             # web page at http://<pi-ip>:8080/
+build/arm/krishirakshak --root . --translate ta leaf.jpg      # English advice + Tamil machine translation
 ```
 
 Options: `--int8` (INT8 vision models), `--no-llama`, `--sequential`, `--threads N` (per vision model),
-`--llama-threads N`, `--ort-spin`, `--brief`, `--list FILE`.
+`--llama-threads N`, `--ort-spin`, `--brief`, `--list FILE`, `--translate LANG`, `--no-translate`,
+`--translate-threads N`, `--translate-model DIR`.
+
+Translation: only English Llama text that passed the grounding and safety checks is translated (one batch per
+answer, 2 CTranslate2 threads); the English stays in the result and on the page, and the translation is labelled as not
+reviewed. On the Pi 5 (late-blight photo, 8 sentences): Llama 16.5 s, translation 3.6 s, whole request 20.3 s, peak
+memory of the process 1.5 GB with Llama 1B, vision models and translator loaded. Measurements of the translator alone:
+`results/indictrans2/ct2_pi5/README.md`.
 
 `--ort-spin` lets ONNX Runtime's worker threads busy-wait after each run (its default). The application turns this
 off: Llama runs on the same four cores right after vision, and spinning threads would take CPU time from it. On the
@@ -104,7 +124,9 @@ Without measurements, the model gives the limits for the default prompt (295 tok
 ## Tests
 
 ```
-(cd build/x86 && ctest)                                        # grounding check regression test
+(cd build/x86 && ctest)                                        # grounding check + translation text parity tests
+build/x86/translate_bench --model models/indictrans2_en_indic_200M_ct2_int8 --spm models/indictrans2_model.SRC \
+    --answers results/indictrans2/translations.json --per-lang 12 --out t.json   # translator timing
 python -m tools.cpp_parity --data-root <data folder>           # C++ vs Python reference on 188 PlantDoc test photos
 ```
 

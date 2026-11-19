@@ -6,7 +6,9 @@
 #include "common.hpp"
 #include "llama_advisor.hpp"
 #include "output_guard.hpp"
+#include "translator.hpp"
 
+#include <algorithm>
 #include <future>
 #include <set>
 
@@ -25,7 +27,7 @@ nlohmann::json chunkJson(const KbChunk& c) {
 
 }  // namespace
 
-// Destructor defined here, where LlamaAdvisor is a complete type (needed by unique_ptr)
+// Destructor defined here, where LlamaAdvisor and Translator are complete types (needed by unique_ptr)
 Pipeline::~Pipeline() = default;
 
 std::string Pipeline::path(const std::string& p) const {
@@ -43,21 +45,48 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     if (cfg_.useLlama)
         llama_ = LlamaAdvisor::create(path(cfg_.llamaPte), path(cfg_.llamaTokenizer), 160, 0.0f, cfg_.llamaThreads);
 #endif
+#ifdef KR_WITH_TRANSLATION
+    if (cfg_.useTranslator)
+        translator_ = Translator::create(path(cfg_.translateModel), path(cfg_.translateSpm), cfg_.translateThreads);
+#endif
     loadMs_ = t.ms();
 }
 
 bool Pipeline::llamaReady() const { return llama_ != nullptr; }
+bool Pipeline::translatorReady() const { return translator_ != nullptr; }
+
+nlohmann::json Pipeline::translate(const std::string& english, const std::string& translateTo,
+                                   nlohmann::json& timings) {
+#ifdef KR_WITH_TRANSLATION
+    if (!translator_ || translateTo.empty() || english.empty()) return nullptr;
+    const auto& langs = Translator::supportedLanguages();
+    if (std::find(langs.begin(), langs.end(), translateTo) == langs.end()) return nullptr;
+    const TranslationOutput out = translator_->translate(sentencesOf(english), translateTo);
+    timings["translation"] = out.ms;
+    return out.toJson();
+#else
+    (void)english; (void)translateTo; (void)timings;
+    return nullptr;
+#endif
+}
 
 nlohmann::json Pipeline::info() const {
     return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()},
             {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
+            {"translator", translatorReady() ? cfg_.translateModel : "not loaded"},
+#ifdef KR_WITH_TRANSLATION
+            {"translation_languages", translatorReady() ? nlohmann::json(Translator::supportedLanguages())
+                                                        : nlohmann::json::array()},
+#else
+            {"translation_languages", nlohmann::json::array()},
+#endif
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
             {"vision_threads_per_model", cfg_.visionThreads},
             {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
 }
 
-nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang) {
-    nlohmann::json result = {{"lang", lang}};
+nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const std::string& translateTo) {
+    nlohmann::json result = {{"lang", lang}, {"translation", nullptr}};
     nlohmann::json timings;
     Timer total;
 
@@ -187,6 +216,8 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         result["llama"] = {{"text", g.ok ? nlohmann::json(gr.kept) : nullptr}, {"accepted", g.ok},
                            {"rejected_reasons", g.reasons}, {"dropped_sentences", gr.dropped},
                            {"raw_text", out.text}, {"stats", out.stats}};
+        // Only accepted (grounded and checked) English text is translated
+        if (g.ok) result["translation"] = translate(gr.kept, translateTo, timings);
     } else if (llama_ && lang == "hi") {
         // Llama 3.2 1B produced fluent but meaningless Hindi in tests: the Hindi page shows the reviewed Hindi
         // extracts only.
@@ -198,9 +229,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     return result;
 }
 
-nlohmann::json Pipeline::followUp(const std::string& question, const std::string& topic, const std::string& lang) {
+nlohmann::json Pipeline::followUp(const std::string& question, const std::string& topic, const std::string& lang,
+                                  const std::string& translateTo) {
     const auto facts = kb_->search(question, topic, 4, lang);
-    nlohmann::json out = {{"question", question}, {"answer", nullptr}, {"accepted", false}};
+    nlohmann::json out = {{"question", question}, {"answer", nullptr}, {"accepted", false}, {"translation", nullptr}};
     nlohmann::json f = nlohmann::json::array();
     for (const auto& c : facts) f.push_back(chunkJson(c));
     out["facts"] = f;
@@ -223,8 +255,13 @@ nlohmann::json Pipeline::followUp(const std::string& question, const std::string
         out["dropped_sentences"] = gr.dropped;
         out["raw_text"] = o.text;
         out["stats"] = o.stats;
+        if (g.ok) {
+            nlohmann::json timings;
+            out["translation"] = translate(gr.kept, translateTo, timings);
+        }
     }
 #endif
+    (void)translateTo;   // used only with Llama
     return out;
 }
 

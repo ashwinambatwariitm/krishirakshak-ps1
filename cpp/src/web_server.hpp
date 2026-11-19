@@ -8,8 +8,10 @@
  * Endpoints:
  *   GET  /                      farmer web page
  *   GET  /api/info              JSON: models, runtime, knowledge-base version
- *   POST /api/analyse?lang=en   body = raw JPEG/PNG bytes of the photo -> JSON result
- *   POST /api/ask               body = {"question": "...", "topic": "late_blight", "lang": "en"} -> JSON answer
+ *   POST /api/analyse?lang=en&translate=ta   body = raw JPEG/PNG bytes of the photo -> JSON result
+ *                               (translate: optional, translates the accepted English advice; hi te mr kn ta bn gu or pa)
+ *   POST /api/ask               body = {"question": "...", "topic": "late_blight", "lang": "en", "translate": "ta"}
+ *                               -> JSON answer
  *
  * Requests are handled on their own threads, but the application callbacks are serialised by a mutex: the
  * pipeline runs one photo at a time so each stage can use all four Cortex-A76 cores.
@@ -35,7 +37,8 @@ class Server {
 public:
     // --- Callbacks wired by the application (all return JSON text) ---
     std::function<std::string()> getInfo;
-    std::function<std::string(const std::string& imageBytes, const std::string& lang)> analyse;
+    std::function<std::string(const std::string& imageBytes, const std::string& lang, const std::string& translate)>
+        analyse;
     std::function<std::string(const std::string& jsonBody)> ask;
     std::function<std::string()> pageHtml;
 
@@ -162,7 +165,8 @@ private:
                 reply(fd, "200 OK", "application/json; charset=utf-8", getInfo ? getInfo() : "{}");
             } else if (method == "POST" && route == "/api/analyse") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
-                reply(fd, "200 OK", "application/json; charset=utf-8", analyse(body, queryParam(query, "lang", "en")));
+                reply(fd, "200 OK", "application/json; charset=utf-8",
+                      analyse(body, queryParam(query, "lang", "en"), queryParam(query, "translate", "")));
             } else if (method == "POST" && route == "/api/ask") {
                 std::lock_guard<std::mutex> lock(pipelineMutex_);
                 reply(fd, "200 OK", "application/json; charset=utf-8", ask(body));

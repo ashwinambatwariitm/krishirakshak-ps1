@@ -321,4 +321,6 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
     return r;
 }
 
+std::vector<std::string> sentencesOf(const std::string& text) { return splitSentences(text); }
+
 }  // namespace kr

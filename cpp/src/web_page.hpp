@@ -1,8 +1,9 @@
 /*
  * web_page.hpp - the farmer web page, compiled into the binary (no external files, fonts or scripts, so it works
  * with no internet). The page sends the photo to POST /api/analyse and renders the JSON result:
- * diagnosis, notes, Llama explanation, verified extracts with their source, spray table as published, follow-up
- * question box, and a technical panel with timings.
+ * diagnosis, notes, Llama explanation (with its machine translation when a language is chosen), verified extracts
+ * with their source, spray table as published, follow-up question box, and a technical panel with timings.
+ * The translation selector is shown only when the binary has the translator and its model is loaded.
  */
 #pragma once
 
@@ -26,6 +27,7 @@ button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10
 .thumb{max-width:220px;border-radius:8px}.diag{font-size:1.4rem;font-weight:700}
 .urgent{color:var(--bad);font-weight:700}.note{border-left:4px solid var(--warn);padding:6px 10px;background:#fff8ec;margin:8px 0}
 .llama{border-left:4px solid var(--accent);padding:8px 12px;background:#f0f7ef}
+.mt{border-left:4px solid var(--warn);padding:8px 12px;background:#fffaf0}.mt p{font-size:1.1rem}
 table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{text-align:left;border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
 .src,.muted{color:var(--muted);font-size:.82rem}details summary{cursor:pointer;color:var(--muted)}
 </style></head><body>
@@ -35,6 +37,16 @@ table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{text-align:left
  <div><b>Leaf photo</b><br><input id="photo" type="file" accept="image/*" capture="environment"></div>
  <div><b>Language</b><br><select id="lang"><option value="en">English</option>
    <option value="hi">&#2361;&#2367;&#2306;&#2342;&#2368; (Hindi)</option></select></div>
+ <div id="trbox" style="display:none"><b>Translate advice into</b><br><select id="tr"><option value="">-</option>
+   <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
+   <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)</option>
+   <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
+   <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)</option>
+   <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)</option>
+   <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494; (Bengali)</option>
+   <option value="gu">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)</option>
+   <option value="or">&#2835;&#2849;&#2876;&#2879;&#2822; (Odia)</option>
+   <option value="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624; (Punjabi)</option></select></div>
  <div><br><button onclick="analyse()">Check plant</button></div></div></div>
 <div id="out"></div>
 <p class="muted" id="foot"></p>
@@ -45,13 +57,26 @@ const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls)
 fetch('/api/info').then(r => r.json()).then(i => {
   document.getElementById('foot').textContent = 'Advice is taken from ICAR, NIPHM and TNAU publications. Knowledge base ' +
     i.kb_version + (i.kb_reviewed ? '' : ' (draft, under expert review)') + '. Built with Llama.';
+  if ((i.translation_languages || []).length) document.getElementById('trbox').style.display = '';
 });
+// Machine translation of the checked English advice; the English is always shown above it
+const LANG_NAMES = {hi: 'Hindi', te: 'Telugu', mr: 'Marathi', kn: 'Kannada', ta: 'Tamil', bn: 'Bengali', gu: 'Gujarati',
+                    or: 'Odia', pa: 'Punjabi'};
+function translationCard(t) {
+  const c = el('div', 'mt');
+  c.appendChild(el('b', '', 'Machine translation (IndicTrans2 on this device) - not yet checked by a ' +
+                           (LANG_NAMES[t.lang] || t.lang) + ' speaker'));
+  c.appendChild(el('p', '', t.text));
+  if (t.withheld) c.appendChild(el('div', 'src', t.withheld + ' sentence(s) failed the translation check and are shown in English.'));
+  return c;
+}
 async function analyse() {
   const f = document.getElementById('photo').files[0], out = document.getElementById('out');
   if (!f) return;
-  const lang = document.getElementById('lang').value;
+  const lang = document.getElementById('lang').value, tr = document.getElementById('tr').value;
   out.textContent = 'Checking...';
-  const r = await (await fetch('/api/analyse?lang=' + lang, {method: 'POST', body: f})).json();
+  const r = await (await fetch('/api/analyse?lang=' + lang + '&translate=' + tr, {method: 'POST', body: f})).json();
+  window._tr = tr;
   render(r, URL.createObjectURL(f), lang);
 }
 function render(r, img, lang) {
@@ -71,7 +96,9 @@ function render(r, img, lang) {
   lastTopic = r.disease ? r.disease.topic : null;
   if (r.llama && r.llama.text) {
     const c = el('div', 'card llama'); c.appendChild(el('b', '', 'Advice (Llama 3.2 1B on this device, from the sources below)'));
-    c.appendChild(el('p', '', r.llama.text)); out.appendChild(c);
+    c.appendChild(el('p', '', r.llama.text));
+    if (r.translation && r.translation.text) c.appendChild(translationCard(r.translation));
+    out.appendChild(c);
   }
   (r.advice_blocks || []).forEach(b => {
     const c = el('div', 'card'); c.appendChild(el('h3', '', b.name));
@@ -91,15 +118,17 @@ function render(r, img, lang) {
   const ask = el('div', 'card'); ask.innerHTML = '<b>Ask a question</b><div class="row"><input id="q" style="flex:1;min-width:200px;padding:8px" placeholder="e.g. when can I harvest after spraying?"><button onclick="askQ()">Ask</button></div><div id="ans"></div>';
   out.appendChild(ask);
   const d = el('details', 'card'); d.appendChild(el('summary', '', 'Technical details'));
-  d.appendChild(el('pre', 'muted', JSON.stringify({timings_ms: r.timings_ms, llama: r.llama && {stats: r.llama.stats, accepted: r.llama.accepted, rejected: r.llama.rejected_reasons}}, null, 1)));
+  d.appendChild(el('pre', 'muted', JSON.stringify({timings_ms: r.timings_ms, llama: r.llama && {stats: r.llama.stats, accepted: r.llama.accepted, rejected: r.llama.rejected_reasons},
+    translation: r.translation && {lang: r.translation.lang, ms: r.translation.ms, withheld: r.translation.withheld}}, null, 1)));
   out.appendChild(d);
   window._lang = lang;
 }
 async function askQ() {
   const q = document.getElementById('q').value, ans = document.getElementById('ans'); ans.textContent = '...';
-  const j = await (await fetch('/api/ask', {method: 'POST', body: JSON.stringify({question: q, topic: lastTopic, lang: window._lang || 'en'})})).json();
+  const j = await (await fetch('/api/ask', {method: 'POST', body: JSON.stringify({question: q, topic: lastTopic, lang: window._lang || 'en', translate: window._tr || ''})})).json();
   ans.innerHTML = '';
   if (j.answer) ans.appendChild(el('p', 'llama', j.answer));
+  if (j.translation && j.translation.text) ans.appendChild(translationCard(j.translation));
   j.facts.forEach(f => ans.appendChild(el('p', '', f.text + ' [' + f.source_org + ']')));
 }
 </script></body></html>)HTML";
