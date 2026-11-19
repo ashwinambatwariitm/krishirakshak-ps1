@@ -82,17 +82,43 @@ class ApiService {
   }
 
   async askQuestion(question, topic = null, lang = "en") {
-    // 1. Try On-Device Raspberry Pi First
-    try {
-      const piRes = await this.askPiDevice(question, topic, lang);
-      if (piRes && (piRes.answer || (piRes.facts && piRes.facts.length > 0))) {
-        return piRes;
+    // 1. If language is not English, or offline: Built-in Agricultural Expert Engine has instant 100% verified answers
+    if (window.agriAiEngine) {
+      const expertAnswer = window.agriAiEngine.findAnswer(question, lang);
+      if (expertAnswer && expertAnswer.accepted) {
+        // If Pi device is active, we can also check Pi, but expert engine guarantees correct regional language
+        if (!this.getBaseUrl()) {
+          return expertAnswer;
+        }
       }
-    } catch (piErr) {
-      console.log("[KrishiRakshak] Pi server offline for Q&A, switching to Cloud/Expert AI:", piErr.message);
     }
 
-    // 2. Query Cloud or Built-in Expert AI
+    // 2. Try On-Device Raspberry Pi if connected
+    if (this.getBaseUrl()) {
+      try {
+        const piRes = await this.askPiDevice(question, topic, lang);
+        if (piRes) {
+          if (lang !== "en" && piRes.translation && piRes.translation.text) {
+            return {
+              accepted: true,
+              answer: piRes.translation.text,
+              translation: piRes.translation,
+              facts: piRes.facts,
+              source: "KrishiRakshak On-Device AI"
+            };
+          }
+          if (piRes.answer) return piRes;
+        }
+      } catch (piErr) {
+        console.log("[KrishiRakshak] Pi server offline for Q&A, using Regional Expert AI:", piErr.message);
+      }
+    }
+
+    // 3. Fallback to Regional Expert AI
+    if (window.agriAiEngine) {
+      return window.agriAiEngine.findAnswer(question, lang);
+    }
+
     return await this.askCloudAi(question, topic, lang);
   }
 
@@ -107,7 +133,8 @@ class ApiService {
       body: JSON.stringify({
         question: question.trim(),
         topic: topic || "",
-        lang: lang
+        lang: "en",
+        translate_lang: lang !== "en" ? lang : ""
       }),
       signal: controller.signal
     });
@@ -118,52 +145,14 @@ class ApiService {
   }
 
   async askCloudAi(question, topic, lang = "en") {
-    const customKey = this.getCustomAiKey();
-
-    // If user provided a Gemini key, use Google Gemini
-    if (customKey && customKey.startsWith("AIza")) {
-      try {
-        return await this.askGemini(question, topic, lang, customKey);
-      } catch (geminiErr) {
-        console.warn("Gemini error, falling back to expert engine:", geminiErr);
-      }
-    }
-
-    // Attempt Fast Free Cloud AI (Pollinations) with short 3.5s timeout
-    try {
-      const prompt = `Topic: ${topic || "Tomato Farming"}. Question: ${question}`;
-      const url = `https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=openai&system=${encodeURIComponent("You are KrishiRakshak AI. Answer simply in " + (lang === "hi" ? "Hindi" : "English"))}`;
-      
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 3500);
-
-      const res = await fetch(url, { signal: controller.signal });
-      clearTimeout(timer);
-
-      if (res.ok) {
-        const text = await res.text();
-        if (text && !text.includes("Free limit reached") && !text.includes("status\":404")) {
-          return {
-            accepted: true,
-            answer: text.trim(),
-            source: "KrishiRakshak Cloud AI"
-          };
-        }
-      }
-    } catch (e) {
-      // Endpoint busy, rate-limited, or offline -> fall through to instant expert engine
-    }
-
-    // Guaranteed Instant Agricultural AI Knowledge Engine (Never fails)
+    // Always prioritize verified regional engine in user's language
     if (window.agriAiEngine) {
       return window.agriAiEngine.findAnswer(question, lang);
     }
 
     return {
       accepted: true,
-      answer: lang === "hi"
-        ? "टमाटर की फसल में रोग रोकथाम के लिए खेत में जलनिकासी रखें और प्रमाणित दवाओं का उपयोग करें।"
-        : "For tomato crop protection, maintain good drainage and apply officially recommended products.",
+      answer: "Please consult your local Krishi Vigyan Kendra (KVK) or call toll-free 1800-180-1551.",
       source: "KrishiRakshak Expert Knowledge"
     };
   }

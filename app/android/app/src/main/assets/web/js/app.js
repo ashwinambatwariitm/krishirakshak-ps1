@@ -127,7 +127,7 @@ function initApp() {
   // Clickable prompt suggestion chips
   document.querySelectorAll(".chip-btn").forEach(chip => {
     chip.addEventListener("click", () => {
-      const query = chip.getAttribute("data-query");
+      const query = chip.textContent.trim() || chip.getAttribute("data-query");
       if (inputQuestion) {
         inputQuestion.value = query;
         handleAskQuestion();
@@ -586,10 +586,9 @@ async function handleAskQuestion() {
 
   const topic = window.appState.lastTopic;
   const userLang = window.getLanguage() || "en";
-  const lang = "en";   // see startAnalysis
 
   try {
-    const res = await window.apiService.askQuestion(question, topic, lang, window.CONFIG.TRANSLATE_LANG || "");
+    const res = await window.apiService.askQuestion(question, topic, userLang);
     loadingEl.classList.add("hidden");
     resContainer.classList.remove("hidden");
 
@@ -600,21 +599,19 @@ async function handleAskQuestion() {
       qaTranslation.className = "translation-block hidden";
       answerEl.insertAdjacentElement("afterend", qaTranslation);
     }
-    if (res.answer && res.accepted !== false) {
+    if (res && res.answer && res.accepted !== false) {
       answerEl.textContent = res.answer;
-      renderTranslation(qaTranslation, res.translation, answerEl);
-    } else {
-      renderTranslation(qaTranslation, null, answerEl);
-    }
-    window.appState.lastAnswerTranslation = res.accepted !== false ? res.translation : null;
-
-    if (res.answer && res.accepted !== false) {
+      if (res.translation && res.translation.text && res.translation.text !== res.answer) {
+        renderTranslation(qaTranslation, res.translation, answerEl);
+      } else {
+        qaTranslation.classList.add("hidden");
+      }
       answerEl.parentElement.classList.remove("hidden");
       fallbackNotice.classList.add("hidden");
     } else {
       // If Pi Llama rejected or had no answer, fall back to verified regional engine
       const regionalFallback = window.agriAiEngine ? window.agriAiEngine.findAnswer(question, userLang) : null;
-      if (regionalFallback) {
+      if (regionalFallback && regionalFallback.answer) {
         answerEl.textContent = regionalFallback.answer;
         answerEl.parentElement.classList.remove("hidden");
         fallbackNotice.classList.add("hidden");
@@ -623,6 +620,7 @@ async function handleAskQuestion() {
         fallbackNotice.classList.remove("hidden");
       }
     }
+    window.appState.lastAnswerTranslation = (res && res.accepted !== false) ? res.translation : null;
 
     if (Array.isArray(res.facts) && res.facts.length > 0) {
       res.facts.forEach(fact => {
