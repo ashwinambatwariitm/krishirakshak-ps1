@@ -45,3 +45,4 @@ models/indictrans2_*
 
 # Pi deployment bundle (cpp/package_pi.sh)
 dist/
+*.apk
