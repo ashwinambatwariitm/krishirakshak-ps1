@@ -44,7 +44,7 @@ def diagnosis_line(t, confidence=92, spread="medium"):
     if t["kind"] == "pest":
         return f"An insect pest was found on the tomato plant: {t['name']}."
     line = f"Diagnosis: {t['name']} on a tomato leaf (model confidence {confidence}%)."
-    if spread:
+    if spread and t["topic"] != "healthy":      # the application estimates no spread for a healthy leaf
         line += f" Estimated spread on the photographed leaf: {spread}."
     if t["urgent"]:
         line += " This disease is urgent: it spreads very fast."
@@ -129,7 +129,7 @@ def main():
         refused = looks_like_refusal(first)
         if refused:      # the application retries once with a plain prompt
             text = run(fallback_prompt(t))
-        kept, n, dropped = ground.keep_grounded(text, [f["text"] for f in t["grounding_facts"]])
+        kept, n, dropped = ground.keep_grounded(text, t["grounding_facts"])
         rows.append({"topic": name, "accepted": n >= MIN_GROUNDED and len(kept) <= 1200, "grounded": n,
                      "refused_first": refused, "first_answer": first if refused else None,
                      "dropped": len(dropped), "seconds": round(time.time() - start, 1), "facts": t["llama_facts"],
