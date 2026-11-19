@@ -56,6 +56,7 @@ public:
     std::string qualityMessage(const std::string& issue, const std::string& lang) const;
     std::string reliability(const std::string& topic) const;                              // good / medium / low
     bool urgent(const std::string& topic) const;
+    bool isPest(const std::string& topic) const;                                          // kind == "pest"
     std::string pestTopic(int speciesId, bool speciesReliable) const;
     std::string version() const { return kb_.value("version", ""); }
     bool reviewed() const { return kb_.value("content_reviewed", false); }
