@@ -1,0 +1,183 @@
+[
+  {
+    "topic": "healthy",
+    "accepted": false,
+    "grounded": 0,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 16,
+    "seconds": 28.3,
+    "facts": [
+      "Avoid growing tomato in the same field season after season; rotate with non-host crops such as cereals and legumes, and do not follow tomato with chilli or brinjal. Stake plants and use drip irrigation to reduce leaf wetness. Collect and destroy infected leaves, shoots and fruits. Spray only need-based, label-claim pesticides.",
+      "Conduct agro-ecosystem analysis (AESA) weekly in the morning, preferably before 9 a.m. Do not take any management decision without considering AESA."
+    ],
+    "answer": "I. Diagnose the problem: Tomato plant has infected leaves, stems, and fruits.\n\nII. Identify the cause: Infected leaves, stems, and fruits are caused by the presence of certain pests.\n\nIII. Determine the severity: The infected area is moderately affected.\n\nIV. Assess the impact: The infected area is affecting the entire plant.\n\nV. Develop a plan: Use integrated pest management (IPM) techniques, including cultural, physical, and chemical controls.\n\nVI. Implement the plan: Rotate with non-host crops, use drip irrigation, and practice good sanitation and hygiene.\n\nVII. Monitor progress: Conduct weekly AESA to assess the effectiveness of the IPM plan.\n\nVIII. Review and adjust: Review the effectiveness of the IPM plan and make adjustments as necessary.",
+    "kept": null,
+    "dropped_sentences": [
+      "I.",
+      "Diagnose the problem: Tomato plant has infected leaves, stems, and fruits.",
+      "II.",
+      "Identify the cause: Infected leaves, stems, and fruits are caused by the presence of certain pests.",
+      "III.",
+      "Determine the severity: The infected area is moderately affected.",
+      "IV.",
+      "Assess the impact: The infected area is affecting the entire plant.",
+      "V.",
+      "Develop a plan: Use integrated pest management (IPM) techniques, including cultural, physical, and chemical controls.",
+      "VI.",
+      "Implement the plan: Rotate with non-host crops, use drip irrigation, and practice good sanitation and hygiene.",
+      "VII.",
+      "Monitor progress: Conduct weekly AESA to assess the effectiveness of the IPM plan.",
+      "VIII.",
+      "Review and adjust: Review the effectiveness of the IPM plan and make adjustments as necessary."
+    ],
+    "rejected_reasons": [
+      "empty_or_too_short",
+      "too_few_grounded_sentences:0"
+    ]
+  },
+  {
+    "topic": "early_blight",
+    "accepted": true,
+    "grounded": 5,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 16.4,
+    "facts": [
+      "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+      "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+      "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+      "Remove and destroy crop debris. Follow crop rotation."
+    ],
+    "answer": "I. Brown spots with concentric rings in a bull's eye pattern with yellow margin on the photographed leaf.\n\nII. The fungus attacks the foliage, causing characteristic leaf spots and blight.\n\nIII. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.\n\nIV. Remove and destroy crop debris. Follow crop rotation.\n\nNote: I've kept the original meaning and details of the facts, but rewritten them in simple English as short sentences, without adding new information, changing the meaning, or altering the instructions.",
+    "kept": "Brown spots with concentric rings in a bull's eye pattern with yellow margin on the photographed leaf. The fungus attacks the foliage, causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage. Remove and destroy crop debris. Follow crop rotation.",
+    "dropped_sentences": [
+      "I.",
+      "II.",
+      "III.",
+      "IV.",
+      "Note: I've kept the original meaning and details of the facts, but rewritten them in simple English as short sentences, without adding new information, changing the meaning, or altering the instructions."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "late_blight",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 13,
+    "seconds": 24.1,
+    "facts": [
+      "Water-soaked black lesions on leaves and stems. Lesions expand rapidly and the entire leaf becomes necrotic. White sporulation on leaves. Dark brown lesions on fruit; soft rot and disintegration of fruits.",
+      "Blight appears on foliage as light-pale green water soaked dead area. The lesions are wet in morning and dried, shriveled in daylight. It enlarges rapidly until entire leaves are killed and exposing all the fruits for infection.",
+      "In moist and cloudy weather a downy white fungus develops near the outer margin of lesion on underside of the leaves. Green and ripe fruit affected by the blight appear as greenish brown and internal tissues become spongy with bad odour.",
+      "Grow resistant variety/hybrid Arka Abhed F1. Avoid planting tomatoes in the same field every year. Remove infected plant parts. Ensure enough space between plants and stake them. Use black polythene mulch (30 micron). Improve field drainage and avoid overhead irrigation. Plant windbreaks and avoid late sowing in the monsoon season."
+    ],
+    "answer": "I. The disease is caused by a fungus that infects the leaves and stems of the tomato plant.\n\nII. The fungus causes black, water-soaked lesions on the leaves and stems.\n\nIII. The lesions expand rapidly, and the entire leaf becomes necrotic.\n\nIV. The disease is caused by a fungus that infects the fruit, causing it to become soft, rot, and disintegrate.\n\nV. The disease is caused by a fungus that causes the fruit to become greenish-brown and has a bad odor.\n\nVI. The disease is caused by a fungus that infects the leaves and stems, and the fruit.\n\nVII. The disease is caused by a fungus that infects the leaves and stems, and the fruit.",
+    "kept": null,
+    "dropped_sentences": [
+      "I.",
+      "The disease is caused by a fungus that infects the leaves and stems of the tomato plant.",
+      "II.",
+      "The fungus causes black, water-soaked lesions on the leaves and stems.",
+      "III.",
+      "IV.",
+      "The disease is caused by a fungus that infects the fruit, causing it to become soft, rot, and disintegrate.",
+      "V.",
+      "The disease is caused by a fungus that causes the fruit to become greenish-brown and has a bad odor.",
+      "VI.",
+      "The disease is caused by a fungus that infects the leaves and stems, and the fruit.",
+      "VII.",
+      "The disease is caused by a fungus that infects the leaves and stems, and the fruit."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "septoria_leaf_spot",
+    "accepted": true,
+    "grounded": 4,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 32.4,
+    "facts": [
+      "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+      "Less vigorous plant are usually affected. Small, round to irregular spots with a grey center and dark margin on leaves. Spots usually starts on lower leaves and gradually advance upwards.",
+      "Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Stems and flowers are sometimes attacked. Fruits are rarely attacked.",
+      "Removal and destruction of the affected plant parts."
+    ],
+    "answer": "I. Small, round to irregular spots with grey centre and dark margin on tomato leaves.\nII. Spots coalesce and leaves are blighted.\nIII. Complete defoliation of affected leaves.\nIV. Removal and destruction of the affected plant parts.\n\nNote: I've kept the original meaning and details of the facts, but rewritten them in simple English and concise sentences.",
+    "kept": "Small, round to irregular spots with grey centre and dark margin on tomato leaves. Spots coalesce and leaves are blighted. Complete defoliation of affected leaves. Removal and destruction of the affected plant parts.",
+    "dropped_sentences": [
+      "I.",
+      "II.",
+      "III.",
+      "IV.",
+      "Note: I've kept the original meaning and details of the facts, but rewritten them in simple English and concise sentences."
+    ],
+    "rejected_reasons": []
+  },
+  {
+    "topic": "bacterial_spot",
+    "accepted": false,
+    "grounded": 1,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 5,
+    "seconds": 21.7,
+    "facts": [
+      "Small, brown, water-soaked, circular spots with yellow halo on leaves; older leaves fall. Small water-soaked spots on green fruit; the centre of the spots becomes irregular, light brown, sunken and scabby.",
+      "Small, dark spots appear on leaflets and stems of seedlings transplanted crop. Numerous spots coalesce and cause severe burning of the leaves. Prominent yellow halo is observed around the spot.",
+      "Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area. Infected leaves show small, brown, water soaked, circular spots surrounded with yellowish halo. On older plants the leaflet infection is mostly on older leaves and may cause serious defoliation.",
+      "Use disease-free seed."
+    ],
+    "answer": "I. The symptoms of bacterial leaf spot on a tomato leaf are small, brown, water-soaked, circular spots with a yellow halo.\n\nII. The disease is most likely to be present on older leaves, and the yellow halo is usually irregular and light brown.\n\nIII. The disease is most likely to be present on older leaves, and the yellow halo is usually irregular and light brown.",
+    "kept": null,
+    "dropped_sentences": [
+      "I.",
+      "II.",
+      "The disease is most likely to be present on older leaves, and the yellow halo is usually irregular and light brown.",
+      "III.",
+      "The disease is most likely to be present on older leaves, and the yellow halo is usually irregular and light brown."
+    ],
+    "rejected_reasons": [
+      "too_few_grounded_sentences:1"
+    ]
+  },
+  {
+    "topic": "yellow_leaf_curl_virus",
+    "accepted": true,
+    "grounded": 7,
+    "refused_first": false,
+    "first_answer": null,
+    "dropped": 12,
+    "seconds": 20.5,
+    "facts": [
+      "Severe stunting of plants. Downward rolling and crinkling of the leaves; older leaves become leathery and brittle. Shortened internodes and more side branches give a bushy appearance. The virus is spread by whiteflies (Bemisia tabaci).",
+      "Disease appear in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering and fruiting at later stage of virus infection. Sometimes leaves show light and dark mottle symptoms.",
+      "Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. The newly emerging leaves exhibit slight yellow colouration and later they also show curling symptoms.",
+      "Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants. Remove and destroy infected plants in the nursery; do not transplant infected seedlings. In the field: field sanitation, rogue out affected plants, grow maize or sorghum as a barrier crop around the field, use yellow sticky traps @ 10/acre."
+    ],
+    "answer": "I. Cleaning of storage bins before filling with grain.\nII. Avoid storing grain in damp bags.\nIII. Severe stunting of plants.\nIV. Disease appears in severe forms during the month of September to November.\nV. Leaves show downward rolling, curling, twisting, and chlorosis.\nVI. Plants show stunting, shortening of internodes, bushy appearance, no flowering, and fruiting at later stage of virus infection.\nVII. Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves.\nVIII. Raise the nursery under a net of sufficient mesh size to keep out whiteflies.\nIX. Select seed from disease-free healthy plants.\nX.",
+    "kept": "Severe stunting of plants. Disease appears in severe forms during the month of September to November. Leaves show downward rolling, curling, twisting, and chlorosis. Plants show stunting, shortening of internodes, bushy appearance, no flowering, and fruiting at later stage of virus infection. Leaf curl disease is characterized by severe stunting of the plants with downward rolling and crinkling of the leaves. Raise the nursery under a net of sufficient mesh size to keep out whiteflies. Select seed from disease-free healthy plants.",
+    "dropped_sentences": [
+      "I.",
+      "Cleaning of storage bins before filling with grain.",
+      "II.",
+      "Avoid storing grain in damp bags.",
+      "III.",
+      "IV.",
+      "V.",
+      "VI.",
+      "VII.",
+      "VIII.",
+      "IX.",
+      "X."
+    ],
+    "rejected_reasons": []
+  }
+]

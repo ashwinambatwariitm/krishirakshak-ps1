@@ -1,0 +1,9 @@
+I tokenizers:regex.cpp:40] Registering override fallback regex
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_1b_instruct_8da4w.pte","llama_block_cause_words":false,"llama_fact_bias":0.0,"load_ms":34496.109922,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+healthy: rejected, 0 grounded, 13 dropped, 21.6763 s
+early_blight: rejected, 1 grounded, 8 dropped, 37.9903 s
+late_blight: rejected, 0 grounded, 2 dropped, 17.3075 s
+septoria_leaf_spot: accepted, 3 grounded, 6 dropped, 20.5056 s
+bacterial_spot: accepted, 10 grounded, 9 dropped, 57.6749 s
+yellow_leaf_curl_virus: rejected, 0 grounded, 10 dropped, 17.7509 s

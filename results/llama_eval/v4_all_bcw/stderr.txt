@@ -1,0 +1,30 @@
+I tokenizers:regex.cpp:40] Registering override fallback regex
+E tokenizers:hf_tokenizer.cpp:167] Error parsing json file: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - invalid literal; last read: 'I'
+loaded: {"disease_model":"tomato_disease_v5_effb0_6class.onnx","kb_reviewed":false,"kb_version":"tomato_kb_v3","llama":"models/llama3_2_1b_instruct_8da4w.pte","llama_block_cause_words":true,"llama_fact_bias":0.0,"load_ms":11220.077912,"ort_spinning":false,"pest_model":"pest_yolov8n_ip102_negatives.onnx","runtime":"C++","vision_threads_per_model":2}
+aphids: rejected, 1 grounded, 2 dropped, 5.12001 s
+bacterial_canker: accepted, 12 grounded, 0 dropped, 10.7338 s
+bacterial_speck: accepted, 5 grounded, 0 dropped, 7.99196 s
+bacterial_spot: accepted, 5 grounded, 0 dropped, 11.0156 s
+bacterial_wilt: accepted, 6 grounded, 0 dropped, 8.46277 s
+collar_rot: accepted, 3 grounded, 1 dropped, 9.59919 s
+damping_off: accepted, 3 grounded, 1 dropped, 7.98766 s
+early_blight: accepted, 10 grounded, 0 dropped, 14.5023 s
+fruit_rots: accepted, 4 grounded, 7 dropped, 10.3303 s
+fusarium_wilt: accepted, 4 grounded, 1 dropped, 10.0592 s
+grey_leaf_spot: accepted, 8 grounded, 1 dropped, 9.90683 s
+healthy: accepted, 7 grounded, 0 dropped, 10.8145 s
+helicoverpa_fruit_borer: accepted, 14 grounded, 0 dropped, 13.9873 s
+late_blight: accepted, 12 grounded, 0 dropped, 15.3565 s
+mites: rejected, 0 grounded, 2 dropped, 6.8112 s
+powdery_mildew: rejected, 1 grounded, 8 dropped, 8.14858 s
+pseudocercospora_leaf_blight: accepted, 5 grounded, 0 dropped, 6.89563 s
+root_knot_nematode: accepted, 9 grounded, 0 dropped, 14.6746 s
+septoria_leaf_spot: accepted, 7 grounded, 1 dropped, 9.0565 s
+serpentine_leaf_miner: rejected, 1 grounded, 7 dropped, 8.92569 s
+spodoptera_tobacco_caterpillar: accepted, 15 grounded, 0 dropped, 15.5427 s
+thrips: rejected, 0 grounded, 8 dropped, 10.3252 s
+tomato_mosaic: accepted, 3 grounded, 1 dropped, 8.50466 s
+tomato_spotted_wilt: accepted, 9 grounded, 1 dropped, 12.4777 s
+tuta_absoluta_pinworm: accepted, 2 grounded, 12 dropped, 9.88363 s
+whitefly: accepted, 20 grounded, 2 dropped, 13.8281 s
+yellow_leaf_curl_virus: accepted, 6 grounded, 2 dropped, 11.3766 s

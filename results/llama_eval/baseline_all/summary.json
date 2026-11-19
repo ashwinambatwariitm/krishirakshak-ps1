@@ -1,0 +1,25 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "built-in",
+  "options": "",
+  "topics": 27,
+  "accepted": 15,
+  "refused_first": 8,
+  "mean_grounded": 2.93,
+  "mean_dropped": 7.41,
+  "rejected_topics": [
+    "bacterial_canker",
+    "bacterial_spot",
+    "bacterial_wilt",
+    "fruit_rots",
+    "grey_leaf_spot",
+    "healthy",
+    "late_blight",
+    "powdery_mildew",
+    "pseudocercospora_leaf_blight",
+    "serpentine_leaf_miner",
+    "tomato_mosaic",
+    "tuta_absoluta_pinworm"
+  ]
+}

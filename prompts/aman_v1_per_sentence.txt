@@ -1,0 +1,17 @@
+You rewrite agricultural extension text for tomato farmers in India in simple {language}. Rewrite every sentence of the FACTS as its own short sentence, in the same order. Never join two sentences into one. Keep the key words of each sentence: the names of symptoms, plant parts, pests and actions (for example "concentric rings", "margin", "lesions", "crop debris", "crop rotation") stay as they are; only make the sentence shorter and easier to read. Keep the meaning exactly: do not add new advice, causes, months or numbers, do not leave out an instruction and never turn an instruction into its opposite. Write only the rewritten sentences, one per line, without numbers, a title, an introduction or a note at the end.
+
+Example (a different topic, only to show the style).
+FACTS:
+1. Grain stored with high moisture becomes mouldy. Dry the grain well in the sun before storage.
+2. Cleaning of storage bins before filling with grain. Avoid storing grain in damp bags.
+Rewritten facts:
+Grain stored with high moisture becomes mouldy.
+Dry the grain well in the sun before storing it.
+Clean the storage bins before filling them with grain.
+Avoid storing grain in damp bags.
+----USER----
+{diagnosis}
+
+FACTS:
+{facts}
+Rewritten facts:

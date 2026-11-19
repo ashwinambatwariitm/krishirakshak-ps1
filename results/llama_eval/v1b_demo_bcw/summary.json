@@ -1,0 +1,16 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_instruct_8da4w.pte",
+  "prompt": "aman_v1b_full_stop.txt",
+  "options": "--block-cause-words",
+  "topics": 6,
+  "accepted": 3,
+  "refused_first": 0,
+  "mean_grounded": 3.33,
+  "mean_dropped": 4.0,
+  "rejected_topics": [
+    "septoria_leaf_spot",
+    "bacterial_spot",
+    "yellow_leaf_curl_virus"
+  ]
+}

@@ -93,6 +93,49 @@ int main(int argc, char** argv) {
         // Llama 3.2 3B faithful rewrites in plain words (same-meaning groups: edge = margin, spots = lesions)
         {"septoria_leaf_spot", nullptr, "Small, round spots with a grey center and dark edge on leaves.", true},
         {"early_blight", nullptr, "Get rid of the leftover crop debris.", true},
+        // Llama 3.2 1B, laptop evaluation 18-19 Nov 2026 (docs/llama_1b_quality.md). All were KEPT by the check at
+        // the time; they mark the grounding gaps to close (short words such as "rot" not checked, "plant" a stop word,
+        // a negated rewrite matched to a negated "avoid" source, a symptom turned into an instruction, a changed or
+        // invented word allowed because 3 of 4 words match, a one-word header).
+        // Reversal - source: "Avoid use of infested farmyard manure, soil crop debris and compost in the field."
+        {"collar_rot", nullptr, "The disease is not spread through the use of infested farmyard manure, soil crop debris, and compost in the field.", false},
+        // Wrong plant part / generic claim - source: "Water-soaked black lesions on leaves and stems." and
+        // "It enlarges rapidly until entire leaves are killed ..."
+        {"late_blight", nullptr, "The disease is a black rot on tomato leaves.", false},
+        {"late_blight", nullptr, "The disease is killing the entire plant.", false},
+        // Symptom turned into an instruction - source: "Pre-emergence phase: Complete rotting of seedlings."
+        {"damping_off", nullptr, "Prevent seedlings from rotting completely.", false},
+        // Reads as an instruction to infect - source: "... infection of the young, juvenile tissues of the collar ..."
+        {"damping_off", nullptr, "Infect young, juvenile tissues of the collar.", false},
+        // Purpose taken from the prompt's one-shot example (grain storage) - source: "Use raised beds of 15 cm height."
+        {"damping_off", nullptr, "Use raised beds of 15 cm height to dry grain.", false},
+        // Schedule changed and dose left out - source: "Apply neem cake ... @ 250 kg/ha at planting and repeat after 25 days."
+        {"serpentine_leaf_miner", nullptr, "Apply neem cake to furrows (open)/beds (polyhouse) every 25 days.", false},
+        // Symptom changed - source: "Centre of spots become slightly raised, tan coloured and rough."
+        {"bacterial_canker", nullptr, "Spots become slightly wrinkled.", false},
+        // Wrong plant part - source: "Lower leaves drop before wilting."
+        {"bacterial_wilt", nullptr, "The wilting is happening on the lower leaves.", false},
+        // Made stronger - source: "Generally lower portion of fruits are infected which are coming in soil contact."
+        {"fruit_rots", nullptr, "The disease is most severe in the lower portion of the fruit.", false},
+        // Wrong disease name - source: "Early blight is first observed on the plants as small, black lesions ..."
+        {"early_blight", nullptr, "Fruit blight observed on plants as small black lesions.", false},
+        // Season changed - source: "Disease appear in severe forms during the month of September to November."
+        {"yellow_leaf_curl_virus", nullptr, "Disease appears in September.", false},
+        // Nonsense joined from two facts - source: "Young larvae feed on tender foliage."
+        {"helicoverpa_fruit_borer", nullptr, "Larvae feed on the leaves while feeding the caterpillar.", false},
+        // Description turned into an instruction - source: "While feeding the caterpillar thrust its head inside
+        // leaving the rest of the body outside."
+        {"helicoverpa_fruit_borer", nullptr, "Leave the rest of the body outside.", false},
+        // Number without its meaning - source: "Grow simultaneously 40 days old American tall marigold and 25 days old
+        // tomato seedling at 1:16 rows."
+        {"helicoverpa_fruit_borer", nullptr, "Grow simultaneously 40.", false},
+        // A markdown header is not advice, but one matching word is 100% of its content words and it counted towards
+        // the two grounded sentences (an answer of headers and fragments only was accepted)
+        {"tuta_absoluta_pinworm", nullptr, "**Pests**", false},
+        // Faithful 1B rewrites that must stay
+        {"healthy", nullptr, "Use only necessary, label-claimed pesticides.", true},
+        {"septoria_leaf_spot", nullptr, "Spots start on lower leaves and gradually advance upwards.", true},
+        {"fruit_rots", nullptr, "Staking of plant to avoid fruit contact.", true},
     };
     int fails = 0;
     for (const auto& c : cases) {
