@@ -24,6 +24,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #include <atomic>
@@ -133,6 +134,11 @@ private:
     }
 
     void handle(int fd) {
+        // A client that stops sending must not hold a thread for ever: reading gives up after 15 s
+        // (only the reading of the request; the analysis itself is not limited)
+        timeval tv{15, 0};
+        setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+
         // 1. Read the request line and headers
         std::string req;
         char buf[16384];
@@ -141,6 +147,11 @@ private:
             if (req.size() > 16384) { ::close(fd); return; }
             const ssize_t n = ::recv(fd, buf, sizeof(buf), 0);
             if (n <= 0) { ::close(fd); return; }
+            // HTTPS attempt (TLS handshake record starts with byte 0x16): this server speaks plain HTTP on the
+            // offline network. Phone browsers in "HTTPS-first" mode try https://<pi>:8080 before http://; closing at
+            // once makes them fall back to http within a second. Waiting for a "\r\n\r\n" that never comes made them
+            // time out ("took too long to respond") instead.
+            if (req.empty() && static_cast<unsigned char>(buf[0]) == 0x16) { ::close(fd); return; }
             req.append(buf, static_cast<size_t>(n));
         }
         const std::string headers = req.substr(0, headerEnd + 2);
