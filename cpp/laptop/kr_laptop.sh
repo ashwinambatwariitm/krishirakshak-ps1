@@ -41,13 +41,19 @@ setup() {
       echo "have $file"; continue
     fi
     echo "downloading $file ($tag) ..."
-    gh release download "$tag" -R "$REPO" -p "$file" -D "$dir" --clobber
+    # Only options that the older gh of Ubuntu 22.04 (apt) also knows: no --clobber, no -O
+    gh release download "$tag" -R "$REPO" -p "$file" -D "$dir"
     # Check the file against the release's SHA256SUMS.txt (when the release lists it)
-    gh release download "$tag" -R "$REPO" -p SHA256SUMS.txt -O ".sums/$tag.txt" --clobber 2> /dev/null || true
-    want="$(awk -v f="$file" '$2 == f || $2 == "*"f {print $1}' ".sums/$tag.txt" 2> /dev/null || true)"
+    mkdir -p ".sums/$tag"
+    [ -f ".sums/$tag/SHA256SUMS.txt" ] || gh release download "$tag" -R "$REPO" -p SHA256SUMS.txt -D ".sums/$tag" \
+      2> /dev/null || true
+    want="$(awk -v f="$file" '$2 == f || $2 == "*"f {print $1}' ".sums/$tag/SHA256SUMS.txt" 2> /dev/null || true)"
     if [ -n "$want" ]; then
       have="$(sha256sum "$dir/$file" | cut -d' ' -f1)"
       [ "$have" = "$want" ] || { echo "checksum mismatch for $file" >&2; rm -f "$dir/$file"; exit 1; }
+      echo "  sha256 ok"
+    else
+      echo "  (release $tag lists no checksum for this file)"
     fi
   done
   if [ -f models/indictrans2_en_indic_200M_ct2_int8.tar.gz ]; then
