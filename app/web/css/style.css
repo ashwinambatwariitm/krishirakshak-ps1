@@ -909,3 +909,8 @@ body {
 .sev-bar-fill.pest-level-low { background: #43a047; }
 .sev-bar-fill.pest-level-moderate { background: #fb8c00; }
 .sev-bar-fill.pest-level-high { background: #e53935; }
+
+/* English original under a translation (folded) */
+.translation-original { margin-top: 8px; font-size: 0.9rem; color: #5d6b5d; }
+.translation-original summary { cursor: pointer; }
+.translation-original p { margin: 6px 0 0; }

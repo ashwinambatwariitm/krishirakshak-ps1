@@ -151,8 +151,12 @@ function initApp() {
     btnVoiceLlama.addEventListener("click", () => {
       const res = window.appState.analysisResult;
       if (!res || !res.llama || !res.llama.text) return;
-      const lang = window.getLanguage();
-      window.voiceAdvisor.toggle(res.llama.text, lang, btnVoiceLlama);
+      const tr = res.translation;
+      if (tr && tr.text) {
+        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
+      } else {
+        window.voiceAdvisor.toggle(res.llama.text, window.getLanguage(), btnVoiceLlama);
+      }
     });
   }
 
@@ -161,8 +165,12 @@ function initApp() {
     btnVoiceAi.addEventListener("click", () => {
       const ansEl = document.getElementById("qa-answer-text");
       if (!ansEl || !ansEl.textContent) return;
-      const lang = window.getLanguage();
-      window.voiceAdvisor.toggle(ansEl.textContent, lang, btnVoiceAi);
+      const tr = window.appState.lastAnswerTranslation;
+      if (tr && tr.text) {
+        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceAi, ansEl.textContent);
+      } else {
+        window.voiceAdvisor.toggle(ansEl.textContent, window.getLanguage(), btnVoiceAi);
+      }
     });
   }
 
@@ -390,7 +398,7 @@ function renderAnsweredScreen(data) {
   } else {
     llamaContainer.classList.add("hidden");
   }
-  renderTranslation(document.getElementById("res-llama-translation"), data.translation);
+  renderTranslation(document.getElementById("res-llama-translation"), data.translation, llamaTextEl);
   // A translation was asked for, but the AI explanation did not pass the device's safety check (only checked
   // text is translated): say so instead of showing nothing
   const mtNote = document.getElementById("res-mt-unavailable");
@@ -561,10 +569,15 @@ async function handleAskQuestion() {
       qaTranslation.className = "translation-block hidden";
       answerEl.insertAdjacentElement("afterend", qaTranslation);
     }
-    renderTranslation(qaTranslation, res.accepted !== false ? res.translation : null);
-
     if (res.answer && res.accepted !== false) {
       answerEl.textContent = res.answer;
+      renderTranslation(qaTranslation, res.translation, answerEl);
+    } else {
+      renderTranslation(qaTranslation, null, answerEl);
+    }
+    window.appState.lastAnswerTranslation = res.accepted !== false ? res.translation : null;
+
+    if (res.answer && res.accepted !== false) {
       answerEl.parentElement.classList.remove("hidden");
       fallbackNotice.classList.add("hidden");
     } else {
@@ -805,9 +818,10 @@ function renderHistoryList() {
  * Machine translation of the checked English advice (device field "translation"), shown under the English text
  * and marked as not reviewed. Sentences that failed the device's translation check stay in English.
  */
-function renderTranslation(container, tr) {
+function renderTranslation(container, tr, englishEl) {
   if (!container) return;
   container.innerHTML = "";
+  if (englishEl) englishEl.classList.remove("hidden");
   if (!tr || !tr.text) {
     container.classList.add("hidden");
     return;
@@ -826,6 +840,20 @@ function renderTranslation(container, tr) {
     note.className = "translation-note";
     note.textContent = window.t("mt_withheld");
     container.appendChild(note);
+  }
+  // The translation replaces the English text on screen; the English stays one tap away (the translation is not
+  // yet reviewed, so a helper or extension worker can check it)
+  if (englishEl && englishEl.textContent) {
+    const original = document.createElement("details");
+    original.className = "translation-original";
+    const summary = document.createElement("summary");
+    summary.textContent = window.t("mt_show_english");
+    const en = document.createElement("p");
+    en.textContent = englishEl.textContent;
+    original.appendChild(summary);
+    original.appendChild(en);
+    container.appendChild(original);
+    englishEl.classList.add("hidden");
   }
   container.classList.remove("hidden");
 }
