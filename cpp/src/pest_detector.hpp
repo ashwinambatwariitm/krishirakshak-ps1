@@ -11,6 +11,7 @@
 #include "onnx_session.hpp"
 
 #include <opencv2/core.hpp>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -21,6 +22,7 @@ struct PestDetection {
     int speciesId = -1;
     std::string species;
     bool speciesReliable = false;
+    std::string topic;         // knowledge-base topic of the class (group model's pest_config); empty for IP102 species
     float confidence = 0.f;
     cv::Rect2f box;            // x1, y1, width, height in original photo pixels
 };
@@ -39,6 +41,7 @@ private:
     OnnxSession session_;
     std::vector<std::string> names_;
     std::set<int> reliableIds_;
+    std::map<int, std::string> topicByClass_;
     int size_ = 640;
     float confThreshold_ = 0.2f;
     float iouThreshold_ = 0.7f;

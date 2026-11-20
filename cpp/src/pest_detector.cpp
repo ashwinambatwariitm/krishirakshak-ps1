@@ -74,6 +74,10 @@ PestDetector::PestDetector(const std::string& onnxPath, const std::string& specJ
     for (const auto& n : labels.at("names")) names_.push_back(trim(n.get<std::string>()));
     const auto pestConfig = nlohmann::json::parse(readFile(pestConfigJsonPath));
     for (const auto& id : pestConfig.at("reliable_species_ids")) reliableIds_.insert(id.get<int>());
+    // Group model: each class names its advice topic directly (the IP102 model leaves this out)
+    if (pestConfig.contains("topic_by_class"))
+        for (const auto& [cls, topic] : pestConfig.at("topic_by_class").items())
+            topicByClass_[std::stoi(cls)] = topic.get<std::string>();
     input_.resize(static_cast<size_t>(3) * size_ * size_);
 }
 
@@ -141,6 +145,7 @@ std::vector<PestDetection> PestDetector::predict(const cv::Mat& imageRgb) {
         d.speciesId = classes[k];
         d.species = names_.at(classes[k]);
         d.speciesReliable = reliableIds_.count(classes[k]) > 0;
+        if (const auto t = topicByClass_.find(classes[k]); t != topicByClass_.end()) d.topic = t->second;
         d.confidence = scores[k];
         d.box = cv::Rect2f(x1, y1, x2 - x1, y2 - y1);
         result.push_back(d);

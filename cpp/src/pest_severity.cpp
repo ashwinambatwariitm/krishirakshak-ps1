@@ -69,7 +69,7 @@ nlohmann::json quoteJson(const KnowledgeBase& kb, const Quote& q, const std::str
 std::vector<PestSeverity> pestSeverity(const std::vector<PestDetection>& pests, const KnowledgeBase& kb,
                                        int imageWidth, int imageHeight) {
     std::map<std::string, std::vector<cv::Rect2f>> byTopic;
-    for (const auto& p : pests) byTopic[kb.pestTopic(p.speciesId, p.speciesReliable)].push_back(p.box);
+    for (const auto& p : pests) byTopic[kb.pestTopic(p.speciesId, p.speciesReliable, p.topic)].push_back(p.box);
     std::vector<PestSeverity> out;
     for (const auto& [topic, boxes] : byTopic) {
         PestSeverity s;

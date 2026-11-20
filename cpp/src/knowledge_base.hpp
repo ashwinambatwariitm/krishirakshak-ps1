@@ -56,7 +56,9 @@ public:
     std::string qualityMessage(const std::string& issue, const std::string& lang) const;
     std::string reliability(const std::string& topic) const;                              // good / medium / low
     bool urgent(const std::string& topic) const;
-    std::string pestTopic(int speciesId, bool speciesReliable) const;
+    // Advice topic of one detection: the topic the pest model gives for its class (group model) if it is a known
+    // topic, else the topic whose species_ids list the IP102 species; "insect_other" when the class is not reliable
+    std::string pestTopic(int speciesId, bool speciesReliable, const std::string& modelTopic = "") const;
     std::string version() const { return kb_.value("version", ""); }
     bool reviewed() const { return kb_.value("content_reviewed", false); }
 

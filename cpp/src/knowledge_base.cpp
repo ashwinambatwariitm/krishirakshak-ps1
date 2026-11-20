@@ -286,8 +286,9 @@ std::string KnowledgeBase::reliability(const std::string& topic) const {
 bool KnowledgeBase::urgent(const std::string& topic) const {
     return kb_.at("topics").at(topic).value("urgent", false);
 }
-std::string KnowledgeBase::pestTopic(int speciesId, bool speciesReliable) const {
+std::string KnowledgeBase::pestTopic(int speciesId, bool speciesReliable, const std::string& modelTopic) const {
     if (!speciesReliable) return "insect_other";
+    if (!modelTopic.empty()) return kb_.at("topics").contains(modelTopic) ? modelTopic : "insect_other";
     const auto it = pestTopicBySpecies_.find(speciesId);
     return it == pestTopicBySpecies_.end() ? "insect_other" : it->second;
 }
