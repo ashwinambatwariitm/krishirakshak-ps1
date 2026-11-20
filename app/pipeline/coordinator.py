@@ -62,6 +62,7 @@ class Pipeline:
             from app.kb.build_kb import build      # (re)build the SQLite file from the reviewed JSON
             build(cfg["kb_json"], cfg["kb_db"])
         self.kb = KnowledgeBase(cfg["kb_db"], cfg["kb_json"])
+        self.kb.reliable_pest_groups = set(self.pest.reliable_groups)
         self.severity = SeverityModel(cfg["severity_onnx"], cfg["severity_spec"])
         self.advisor = LlamaAdvisor(cfg["llama_pte"], cfg["llama_tokenizer"]) if cfg["use_llama"] else None
         self.load_seconds = round(time.perf_counter() - t0, 2)

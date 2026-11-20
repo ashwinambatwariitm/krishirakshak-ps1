@@ -169,6 +169,81 @@ The false-alarm problem is solved without losing detection accuracy. 34 species 
 89-100% of the time; species naming is reliable for aphids (94%) and about 60% for whitefly, red spider mite,
 Spodoptera litura, black cutworm and thrips, so the application should present those species as a suggestion.
 
+### Accuracy per advice group (`results/pest_groups_ip102/`, `training/src/ip102_pest_groups.py`)
+
+The advice the farmer sees is per knowledge-base topic, and several topics are groups of IP102 species
+(`caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 species). The application names a topic only when the
+*species* is reliable (`pest_config.json`), which among tomato pests is only aphids; a found cutworm whose exact
+species is uncertain gets the generic `insect_other` advice. This evaluation scores the deployed ONNX models (FP32 and
+the INT8 model of the Pi) with the application's own pre/post-processing (`pest_detector.cpp`) on the IP102 test split;
+its per-species numbers reproduce `per_species_results.csv` exactly. "Group right" = the best class of the matched box
+is in the right group; "precision" = of all boxes the app would label with the group, the share that overlaps a
+ground-truth insect of that group.
+
+INT8, threshold 0.2, knowledge-base mapping of today:
+
+| Advice group | Test boxes | Insect found | Exact species right (top-2) | **Group right** | Group precision |
+|---|---|---|---|---|---|
+| caterpillars (6 species) | 330 | 95% | 38% (62%) | **75%** | 75% |
+| thrips (5 species) | 63 | 94% | 56% (73%) | **81%** | 73% |
+| mites (2 species) | 52 | 83% | 53% (91%) | 58% | 73% |
+| aphids (3 species) | 370 | 85% | 88% (92%) | 94% | 58% |
+
+- Caterpillars and thrips meet the same bar as species (at least 10 test boxes, 70% right when found) plus 70% group
+  precision: giving their topic's advice when the group is reliable would change the advice for a found caterpillar
+  from generic to correct in about 3 of 4 cases. Mites pass with the extended mapping on FP32 only (76-77% right when
+  found); aphid precision is low partly because colony photos label only some of the insects (extra correct boxes
+  count as wrong).
+- Most group errors go to species outside the tomato groups ("other": 43 of 314 found caterpillars) or between
+  caterpillars and Spodoptera litura ("Prodenia litura", class 86; 35 + 21 boxes). With class 86 merged into
+  caterpillars (mapping `kb_with_86`) the group is 86% right when found with 81% precision (INT8; FP32 85% / 82%).
+- **Applied in the application** (20 Nov): `pest_config.json` lists `reliable_groups` = caterpillars, thrips; the
+  knowledge base maps class 86 to caterpillars; `KnowledgeBase::pestTopic` (C++) and `pest_topic` (Python) give a
+  reliable group's topic even when the species is uncertain, and the "species uncertain" message is still shown.
+  Mites stay generic (58%). Tests: `pest_severity_test` and `tools/check_pest_severity.py`.
+- An extended mapping (more aphid and mite species, Spodoptera litura, greenhouse whitefly, leafhoppers, mealybugs,
+  fruit flies) is scored in `group_results.csv`; leafhoppers (98%) and fruit flies (100%) are reliable groups,
+  whitefly is not (73% right, 42% precision). The KB advice for these topics would have to fit those species first.
+- IP102 photos are mostly close-ups from the web; these are not field numbers for insects on tomato leaves.
+
+### Independent test set: 8 tomato pests from other sources (`results/pest_independent_huang/`, `training/src/pest_independent_test.py`)
+
+Data: the 609 original images of "A database of eight common tomato pest images" (Mei-Ling Huang, Tzu Chin Chuang,
+Mendeley Data V1, 2020, doi:10.17632/s62zm6djd2.1, CC BY 4.0), collected from IPMImages, NBAIR (India) and Google
+search: insects on plants (often cotton, maize or cabbage, not only tomato), 299 x 299 pixels. This is an
+out-of-source check, not a tomato field test. 31 images are near-copies of IP102 images (perceptual hash, Hamming
+distance <= 8 of 64; 19 identical) and are left out below (578 images). Deployed INT8 model, threshold 0.2; "advice"
+is the set of topics of all boxes, as in the application. Rules: today = topic only for reliable species; group =
+also for species of the reliable advice groups (caterpillars, thrips), KB mapping of today; extended = the extended
+mapping (with Spodoptera litura, whitefly, fruit flies, ...) and its reliable groups.
+
+| Pest (images) | Expected advice | Insect found | Right advice today | Right advice, group rule | Right advice, extended |
+|---|---|---|---|---|---|
+| Tetranychus urticae, spider mite (70) | mites | 67% | 0% | 0% | 1% |
+| Myzus persicae, aphid (125) | aphids | 66% | 58% | 58% | 58% |
+| Thrips palmi (24) | thrips | 75% | 0% | **50%** | 50% |
+| Spodoptera exigua, beet armyworm (68) | caterpillars | 56% | 0% | **44%** | 44% |
+| Spodoptera litura (84) | spodoptera | 80% | 0% | 0% (32% get caterpillar advice) | 0% (32% caterpillar) |
+| Helicoverpa armigera (107) | helicoverpa | 63% | 0% | 0% (20% get caterpillar advice) | 0% (21% caterpillar) |
+| Bemisia whitefly (59) | whitefly | 49% | 0% | 0% | 0% (32% get other advice) |
+| Zeugodacus cucurbitae, melon fly (41) | fruit fly | 95% | 0% | 0% | **88%** |
+
+| All 578 images | Right advice | Caterpillar advice for S. litura / Helicoverpa | Advice for a wrong kind of pest | Generic advice only | No insect found |
+|---|---|---|---|---|---|
+| today | 12.6% | 0% | 1.2% | 53.1% | 33.0% |
+| group rule (KB mapping) | 19.9% | 8.3% | 1.7% | 37.0% | 33.0% |
+| extended mapping | 26.3% | 8.3% | 6.2% | 26.1% | 33.0% |
+
+- Outside IP102 the detector finds fewer insects (67% of photos, IP102 test 85-95%) and names the exact species far
+  less often (spider mites 16%, thrips 46%, beet armyworm 32%): the IP102 numbers are optimistic for new photos.
+- The group rule is safe: right advice rises from 12.6% to 19.9% of photos (thrips 0 -> 50%, beet armyworm
+  0 -> 44%) and S. litura / Helicoverpa get the general caterpillar advice instead of generic advice, while advice for
+  a wrong kind of pest stays below 2%.
+- The extended mapping is not safe as it is: fruit flies become 88% right, but the silverleaf whitefly (Bemisia, not
+  in IP102) is detected as leafhoppers and gets their advice in 32% of its photos.
+- Spider mites are found (67%) but named as citrus mites (Panonychus citri), which are outside the mites topic of the
+  knowledge base; Helicoverpa and Bemisia are not IP102 classes, so they need training data of their own.
+
 ## INT8 post-training quantization (`results/int8_ptq/`)
 
 ONNX Runtime static quantization: QDQ format, INT8 weights per output channel, INT8 activations (S8S8, the format ONNX

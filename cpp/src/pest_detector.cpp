@@ -78,6 +78,10 @@ PestDetector::PestDetector(const std::string& onnxPath, const std::string& specJ
     if (pestConfig.contains("topic_by_class"))
         for (const auto& [cls, topic] : pestConfig.at("topic_by_class").items())
             topicByClass_[std::stoi(cls)] = topic.get<std::string>();
+    // IP102 species model: advice groups (knowledge-base pest topics) that are reliable as a group even when the
+    // species is not; optional, so configs written before results/pest_groups_ip102 still load (no groups)
+    if (pestConfig.contains("reliable_groups"))
+        for (const auto& g : pestConfig.at("reliable_groups")) reliableGroups_.insert(g.get<std::string>());
     input_.resize(static_cast<size_t>(3) * size_ * size_);
 }
 

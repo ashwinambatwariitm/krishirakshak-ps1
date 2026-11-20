@@ -102,7 +102,10 @@ class PestDetector:
     def __init__(self, onnx_path, spec_path, labels_path, pest_config_path, threads=4):
         self.spec = json.loads(Path(spec_path).read_text())
         self.names = json.loads(Path(labels_path).read_text())["names"]
-        self.reliable_ids = set(json.loads(Path(pest_config_path).read_text())["reliable_species_ids"])
+        pest_config = json.loads(Path(pest_config_path).read_text())
+        self.reliable_ids = set(pest_config["reliable_species_ids"])
+        # Knowledge-base topics whose advice is given even when the species is uncertain (optional key)
+        self.reliable_groups = set(pest_config.get("reliable_groups", []))
         self.size = int(self.spec["img_size"])
         self.conf_threshold = float(self.spec["conf_threshold"])
         self.iou_threshold = float(self.spec["nms_iou"])
