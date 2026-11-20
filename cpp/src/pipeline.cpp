@@ -52,6 +52,7 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     pest_ = std::make_unique<PestDetector>(path(cfg_.pestOnnx), path(cfg_.pestSpec), path(cfg_.pestLabels),
                                            path(cfg_.pestConfig), cfg_.visionThreads, cfg_.ortSpin);
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
+    kb_->setReliablePestGroups(pest_->reliableGroups());
     severity_ = std::make_unique<SeverityModel>(path(cfg_.severityOnnx), path(cfg_.severitySpec),
                                                 cfg_.severityThreads, cfg_.ortSpin);
 #ifdef KR_WITH_LLM

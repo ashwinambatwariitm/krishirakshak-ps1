@@ -48,6 +48,8 @@ class KnowledgeBase:
         self.meta = {r["key"]: json.loads(r["value"]) for r in self.con.execute("SELECT * FROM meta")}
         # Map IP102 species ids to a pest topic (aphids, thrips, mites, caterpillars); others -> insect_other
         self.pest_topic_by_species = {sid: tid for tid, t in self.topics.items() for sid in t.get("species_ids", [])}
+        # Advice groups that are reliable as a group (pest detector's pest_config.json); empty = species only
+        self.reliable_pest_groups = set()
 
     @staticmethod
     def _merge_translations(kb, json_path):
@@ -138,7 +140,9 @@ class KnowledgeBase:
         return [self._row(r, lang) for r in ranked[:k]]
 
     def pest_topic(self, species_id, species_reliable):
-        """Knowledge-base topic for a detected insect; unreliable species names fall back to insect_other."""
-        if not species_reliable:
+        """Knowledge-base topic for a detected insect: its species' topic when the species is reliable or the topic
+        is a reliable advice group (results/pest_groups_ip102), otherwise insect_other. Same rule as C++."""
+        topic = self.pest_topic_by_species.get(species_id)
+        if topic is None:
             return "insect_other"
-        return self.pest_topic_by_species.get(species_id, "insect_other")
+        return topic if species_reliable or topic in self.reliable_pest_groups else "insect_other"

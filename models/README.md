@@ -121,4 +121,5 @@ result = detector.predict("leaf.jpg", imgsz=640, conf=0.25)[0]
 Input 640 x 640 (letterbox). 102 IP102 classes; names are stored in the model and in
 `results/pest_yolov8n_with_negatives/pest_labels.json`. Recommended confidence threshold 0.2 to 0.3. Name the species
 only for the ids in `reliable_species_ids` of `results/pest_yolov8n_with_negatives/pest_config.json`; otherwise report
-"insect pest detected, species uncertain".
+"insect pest detected, species uncertain". A species whose knowledge-base topic is in `reliable_groups` (caterpillars,
+thrips) still gets that topic's advice (`results/pest_groups_ip102`).
