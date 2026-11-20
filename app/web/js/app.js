@@ -86,55 +86,6 @@ function initApp() {
     }
   });
 
-  const btnDemoAnalysis = document.getElementById("btn-demo-analysis");
-  if (btnDemoAnalysis) {
-    btnDemoAnalysis.addEventListener("click", () => {
-      const lang = window.getLanguage() || "en";
-      const demoResult = {
-        status: "answered",
-        disease: {
-          answered: true,
-          name: "Early blight (Alternaria solani)",
-          urgent: true,
-          top: [{ name: "Early blight (Alternaria solani)", probability: 0.94 }],
-          spread: "moderate"
-        },
-        llama: {
-          text: "The tomato leaf shows Early Blight spots. Prune and destroy the lower infected leaves. Water at the soil base only and apply Copper Oxychloride or Mancozeb in early morning.",
-          accepted: true
-        },
-        translation: (lang !== "en" && window.agriAiEngine) ? {
-          lang: lang,
-          text: window.agriAiEngine.knowledge[4][lang] || window.agriAiEngine.knowledge[4].en
-        } : null,
-        practices: [
-          {
-            section: "symptoms",
-            title: "Symptoms & Identification",
-            content: "Dark brown concentric target-like rings with a yellow halo on older lower leaves."
-          },
-          {
-            section: "cultural",
-            title: "Field Sanitation",
-            content: "Remove infected lower leaves and burn them away from the field. Avoid overhead irrigation."
-          },
-          {
-            section: "chemical",
-            title: "Recommended Sprays (ICAR / TNAU)",
-            content: "Spray Mancozeb 75% WP @ 2 g/L or Copper Oxychloride 50% WP @ 2.5 g/L. Harvest waiting period: 7 days."
-          }
-        ],
-        spray_options: [
-          { product: "Tebuconazole 50% + Trifloxystrobin 25% WG", dose: "0.75 g/L", source: "ICAR / CIB&RC" },
-          { product: "Mancozeb 75% WP", dose: "2 g/L", source: "TNAU Guidelines" },
-          { product: "Copper Oxychloride 50% WP", dose: "2.5 g/L", source: "NIPHM Manual" }
-        ]
-      };
-      window.appState.setResult(demoResult);
-      routeResultStatus(demoResult);
-    });
-  }
-
   document.getElementById("btn-cancel-analysis").addEventListener("click", () => {
     showView("home");
   });
