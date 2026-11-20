@@ -1,0 +1,15 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_krishirakshak_lora_8da4w.pte",
+  "prompt": "aman_v8_no_numbering.txt",
+  "options": "--llama-pte models/llama3_2_1b_krishirakshak_lora_8da4w.pte",
+  "topics": 27,
+  "accepted": 25,
+  "refused_first": 0,
+  "mean_grounded": 3.93,
+  "mean_dropped": 0.33,
+  "rejected_topics": [
+    "damping_off",
+    "spodoptera_tobacco_caterpillar"
+  ]
+}

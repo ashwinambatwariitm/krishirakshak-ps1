@@ -1,0 +1,1 @@
+prompt=built-in options=--llama-pte models/llama3_2_1b_krishirakshak_lora_8da4w.pte

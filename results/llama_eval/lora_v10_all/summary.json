@@ -1,0 +1,18 @@
+{
+  "runtime": "C++ krishirakshak --eval-advisor",
+  "pte": "llama3_2_1b_krishirakshak_lora_8da4w.pte",
+  "prompt": "aman_v10_no_diagnosis.txt",
+  "options": "--llama-pte models/llama3_2_1b_krishirakshak_lora_8da4w.pte",
+  "topics": 27,
+  "accepted": 22,
+  "refused_first": 0,
+  "mean_grounded": 3.33,
+  "mean_dropped": 0.19,
+  "rejected_topics": [
+    "aphids",
+    "bacterial_canker",
+    "healthy",
+    "spodoptera_tobacco_caterpillar",
+    "whitefly"
+  ]
+}

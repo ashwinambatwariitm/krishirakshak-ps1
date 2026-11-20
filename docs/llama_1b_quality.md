@@ -8,6 +8,34 @@ topics 6/6 (baseline 3/6), 0 refusals (baseline 8), 7.2 grounded sentences per t
 found in a manual review of all 195 kept sentences. It also generates fewer tokens per answer (78 vs 106), so it should
 not be slower on the Pi.
 
+## Update 20 Nov: new grounding check (main) and the LoRA model (llm-v2)
+
+The saved answers were re-checked with the grounding check merged into `main` (PR #6), without running Llama again:
+`grounding_test . --replay` built from `main` (f883488). The LoRA-tuned 1B (`llama3_2_1b_krishirakshak_lora_8da4w.pte`,
+release llm-v2, the app's new default) was run with `--llama-pte` on the same 27 topics and replayed the same way.
+
+| Model + prompt | All 27 accepted | Demo | Grounded / topic | Distortions (manual review) | Generated tokens / answer |
+|---|---|---|---|---|---|
+| base 1B + built-in | 14 | 3/6 | 2.8 | - | 106 |
+| **base 1B + v8** | **24** | **6/6** | **7.1** | 0 | 78 |
+| base 1B + v10 | 24 | 6/6 | 7.9 | not re-reviewed | 82 |
+| LoRA + built-in (app default) | 22 | 5/6 | 2.9 | 1 | 42 |
+| **LoRA + v8** | **22** | **5/6** | **3.7** | 0 | 52 |
+| LoRA + v10 | 21 | 5/6 | 3.1 | not reviewed | - |
+
+- v8 keeps its result under the stricter check (24 -> 24; 7.2 -> 7.1 grounded per topic). Prompts that had
+  distortions lost exactly those answers (v1 20 -> 17, v7 24 -> 22), so the new rules catch what the manual review found.
+- On the LoRA model v8 gives the same acceptance as the built-in prompt with 28% more grounded sentences (3.7 vs 2.9)
+  and removes the one distortion, for about 10 more tokens per answer. The LoRA model writes full, readable sentences
+  (no fragment lists like the base 1B); it rejects `healthy` (provisional), `damping_off`, `spodoptera`,
+  `bacterial_speck` and `serpentine_leaf_miner`/`whitefly`.
+- Distortion still kept by the new check (LoRA + built-in, helicoverpa_fruit_borer): "Mature larvae make circular holes
+  in the leaves." - source "Mature larvae bore circular holes." (they bore into the fruit; "leaves" added).
+- Choice for the core team: base 1B + v8 gives the most accepted and grounded answers; LoRA + v8 is the better prompt
+  for the LoRA model, with shorter (faster) answers. Speed on the Pi is not measured here.
+- Results: `results/llama_eval/lora_builtin_all`, `lora_v8_all`, `lora_v10_all` (accepted columns in their
+  summary.json are from the old check of this branch; the table above uses the new check).
+
 ## How it was measured
 
 - C++ application, laptop (WSL Debian 12, x86), `krishirakshak --root . --eval-advisor <topics>`, same `.pte`
