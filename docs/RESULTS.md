@@ -169,6 +169,39 @@ The false-alarm problem is solved without losing detection accuracy. 34 species 
 89-100% of the time; species naming is reliable for aphids (94%) and about 60% for whitefly, red spider mite,
 Spodoptera litura, black cutworm and thrips, so the application should present those species as a suggestion.
 
+### Accuracy per advice group (`results/pest_groups_ip102/`, `training/src/ip102_pest_groups.py`)
+
+The advice the farmer sees is per knowledge-base topic, and several topics are groups of IP102 species
+(`caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 species). The application names a topic only when the
+*species* is reliable (`pest_config.json`), which among tomato pests is only aphids; a found cutworm whose exact
+species is uncertain gets the generic `insect_other` advice. This evaluation scores the deployed ONNX models (FP32 and
+the INT8 model of the Pi) with the application's own pre/post-processing (`pest_detector.cpp`) on the IP102 test split;
+its per-species numbers reproduce `per_species_results.csv` exactly. "Group right" = the best class of the matched box
+is in the right group; "precision" = of all boxes the app would label with the group, the share that overlaps a
+ground-truth insect of that group.
+
+INT8, threshold 0.2, knowledge-base mapping of today:
+
+| Advice group | Test boxes | Insect found | Exact species right (top-2) | **Group right** | Group precision |
+|---|---|---|---|---|---|
+| caterpillars (6 species) | 330 | 95% | 38% (62%) | **75%** | 75% |
+| thrips (5 species) | 63 | 94% | 56% (73%) | **81%** | 73% |
+| mites (2 species) | 52 | 83% | 53% (91%) | 58% | 73% |
+| aphids (3 species) | 370 | 85% | 88% (92%) | 94% | 58% |
+
+- Caterpillars and thrips meet the same bar as species (at least 10 test boxes, 70% right when found) plus 70% group
+  precision: giving their topic's advice when the group is reliable would change the advice for a found caterpillar
+  from generic to correct in about 3 of 4 cases. Mites pass with the extended mapping on FP32 only (76-77% right when
+  found); aphid precision is low partly because colony photos label only some of the insects (extra correct boxes
+  count as wrong).
+- Most group errors go to species outside the tomato groups ("other": 43 of 314 found caterpillars) or between
+  caterpillars and Spodoptera litura ("Prodenia litura", class 86; 35 + 21 boxes). Treating caterpillars and
+  Spodoptera as one group would make it 86% right.
+- An extended mapping (more aphid and mite species, Spodoptera litura, greenhouse whitefly, leafhoppers, mealybugs,
+  fruit flies) is scored in `group_results.csv`; leafhoppers (98%) and fruit flies (100%) are reliable groups,
+  whitefly is not (73% right, 42% precision). The KB advice for these topics would have to fit those species first.
+- IP102 photos are mostly close-ups from the web; these are not field numbers for insects on tomato leaves.
+
 ## INT8 post-training quantization (`results/int8_ptq/`)
 
 ONNX Runtime static quantization: QDQ format, INT8 weights per output channel, INT8 activations (S8S8, the format ONNX

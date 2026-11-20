@@ -1,0 +1,500 @@
+{
+  "test_images": 3798,
+  "app_threshold": 0.2,
+  "reliable_rule": {
+    "min_test_boxes": 10,
+    "min_group_acc_when_found": 0.7,
+    "min_group_precision": 0.7
+  },
+  "mappings": {
+    "kb": {
+      "aphids": [
+        24,
+        27,
+        29
+      ],
+      "thrips": [
+        12,
+        33,
+        53,
+        54,
+        92
+      ],
+      "mites": [
+        21,
+        32
+      ],
+      "caterpillars": [
+        18,
+        19,
+        20,
+        23,
+        38,
+        39
+      ]
+    },
+    "extended": {
+      "aphids": [
+        24,
+        27,
+        28,
+        29,
+        52,
+        89,
+        90,
+        91
+      ],
+      "thrips": [
+        12,
+        33,
+        53,
+        54,
+        92
+      ],
+      "mites": [
+        21,
+        31,
+        32,
+        60,
+        61,
+        63,
+        74,
+        75
+      ],
+      "caterpillars": [
+        18,
+        19,
+        20,
+        23,
+        38,
+        39
+      ],
+      "spodoptera_tobacco_caterpillar": [
+        86
+      ],
+      "whitefly": [
+        71,
+        82
+      ],
+      "leafhoppers": [
+        11,
+        69,
+        72,
+        98,
+        101
+      ],
+      "mealybug": [
+        64,
+        81
+      ],
+      "fruit_fly": [
+        83,
+        84,
+        85
+      ]
+    }
+  },
+  "results": {
+    "fp32_kb": {
+      "reliable_groups": [
+        "thrips",
+        "caterpillars"
+      ],
+      "groups": [
+        {
+          "group": "aphids",
+          "species": 3,
+          "test_boxes": 370,
+          "found_rate": 0.8568,
+          "species_acc_when_found": 0.8675,
+          "species_top2_acc_when_found": 0.9054,
+          "group_acc_when_found": 0.9401,
+          "group_sum_acc_when_found": 0.9401,
+          "group_correct_overall": 0.8054,
+          "predicted_boxes": 576,
+          "group_precision": 0.5781,
+          "reliable_group": false
+        },
+        {
+          "group": "thrips",
+          "species": 5,
+          "test_boxes": 63,
+          "found_rate": 0.9048,
+          "species_acc_when_found": 0.5614,
+          "species_top2_acc_when_found": 0.7368,
+          "group_acc_when_found": 0.8596,
+          "group_sum_acc_when_found": 0.8596,
+          "group_correct_overall": 0.7778,
+          "predicted_boxes": 88,
+          "group_precision": 0.7045,
+          "reliable_group": true
+        },
+        {
+          "group": "mites",
+          "species": 2,
+          "test_boxes": 52,
+          "found_rate": 0.8462,
+          "species_acc_when_found": 0.5909,
+          "species_top2_acc_when_found": 0.8864,
+          "group_acc_when_found": 0.6364,
+          "group_sum_acc_when_found": 0.6136,
+          "group_correct_overall": 0.5385,
+          "predicted_boxes": 48,
+          "group_precision": 0.75,
+          "reliable_group": false
+        },
+        {
+          "group": "caterpillars",
+          "species": 6,
+          "test_boxes": 330,
+          "found_rate": 0.9333,
+          "species_acc_when_found": 0.3799,
+          "species_top2_acc_when_found": 0.6526,
+          "group_acc_when_found": 0.7792,
+          "group_sum_acc_when_found": 0.7922,
+          "group_correct_overall": 0.7273,
+          "predicted_boxes": 394,
+          "group_precision": 0.7614,
+          "reliable_group": true
+        }
+      ]
+    },
+    "fp32_extended": {
+      "reliable_groups": [
+        "thrips",
+        "mites",
+        "caterpillars",
+        "leafhoppers",
+        "fruit_fly"
+      ],
+      "groups": [
+        {
+          "group": "aphids",
+          "species": 8,
+          "test_boxes": 395,
+          "found_rate": 0.8456,
+          "species_acc_when_found": 0.8353,
+          "species_top2_acc_when_found": 0.8802,
+          "group_acc_when_found": 0.9311,
+          "group_sum_acc_when_found": 0.9311,
+          "group_correct_overall": 0.7873,
+          "predicted_boxes": 592,
+          "group_precision": 0.5963,
+          "reliable_group": false
+        },
+        {
+          "group": "thrips",
+          "species": 5,
+          "test_boxes": 63,
+          "found_rate": 0.9048,
+          "species_acc_when_found": 0.5614,
+          "species_top2_acc_when_found": 0.7368,
+          "group_acc_when_found": 0.8596,
+          "group_sum_acc_when_found": 0.8596,
+          "group_correct_overall": 0.7778,
+          "predicted_boxes": 88,
+          "group_precision": 0.7045,
+          "reliable_group": true
+        },
+        {
+          "group": "mites",
+          "species": 8,
+          "test_boxes": 80,
+          "found_rate": 0.875,
+          "species_acc_when_found": 0.6429,
+          "species_top2_acc_when_found": 0.8714,
+          "group_acc_when_found": 0.7714,
+          "group_sum_acc_when_found": 0.7714,
+          "group_correct_overall": 0.675,
+          "predicted_boxes": 94,
+          "group_precision": 0.7128,
+          "reliable_group": true
+        },
+        {
+          "group": "caterpillars",
+          "species": 6,
+          "test_boxes": 330,
+          "found_rate": 0.9333,
+          "species_acc_when_found": 0.3799,
+          "species_top2_acc_when_found": 0.6526,
+          "group_acc_when_found": 0.7792,
+          "group_sum_acc_when_found": 0.7955,
+          "group_correct_overall": 0.7273,
+          "predicted_boxes": 394,
+          "group_precision": 0.7614,
+          "reliable_group": true
+        },
+        {
+          "group": "spodoptera_tobacco_caterpillar",
+          "species": 1,
+          "test_boxes": 85,
+          "found_rate": 0.9529,
+          "species_acc_when_found": 0.5802,
+          "species_top2_acc_when_found": 0.679,
+          "group_acc_when_found": 0.5802,
+          "group_sum_acc_when_found": 0.5679,
+          "group_correct_overall": 0.5529,
+          "predicted_boxes": 119,
+          "group_precision": 0.4706,
+          "reliable_group": false
+        },
+        {
+          "group": "whitefly",
+          "species": 2,
+          "test_boxes": 50,
+          "found_rate": 0.76,
+          "species_acc_when_found": 0.7105,
+          "species_top2_acc_when_found": 0.8158,
+          "group_acc_when_found": 0.7105,
+          "group_sum_acc_when_found": 0.7105,
+          "group_correct_overall": 0.54,
+          "predicted_boxes": 76,
+          "group_precision": 0.4474,
+          "reliable_group": false
+        },
+        {
+          "group": "leafhoppers",
+          "species": 5,
+          "test_boxes": 662,
+          "found_rate": 0.994,
+          "species_acc_when_found": 0.921,
+          "species_top2_acc_when_found": 0.9544,
+          "group_acc_when_found": 0.9787,
+          "group_sum_acc_when_found": 0.9787,
+          "group_correct_overall": 0.9728,
+          "predicted_boxes": 721,
+          "group_precision": 0.9362,
+          "reliable_group": true
+        },
+        {
+          "group": "mealybug",
+          "species": 2,
+          "test_boxes": 25,
+          "found_rate": 0.72,
+          "species_acc_when_found": 0.8889,
+          "species_top2_acc_when_found": 0.9444,
+          "group_acc_when_found": 0.9444,
+          "group_sum_acc_when_found": 0.9444,
+          "group_correct_overall": 0.68,
+          "predicted_boxes": 36,
+          "group_precision": 0.5556,
+          "reliable_group": false
+        },
+        {
+          "group": "fruit_fly",
+          "species": 3,
+          "test_boxes": 45,
+          "found_rate": 0.8444,
+          "species_acc_when_found": 0.6053,
+          "species_top2_acc_when_found": 0.8158,
+          "group_acc_when_found": 1.0,
+          "group_sum_acc_when_found": 1.0,
+          "group_correct_overall": 0.8444,
+          "predicted_boxes": 45,
+          "group_precision": 0.9333,
+          "reliable_group": true
+        }
+      ]
+    },
+    "int8_kb": {
+      "reliable_groups": [
+        "thrips",
+        "caterpillars"
+      ],
+      "groups": [
+        {
+          "group": "aphids",
+          "species": 3,
+          "test_boxes": 370,
+          "found_rate": 0.8459,
+          "species_acc_when_found": 0.885,
+          "species_top2_acc_when_found": 0.9201,
+          "group_acc_when_found": 0.9425,
+          "group_sum_acc_when_found": 0.9393,
+          "group_correct_overall": 0.7973,
+          "predicted_boxes": 566,
+          "group_precision": 0.576,
+          "reliable_group": false
+        },
+        {
+          "group": "thrips",
+          "species": 5,
+          "test_boxes": 63,
+          "found_rate": 0.9365,
+          "species_acc_when_found": 0.5593,
+          "species_top2_acc_when_found": 0.7288,
+          "group_acc_when_found": 0.8136,
+          "group_sum_acc_when_found": 0.8136,
+          "group_correct_overall": 0.7619,
+          "predicted_boxes": 85,
+          "group_precision": 0.7294,
+          "reliable_group": true
+        },
+        {
+          "group": "mites",
+          "species": 2,
+          "test_boxes": 52,
+          "found_rate": 0.8269,
+          "species_acc_when_found": 0.5349,
+          "species_top2_acc_when_found": 0.907,
+          "group_acc_when_found": 0.5814,
+          "group_sum_acc_when_found": 0.5814,
+          "group_correct_overall": 0.4808,
+          "predicted_boxes": 45,
+          "group_precision": 0.7333,
+          "reliable_group": false
+        },
+        {
+          "group": "caterpillars",
+          "species": 6,
+          "test_boxes": 330,
+          "found_rate": 0.9515,
+          "species_acc_when_found": 0.379,
+          "species_top2_acc_when_found": 0.6242,
+          "group_acc_when_found": 0.7516,
+          "group_sum_acc_when_found": 0.7611,
+          "group_correct_overall": 0.7152,
+          "predicted_boxes": 400,
+          "group_precision": 0.75,
+          "reliable_group": true
+        }
+      ]
+    },
+    "int8_extended": {
+      "reliable_groups": [
+        "thrips",
+        "caterpillars",
+        "leafhoppers",
+        "fruit_fly"
+      ],
+      "groups": [
+        {
+          "group": "aphids",
+          "species": 8,
+          "test_boxes": 395,
+          "found_rate": 0.8329,
+          "species_acc_when_found": 0.8511,
+          "species_top2_acc_when_found": 0.8875,
+          "group_acc_when_found": 0.9331,
+          "group_sum_acc_when_found": 0.9362,
+          "group_correct_overall": 0.7772,
+          "predicted_boxes": 579,
+          "group_precision": 0.5924,
+          "reliable_group": false
+        },
+        {
+          "group": "thrips",
+          "species": 5,
+          "test_boxes": 63,
+          "found_rate": 0.9365,
+          "species_acc_when_found": 0.5593,
+          "species_top2_acc_when_found": 0.7288,
+          "group_acc_when_found": 0.8136,
+          "group_sum_acc_when_found": 0.8136,
+          "group_correct_overall": 0.7619,
+          "predicted_boxes": 85,
+          "group_precision": 0.7294,
+          "reliable_group": true
+        },
+        {
+          "group": "mites",
+          "species": 8,
+          "test_boxes": 80,
+          "found_rate": 0.85,
+          "species_acc_when_found": 0.6176,
+          "species_top2_acc_when_found": 0.8824,
+          "group_acc_when_found": 0.7647,
+          "group_sum_acc_when_found": 0.7794,
+          "group_correct_overall": 0.65,
+          "predicted_boxes": 92,
+          "group_precision": 0.6848,
+          "reliable_group": false
+        },
+        {
+          "group": "caterpillars",
+          "species": 6,
+          "test_boxes": 330,
+          "found_rate": 0.9515,
+          "species_acc_when_found": 0.379,
+          "species_top2_acc_when_found": 0.6242,
+          "group_acc_when_found": 0.7516,
+          "group_sum_acc_when_found": 0.7611,
+          "group_correct_overall": 0.7152,
+          "predicted_boxes": 400,
+          "group_precision": 0.75,
+          "reliable_group": true
+        },
+        {
+          "group": "spodoptera_tobacco_caterpillar",
+          "species": 1,
+          "test_boxes": 85,
+          "found_rate": 0.9176,
+          "species_acc_when_found": 0.5641,
+          "species_top2_acc_when_found": 0.6538,
+          "group_acc_when_found": 0.5641,
+          "group_sum_acc_when_found": 0.5641,
+          "group_correct_overall": 0.5176,
+          "predicted_boxes": 122,
+          "group_precision": 0.4262,
+          "reliable_group": false
+        },
+        {
+          "group": "whitefly",
+          "species": 2,
+          "test_boxes": 50,
+          "found_rate": 0.74,
+          "species_acc_when_found": 0.7297,
+          "species_top2_acc_when_found": 0.8378,
+          "group_acc_when_found": 0.7297,
+          "group_sum_acc_when_found": 0.7297,
+          "group_correct_overall": 0.54,
+          "predicted_boxes": 74,
+          "group_precision": 0.4189,
+          "reliable_group": false
+        },
+        {
+          "group": "leafhoppers",
+          "species": 5,
+          "test_boxes": 662,
+          "found_rate": 0.994,
+          "species_acc_when_found": 0.9255,
+          "species_top2_acc_when_found": 0.9574,
+          "group_acc_when_found": 0.9787,
+          "group_sum_acc_when_found": 0.9787,
+          "group_correct_overall": 0.9728,
+          "predicted_boxes": 723,
+          "group_precision": 0.935,
+          "reliable_group": true
+        },
+        {
+          "group": "mealybug",
+          "species": 2,
+          "test_boxes": 25,
+          "found_rate": 0.76,
+          "species_acc_when_found": 0.8947,
+          "species_top2_acc_when_found": 1.0,
+          "group_acc_when_found": 0.9474,
+          "group_sum_acc_when_found": 1.0,
+          "group_correct_overall": 0.72,
+          "predicted_boxes": 35,
+          "group_precision": 0.5429,
+          "reliable_group": false
+        },
+        {
+          "group": "fruit_fly",
+          "species": 3,
+          "test_boxes": 45,
+          "found_rate": 0.8222,
+          "species_acc_when_found": 0.5946,
+          "species_top2_acc_when_found": 0.7838,
+          "group_acc_when_found": 1.0,
+          "group_sum_acc_when_found": 1.0,
+          "group_correct_overall": 0.8222,
+          "predicted_boxes": 43,
+          "group_precision": 0.9767,
+          "reliable_group": true
+        }
+      ]
+    }
+  }
+}

@@ -53,6 +53,10 @@ NOTEBOOKS = [
     # Knowledge base in 9 regional languages (IndicTrans2 on CTranslate2, GPU FP16; inputs uploaded from the repo)
     dict(src="kb_translate.py", slug="ps1-kb-translate", title="PS1 KB Translate",
          datasets=["ashwinambatwar/krishirakshak-kb-translate-inputs"]),
+    # Accuracy of the deployed pest ONNX models per advice group (kb topic) on the IP102 test split; models from a
+    # private copy of release models-v2 (the repository is private, so the notebook cannot download them)
+    dict(src="ip102_pest_groups.py", slug="ps1-ip102-pest-groups", title="PS1 IP102 Pest Groups",
+         datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx"], gpu=False),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]
