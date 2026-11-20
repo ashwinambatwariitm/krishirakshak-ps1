@@ -340,59 +340,60 @@
             <h2 data-i18n="weather_title">Weather & Spray Suitability Meter</h2>
             <p class="muted" data-i18n="weather_desc">Check if wind, temperature, and rain conditions are safe for spraying today.</p>
           </div>
-          <button id="btn-weather-gps" class="btn-voice" style="margin:0;min-height:38px;padding:6px 12px;" title="Auto-Detect Location Anywhere in the World">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-            </svg>
-            <span>📍 Auto-Detect Location</span>
-          </button>
+          <span id="weather-condition-badge" style="font-size:0.78rem;background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:12px;font-weight:700;border:1px solid #c8e6c9;">📡 100% Offline On-Device</span>
         </div>
 
-        <!-- Location & Live Source Bar -->
+        <!-- Regional Agro-Climatic Baseline -->
         <div style="margin:12px 0 6px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span id="weather-location-name" style="font-weight:800;color:var(--primary);font-size:0.95rem;">📍 Worldwide Live Field</span>
-            <span id="weather-condition-badge" style="font-size:0.75rem;background:#e8f5e9;color:#1b5e20;padding:2px 8px;border-radius:10px;font-weight:700;">📡 Global Satellite</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span id="weather-location-name" style="font-weight:800;color:var(--primary);font-size:0.95rem;">📍 Maharashtra (Pune / Nashik)</span>
+            <span style="font-size:0.75rem;color:#666;font-weight:600;">ICAR Baseline</span>
           </div>
 
-          <!-- Worldwide Search Bar -->
-          <div style="display:flex;gap:6px;margin-top:8px;">
-            <input type="text" id="input-weather-search" class="input-text" style="flex:1;min-height:42px;font-size:0.88rem;" placeholder="Search any city or region worldwide (e.g. London, Dallas, Nairobi, Punjab)...">
-            <button id="btn-weather-search" class="btn btn-primary" style="min-width:64px;min-height:42px;padding:6px 12px;font-size:0.88rem;">Search</button>
-          </div>
-
-          <select id="select-weather-city" class="input-text" style="width:100%;min-height:42px;margin-top:8px;font-weight:600;">
-            <optgroup label="India / South Asia">
-              <option value="pune">Maharashtra (Pune / Nashik), India</option>
-              <option value="karnal">Haryana (Karnal / Panipat), India</option>
-              <option value="bengaluru">Karnataka (Kolar / Bengaluru), India</option>
-              <option value="varanasi">Uttar Pradesh (Varanasi), India</option>
-              <option value="hyderabad">Telangana (Warangal / Hyderabad), India</option>
-              <option value="patna">Bihar (Patna / Muzaffarpur), India</option>
-              <option value="anand">Gujarat (Anand / Vadodara), India</option>
-              <option value="ludhiana">Punjab (Ludhiana / Jalandhar), India</option>
-              <option value="kolkata">West Bengal (Kolkata / Hooghly), India</option>
-            </optgroup>
-            <optgroup label="Americas">
-              <option value="california">USA (California - Central Valley)</option>
-              <option value="iowa">USA (Iowa - Des Moines)</option>
-              <option value="florida">USA (Florida - Orlando)</option>
-              <option value="mexico">Mexico (Sinaloa - Culiacán)</option>
-              <option value="brazil">Brazil (Mato Grosso / São Paulo)</option>
-            </optgroup>
-            <optgroup label="Europe">
-              <option value="spain">Spain (Almería - Greenhouse Zone)</option>
-              <option value="italy">Italy (Emilia-Romagna / Bologna)</option>
-              <option value="france">France (Occitanie / Toulouse)</option>
-              <option value="uk">United Kingdom (Kent / London)</option>
-            </optgroup>
-            <optgroup label="Africa & Oceania">
-              <option value="kenya">Kenya (Naivasha / Nairobi)</option>
-              <option value="nigeria">Nigeria (Kano / Kaduna)</option>
-              <option value="egypt">Egypt (Nile Delta / Cairo)</option>
-              <option value="australia">Australia (Queensland - Bowen)</option>
-            </optgroup>
+          <select id="select-weather-city" class="input-text" style="width:100%;min-height:42px;font-weight:600;">
+            <option value="pune">Maharashtra (Pune / Nashik)</option>
+            <option value="karnal">Punjab / Haryana (Karnal / Ludhiana)</option>
+            <option value="bengaluru">Karnataka (Kolar / Bengaluru)</option>
+            <option value="varanasi">Uttar Pradesh (Varanasi / Lucknow)</option>
+            <option value="hyderabad">Telangana / AP (Warangal / Guntur)</option>
+            <option value="anand">Gujarat (Anand / Vadodara)</option>
+            <option value="patna">Bihar (Patna / Muzaffarpur)</option>
+            <option value="kolkata">West Bengal (Kolkata / Hooghly)</option>
+            <option value="odisha">Odisha (Cuttack / Sambalpur)</option>
+            <option value="tamilnadu">Tamil Nadu (Coimbatore / Dindigul)</option>
           </select>
+        </div>
+
+        <!-- Field Observation Interactive Controls (100% Offline) -->
+        <div class="field-obs-panel">
+          <div style="font-size:0.85rem;font-weight:800;color:#1b5e20;margin-bottom:8px;">🌾 Real-Time Field Observations (Tap to adjust):</div>
+          
+          <div class="obs-group">
+            <div class="obs-label">💨 Wind Speed:</div>
+            <div class="obs-chips">
+              <button type="button" class="btn-obs-chip" data-type="wind" data-val="1">Calm (&lt;2 km/h)</button>
+              <button type="button" class="btn-obs-chip active" data-type="wind" data-val="8">Optimal (8 km/h)</button>
+              <button type="button" class="btn-obs-chip" data-type="wind" data-val="18">Strong (&gt;14 km/h)</button>
+            </div>
+          </div>
+
+          <div class="obs-group" style="margin-top:8px;">
+            <div class="obs-label">🌡️ Temperature:</div>
+            <div class="obs-chips">
+              <button type="button" class="btn-obs-chip" data-type="temp" data-val="24">Morning (24°C)</button>
+              <button type="button" class="btn-obs-chip active" data-type="temp" data-val="28">Moderate (28°C)</button>
+              <button type="button" class="btn-obs-chip" data-type="temp" data-val="36">Scorching (&gt;32°C)</button>
+            </div>
+          </div>
+
+          <div class="obs-group" style="margin-top:8px;">
+            <div class="obs-label">🌧️ Rain / Sky:</div>
+            <div class="obs-chips">
+              <button type="button" class="btn-obs-chip active" data-type="rain" data-val="10">Dry / Clear (10%)</button>
+              <button type="button" class="btn-obs-chip" data-type="rain" data-val="25">Cloudy (25%)</button>
+              <button type="button" class="btn-obs-chip" data-type="rain" data-val="60">Rain Risk (&gt;30%)</button>
+            </div>
+          </div>
         </div>
 
         <!-- Dynamic Spray Suitability Banner -->

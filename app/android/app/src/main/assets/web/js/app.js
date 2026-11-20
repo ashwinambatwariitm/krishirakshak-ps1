@@ -191,44 +191,39 @@ function initApp() {
     window.appState.mockExample = mockParam;
   }
 
-  // Initialize Worldwide weather assessment
-  const btnGps = document.getElementById("btn-weather-gps");
-  if (btnGps) {
-    btnGps.addEventListener("click", async () => {
-      btnGps.innerHTML = `<span>⏳ Detecting...</span>`;
-      await window.fieldWeather.detectWorldwideLocation();
-      btnGps.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg><span>📍 Auto-Detect Location</span>`;
-      updateWeatherUI();
-    });
-  }
-
-  const btnSearch = document.getElementById("btn-weather-search");
-  const inputSearch = document.getElementById("input-weather-search");
-  if (btnSearch && inputSearch) {
-    const handleSearch = async () => {
-      const q = inputSearch.value.trim();
-      if (!q) return;
-      btnSearch.textContent = "...";
-      await window.fieldWeather.searchWorldwideCity(q);
-      btnSearch.textContent = "Search";
-      updateWeatherUI();
-    };
-    btnSearch.addEventListener("click", handleSearch);
-    inputSearch.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") handleSearch();
-    });
-  }
-
+  // Initialize 100% Offline Weather & Spray Assessment (Zero Network Calls)
   const citySelect = document.getElementById("select-weather-city");
   if (citySelect) {
-    citySelect.addEventListener("change", async (e) => {
-      await window.fieldWeather.fetchCityWeather(e.target.value);
+    citySelect.addEventListener("change", (e) => {
+      window.fieldWeather.selectRegion(e.target.value);
+      syncObsChipsWithData(window.fieldWeather.currentData);
       updateWeatherUI();
     });
   }
 
-  // Auto-detect location worldwide on startup
-  window.fieldWeather.detectWorldwideLocation().then(() => updateWeatherUI());
+  // Bind Field Observation Chips
+  const obsChips = document.querySelectorAll(".btn-obs-chip");
+  obsChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      const type = chip.getAttribute("data-type");
+      const val = parseInt(chip.getAttribute("data-val"), 10);
+      
+      document.querySelectorAll(`.btn-obs-chip[data-type="${type}"]`).forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+
+      if (type === "wind") {
+        window.fieldWeather.setFieldParameters(null, val, null);
+      } else if (type === "temp") {
+        window.fieldWeather.setFieldParameters(val, null, null);
+      } else if (type === "rain") {
+        window.fieldWeather.setFieldParameters(null, null, val);
+      }
+      updateWeatherUI();
+    });
+  });
+
+  // Render baseline weather immediately (100% offline, 0ms)
+  updateWeatherUI();
 
   // Register Service Worker for offline PWA
   if ("serviceWorker" in navigator) {
@@ -700,7 +695,7 @@ function updateWeatherUI() {
   if (windEl) windEl.textContent = `${data.windSpeed} km/h`;
   if (rainEl) rainEl.textContent = `${data.rainProb}%`;
   if (locEl) locEl.textContent = `📍 ${data.locationName}`;
-  if (badgeEl) badgeEl.textContent = `${data.weatherIcon || "📡"} ${data.weatherCondition || "Global Live"}`;
+  if (badgeEl) badgeEl.textContent = `📡 100% Offline On-Device`;
 
   if (!banner || !statusText || !issuesBox) return;
 
@@ -721,6 +716,25 @@ function updateWeatherUI() {
       issuesBox.appendChild(p);
     });
   }
+}
+
+/**
+ * Synchronize observation chip highlights with loaded data
+ */
+function syncObsChipsWithData(data) {
+  if (!data) return;
+  document.querySelectorAll('.btn-obs-chip[data-type="wind"]').forEach(c => {
+    const v = parseInt(c.getAttribute("data-val"), 10);
+    c.classList.toggle("active", (data.windSpeed <= 2 && v === 1) || (data.windSpeed > 2 && data.windSpeed <= 14 && v === 8) || (data.windSpeed > 14 && v === 18));
+  });
+  document.querySelectorAll('.btn-obs-chip[data-type="temp"]').forEach(c => {
+    const v = parseInt(c.getAttribute("data-val"), 10);
+    c.classList.toggle("active", (data.temp <= 25 && v === 24) || (data.temp > 25 && data.temp <= 32 && v === 28) || (data.temp > 32 && v === 36));
+  });
+  document.querySelectorAll('.btn-obs-chip[data-type="rain"]').forEach(c => {
+    const v = parseInt(c.getAttribute("data-val"), 10);
+    c.classList.toggle("active", (data.rainProb <= 15 && v === 10) || (data.rainProb > 15 && data.rainProb <= 30 && v === 25) || (data.rainProb > 30 && v === 60));
+  });
 }
 
 /**
