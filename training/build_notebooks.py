@@ -57,6 +57,11 @@ NOTEBOOKS = [
     # private copy of release models-v2 (the repository is private, so the notebook cannot download them)
     dict(src="ip102_pest_groups.py", slug="ps1-ip102-pest-groups", title="PS1 IP102 Pest Groups",
          datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx"], gpu=False),
+    # Deployed pest detector on 609 photos from other sources (Huang & Chuang 2020, CC BY 4.0), checked for IP102
+    # near-duplicates; advice per image under today's rule and the advice-group rules
+    dict(src="pest_independent_test.py", slug="ps1-pest-independent-test", title="PS1 Pest Independent Test",
+         datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx", "bangadbilla420/tomato-pest-8-originals-huang"],
+         gpu=False),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]

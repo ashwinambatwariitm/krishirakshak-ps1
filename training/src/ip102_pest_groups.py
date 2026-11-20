@@ -92,6 +92,9 @@ NC = len(IP102_NAMES)
 MAPPINGS = {
     "kb": {"aphids": [24, 27, 29], "thrips": [12, 33, 53, 54, 92], "mites": [21, 32],
            "caterpillars": [18, 19, 20, 23, 38, 39]},
+    # knowledge base after the advice-group change: Spodoptera litura ("Prodenia litura", 86) merged into caterpillars
+    "kb_with_86": {"aphids": [24, 27, 29], "thrips": [12, 33, 53, 54, 92], "mites": [21, 32],
+                   "caterpillars": [18, 19, 20, 23, 38, 39, 86]},
     "extended": {"aphids": [24, 27, 28, 29, 52, 89, 90, 91], "thrips": [12, 33, 53, 54, 92],
                  "mites": [21, 31, 32, 60, 61, 63, 74, 75], "caterpillars": [18, 19, 20, 23, 38, 39],
                  "spodoptera_tobacco_caterpillar": [86], "whitefly": [71, 82],
