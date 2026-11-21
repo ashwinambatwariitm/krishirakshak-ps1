@@ -9,9 +9,13 @@ class VoiceAdvisor {
     this.isSpeaking = false;
     this.currentUtterance = null;
     this.runId = 0;
+    this.durationTimer = null;
   }
 
   isAvailable() {
+    if (window.AndroidTTS && typeof window.AndroidTTS.isAvailable === "function") {
+      return true;
+    }
     return !!window.speechSynthesis;
   }
 
@@ -49,6 +53,39 @@ class VoiceAdvisor {
   }
 
   async speak(text, lang = "en", onEndCallback = null, fallbackText = null) {
+    // Strategy 1: Native Android TTS Interface (100% offline in Android APK WebView)
+    if (window.AndroidTTS && typeof window.AndroidTTS.speak === "function") {
+      this.stop();
+      const clean = (t) => (t || "")
+        .replace(/\[.*?\]/g, "")
+        .replace(/\*\*/g, "")
+        .replace(/\*/g, "")
+        .replace(/\u2022/g, "")
+        .replace(/#+/g, "")
+        .trim();
+      const cleanText = clean(text);
+      if (!cleanText) {
+        if (onEndCallback) onEndCallback();
+        return;
+      }
+      try {
+        this.isSpeaking = true;
+        document.body.classList.add("tts-active");
+        window.AndroidTTS.speak(cleanText, lang);
+
+        const wordCount = cleanText.split(/\s+/).length;
+        const estDurationMs = Math.min(60000, Math.max(3000, (wordCount / 2.3) * 1000));
+        if (this.durationTimer) clearTimeout(this.durationTimer);
+        this.durationTimer = setTimeout(() => {
+          this.stop();
+          if (onEndCallback) onEndCallback();
+        }, estDurationMs);
+        return;
+      } catch (err) {
+        console.warn("AndroidTTS bridge error:", err);
+      }
+    }
+
     if (!this.synth) {
       this.notify(window.t ? window.t("tts_unsupported") : "Text-to-Speech is not supported on this browser.");
       if (onEndCallback) onEndCallback();
@@ -133,11 +170,18 @@ class VoiceAdvisor {
 
   stop() {
     this.runId++;
+    if (this.durationTimer) {
+      clearTimeout(this.durationTimer);
+      this.durationTimer = null;
+    }
+    if (window.AndroidTTS && typeof window.AndroidTTS.stop === "function") {
+      try { window.AndroidTTS.stop(); } catch (e) {}
+    }
     if (this.synth) {
       this.synth.cancel();
-      this.isSpeaking = false;
-      document.body.classList.remove("tts-active");
     }
+    this.isSpeaking = false;
+    document.body.classList.remove("tts-active");
   }
 
   toggle(text, lang = "en", buttonEl = null, fallbackText = null) {

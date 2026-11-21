@@ -133,24 +133,13 @@ function initApp() {
       const res = window.appState.analysisResult;
       if (!res || !res.disease) return;
       const lang = window.getLanguage();
-      let textToRead = "";
-      const pct = Math.round((res.disease.top[0]?.probability || 0.9) * 100);
-      const english = `Diagnosis Result: ${res.disease.name}. Model confidence: ${pct} percent.` +
+      const diagName = getLocalizedDiseaseName(res.disease);
+      const pct = Math.round((res.disease.top && res.disease.top[0]?.probability ? res.disease.top[0].probability : 0.9) * 100);
+      const english = `Diagnosis Result: ${res.disease.name || diagName}. Model confidence: ${pct} percent.` +
                       (res.disease.urgent ? " Urgent: act today." : "");
-      if (lang !== "en" && lang !== "hi") {
-        textToRead = `${window.t("diagnosis_result")}: ${res.disease.name}. ${window.t("confidence")}: ${pct}%.` +
-                     (res.disease.urgent ? ` ${window.t("urgent_badge")}.` : "");
-        window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag, english);
-        return;
-      }
-      if (lang === "hi") {
-        textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
-        if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
-      } else {
-        textToRead = `Diagnosis Result: ${res.disease.name}. Model confidence: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} percent.`;
-        if (res.disease.urgent) textToRead += " Urgent: act today.";
-      }
-      window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag);
+      const textToRead = `${window.t("diagnosis_result")}: ${diagName}. ${window.t("confidence")}: ${pct}%.` +
+                         (res.disease.urgent ? ` ${window.t("urgent_badge")}.` : "");
+      window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag, english);
     });
   }
 
@@ -158,13 +147,32 @@ function initApp() {
   if (btnVoiceLlama) {
     btnVoiceLlama.addEventListener("click", () => {
       const res = window.appState.analysisResult;
-      if (!res || !res.llama || !res.llama.text) return;
+      if (!res) return;
+      const lang = window.getLanguage();
       const tr = window.appState.viewingEnglish ? null : res.translation;
-      if (tr && tr.text) {
-        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceLlama, res.llama.text);
-      } else {
+      const trText = tr ? (tr.text || (Array.isArray(tr.sentences) ? tr.sentences.join(" ") : "")) : "";
+      if (trText) {
+        window.voiceAdvisor.toggle(trText, tr.lang || lang, btnVoiceLlama, res.llama?.text);
+      } else if (res.llama && res.llama.text) {
         window.voiceAdvisor.toggle(res.llama.text, "en", btnVoiceLlama);
+      } else {
+        const adviceText = getVerifiedAdviceText(res);
+        if (adviceText) {
+          window.voiceAdvisor.toggle(adviceText, lang, btnVoiceLlama, getVerifiedAdviceEnglish(res));
+        }
       }
+    });
+  }
+
+  const btnVoiceAdvice = document.getElementById("btn-voice-advice");
+  if (btnVoiceAdvice) {
+    btnVoiceAdvice.addEventListener("click", () => {
+      const res = window.appState.analysisResult;
+      if (!res) return;
+      const adviceText = getVerifiedAdviceText(res);
+      if (!adviceText) return;
+      const lang = window.getLanguage();
+      window.voiceAdvisor.toggle(adviceText, lang, btnVoiceAdvice, getVerifiedAdviceEnglish(res));
     });
   }
 
@@ -173,9 +181,11 @@ function initApp() {
     btnVoiceAi.addEventListener("click", () => {
       const ansEl = document.getElementById("qa-answer-text");
       if (!ansEl || !ansEl.textContent) return;
+      const lang = window.getLanguage();
       const tr = window.appState.lastAnswerTranslation;
-      if (tr && tr.text) {
-        window.voiceAdvisor.toggle(tr.text, tr.lang, btnVoiceAi, ansEl.textContent);
+      const trText = tr ? (tr.text || (Array.isArray(tr.sentences) ? tr.sentences.join(" ") : "")) : "";
+      if (trText) {
+        window.voiceAdvisor.toggle(trText, tr.lang || lang, btnVoiceAi, ansEl.textContent);
       } else {
         window.voiceAdvisor.toggle(ansEl.textContent, "en", btnVoiceAi);
       }
@@ -321,6 +331,52 @@ function routeResultStatus(data) {
 }
 
 /**
+ * Localized disease name from topic or translation
+ */
+function getLocalizedDiseaseName(disease) {
+  if (!disease) return window.t("diagnosis_result");
+  const topic = disease.topic || "";
+  if (topic) {
+    const locTopic = window.t("topic_" + topic);
+    if (locTopic && locTopic !== "topic_" + topic) return locTopic;
+    const locDirect = window.t(topic);
+    if (locDirect && locDirect !== topic) return locDirect;
+  }
+  return disease.name || window.t("diagnosis_result");
+}
+
+/**
+ * Build verified advice text from official advice blocks (FR-7)
+ */
+function getVerifiedAdviceText(data) {
+  if (!data || !Array.isArray(data.advice_blocks)) return "";
+  const texts = [];
+  data.advice_blocks.forEach(block => {
+    if (block.name) texts.push(block.name);
+    const chunks = (block.chunks || []).filter(c => c.section !== "chemical");
+    chunks.forEach(c => {
+      if (c && c.text) texts.push(c.text);
+    });
+  });
+  return texts.join(". ");
+}
+
+/**
+ * Build English fallback text for verified advice blocks
+ */
+function getVerifiedAdviceEnglish(data) {
+  if (!data || !Array.isArray(data.advice_blocks)) return "";
+  const texts = [];
+  data.advice_blocks.forEach(block => {
+    const chunks = (block.chunks || []).filter(c => c.section !== "chemical");
+    chunks.forEach(c => {
+      if (c) texts.push(c.text_en || c.text || "");
+    });
+  });
+  return texts.join(". ");
+}
+
+/**
  * Render Status: answered Screen
  */
 function renderAnsweredScreen(data) {
@@ -338,7 +394,7 @@ function renderAnsweredScreen(data) {
   const spreadBadge = document.getElementById("res-spread-badge");
   const pestsBadge = document.getElementById("res-pests-badge");
 
-  diseaseNameEl.textContent = disease.name || window.t("diagnosis_result");
+  diseaseNameEl.textContent = getLocalizedDiseaseName(disease);
 
   if (disease.top && disease.top[0] && typeof disease.top[0].probability === "number") {
     const pct = Math.round(disease.top[0].probability * 100);
@@ -407,7 +463,8 @@ function renderAnsweredScreen(data) {
   // 4. Llama Advice Card (FR-6)
   const llamaContainer = document.getElementById("res-llama-card");
   const llamaTextEl = document.getElementById("res-llama-text");
-  if (data.llama && data.llama.text && data.llama.accepted !== false) {
+  const hasLlama = data.llama && data.llama.text && data.llama.accepted !== false;
+  if (hasLlama) {
     llamaTextEl.textContent = data.llama.text;
     llamaContainer.classList.remove("hidden");
   } else {
@@ -419,6 +476,12 @@ function renderAnsweredScreen(data) {
   const mtNote = document.getElementById("res-mt-unavailable");
   const llamaRejected = data.llama && (data.llama.accepted === false || !data.llama.text);
   if (mtNote) mtNote.classList.toggle("hidden", !(window.CONFIG.TRANSLATE_LANG && llamaRejected));
+
+  const btnVoiceAdvice = document.getElementById("btn-voice-advice");
+  if (btnVoiceAdvice) {
+    const hasAdvice = Array.isArray(data.advice_blocks) && data.advice_blocks.some(b => (b.chunks || []).length > 0);
+    btnVoiceAdvice.classList.toggle("hidden", !(hasAdvice && !hasLlama));
+  }
 
   // 5. Advice Blocks (FR-7)
   const adviceContainer = document.getElementById("res-advice-blocks");
@@ -859,7 +922,12 @@ function renderTranslation(container, tr, englishEl) {
   if (!container) return;
   container.innerHTML = "";
   if (englishEl) englishEl.classList.remove("hidden");
-  if (!tr || !tr.text) {
+  if (!tr) {
+    container.classList.add("hidden");
+    return;
+  }
+  const text = tr.text || (Array.isArray(tr.sentences) ? tr.sentences.join(" ") : "");
+  if (!text) {
     container.classList.add("hidden");
     return;
   }
@@ -869,7 +937,7 @@ function renderTranslation(container, tr, englishEl) {
   const body = document.createElement("p");
   body.className = "translation-text";
   body.lang = tr.lang || "";
-  body.textContent = tr.text;
+  body.textContent = text;
   container.appendChild(label);
   container.appendChild(body);
   if (tr.withheld) {
@@ -944,17 +1012,17 @@ function renderPestSeverity(container, rows) {
 }
 
 /**
- * "Advice also in" picker: shown only when the device reports translation languages (GET /api/info).
+ * Single unified language picker in header.
  */
 async function setupTranslatePicker() {
-  const picker = document.getElementById("translate-picker");
   const select = document.getElementById("select-translate");
-  if (!picker || !select) return;
+  if (!select) return;
   select.value = window.CONFIG.TRANSLATE_LANG || "";
   // One language choice for the whole app: labels, advice and the verified practices in the chosen language
   const applyInterfaceLanguage = () => {
     window.setLanguage(select.value || "en");   // labels in the chosen language (English where one is missing)
     if (typeof updateWeatherUI === "function") updateWeatherUI();
+    updateResultLanguageButton();
   };
   select.addEventListener("change", () => {
     window.CONFIG.TRANSLATE_LANG = select.value;
@@ -967,10 +1035,9 @@ async function setupTranslatePicker() {
     const langs = (info && info.translation_languages) || [];
     if (langs.length > 0) {
       Array.from(select.options).forEach(o => { o.hidden = o.value !== "" && !langs.includes(o.value); });
-      picker.classList.remove("hidden");
     }
   } catch (e) {
-    picker.classList.add("hidden");   // device not reachable or no translator: keep the picker hidden
+    // Keep language picker accessible for offline interface
   }
 }
 

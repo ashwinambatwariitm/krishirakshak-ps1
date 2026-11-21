@@ -103,6 +103,24 @@ body {
   gap: 8px;
 }
 
+.header-lang-picker {
+  display: flex;
+  align-items: center;
+}
+
+.header-lang-picker select {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--primary);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-btn);
+  padding: 8px 10px;
+  min-height: 44px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
 .icon-btn {
   background: rgba(255, 255, 255, 0.16);
   color: #ffffff;

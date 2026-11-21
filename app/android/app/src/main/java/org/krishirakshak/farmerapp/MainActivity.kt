@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.speech.tts.TextToSpeech
 import android.webkit.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private var filePathCallback: ValueCallback<Array<Uri>>? = null
     private var cameraImageUri: Uri? = null
+
+    private var tts: TextToSpeech? = null
+    private var isTtsReady = false
 
     private val fileChooserLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         checkPermissions()
+        initTTS()
 
         webView = WebView(this).apply {
             settings.apply {
@@ -74,6 +79,9 @@ class MainActivity : AppCompatActivity() {
                 allowFileAccessFromFileURLs = true
                 allowUniversalAccessFromFileURLs = true
             }
+
+            // Expose native Text-to-Speech bridge to JavaScript (100% offline)
+            addJavascriptInterface(AndroidTTSBridge(), "AndroidTTS")
 
             webViewClient = object : WebViewClient() {
                 override fun onReceivedError(
@@ -156,5 +164,56 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun initTTS() {
+        tts = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                isTtsReady = true
+                val result = tts?.setLanguage(Locale("hi", "IN"))
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    tts?.setLanguage(Locale("en", "IN"))
+                }
+            }
+        }
+    }
+
+    inner class AndroidTTSBridge {
+        @JavascriptInterface
+        fun isAvailable(): Boolean = isTtsReady
+
+        @JavascriptInterface
+        fun speak(text: String, lang: String) {
+            if (!isTtsReady || tts == null) return
+            val locale = when (lang.lowercase()) {
+                "hi" -> Locale("hi", "IN")
+                "mr" -> Locale("mr", "IN")
+                "te" -> Locale("te", "IN")
+                "ta" -> Locale("ta", "IN")
+                "kn" -> Locale("kn", "IN")
+                "bn" -> Locale("bn", "IN")
+                "gu" -> Locale("gu", "IN")
+                "pa" -> Locale("pa", "IN")
+                "or" -> Locale("or", "IN")
+                else -> Locale("en", "IN")
+            }
+            val result = tts?.setLanguage(locale)
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                tts?.setLanguage(Locale("en", "IN"))
+            }
+            tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "KR_TTS_${System.currentTimeMillis()}")
+        }
+
+        @JavascriptInterface
+        fun stop() {
+            tts?.stop()
+        }
+    }
+
+    override fun onDestroy() {
+        tts?.stop()
+        tts?.shutdown()
+        tts = null
+        super.onDestroy()
     }
 }
