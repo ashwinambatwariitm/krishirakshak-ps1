@@ -7,7 +7,7 @@ const I18N = {
   en: {
     app_title: "KrishiRakshak",
     app_subtitle: "On-Device Plant Health Advisor",
-    tagline: "Runs 100% offline on Raspberry Pi \u2022 Zero internet required",
+    tagline: "Works 100% offline on the Raspberry Pi. No internet needed.",
     
     // Bottom Navigation
     nav_scan: "Scan",
