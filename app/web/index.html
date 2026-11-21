@@ -446,9 +446,95 @@
         </div>
 
         <!-- Practical Spray Tip -->
-        <div class="alert-note" style="border-left-color:var(--primary);">
+        <div class="alert-note" style="border-left-color:var(--primary);margin-bottom:16px;">
           <strong data-i18n="spray_tip_title">Agronomy Spray Tip:</strong>
           <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM &#8211; 10:00 AM or 4:00 PM &#8211; 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
+        </div>
+
+        <!-- Interactive Field Observation Questions for Farmer -->
+        <div class="weather-questions-card">
+          <h3 class="weather-q-title" data-i18n="weather_q_section_title">Field Condition Questions</h3>
+          <p class="muted" style="margin-bottom:14px;font-size:0.88rem;" data-i18n="weather_q_section_desc">Answer 3 quick questions about your field to calculate spray suitability:</p>
+
+          <!-- Question 1: Wind Condition -->
+          <div class="weather-q-block">
+            <label class="weather-q-label">
+              <span class="q-icon">&#127811;</span>
+              <span data-i18n="q_wind_label">1. How is the wind in your field right now?</span>
+            </label>
+            <div class="weather-chip-group" data-q="wind">
+              <button type="button" class="weather-opt-btn active" data-wind="5" data-i18n="opt_wind_calm">Calm (&lt; 6 km/h)</button>
+              <button type="button" class="weather-opt-btn" data-wind="9" data-i18n="opt_wind_breeze">Gentle Breeze (7-12 km/h)</button>
+              <button type="button" class="weather-opt-btn" data-wind="18" data-i18n="opt_wind_strong">Strong Wind (&gt; 15 km/h)</button>
+            </div>
+          </div>
+
+          <!-- Question 2: Sun & Heat -->
+          <div class="weather-q-block">
+            <label class="weather-q-label">
+              <span class="q-icon">&#9728;&#65039;</span>
+              <span data-i18n="q_temp_label">2. What is the time and heat condition?</span>
+            </label>
+            <div class="weather-chip-group" data-q="temp">
+              <button type="button" class="weather-opt-btn" data-temp="25" data-hum="65" data-i18n="opt_temp_morning">Morning / Cool (25&#176;C)</button>
+              <button type="button" class="weather-opt-btn active" data-temp="28" data-hum="55" data-i18n="opt_temp_afternoon">Warm Afternoon (29&#176;C)</button>
+              <button type="button" class="weather-opt-btn" data-temp="36" data-hum="40" data-i18n="opt_temp_scorching">Hot Midday (&gt; 34&#176;C)</button>
+            </div>
+          </div>
+
+          <!-- Question 3: Sky & Rain -->
+          <div class="weather-q-block">
+            <label class="weather-q-label">
+              <span class="q-icon">&#127783;&#65039;</span>
+              <span data-i18n="q_rain_label">3. What is the sky and rain forecast?</span>
+            </label>
+            <div class="weather-chip-group" data-q="rain">
+              <button type="button" class="weather-opt-btn active" data-rain="10" data-i18n="opt_rain_clear">Clear Sky (No rain)</button>
+              <button type="button" class="weather-opt-btn" data-rain="30" data-i18n="opt_rain_cloudy">Cloudy / Overcast</button>
+              <button type="button" class="weather-opt-btn" data-rain="75" data-i18n="opt_rain_expected">Rain Expected / Raining</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weather & Spray Safety FAQs (Accordion Questions) -->
+        <div class="weather-faq-section" style="margin-top:20px;">
+          <h3 class="weather-q-title" style="margin-bottom:12px;" data-i18n="faq_title">Spray &amp; Weather Frequently Asked Questions</h3>
+          
+          <details class="weather-faq-item">
+            <summary class="faq-question">
+              <span data-i18n="faq_q1">What are the best hours of the day to spray?</span>
+            </summary>
+            <div class="faq-answer">
+              <p data-i18n="faq_a1">Early morning (7:00 AM &#8211; 10:00 AM) or late afternoon (4:00 PM &#8211; 6:30 PM). Avoid scorching midday heat (above 33&#176;C) to prevent rapid evaporation and foliar burn.</p>
+            </div>
+          </details>
+
+          <details class="weather-faq-item">
+            <summary class="faq-question">
+              <span data-i18n="faq_q2">Why is spraying dangerous in strong winds (>15 km/h)?</span>
+            </summary>
+            <div class="faq-answer">
+              <p data-i18n="faq_a2">High winds blow fine chemical mist away from the target tomato plants onto nearby crops, water canals, or the applicator (chemical drift), wasting money and causing contamination.</p>
+            </div>
+          </details>
+
+          <details class="weather-faq-item">
+            <summary class="faq-question">
+              <span data-i18n="faq_q3">What if rain falls within 2 to 4 hours after spraying?</span>
+            </summary>
+            <div class="faq-answer">
+              <p data-i18n="faq_a3">Rain will wash off contact fungicides before they can adhere to the leaf cuticle. Most sprays require at least 2 to 4 hours of dry weather to achieve rainfastness.</p>
+            </div>
+          </details>
+
+          <details class="weather-faq-item">
+            <summary class="faq-question">
+              <span data-i18n="faq_q4">Why should I check the harvest waiting period (PHI)?</span>
+            </summary>
+            <div class="faq-answer">
+              <p data-i18n="faq_a4">The Pre-Harvest Interval (PHI) is the mandatory number of days between the last pesticide spray and picking tomatoes. Strictly observe PHI to ensure produce is free from chemical residues.</p>
+            </div>
+          </details>
         </div>
       </div>
     </div>

@@ -1243,6 +1243,136 @@ body {
   color: var(--ink-muted);
 }
 
+/* Interactive Field Condition Questions */
+.weather-questions-card {
+  background: #ffffff;
+  border: 2px solid var(--line-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-q-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+
+.weather-q-block {
+  margin-bottom: 14px;
+}
+
+.weather-q-block:last-child {
+  margin-bottom: 0;
+}
+
+.weather-q-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.weather-q-label .q-icon {
+  font-size: 1rem;
+}
+
+.weather-chip-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.weather-opt-btn {
+  background: #f4f6f1;
+  color: #2e4a2f;
+  border: 1.5px solid #c2d1be;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.weather-opt-btn:hover {
+  background: #e8f5e9;
+  border-color: #81c784;
+}
+
+.weather-opt-btn.active {
+  background: #1b5e20;
+  color: #ffffff;
+  border-color: #0f3812;
+  box-shadow: 0 2px 6px rgba(27, 94, 32, 0.35);
+}
+
+/* Weather & Spray Safety FAQs */
+.weather-faq-section {
+  background: #ffffff;
+  border: 2px solid var(--line-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-faq-item {
+  border-bottom: 1px solid #e0e8de;
+  padding: 10px 0;
+}
+
+.weather-faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faq-question {
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+details[open] .faq-question::after {
+  content: "\2212";
+  color: #d32f2f;
+}
+
+.faq-answer {
+  padding-top: 8px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #111827;
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
 /* Kisan Guide & Toxicity Triangles */
 .cibrc-card {
   padding: 16px;

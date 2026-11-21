@@ -202,8 +202,9 @@ function initApp() {
     window.appState.mockExample = mockParam;
   }
 
-  // Initialize weather assessment
+  // Initialize weather assessment and field condition questions
   updateWeatherUI();
+  setupWeatherQuestions();
 
   // Register Service Worker for offline PWA
   if ("serviceWorker" in navigator) {
@@ -829,6 +830,17 @@ function updateWeatherUI() {
 
   if (!banner || !statusText || !issuesBox) return;
 
+  // Update metric indicators on cards
+  const d = window.fieldWeather.currentData;
+  const tempEl = document.getElementById("weather-temp");
+  const humEl = document.getElementById("weather-humidity");
+  const windEl = document.getElementById("weather-wind");
+  const rainEl = document.getElementById("weather-rain");
+  if (tempEl) tempEl.innerHTML = `${d.temp}&#176;C`;
+  if (humEl) humEl.textContent = `${d.humidity}%`;
+  if (windEl) windEl.textContent = `${d.windSpeed} km/h`;
+  if (rainEl) rainEl.textContent = `${d.rainProb}%`;
+
   const lang = window.getLanguage();
 
   if (evaluation.isFavorable) {
@@ -846,6 +858,39 @@ function updateWeatherUI() {
       issuesBox.appendChild(p);
     });
   }
+}
+
+/**
+ * Handle Field Condition Questions for Offline Weather Calibration
+ */
+function setupWeatherQuestions() {
+  const chipButtons = document.querySelectorAll(".weather-opt-btn");
+  if (!chipButtons.length) return;
+
+  chipButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const parentGroup = btn.closest(".weather-chip-group");
+      if (parentGroup) {
+        parentGroup.querySelectorAll(".weather-opt-btn").forEach(b => b.classList.remove("active"));
+      }
+      btn.classList.add("active");
+
+      // Gather current selections
+      const activeWindBtn = document.querySelector('.weather-chip-group[data-q="wind"] .weather-opt-btn.active');
+      const activeTempBtn = document.querySelector('.weather-chip-group[data-q="temp"] .weather-opt-btn.active');
+      const activeRainBtn = document.querySelector('.weather-chip-group[data-q="rain"] .weather-opt-btn.active');
+
+      const wind = activeWindBtn ? Number(activeWindBtn.getAttribute("data-wind")) : 7;
+      const temp = activeTempBtn ? Number(activeTempBtn.getAttribute("data-temp")) : 28;
+      const hum = activeTempBtn ? Number(activeTempBtn.getAttribute("data-hum")) : 55;
+      const rain = activeRainBtn ? Number(activeRainBtn.getAttribute("data-rain")) : 10;
+
+      if (window.fieldWeather) {
+        window.fieldWeather.setManualWeather(temp, hum, wind, rain);
+        updateWeatherUI();
+      }
+    });
+  });
 }
 
 /**
