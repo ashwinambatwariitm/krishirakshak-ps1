@@ -1403,3 +1403,7 @@ body {
 .theme-icon-sun { display: none; }
 html[data-theme="dark"] .theme-icon-sun { display: block; }
 html[data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* Header language button: "EN" or the chosen language's name, same height as the other header buttons */
+.icon-btn.lang-switch-btn { width: auto; min-width: 40px; padding: 0 10px; font-weight: 800; font-size: 0.82rem;
+  color: #ffffff; white-space: nowrap; }
