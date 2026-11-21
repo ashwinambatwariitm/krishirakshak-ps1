@@ -68,6 +68,10 @@ struct PipelineConfig {
     bool useLlama = true;
     bool useTranslator = true;
     bool parallelVision = true;
+    // Thermal guard (as in the road anomaly detection project): at or above this CPU temperature Llama is skipped for
+    // the photo and the verified extracts are shown alone, so the Pi does not heat further (it throttles at about
+    // 80-85 C). The hottest point measured in normal use was 62 C (results/pi5_bench/2026-11-21_power/).
+    double llamaMaxTempC = 80.0;
     // ONNX Runtime worker threads normally keep spinning for a while after each run, waiting for more work. Here
     // Llama runs right after vision on the same four cores, so spinning threads would take CPU time from it.
     bool ortSpin = false;

@@ -46,8 +46,16 @@ metrics in `results/severity/`.
   photos as blurred backgrounds behind the Roboflow leaves.
 - Validation on 91 held-out tomato field photos with lesion masks checked by plant pathologists (PlantSeg test
   split, evaluation only; `results/severity_plantseg/README.md`): level agrees with the expert level on **61%** of
-  the photos (colour rule used before: 31%), **74%** without the virus diseases; lesion IoU 0.37 (colour rule 0.17).
-  On the Roboflow test split (same photo style as training) 94%.
+  the photos (colour rule used before: 31%), **74%** without the virus diseases; lesion IoU 0.37, Dice 0.54 (colour
+  rule 0.17 / 0.29; mean Dice per photo 0.48 vs 0.28). On the Roboflow test split (same photo style as training) 94%.
+- Segmentation scores (pooled over all pixels; Dice = 2 x overlap / (predicted + reference area), from the same pixel
+  counts as the IoU, `results/severity_plantseg/model_v2_eval.json` and `results/severity/severity_metrics.json`):
+
+  | Test set | Lesion IoU | Lesion Dice | Leaf IoU | Leaf Dice |
+  |---|---|---|---|---|
+  | Roboflow test split (54 leaves, same style as training) | 0.868 | 0.929 | 0.968 | 0.984 |
+  | Field lesion photos, held out (Kaggle leaf disease segmentation) | 0.812 | 0.896 | - | - |
+  | PlantSeg expert masks, held-out half (91 field photos) | 0.373 | 0.543 | - | - |
 - Virus diseases (leaf curl, mosaic) get no level (`"not_applicable"`): their symptoms are curling and mottling, not
   lesion areas, and the model's level agreed with the expert only 4 of 20 times.
 - The level is called an estimate for the photographed leaf. It is shown in the app ("Estimated spread on leaf",

@@ -5,7 +5,7 @@ Its images and masks are NOT stored in this repository (licence: no redistributi
 metrics computed here are. Download: Hugging Face dataset Voxel51/PlantSeg-Test (samples.json + data/tomato_*.jpg).
 
 PlantSeg has lesion masks but no leaf masks, so severity is checked in two parts:
-  1. lesion detection: predicted lesion pixels vs the expert mask (precision, recall, IoU), per image and pooled;
+  1. lesion detection: predicted lesion pixels vs the expert mask (precision, recall, IoU, Dice), per image and pooled;
   2. severity level: lesion share = lesion pixels / leaf pixels, where both the prediction and the reference use
      the same leaf mask (the method's own leaf estimate), so the comparison isolates the lesion detection error.
      Reference level = level of (expert lesion pixels inside the leaf / leaf pixels).
@@ -163,6 +163,7 @@ def main():
             summary[split][m] = {
                 "lesion_precision": round(tp / max(1, pred), 3), "lesion_recall": round(tp / max(1, gt), 3),
                 "lesion_iou": round(tp / max(1, pred + gt - tp), 3),
+                "lesion_dice": round(2 * tp / max(1, pred + gt), 3),     # same pooled pixel counts as the IoU
                 "expert_lesion_inside_leaf_mask": round(coverage, 3),
                 "graded_images": len(graded), "level_agreement": round(agree / max(1, len(graded)), 3),
                 "median_abs_share_error": round(float(np.median(share_err)), 3) if share_err else None,

@@ -35,4 +35,19 @@ inline std::string readFile(const std::string& path) {
     return ss.str();
 }
 
+// Raspberry Pi CPU temperature in degrees Celsius from sysfs (as in the road anomaly detection project);
+// -1 when the sensor is not available (for example on a laptop without that file).
+inline double readCpuTempC() {
+    std::ifstream in("/sys/class/thermal/thermal_zone0/temp");
+    long milliC = 0;
+    return (in >> milliC) ? milliC / 1000.0 : -1.0;
+}
+
+// Current clock of CPU 0 in MHz (the Pi 5 runs at 2400 MHz and lowers it when it throttles); -1 if unavailable.
+inline double readCpuFreqMhz() {
+    std::ifstream in("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq");
+    long khz = 0;
+    return (in >> khz) ? khz / 1000.0 : -1.0;
+}
+
 }  // namespace kr

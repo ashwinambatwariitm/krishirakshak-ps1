@@ -291,9 +291,10 @@ def evaluate(items, with_leaf=True):
             a, b = level(ref), level(pred)
             agree += a == b
             conf[f"{a}->{b}"] = conf.get(f"{a}->{b}", 0) + 1
-    out = {"lesion_iou": round(float(si / max(1, su)), 3)}
+    # Dice from the same pooled pixel counts: 2 |A and B| / (|A| + |B|) = 2 I / (I + U)
+    out = {"lesion_iou": round(float(si / max(1, su)), 3), "lesion_dice": round(float(2 * si / max(1, si + su)), 3)}
     if with_leaf:
-        out.update(leaf_iou=round(float(li / max(1, lu)), 3), level_agreement=round(agree / max(1, n), 3),
+        out.update(leaf_iou=round(float(li / max(1, lu)), 3), leaf_dice=round(float(2 * li / max(1, li + lu)), 3), level_agreement=round(agree / max(1, n), 3),
                    median_share_error=round(float(np.median(errs)), 3) if errs else None, confusion=conf, images=n)
     return out
 

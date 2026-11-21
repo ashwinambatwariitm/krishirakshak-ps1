@@ -113,7 +113,8 @@ nlohmann::json Pipeline::info() const {
 #endif
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
             {"vision_threads_per_model", cfg_.visionThreads},
-            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"},
+            {"cpu_temp_c", readCpuTempC()}, {"cpu_freq_mhz", readCpuFreqMhz()}};
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const std::string& translateTo) {
@@ -121,6 +122,8 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     nlohmann::json result = {{"lang", lang}, {"display_lang", show}, {"translation", nullptr}};
     nlohmann::json timings;
     Timer total;
+    const double tempStartC = readCpuTempC();
+    const bool tooHot = tempStartC >= cfg_.llamaMaxTempC;
 
     Timer t;
     const QualityResult q = checkQuality(imageRgb);
@@ -235,10 +238,18 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     result["advice_blocks"] = blocks;
     timings["retrieval"] = t.ms();
 
+    // Severe cases go to an extension worker (organisers' demo flow: "explain uncertainty and route severe cases to an
+    // extension worker"): lesions on at least 25% of the leaf ("high"), an urgent disease (late blight), or a high
+    // pest level for this photo. The app also gets the flag (refer_to_expert) for its own display.
+    const bool severe = (answered && (kb_->urgent(topic) ||
+                                      (result.contains("severity") && result["severity"].value("level", "") == "high"))) ||
+                        std::any_of(pestSev.begin(), pestSev.end(), [](const PestSeverity& s) { return s.level == "high"; });
+    result["refer_to_expert"] = severe;
     auto messagesIn = [&](const std::string& l) {
         nlohmann::json m = nlohmann::json::array();
         if (!isTomato) m.push_back(kb_->message("not_tomato", l));
         else if (!answered) m.push_back(kb_->message("uncertain", l));
+        if (severe) m.push_back(kb_->message("severe_route", l));
         if (answered && kb_->reliability(topic) == "low") m.push_back(kb_->message("expert_confirm", l));
         if (anyUnreliable) m.push_back(kb_->message("pest_species_uncertain", l));
         if (anySpray) m.push_back(kb_->message("chemical_rule", l));
@@ -265,7 +276,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     result["llama"] = nullptr;
 
 #ifdef KR_WITH_LLM
-    if (llama_ && !topics.empty() && lang == "en") {
+    if (llama_ && !topics.empty() && lang == "en" && tooHot) {
+        // Thermal guard: no Llama while the CPU is this hot; the verified extracts are the advice
+        result["llama"] = {{"text", nullptr}, {"accepted", false}, {"rejected_reasons", {"device_too_hot"}}};
+    } else if (llama_ && !topics.empty() && lang == "en") {
         // One-line structured summary for Llama (English); the facts are in the answer language
         std::string line;
         if (answered) {
@@ -300,6 +314,9 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
 #endif
     timings["total"] = total.ms();
     result["timings_ms"] = timings;
+    // Device state for the technical details and the report: temperature before and after this photo, CPU clock
+    result["device"] = {{"cpu_temp_start_c", tempStartC}, {"cpu_temp_end_c", readCpuTempC()},
+                        {"cpu_freq_mhz", readCpuFreqMhz()}, {"llama_skipped_hot", tooHot && !topics.empty()}};
     return result;
 }
 
