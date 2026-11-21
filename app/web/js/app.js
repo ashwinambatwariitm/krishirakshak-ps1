@@ -392,7 +392,8 @@ function renderAnsweredScreen(data) {
     });
     const pestStrings = [...counts].map(([label, n]) => (n > 1 ? `${label} \u00d7 ${n}` : label));
     pestsBadge.textContent = `${window.t("insect_found")}: ${pestStrings.join(", ")}`;
-    pestsBadge.classList.remove("hidden");
+    // When the title already is the pest result ("Pest detected: ..."), the badge would repeat it
+    pestsBadge.classList.toggle("hidden", !disease.name);
   } else {
     pestsBadge.classList.add("hidden");
   }
