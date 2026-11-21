@@ -58,6 +58,7 @@ public:
     std::string qualityMessage(const std::string& issue, const std::string& lang) const;
     std::string reliability(const std::string& topic) const;                              // good / medium / low
     bool urgent(const std::string& topic) const;
+    bool isPest(const std::string& topic) const;                                          // kind == "pest"
     // Advice topic of one detection. Group model: the topic of its class (modelTopic, from pest_config) when that
     // class is reliable. IP102 species model: the species' topic when the species is reliable or the topic is one of
     // the reliable advice groups. Otherwise insect_other.

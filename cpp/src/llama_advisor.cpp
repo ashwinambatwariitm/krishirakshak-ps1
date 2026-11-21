@@ -110,12 +110,15 @@ bool looksLikeRefusal(const std::string& text) {
     return false;
 }
 
-// Detects a repeated sentence while tokens stream in. Text is split at '.', '!', '?', ';' and new lines; each
-// completed sentence is normalised (lower-case letters only, list markers such as "IV." are too short to count) and
-// compared with the sentences seen before in this answer.
+// Detects a repeated sentence while tokens stream in. Text is split at '.', '!', '?', ';' and new lines. A completed
+// sentence counts as a repeat when it is the same as an earlier one, or nearly the same: at least 80 % of their
+// content words shared (Jaccard), as in "The disease is highly contagious and can spread quickly through the air."
+// followed later by "The disease is also highly contagious and can spread quickly through the air." (Pi 5 run,
+// 2026-11-18: not caught by exact matching, so 1B decoded to the 160-token limit). List markers ("IV.") and
+// fragments are too short to count.
 class RepeatDetector {
 public:
-    // Adds the next token piece; returns true when it completes a sentence that was already written.
+    // Adds the next token piece; returns true when it completes a sentence that repeats an earlier one.
     bool addAndCheck(const std::string& piece) {
         for (char ch : piece) {
             if (ch == '.' || ch == '!' || ch == '?' || ch == ';' || ch == '\n') {
@@ -130,18 +133,48 @@ public:
     }
 
 private:
+    static bool isStopword(const std::string& w) {
+        static const std::set<std::string> kStop = {"the", "and", "can", "also", "this", "that", "with", "from",
+                                                    "into", "are", "was", "for", "its", "their", "very", "will"};
+        return kStop.count(w) > 0;
+    }
+
     bool finishSentence() {
-        std::string key;
+        std::string key, word;
+        std::set<std::string> words;
         int letters = 0;
+        auto endWord = [&] {
+            if (word.size() >= 3 && !isStopword(word)) words.insert(word);
+            word.clear();
+        };
         for (unsigned char ch : current_) {
-            if (std::isalpha(ch)) { key += static_cast<char>(std::tolower(ch)); ++letters; }
-            else if (std::isspace(ch) && !key.empty() && key.back() != ' ') key += ' ';
+            if (std::isalpha(ch)) {
+                const char c = static_cast<char>(std::tolower(ch));
+                key += c;
+                word += c;
+                ++letters;
+            } else {
+                endWord();
+                if (std::isspace(ch) && !key.empty() && key.back() != ' ') key += ' ';
+            }
         }
+        endWord();
         if (letters < 12) return false;          // list markers ("IV"), fragments: not a sentence
-        return !seen_.insert(key).second;
+        if (!seen_.insert(key).second) return true;
+        if (words.size() >= 4) {
+            for (const auto& prev : seenWords_) {
+                size_t common = 0;
+                for (const auto& w : words) common += prev.count(w);
+                const size_t uni = words.size() + prev.size() - common;
+                if (uni > 0 && common * 10 >= uni * 8) return true;
+            }
+            seenWords_.push_back(words);
+        }
+        return false;
     }
     std::string current_;
     std::set<std::string> seen_;
+    std::vector<std::set<std::string>> seenWords_;
 };
 
 class ExecuTorchLlama final : public LlamaAdvisor {
@@ -152,27 +185,21 @@ public:
     LlamaOutput advise(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
                        const std::string& lang) override {
         // Rephrase-only prompt (tests showed the 1B model refusing on "do not name pesticides" wording and reversing
-        // instructions when asked to "explain"): Llama rewrites each fact in simple words and nothing else.
-        // The one-shot example is deliberately about another topic (grain storage): on the Raspberry Pi 5 the
-        // earlier example (crop debris, overhead irrigation - also late blight advice) was copied as the answer and
-        // repeated until the token limit. Copied example sentences are not in the extracts, so the grounding check
-        // drops them.
-        // "Keep the key words" (2026-11-18): Llama 3.2 3B rewrote faithfully but in its own words ("yellow edge" for
-        // "yellow margin"), so the grounding check dropped correct sentences; asking it to keep the technical terms
-        // raised the accepted answers on the five test photos from 6/10 to 7/10 (1B + 3B) with no distortion.
-        // The same text is in prompts/advise_keep_words.txt for experiments with KR_ADVISOR_PROMPT.
+        // instructions when asked to "explain"): Llama rewrites the facts in simple words and nothing else.
+        // Prompt v8 of the prompt evaluation (docs/llama_1b_quality.md, prompts/aman_v8_no_numbering.txt): every
+        // source sentence becomes its own short sentence (the grounding check matches each answer sentence to ONE
+        // source sentence, so merged rewrites were dropped), no one-shot example (the 1B model copied it into the
+        // answer) and "Do not number the lines" (numbers glued to a line failed the number rule). Base 1B, all 27
+        // topics: 24 accepted (previous prompt 15), 0 refusals (8), no distortion in a manual review of all kept
+        // sentences. The previous prompt is kept in prompts/advise_keep_words.txt (KR_ADVISOR_PROMPT=<file>).
         const std::string system =
-            std::string("You rewrite agricultural extension text for tomato farmers in India. Rewrite each FACT in "
-                        "simple ") +
-            languageName(lang) + " as one short sentence. Keep the key words of the fact: the names of symptoms, "
-            "plant parts, pests and actions (for example \"concentric rings\", \"margin\", \"lesions\", \"crop "
-            "debris\", \"crop rotation\") stay as they are; only make the sentence shorter and easier to read. Keep "
-            "the meaning of every fact exactly: do not add new advice, causes, months or numbers, do not leave out an "
-            "instruction and never turn an instruction into its opposite. Write each fact once, as plain sentences "
-            "without a title, list markers or an introduction.\n\n"
-            "Example (a different topic, only to show the style).\nFACTS:\n1. Cleaning of storage bins before "
-            "filling with grain.\n2. Avoid storing grain in damp bags.\nRewritten facts:\nClean the storage bins "
-            "before filling them with grain. Avoid storing grain in damp bags.";
+            std::string("You rewrite agricultural extension text for tomato farmers in India in simple ") + languageName(lang) +
+            ". Rewrite every sentence of the FACTS as its own short sentence, in the same order. Never join two "
+            "sentences into one. Keep the key words of each sentence: the names of symptoms, plant parts, pests and "
+            "actions stay as they are; only make the sentence shorter and easier to read. Keep the meaning exactly: "
+            "do not add new advice, causes, months or numbers, do not leave out an instruction and never turn an "
+            "instruction into its opposite. Write only the rewritten sentences, one per line, without numbers, a "
+            "title, an introduction or a note at the end. Do not number the lines.";
         std::string user = diagnosisLine + "\n\nFACTS:\n" + factsBlock(facts) + "\nRewritten facts:";
 
         // Development option: KR_ADVISOR_PROMPT=<file> replaces the prompt above, so prompt variants can be tried on

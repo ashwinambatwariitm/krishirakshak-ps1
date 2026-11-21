@@ -287,20 +287,11 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
                             " (" + ps.level + " for one photo).";
         }
         t.reset();
-        const LlamaOutput out = llama_->advise(line, blockChunks.front(), lang);
+        result["llama"] = runAdvisor(line, blockChunks.front(), topics.front(), lang);
         timings["llama"] = t.ms();
-        // 1. drop sentences not supported by the sources; 2. safety/language checks on what remains
-        const GroundingResult gr = keepGroundedSentences(out.text, blockChunks.front());
-        GuardResult g = checkOutput(gr.kept, blockChunks.front(), lang, topics.front());
-        if (gr.keptCount < kMinGroundedSentences) {
-            g.ok = false;
-            g.reasons.push_back("too_few_grounded_sentences:" + std::to_string(gr.keptCount));
-        }
-        result["llama"] = {{"text", g.ok ? nlohmann::json(gr.kept) : nullptr}, {"accepted", g.ok},
-                           {"rejected_reasons", g.reasons}, {"dropped_sentences", gr.dropped},
-                           {"raw_text", out.text}, {"stats", out.stats}};
         // Only accepted (grounded and checked) English text is translated
-        if (g.ok) result["translation"] = translate(gr.kept, translateTo, timings);
+        if (result["llama"]["accepted"].get<bool>())
+            result["translation"] = translate(result["llama"]["text"].get<std::string>(), translateTo, timings);
     } else if (llama_ && lang == "hi") {
         // Llama 3.2 1B produced fluent but meaningless Hindi in tests: the Hindi page shows the reviewed Hindi
         // extracts only.
@@ -310,6 +301,46 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     timings["total"] = total.ms();
     result["timings_ms"] = timings;
     return result;
+}
+
+#ifdef KR_WITH_LLM
+nlohmann::json Pipeline::runAdvisor(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
+                                    const std::string& topic, const std::string& lang) {
+    const LlamaOutput out = llama_->advise(diagnosisLine, facts, lang);
+    // 1. drop sentences not supported by the sources; 2. safety/language checks on what remains
+    const GroundingResult gr = keepGroundedSentences(out.text, facts);
+    GuardResult g = checkOutput(gr.kept, facts, lang, topic);
+    if (gr.keptCount < kMinGroundedSentences) {
+        g.ok = false;
+        g.reasons.push_back("too_few_grounded_sentences:" + std::to_string(gr.keptCount));
+    }
+    return {{"text", g.ok ? nlohmann::json(gr.kept) : nullptr}, {"accepted", g.ok},
+            {"grounded_sentences", gr.keptCount}, {"rejected_reasons", g.reasons},
+            {"dropped_sentences", gr.dropped}, {"raw_text", out.text}, {"stats", out.stats}};
+}
+#endif
+
+nlohmann::json Pipeline::evalAdvisor(const std::string& topic) {
+    nlohmann::json r = {{"topic", topic}, {"name", kb_->topicName(topic, "en")}, {"llama", nullptr}};
+    const auto facts = kb_->retrieveForDiagnosis(topic, "en");
+    r["facts"] = static_cast<int>(facts.size());
+#ifdef KR_WITH_LLM
+    if (!llama_ || facts.empty()) return r;
+    // Same diagnosis line as analyse() builds for a photo; a healthy leaf gets no spread estimate there
+    std::string line;
+    if (kb_->isPest(topic)) {
+        line = "An insect pest was found on the tomato plant: " + kb_->topicName(topic, "en") + ".";
+    } else {
+        line = "Diagnosis: " + kb_->topicName(topic, "en") + " on a tomato leaf (model confidence 92%).";
+        if (topic != "healthy") line += " Estimated spread on the photographed leaf: medium.";
+        if (kb_->urgent(topic)) line += " This disease is urgent: it spreads very fast.";
+        if (kb_->reliability(topic) == "low")
+            line += " The photo result is not certain; the farmer should confirm with the local KVK.";
+    }
+    r["diagnosis_line"] = line;
+    r["llama"] = runAdvisor(line, facts, topic, "en");
+#endif
+    return r;
 }
 
 nlohmann::json Pipeline::followUp(const std::string& question, const std::string& topic, const std::string& lang,

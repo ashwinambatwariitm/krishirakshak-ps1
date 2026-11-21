@@ -84,6 +84,10 @@ public:
     nlohmann::json followUp(const std::string& question, const std::string& topic, const std::string& lang,
                             const std::string& translateTo = "");
     nlohmann::json info() const;
+    // Llama summary of one knowledge-base topic without a photo, through the same Llama call and checks as
+    // analyse() (diagnosis line with confidence 92 %, spread "medium" except for a healthy leaf). For measuring
+    // prompts and models: krishirakshak --eval-advisor demo|all|TOPIC,TOPIC
+    nlohmann::json evalAdvisor(const std::string& topic);
     bool llamaReady() const;
     bool translatorReady() const;
 
@@ -91,6 +95,10 @@ private:
     std::string path(const std::string& p) const;
     // Translates accepted English text; null JSON if no translator, no target language or nothing to translate.
     nlohmann::json translate(const std::string& english, const std::string& translateTo, nlohmann::json& timings);
+    // Llama summary of the extracts, then the grounding check, the safety checks and the minimum number of grounded
+    // sentences. Returns the "llama" object of the result (text is null when rejected).
+    nlohmann::json runAdvisor(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,
+                              const std::string& topic, const std::string& lang);
     PipelineConfig cfg_;
     std::unique_ptr<DiseaseClassifier> disease_;
     std::unique_ptr<DiseaseClassifier> leafCheck_;   // same preprocessing as the disease model, two classes

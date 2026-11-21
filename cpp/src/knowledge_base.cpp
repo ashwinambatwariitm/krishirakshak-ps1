@@ -286,6 +286,9 @@ std::string KnowledgeBase::reliability(const std::string& topic) const {
 bool KnowledgeBase::urgent(const std::string& topic) const {
     return kb_.at("topics").at(topic).value("urgent", false);
 }
+bool KnowledgeBase::isPest(const std::string& topic) const {
+    return kb_.at("topics").at(topic).value("kind", "") == "pest";
+}
 std::string KnowledgeBase::pestTopic(int speciesId, bool speciesReliable, const std::string& modelTopic) const {
     // Group model (pest_config topic_by_class): the class is an advice group; its topic only when the group is reliable
     if (!modelTopic.empty())

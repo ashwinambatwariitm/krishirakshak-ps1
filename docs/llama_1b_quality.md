@@ -151,6 +151,19 @@ grounded sentences); C++ and Python give the same result on all 661 answers (`to
 The LoRA answer now rejected is `healthy`: "Do not plant tomato with chilli or brinjal." from "do not follow tomato
 with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app then shows the knowledge-base text.
 
+## v8 in the application (19 Nov 2026)
+
+- v8 is now the built-in prompt of `cpp/src/llama_advisor.cpp` (same text as `prompts/aman_v8_no_numbering.txt`).
+  The previous prompt stays available: `KR_ADVISOR_PROMPT=prompts/advise_keep_words.txt`.
+- The near-duplicate repeat stop of the evaluation branch (`llama-quality-speed`) is in the application too, so the
+  application decodes like the evaluation runs above.
+- `krishirakshak --eval-advisor demo|all|TOPIC,TOPIC` is in main: one JSON line per topic, same fields as
+  `results/llama_eval/<run>/eval.jsonl` (for `llm/summarize_eval.py`), through the same Llama call and checks as a
+  photo (`Pipeline::runAdvisor`); `all` is the 27 topics of this document; healthy gets no spread line.
+- **Open: the default model is the LoRA-tuned 1B, which was trained with the previous prompt.** v8 was measured on the
+  base 1B only. LoRA + v8, LoRA + previous prompt, base + v8 and base + previous prompt must be compared before the
+  release; compare on the six demo topics separately, because the other 21 were LoRA training topics.
+
 ## Known limits of v8
 
 - **Fragments.** v8 keeps the facts but some answers are lists of short noun phrases rather than sentences. Worst case
