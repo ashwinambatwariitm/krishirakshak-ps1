@@ -13,6 +13,8 @@
 #include "common.hpp"
 #include "indic_text.hpp"
 
+#include <cctype>
+
 #include <ctranslate2/translator.h>
 #include <sentencepiece_processor.h>
 
@@ -41,7 +43,8 @@ public:
                                                                 std::vector<int>{0}, false, config);
     }
 
-    TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang) override {
+    TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang,
+                                const Terms& terms) override {
         Timer timer;
         TranslationOutput out;
         out.lang = lang;
@@ -50,13 +53,38 @@ public:
 
         // 1) pre-processing and tokenisation; empty sentences are not sent to the model
         std::vector<indic_text::PlaceholderMap> maps;
+        std::vector<std::vector<std::string>> termTexts;   // batch row -> local texts of its protected terms
         std::vector<std::vector<std::string>> batch;
         std::vector<size_t> index;   // batch row -> sentence
         out.sentences.resize(sentences.size());
         for (size_t i = 0; i < sentences.size(); ++i) {
             out.sentences[i].english = sentences[i];
-            // glossary first (plain English translates correctly), then the IndicTrans2 pre-processing
-            const indic_text::Prepared p = indic_text::preprocessEnglish(indic_text::plainEnglish(sentences[i]), flores);
+            // Terms first: each one becomes an ASCII marker word ("KRTERMA") that the glossary and the Moses
+            // tokenizer leave alone, and after pre-processing a placeholder restored as the local text
+            std::string english = sentences[i];
+            std::vector<std::pair<std::string, std::string>> markers;   // marker -> local text
+            for (size_t k = 0; k < terms.size() && markers.size() < 26; ++k) {
+                if (terms[k].first.empty() || terms[k].second.empty()) continue;
+                const std::string marker = std::string("KRTERM") + static_cast<char>('A' + markers.size());
+                std::string lower = english, term = terms[k].first;
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+                std::transform(term.begin(), term.end(), term.begin(), ::tolower);
+                bool found = false;
+                for (size_t pos = lower.find(term); pos != std::string::npos; pos = lower.find(term, pos + 1)) {
+                    // whole words only ("mites" is not inside "termites")
+                    const bool startOk = pos == 0 || !std::isalpha(static_cast<unsigned char>(lower[pos - 1]));
+                    const size_t end = pos + term.size();
+                    const bool endOk = end >= lower.size() || !std::isalpha(static_cast<unsigned char>(lower[end]));
+                    if (!startOk || !endOk) continue;
+                    english.replace(pos, term.size(), marker);
+                    lower.replace(pos, term.size(), marker);
+                    found = true;
+                }
+                if (found) markers.emplace_back(marker, terms[k].second);
+            }
+            // glossary (plain English translates correctly), then the IndicTrans2 pre-processing
+            indic_text::Prepared p = indic_text::preprocessEnglish(indic_text::plainEnglish(english), flores);
+            for (const auto& m : markers) indic_text::addTermPlaceholder(p, m.first, m.second);
             // p.text = "eng_Latn <tgt> <text>": the two tags are tokens of their own, the text goes to SentencePiece
             const size_t a = p.text.find(' '), b = p.text.find(' ', a + 1);
             const std::string body = b == std::string::npos ? std::string() : p.text.substr(b + 1);
@@ -68,6 +96,8 @@ public:
             tokens.insert(tokens.end(), pieces.begin(), pieces.end());
             batch.push_back(std::move(tokens));
             maps.push_back(p.placeholders);
+            termTexts.push_back({});
+            for (const auto& m : markers) termTexts.back().push_back(m.second);
             index.push_back(i);
         }
 
@@ -87,6 +117,14 @@ public:
                 const std::vector<std::string>& pieces = results[r].hypotheses.at(0);
                 s.complete = pieces.size() < kMaxTokens;
                 s.text = indic_text::postprocess(indic_text::decodePieces(pieces), flores, maps[r]);
+                // Left over from a broken term placeholder ("<ID1. ..." -> "<name. ..."; Marathi, Pi 2026-11-21):
+                // the bracket before the name and a full stop right after it inside the sentence
+                for (const std::string& t : termTexts[r])
+                    for (const auto& [from, to] : std::vector<std::pair<std::string, std::string>>{
+                             {"< " + t, t}, {"<" + t, t}, {t + ". ", t + " "}, {t + " . ", t + " "}}) {
+                        for (size_t pos = s.text.find(from); pos != std::string::npos; pos = s.text.find(from, pos + to.size()))
+                            s.text.replace(pos, from.size(), to);
+                    }
                 s.repetition = indic_text::hasRepetition(s.text);
                 const bool placeholderLeft = s.text.find("<ID") != std::string::npos ||
                                              s.text.find("[ID") != std::string::npos;

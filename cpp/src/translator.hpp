@@ -45,8 +45,14 @@ class Translator {
 public:
     virtual ~Translator() = default;
 
+    // English term -> text shown instead in the target language (the reviewed local disease or pest name)
+    using Terms = std::vector<std::pair<std::string, std::string>>;
+
     // Translates the sentences of one answer as one batch. lang is a two-letter code (see supportedLanguages()).
-    virtual TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang) = 0;
+    // Each term found in a sentence (case-insensitive) is not translated by the model: it is replaced by its given
+    // local text, so "Early blight" becomes the knowledge base's Marathi name, not a literal "early disease".
+    virtual TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang,
+                                        const Terms& terms = {}) = 0;
 
     static const std::vector<std::string>& supportedLanguages();   // hi te mr kn ta bn gu or pa
 

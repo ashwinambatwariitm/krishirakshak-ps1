@@ -57,9 +57,11 @@ Answer: one JSON object. **Start from `status`:**
 | `answered` | a disease (or healthy) and/or a pest was identified | result screen (below) |
 | `uncertain` | photo is fine but the model is not sure | `messages` + advice to retake or ask the local KVK; no diagnosis |
 | `retake_photo` | photo is too dark, bright, blurred or small | `messages` (one line per problem) and a "take another photo" button |
-| `not_tomato` | the tomato-leaf check found no tomato leaf and no insect of a tomato pest group | `messages` ("This photo does not look like a tomato leaf ...") and a "take another photo" button; no diagnosis |
+| `not_tomato` | no crop leaf and no insect pest in the photo (the name is kept for compatibility) | `messages` ("No crop leaf and no insect pest was found in this photo. Take a photo of the affected leaf, or of the insect on the plant, in daylight.") and a "take another photo" button; no diagnosis |
 
-When the photo is not a tomato leaf but an insect of a tomato pest group is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, and the pest result as usual. `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
+Leaf disease and pest detection are equal tasks. When the photo shows no leaf of a supported crop but an insect is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, the pest result as usual, and the message "No crop leaf is visible in the photo, so no leaf disease was checked." The app shows it as a pest result ("Pest detected"). `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
+
+`crop`: the crop detected in the photo, e.g. `{"name": "tomato", "source": "leaf_check"}`, or `null` when no leaf of a supported crop was found. The farmer never selects the crop. `supported_crops` (also in `/api/info`): crops whose leaf diseases are checked, `["tomato"]` in Phase 1; a crop-identification model fills `crop` in Phase 2.
 
 `refer_to_expert` (true / false): the case should go to an extension worker - lesions on at least 25% of the leaf (severity `high`), an urgent disease (late blight), a virus disease (leaf curl, mosaic: severity `not_applicable`) or
 a `high` pest level for the photo. `messages` then contains "This looks serious. Show the affected leaves to your local KVK or agriculture officer soon, or call the Kisan Call Centre on 1800-180-1551 (free)." in the display language.

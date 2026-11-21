@@ -98,7 +98,9 @@ public:
 private:
     std::string path(const std::string& p) const;
     // Translates accepted English text; null JSON if no translator, no target language or nothing to translate.
-    nlohmann::json translate(const std::string& english, const std::string& translateTo, nlohmann::json& timings);
+    // topics: their names are kept as the knowledge base's local names (not translated by the model)
+    nlohmann::json translate(const std::string& english, const std::string& translateTo, nlohmann::json& timings,
+                             const std::vector<std::string>& topics = {});
     // Llama summary of the extracts, then the grounding check, the safety checks and the minimum number of grounded
     // sentences. Returns the "llama" object of the result (text is null when rejected).
     nlohmann::json runAdvisor(const std::string& diagnosisLine, const std::vector<KbChunk>& facts,

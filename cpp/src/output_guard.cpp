@@ -176,6 +176,11 @@ const std::set<std::string> kActionVerbs = {
     "minimize", "mix", "monitor", "mulch", "never", "pick", "place", "plant", "practice", "practise", "prevent",
     "provide", "prune", "put", "reduce", "release", "remove", "rotate", "select", "soak", "sow", "spray", "stake",
     "stop", "take", "transplant", "treat", "try", "uproot", "use", "wash"};
+// Field actions for the invented-action rule (stems): what the farmer physically does to the crop or field
+const std::set<std::string> kFieldActions = {
+    "plant", "grow", "sow", "transplant", "spray", "apply", "burn", "uproot", "prune", "irrigat", "irrigate", "flood",
+    "drench", "dip", "soak", "mulch", "plough", "harvest", "remov", "remove", "destroy", "releas", "release",
+    "install", "collect", "rotat", "rotate"};
 const std::set<std::string> kDescriptionSections = {"spread", "symptoms"};
 // A sentence that names a month must name all months of its source ("Disease appears in September" from
 // "... September to November"). "may" is left out: it is mostly the verb.
@@ -394,6 +399,22 @@ GroundingResult keepGroundedSentences(const std::string& text, const std::vector
             grounded = subset(months, best->months) && (months.empty() || subset(best->months, months));
         }
         if (grounded) grounded = subset(namesOf(ws), best->names);               // never rename the disease
+        if (grounded) {
+            // Never invent a field action: a field action word ("plant", "planting", "sprayed"; at the start of the
+            // sentence or as an -ing / -ed form, so the nouns "plants" and "sprays" are not counted) must be in the
+            // supporting source sentence; "plant" and "grow" count as the same action. Pi full test, 2026-11-21:
+            // "Planting tomatoes in deep summer ploughing exposes larvae and pupae." matched 6 of 8 words of "Deep
+            // summer ploughing exposes larvae and pupae." (the 0.75 bar) and was shown for every caterpillar photo.
+            for (size_t i = 0; grounded && i < ws.size(); ++i) {
+                const std::string& w = ws[i];
+                const bool verbForm = i == 0 || (w.size() > 5 && (w.compare(w.size() - 3, 3, "ing") == 0 ||
+                                                                  w.compare(w.size() - 2, 2, "ed") == 0));
+                const std::string st = stem(w);
+                if (!verbForm || !kFieldActions.count(st)) continue;
+                grounded = best->stems.count(token(w)) > 0 || (st == "plant" && best->stems.count("grow") > 0) ||
+                           (st == "grow" && best->stems.count("plant") > 0);
+            }
+        }
         if (grounded) {
             // Sentences written one per line often have no full stop; add one so the joined text reads as sentences
             std::string s = sentence;

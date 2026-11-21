@@ -49,6 +49,10 @@ bool hasRepetition(const std::string& text);
 // Returns an empty string for a language the translator does not support.
 std::string floresCode(const std::string& lang);
 
+// Replaces every occurrence of the ASCII marker in p.text with a new placeholder <IDn> that is restored as
+// replacement after translation (used to keep a disease or pest name as the reviewed local name).
+void addTermPlaceholder(Prepared& p, const std::string& marker, const std::string& replacement);
+
 // Technical English rewritten in plain English before translation (same glossary as tools/translate_kb.py).
 std::string plainEnglish(const std::string& english);
 

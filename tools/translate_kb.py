@@ -57,6 +57,7 @@ GLOSSARY = [
     (r"defoliation", "falling of leaves"),
     (r"foliage", "leaves"),
     (r"inoculum", "source of infection"),
+    (r"vegetative (phase|stage) of the plant growth", "leafy growth stage of the plant"),   # "growth" twice (mr)
     (r"vegetative (phase|stage)", "leafy growth stage"),
     (r"lesions", "spots"),
     (r"lesion", "spot"),
@@ -70,6 +71,17 @@ GLOSSARY = [
     (r"ooze", "sticky liquid"),
     (r"mottling", "patchy colouring"),
     (r"stunting", "poor growth"),
+    # Found in the Llama answers of the Pi full test (2026-11-21); same entries as plainEnglish() in indic_text.cpp
+    (r"blighted", "dried up"),
+    (r"leaf spots and blight", "leaf spots and drying of leaves"),
+    (r"blight appears", "the disease appears"),
+    (r"light-pale green", "pale green"),
+    (r"host-specific", "crop-specific"),
+    (r"cultivars", "varieties"),
+    (r"cultivar", "variety"),
+    (r"pre-?mature", "early"),
+    (r"midrib", "middle vein of the leaf"),
+    (r"vaseline", "petroleum jelly"),
 ]
 
 

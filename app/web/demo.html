@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!--
+  KrishiRakshak judge demo screen (open http://<pi-address>:8080/demo.html on a laptop or big screen).
+
+  Left: the real farmer app (index.html) in a phone-sized frame. Right: a log of what the Raspberry Pi did for
+  each photo and the device telemetry. Nothing on this page is simulated: every line and number is read from the
+  Pi's own reply to /api/analyse (and /api/ask), and the temperature from /api/info. The page wraps fetch() of the
+  framed app to see those replies, so it must be served by the Pi itself (same origin). No internet is needed:
+  no web fonts, CDNs or external files.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrishiRakshak Pi Demo</title>
+<style>
+  :root {
+    --bg: #070b14; --panel: #0b1120; --panel2: #0e1628; --line: #1e293b; --text: #e2e8f0; --dim: #94a3b8;
+    --green: #34d399; --cyan: #22d3ee; --amber: #fbbf24; --rose: #fb7185; --violet: #c084fc; --sky: #38bdf8;
+    --mono: ui-monospace, "Cascadia Mono", "Consolas", "DejaVu Sans Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+               font-family: system-ui, "Segoe UI", "Nirmala UI", "Noto Sans", sans-serif; overflow: hidden; }
+  .wrap { display: flex; gap: 10px; height: 100vh; padding: 10px; }
+
+  /* Phone frame with the real app */
+  .phone-col { flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+               background: #0a0f1c; border: 1px solid var(--line); border-radius: 22px; padding: 10px; }
+  .phone { height: calc(100vh - 42px); aspect-ratio: 9 / 19.5; border-radius: 40px; padding: 10px;
+           background: linear-gradient(155deg, #1f2634, #0b0f17 48%, #161d2b);
+           box-shadow: 0 0 0 2px #334155, 0 0 0 5px #060911, 0 24px 60px -12px #000; }
+  .phone iframe { width: 100%; height: 100%; border: 0; border-radius: 30px; background: #fff; display: block; }
+
+  /* Right side */
+  .right { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .term { flex: 1; min-height: 0; display: flex; flex-direction: column; border: 1px solid var(--line);
+          border-radius: 18px; overflow: hidden;
+          background: radial-gradient(circle at top right, #101b30, #090e18 65%, #060911); }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--panel2);
+         border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .dots span { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 5px; }
+  .title { font: 700 13px var(--mono); }
+  .sub { font: 11px var(--mono); color: var(--dim); }
+  .spacer { flex: 1; }
+  .badge { font: 700 11px var(--mono); padding: 4px 9px; border-radius: 6px; border: 1px solid; }
+  .b-ready { color: var(--green); border-color: #065f46; background: #052e2b; }
+  .b-run { color: var(--amber); border-color: #78350f; background: #2a1a06; }
+  .b-err { color: var(--rose); border-color: #881337; background: #2a0a12; }
+  button.tool { font: 600 11px var(--mono); color: var(--text); background: #1e293b; border: 1px solid #334155;
+                border-radius: 7px; padding: 4px 9px; cursor: pointer; }
+  button.tool:hover { background: #334155; }
+  .stages { display: flex; gap: 4px; flex-wrap: wrap; padding: 6px 14px; border-bottom: 1px solid var(--line);
+            background: var(--panel); font: 11px var(--mono); }
+  .stage { padding: 2px 7px; border-radius: 5px; border: 1px solid #334155; color: var(--dim); }
+  .stage.on { color: var(--green); border-color: #059669; background: #052e2b; }
+  .stage.off { opacity: .45; text-decoration: line-through; }
+  #log { flex: 1; overflow-y: auto; padding: 10px 14px; font: 13px/1.55 var(--mono); }
+  .row { display: grid; grid-template-columns: 96px 118px 1fr; gap: 10px; padding: 2px 0 3px;
+         border-bottom: 1px solid #1e293b55; }
+  .ts { color: #64748b; }
+  .tag { font-weight: 700; }
+  .msg { word-break: break-word; white-space: pre-wrap; }
+  .sep { margin: 8px 0 4px; color: #475569; font: 11px var(--mono); }
+  pre.json { margin: 4px 0 8px; padding: 8px; background: #020617; border: 1px solid var(--line); border-radius: 8px;
+             max-height: 320px; overflow: auto; font: 11px/1.4 var(--mono); color: #cbd5e1; }
+
+  /* Telemetry dock */
+  .dock { flex: 0 0 auto; display: grid; grid-template-columns: 5fr 7fr; gap: 10px; }
+  .card { background: #09101e; border: 1px solid #164e63; border-radius: 18px; padding: 12px 16px; }
+  .card h3 { margin: 0 0 4px; font: 700 11px var(--mono); letter-spacing: .06em; text-transform: uppercase;
+             color: var(--cyan); }
+  .big { font: 800 34px var(--mono); letter-spacing: -0.02em; }
+  .small { font: 11px var(--mono); color: var(--dim); }
+  .small b { color: var(--text); font-weight: 700; }
+  .gauge { height: 9px; background: #1e293b; border-radius: 9px; overflow: hidden; margin: 6px 0 4px; }
+  .gauge div { height: 100%; border-radius: 9px; transition: width .3s;
+               background: linear-gradient(90deg, #10b981, #fbbf24 60%, #f97316); }
+  .stack { display: flex; height: 11px; gap: 2px; background: #1e293b; border-radius: 9px; overflow: hidden;
+           margin: 8px 0 6px; }
+  .stack div { height: 100%; transition: width .3s; }
+  .legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px 10px; font: 11px var(--mono); }
+  .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .flexb { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  svg.spark { width: 120px; height: 26px; }
+  @media (max-width: 900px) { .phone-col { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="phone-col">
+    <div class="phone"><iframe id="app" src="index.html" title="KrishiRakshak farmer app"></iframe></div>
+  </section>
+
+  <section class="right">
+    <div class="term">
+      <div class="bar">
+        <div class="dots"><span style="background:#f43f5e"></span><span style="background:#fbbf24"></span><span style="background:#10b981"></span></div>
+        <div>
+          <div class="title">Raspberry Pi 5 &middot; live pipeline log</div>
+          <div class="sub" id="devline">C++ binary krishirakshak &middot; offline &middot; waiting for /api/info</div>
+        </div>
+        <div class="spacer"></div>
+        <span id="status" class="badge b-ready">READY</span>
+        <button class="tool" id="btnView" title="Pi log: the lines the C++ binary wrote for each model (KR_DEMO_LOG); Summary: lines built here from the reply">View: Pi log</button>
+        <button class="tool" id="btnJson" title="Show the full JSON reply of the last photo">{ } Last reply</button>
+        <button class="tool" id="btnClear">Clear</button>
+      </div>
+      <div class="stages" id="stages">
+        <span class="stage" data-s="quality">Photo check</span>
+        <span class="stage" data-s="vision">Vision (parallel)</span>
+        <span class="stage" data-s="severity">Severity</span>
+        <span class="stage" data-s="retrieval">Advice lookup</span>
+        <span class="stage" data-s="llama">Llama 3.2 1B</span>
+        <span class="stage" data-s="translation">IndicTrans2</span>
+      </div>
+      <div id="log"></div>
+    </div>
+
+    <div class="dock">
+      <div class="card">
+        <div class="flexb"><h3>Pi temperature</h3><span class="small" id="netstate">no internet needed</span></div>
+        <div class="flexb">
+          <span class="big" id="temp" style="color:var(--amber)">--</span>
+          <svg class="spark" viewBox="0 0 120 26"><polyline id="sparkline" fill="none" stroke="#fbbf24" stroke-width="2" points=""/></svg>
+        </div>
+        <div class="gauge"><div id="tempbar" style="width:0%"></div></div>
+        <div class="small">Clock <b id="freq">--</b> &middot; Llama paused above <b>80 &deg;C</b> (thermal guard)</div>
+      </div>
+      <div class="card" style="border-color:#4c1d95">
+        <div class="flexb"><h3 style="color:var(--violet)">Reply time of the last photo</h3><span class="small" id="lastlang"></span></div>
+        <div class="flexb"><span class="big" id="total">--</span>
+          <span class="small" style="text-align:right"><span id="llmrate"></span><br><span id="roundtrip"></span></span></div>
+        <div class="stack" id="stack"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+"use strict";
+// Stage colours shared by the stage strip, the time bar and the legend
+const STAGES = [
+  { key: "quality", label: "Photo check", color: "#38bdf8" },
+  { key: "vision_wall", label: "Vision", color: "#34d399" },
+  { key: "severity", label: "Severity", color: "#5eead4" },
+  { key: "retrieval", label: "Advice lookup", color: "#a3e635" },
+  { key: "llama", label: "Llama", color: "#fbbf24" },
+  { key: "translation", label: "Translation", color: "#c084fc" }
+];
+const LANG_NAMES = { en: "English", hi: "Hindi", mr: "Marathi", te: "Telugu", kn: "Kannada", ta: "Tamil",
+                     bn: "Bengali", gu: "Gujarati", or: "Odia", pa: "Punjabi" };
+const $ = id => document.getElementById(id);
+let busy = false, lastReply = null, temps = [];
+
+// ---------- log helpers ----------
+function now() {
+  const d = new Date();
+  return d.toTimeString().slice(0, 8) + "." + String(d.getMilliseconds()).padStart(3, "0");
+}
+function esc(s) { return String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+function log(tag, color, msg) {
+  const r = document.createElement("div");
+  r.className = "row";
+  r.innerHTML = `<span class="ts">${now()}</span><span class="tag" style="color:${color}">[${esc(tag)}]</span>` +
+                `<span class="msg">${esc(msg)}</span>`;
+  $("log").appendChild(r);
+  $("log").scrollTop = $("log").scrollHeight;
+  return r;
+}
+function sep(text) {
+  const d = document.createElement("div");
+  d.className = "sep";
+  d.textContent = "---- " + text + " " + "-".repeat(40);
+  $("log").appendChild(d);
+}
+const ms = v => v == null ? "-" : v >= 1000 ? (v / 1000).toFixed(2) + " s" : Math.round(v) + " ms";
+const pct = v => (v * 100).toFixed(1) + "%";
+function setStatus(text, cls) { const s = $("status"); s.textContent = text; s.className = "badge " + cls; }
+function lightStages(timings) {
+  document.querySelectorAll(".stage").forEach(el => {
+    const k = el.dataset.s === "vision" ? "vision_wall" : el.dataset.s;
+    const ran = timings && timings[k] != null;
+    el.classList.toggle("on", !!ran);
+    el.classList.toggle("off", !!timings && !ran);
+  });
+}
+
+// ---------- telemetry ----------
+function showTemp(t, freq) {
+  if (t == null) return;
+  $("temp").textContent = t.toFixed(1) + " \u00b0C";
+  $("tempbar").style.width = Math.min(100, Math.max(0, (t - 30) / 55 * 100)) + "%";
+  if (freq) $("freq").textContent = Math.round(freq) + " MHz";
+  temps.push(t); if (temps.length > 30) temps.shift();
+  const lo = Math.min(...temps) - 1, hi = Math.max(...temps) + 1;
+  $("sparkline").setAttribute("points", temps.map((v, i) =>
+    `${(i / Math.max(1, temps.length - 1) * 118 + 1).toFixed(1)},${(24 - (v - lo) / (hi - lo) * 22).toFixed(1)}`).join(" "));
+}
+async function pollInfo(first) {
+  // /api/info waits while the Pi analyses a photo, so it is not asked during a request
+  if (busy) return;
+  try {
+    const r = await fetch("api/info", { cache: "no-store" });
+    const i = await r.json();
+    showTemp(i.cpu_temp_c, i.cpu_freq_mhz);
+    $("devline").textContent = `C++ binary \u00b7 ${i.runtime || "C++"} \u00b7 vision ${i.vision_threads_per_model || "?"} threads per model` +
+      ` \u00b7 ${(i.translation_languages || []).length + 1} languages \u00b7 offline`;
+    if (first) {
+      sep("Pi ready");
+      log("System", "#34d399", `Models loaded in ${ms(i.load_ms)}. Leaf check: EfficientNet-B0 (ONNX). Disease: EfficientNet-B0 INT8. ` +
+          `Pests: YOLOv8n INT8. Severity: LR-ASPP lesion model.`);
+      log("System", "#34d399", `Advice: SQLite knowledge base from ICAR, NIPHM and TNAU. Explanation: Llama 3.2 1B + LoRA, INT4, ` +
+          `ExecuTorch. Translation: IndicTrans2 200M on CTranslate2 INT8.`);
+    }
+  } catch (e) {
+    if (first) log("System", "#fb7185", "Pi not reachable at this address: " + e.message);
+  }
+}
+
+function showTimes(t, roundTripMs, lang) {
+  const total = t.total || 1;
+  $("total").textContent = ms(t.total);
+  $("roundtrip").textContent = roundTripMs ? `phone round trip ${ms(roundTripMs)}` : "";
+  $("lastlang").textContent = lang ? "answer in " + (LANG_NAMES[lang] || lang) : "";
+  $("stack").innerHTML = STAGES.filter(s => t[s.key] != null).map(s =>
+    `<div title="${s.label} ${ms(t[s.key])}" style="background:${s.color};width:${Math.max(0.8, t[s.key] / total * 100)}%"></div>`).join("");
+  $("legend").innerHTML = STAGES.map(s =>
+    `<span><span class="sw" style="background:${s.color}"></span>${s.label}: <b>${t[s.key] != null ? ms(t[s.key]) : "not run"}</b></span>`).join("");
+}
+
+// ---------- one /api/analyse reply -> log lines (only fields the Pi returned) ----------
+// Llama speed for the timing card: writing speed (tok/s while generating) and prompt reading time (first token)
+function showLlamaRate(r) {
+  const st = r && r.llama && r.llama.stats;
+  $("llmrate").innerHTML = st && st.tokens_per_s
+    ? `Llama <b style="color:var(--amber);font-size:15px">${st.tokens_per_s.toFixed(1)} tok/s</b> writing \u00b7 first token ${st.time_to_first_token_s.toFixed(1)} s`
+    : "";
+}
+
+// Lines the C++ binary wrote for this photo (KR_DEMO_LOG in cpp/src/demo_log.hpp), with the Pi's own clock
+const STAGE_COLORS = { request: "#38bdf8", quality: "#38bdf8", vision: "#34d399", leaf_check: "#34d399", disease: "#22d3ee",
+  pests: "#5eead4", severity: "#5eead4", knowledge: "#a3e635", llama: "#fbbf24", grounding: "#fbbf24",
+  translate: "#c084fc", route: "#fb7185", done: "#34d399" };
+function piLog(r) {
+  for (const l of r.demo_log) {
+    const row = log(l.stage, STAGE_COLORS[l.stage] || "#94a3b8", l.text);
+    row.firstChild.textContent = "+" + l.ms.toFixed(1) + " ms";
+  }
+  const L = r.llama;
+  if (L && L.accepted && L.text) log("llama", "#fbbf24", "\u201c" + L.text + "\u201d");
+  if (r.translation && r.translation.text) log("translate", "#c084fc", r.translation.text);
+}
+
+let viewPi = true;   // Pi log (default when the binary sends one) or the summary built from the reply
+function explain(r, query, bytes, roundTripMs) {
+  showLlamaRate(r);
+  if (viewPi && Array.isArray(r.demo_log) && r.demo_log.length) {
+    piLog(r);
+    log("phone", "#94a3b8", `round trip ${ms(roundTripMs)} (${(bytes / 1024).toFixed(0)} KB photo over the hotspot)`);
+    if (r.device) showTemp(r.device.cpu_temp_end_c, r.device.cpu_freq_mhz);
+    return;
+  }
+  const t = r.timings_ms || {};
+  const q = r.quality || {}, m = q.metrics || {};
+  log("Photo", "#38bdf8", `${m.width || "?"}\u00d7${m.height || "?"} px, brightness ${m.brightness != null ? m.brightness.toFixed(0) : "?"}, ` +
+      `sharpness ${m.sharpness != null ? m.sharpness.toFixed(0) : "?"} -> ${q.ok ? "OK" : "retake: " + (q.issues || []).join(", ")} (${ms(t.quality)})`);
+  if (!q.ok) return;
+
+  if (t.vision_wall != null)
+    log("Vision", "#34d399", `leaf check, disease and pest models in parallel: ${ms(t.vision_wall)} ` +
+        `(leaf ${ms(t.leaf_check)}, disease ${ms(t.disease)}, pests ${ms(t.pest)})`);
+  const lc = r.leaf_check;
+  if (lc) log("Leaf check", "#34d399", lc.is_tomato_leaf
+      ? `crop leaf found (p_other ${lc.p_other.toFixed(3)} < ${lc.threshold.toFixed(3)})` + (r.crop ? ` -> crop: ${r.crop.name}` : "")
+      : `no known crop leaf (p_other ${lc.p_other.toFixed(3)} >= ${lc.threshold.toFixed(3)}) -> no leaf disease checked`);
+  const d = r.disease || {};
+  if (d.top && d.top.length) {
+    const top = d.top.slice(0, 2).map(x => `${x.class} ${pct(x.probability)}`).join(", ");
+    log("Disease", "#22d3ee", (d.answered ? `${r.en && r.en.disease_name || d.topic}` : "not certain") +
+        ` | top: ${top}` + (d.reliability ? ` | reliability ${d.reliability}` : "") + (d.urgent ? " | urgent disease" : ""));
+  }
+  const pests = r.pests || [];
+  if (pests.length) {
+    const sev = (r.en && r.en.pest_severity) || r.pest_severity || [];
+    const groups = sev.map(s => `${s.name}: ${s.count} found, level ${s.level}`).join("; ");
+    log("Pests", "#5eead4", `YOLOv8n: ${pests.length} detection(s), best ${pct(Math.max(...pests.map(p => p.confidence)))} | ${groups}`);
+  } else if (t.pest != null) {
+    log("Pests", "#5eead4", "YOLOv8n: no insect found");
+  }
+  const sv = r.severity;
+  if (sv && sv.level) log("Severity", "#5eead4", sv.lesion_share != null
+      ? `LR-ASPP: lesions ${pct(sv.lesion_share)} of the leaf (leaf ${pct(sv.leaf_share)} of the photo) -> level ${sv.level} (${ms(t.severity)})`
+      : `level ${sv.level}`);
+
+  const blocks = r.advice_blocks || [];
+  const chunks = blocks.reduce((n, b) => n + (b.chunks || []).length, 0);
+  if (blocks.length) {
+    const orgs = [...new Set(blocks.flatMap(b => (b.chunks || []).map(c => c.source_org)).filter(Boolean))].join(", ");
+    log("Advice", "#a3e635", `${chunks} verified extract(s) for ${blocks.length} topic(s) from ${orgs || "the knowledge base"} (${ms(t.retrieval)})`);
+  }
+
+  const L = r.llama;
+  if (L) {
+    const st = L.stats || {};
+    if (L.accepted)
+      log("Llama", "#fbbf24", `accepted: ${L.grounded_sentences} sentences matched to the sources | prompt ${st.prompt_tokens} tok, ` +
+          `answer ${st.generated_tokens} tok, ${st.tokens_per_s ? st.tokens_per_s.toFixed(1) : "?"} tok/s, first token ${st.time_to_first_token_s}s (${ms(t.llama)})`);
+    else
+      log("Llama", "#fb7185", `not shown: ${(L.rejected_reasons || []).join(", ") || "rejected"} -> the verified extracts are the advice` +
+          (t.llama != null ? ` (${ms(t.llama)})` : ""));
+    if (L.accepted && L.text) log("Llama", "#fbbf24", "\u201c" + L.text + "\u201d");
+  }
+  const tr = r.translation;
+  if (tr && tr.sentences) {
+    const ok = tr.sentences.filter(s => s.ok).length;
+    log("IndicTrans2", "#c084fc", `English -> ${LANG_NAMES[tr.lang] || tr.lang}: ${ok}/${tr.sentences.length} sentences kept (${ms(tr.ms)})`);
+    if (tr.text) log("IndicTrans2", "#c084fc", tr.text);
+  }
+  if (r.refer_to_expert) log("Route", "#fb7185", "severe case -> farmer is told to show the leaves to the local KVK or call Kisan Call Centre 1800-180-1551");
+  const dv = r.device;
+  if (dv) {
+    log("Device", "#94a3b8", `CPU ${dv.cpu_temp_start_c} -> ${dv.cpu_temp_end_c} \u00b0C at ${dv.cpu_freq_mhz} MHz` +
+        (dv.llama_skipped_hot ? " | Llama skipped: device too hot" : ""));
+    showTemp(dv.cpu_temp_end_c, dv.cpu_freq_mhz);
+  }
+  log("Done", "#34d399", `status ${r.status} | total on the Pi ${ms(t.total)} | phone round trip ${ms(roundTripMs)} (${(bytes / 1024).toFixed(0)} KB photo)`);
+}
+
+// ---------- watch the framed app's requests ----------
+function hookApp() {
+  let w;
+  try { w = $("app").contentWindow; if (!w || !w.fetch) throw new Error("no window"); }
+  catch (e) { log("System", "#fb7185", "Cannot watch the app (open this page from the Pi itself): " + e.message); return; }
+  if (w.__krHooked) return;
+  w.__krHooked = true;
+  const orig = w.fetch.bind(w);
+  w.fetch = async (input, init) => {
+    const url = String(input && input.url ? input.url : input);
+    const isAnalyse = url.includes("/api/analyse"), isAsk = url.includes("/api/ask");
+    if (!isAnalyse && !isAsk) return orig(input, init);
+    const query = new URLSearchParams(url.split("?")[1] || "");
+    const body = init && init.body;
+    const bytes = body && body.size != null ? body.size : (body && body.length) || 0;
+    busy = true;
+    lightStages(null);
+    setStatus("PI WORKING...", "b-run");
+    const t0 = performance.now();
+    if (isAnalyse) {
+      sep("photo received");
+      log("Request", "#38bdf8", `POST /api/analyse, ${(bytes / 1024).toFixed(0)} KB photo, answer in ` +
+          `${LANG_NAMES[query.get("translate") || query.get("lang")] || query.get("lang")}`);
+    } else {
+      sep("question");
+      try { log("Ask", "#38bdf8", JSON.parse(body).question || "question"); } catch (e) { log("Ask", "#38bdf8", "question"); }
+    }
+    const wait = log("Pi", "#fbbf24", "working... 0.0 s");
+    const timer = setInterval(() => { wait.lastChild.textContent = `working... ${((performance.now() - t0) / 1000).toFixed(1)} s`; }, 100);
+    try {
+      const res = await orig(input, init);
+      const rt = performance.now() - t0;
+      clearInterval(timer);
+      wait.remove();
+      let j = null;
+      try { j = await res.clone().json(); } catch (e) { /* not JSON */ }
+      if (!j) { log("Pi", "#fb7185", `HTTP ${res.status}, no JSON reply`); setStatus("ERROR", "b-err"); }
+      else if (isAnalyse) {
+        lastReply = j; lastMeta = [query, bytes, rt];
+        explain(j, query, bytes, rt);
+        lightStages(j.timings_ms);
+        showTimes(j.timings_ms || {}, rt, query.get("translate") || query.get("lang"));
+        setStatus("DONE \u00b7 " + ms((j.timings_ms || {}).total), "b-ready");
+      } else {
+        lastReply = j;
+        const L = j.llama || {};
+        log("Llama", L.accepted ? "#fbbf24" : "#fb7185", L.accepted ? "answer accepted" : "not shown: " + (L.rejected_reasons || []).join(", "));
+        log("Done", "#34d399", `phone round trip ${ms(rt)}`);
+        setStatus("DONE \u00b7 " + ms(rt), "b-ready");
+      }
+      return res;
+    } catch (e) {
+      clearInterval(timer);
+      wait.remove();
+      log("Pi", "#fb7185", "request failed: " + e.message);
+      setStatus("ERROR", "b-err");
+      throw e;
+    } finally {
+      busy = false;
+    }
+  };
+}
+
+$("app").addEventListener("load", hookApp);
+$("btnClear").onclick = () => { $("log").innerHTML = ""; lightStages(null); setStatus("READY", "b-ready"); };
+let lastMeta = null;
+$("btnView").onclick = () => {
+  viewPi = !viewPi;
+  $("btnView").textContent = viewPi ? "View: Pi log" : "View: Summary";
+  if (lastReply && lastMeta && lastReply.timings_ms) { sep("same photo, " + (viewPi ? "Pi log" : "summary")); explain(lastReply, ...lastMeta); }
+};
+$("btnJson").onclick = () => {
+  if (!lastReply) { log("System", "#94a3b8", "no reply yet: take a photo in the app"); return; }
+  const p = document.createElement("pre");
+  p.className = "json";
+  p.textContent = JSON.stringify(lastReply, null, 1);
+  $("log").appendChild(p);
+  $("log").scrollTop = $("log").scrollHeight;
+};
+showTimes({}, null, null);
+pollInfo(true);
+setInterval(() => pollInfo(false), 4000);
+</script>
+</body>
+</html>

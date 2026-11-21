@@ -847,6 +847,7 @@ std::string plainEnglish(const std::string& english) {
         {R"(defoliation)", "falling of leaves"},
         {R"(foliage)", "leaves"},
         {R"(inoculum)", "source of infection"},
+        {R"(vegetative (phase|stage) of the plant growth)", "leafy growth stage of the plant"},   // "growth" twice (mr)
         {R"(vegetative (phase|stage))", "leafy growth stage"},
         {R"(lesions)", "spots"},
         {R"(lesion)", "spot"},
@@ -860,6 +861,19 @@ std::string plainEnglish(const std::string& english) {
         {R"(ooze)", "sticky liquid"},
         {R"(mottling)", "patchy colouring"},
         {R"(stunting)", "poor growth"},
+        // Found in the Llama answers of the Pi full test (2026-11-21): "blighted" as "broken" (mr), "blight" as
+        // "boils" (hi), "light-pale" as "striped", "host-specific" as "nutrient-specific", "cultivars" as
+        // "cultivation" (mr)
+        {R"(blighted)", "dried up"},
+        {R"(leaf spots and blight)", "leaf spots and drying of leaves"},
+        {R"(blight appears)", "the disease appears"},
+        {R"(light-pale green)", "pale green"},
+        {R"(host-specific)", "crop-specific"},
+        {R"(cultivars)", "varieties"},
+        {R"(cultivar)", "variety"},
+        {R"(pre-?mature)", "early"},
+        {R"(midrib)", "middle vein of the leaf"},
+        {R"(vaseline)", "petroleum jelly"},                                           // "velelin" (mr)
         };
         std::vector<std::pair<std::regex, std::string>> r;
         for (const auto& [pattern, plain] : g)
@@ -905,6 +919,38 @@ Prepared preprocessEnglish(const std::string& english, const std::string& tgtLan
     return p;
 }
 
+void addTermPlaceholder(Prepared& p, const std::string& marker, const std::string& replacement) {
+    if (p.text.find(marker) == std::string::npos) return;
+    // Next free placeholder number: the highest n of the "<IDn>" keys already in the map, plus one
+    int next = 1;
+    for (const auto& kv : p.placeholders)
+        if (kv.first.rfind("<ID", 0) == 0 && kv.first.back() == '>') {
+            const std::string digits = kv.first.substr(3, kv.first.size() - 4);
+            if (!digits.empty() && std::all_of(digits.begin(), digits.end(), ::isdigit))
+                next = std::max(next, std::stoi(digits) + 1);
+        }
+    const std::string id = "<ID" + std::to_string(next) + ">";
+    for (size_t pos = p.text.find(marker); pos != std::string::npos; pos = p.text.find(marker, pos + id.size()))
+        p.text.replace(pos, marker.size(), id);
+    // The model often writes a placeholder at the start of a sentence without its closing bracket ("<ID1 ...",
+    // "<ID1. ..."; Pi, 2026-11-21). These forms go first, before the regular keys, whose bare "ID1" would leave the
+    // "<" behind; a full stop right after such an open placeholder is the model's, not the source's.
+    const std::string n = std::to_string(next);
+    PlaceholderMap open;
+    // (Kannada attaches its case ending directly: "<ID1ANNU ..." -> name + ending.) The closed form stays first.
+    for (const char* t : {"<ID", "<id", "< ID", "< id"}) {
+        open.emplace_back(std::string(t) + n + ">", replacement);
+        open.emplace_back(std::string(t) + n + " >", replacement);
+        open.emplace_back(std::string(t) + n + "]", replacement);     // "<ID1]" (hi, Pi 2026-11-21)
+        open.emplace_back(std::string(t) + n + " ]", replacement);
+        open.emplace_back(std::string(t) + n + ". ", replacement + " ");
+        open.emplace_back(std::string(t) + n + " ", replacement + " ");
+        if (next < 10) open.emplace_back(std::string(t) + n, replacement);   // "<ID1" is not the start of "<ID10"
+    }
+    p.placeholders.insert(p.placeholders.begin(), open.begin(), open.end());
+    addPlaceholderKeys(p.placeholders, next, replacement);
+}
+
 std::string decodePieces(const std::vector<std::string>& pieces) {
     std::string joined;
     for (const std::string& piece : pieces) joined += piece;
@@ -917,6 +963,38 @@ std::string decodePieces(const std::vector<std::string>& pieces) {
     return toU8(s);
 }
 
+// Numbers the model returned as a placeholder written in the target script (Odia "<\u0b06\u0b07. \u0b21\u0b3f. 1>",
+// Bengali, Kannada, Tamil, Telugu ...): IndicTransToolkit lists the spellings of "ID" only for a few scripts, so
+// these stayed in the text as "<... 1>" instead of the number (found in 76 knowledge-base translations). Any
+// "<...n>" or "@...n>" left after the regular replacement is the placeholder n: it gets its original text back.
+// Not in the Python toolkit, so the byte-exact comparison with it covers only texts without such leftovers.
+U32 restoreLeftoverPlaceholders(const U32& text, const PlaceholderMap& placeholders) {
+    std::map<int, U32> original;
+    for (const auto& kv : placeholders) {
+        const std::string& k = kv.first;
+        if (k.size() > 4 && k.rfind("<ID", 0) == 0 && k.back() == '>') {
+            const std::string n = k.substr(3, k.size() - 4);
+            if (!n.empty() && std::all_of(n.begin(), n.end(), [](char c) { return c >= '0' && c <= '9'; }))
+                original.emplace(std::stoi(n), toU32(kv.second));
+        }
+    }
+    if (original.empty()) return text;
+    static const std::wregex leftover(L"(@?)(?:<[^<>\\n]{0,30}?|[^\\s<>@]{1,12}[ .]{0,4}[^\\s<>@]{0,12}?[ .]{0,3})([0-9]+)\\s*[>\\]]");
+    const std::wstring w = toW(text);
+    std::wstring out;
+    size_t last = 0;
+    for (std::wsregex_iterator m(w.begin(), w.end(), leftover), end; m != end; ++m) {
+        const auto found = original.find(std::stoi((*m)[2].str()));
+        // only "<...n>" or "@...n>" forms, so ordinary text with a ">" is not touched
+        const bool bracketed = m->str().find(L'<') != std::wstring::npos;
+        if (found == original.end() || (!bracketed && (*m)[1].str().empty())) continue;
+        out += w.substr(last, m->position() - last) + (*m)[1].str() + toW(found->second);
+        last = m->position() + m->length();
+    }
+    out += w.substr(last);
+    return fromW(out);
+}
+
 std::string postprocess(const std::string& decoded, const std::string& tgtLang, const PlaceholderMap& placeholders) {
     const auto it = floresToIso().find(tgtLang);
     if (it == floresToIso().end() || tgtLang == "eng_Latn")
@@ -925,7 +1003,9 @@ std::string postprocess(const std::string& decoded, const std::string& tgtLang, 
     // Odia fix of IndicTransToolkit; it runs before transliteration, as in the Python code
     if (tgtLang.rfind("ory", 0) == 0) s = replaceAll(s, U32{0x0B2F, 0x0B3C}, U32{0x0B5F});
     for (const auto& kv : placeholders) s = replaceAll(s, toU32(kv.first), toU32(kv.second));
-    return toU8(detokenizeIndicU(transliterateU(s, it->second)));
+    s = restoreLeftoverPlaceholders(s, placeholders);
+    // once more on the final text: before detokenizing, a leftover can still be spread out ("@ X . Y . 3 >")
+    return toU8(restoreLeftoverPlaceholders(detokenizeIndicU(transliterateU(s, it->second)), placeholders));
 }
 
 bool hasRepetition(const std::string& text) {

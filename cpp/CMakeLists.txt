@@ -75,6 +75,10 @@ set(KR_SOURCES
 
 add_library(krishirakshak_core STATIC ${KR_SOURCES})
 target_include_directories(krishirakshak_core PUBLIC src)
+# Demo log (src/demo_log.hpp): one line per model per photo on stderr and in the reply ("demo_log").
+# Off: cmake -DKR_DEMO_LOGS=OFF (the KR_DEMO_LOG macro then compiles to nothing).
+option(KR_DEMO_LOGS "Per-model demo log lines (stderr and reply)" ON)
+target_compile_definitions(krishirakshak_core PUBLIC KR_DEMO_LOGS=$<BOOL:${KR_DEMO_LOGS}>)
 # Third-party headers as system headers: with ExecuTorch, Abseil raises the language level to C++20 and GCC then
 # warns about code inside the OpenCV 4.10 headers (166 warnings on the ARM build, none in project code)
 target_include_directories(krishirakshak_core SYSTEM PUBLIC ${ORT_ROOT}/include ${OpenCV_INCLUDE_DIRS} ${THIRD_PARTY_SRC})

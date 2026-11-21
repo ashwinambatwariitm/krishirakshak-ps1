@@ -58,6 +58,16 @@ float iou(const cv::Rect2f& a, const cv::Rect2f& b) {
     return inter / (a.area() + b.area() - inter + 1e-9f);
 }
 
+// Share of the smaller box that lies inside the other box
+float containment(const cv::Rect2f& a, const cv::Rect2f& b) {
+    return (a & b).area() / (std::min(a.area(), b.area()) + 1e-9f);
+}
+
+// A box of the same class lying almost completely inside a kept box is the same insect, even below the IoU
+// threshold: one thrips on a chilli flower got two boxes (scores 0.32 and 0.21, IoU 0.62 < 0.7; Pi demo,
+// 2026-11-21) and was counted as two insects. Two different insects next to each other overlap far less.
+constexpr float kSameInsectContainment = 0.8f;
+
 }  // namespace
 
 PestDetector::PestDetector(const std::string& onnxPath, const std::string& specJsonPath,
@@ -122,7 +132,7 @@ std::vector<PestDetection> PestDetector::predict(const cv::Mat& imageRgb) {
         classes.push_back(best);
     }
 
-    // 2. Greedy class-aware NMS, highest score first
+    // 2. Greedy class-aware NMS, highest score first (plus the same-insect containment rule above)
     std::vector<int> order(scores.size());
     std::iota(order.begin(), order.end(), 0);
     std::stable_sort(order.begin(), order.end(), [&](int a, int b) { return scores[a] > scores[b]; });
@@ -132,7 +142,9 @@ std::vector<PestDetection> PestDetector::predict(const cv::Mat& imageRgb) {
         if (removed[i]) continue;
         keep.push_back(order[i]);
         for (size_t j = i + 1; j < order.size(); ++j)
-            if (!removed[j] && iou(shifted[order[i]], shifted[order[j]]) > iouThreshold_) removed[j] = true;
+            if (!removed[j] && (iou(shifted[order[i]], shifted[order[j]]) > iouThreshold_ ||
+                                containment(shifted[order[i]], shifted[order[j]]) > kSameInsectContainment))
+                removed[j] = true;
     }
 
     // 3. Undo the letterbox: remove padding, undo scaling, clip to the photo

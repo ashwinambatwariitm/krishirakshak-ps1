@@ -28,11 +28,14 @@ int replay(const kr::KnowledgeBase& kb, int argc, char** argv, int first) {
     for (int i = first; i < argc; ++i) {
         std::ifstream in(argv[i]);
         const auto r = nlohmann::json::parse(in, nullptr, false);
-        if (r.is_discarded() || !r.contains("llama") || !r["llama"].contains("raw_text") || !r.contains("disease")) {
+        if (r.is_discarded() || !r.contains("llama") || !r["llama"].is_object() || !r["llama"].contains("raw_text") ||
+            !r.contains("disease")) {
             std::cout << "skip " << argv[i] << " (no English Llama text)\n";
             continue;
         }
-        const std::string topic = r["disease"].value("topic", "");
+        // Disease topic, or for a pest photo (no disease answer) the topic of the first pest
+        std::string topic = r["disease"]["topic"].is_string() ? r["disease"]["topic"].get<std::string>() : "";
+        if (topic.empty() && r.contains("pests") && !r["pests"].empty()) topic = r["pests"][0].value("topic", "");
         const auto facts = kb.retrieveForDiagnosis(topic, "en");
         const auto gr = kr::keepGroundedSentences(r["llama"]["raw_text"].get<std::string>(), facts);
         const auto g = kr::checkOutput(gr.kept, facts, "en", topic);
@@ -130,6 +133,10 @@ int main(int argc, char** argv) {
         {"helicoverpa_fruit_borer", nullptr, "Grow simultaneously 40.", false},
         // Header with one content word
         {"tuta_absoluta_pinworm", nullptr, "**Pests**", false},
+        // Invented action ("Deep summer ploughing exposes larvae and pupae."), Pi full test 21 Nov 2026
+        {"caterpillars", nullptr, "Planting tomatoes in deep summer ploughing exposes larvae and pupae.", false},
+        {"caterpillars", nullptr, "Deep summer ploughing exposes the larvae and pupae.", true},
+        {"thrips", nullptr, "Plant 5-6 rows of sorghum or maize around the field as a barrier crop.", true},
         // Faithful 1B rewrites of the same evaluation that must stay
         {"bacterial_wilt", nullptr, "Lower leaves drop before wilting", true},
         {"helicoverpa_fruit_borer", nullptr, "Larvae feed on the leaves for some time.", true},
