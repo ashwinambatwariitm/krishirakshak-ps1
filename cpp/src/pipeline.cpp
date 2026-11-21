@@ -235,10 +235,18 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     result["advice_blocks"] = blocks;
     timings["retrieval"] = t.ms();
 
+    // Severe cases go to an extension worker (organisers' demo flow: "explain uncertainty and route severe cases to an
+    // extension worker"): lesions on at least 25% of the leaf ("high"), an urgent disease (late blight), or a high
+    // pest level for this photo. The app also gets the flag (refer_to_expert) for its own display.
+    const bool severe = (answered && (kb_->urgent(topic) ||
+                                      (result.contains("severity") && result["severity"].value("level", "") == "high"))) ||
+                        std::any_of(pestSev.begin(), pestSev.end(), [](const PestSeverity& s) { return s.level == "high"; });
+    result["refer_to_expert"] = severe;
     auto messagesIn = [&](const std::string& l) {
         nlohmann::json m = nlohmann::json::array();
         if (!isTomato) m.push_back(kb_->message("not_tomato", l));
         else if (!answered) m.push_back(kb_->message("uncertain", l));
+        if (severe) m.push_back(kb_->message("severe_route", l));
         if (answered && kb_->reliability(topic) == "low") m.push_back(kb_->message("expert_confirm", l));
         if (anyUnreliable) m.push_back(kb_->message("pest_species_uncertain", l));
         if (anySpray) m.push_back(kb_->message("chemical_rule", l));
