@@ -935,9 +935,13 @@ void addTermPlaceholder(Prepared& p, const std::string& marker, const std::strin
     // "<" behind; a full stop right after such an open placeholder is the model's, not the source's.
     const std::string n = std::to_string(next);
     PlaceholderMap open;
+    // (Kannada attaches its case ending directly: "<ID1ANNU ..." -> name + ending.) The closed form stays first.
     for (const char* t : {"<ID", "<id", "< ID", "< id"}) {
+        open.emplace_back(std::string(t) + n + ">", replacement);
+        open.emplace_back(std::string(t) + n + " >", replacement);
         open.emplace_back(std::string(t) + n + ". ", replacement + " ");
         open.emplace_back(std::string(t) + n + " ", replacement + " ");
+        if (next < 10) open.emplace_back(std::string(t) + n, replacement);   // "<ID1" is not the start of "<ID10"
     }
     p.placeholders.insert(p.placeholders.begin(), open.begin(), open.end());
     addPlaceholderKeys(p.placeholders, next, replacement);
