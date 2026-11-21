@@ -139,9 +139,9 @@ const I18N = {
     chat_now: "Now",
     speaking_label: "Speaking advice in {lang}...",
     
-    // Weather & Spray Meter
-    weather_title: "Weather & Spray Suitability Meter",
-    weather_desc: "Check if wind, temperature, and rain conditions are safe for spraying today to avoid drift and wash-off.",
+    // Field Conditions & Spray Prediction
+    weather_title: "Field Conditions & Spray Advisory",
+    weather_desc: "Select field wind, temperature, and rain conditions to calculate offline spray suitability.",
     spray_favorable: "GOOD CONDITIONS FOR SPRAYING",
     spray_unfavorable: "SPRAYING NOT RECOMMENDED RIGHT NOW",
     temp_label: "Temperature",
@@ -365,9 +365,9 @@ const I18N = {
     chat_now: "\u0905\u092d\u0940",
     speaking_label: "{lang} \u092e\u0947\u0902 \u092c\u094b\u0932 \u0930\u0939\u093e \u0939\u0948...",
     
-    // Weather & Spray Meter
-    weather_title: "\u092e\u094c\u0938\u092e \u090f\u0935\u0902 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092e\u0940\u091f\u0930",
-    weather_desc: "\u091c\u093e\u0902\u091a\u0947\u0902 \u0915\u093f \u0906\u091c \u0916\u0947\u0924 \u092e\u0947\u0902 \u0926\u0935\u093e \u091b\u093f\u0921\u093c\u0915\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0939\u0935\u093e, \u0924\u093e\u092a\u092e\u093e\u0928 \u0914\u0930 \u092c\u093e\u0930\u093f\u0936 \u0915\u0947 \u0939\u093e\u0932\u093e\u0924 \u0905\u0928\u0941\u0915\u0942\u0932 \u0939\u0948\u0902 \u092f\u093e \u0928\u0939\u0940\u0902\u0964",
+    // Field Conditions & Spray Prediction
+    weather_title: "\u0916\u0947\u0924 \u0915\u0940 \u0938\u094d\u0925\u093f\u0924\u093f \u090f\u0935\u0902 \u0938\u094d\u092a\u094d\u0930\u0947 \u0938\u0932\u093e\u0939",
+    weather_desc: "\u0916\u0947\u0924 \u092e\u0947\u0902 \u0939\u0935\u093e, \u0924\u093e\u092a\u092e\u093e\u0928 \u0914\u0930 \u092c\u093e\u0930\u093f\u0936 \u0915\u0940 \u0938\u094d\u0925\u093f\u0924\u093f \u091a\u0941\u0928\u0947\u0902 \u0914\u0930 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0915\u093e \u092a\u0942\u0930\u094d\u0935\u093e\u0928\u0941\u092e\u093e\u0928 \u092a\u093e\u090f\u0902\u0964",
     spray_favorable: "\u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0915\u0947 \u0932\u093f\u090f \u092e\u094c\u0938\u092e \u0905\u0928\u0941\u0915\u0942\u0932 \u0939\u0948",
     spray_unfavorable: "\u0935\u0930\u094d\u0924\u092e\u093e\u0928 \u0938\u092e\u092f \u092e\u0947\u0902 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u0928 \u0915\u0930\u0947\u0902",
     temp_label: "\u0924\u093e\u092a\u092e\u093e\u0928",

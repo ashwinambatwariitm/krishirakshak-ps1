@@ -830,17 +830,6 @@ function updateWeatherUI() {
 
   if (!banner || !statusText || !issuesBox) return;
 
-  // Update metric indicators on cards
-  const d = window.fieldWeather.currentData;
-  const tempEl = document.getElementById("weather-temp");
-  const humEl = document.getElementById("weather-humidity");
-  const windEl = document.getElementById("weather-wind");
-  const rainEl = document.getElementById("weather-rain");
-  if (tempEl) tempEl.innerHTML = `${d.temp}&#176;C`;
-  if (humEl) humEl.textContent = `${d.humidity}%`;
-  if (windEl) windEl.textContent = `${d.windSpeed} km/h`;
-  if (rainEl) rainEl.textContent = `${d.rainProb}%`;
-
   const lang = window.getLanguage();
 
   if (evaluation.isFavorable) {
@@ -854,7 +843,9 @@ function updateWeatherUI() {
     evaluation.issues.forEach(issue => {
       const p = document.createElement("div");
       p.className = "alert-note";
-      p.textContent = lang === "hi" ? issue.hi : issue.en;
+      p.style.borderLeftColor = "#d32f2f";
+      p.style.background = "#fff5f5";
+      p.textContent = (lang === "hi" ? issue.hi : issue.en) || issue.en;
       issuesBox.appendChild(p);
     });
   }

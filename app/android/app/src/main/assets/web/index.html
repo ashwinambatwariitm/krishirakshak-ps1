@@ -390,69 +390,19 @@
       </div>
     </div>
 
-    <!-- TAB 3: SPRAY & WEATHER ADVISORY -->
+    <!-- TAB 3: SPRAY ADVISORY -->
     <div id="tab-weather-content" class="hidden">
       <div class="card weather-gauge-card">
-        <h2 data-i18n="weather_title">Weather & Spray Suitability Meter</h2>
-        <p class="muted" data-i18n="weather_desc">Check if wind, temperature, and rain conditions are safe for spraying today.</p>
-
-        <!-- Dynamic Spray Suitability Banner -->
-        <div id="spray-status-banner" class="spray-meter-banner favorable">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          <span id="spray-status-text" data-i18n="spray_favorable">GOOD CONDITIONS FOR SPRAYING</span>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+          <div>
+            <h2 data-i18n="weather_title">Field Conditions &amp; Spray Advisory</h2>
+            <p class="muted" data-i18n="weather_desc">Select conditions in your field to calculate offline spray suitability.</p>
+          </div>
+          <span style="font-size:0.78rem;background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:12px;font-weight:700;border:1px solid #c8e6c9;">100% Offline On-Device</span>
         </div>
 
-        <div id="spray-issues-box"></div>
-
-        <!-- Weather Metrics Grid -->
-        <div class="weather-grid">
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2">
-              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
-            </svg>
-            <div id="weather-temp" class="weather-metric-val">28&#176;C</div>
-            <div class="weather-metric-lbl" data-i18n="temp_label">Temperature</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="2">
-              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-            <div id="weather-humidity" class="weather-metric-val">65%</div>
-            <div class="weather-metric-lbl" data-i18n="humidity_label">Humidity</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00796b" stroke-width="2">
-              <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
-            </svg>
-            <div id="weather-wind" class="weather-metric-val">7 km/h</div>
-            <div class="weather-metric-lbl" data-i18n="wind_label">Wind Speed</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0288d1" stroke-width="2">
-              <line x1="16" y1="13" x2="16" y2="21"></line>
-              <line x1="8" y1="13" x2="8" y2="21"></line>
-              <line x1="12" y1="15" x2="12" y2="23"></line>
-              <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
-            </svg>
-            <div id="weather-rain" class="weather-metric-val">10%</div>
-            <div class="weather-metric-lbl" data-i18n="rain_label">Rain Chance</div>
-          </div>
-        </div>
-
-        <!-- Practical Spray Tip -->
-        <div class="alert-note" style="border-left-color:var(--primary);margin-bottom:16px;">
-          <strong data-i18n="spray_tip_title">Agronomy Spray Tip:</strong>
-          <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM &#8211; 10:00 AM or 4:00 PM &#8211; 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
-        </div>
-
-        <!-- Interactive Field Observation Questions for Farmer -->
-        <div class="weather-questions-card">
+        <!-- Interactive Field Observation Conditions for Farmer -->
+        <div class="weather-questions-card" style="margin-top:0;margin-bottom:16px;">
           <h3 class="weather-q-title" data-i18n="weather_q_section_title">Field Condition Questions</h3>
           <p class="muted" style="margin-bottom:14px;font-size:0.88rem;" data-i18n="weather_q_section_desc">Answer 3 quick questions about your field to calculate spray suitability:</p>
 
@@ -494,6 +444,24 @@
               <button type="button" class="weather-opt-btn" data-rain="75" data-i18n="opt_rain_expected">Rain Expected / Raining</button>
             </div>
           </div>
+        </div>
+
+        <!-- Predicted Spray Suitability Result Banner -->
+        <div style="font-size:0.88rem;font-weight:800;color:var(--text);margin-bottom:8px;">&#128302; Predicted Spray Suitability:</div>
+        <div id="spray-status-banner" class="spray-meter-banner favorable">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span id="spray-status-text" data-i18n="spray_favorable">GOOD CONDITIONS FOR SPRAYING</span>
+        </div>
+
+        <div id="spray-issues-box"></div>
+
+        <!-- Practical Spray Tip -->
+        <div class="alert-note" style="border-left-color:var(--primary);margin:16px 0;">
+          <strong data-i18n="spray_tip_title">Agronomy Spray Tip:</strong>
+          <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM &#8211; 10:00 AM or 4:00 PM &#8211; 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
         </div>
 
         <!-- Weather & Spray Safety FAQs (Accordion Questions) -->
