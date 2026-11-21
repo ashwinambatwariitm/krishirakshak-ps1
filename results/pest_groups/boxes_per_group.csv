@@ -1,0 +1,8 @@
+,train,train,val,val,test,test
+,ip102,chili,ip102,chili,ip102,chili
+aphid,1437,2704,133,390,395,448
+caterpillar,1467,1626,159,306,415,224
+mite,227,0,21,0,66,0
+other_insect,12624,0,1427,0,3482,0
+thrips,229,1917,26,402,63,208
+whitefly,81,1324,8,239,23,173

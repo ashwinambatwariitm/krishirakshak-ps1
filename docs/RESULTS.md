@@ -244,6 +244,55 @@ mapping (with Spodoptera litura, whitefly, fruit flies, ...) and its reliable gr
 - Spider mites are found (67%) but named as citrus mites (Panonychus citri), which are outside the mites topic of the
   knowledge base; Helicoverpa and Bemisia are not IP102 classes, so they need training data of their own.
 
+### Pest detector by advice group (`results/pest_groups/`, `training/src/pest_groups.py`) - default since 21 Nov 2026
+
+The advice depends on the pest group, not on the exact species, and the IP102 model mostly fails on the exact name of
+look-alike pests. YOLOv8n was therefore trained (COCO start, 70 epochs, Kaggle T4, 8.3 h) directly on six classes:
+aphid, whitefly, thrips, mite, caterpillar (cutworms, armyworms, Spodoptera litura) and other insect (all other IP102
+species). Data: IP102 (same train / validation / test split as the species model) plus the Red Chili Pepper Pests
+Dataset (indraagustian on Kaggle, Apache 2.0; field photos of aphids, whitefly (Bemisia tabaci), thrips and
+caterpillars on chilli, a plant of the tomato family) and 4,197 insect-free tomato leaves as negatives. Confidence
+threshold 0.2 for the INT8 model, chosen on validation negatives (false alarms on clean leaves: 0.1% PlantVillage,
+6.3% PlantDoc test).
+
+IP102 test split, group right when the insect is found (INT8 group model vs the FP32 species model mapped to groups):
+
+| Group | Test boxes | Found (species -> group model) | Group right | Group precision |
+|---|---|---|---|---|
+| caterpillar | 415 | 94% -> 98% | 85% -> **92%** | 83% -> 76% |
+| mite | 66 | 85% -> 94% | 70% -> **92%** | 78% -> 69% |
+| aphid | 395 | 85% -> 86% | 93% -> 97% | 87% -> 84% |
+| thrips | 63 | 91% -> 95% | 86% -> 83% | 78% -> 71% |
+| whitefly | 23 | 96% -> 100% | 59% -> 48% | 42% -> 33% |
+
+**Independent check** (`tools/eval_pest_independent.py`, `results/pest_groups/independent_huang/`): the 578 Huang
+photos of the previous section, same pre/post-processing as `pest_detector.cpp`, INT8 models; the species-model rows
+reproduce that section exactly.
+
+| Model and advice rule | Insect found | **Right advice** | Caterpillar advice for S. litura / Helicoverpa | Advice for a wrong kind of pest | Generic advice only |
+|---|---|---|---|---|---|
+| species model, species rule | 67.0% | 12.6% | 0% | 1.2% | 53.1% |
+| species model, reliable-group rule | 67.0% | 20.1% | 17.6% | 1.7% | 27.5% |
+| **group model, reliable groups (aphid, thrips, caterpillar)** | **84.9%** | **26.0%** | 26.3% | 4.3% | 28.7% |
+| group model, all groups | 84.9% | 33.9% | 26.3% | 7.1% | 20.9% |
+
+Right advice per pest with the group model: aphids 58% -> 70%, thrips 0% -> 75%, beet armyworm 0% -> 66% (species
+model, species rule -> group model). Trusting mites as well would give spider mites 61%, but 29% of the thrips photos
+would then get mite advice, so mites and whitefly stay "insect, species uncertain" with generic advice.
+
+Limits, stated as they are:
+- The reliable groups were chosen in the notebook from the **test** scores (at least 30 boxes, 80% group right, 80%
+  precision), not from validation. The independent set, which no step used, supports the same choice: the three
+  groups are exactly the ones with right advice there, and the other two give wrong advice when trusted.
+- Wrong-pest advice rises from 1.7% to 4.3%, mostly on whitefly photos (12%, Bemisia is not an IP102 class) and spider
+  mite photos (13%).
+- Red chilli test (490 photos): the species model finds **no** insect at all in these field photos (checked with the
+  C++ application on samples), the group model 67-99% per group. The 100% group scores there are not used: the test
+  split contains near-copies of training photos under different file names (e.g. `kutu-daun--137` and
+  `kutu-daun--171`), which the notebook's file-name check does not catch.
+- Helicoverpa, Spodoptera litura as its own topic, fruit flies and leafhoppers have no class of their own; they get
+  caterpillar or generic advice.
+
 ## INT8 post-training quantization (`results/int8_ptq/`)
 
 ONNX Runtime static quantization: QDQ format, INT8 weights per output channel, INT8 activations (S8S8, the format ONNX

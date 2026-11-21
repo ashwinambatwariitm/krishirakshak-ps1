@@ -1,0 +1,33 @@
+{
+  "weights": "pest_yolov8n_groups.pt",
+  "img_size": 640,
+  "conf_threshold": 0.2,
+  "nms_iou": 0.7,
+  "classes": [
+    "aphid",
+    "whitefly",
+    "thrips",
+    "mite",
+    "caterpillar",
+    "other_insect"
+  ],
+  "topic_by_class": {
+    "0": "aphids",
+    "1": "whitefly",
+    "2": "thrips",
+    "3": "mites",
+    "4": "caterpillars",
+    "5": "insect_other"
+  },
+  "reliable_species_ids": [
+    0,
+    2,
+    4
+  ],
+  "reliable_species_names": [
+    "aphid",
+    "thrips",
+    "caterpillar"
+  ],
+  "rule": "box conf >= conf_threshold -> 'pest present'; give the group's advice topic only if the class id is in reliable_species_ids, otherwise 'insect pest - species uncertain'"
+}
