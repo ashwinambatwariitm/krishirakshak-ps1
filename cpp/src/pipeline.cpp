@@ -86,12 +86,27 @@ bool Pipeline::llamaReady() const { return llama_ != nullptr; }
 bool Pipeline::translatorReady() const { return translator_ != nullptr; }
 
 nlohmann::json Pipeline::translate(const std::string& english, const std::string& translateTo,
-                                   nlohmann::json& timings) {
+                                   nlohmann::json& timings, const std::vector<std::string>& topics) {
 #ifdef KR_WITH_TRANSLATION
     if (!translator_ || translateTo.empty() || english.empty()) return nullptr;
     const auto& langs = Translator::supportedLanguages();
     if (std::find(langs.begin(), langs.end(), translateTo) == langs.end()) return nullptr;
-    const TranslationOutput out = translator_->translate(sentencesOf(english), translateTo);
+    // Disease and pest names: the reviewed local name of the knowledge base instead of a model translation (the
+    // model wrote "early disease" for "Early blight"). Only the name itself, without the English in brackets or
+    // the " - description" part of the regional names ("mava - ras shoshanari keed (Aphids)" -> "mava").
+    Translator::Terms terms;
+    auto shortName = [](std::string s) {
+        for (const char* cut : {" (", " - "}) {
+            const auto p = s.find(cut);
+            if (p != std::string::npos) s.erase(p);
+        }
+        return s;
+    };
+    for (const auto& t : topics) {
+        const std::string en = shortName(kb_->topicName(t, "en")), local = shortName(kb_->topicName(t, translateTo));
+        if (en.size() >= 4 && !local.empty() && local != en) terms.emplace_back(en, local);
+    }
+    const TranslationOutput out = translator_->translate(sentencesOf(english), translateTo, terms);
     timings["translation"] = out.ms;
     return out.toJson();
 #else
@@ -319,7 +334,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         timings["llama"] = t.ms();
         // Only accepted (grounded and checked) English text is translated
         if (result["llama"]["accepted"].get<bool>())
-            result["translation"] = translate(result["llama"]["text"].get<std::string>(), translateTo, timings);
+            result["translation"] = translate(result["llama"]["text"].get<std::string>(), translateTo, timings, topics);
     } else if (llama_ && lang == "hi") {
         // Llama 3.2 1B produced fluent but meaningless Hindi in tests: the Hindi page shows the reviewed Hindi
         // extracts only.

@@ -41,7 +41,8 @@ public:
                                                                 std::vector<int>{0}, false, config);
     }
 
-    TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang) override {
+    TranslationOutput translate(const std::vector<std::string>& sentences, const std::string& lang,
+                                const Terms& terms) override {
         Timer timer;
         TranslationOutput out;
         out.lang = lang;
@@ -55,8 +56,27 @@ public:
         out.sentences.resize(sentences.size());
         for (size_t i = 0; i < sentences.size(); ++i) {
             out.sentences[i].english = sentences[i];
-            // glossary first (plain English translates correctly), then the IndicTrans2 pre-processing
-            const indic_text::Prepared p = indic_text::preprocessEnglish(indic_text::plainEnglish(sentences[i]), flores);
+            // Terms first: each one becomes an ASCII marker word ("KRTERMA") that the glossary and the Moses
+            // tokenizer leave alone, and after pre-processing a placeholder restored as the local text
+            std::string english = sentences[i];
+            std::vector<std::pair<std::string, std::string>> markers;   // marker -> local text
+            for (size_t k = 0; k < terms.size() && k < 26; ++k) {
+                if (terms[k].first.empty() || terms[k].second.empty()) continue;
+                const std::string marker = std::string("KRTERM") + static_cast<char>('A' + k);
+                std::string lower = english, term = terms[k].first;
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+                std::transform(term.begin(), term.end(), term.begin(), ::tolower);
+                bool found = false;
+                for (size_t pos = lower.find(term); pos != std::string::npos; pos = lower.find(term, pos + marker.size())) {
+                    english.replace(pos, term.size(), marker);
+                    lower.replace(pos, term.size(), marker);
+                    found = true;
+                }
+                if (found) markers.emplace_back(marker, terms[k].second);
+            }
+            // glossary (plain English translates correctly), then the IndicTrans2 pre-processing
+            indic_text::Prepared p = indic_text::preprocessEnglish(indic_text::plainEnglish(english), flores);
+            for (const auto& m : markers) indic_text::addTermPlaceholder(p, m.first, m.second);
             // p.text = "eng_Latn <tgt> <text>": the two tags are tokens of their own, the text goes to SentencePiece
             const size_t a = p.text.find(' '), b = p.text.find(' ', a + 1);
             const std::string body = b == std::string::npos ? std::string() : p.text.substr(b + 1);

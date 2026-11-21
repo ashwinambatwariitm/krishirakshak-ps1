@@ -860,6 +860,18 @@ std::string plainEnglish(const std::string& english) {
         {R"(ooze)", "sticky liquid"},
         {R"(mottling)", "patchy colouring"},
         {R"(stunting)", "poor growth"},
+        // Found in the Llama answers of the Pi full test (2026-11-21): "blighted" as "broken" (mr), "blight" as
+        // "boils" (hi), "light-pale" as "striped", "host-specific" as "nutrient-specific", "cultivars" as
+        // "cultivation" (mr)
+        {R"(blighted)", "dried up"},
+        {R"(leaf spots and blight)", "leaf spots and drying of leaves"},
+        {R"(blight appears)", "the disease appears"},
+        {R"(light-pale green)", "pale green"},
+        {R"(host-specific)", "crop-specific"},
+        {R"(cultivars)", "varieties"},
+        {R"(cultivar)", "variety"},
+        {R"(pre-?mature)", "early"},
+        {R"(midrib)", "middle vein of the leaf"},
         };
         std::vector<std::pair<std::regex, std::string>> r;
         for (const auto& [pattern, plain] : g)
@@ -903,6 +915,22 @@ Prepared preprocessEnglish(const std::string& english, const std::string& tgtLan
     s = mosesTokenizeU(mosesNormalizeU(strip(s)));          // 3) English: Moses normaliser + tokenizer
     p.text = "eng_Latn " + tgtLang + " " + toU8(strip(s));
     return p;
+}
+
+void addTermPlaceholder(Prepared& p, const std::string& marker, const std::string& replacement) {
+    if (p.text.find(marker) == std::string::npos) return;
+    // Next free placeholder number: the highest n of the "<IDn>" keys already in the map, plus one
+    int next = 1;
+    for (const auto& kv : p.placeholders)
+        if (kv.first.rfind("<ID", 0) == 0 && kv.first.back() == '>') {
+            const std::string digits = kv.first.substr(3, kv.first.size() - 4);
+            if (!digits.empty() && std::all_of(digits.begin(), digits.end(), ::isdigit))
+                next = std::max(next, std::stoi(digits) + 1);
+        }
+    const std::string id = "<ID" + std::to_string(next) + ">";
+    for (size_t pos = p.text.find(marker); pos != std::string::npos; pos = p.text.find(marker, pos + id.size()))
+        p.text.replace(pos, marker.size(), id);
+    addPlaceholderKeys(p.placeholders, next, replacement);
 }
 
 std::string decodePieces(const std::vector<std::string>& pieces) {
