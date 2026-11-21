@@ -350,16 +350,17 @@ function renderAnsweredScreen(data) {
     window.PestCanvas.render(canvas, window.appState.capturedUrl, data.pests || []);
   }
 
-  // 2. Result Header (FR-4)
+  // 2. Result header: label, name (local name, the English name below it), measured values
   const disease = data.disease || {};
-  const diseaseNameEl = document.getElementById("res-disease-name");
-  const confidenceEl = document.getElementById("res-confidence");
-  const urgentBadge = document.getElementById("res-urgent-badge");
-  const spreadBadge = document.getElementById("res-spread-badge");
-  const pestsBadge = document.getElementById("res-pests-badge");
-
-  // Leaf disease and pests are equal results: without a disease name the title is the pest result
-  diseaseNameEl.textContent = disease.name || (pestTitle(data) || window.t("diagnosis_result"));
+  const isPestTitle = !disease.name;
+  const fullName = disease.name || [...new Set((data.pests || []).map(p => p.name).filter(Boolean))].join(", ") ||
+                   window.t("diagnosis_result");
+  const parts = splitName(fullName);
+  document.getElementById("res-eyebrow").textContent = window.t(isPestTitle ? "pest_detected_title" : "diagnosis_result");
+  document.getElementById("res-disease-name").textContent = parts.main;
+  const subEl = document.getElementById("res-subname");
+  subEl.textContent = parts.rest;
+  subEl.classList.toggle("hidden", !parts.rest);
 
   // Crop detected by the device (Phase 1: tomato from the leaf check; more crops later from the same field)
   const cropBadge = document.getElementById("res-crop-badge");
@@ -368,86 +369,80 @@ function renderAnsweredScreen(data) {
     cropBadge.classList.toggle("hidden", !crop);
     if (crop) cropBadge.textContent = `${window.t("crop_label")}: ${cropName(crop)} (${window.t("crop_detected")})`;
   }
-
-  if (disease.top && disease.top[0] && typeof disease.top[0].probability === "number") {
-    const pct = Math.round(disease.top[0].probability * 100);
-    confidenceEl.textContent = `${window.t("confidence")}: ${pct}%`;
-    confidenceEl.classList.remove("hidden");
-  } else {
-    confidenceEl.classList.add("hidden");
-  }
-
-  if (disease.urgent) {
-    urgentBadge.textContent = window.t("urgent_badge");
-    urgentBadge.classList.remove("hidden");
-  } else {
-    urgentBadge.classList.add("hidden");
-  }
-
-  // Disease spread is shown only from a validated method: the earlier colour estimate is sent with
-  // validated=false (it matched the expert level in 31% of field photos, results/severity_plantseg/README.md)
-  if (data.severity && data.severity.validated === true && data.severity.level && data.severity.level !== "unknown") {
-    const lvl = data.severity.level.toLowerCase();
-    const localizedLvl = window.t(`spread_${lvl}`) || lvl;
-    spreadBadge.textContent = `${window.t("spread_level")}: ${localizedLvl}`;
-    spreadBadge.classList.remove("hidden");
-  } else {
-    spreadBadge.classList.add("hidden");
-  }
-
-  if (Array.isArray(data.pests) && data.pests.length > 0) {
-    // One entry per insect type with a count ("Aphids x 3"); the species is added only when the name does not
-    // already contain it (the name is often "Aphids (Aphids)" style already)
+  // Values shown as measured values below (confidence, severity) or as the alert (urgent): no badges for them
+  ["res-confidence", "res-urgent-badge", "res-spread-badge"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add("hidden");
+  });
+  // Insects next to a disease result (a pest result already has them in its title)
+  const pestsBadge = document.getElementById("res-pests-badge");
+  if (Array.isArray(data.pests) && data.pests.length > 0 && disease.name) {
     const counts = new Map();
-    data.pests.forEach(p => {
-      let label = p.name || "";
-      if (p.species_reliable && p.species && !label.toLowerCase().includes(String(p.species).toLowerCase()))
-        label = `${label} (${p.species})`;
-      counts.set(label, (counts.get(label) || 0) + 1);
-    });
-    const pestStrings = [...counts].map(([label, n]) => (n > 1 ? `${label} \u00d7 ${n}` : label));
-    pestsBadge.textContent = `${window.t("insect_found")}: ${pestStrings.join(", ")}`;
-    // When the title already is the pest result ("Pest detected: ..."), the badge would repeat it
-    pestsBadge.classList.toggle("hidden", !disease.name);
+    data.pests.forEach(p => { const n = p.name || ""; counts.set(n, (counts.get(n) || 0) + 1); });
+    pestsBadge.textContent = `${window.t("insect_found")}: ` +
+      [...counts].map(([n, k]) => (k > 1 ? `${n} \u00d7 ${k}` : n)).join(", ");
+    pestsBadge.classList.remove("hidden");
   } else {
     pestsBadge.classList.add("hidden");
   }
+  renderMetrics(document.getElementById("res-metrics"), data);
 
-  // 3. Official Notices (FR-5)
+  // 3. Messages: the severe-case message as a red alert with a call button, the others as notes
   const messagesContainer = document.getElementById("res-messages-container");
   messagesContainer.innerHTML = "";
-  if (Array.isArray(data.messages) && data.messages.length > 0) {
-    data.messages.forEach(msg => {
-      const msgCard = document.createElement("div");
-      msgCard.className = "alert-note";
-      msgCard.textContent = msg;
-      messagesContainer.appendChild(msgCard);
-    });
-    messagesContainer.classList.remove("hidden");
-  } else {
-    messagesContainer.classList.add("hidden");
-  }
+  (data.messages || []).forEach(msg => messagesContainer.appendChild(messageAlert(msg)));
+  messagesContainer.classList.toggle("hidden", !(data.messages || []).length);
 
-  // 3a. Disease severity of the photographed leaf
-  renderDiseaseSeverity(document.getElementById("res-disease-severity"), data.severity, disease);
-
-  // 3b. Pest severity (level for this photo only, with the published scouting method)
+  // 3a. Severity is shown in the measured values; the pest card keeps the published scouting method
+  const sevCard = document.getElementById("res-disease-severity");
+  if (sevCard) sevCard.classList.add("hidden");
   renderPestSeverity(document.getElementById("res-pest-severity"), data.pest_severity);
 
-  // 4. Llama Advice Card (FR-6)
+  // 4. Llama card (FR-6): Llama's checked sentences as a numbered list, in the chosen language when translated
   const llamaContainer = document.getElementById("res-llama-card");
   const llamaTextEl = document.getElementById("res-llama-text");
+  const llamaList = document.getElementById("res-llama-list");
+  const trBox = document.getElementById("res-llama-translation");
+  llamaList.innerHTML = "";
+  trBox.innerHTML = "";
+  trBox.classList.add("hidden");
   if (data.llama && data.llama.text && data.llama.accepted !== false) {
-    llamaTextEl.textContent = data.llama.text;
+    llamaTextEl.textContent = data.llama.text;           // English text, used by the read-aloud fallback
+    const tr = data.translation;
+    const sentences = tr && Array.isArray(tr.sentences) && tr.sentences.length
+      ? tr.sentences.map(x => (x.ok ? x.text : x.english))
+      : sentencesOf(data.llama.text);
+    sentences.filter(Boolean).forEach((text, i) => {
+      const li = document.createElement("li");
+      const n = document.createElement("span");
+      n.className = "n";
+      n.textContent = String(i + 1);
+      const t = document.createElement("span");
+      t.textContent = text;
+      if (tr && tr.lang) t.lang = tr.lang;
+      li.appendChild(n);
+      li.appendChild(t);
+      llamaList.appendChild(li);
+    });
+    if (tr && tr.text) {                                  // the English one tap away (translation not yet reviewed)
+      const original = document.createElement("details");
+      original.className = "translation-original";
+      const summary = document.createElement("summary");
+      summary.textContent = window.t("mt_show_english");
+      const en = document.createElement("p");
+      en.textContent = data.llama.text;
+      original.appendChild(summary);
+      original.appendChild(en);
+      trBox.appendChild(original);
+      trBox.classList.remove("hidden");
+    }
     llamaContainer.classList.remove("hidden");
   } else {
     llamaContainer.classList.add("hidden");
   }
-  renderTranslation(document.getElementById("res-llama-translation"), data.translation, llamaTextEl);
   // A translation was asked for and the AI explanation did not pass the device's safety check: the verified extracts
   // are the advice. The note ("... the verified advice below is in English") is shown only when that is true, i.e.
-  // no extract came back in the chosen language; otherwise the farmer just sees the verified advice in their language
-  // (whether Llama was rejected stays in the technical details)
+  // no extract came back in the chosen language
   const mtNote = document.getElementById("res-mt-unavailable");
   const llamaRejected = data.llama && (data.llama.accepted === false || !data.llama.text);
   const chunks = (data.advice_blocks || []).flatMap(b => b.chunks || []).filter(c => c.section !== "chemical");
@@ -557,55 +552,141 @@ function renderAnsweredScreen(data) {
     });
   }
 
-  // 6. Chemical Spray Options Table (FR-8)
+  // 6. Spray options (FR-8): one row per published option - product, dose, note, source (as published)
   const sprayContainer = document.getElementById("res-spray-container");
-  const sprayTbody = document.getElementById("res-spray-tbody");
-  sprayTbody.innerHTML = "";
-
-  const allSprays = [];
-  if (Array.isArray(data.advice_blocks)) {
-    data.advice_blocks.forEach(block => {
-      (block.chunks || []).forEach(c => {
-        if (c.section === "chemical") allSprays.push(c);
-      });
-    });
-  }
-
-  if (allSprays.length > 0) {
-    allSprays.forEach(spray => {
-      const tr = document.createElement("tr");
-
-      const tdProd = document.createElement("td");
-      const prodName = document.createElement("strong");
-      prodName.textContent = spray.product || "";
-      tdProd.appendChild(prodName);
-
-      if (spray.note) {
-        const noteDiv = document.createElement("div");
-        noteDiv.className = "table-note";
-        noteDiv.textContent = spray.note;
-        tdProd.appendChild(noteDiv);
-      }
-
-      const tdDose = document.createElement("td");
-      tdDose.textContent = spray.dose || "\u2014";
-
-      const tdSrc = document.createElement("td");
-      tdSrc.className = "source-cell";
-      tdSrc.textContent = spray.source_org || "";
-
-      tr.appendChild(tdProd);
-      tr.appendChild(tdDose);
-      tr.appendChild(tdSrc);
-      sprayTbody.appendChild(tr);
-    });
-    sprayContainer.classList.remove("hidden");
-  } else {
-    sprayContainer.classList.add("hidden");
-  }
+  const sprayList = document.getElementById("res-spray-list");
+  sprayList.innerHTML = "";
+  const allSprays = (data.advice_blocks || []).flatMap(b => (b.chunks || []).filter(c => c.section === "chemical"));
+  allSprays.forEach(spray => {
+    const row = document.createElement("div");
+    row.className = "spray-row";
+    const prod = document.createElement("span");
+    prod.className = "p";
+    prod.textContent = spray.product || "";
+    const dose = document.createElement("span");
+    dose.className = "dose";
+    dose.textContent = spray.dose || "\u2014";
+    row.appendChild(prod);
+    row.appendChild(dose);
+    const note = document.createElement("span");
+    note.className = "n2";
+    note.textContent = [spray.note, spray.source_org].filter(Boolean).join(" \u00b7 ");
+    if (note.textContent) row.appendChild(note);
+    sprayList.appendChild(row);
+  });
+  sprayContainer.classList.toggle("hidden", allSprays.length === 0);
 
   // Technical Details Drawer (FR-12)
   renderTechnicalDetails(data);
+}
+
+// "Local name - description (English name)" -> main part for the title, the rest (English name) below it
+function splitName(name) {
+  const m = String(name).match(/^(.*?)\s*\(([^()]*(?:\([^()]*\))?[^()]*)\)\s*$/);
+  let main = m ? m[1] : String(name), rest = m ? m[2] : "";
+  const dash = main.indexOf(" - ");
+  if (dash > 0) {                                  // "Aphids - sap-sucking pest": keep the short name as the title
+    rest = [main.slice(dash + 3), rest].filter(Boolean).join(" \u00b7 ");
+    main = main.slice(0, dash);
+  }
+  return { main: main.trim(), rest: rest.trim() };
+}
+
+// Sentences of an English text (for Llama's text when there is no translation)
+function sentencesOf(text) {
+  return String(text || "").split(/(?<=[.!?;])\s+/).map(x => x.trim()).filter(Boolean);
+}
+
+// The severe-case message (it gives the Kisan Call Centre number) as a red alert with a call button; others as notes
+function messageAlert(msg) {
+  const box = document.createElement("div");
+  const severe = /1800-180-1551/.test(msg);
+  box.className = `kr-alert ${severe ? "danger" : "info"}`;
+  const icon = severe
+    ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--danger)"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><path d="M12 9v4M12 17h.01"/></svg>'
+    : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--info)"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>';
+  box.innerHTML = icon;
+  const body = document.createElement("div");
+  body.style.flex = "1";
+  if (severe) {
+    const t = document.createElement("div");
+    t.className = "t";
+    t.textContent = window.t("urgent_badge");
+    body.appendChild(t);
+  }
+  const d = document.createElement("div");
+  d.className = "d";
+  d.textContent = msg;
+  body.appendChild(d);
+  if (severe) {
+    const call = document.createElement("a");
+    call.className = "call-btn";
+    call.href = "tel:18001801551";
+    call.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2Z"/></svg>';
+    call.appendChild(document.createTextNode("1800-180-1551"));
+    body.appendChild(call);
+  }
+  box.appendChild(body);
+  return box;
+}
+
+// Measured values under the result name: model confidence (disease) and severity (disease: share of the leaf with
+// lesions from the validated model; pests: level for this photo from the count)
+function renderMetrics(container, data) {
+  container.innerHTML = "";
+  const disease = data.disease || {};
+  const metric = (label, valueHtml, extra) => {
+    const m = document.createElement("div");
+    m.className = "metric";
+    const l = document.createElement("div");
+    l.className = "label";
+    l.textContent = label;
+    const v = document.createElement("div");
+    v.className = "value";
+    v.innerHTML = valueHtml;
+    m.appendChild(l);
+    m.appendChild(v);
+    if (extra) m.appendChild(extra);
+    container.appendChild(m);
+  };
+  const meter = (level) => {
+    const el = document.createElement("div");
+    el.className = "meter";
+    const order = ["low", "moderate", "high"];
+    order.forEach((name, i) => {
+      const s = document.createElement("span");
+      if (i <= order.indexOf(level)) s.className = `on ${level}`;
+      el.appendChild(s);
+    });
+    return el;
+  };
+  const esc = (x) => escapeHtml(String(x));
+  const top = disease.top && disease.top[0];
+  if (disease.answered && top && typeof top.probability === "number") {
+    const pct = Math.round(top.probability * 100);
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.innerHTML = `<i style="width:${pct}%"></i>`;
+    metric(window.t("confidence"), `${pct}<small>%</small>`, bar);
+  }
+  const sev = data.severity;
+  if (disease.answered && sev && sev.validated === true && ["low", "moderate", "high"].includes(sev.level)) {
+    const pct = typeof sev.lesion_share === "number" ? `<small>${Math.round(sev.lesion_share * 100)}%</small>` : "";
+    metric(window.t("sev_title"), `<span class="lvl-${sev.level}">${esc(window.t(`level_${sev.level}`))}</span>${pct}`, meter(sev.level));
+  } else if (disease.answered && sev && sev.level === "not_applicable") {
+    const note = document.createElement("div");
+    note.className = "note";
+    note.textContent = window.t("sev_not_applicable");
+    metric(window.t("sev_title"), "\u2014", note);
+  }
+  const ps = Array.isArray(data.pest_severity) ? data.pest_severity[0] : null;
+  if (!disease.answered && ps && ["low", "moderate", "high"].includes(ps.level)) {
+    metric(window.t("pest_sev_title"), esc(ps.count));
+    metric(window.t("pest_level_label"), `<span class="lvl-${ps.level}">${esc(window.t(`level_${ps.level}`))}</span>`, meter(ps.level));
+  }
+  const n = container.children.length;
+  container.classList.toggle("hidden", n === 0);
+  container.classList.toggle("one", n === 1);
 }
 
 function formatChatTime() {
