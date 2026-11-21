@@ -3,6 +3,8 @@
 Serves the same three calls as the C++ server on the Pi (krishirakshak --serve), answering with the saved example
 responses in docs/api_examples/ (see docs/APP_API.md). The photo sent to /api/analyse is ignored; choose the
 example with the query parameter "example" (default: early blight). A delay imitates the time the Pi needs.
+Also serves the static web interface directly from app/web/ so opening http://localhost:8080/ in your browser
+opens the full farmer app immediately.
 
 Usage:
     python tools/mock_api_server.py                    # http://localhost:8080
@@ -15,18 +17,29 @@ Only the Python standard library is needed. CORS is allowed for any origin, so a
 import argparse
 import json
 import time
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-EXAMPLES = Path(__file__).resolve().parent.parent / "docs" / "api_examples"
-ANALYSE = {"early_blight": "analyse_en_early_blight.json", "healthy": "analyse_en_healthy_leaf.json",
-           "hindi": "analyse_hi_late_blight.json", "uncertain": "analyse_en_uncertain.json",
-           "retake": "analyse_en_retake_photo.json", "pest": "analyse_en_pest_CONSTRUCTED.json"}
+ROOT_DIR = Path(__file__).resolve().parent.parent
+WEB_DIR = ROOT_DIR / "app" / "web"
+EXAMPLES = ROOT_DIR / "docs" / "api_examples"
+
+ANALYSE = {
+    "early_blight": "analyse_en_early_blight.json",
+    "healthy": "analyse_en_healthy_leaf.json",
+    "hindi": "analyse_hi_late_blight.json",
+    "uncertain": "analyse_en_uncertain.json",
+    "retake": "analyse_en_retake_photo.json",
+    "pest": "analyse_en_pest_CONSTRUCTED.json"
+}
 
 
-class Handler(BaseHTTPRequestHandler):
+class Handler(SimpleHTTPRequestHandler):
     delay = 2.0
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=str(WEB_DIR), **kwargs)
 
     def send_json(self, path):
         body = path.read_bytes()
@@ -45,16 +58,18 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        if urlparse(self.path).path == "/api/info":
+        parsed = urlparse(self.path)
+        if parsed.path == "/api/info":
             self.send_json(EXAMPLES / "info.json")
         else:
-            self.send_error(404)
+            super().do_GET()
 
     def do_POST(self):
         url = urlparse(self.path)
         query = parse_qs(url.query)
         self.rfile.read(int(self.headers.get("Content-Length", 0)))   # photo or question, not used by the mock
-        time.sleep(self.delay)
+        if self.delay > 0:
+            time.sleep(self.delay)
         if url.path == "/api/analyse":
             name = "hindi" if query.get("lang", ["en"])[0] == "hi" else query.get("example", ["early_blight"])[0]
             self.send_json(EXAMPLES / ANALYSE.get(name, ANALYSE["early_blight"]))
@@ -71,6 +86,7 @@ def main():
     args = parser.parse_args()
     Handler.delay = args.delay
     print(f"mock KrishiRakshak API on http://localhost:{args.port}/  (examples from {EXAMPLES})")
+    print(f"  - Static web app served from {WEB_DIR}")
     ThreadingHTTPServer(("0.0.0.0", args.port), Handler).serve_forever()
 
 
