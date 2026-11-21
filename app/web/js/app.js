@@ -429,11 +429,15 @@ function renderAnsweredScreen(data) {
     llamaContainer.classList.add("hidden");
   }
   renderTranslation(document.getElementById("res-llama-translation"), data.translation, llamaTextEl);
-  // A translation was asked for, but the AI explanation did not pass the device's safety check (only checked
-  // text is translated): say so instead of showing nothing
+  // A translation was asked for and the AI explanation did not pass the device's safety check: the verified extracts
+  // are the advice. The note ("... the verified advice below is in English") is shown only when that is true, i.e.
+  // no extract came back in the chosen language; otherwise the farmer just sees the verified advice in their language
+  // (whether Llama was rejected stays in the technical details)
   const mtNote = document.getElementById("res-mt-unavailable");
   const llamaRejected = data.llama && (data.llama.accepted === false || !data.llama.text);
-  if (mtNote) mtNote.classList.toggle("hidden", !(window.CONFIG.TRANSLATE_LANG && llamaRejected));
+  const chunks = (data.advice_blocks || []).flatMap(b => b.chunks || []).filter(c => c.section !== "chemical");
+  const anyTranslated = chunks.some(c => c.text_en && c.text && c.text !== c.text_en);
+  if (mtNote) mtNote.classList.toggle("hidden", !(window.CONFIG.TRANSLATE_LANG && llamaRejected && !anyTranslated));
 
   // 5. Advice Blocks (FR-7)
   const btnAdvice = document.getElementById("btn-voice-advice");
