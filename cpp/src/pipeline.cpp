@@ -114,7 +114,8 @@ nlohmann::json Pipeline::info() const {
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
             {"vision_threads_per_model", cfg_.visionThreads},
             {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"},
-            {"cpu_temp_c", readCpuTempC()}, {"cpu_freq_mhz", readCpuFreqMhz()}};
+            {"cpu_temp_c", readCpuTempC()}, {"cpu_freq_mhz", readCpuFreqMhz()},
+            {"supported_crops", nlohmann::json::array({"tomato"})}};
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const std::string& translateTo) {
@@ -173,6 +174,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
         pests.erase(std::remove_if(pests.begin(), pests.end(),
                                    [](const PestDetection& p) { return p.topic == "insect_other"; }),
                     pests.end());
+    // Crop detected in the photo (Phase 1: the tomato-leaf check; Phase 2: a crop-identification model fills the same
+    // field). null when no leaf of a supported crop was found. The farmer never selects the crop.
+    result["crop"] = isTomato ? nlohmann::json{{"name", "tomato"}, {"source", leafCheck_ ? "leaf_check" : "assumed"}}
+                              : nlohmann::json(nullptr);
     if (leafCheck_) {
         timings["leaf_check"] = leafMs;
         result["leaf_check"] = {{"is_tomato_leaf", isTomato}, {"p_other", leaf.first},
@@ -247,9 +252,12 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     const bool severe = (answered && (kb_->urgent(topic) || sevLevel == "high" || virus)) ||
                         std::any_of(pestSev.begin(), pestSev.end(), [](const PestSeverity& s) { return s.level == "high"; });
     result["refer_to_expert"] = severe;
+    result["supported_crops"] = nlohmann::json::array({"tomato"});   // crops whose leaf diseases are checked
     auto messagesIn = [&](const std::string& l) {
         nlohmann::json m = nlohmann::json::array();
-        if (!isTomato) m.push_back(kb_->message("not_tomato", l));
+        // Leaf disease and pests are equal tasks: a photo without a leaf of a supported crop but with insects is a pest
+        // result, with a short note that no leaf disease was checked; "not_tomato" only when neither was found
+        if (!isTomato) m.push_back(kb_->message(pests.empty() ? "not_tomato" : "no_leaf_checked", l));
         else if (!answered) m.push_back(kb_->message("uncertain", l));
         if (severe) m.push_back(kb_->message("severe_route", l));
         if (answered && kb_->reliability(topic) == "low") m.push_back(kb_->message("expert_confirm", l));
