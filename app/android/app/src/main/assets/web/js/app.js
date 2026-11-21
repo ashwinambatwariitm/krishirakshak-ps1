@@ -684,15 +684,6 @@ function tEnglish(key) {
   return (window.I18N && window.I18N.en && window.I18N.en[key]) || key;
 }
 
-// The result with its English texts (res.en holds them when the page is shown in another language)
-function englishView(res) {
-  const en = res.en || {};
-  const view = Object.assign({}, res, { disease: Object.assign({}, res.disease) });
-  if (en.disease_name !== undefined) view.disease.name = en.disease_name;
-  if (Array.isArray(en.pest_names)) view.pests = (res.pests || []).map((p, i) => Object.assign({}, p, { name: en.pest_names[i] }));
-  return view;
-}
-
 // Verified extracts of all advice blocks as one text, as shown in the advice cards (the chemical spray options
 // of the spray table are not read out)
 function adviceText(res, english) {
