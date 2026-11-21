@@ -9,7 +9,7 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 DST=app/android/app/src/main/assets/web
 mkdir -p "$DST"
-rsync -a --delete --exclude js/config.js app/web/ "$DST/"
+rsync -a --delete --exclude js/config.js --exclude demo.html app/web/ "$DST/"   # demo.html: laptop judge screen, needs the Pi
 sed -e 's#API_BASE: localStorage.getItem("KR_API_BASE") || ""#API_BASE: localStorage.getItem("KR_API_BASE") || "http://10.42.0.1:8080"#' \
     -e 's#^ \* KrishiRakshak App Configuration$# * KrishiRakshak App Configuration (embedded in the Android APK: API defaults to the Pi hotspot)#' \
     app/web/js/config.js > "$DST/js/config.js"
