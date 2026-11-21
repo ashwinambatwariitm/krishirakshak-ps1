@@ -377,6 +377,42 @@ INT8 cuts model size by 3.2-3.5x and RAM by up to 3x, but is slower than FP32 on
 not ONNX Runtime's fast path on Intel (a UINT8-activation prototype was faster there), and the mixed-precision
 boundaries add conversion steps. S8S8 is the recommended path on Arm, so the speed comparison is decided on the Pi 5.
 
+## Precision on the device: FP32 vs quantised models (21 Nov 2026)
+
+One table for every model in the application, as asked by the organisers (INT4 Llama through ExecuTorch with XNNPACK as
+the deployment, an FP32 baseline for comparison). Vision numbers are on held-out test sets; Llama numbers are measured on
+the Raspberry Pi 5 (8 GB, 4 cores, no throttling, 49-59 C).
+
+| Model | On the Pi | Size FP32 -> quantised | Quality FP32 -> quantised | Speed on the Pi |
+|---|---|---|---|---|
+| Disease v5 EfficientNet-B0 | INT8 (blocks 0-3 FP32) | 16.1 -> 5.0 MB | PlantDoc full photos 73.4% -> 73.9% accuracy; same answer as FP32 on 95% of photos | vision 2.2x faster than FP32 |
+| Pest detector by advice group | INT8 | 12 -> 3.4 MB | 578 independent pest photos: insects found 85.1% -> 84.9%, right advice 25.4% -> 26.0%, wrong-pest advice 4.7% -> 4.3% (`results/pest_groups/independent_huang_fp32/`) | 114 ms per photo |
+| IP102 species pest model (previous) | INT8 | 13.6 -> 3.9 MB | IP102 test mAP50 0.571 -> 0.560; same 578 photos: right advice 20.4% -> 20.1% (group rule) | 131 ms |
+| Tomato-leaf check | FP32 (no INT8 version) | 16 MB | - | 74 ms, in parallel with the pest detector |
+| Severity (LR-ASPP) | FP32 | - | - | about 130 ms |
+| **Llama 3.2 1B** | **INT4 8da4w, XNNPACK** | **6.0 GB -> 0.86 GB** | see below | see below |
+
+**Llama 3.2 1B on the Raspberry Pi 5** (`results/pi5_bench/2026-11-21_llama_precision/`): `krishirakshak
+--eval-advisor`, the same six demo topics, prompt v8 and grounding check as the application, greedy decoding, the app
+service stopped and the page cache dropped before each model.
+
+| Llama 3.2 1B | Peak RAM | Load | First token | Decode | Typical answer | Accepted (6 demo topics) | Sentences kept / dropped |
+|---|---|---|---|---|---|---|---|
+| FP32 (base) | 5.0 GB | 71 s | 11.0 s | 2.4 tokens/s | 65 s | 6/6 | 60 / 10 |
+| INT4 (base) | 1.25 GB | 13 s | 3.1 s | 13.6 tokens/s | 13.6 s | 6/6 | 54 / 5 |
+| **INT4 LoRA (application default)** | 1.25 GB | 13 s | 3.1 s | 13.5 tokens/s | 7.4 s | 5/6 | 31 / 1 |
+
+- With the v8 prompt INT4 loses almost nothing against FP32 on these topics (6/6 both; 54 vs 60 sentences kept) at 5.6x
+  the decode speed and a quarter of the memory. The 18 Nov result (FP32 6/6, INT4 3/6) was with the previous prompt and
+  grounding check; LoRA was trained then to close that gap.
+- All 27 topics, both INT4 models: base 25/27 accepted, 188 sentences kept, **60 dropped** by the grounding check (24%),
+  8 answers stopped for repeating, 2 cut at the 160-token limit; LoRA 23/27, 102 kept, **13 dropped** (11%), 2 repeat
+  stops, none cut. Reading the kept text: the base model's extra sentences are largely fragments that pass the check
+  without content ("Fruit rot. Rhythmic rotting. Fungal growth. Soil contact."; "Mature larvae, migrate and cause."), no
+  invented chemicals or doses. The LoRA model stays the default: complete sentences, half the invented material, faster;
+  when it is rejected (healthy, bacterial speck, damping-off, tobacco caterpillar) the verified extracts are shown.
+- An FP32 export of the LoRA model was not made; the FP32 row is the base model.
+
 ## Recommended models
 
 | Task | Model | Notes |

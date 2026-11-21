@@ -1,0 +1,12 @@
+== llama3_2_1b_instruct_fp32  temp temp=49.4'C  throttled=0x0
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:26.73
+	Maximum resident set size (kbytes): 5254400
+   after: temp temp=54.9'C  throttled=0x0
+== llama3_2_1b_instruct_8da4w  temp temp=52.1'C  throttled=0x0
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:29.31
+	Maximum resident set size (kbytes): 1307328
+   after: temp temp=57.6'C  throttled=0x0
+== llama3_2_1b_krishirakshak_lora_8da4w  temp temp=56.0'C  throttled=0x0
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:05.42
+	Maximum resident set size (kbytes): 1307120
+   after: temp temp=57.1'C  throttled=0x0
