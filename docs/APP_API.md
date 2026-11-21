@@ -61,7 +61,8 @@ Answer: one JSON object. **Start from `status`:**
 
 When the photo is not a tomato leaf but an insect of a tomato pest group is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, and the pest result as usual. `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
 
-`refer_to_expert` (true / false): the case should go to an extension worker - lesions on at least 25% of the leaf (severity `high`), an urgent disease (late blight) or a `high` pest level for the photo. `messages` then contains "This looks serious. Show the affected leaves to your local KVK or agriculture officer soon, or call the Kisan Call Centre on 1800-180-1551 (free)." in the display language.
+`refer_to_expert` (true / false): the case should go to an extension worker - lesions on at least 25% of the leaf (severity `high`), an urgent disease (late blight), a virus disease (leaf curl, mosaic: severity `not_applicable`) or
+a `high` pest level for the photo. `messages` then contains "This looks serious. Show the affected leaves to your local KVK or agriculture officer soon, or call the Kisan Call Centre on 1800-180-1551 (free)." in the display language.
 
 Fields of an `answered` result:
 

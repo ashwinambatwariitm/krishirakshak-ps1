@@ -239,10 +239,12 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     timings["retrieval"] = t.ms();
 
     // Severe cases go to an extension worker (organisers' demo flow: "explain uncertainty and route severe cases to an
-    // extension worker"): lesions on at least 25% of the leaf ("high"), an urgent disease (late blight), or a high
-    // pest level for this photo. The app also gets the flag (refer_to_expert) for its own display.
-    const bool severe = (answered && (kb_->urgent(topic) ||
-                                      (result.contains("severity") && result["severity"].value("level", "") == "high"))) ||
+    // extension worker"): lesions on at least 25% of the leaf ("high"), an urgent disease (late blight), a virus disease
+    // (severity "not_applicable" for a disease: leaf curl and mosaic viruses have no cure, infected plants are removed and
+    // the whitefly or other spread is controlled), or a high pest level for this photo. The app also gets the flag.
+    const std::string sevLevel = result.contains("severity") ? result["severity"].value("level", "") : "";
+    const bool virus = answered && topic != "healthy" && sevLevel == "not_applicable";
+    const bool severe = (answered && (kb_->urgent(topic) || sevLevel == "high" || virus)) ||
                         std::any_of(pestSev.begin(), pestSev.end(), [](const PestSeverity& s) { return s.level == "high"; });
     result["refer_to_expert"] = severe;
     auto messagesIn = [&](const std::string& l) {
