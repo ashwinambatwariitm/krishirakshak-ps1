@@ -304,11 +304,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
             if (kb_->reliability(topic) == "low")
                 line += " The photo result is not certain; the farmer should confirm with the local KVK.";
         } else {
+            // Same line as --eval-advisor. The insect count is not given to Llama: with the sentence "Insects of this
+            // kind counted in the photo: N" the 1B model echoed it or wrote one sentence only, so every caterpillar,
+            // mite and aphid photo was rejected (Pi full test, 2026-11-21). The count is shown in the app instead.
             line = "An insect pest was found on the tomato plant: " + kb_->topicName(topics.front(), "en") + ".";
-            for (const auto& ps : pestSev)
-                if (ps.topic == topics.front())
-                    line += " Insects of this kind counted in the photo: " + std::to_string(ps.count) +
-                            " (" + ps.level + " for one photo).";
         }
         t.reset();
         result["llama"] = runAdvisor(line, blockChunks.front(), topics.front(), lang);
