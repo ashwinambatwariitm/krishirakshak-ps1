@@ -343,9 +343,16 @@ function renderAnsweredScreen(data) {
   const spreadBadge = document.getElementById("res-spread-badge");
   const pestsBadge = document.getElementById("res-pests-badge");
 
-  // Insects found on a photo that is not a tomato leaf: no disease name, say why
-  diseaseNameEl.textContent = disease.name ||
-    window.t(disease.not_tomato_leaf ? "not_tomato_title" : "diagnosis_result");
+  // Leaf disease and pests are equal results: without a disease name the title is the pest result
+  diseaseNameEl.textContent = disease.name || (pestTitle(data) || window.t("diagnosis_result"));
+
+  // Crop detected by the device (Phase 1: tomato from the leaf check; more crops later from the same field)
+  const cropBadge = document.getElementById("res-crop-badge");
+  if (cropBadge) {
+    const crop = data.crop && data.crop.name;
+    cropBadge.classList.toggle("hidden", !crop);
+    if (crop) cropBadge.textContent = `${window.t("crop_label")}: ${cropName(crop)} (${window.t("crop_detected")})`;
+  }
 
   if (disease.top && disease.top[0] && typeof disease.top[0].probability === "number") {
     const pct = Math.round(disease.top[0].probability * 100);
@@ -665,6 +672,19 @@ async function handleAskQuestion() {
  * photo that is not a tomato leaf but shows insects there is no disease name: say that, then the insects.
  * tr: label function (window.t for the chosen language, tEnglish for the English fallback)
  */
+// Localised crop name ("crop_tomato" label; the plain name when a new crop has no label yet)
+function cropName(name) {
+  const key = `crop_${name}`;
+  const t = window.t(key);
+  return t && t !== key ? t : name;
+}
+
+// "Pest detected: Caterpillars (...)" for a result with insects (null when there are none)
+function pestTitle(res, tr = window.t) {
+  const names = [...new Set((res.pests || []).map(p => p.name).filter(Boolean))].join(", ");
+  return names ? `${tr("pest_detected_title")}: ${names}` : null;
+}
+
 function spokenResult(res, tr) {
   const d = res.disease || {};
   const pests = [...new Set((res.pests || []).map(p => p.name).filter(Boolean))].join(", ");
@@ -675,8 +695,8 @@ function spokenResult(res, tr) {
     if (d.urgent) text += ` ${tr("urgent_badge")}.`;
     return pests ? `${text} ${pests}.` : text;
   }
-  const head = d.not_tomato_leaf ? tr("not_tomato_title") : tr("diagnosis_result");
-  return pests ? `${head}. ${pests}.` : `${head}.`;
+  const pt = pestTitle(res, tr);
+  return pt ? `${pt}.` : `${d.not_tomato_leaf ? tr("not_tomato_title") : tr("diagnosis_result")}.`;
 }
 
 // English label (fallback text when the phone has no voice for the chosen language)
