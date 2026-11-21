@@ -115,6 +115,9 @@ function initApp() {
     });
   }
 
+  // Speech-to-Text Microphone for Kisan AI
+  setupSpeechToText();
+
   // Clickable prompt suggestion chips
   document.querySelectorAll(".chip-btn").forEach(chip => {
     chip.addEventListener("click", () => {
@@ -1148,3 +1151,149 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-result-lang");
   if (btn) btn.addEventListener("click", toggleResultLanguage);
 });
+
+/**
+ * Speech-to-Text for Kisan AI Voice Questions
+ * Supports:
+ * Strategy 1: Android native SpeechRecognizer bridge (window.AndroidSTT, 100% offline with on-device speech model)
+ * Strategy 2: Web Speech API (window.SpeechRecognition || window.webkitSpeechRecognition)
+ */
+function setupSpeechToText() {
+  const btnMic = document.getElementById("btn-mic-question");
+  const inputQuestion = document.getElementById("input-question");
+  const micHint = document.getElementById("mic-status-hint");
+  if (!btnMic || !inputQuestion) return;
+
+  let recognition = null;
+  let isListening = false;
+
+  const notifyToast = (msg) => {
+    if (window.voiceAdvisor && typeof window.voiceAdvisor.notify === "function") {
+      window.voiceAdvisor.notify(msg);
+    } else {
+      let el = document.getElementById("kr-toast");
+      if (!el) {
+        el = document.createElement("div");
+        el.id = "kr-toast";
+        el.className = "kr-toast";
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.classList.add("show");
+      setTimeout(() => el.classList.remove("show"), 5000);
+    }
+  };
+
+  const stopListeningUI = () => {
+    isListening = false;
+    btnMic.classList.remove("listening");
+    if (micHint) micHint.classList.add("hidden");
+  };
+
+  const startListeningUI = () => {
+    isListening = true;
+    btnMic.classList.add("listening");
+    if (micHint) {
+      micHint.textContent = window.t("mic_listening") || "Listening... Speak now";
+      micHint.classList.remove("hidden");
+    }
+  };
+
+  // Callback exposed to Android Native STT Bridge
+  window.onSpeechResult = (text) => {
+    stopListeningUI();
+    if (text && text.trim()) {
+      inputQuestion.value = text.trim();
+      inputQuestion.focus();
+    }
+  };
+
+  window.onSpeechError = (err) => {
+    stopListeningUI();
+    if (err !== "cancelled" && err !== "no_match") {
+      notifyToast(window.t("mic_error") || "Voice input could not recognize speech.");
+    }
+  };
+
+  btnMic.addEventListener("click", () => {
+    if (isListening) {
+      if (recognition) {
+        try { recognition.stop(); } catch (e) {}
+      }
+      stopListeningUI();
+      return;
+    }
+
+    const lang = window.getLanguage() || "en";
+
+    // Strategy 1: Android native STT Bridge
+    if (window.AndroidSTT && typeof window.AndroidSTT.startListening === "function") {
+      startListeningUI();
+      try {
+        window.AndroidSTT.startListening(lang);
+      } catch (err) {
+        stopListeningUI();
+        console.warn("AndroidSTT bridge error:", err);
+      }
+      return;
+    }
+
+    // Strategy 2: Web Speech API (Chrome / Edge / Android WebView)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      try {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        const localeMap = {
+          en: "en-IN",
+          hi: "hi-IN",
+          mr: "mr-IN",
+          te: "te-IN",
+          ta: "ta-IN",
+          kn: "kn-IN",
+          bn: "bn-IN",
+          gu: "gu-IN",
+          pa: "pa-IN",
+          or: "or-IN"
+        };
+        recognition.lang = localeMap[lang] || "en-IN";
+
+        recognition.onstart = () => {
+          startListeningUI();
+        };
+
+        recognition.onresult = (event) => {
+          stopListeningUI();
+          if (event.results && event.results[0] && event.results[0][0]) {
+            const transcript = event.results[0][0].transcript;
+            if (transcript) {
+              inputQuestion.value = transcript.trim();
+              inputQuestion.focus();
+            }
+          }
+        };
+
+        recognition.onerror = (event) => {
+          stopListeningUI();
+          if (event.error !== "no-speech") {
+            notifyToast(window.t("mic_error") || "Voice input error: " + event.error);
+          }
+        };
+
+        recognition.onend = () => {
+          stopListeningUI();
+        };
+
+        recognition.start();
+      } catch (e) {
+        stopListeningUI();
+        console.warn("Speech recognition initialization failed:", e);
+        notifyToast(window.t("mic_not_supported") || "Speech recognition not available on this browser.");
+      }
+    } else {
+      notifyToast(window.t("mic_not_supported") || "Voice input is not supported on this browser.");
+    }
+  });
+}

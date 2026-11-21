@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import android.webkit.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -57,6 +58,23 @@ class MainActivity : AppCompatActivity() {
         // Camera permission handling
     }
 
+    private val speechRecognizerLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK && result.data != null) {
+            val matches = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            if (!matches.isNullOrEmpty()) {
+                val spokenText = matches[0]
+                val escaped = spokenText.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", " ").replace("\r", "")
+                webView.evaluateJavascript("if (window.onSpeechResult) window.onSpeechResult(\"$escaped\");", null)
+            } else {
+                webView.evaluateJavascript("if (window.onSpeechError) window.onSpeechError(\"no_match\");", null)
+            }
+        } else {
+            webView.evaluateJavascript("if (window.onSpeechError) window.onSpeechError(\"cancelled\");", null)
+        }
+    }
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +100,8 @@ class MainActivity : AppCompatActivity() {
 
             // Expose native Text-to-Speech bridge to JavaScript (100% offline)
             addJavascriptInterface(AndroidTTSBridge(), "AndroidTTS")
+            // Expose native Speech-to-Text bridge to JavaScript (offline voice input)
+            addJavascriptInterface(AndroidSTTBridge(), "AndroidSTT")
 
             webViewClient = object : WebViewClient() {
                 override fun onReceivedError(
@@ -207,6 +227,43 @@ class MainActivity : AppCompatActivity() {
         @JavascriptInterface
         fun stop() {
             tts?.stop()
+        }
+    }
+
+    inner class AndroidSTTBridge {
+        @JavascriptInterface
+        fun isAvailable(): Boolean = true
+
+        @JavascriptInterface
+        fun startListening(lang: String) {
+            runOnUiThread {
+                try {
+                    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                        val localeStr = when (lang.lowercase(Locale.ROOT)) {
+                            "hi" -> "hi-IN"
+                            "mr" -> "mr-IN"
+                            "te" -> "te-IN"
+                            "ta" -> "ta-IN"
+                            "kn" -> "kn-IN"
+                            "bn" -> "bn-IN"
+                            "gu" -> "gu-IN"
+                            "pa" -> "pa-IN"
+                            "or" -> "or-IN"
+                            else -> "en-IN"
+                        }
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, localeStr)
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, localeStr)
+                        putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE, localeStr)
+                        putExtra(RecognizerIntent.EXTRA_PROMPT, "Ask KrishiRakshak...")
+                        putExtra("android.speech.extra.PREFER_OFFLINE", true)
+                    }
+                    speechRecognizerLauncher.launch(intent)
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                    webView.evaluateJavascript("if (window.onSpeechError) window.onSpeechError(\"${ex.message}\");", null)
+                }
+            }
         }
     }
 

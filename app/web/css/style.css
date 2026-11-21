@@ -101,24 +101,55 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .header-lang-picker {
   display: flex;
   align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
+  padding: 0 8px;
+  height: 36px;
+  transition: all 0.2s ease;
+}
+
+.header-lang-picker:hover,
+.header-lang-picker:focus-within {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.header-lang-picker .lang-globe-icon {
+  flex-shrink: 0;
+  stroke: #ffffff;
+  margin-right: 4px;
+  pointer-events: none;
 }
 
 .header-lang-picker select {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--primary);
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--radius-btn);
-  padding: 8px 10px;
-  min-height: 44px;
-  font-size: 0.88rem;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  height: 100%;
+  padding: 0 16px 0 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+}
+
+.header-lang-picker select option {
+  background: #ffffff;
+  color: #102111;
+  font-size: 0.95rem;
 }
 
 .icon-btn {
@@ -126,9 +157,11 @@ body {
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-btn);
-  padding: 8px 12px;
-  min-height: 48px;
-  min-width: 48px;
+  padding: 6px;
+  height: 38px;
+  width: 38px;
+  min-height: 38px;
+  min-width: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,6 +169,7 @@ body {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .icon-btn:hover, .icon-btn:active {
@@ -666,6 +700,52 @@ body {
   white-space: nowrap; }
 .qa-input-row .input-text { min-width: 0; }
 
+.btn-mic {
+  background: #f1f8f0;
+  color: var(--primary);
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius-btn);
+  width: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 0 0 auto;
+}
+
+.btn-mic:hover, .btn-mic:active {
+  background: #e8f5e9;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-mic.listening {
+  background: #ffebee;
+  color: #d32f2f;
+  border-color: #d32f2f;
+  animation: mic-pulse 1.2s infinite;
+}
+
+@keyframes mic-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+.mic-status-hint {
+  font-size: 0.85rem;
+  color: #d32f2f;
+  font-weight: 700;
+  margin-top: 6px;
+  padding: 4px 8px;
+  background: #ffebee;
+  border-radius: 6px;
+  display: inline-block;
+}
+
 .input-text {
   flex: 1;
   min-height: 48px;
@@ -956,3 +1036,47 @@ body {
   padding: 12px 14px; border-radius: 10px; font-size: 0.92rem; line-height: 1.4; opacity: 0; pointer-events: none;
   transform: translateY(10px); transition: opacity .25s, transform .25s; }
 .kr-toast.show { opacity: 1; transform: none; }
+
+/* Responsive adjustments for narrow mobile screens (360px - 440px) */
+@media (max-width: 440px) {
+  .app-header {
+    padding: 8px 10px;
+  }
+  .brand-wrapper {
+    gap: 8px;
+    min-width: 0;
+  }
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .brand-text h1 {
+    font-size: 1.15rem;
+    white-space: nowrap;
+  }
+  .brand-text p {
+    display: none; /* Hide subtitle on narrow screens to prevent crowding */
+  }
+  .header-actions {
+    gap: 5px;
+  }
+  .header-lang-picker {
+    height: 34px;
+    padding: 0 4px 0 6px;
+  }
+  .header-lang-picker select {
+    font-size: 0.78rem;
+    max-width: 78px;
+  }
+  .icon-btn {
+    height: 34px;
+    width: 34px;
+    min-height: 34px;
+    min-width: 34px;
+    padding: 5px;
+  }
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

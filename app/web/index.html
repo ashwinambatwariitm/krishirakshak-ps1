@@ -28,6 +28,11 @@
       <div class="header-actions">
         <!-- Single Unified Language Selector for Entire App -->
         <div id="translate-picker" class="header-lang-picker">
+          <svg class="lang-globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
           <select id="select-translate" aria-label="Language">
             <option value="" data-i18n="translate_none">English</option>
             <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
@@ -291,9 +296,18 @@
         </div>
 
         <div class="qa-input-row">
-          <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="Type your question...">
+          <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="Type or speak question...">
+          <button id="btn-mic-question" class="btn-mic" type="button" title="Speak question" aria-label="Speak question" data-i18n-title="mic_btn">
+            <svg class="mic-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
           <button id="btn-ask" class="btn btn-primary" data-i18n="ask">Ask AI</button>
         </div>
+        <div id="mic-status-hint" class="mic-status-hint hidden" data-i18n="mic_listening">Listening... Speak now</div>
 
         <div id="qa-loading" class="muted text-center hidden" style="margin-top:14px;" data-i18n="ask_waiting">
           Finding verified answer on device...

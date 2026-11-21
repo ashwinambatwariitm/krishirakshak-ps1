@@ -26,3 +26,4 @@ const CONFIG = {
 
 // Global export
 window.CONFIG = CONFIG;
+
