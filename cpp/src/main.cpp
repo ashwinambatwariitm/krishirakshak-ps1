@@ -31,6 +31,7 @@
  *   --threads N        ONNX Runtime threads per vision model; default 2
  *   --llama-threads N  XNNPACK threads for Llama; default 4
  *   --llama-pte FILE   Llama model relative to --root; default models/llama3_2_1b_krishirakshak_lora_8da4w.pte
+ *   --llama-max-temp C skip Llama for a photo when the CPU is at or above C degrees (default 80; thermal guard)
  *                      (LoRA-tuned 1B; base model: models/llama3_2_1b_instruct_8da4w.pte)
  *                      (e.g. models/llama3_2_3b_instruct_8da4w.pte for the 3B model; same tokenizer)
  *   --translate LANG   also translate the accepted English advice into LANG (hi te mr kn ta bn gu or pa);
@@ -57,7 +58,7 @@ namespace {
 
 void usage() {
     std::cerr << "usage: krishirakshak [--root DIR] [--lang en|hi] [--int8|--fp32] [--no-llama] [--sequential] [--threads N]\n"
-                 "                     [--llama-threads N] [--llama-pte FILE] [--ort-spin] [--brief]\n"
+                 "                     [--llama-threads N] [--llama-pte FILE] [--llama-max-temp C] [--ort-spin] [--brief]\n"
                  "                     [--translate LANG] [--no-translate] [--translate-threads N] [--translate-model DIR] [--web DIR]\n"
                  "                     (photo ... | --list FILE | --ask QUESTION [--topic TOPIC] | --serve PORT\n"
                  "                      | --eval-advisor demo|all|TOPIC,TOPIC)\n";
@@ -152,6 +153,7 @@ int main(int argc, char** argv) {
         else if (a == "--threads") cfg.visionThreads = std::stoi(next());
         else if (a == "--llama-threads") cfg.llamaThreads = std::stoi(next());
         else if (a == "--llama-pte") cfg.llamaPte = next();
+        else if (a == "--llama-max-temp") cfg.llamaMaxTempC = std::stod(next());
         else if (a == "--translate") translateTo = next();
         else if (a == "--no-translate") cfg.useTranslator = false;
         else if (a == "--translate-threads") cfg.translateThreads = std::stoi(next());
