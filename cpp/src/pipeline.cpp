@@ -199,13 +199,13 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     if (leafCheck_)
         KR_DEMO_LOG(dlog, "leaf_check", strf("%s, input 224x224: p_other %.3f %s threshold %.3f -> %s (%.0f ms)",
                                              leafCheck_->modelName().c_str(), leaf.first, leaf.second ? "<" : ">=",
-                                             leafRejectThreshold_, leaf.second ? "crop leaf" : "no known crop leaf", leafMs));
+                                             leafRejectThreshold_, leaf.second ? "tomato leaf" : "not a tomato plant", leafMs));
     if (!ranking.empty())
         KR_DEMO_LOG(dlog, "disease", strf("%s, input 224x224: %s %.1f%%, %s %.1f%%%s (%.0f ms)", disease_->modelName().c_str(),
                                           ranking[0].label.c_str(), ranking[0].probability * 100,
                                           ranking.size() > 1 ? ranking[1].label.c_str() : "-",
                                           ranking.size() > 1 ? ranking[1].probability * 100 : 0.0,
-                                          leaf.second ? "" : " (not used: no crop leaf)", diseaseMs));
+                                          leaf.second ? "" : " (not used: not a tomato plant)", diseaseMs));
 #if KR_DEMO_LOGS
     {
         std::string boxes;
