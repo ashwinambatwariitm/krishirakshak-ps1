@@ -1,0 +1,7 @@
+rule,photos,insect_found,right_advice,caterpillar_advice_for_spodoptera_helicoverpa,wrong_pest_advice,generic_only
+"species model, species rule",578,67.0,12.6,0.0,1.2,53.1
+"species model, group rule (PR #8)",578,67.0,20.1,17.6,1.7,27.5
+"group model, reliable groups",578,84.9,26.0,26.3,4.3,28.7
+"group model, all groups",578,84.9,33.9,26.3,7.1,20.9
+"species model FP32, group rule (PR #8)",578,69.9,20.4,17.3,2.2,29.9
+"group model FP32, reliable groups",578,85.1,25.4,25.6,4.7,29.6

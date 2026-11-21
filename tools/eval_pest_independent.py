@@ -13,6 +13,7 @@ Usage:
     python tools/eval_pest_independent.py --huang "DIR/Original image of tomato pest" \
         --species-onnx models/pest_yolov8n_ip102_negatives_int8.onnx \
         --groups-onnx models/pest_yolov8n_groups_int8.onnx --out results/pest_groups/independent_huang
+    add --fp32 to also score the FP32 ONNX files (results/pest_groups/independent_huang_fp32)
 """
 import argparse
 import glob
@@ -75,6 +76,7 @@ def main():
     ap.add_argument("--species-onnx", default=f"{REPO}/models/pest_yolov8n_ip102_negatives_int8.onnx")
     ap.add_argument("--groups-onnx", default=f"{REPO}/models/pest_yolov8n_groups_int8.onnx")
     ap.add_argument("--out", default=f"{REPO}/results/pest_groups/independent_huang")
+    ap.add_argument("--fp32", action="store_true", help="also score the FP32 ONNX files (same names without _int8)")
     args = ap.parse_args()
 
     kb = json.load(open(f"{REPO}/app/kb/tomato_kb.json"))
@@ -97,6 +99,12 @@ def main():
             lambda k: gr_topic[k] if k in gr_reliable else "insect_other"),
         "group model, all groups": (args.groups_onnx, gr_cfg["conf_threshold"], lambda k: gr_topic[k]),
     }
+    # FP32 versions of both models (same thresholds as the INT8 app files) for the precision comparison
+    if args.fp32:
+        rules["species model FP32, group rule (PR #8)"] = (args.species_onnx.replace("_int8", ""), sp_cfg["conf_threshold"],
+            rules["species model, group rule (PR #8)"][2])
+        rules["group model FP32, reliable groups"] = (args.groups_onnx.replace("_int8", ""), gr_cfg["conf_threshold"],
+            rules["group model, reliable groups"][2])
     near = pd.read_csv(f"{REPO}/results/pest_independent_huang/per_image.csv")
     skip = set(near[near.near_duplicate.astype(bool)].image)
 
