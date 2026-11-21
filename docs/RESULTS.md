@@ -432,6 +432,29 @@ service stopped and the page cache dropped before each model.
   when it is rejected (healthy, bacterial speck, damping-off, tobacco caterpillar) the verified extracts are shown.
 - An FP32 export of the LoRA model was not made; the FP32 row is the base model.
 
+## Power and CPU use on the Raspberry Pi 5 (`results/pi5_bench/2026-11-21_power/`, `tools/pi_power_profile.py`)
+
+The script reads the Pi 5 power-management IC (`vcgencmd pmic_read_adc`: voltage and current of every internal supply
+rail) and `/proc/stat` five times per second while it sends photos to the running application. Board power = sum of
+voltage x current over the rails: SoC, memory and on-board supplies. It does not include the USB-C supply losses, USB
+devices or the fan, so a wall-plug meter would read somewhat more. Application as deployed (INT8 vision, leaf check,
+INT4 LoRA Llama, IndicTrans2 INT8), official 27 W supply, active cooler, 35-62 C, no throttling.
+
+| Stage | Time per photo | Board power (mean / peak) | CPU use (4 cores) | Energy per photo |
+|---|---|---|---|---|
+| Idle (application loaded, waiting) | - | 1.46 W / 2.0 W | 0.1% | - |
+| Vision only: photo check, leaf check, disease and pest models (8 photos rejected as not a tomato leaf) | 0.14 s (vision 118 ms) | 4.3 W / 8.0 W | 40-90% | 0.6 J |
+| Full answer: vision + Llama advice + Marathi translation (5 tomato disease photos) | 6.9 s median (4.2-18.3 s) | 5.5 W / 8.3 W | 88% | 40 J median, 50 J mean (0.014 Wh) |
+
+- Llama is most of the time and energy of a full answer (4.1-14.4 s per photo), then translation (0.7-3.7 s); the vision
+  models take about 0.12 s.
+- Energy is small compared with standby: 100 full answers take about 1.4 Wh, a day of idling about 35 Wh at the rails
+  (more at the wall). A 20,000 mAh power bank (about 74 Wh) should therefore last roughly a day in the field (not
+  measured at the wall).
+- The mentors recommended running models one after another rather than together. Here the disease and pest models
+  run at the same time on two cores each (vision 114-131 ms with peak RAM well below the 8 GB); Llama and translation
+  run after them, one at a time.
+
 ## Recommended models
 
 | Task | Model | Notes |
