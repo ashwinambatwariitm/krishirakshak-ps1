@@ -893,6 +893,9 @@ body {
 /* Machine translation of the advice (marked as not reviewed) */
 .translation-picker, .translate-picker { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; text-align: left; }
 .translate-picker select { padding: 10px; border-radius: 10px; font-size: 1rem; min-height: 48px; }
+/* Language choice opens the start screen: bold label, space before the photo buttons */
+#translate-picker { margin: 4px 0 18px; }
+#translate-picker label { font-weight: 700; }
 .translation-block { margin-top: 12px; padding: 10px 12px; border-left: 4px solid #b26a00; background: #fff8ec; border-radius: 8px; }
 .translation-label { font-size: 0.8rem; color: #7a5200; margin-bottom: 4px; }
 .translation-text { font-size: 1.1rem; line-height: 1.6; margin: 0; }

@@ -1029,10 +1029,10 @@ async function setupTranslatePicker() {
     const langs = (info && info.translation_languages) || [];
     if (langs.length > 0) {
       Array.from(select.options).forEach(o => { o.hidden = o.value !== "" && !langs.includes(o.value); });
-      picker.classList.remove("hidden");
     }
   } catch (e) {
-    picker.classList.add("hidden");   // device not reachable or no translator: keep the picker hidden
+    // Device not reachable yet (for example the phone joined the Pi's Wi-Fi after the app opened): keep all languages;
+    // a device without the translator simply returns the advice in English
   }
 }
 

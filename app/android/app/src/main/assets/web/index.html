@@ -65,6 +65,24 @@
           <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
           <input type="file" id="gallery-input" accept="image/*" class="hidden">
 
+          <!-- Language of the whole app and of the advice (always shown: the list is part of the app, so it does not
+               depend on reaching the device; languages the device cannot translate are hidden once it answers) -->
+          <div id="translate-picker" class="translate-picker">
+            <label for="select-translate" data-i18n="language_label">Language / &#2349;&#2366;&#2359;&#2366;</label>
+            <select id="select-translate">
+              <option value="" data-i18n="translate_none">English only</option>
+              <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
+              <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)</option>
+              <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
+              <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)</option>
+              <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)</option>
+              <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494; (Bengali)</option>
+              <option value="gu">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)</option>
+              <option value="or">&#2835;&#2849;&#2876;&#2879;&#2822; (Odia)</option>
+              <option value="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624; (Punjabi)</option>
+            </select>
+          </div>
+
           <div class="action-buttons-group">
             <!-- Large Take Photo Button (FR-1) -->
             <button id="btn-take-photo" class="btn btn-primary">
@@ -86,22 +104,6 @@
             </button>
           </div>
 
-          <!-- Machine translation of the advice (shown only when the device has the translator) -->
-          <div id="translate-picker" class="translate-picker hidden">
-            <label for="select-translate" data-i18n="translate_label">Advice also in</label>
-            <select id="select-translate">
-              <option value="" data-i18n="translate_none">English only</option>
-              <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368; (Hindi)</option>
-              <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137; (Telugu)</option>
-              <option value="mr">&#2350;&#2352;&#2366;&#2336;&#2368; (Marathi)</option>
-              <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233; (Kannada)</option>
-              <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021; (Tamil)</option>
-              <option value="bn">&#2476;&#2494;&#2434;&#2482;&#2494; (Bengali)</option>
-              <option value="gu">&#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; (Gujarati)</option>
-              <option value="or">&#2835;&#2849;&#2876;&#2879;&#2822; (Odia)</option>
-              <option value="pa">&#2602;&#2672;&#2588;&#2622;&#2604;&#2624; (Punjabi)</option>
-            </select>
-          </div>
         </div>
       </section>
 
