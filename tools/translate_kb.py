@@ -57,6 +57,7 @@ GLOSSARY = [
     (r"defoliation", "falling of leaves"),
     (r"foliage", "leaves"),
     (r"inoculum", "source of infection"),
+    (r"vegetative (phase|stage) of the plant growth", "leafy growth stage of the plant"),   # "growth" twice (mr)
     (r"vegetative (phase|stage)", "leafy growth stage"),
     (r"lesions", "spots"),
     (r"lesion", "spot"),
@@ -80,6 +81,7 @@ GLOSSARY = [
     (r"cultivar", "variety"),
     (r"pre-?mature", "early"),
     (r"midrib", "middle vein of the leaf"),
+    (r"vaseline", "petroleum jelly"),
 ]
 
 

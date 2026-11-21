@@ -103,10 +103,14 @@ nlohmann::json Pipeline::translate(const std::string& english, const std::string
         }
         return s;
     };
+    // Only the diagnosed topics (the classes of the disease and pest models, whose local names were reviewed); the
+    // names of the other knowledge-base topics are unreviewed machine translations in 7 languages (Tamil "potato
+    // scatter" for tomato spotted wilt), so those are left to the model. Longest name first.
     for (const auto& t : topics) {
         const std::string en = shortName(kb_->topicName(t, "en")), local = shortName(kb_->topicName(t, translateTo));
         if (en.size() >= 4 && !local.empty() && local != en) terms.emplace_back(en, local);
     }
+    std::stable_sort(terms.begin(), terms.end(), [](const auto& a, const auto& b) { return a.first.size() > b.first.size(); });
     const TranslationOutput out = translator_->translate(sentencesOf(english), translateTo, terms);
     timings["translation"] = out.ms;
     return out.toJson();

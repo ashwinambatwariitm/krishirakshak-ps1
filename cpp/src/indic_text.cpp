@@ -847,6 +847,7 @@ std::string plainEnglish(const std::string& english) {
         {R"(defoliation)", "falling of leaves"},
         {R"(foliage)", "leaves"},
         {R"(inoculum)", "source of infection"},
+        {R"(vegetative (phase|stage) of the plant growth)", "leafy growth stage of the plant"},   // "growth" twice (mr)
         {R"(vegetative (phase|stage))", "leafy growth stage"},
         {R"(lesions)", "spots"},
         {R"(lesion)", "spot"},
@@ -872,6 +873,7 @@ std::string plainEnglish(const std::string& english) {
         {R"(cultivar)", "variety"},
         {R"(pre-?mature)", "early"},
         {R"(midrib)", "middle vein of the leaf"},
+        {R"(vaseline)", "petroleum jelly"},                                           // "velelin" (mr)
         };
         std::vector<std::pair<std::regex, std::string>> r;
         for (const auto& [pattern, plain] : g)
@@ -939,6 +941,8 @@ void addTermPlaceholder(Prepared& p, const std::string& marker, const std::strin
     for (const char* t : {"<ID", "<id", "< ID", "< id"}) {
         open.emplace_back(std::string(t) + n + ">", replacement);
         open.emplace_back(std::string(t) + n + " >", replacement);
+        open.emplace_back(std::string(t) + n + "]", replacement);     // "<ID1]" (hi, Pi 2026-11-21)
+        open.emplace_back(std::string(t) + n + " ]", replacement);
         open.emplace_back(std::string(t) + n + ". ", replacement + " ");
         open.emplace_back(std::string(t) + n + " ", replacement + " ");
         if (next < 10) open.emplace_back(std::string(t) + n, replacement);   // "<ID1" is not the start of "<ID10"

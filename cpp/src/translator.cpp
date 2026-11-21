@@ -13,6 +13,8 @@
 #include "common.hpp"
 #include "indic_text.hpp"
 
+#include <cctype>
+
 #include <ctranslate2/translator.h>
 #include <sentencepiece_processor.h>
 
@@ -61,14 +63,19 @@ public:
             // tokenizer leave alone, and after pre-processing a placeholder restored as the local text
             std::string english = sentences[i];
             std::vector<std::pair<std::string, std::string>> markers;   // marker -> local text
-            for (size_t k = 0; k < terms.size() && k < 26; ++k) {
+            for (size_t k = 0; k < terms.size() && markers.size() < 26; ++k) {
                 if (terms[k].first.empty() || terms[k].second.empty()) continue;
-                const std::string marker = std::string("KRTERM") + static_cast<char>('A' + k);
+                const std::string marker = std::string("KRTERM") + static_cast<char>('A' + markers.size());
                 std::string lower = english, term = terms[k].first;
                 std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
                 std::transform(term.begin(), term.end(), term.begin(), ::tolower);
                 bool found = false;
-                for (size_t pos = lower.find(term); pos != std::string::npos; pos = lower.find(term, pos + marker.size())) {
+                for (size_t pos = lower.find(term); pos != std::string::npos; pos = lower.find(term, pos + 1)) {
+                    // whole words only ("mites" is not inside "termites")
+                    const bool startOk = pos == 0 || !std::isalpha(static_cast<unsigned char>(lower[pos - 1]));
+                    const size_t end = pos + term.size();
+                    const bool endOk = end >= lower.size() || !std::isalpha(static_cast<unsigned char>(lower[end]));
+                    if (!startOk || !endOk) continue;
                     english.replace(pos, term.size(), marker);
                     lower.replace(pos, term.size(), marker);
                     found = true;
