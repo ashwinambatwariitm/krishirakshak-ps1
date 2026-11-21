@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <fstream>
 #include <future>
 #include <set>
 
@@ -51,6 +52,13 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
                                                     cfg_.ortSpin);
     pest_ = std::make_unique<PestDetector>(path(cfg_.pestOnnx), path(cfg_.pestSpec), path(cfg_.pestLabels),
                                            path(cfg_.pestConfig), cfg_.visionThreads, cfg_.ortSpin);
+    // Optional tomato-leaf check: loaded only when both files exist, so older model bundles keep working
+    if (std::ifstream(path(cfg_.leafCheckOnnx)).good() && std::ifstream(path(cfg_.leafCheckSpec)).good()) {
+        leafCheck_ = std::make_unique<DiseaseClassifier>(path(cfg_.leafCheckOnnx), path(cfg_.leafCheckSpec),
+                                                          cfg_.visionThreads, cfg_.ortSpin);
+        const auto spec = nlohmann::json::parse(readFile(path(cfg_.leafCheckSpec)));
+        leafRejectThreshold_ = spec.at("reject_threshold").get<float>();
+    }
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
     kb_->setReliablePestGroups(pest_->reliableGroups());
     severity_ = std::make_unique<SeverityModel>(path(cfg_.severityOnnx), path(cfg_.severitySpec),
@@ -64,6 +72,14 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
         translator_ = Translator::create(path(cfg_.translateModel), path(cfg_.translateSpm), cfg_.translateThreads);
 #endif
     loadMs_ = t.ms();
+}
+
+std::pair<double, bool> Pipeline::checkLeaf(const cv::Mat& imageRgb) {
+    if (!leafCheck_) return {0.0, true};
+    double pOther = 0.0;
+    for (const auto& c : leafCheck_->predict(imageRgb))
+        if (c.label == "other") pOther = c.probability;
+    return {pOther, pOther < leafRejectThreshold_};
 }
 
 bool Pipeline::llamaReady() const { return llama_ != nullptr; }
@@ -86,6 +102,7 @@ nlohmann::json Pipeline::translate(const std::string& english, const std::string
 
 nlohmann::json Pipeline::info() const {
     return {{"disease_model", disease_->modelName()}, {"pest_model", pest_->modelName()}, {"severity_model", severity_->modelName()},
+            {"leaf_check_model", leafCheck_ ? nlohmann::json(leafCheck_->modelName()) : nlohmann::json("not loaded")},
             {"llama", llamaReady() ? cfg_.llamaPte : "not loaded (template mode)"},
             {"translator", translatorReady() ? cfg_.translateModel : "not loaded"},
 #ifdef KR_WITH_TRANSLATION
@@ -126,30 +143,51 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     std::vector<PestDetection> pests;
     double diseaseMs = 0, pestMs = 0;
     t.reset();
+    // The leaf check runs in the disease thread, just before the disease model (both read the same 224 x 224 input)
+    std::pair<double, bool> leaf{0.0, true};
+    double leafMs = 0;
     if (cfg_.parallelVision) {
         auto pestJob = std::async(std::launch::async, [&] { Timer tp; auto r = pest_->predict(imageRgb); pestMs = tp.ms(); return r; });
+        Timer tl; leaf = checkLeaf(imageRgb); leafMs = tl.ms();
         Timer td;
         ranking = disease_->predict(imageRgb);
         diseaseMs = td.ms();
         pests = pestJob.get();
     } else {
+        Timer tl; leaf = checkLeaf(imageRgb); leafMs = tl.ms();
         Timer td; ranking = disease_->predict(imageRgb); diseaseMs = td.ms();
         Timer tp; pests = pest_->predict(imageRgb); pestMs = tp.ms();
     }
     timings["vision_wall"] = t.ms();
     timings["disease"] = diseaseMs;
     timings["pest"] = pestMs;
+    const bool isTomato = leaf.second;
+    // On a photo that is not a tomato leaf, boxes of the group model's "other insect" class are dropped: they are the
+    // main source of false insects there (a face, a flower or a whole leaf boxed as "other insect"), and they would
+    // only give generic advice. Insects of the tomato pest groups (aphid, whitefly, thrips, mite, caterpillar) are
+    // kept on every photo. The IP102 species model has no topic per class and is not affected.
+    if (!isTomato)
+        pests.erase(std::remove_if(pests.begin(), pests.end(),
+                                   [](const PestDetection& p) { return p.topic == "insect_other"; }),
+                    pests.end());
+    if (leafCheck_) {
+        timings["leaf_check"] = leafMs;
+        result["leaf_check"] = {{"is_tomato_leaf", isTomato}, {"p_other", leaf.first},
+                                {"threshold", leafRejectThreshold_}, {"model", leafCheck_->modelName()}};
+    }
 
+    // Not a tomato leaf: no disease name, confidence, severity or disease advice (the disease model only knows
+    // tomato classes and would name a tomato disease for any photo). Insects found by the pest detector are kept.
     const auto& top = ranking.front();
-    const bool answered = top.probability >= cfg_.diseaseThreshold;
+    const bool answered = isTomato && top.probability >= cfg_.diseaseThreshold;
     const std::string topic = answered ? top.label : "";
     nlohmann::json topK = nlohmann::json::array();
-    for (size_t i = 0; i < std::min<size_t>(3, ranking.size()); ++i)
+    for (size_t i = 0; isTomato && i < std::min<size_t>(3, ranking.size()); ++i)
         topK.push_back({{"class", ranking[i].label}, {"probability", ranking[i].probability}});
     result["disease"] = {{"top", topK}, {"answered", answered}, {"topic", answered ? nlohmann::json(topic) : nullptr},
                          {"name", answered ? nlohmann::json(kb_->topicName(topic, show)) : nullptr},
                          {"reliability", answered ? nlohmann::json(kb_->reliability(topic)) : nullptr},
-                         {"urgent", answered && kb_->urgent(topic)}};
+                         {"urgent", answered && kb_->urgent(topic)}, {"not_tomato_leaf", !isTomato}};
 
     nlohmann::json pestJson = nlohmann::json::array();
     std::set<std::string> pestTopics;
@@ -199,7 +237,8 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
 
     auto messagesIn = [&](const std::string& l) {
         nlohmann::json m = nlohmann::json::array();
-        if (!answered) m.push_back(kb_->message("uncertain", l));
+        if (!isTomato) m.push_back(kb_->message("not_tomato", l));
+        else if (!answered) m.push_back(kb_->message("uncertain", l));
         if (answered && kb_->reliability(topic) == "low") m.push_back(kb_->message("expert_confirm", l));
         if (anyUnreliable) m.push_back(kb_->message("pest_species_uncertain", l));
         if (anySpray) m.push_back(kb_->message("chemical_rule", l));
@@ -222,7 +261,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
                         {"pest_names", pestNames}, {"messages", messagesIn("en")}, {"advice_blocks", enBlocks},
                         {"pest_severity", pestSeverityJson(pestSev, *kb_, "en")}};
     }
-    result["status"] = topics.empty() ? "uncertain" : "answered";
+    result["status"] = !topics.empty() ? "answered" : (isTomato ? "uncertain" : "not_tomato");
     result["llama"] = nullptr;
 
 #ifdef KR_WITH_LLM

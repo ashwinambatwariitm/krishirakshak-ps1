@@ -139,6 +139,34 @@ Diseased leaves answered as "healthy" fall from 5.3% to 4.0% on the field crops.
 (answered for 33% of its photos, 55% correct when answered), so the application presents it as "possible bacterial
 spot - confirm with an expert".
 
+## Tomato-leaf check (`results/leaf_check/`, `training/src/leaf_check.py`)
+
+The disease model knows only tomato classes and names a tomato disease for any photo (an IP102 rice-leaf photo was
+"bacterial spot, 73%"). A separate two-class model (tomato leaf / other) runs before the disease result; the
+disease model is unchanged. Tomato: all 10 PlantVillage tomato classes and the PlantDoc tomato photos and leaf crops,
+with the v4 split manifests (every disease test image is a test image here). Other: PlantVillage leaves of the 13
+other crops, PlantDoc field photos of those crops (copies of tomato or PlantVillage photos removed), IP102 insect photos
+and Natural Images (people, animals, vehicles, flowers, fruit). EfficientNet-B0 was chosen over MobileNetV3-Small on
+validation; a photo is rejected when P(other) >= 0.445, the threshold that keeps tomato rejection at or below 3% in
+field and lab validation.
+
+| Test set | Photos | Rejected as "not a tomato leaf" | Baseline: low v5 disease confidence |
+|---|---|---|---|
+| tomato, PlantVillage | 2,796 | 0.0% | 1.3% |
+| tomato, PlantDoc field photos | 230 | 3.5% | 2.2% |
+| tomato, PlantDoc leaf crops | 715 | 6.7% | 2.0% |
+| **other: all** | 5,499 | **94.2%** | 5.5% |
+| other crops, PlantVillage / PlantDoc | 1,934 / 2,082 | 98.9% / 86.5% | 3.6% / 4.4% |
+| IP102 insect photos | 1,000 | 99.0% | 8.4% |
+| Natural Images | 483 | 99.2% | 12.0% |
+| hardest crops: potato / pepper | 432 / 342 | 67.6% / 84.5% | 2.5% / 6.1% |
+
+The target of docs/ROADMAP.md A1 (at least 90% of non-tomato photos rejected, at most 5% of tomato field photos) is
+met for field photos (3.5%) but not for leaf crops (6.7%). Thresholding the disease model's confidence does not work
+(5.5% rejected at the same tomato rejection). On the Raspberry Pi 5 the check takes 74 ms and runs next to the pest
+detector, so the vision step is not slower. On a photo that is not a tomato leaf the application shows no disease
+result; insects of the tomato pest groups are still detected and shown.
+
 ## IP102 pest detector (YOLOv8n, all classes)
 
 Data: 18,976 annotated images (13,662 train, 1,516 validation, official 3,798 test). One malformed annotation file was

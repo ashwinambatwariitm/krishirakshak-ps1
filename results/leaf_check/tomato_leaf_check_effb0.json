@@ -1,0 +1,248 @@
+{
+  "model": "tomato_leaf_check_effb0.onnx",
+  "arch": "efficientnet_b0",
+  "classes": [
+    "tomato",
+    "other"
+  ],
+  "img_size": 224,
+  "mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "input": "RGB, direct resize to img_size (bilinear), pixel / 255, (x - mean) / std, NCHW float32",
+  "reject_class": "other",
+  "reject_threshold": 0.445,
+  "rule": "reject when softmax P(other) >= reject_threshold (chosen on validation: at most 3% of tomato validation photos rejected in field and in lab)",
+  "test": [
+    {
+      "subset": "tomato pv leaf",
+      "photos": 2796,
+      "rejected": 0.0
+    },
+    {
+      "subset": "tomato pd crop",
+      "photos": 715,
+      "rejected": 0.06713286713286713
+    },
+    {
+      "subset": "tomato pd full",
+      "photos": 230,
+      "rejected": 0.034782608695652174
+    },
+    {
+      "subset": "other: all",
+      "photos": 5499,
+      "rejected": 0.9421713038734315
+    },
+    {
+      "subset": "other pv",
+      "photos": 1934,
+      "rejected": 0.9886246122026887
+    },
+    {
+      "subset": "other pd",
+      "photos": 2082,
+      "rejected": 0.8645533141210374
+    },
+    {
+      "subset": "other ip102",
+      "photos": 1000,
+      "rejected": 0.99
+    },
+    {
+      "subset": "other natural",
+      "photos": 483,
+      "rejected": 0.9917184265010351
+    },
+    {
+      "subset": "other crop: apple (lab + field)",
+      "photos": 514,
+      "rejected": 0.9571984435797666
+    },
+    {
+      "subset": "other crop: blueberry (lab + field)",
+      "photos": 312,
+      "rejected": 0.9102564102564102
+    },
+    {
+      "subset": "other crop: cherry (lab + field)",
+      "photos": 222,
+      "rejected": 1.0
+    },
+    {
+      "subset": "other crop: corn (lab + field)",
+      "photos": 517,
+      "rejected": 0.9787234042553191
+    },
+    {
+      "subset": "other crop: grape (lab + field)",
+      "photos": 442,
+      "rejected": 0.9773755656108597
+    },
+    {
+      "subset": "other crop: orange (lab + field)",
+      "photos": 71,
+      "rejected": 1.0
+    },
+    {
+      "subset": "other crop: peach (lab + field)",
+      "photos": 318,
+      "rejected": 0.9748427672955975
+    },
+    {
+      "subset": "other crop: pepper (lab + field)",
+      "photos": 342,
+      "rejected": 0.8450292397660819
+    },
+    {
+      "subset": "other crop: potato (lab + field)",
+      "photos": 432,
+      "rejected": 0.6759259259259259
+    },
+    {
+      "subset": "other crop: raspberry (lab + field)",
+      "photos": 232,
+      "rejected": 0.9568965517241379
+    },
+    {
+      "subset": "other crop: soybean (lab + field)",
+      "photos": 157,
+      "rejected": 0.9808917197452229
+    },
+    {
+      "subset": "other crop: squash (lab + field)",
+      "photos": 163,
+      "rejected": 0.9386503067484663
+    },
+    {
+      "subset": "other crop: strawberry (lab + field)",
+      "photos": 294,
+      "rejected": 0.9693877551020408
+    }
+  ],
+  "baseline_v5_confidence": [
+    {
+      "subset": "tomato pv leaf",
+      "photos": 2796,
+      "rejected": 0.012875536480686695
+    },
+    {
+      "subset": "tomato pd crop",
+      "photos": 715,
+      "rejected": 0.019580419580419582
+    },
+    {
+      "subset": "tomato pd full",
+      "photos": 230,
+      "rejected": 0.021739130434782608
+    },
+    {
+      "subset": "other: all",
+      "photos": 5499,
+      "rejected": 0.055100927441352976
+    },
+    {
+      "subset": "other pv",
+      "photos": 1934,
+      "rejected": 0.03619441571871768
+    },
+    {
+      "subset": "other pd",
+      "photos": 2082,
+      "rejected": 0.043707973102785784
+    },
+    {
+      "subset": "other ip102",
+      "photos": 1000,
+      "rejected": 0.084
+    },
+    {
+      "subset": "other natural",
+      "photos": 483,
+      "rejected": 0.12008281573498965
+    },
+    {
+      "subset": "other crop: apple (lab + field)",
+      "photos": 514,
+      "rejected": 0.058365758754863814
+    },
+    {
+      "subset": "other crop: blueberry (lab + field)",
+      "photos": 312,
+      "rejected": 0.038461538461538464
+    },
+    {
+      "subset": "other crop: cherry (lab + field)",
+      "photos": 222,
+      "rejected": 0.04054054054054054
+    },
+    {
+      "subset": "other crop: corn (lab + field)",
+      "photos": 517,
+      "rejected": 0.03868471953578337
+    },
+    {
+      "subset": "other crop: grape (lab + field)",
+      "photos": 442,
+      "rejected": 0.038461538461538464
+    },
+    {
+      "subset": "other crop: orange (lab + field)",
+      "photos": 71,
+      "rejected": 0.056338028169014086
+    },
+    {
+      "subset": "other crop: peach (lab + field)",
+      "photos": 318,
+      "rejected": 0.02830188679245283
+    },
+    {
+      "subset": "other crop: pepper (lab + field)",
+      "photos": 342,
+      "rejected": 0.06140350877192982
+    },
+    {
+      "subset": "other crop: potato (lab + field)",
+      "photos": 432,
+      "rejected": 0.02546296296296296
+    },
+    {
+      "subset": "other crop: raspberry (lab + field)",
+      "photos": 232,
+      "rejected": 0.01293103448275862
+    },
+    {
+      "subset": "other crop: soybean (lab + field)",
+      "photos": 157,
+      "rejected": 0.025477707006369428
+    },
+    {
+      "subset": "other crop: squash (lab + field)",
+      "photos": 163,
+      "rejected": 0.11042944785276074
+    },
+    {
+      "subset": "other crop: strawberry (lab + field)",
+      "photos": 294,
+      "rejected": 0.01020408163265306
+    }
+  ],
+  "validation": {
+    "mobilenet_v3_small": {
+      "threshold": 0.54,
+      "val_other_rejected": 0.9390313390313391
+    },
+    "efficientnet_b0": {
+      "threshold": 0.445,
+      "val_other_rejected": 0.9666666666666667
+    }
+  },
+  "onnx_vs_pytorch_max_diff": 6.705522537231445e-07
+}

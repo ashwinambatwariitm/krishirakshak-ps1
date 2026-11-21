@@ -2,7 +2,7 @@
 
 Model weights are not stored in git. They are published as GitHub Release assets of this repository:
 
-- `models-v4`: the pest detector by advice group (`pest_yolov8n_groups`, default since 21 Nov 2026; `training/src/pest_groups.py`, results in `results/pest_groups/`).
+- `models-v4`: the tomato-leaf check (`tomato_leaf_check_effb0`, `training/src/leaf_check.py`, results in `results/leaf_check/`) and the pest detector by advice group (`pest_yolov8n_groups`, default since 21 Nov 2026; `training/src/pest_groups.py`, results in `results/pest_groups/`).
 - `models-v3`: the disease severity model and the IndicTrans2 translation model (CTranslate2 INT8).
 - `llm-v2`: the LoRA-tuned Llama 3.2 1B `.pte` (default advisor model); `llm-v1`: the base Llama 3.2 1B `.pte` and the
   tokenizer (needed by both).
@@ -73,6 +73,7 @@ size, normalisation, thresholds) are in the JSON files in `results/int8_ptq/`.
 | `pest_yolov8n_groups_int8.onnx` | Pest detector by advice group, ONNX INT8 (used on the Pi; 3.4 MB) | `82d5cde6946f83f2e2a9956062de63ac88be4ca523cd8a97553f96d62d85dec3` |
 | `pest_yolov8n_groups.onnx` | Same model, ONNX FP32, 640 x 640 input (12 MB) | `b5920b11877cbea1e863c43274b4ebd1e799c113f8793f9f24de89478420baae` |
 | `pest_yolov8n_groups.pt` | PyTorch checkpoint (Ultralytics YOLOv8n, 6 classes: aphid, whitefly, thrips, mite, caterpillar, other insect) | `3dc166880771f9cf09f608759b213cb0e1efb8094dcf3b011f9f70cba17439e0` |
+| `tomato_leaf_check_effb0.onnx` | "Is this a tomato leaf?" check, EfficientNet-B0, 2 classes, ONNX FP32 (16 MB); threshold in `results/leaf_check/tomato_leaf_check_effb0.json` | `02aa85fcd0a13345a861cc0cbef914fe171285cb00456a72af7249f644c75898` |
 
 ## Release models-v1
 

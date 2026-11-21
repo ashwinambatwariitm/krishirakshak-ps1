@@ -66,6 +66,10 @@ NOTEBOOKS = [
     dict(src="pest_independent_test.py", slug="ps1-pest-independent-test", title="PS1 Pest Independent Test",
          datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx", "bangadbilla420/tomato-pest-8-originals-huang"],
          gpu=False),
+    # "Is this a tomato leaf?" check before the disease result (tomato vs other crops, insects, other objects)
+    dict(src="leaf_check.py", slug="ps1-leaf-check", title="PS1 Leaf Check",
+         datasets=DISEASE_DATA + [IP102, "prasunroy/natural-images"],
+         after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5"]),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]

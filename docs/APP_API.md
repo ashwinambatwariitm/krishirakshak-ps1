@@ -57,6 +57,9 @@ Answer: one JSON object. **Start from `status`:**
 | `answered` | a disease (or healthy) and/or a pest was identified | result screen (below) |
 | `uncertain` | photo is fine but the model is not sure | `messages` + advice to retake or ask the local KVK; no diagnosis |
 | `retake_photo` | photo is too dark, bright, blurred or small | `messages` (one line per problem) and a "take another photo" button |
+| `not_tomato` | the tomato-leaf check found no tomato leaf and no insect of a tomato pest group | `messages` ("This photo does not look like a tomato leaf ...") and a "take another photo" button; no diagnosis |
+
+When the photo is not a tomato leaf but an insect of a tomato pest group is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, and the pest result as usual. `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
 
 Fields of an `answered` result:
 
