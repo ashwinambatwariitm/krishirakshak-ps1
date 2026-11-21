@@ -23,8 +23,10 @@ One level per pest topic found in the photo, from the number of insects the pest
   AESA-based IPM package for tomato (count insects on five leaves per plant; larvae per plant; five random spots),
   and the economic threshold where one exists (fruit borer, TNAU). No threshold is invented where the sources give
   none.
-- Limitation: the pest detector (YOLOv8n, IP102) identifies aphids reliably; other insects on tomato are reported as
-  "insect, species uncertain". Counts are those of the detector (missed or merged insects change the count).
+- Limitation: the pest detector (YOLOv8n, IP102) names the species of aphids reliably; caterpillars and thrips are
+  reliable as advice groups (pest_config.json `reliable_groups`, results/pest_groups_ip102) and get their topic even
+  when the species is uncertain; other insects on tomato are reported as "insect, species uncertain". Counts are those
+  of the detector (missed or merged insects change the count).
 - Result JSON: `pest_severity` (topic, group, count, box_share, level, basis, scouting, threshold). The web page shows
   it in "Insects in this photo"; the Llama prompt includes the count and level of the main pest.
 

@@ -2,6 +2,7 @@
 
 Model weights are not stored in git. They are published as GitHub Release assets of this repository:
 
+- `models-v4`: the pest detector by advice group (`pest_yolov8n_groups`, default since 21 Nov 2026; `training/src/pest_groups.py`, results in `results/pest_groups/`).
 - `models-v3`: the disease severity model and the IndicTrans2 translation model (CTranslate2 INT8).
 - `llm-v2`: the LoRA-tuned Llama 3.2 1B `.pte` (default advisor model); `llm-v1`: the base Llama 3.2 1B `.pte` and the
   tokenizer (needed by both).
@@ -12,6 +13,7 @@ Model weights are not stored in git. They are published as GitHub Release assets
 Download into this folder and check each file against its SHA-256 checksum:
 
 ```
+gh release download models-v4 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download models-v3 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download llm-v2 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download llm-v1 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
@@ -63,6 +65,14 @@ size, normalisation, thresholds) are in the JSON files in `results/int8_ptq/`.
 | `tomato_disease_v4_effb0_10class_int8.onnx` | ONNX INT8 of the v4 10-class model (5.0 MB) | `ac0eb60df6d6a070e96c3074a508e76b2611080942279ca848364a1abd4dcd01` |
 | `pest_yolov8n_ip102_negatives.onnx` | ONNX FP32 of the pest detector, 640 x 640 input (13.6 MB) | `dfbdb150843c3f714fc2cd82b3d0138f55e70ef4812920774dd542d06b2d7e23` |
 | `pest_yolov8n_ip102_negatives_int8.onnx` | ONNX INT8 of the pest detector (3.9 MB) | `cbf9844d5b6e3be1c16dcdc13c57bb913771c9072474f3cb838ec3f38fd24873` |
+
+## Release models-v4
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `pest_yolov8n_groups_int8.onnx` | Pest detector by advice group, ONNX INT8 (used on the Pi; 3.4 MB) | `82d5cde6946f83f2e2a9956062de63ac88be4ca523cd8a97553f96d62d85dec3` |
+| `pest_yolov8n_groups.onnx` | Same model, ONNX FP32, 640 x 640 input (12 MB) | `b5920b11877cbea1e863c43274b4ebd1e799c113f8793f9f24de89478420baae` |
+| `pest_yolov8n_groups.pt` | PyTorch checkpoint (Ultralytics YOLOv8n, 6 classes: aphid, whitefly, thrips, mite, caterpillar, other insect) | `3dc166880771f9cf09f608759b213cb0e1efb8094dcf3b011f9f70cba17439e0` |
 
 ## Release models-v1
 
@@ -121,4 +131,5 @@ result = detector.predict("leaf.jpg", imgsz=640, conf=0.25)[0]
 Input 640 x 640 (letterbox). 102 IP102 classes; names are stored in the model and in
 `results/pest_yolov8n_with_negatives/pest_labels.json`. Recommended confidence threshold 0.2 to 0.3. Name the species
 only for the ids in `reliable_species_ids` of `results/pest_yolov8n_with_negatives/pest_config.json`; otherwise report
-"insect pest detected, species uncertain".
+"insect pest detected, species uncertain". A species whose knowledge-base topic is in `reliable_groups` (caterpillars,
+thrips) still gets that topic's advice (`results/pest_groups_ip102`).

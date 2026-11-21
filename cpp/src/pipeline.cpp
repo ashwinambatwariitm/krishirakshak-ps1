@@ -52,6 +52,7 @@ Pipeline::Pipeline(PipelineConfig cfg) : cfg_(std::move(cfg)) {
     pest_ = std::make_unique<PestDetector>(path(cfg_.pestOnnx), path(cfg_.pestSpec), path(cfg_.pestLabels),
                                            path(cfg_.pestConfig), cfg_.visionThreads, cfg_.ortSpin);
     kb_ = std::make_unique<KnowledgeBase>(path(cfg_.kbJson));
+    kb_->setReliablePestGroups(pest_->reliableGroups());
     severity_ = std::make_unique<SeverityModel>(path(cfg_.severityOnnx), path(cfg_.severitySpec),
                                                 cfg_.severityThreads, cfg_.ortSpin);
 #ifdef KR_WITH_LLM
@@ -154,7 +155,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     std::set<std::string> pestTopics;
     bool anyUnreliable = false;
     for (const auto& p : pests) {
-        const std::string pt = kb_->pestTopic(p.speciesId, p.speciesReliable);
+        const std::string pt = kb_->pestTopic(p.speciesId, p.speciesReliable, p.topic);
         pestTopics.insert(pt);
         anyUnreliable |= !p.speciesReliable;
         pestJson.push_back({{"species_id", p.speciesId}, {"species", p.species}, {"species_reliable", p.speciesReliable},
@@ -216,7 +217,7 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
             enBlocks.push_back({{"topic", topics[b]}, {"name", kb_->topicName(topics[b], "en")}, {"chunks", chunks}});
         }
         nlohmann::json pestNames = nlohmann::json::array();
-        for (const auto& p : pests) pestNames.push_back(kb_->topicName(kb_->pestTopic(p.speciesId, p.speciesReliable), "en"));
+        for (const auto& p : pests) pestNames.push_back(kb_->topicName(kb_->pestTopic(p.speciesId, p.speciesReliable, p.topic), "en"));
         result["en"] = {{"disease_name", answered ? nlohmann::json(kb_->topicName(topic, "en")) : nullptr},
                         {"pest_names", pestNames}, {"messages", messagesIn("en")}, {"advice_blocks", enBlocks},
                         {"pest_severity", pestSeverityJson(pestSev, *kb_, "en")}};

@@ -1,0 +1,10 @@
+group,aphids,caterpillars,fruit_fly,leafhoppers,mealybug,mites,other,spodoptera_tobacco_caterpillar,thrips,whitefly
+aphids,307,0,0,1,0,1,20,0,0,0
+caterpillars,0,236,0,0,0,0,43,35,0,0
+fruit_fly,0,0,37,0,0,0,0,0,0,0
+leafhoppers,3,0,0,644,0,0,11,0,0,0
+mealybug,0,0,0,0,18,0,1,0,0,0
+mites,2,0,0,0,0,52,14,0,0,0
+spodoptera_tobacco_caterpillar,0,21,0,0,0,0,13,44,0,0
+thrips,0,0,0,2,0,0,2,0,48,7
+whitefly,0,0,0,0,0,0,3,0,7,27

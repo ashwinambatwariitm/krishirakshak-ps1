@@ -35,10 +35,14 @@ struct PipelineConfig {
     std::string repoRoot = ".";       // other paths are relative to this unless absolute
     std::string diseaseOnnx = "models/tomato_disease_v5_effb0_6class.onnx";
     std::string diseaseSpec = "results/int8_ptq/tomato_disease_v5_effb0_6class.json";
-    std::string pestOnnx = "models/pest_yolov8n_ip102_negatives.onnx";
-    std::string pestSpec = "results/int8_ptq/pest_yolov8n_ip102_negatives.json";
-    std::string pestLabels = "results/pest_yolov8n_with_negatives/pest_labels.json";
-    std::string pestConfig = "results/pest_yolov8n_with_negatives/pest_config.json";
+    // Pest detector by advice group (aphid, whitefly, thrips, mite, caterpillar, other insect; training/src/pest_groups.py):
+    // on 578 out-of-source tomato pest photos it finds 85% of insects (IP102 species model 67%) and gives the right
+    // advice for 26% of photos (species model 13%, with the reliable-group rule 20%): results/pest_groups/. The IP102
+    // species model stays usable by pointing these four paths back to results/pest_yolov8n_with_negatives/.
+    std::string pestOnnx = "models/pest_yolov8n_groups.onnx";
+    std::string pestSpec = "results/pest_groups/pest_yolov8n_groups.json";
+    std::string pestLabels = "results/pest_groups/pest_labels.json";
+    std::string pestConfig = "results/pest_groups/pest_config.json";
     std::string severityOnnx = "models/severity_lraspp_mnv3.onnx";            // leaf + lesion segmentation
     std::string severitySpec = "results/severity/severity_spec.json";
     std::string kbJson = "app/kb/tomato_kb.json";

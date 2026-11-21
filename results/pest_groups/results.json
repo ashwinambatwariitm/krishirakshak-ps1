@@ -1,0 +1,172 @@
+{
+  "start_weights": "yolov8n.pt",
+  "epochs_run": 70,
+  "data": {
+    "ip102": {
+      "train": 13662,
+      "val": 1516,
+      "test": 3798
+    },
+    "chili": {
+      "train": 3608,
+      "val": 696,
+      "test": 490
+    },
+    "chili_removed_copies_of_test_photos": 29,
+    "chili_label_groups": {
+      "0": "aphid",
+      "1": "whitefly",
+      "2": "thrips",
+      "3": "caterpillar"
+    },
+    "chili_left_out_label_disagrees_with_file_name": {
+      "trainval:thrips": 162,
+      "test:thrips": 9
+    },
+    "negatives": {
+      "train": 4197,
+      "val_pv": 1000,
+      "test_pv": 1000,
+      "val_pd": 125,
+      "test_pd": 79
+    }
+  },
+  "group_species": {
+    "aphid": [
+      24,
+      27,
+      28,
+      29,
+      52,
+      89,
+      90,
+      91
+    ],
+    "whitefly": [
+      71
+    ],
+    "thrips": [
+      12,
+      33,
+      53,
+      54,
+      92
+    ],
+    "mite": [
+      21,
+      32,
+      74
+    ],
+    "caterpillar": [
+      18,
+      19,
+      20,
+      23,
+      38,
+      39,
+      86
+    ]
+  },
+  "reliable_groups": [
+    "aphid",
+    "thrips",
+    "caterpillar"
+  ],
+  "combined_int8": {
+    "aphid": {
+      "test_boxes": 843,
+      "found": 0.7615658362989324,
+      "group_correct_when_found": 0.9813084112149533,
+      "precision": 0.9192037470725996
+    },
+    "whitefly": {
+      "test_boxes": 196,
+      "found": 0.8316326530612245,
+      "group_correct_when_found": 0.9263803680981595,
+      "precision": 0.6666666666666666
+    },
+    "thrips": {
+      "test_boxes": 271,
+      "found": 0.8671586715867159,
+      "group_correct_when_found": 0.9574468085106383,
+      "precision": 0.8571428571428572
+    },
+    "mite": {
+      "test_boxes": 66,
+      "found": 0.9393939393939394,
+      "group_correct_when_found": 0.9193548387096774,
+      "precision": 0.6847826086956522
+    },
+    "caterpillar": {
+      "test_boxes": 639,
+      "found": 0.9859154929577465,
+      "group_correct_when_found": 0.9507936507936507,
+      "precision": 0.8786407766990292
+    },
+    "other_insect": {
+      "test_boxes": 3482,
+      "found": 0.9477311889718553,
+      "group_correct_when_found": 0.9436363636363636,
+      "precision": 0.9840137025406794
+    },
+    "all": {
+      "test_boxes": 5497,
+      "found": 0.9154084045843187,
+      "group_correct_when_found": 0.9491255961844197,
+      "precision": 0.9645078275788119
+    }
+  },
+  "models": {
+    "groups_fp32": {
+      "threshold": 0.3,
+      "false_alarms": {
+        "val_pv": 0.0,
+        "val_pd": 0.048,
+        "test_pv": 0.001,
+        "test_pd": 0.05063291139240506
+      }
+    },
+    "current_app_fp32": {
+      "threshold": 0.2,
+      "false_alarms": {
+        "val_pv": 0.002,
+        "val_pd": 0.048,
+        "test_pv": 0.003,
+        "test_pd": 0.05063291139240506
+      },
+      "ip102_test_species_correct_when_found": 0.7647058823529411
+    },
+    "groups_int8": {
+      "threshold": 0.2,
+      "false_alarms": {
+        "val_pv": 0.0,
+        "val_pd": 0.04,
+        "test_pv": 0.001,
+        "test_pd": 0.06329113924050633
+      }
+    }
+  },
+  "config": {
+    "img_size": 640,
+    "batch": 32,
+    "aug": {
+      "degrees": 30.0,
+      "flipud": 0.5,
+      "fliplr": 0.5,
+      "hsv_h": 0.015,
+      "hsv_s": 0.6,
+      "hsv_v": 0.4,
+      "translate": 0.1,
+      "scale": 0.5,
+      "shear": 2.0,
+      "perspective": 0.0005,
+      "mosaic": 1.0,
+      "mixup": 0.1
+    },
+    "group_repeat": 2,
+    "seed": 42,
+    "ultralytics": "8.4.7",
+    "torch": "2.9.1+cu128"
+  },
+  "total_hours": 8.33934365093708
+}

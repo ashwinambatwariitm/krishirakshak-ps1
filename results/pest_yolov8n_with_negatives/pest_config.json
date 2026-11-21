@@ -78,5 +78,10 @@
     "Salurnis marginella Guerr",
     "Cicadellidae"
   ],
-  "rule": "box conf >= conf_threshold -> 'pest present'; name the species only if its id is in reliable_species_ids, otherwise report 'insect pest - species uncertain'"
+  "reliable_groups": [
+    "caterpillars",
+    "thrips"
+  ],
+  "reliable_groups_source": "results/pest_groups_ip102: knowledge-base pest topic right >= 70% when the insect is found and group precision >= 70% on the IP102 test split (INT8 and FP32, threshold 0.2). With Prodenia litura (86) in caterpillars (mapping kb_with_86): caterpillars 86% right / 81% precision, thrips 81% / 73% (INT8). Checked on 578 out-of-source photos: results/pest_independent_huang",
+  "rule": "box conf >= conf_threshold -> 'pest present'; name the species only if its id is in reliable_species_ids, otherwise report 'insect pest - species uncertain'; a species whose knowledge-base topic is in reliable_groups gets that topic's advice even when the species name is uncertain (the 'species uncertain' message is still shown)"
 }

@@ -286,10 +286,16 @@ std::string KnowledgeBase::reliability(const std::string& topic) const {
 bool KnowledgeBase::urgent(const std::string& topic) const {
     return kb_.at("topics").at(topic).value("urgent", false);
 }
-std::string KnowledgeBase::pestTopic(int speciesId, bool speciesReliable) const {
-    if (!speciesReliable) return "insect_other";
+std::string KnowledgeBase::pestTopic(int speciesId, bool speciesReliable, const std::string& modelTopic) const {
+    // Group model (pest_config topic_by_class): the class is an advice group; its topic only when the group is reliable
+    if (!modelTopic.empty())
+        return speciesReliable && kb_.at("topics").contains(modelTopic) ? modelTopic : "insect_other";
+    // IP102 species model: a group topic (e.g. caterpillars = cutworms, armyworms, Spodoptera litura) is right far
+    // more often than the exact species (results/pest_groups_ip102: caterpillars 75% vs 38%), so a reliable group
+    // gives its advice even when the species is uncertain; the "species uncertain" message is still shown.
     const auto it = pestTopicBySpecies_.find(speciesId);
-    return it == pestTopicBySpecies_.end() ? "insect_other" : it->second;
+    if (it == pestTopicBySpecies_.end()) return "insect_other";
+    return speciesReliable || reliablePestGroups_.count(it->second) ? it->second : "insect_other";
 }
 
 }  // namespace kr

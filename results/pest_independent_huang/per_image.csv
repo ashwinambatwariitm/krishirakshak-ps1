@@ -1,0 +1,1219 @@
+model,cls,image,ip102_dist,ip102_nearest,ip102_nearest_in_test,near_duplicate,found,top_species,top_species_ok,today_right,today_caterpillar_family,today_wrong,today_generic_only,group_kb_right,group_kb_caterpillar_family,group_kb_wrong,group_kb_generic_only,group_extended_right,group_extended_caterpillar_family,group_extended_wrong,group_extended_generic_only
+fp32,TU,TU (1).jpg,14,IP087001261,False,False,True,cabbage army worm,False,False,,False,True,False,,True,False,False,,True,False
+fp32,TU,TU (10).jpg,14,IP015000371,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (11).jpg,12,IP096000411,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,TU,TU (12).jpg,14,IP102001566,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (13).jpg,14,IP046000559,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (14).jpg,14,IP024003472,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (15).jpg,14,IP004000312,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TU,TU (16).jpg,16,IP005000260,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (17).jpg,16,IP049000235,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (18).jpg,14,IP102004411,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (19).jpg,16,IP024002718,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (2).jpg,16,IP016000269,False,False,True,Chrysomphalus aonidum,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (20).jpg,16,IP018000069,False,False,True,Chrysomphalus aonidum,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (21).jpg,18,IP015000065,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (22).jpg,16,IP019000449,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (23).jpg,12,IP015001420,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (24).jpg,16,IP015001586,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (25).jpg,16,IP005000353,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (26).jpg,14,IP056000176,True,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TU,TU (27).jpg,14,IP003000159,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (28).jpg,14,IP041000073,True,False,True,Unaspis yanonensis,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (29).jpg,12,IP024001598,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (3).jpg,16,IP023000123,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (30).jpg,14,IP015000206,True,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (31).jpg,14,IP009000495,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (32).jpg,14,IP071005039,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (33).jpg,16,IP049000394,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (34).jpg,16,IP007000004,True,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (35).jpg,14,IP093000727,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (36).jpg,14,IP049000294,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TU,TU (37).jpg,16,IP022000397,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (38).jpg,16,IP068003572,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (39).jpg,14,IP068003049,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (4).jpg,14,IP087000693,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (40).jpg,14,IP050000433,False,False,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (41).jpg,14,IP024001598,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (42).jpg,14,IP052001096,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (43).jpg,14,IP096000321,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (44).jpg,14,IP015001019,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (45).jpg,10,IP021000458,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (46).jpg,14,IP028000051,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (47).jpg,14,IP024001040,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (48).jpg,14,IP071004811,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (49).jpg,0,IP075000259,False,True,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (5).jpg,18,IP000000307,False,False,True,Ceroplastes rubens,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (50).jpg,14,IP035000246,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (51).jpg,16,IP008000138,True,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (52).jpg,14,IP052001032,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (53).jpg,14,IP010000573,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (54).jpg,16,IP003000849,True,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (55).jpg,16,IP024002003,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (56).jpg,12,IP102001329,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (57).jpg,14,IP000000523,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (58).jpg,14,IP049000434,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (59).jpg,16,IP006000125,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TU,TU (6).jpg,16,IP027000107,True,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TU,TU (60).jpg,12,IP010000292,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (61).jpg,16,IP025000484,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (62).jpg,4,IP075000259,False,True,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (63).jpg,0,IP075000186,False,True,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (64).jpg,12,IP015000104,False,False,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (65).jpg,0,IP021000063,False,True,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (66).jpg,14,IP071001803,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (67).jpg,14,IP039000581,False,False,True,Pseudococcus comstocki Kuwana,False,False,,False,True,False,,False,True,False,,True,False
+fp32,TU,TU (68).jpg,14,IP102003183,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (69).jpg,12,IP071002288,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (7).jpg,16,IP024001697,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (70).jpg,14,IP071004811,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (71).jpg,10,IP049000438,False,False,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (72).jpg,16,IP019000449,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (73).jpg,14,IP048000164,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TU,TU (74).jpg,16,IP002000015,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (8).jpg,14,IP071003481,True,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TU,TU (9).jpg,14,IP102003419,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (1).jpg,14,IP102000794,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (10).jpg,16,IP023000122,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (100).jpg,16,IP001000284,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (101).jpg,16,IP027000393,False,False,True,wheat phloeothrips,False,False,,False,True,False,,True,False,False,,True,False
+fp32,MP,MP (102).jpg,16,IP050000148,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (103).jpg,14,IP009000151,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (104).jpg,14,IP096000154,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (105).jpg,8,IP024002749,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (106).jpg,10,IP049000312,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (107).jpg,14,IP020000029,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (108).jpg,14,IP022000957,False,False,True,wireworm,False,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (109).jpg,14,IP027000440,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (11).jpg,16,IP032000213,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (110).jpg,16,IP032000179,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (111).jpg,16,IP001000191,False,False,True,english grain aphid,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (112).jpg,16,IP025000499,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (113).jpg,16,IP014000550,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (114).jpg,16,IP003000535,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (115).jpg,14,IP040001172,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (116).jpg,14,IP002000187,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (117).jpg,14,IP102004883,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (118).jpg,16,IP025000499,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (119).jpg,14,IP018000388,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (12).jpg,12,IP063000234,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (120).jpg,16,IP038000512,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (121).jpg,16,IP038000512,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (122).jpg,16,IP071003653,False,False,True,beet army worm,False,False,,False,True,False,,True,False,False,,True,False
+fp32,MP,MP (123).JPG,10,IP024002839,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (124).JPG,16,IP008000330,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (125).JPG,16,IP015000074,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (126).jpg,14,IP074000113,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (127).JPG,16,IP056000013,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (128).JPG,16,IP029000505,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (129).JPG,12,IP071001879,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (13).jpg,14,IP015000486,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (130).JPG,14,IP013000065,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (14).jpg,12,IP096000379,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (15).jpg,16,IP014000316,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (16).jpg,14,IP024003061,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (17).jpg,12,IP015000511,False,False,True,wheat phloeothrips,False,False,,False,True,False,,True,False,False,,True,False
+fp32,MP,MP (18).jpg,16,IP008000098,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (19).jpg,16,IP010000617,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (2).jpg,16,IP049000825,False,False,True,english grain aphid,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (20).jpg,16,IP023000784,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (21).jpg,16,IP000000693,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (22).jpg,16,IP018000051,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (23).jpg,18,IP003000581,False,False,True,asiatic rice borer,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (24).jpg,14,IP016000446,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (25).jpg,16,IP010000111,True,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (26).jpg,18,IP014000280,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (27).jpg,14,IP014000071,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (28).jpg,12,IP071001318,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (29).JPG,16,IP049000774,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (3).jpg,14,IP091000044,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (30).jpg,14,IP040000221,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (31).jpg,14,IP035000072,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (32).jpg,12,IP022000335,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (33).jpg,12,IP071004844,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (34).jpg,10,IP096000159,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (35).jpg,16,IP024002690,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (36).jpg,10,IP096000351,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (37).jpg,16,IP017000037,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (38).jpg,16,IP049000869,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (39).jpg,14,IP038000257,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (4).jpg,0,IP027000294,True,True,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (40).jpg,14,IP095000444,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (41).jpg,16,IP010000673,False,False,True,Beet spot flies,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (42).jpg,16,IP003000582,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (43).jpg,16,IP052001548,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (44).jpg,14,IP102001604,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (45).jpg,14,IP102001586,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (46).jpg,16,IP016000272,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (47).jpg,14,IP038000232,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (48).jpg,16,IP014000332,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (49).jpg,16,IP048000578,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (5).jpg,16,IP024003255,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (50).jpg,16,IP068000658,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (51).jpg,14,IP039000796,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (52).jpg,16,IP046000371,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (53).jpg,14,IP006000190,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (54).jpg,10,IP059000213,True,False,True,tarnished plant bug,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (55).jpg,10,IP024003048,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (56).jpg,12,IP102001027,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (57).jpg,14,IP071003523,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (58).jpg,10,IP024002659,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (59).jpg,18,IP000001064,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (6).jpg,16,IP024001412,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (60).jpg,12,IP014000098,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (61).jpg,14,IP102003940,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (62).jpg,16,IP004000122,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (63).jpg,16,IP052000858,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (64).jpg,16,IP003000074,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (65).jpg,16,IP024002665,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (66).jpg,16,IP049000717,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (67).jpg,16,IP027000242,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (68).jpg,16,IP021000344,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (69).jpg,16,IP014000746,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (7).jpg,16,IP072000627,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (70).jpg,16,IP014000332,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (71).jpg,16,IP026000585,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,MP,MP (72).jpg,14,IP025000488,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (73).jpg,14,IP020000120,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (74).jpg,16,IP016000509,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (75).jpg,14,IP040000882,True,False,True,english grain aphid,False,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (76).jpg,16,IP010000086,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (77).jpg,14,IP015000437,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (78).jpg,16,IP016000792,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (79).jpg,16,IP087000928,False,False,True,bird cherry-oataphid,False,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (8).jpg,12,IP011000224,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (80).jpg,16,IP000000321,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (81).jpg,16,IP051000072,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (82).jpg,14,IP045000197,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (83).jpg,14,IP040000018,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (84).jpg,14,IP085000085,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (85).jpg,16,IP010000726,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (86).jpg,2,IP024002874,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (87).jpg,6,IP029000679,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (88).jpg,16,IP022001164,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (89).jpg,14,IP038000121,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (9).jpg,4,IP024002749,False,True,True,english grain aphid,False,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (90).jpg,14,IP095000272,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (91).jpg,16,IP024000525,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (92).jpg,16,IP085000298,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (93).jpg,16,IP040000304,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,MP,MP (94).jpg,18,IP005000308,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (95).JPG,14,IP052001351,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (96).jpg,14,IP029000642,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (97).jpg,16,IP014000255,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (98).jpg,14,IP007000160,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+fp32,MP,MP (99).jpg,14,IP004000323,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (1).jpg,10,IP095000440,False,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (10).jpg,14,IP026000384,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (11).jpg,12,IP016000410,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (12).jpg,14,IP014000051,False,False,True,blister beetle,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (13).jpg,16,IP005000239,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (14).jpg,14,IP022000993,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (15).jpg,10,IP038000639,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (16).jpg,14,IP085000389,False,False,True,peach borer,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (17).JPG,12,IP000000390,True,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (18).JPG,14,IP102004030,True,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (19).JPG,14,IP014000565,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,TP,TP (2).jpg,12,IP020000101,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (20).JPG,16,IP015001405,False,False,True,wheat phloeothrips,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (21).JPG,16,IP000000409,False,False,True,Trialeurodes vaporariorum,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (22).JPG,10,IP071003653,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (23).JPG,14,IP102002659,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (24).JPG,16,IP096000463,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (3).jpg,14,IP022000993,False,False,True,odontothrips loti,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (4).jpg,12,IP024002575,False,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+fp32,TP,TP (5).jpg,16,IP038000500,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,TP,TP (6).jpg,16,IP047000214,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (7).jpg,16,IP025000291,True,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (8).jpg,16,IP015000104,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,TP,TP (9).jpg,14,IP072000312,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+fp32,SE,SE (1).jpg,6,IP023000771,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (10).jpg,16,IP049000782,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (11).jpg,14,IP020000127,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (12).jpg,16,IP039000076,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (13).jpg,16,IP068000372,True,False,True,meadow moth,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (14).jpg,14,IP040000315,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (15).jpg,16,IP014000181,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (16).jpg,14,IP040000760,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (17).jpg,14,IP018000634,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (18).jpg,14,IP095000188,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (19).jpg,16,IP021000420,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (2).jpg,16,IP022000130,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (20).jpg,16,IP018000164,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (21).jpg,16,IP009000115,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (22).jpg,16,IP022000077,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (23).jpg,16,IP024000810,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (24).jpg,16,IP014000213,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (25).jpg,14,IP040000300,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (26).jpg,12,IP009000249,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (27).jpg,16,IP102004690,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (28).jpg,14,IP022000755,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (29).jpg,2,IP023000783,False,True,True,army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (3).jpg,14,IP016000153,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (30).jpg,16,IP024002836,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (31).jpg,16,IP015000309,False,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (32).jpg,16,IP050000362,True,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (33).jpg,12,IP000000257,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (34).jpg,14,IP022000833,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (35).jpg,16,IP011000247,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (36).jpg,14,IP052000540,False,False,True,mole cricket,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (37).jpg,12,IP102002728,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (38).jpg,16,IP047000538,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (39).jpg,16,IP047000538,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (4).jpg,12,IP102003346,False,False,True,Prodenia litura,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (40).jpg,16,IP008000044,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (41).jpg,16,IP008000044,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (42).jpg,14,IP071001674,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (43).jpg,16,IP046000746,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (44).jpg,16,IP102000082,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (45).jpg,16,IP042000098,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (46).jpg,14,IP022000833,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (47).jpg,16,IP102004744,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (48).jpg,16,IP071003196,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (49).jpg,16,IP009000115,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (5).jpg,0,IP023000111,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (50).jpg,14,IP069000357,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (51).jpg,16,IP003000524,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (52).jpg,0,IP040000119,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (53).JPG,16,IP022000278,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (54).jpg,12,IP023000095,False,False,True,Prodenia litura,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (55).jpg,14,IP026000534,False,False,True,black cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (56).jpg,10,IP097000142,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (57).jpg,14,IP022000143,False,False,True,Prodenia litura,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (58).jpg,12,IP100000452,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (59).jpg,14,IP015001277,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (6).jpg,12,IP040000325,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (60).jpg,14,IP052000349,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (61).jpg,12,IP024003409,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (62).jpg,10,IP015000983,True,False,True,yellow cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (63).jpg,16,IP016000090,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SE,SE (64).jpg,16,IP087000614,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (65).jpg,12,IP059001254,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (66).jpg,12,IP011000068,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (67).jpg,12,IP047000430,False,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (68).jpg,14,IP003000633,False,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (69).jpg,0,IP040000354,False,True,True,black cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (7).jpg,16,IP034000222,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (70).jpg,14,IP000000302,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (71).jpg,16,IP102002353,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (72).jpg,0,IP023000663,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (73).jpg,0,IP023000106,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (74).jpg,14,IP014000544,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (75).jpg,14,IP039000425,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SE,SE (8).jpg,16,IP014000575,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+fp32,SE,SE (9).jpg,14,IP063000112,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (1).jpg,16,IP007000162,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (10).jpg,14,IP024002028,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (11).jpg,16,IP024003456,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (12).jpg,14,IP016000442,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (13).jpg,14,IP087000868,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (14).jpg,14,IP027000062,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (15).jpg,10,IP047000351,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (16).jpg,16,IP018000133,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (17).jpg,14,IP102001616,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (18).jpg,14,IP015000588,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (19).jpg,14,IP024001398,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (2).jpg,14,IP038000157,True,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (20).jpg,0,IP087000923,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (21).jpg,14,IP016000213,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (22).jpg,0,IP087000997,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (23).jpg,14,IP102005462,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (24).jpg,16,IP102000854,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (25).jpg,16,IP001000341,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (26).jpg,10,IP015001414,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (27).jpg,14,IP052000147,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (28).jpg,14,IP016000708,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (29).jpg,14,IP042000037,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (3).jpg,0,IP023000567,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (30).jpg,14,IP024000427,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (31).jpg,14,IP015000069,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (32).jpg,12,IP102004178,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (33).jpg,12,IP067000322,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (34).jpg,12,IP013000320,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (35).jpg,14,IP102002635,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (36).jpg,12,IP101000346,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (37).jpg,8,IP024001842,False,True,True,yellow cutworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (38).jpg,14,IP052000920,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (39).jpg,16,IP017000069,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (4).jpg,18,IP002000160,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (40).jpg,8,IP027000081,False,True,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (41).jpg,14,IP035000093,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (42).jpg,14,IP026000500,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (43).jpg,14,IP091000152,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (44).jpg,16,IP044000055,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (45).jpg,12,IP057000304,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (46).jpg,14,IP016000762,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (47).jpg,16,IP015000300,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (48).jpg,16,IP036000067,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (49).jpg,14,IP038000447,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (5).jpg,16,IP015000800,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (50).jpg,16,IP022001024,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (51).jpg,16,IP020000330,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (52).jpg,14,IP015000536,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (53).jpg,10,IP042000169,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (54).jpg,14,IP016000536,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (55).jpg,14,IP015000068,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (56).jpg,16,IP046000713,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (57).jpg,14,IP023000875,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (58).jpg,12,IP102004638,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (59).jpg,14,IP040000490,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (6).jpg,16,IP041000089,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (60).jpg,12,IP015000719,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (61).jpg,14,IP015001161,True,False,True,black cutworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (62).jpg,14,IP048000697,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (63).jpg,14,IP026000197,True,False,True,black cutworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (64).jpg,12,IP048000609,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (65).jpg,14,IP014000738,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (66).jpg,16,IP000000205,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (67).jpg,0,IP087000699,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (68).jpg,16,IP050000468,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (69).jpg,14,IP071002365,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (7).jpg,16,IP000000308,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (70).jpg,0,IP087000876,True,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (71).jpg,16,IP058000086,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (72).jpg,16,IP024001979,True,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (73).jpg,0,IP087000890,True,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (74).jpg,0,IP087000884,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (75).jpg,2,IP087000871,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (76).jpg,16,IP000000306,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (77).jpg,0,IP087000880,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (78).jpg,16,IP022000333,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (79).jpg,16,IP079000095,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (8).jpg,12,IP014000684,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (80).jpg,16,IP079000049,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (81).jpg,14,IP049000508,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (82).jpg,16,IP046000707,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (83).jpg,14,IP071004964,True,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (84).jpg,16,IP009000167,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (85).jpg,18,IP014000520,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (86).jpg,16,IP040000398,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (87).jpg,14,IP071005039,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (88).jpg,16,IP068004738,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (89).jpg,16,IP024000254,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (9).jpg,14,IP102001291,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (90).jpg,0,IP087000237,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (91).jpg,16,IP049000742,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (92).jpg,16,IP015000460,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (93).JPG,12,IP102004155,False,False,True,flax budworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,SL,SI (94).JPG,14,IP019000465,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,SL,SI (95).JPG,14,IP038000032,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,SL,SI (96).JPG,14,IP051000043,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (1).jpg,12,IP033000039,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (10).jpg,14,IP070001072,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (100).jpg,16,IP010000152,True,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (101).jpg,16,IP018000291,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (102).jpg,14,IP063000030,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (103).JPG,14,IP014000481,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (104).JPG,14,IP015001157,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (105).JPG,16,IP026000551,False,False,True,Lawana imitata Melichar,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (106).JPG,12,IP038000660,False,False,True,wireworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (107).JPG,16,IP026000199,True,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (108).JPG,16,IP011000348,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (11).jpg,14,IP046000296,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (12).jpg,8,IP085000000,False,True,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (13).jpg,16,IP019000192,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (14).jpg,16,IP027000438,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (15).jpg,16,IP014000453,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (16).jpg,14,IP015000595,False,False,True,Cicadellidae,False,False,False,False,True,False,False,False,True,False,False,True,False
+fp32,HA,HA  (17).jpg,14,IP039000461,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (18).jpg,14,IP038000150,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (19).jpg,12,IP052001774,False,False,True,Cicadellidae,False,False,False,False,True,False,False,False,True,False,False,True,False
+fp32,HA,HA  (2).jpg,14,IP039000069,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (20).jpg,14,IP003000558,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (21).jpg,16,IP052000556,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (22).jpg,14,IP044000143,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (23).jpg,16,IP046000888,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (24).jpg,16,IP015000086,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (25).jpg,16,IP001000482,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (26).jpg,12,IP101000297,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (27).jpg,16,IP000000003,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (28).jpg,14,IP035000160,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (29).jpg,14,IP051000088,True,False,True,Prodenia litura,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (3).jpg,12,IP070001069,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (30).jpg,16,IP026000145,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (31).jpg,12,IP093000246,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (32).jpg,14,IP040000394,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (33).jpg,14,IP071001782,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (34).jpg,12,IP043000103,False,False,True,wheat sawfly,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (35).jpg,16,IP024000699,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (36).jpg,16,IP015000496,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (37).jpg,14,IP102003993,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (38).jpg,12,IP102004292,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (39).jpg,16,IP016000161,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (4).jpg,14,IP018000775,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (40).jpg,16,IP008000104,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (41).jpg,14,IP102001719,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (42).jpg,14,IP102001687,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (43).jpg,12,IP071004433,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (44).jpg,16,IP056000164,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (45).jpg,12,IP015000481,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (46).jpg,12,IP052000639,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (47).jpg,12,IP015000415,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (48).jpg,16,IP052001754,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (49).jpg,14,IP003000188,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (5).jpg,14,IP008000301,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (50).jpg,12,IP024003837,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (51).jpg,16,IP016000119,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (52).jpg,14,IP102002706,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (53).jpg,16,IP015000021,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (54).jpg,16,IP052000168,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (55).jpg,16,IP010000017,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (56).jpg,14,IP015000349,True,False,True,Lawana imitata Melichar,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (57).jpg,16,IP052001475,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (58).jpg,18,IP024002012,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (59).jpg,16,IP040000068,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (6).jpg,14,IP102003993,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (60).jpg,16,IP014000058,False,False,True,Ceroplastes rubens,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (61).jpg,14,IP024001503,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (62).jpg,16,IP010000607,False,False,True,mole cricket,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (63).jpg,16,IP010000040,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (64).jpg,16,IP024001651,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (65).jpg,14,IP102003009,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (66).jpg,16,IP016000660,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (67).jpg,14,IP102001412,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (68).jpg,16,IP003000202,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (69).jpg,14,IP087000535,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (7).jpg,14,IP071001501,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (70).jpg,16,IP003000292,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (71).jpg,16,IP005000043,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (72).jpg,12,IP043000100,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (73).jpg,16,IP059001034,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (74).jpg,14,IP102001636,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (75).jpg,14,IP077000509,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (76).jpg,16,IP024003046,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (77).jpg,14,IP011000079,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (78).jpg,16,IP016000023,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (79).jpg,14,IP052001188,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (8).jpg,14,IP035000335,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (80).jpg,16,IP014000361,False,False,True,lytta polita,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (81).jpg,14,IP016000031,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (82).jpg,14,IP037000050,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (83).jpg,16,IP013000096,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (84).jpg,14,IP021000377,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (85).jpg,16,IP030000250,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (86).jpg,16,IP079000013,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (87).jpg,16,IP038000536,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (88).jpg,16,IP016000657,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (89).jpg,16,IP016000217,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (9).jpg,14,IP102001138,False,False,True,Cicadellidae,False,False,False,False,True,False,False,False,True,False,False,True,False
+fp32,HA,HA  (90).jpg,16,IP015000635,False,False,True,flax budworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (91).jpg,14,IP027000080,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (92).jpg,14,IP063000070,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (93).jpg,14,IP102001503,False,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (94).jpg,14,IP050000405,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,HA,HA  (95).jpg,16,IP001000317,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+fp32,HA,HA  (96).jpg,16,IP003000140,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (97).jpg,16,IP012000042,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (98).jpg,10,IP023000721,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+fp32,HA,HA  (99).jpg,14,IP102000681,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+fp32,BA,BA (1).jpg,8,IP024002069,False,True,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (10).jpg,16,IP014000385,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (11).jpg,16,IP014000385,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (12).jpg,12,IP014000661,True,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (13).jpg,16,IP003000245,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (14).jpg,16,IP018000230,False,False,True,Icerya purchasi Maskell,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (15).jpg,14,IP087000721,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (16).jpg,14,IP005000056,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (17).jpg,16,IP024000937,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (18).jpg,16,IP005000128,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (19).jpg,16,IP039000481,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (2).jpg,12,IP024003734,True,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (20).jpg,14,IP026000623,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (21).jpg,14,IP063000065,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (22).jpg,16,IP077000259,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (23).jpg,16,IP024002028,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (24).jpg,14,IP099000078,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (25).jpg,14,IP054000173,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (26).jpg,16,IP015000979,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (27).jpg,12,IP102000811,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (28).jpg,16,IP020000077,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (29).jpg,14,IP024000302,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (3).jpg,16,IP000000302,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (30).jpg,14,IP023000777,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (31).jpg,18,IP003000137,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (32).jpg,14,IP022000205,True,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (33).jpg,14,IP011000052,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (34).jpg,18,IP004000008,False,False,True,Unaspis yanonensis,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (35).JPG,12,IP089000240,True,False,True,Salurnis marginella Guerr,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (36).jpg,14,IP071002474,False,False,True,Miridae,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (37).JPG,16,IP007000599,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (38).jpg,12,IP014000003,False,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (39).jpg,16,IP024003362,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,BA,BA (4).JPG,16,IP047000299,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (40).jpg,14,IP024003008,False,False,True,alfalfa plant bug,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (41).jpg,12,IP049001152,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (42).jpg,16,IP015000892,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (43).jpg,12,IP100000545,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (44).jpg,10,IP021000122,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (45).jpg,16,IP007000549,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (46).jpg,16,IP052000264,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (47).jpg,16,IP015001587,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (48).JPG,12,IP000000537,True,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+fp32,BA,BA (49).JPG,16,IP049000909,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (5).JPG,16,IP039000575,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (50).JPG,12,IP046000123,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (51).JPG,16,IP014000385,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (52).JPG,12,IP068003974,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (53).JPG,14,IP000000573,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (54).JPG,10,IP102005317,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (55).JPG,14,IP022000972,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (56).JPG,12,IP018000607,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (57).JPG,16,IP015000335,True,False,True,Scirtothrips dorsalis Hood,False,False,,False,True,False,,True,False,False,,True,False
+fp32,BA,BA (58).JPG,12,IP080000094,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (59).JPG,12,IP070000220,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (6).jpg,10,IP014000648,False,False,True,Salurnis marginella Guerr,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (60).JPG,14,IP004000422,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+fp32,BA,BA (7).jpg,16,IP014000382,False,False,True,Salurnis marginella Guerr,False,False,,False,True,False,,False,True,False,,False,True
+fp32,BA,BA (8).jpg,14,IP023000106,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,BA,BA (9).jpg,14,IP024002614,True,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+fp32,ZC,ZC (1).jpg,16,IP038000447,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (10).jpg,16,IP059000572,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (11).jpg,14,IP069000154,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (12).jpg,14,IP047000142,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (13).jpg,12,IP102001342,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (14).jpg,12,IP085000066,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (15).jpg,16,IP007000646,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (16).jpg,10,IP049000580,False,False,True,parathrene regalis,False,False,,False,True,False,,False,True,False,,False,True
+fp32,ZC,ZC (17).jpg,16,IP071001068,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+fp32,ZC,ZC (18).jpg,14,IP046000464,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (19).jpg,14,IP013000076,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (2).jpg,14,IP024001121,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (20).jpg,16,IP037000044,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (21).jpg,16,IP015000223,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (22).jpg,14,IP049000774,True,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (23).jpg,16,IP102001235,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (24).jpg,14,IP024003053,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (25).jpg,16,IP025000299,True,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (26).jpg,14,IP102003391,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (27).jpg,12,IP024001647,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (28).jpg,12,IP024001647,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (29).JPG,14,IP025000319,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (3).jpg,14,IP045000103,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (30).JPG,14,IP011000002,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (31).JPG,16,IP011000382,False,False,True,brown plant hopper,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (32).JPG,14,IP085000326,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (33).JPG,12,IP015000418,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (34).JPG,14,IP010000017,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (35).JPG,12,IP071002936,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (36).JPG,14,IP015001488,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (37).JPG,16,IP018000010,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (38).JPG,10,IP015001158,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (39).JPG,14,IP038000696,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (4).jpg,14,IP041000043,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (40).JPG,14,IP067000108,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (41).JPG,12,IP025000250,False,False,True,Miridae,False,False,,False,True,False,,False,True,False,,False,True
+fp32,ZC,ZC (42).JPG,10,IP102001212,True,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (5).jpg,12,IP018000617,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (6).jpg,16,IP046000900,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (7).jpg,14,IP040000204,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (8).jpg,12,IP052000597,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+fp32,ZC,ZC (9).jpg,0,IP085000218,False,True,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,TU,TU (1).jpg,14,IP087001261,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (10).jpg,14,IP015000371,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (11).jpg,12,IP096000411,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,TU,TU (12).jpg,14,IP102001566,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (13).jpg,14,IP046000559,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (14).jpg,14,IP024003472,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (15).jpg,14,IP004000312,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,TU,TU (16).jpg,16,IP005000260,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (17).jpg,16,IP049000235,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (18).jpg,14,IP102004411,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (19).jpg,16,IP024002718,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (2).jpg,16,IP016000269,False,False,True,Chrysomphalus aonidum,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (20).jpg,16,IP018000069,False,False,True,Chrysomphalus aonidum,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (21).jpg,18,IP015000065,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (22).jpg,16,IP019000449,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (23).jpg,12,IP015001420,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (24).jpg,16,IP015001586,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (25).jpg,16,IP005000353,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (26).jpg,14,IP056000176,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (27).jpg,14,IP003000159,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (28).jpg,14,IP041000073,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (29).jpg,12,IP024001598,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (3).jpg,16,IP023000123,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (30).jpg,14,IP015000206,True,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (31).jpg,14,IP009000495,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (32).jpg,14,IP071005039,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (33).jpg,16,IP049000394,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (34).jpg,16,IP007000004,True,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (35).jpg,14,IP093000727,False,False,True,wheat phloeothrips,False,False,,False,True,False,,True,False,False,,True,False
+int8,TU,TU (36).jpg,14,IP049000294,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,TU,TU (37).jpg,16,IP022000397,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (38).jpg,16,IP068003572,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (39).jpg,14,IP068003049,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (4).jpg,14,IP087000693,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (40).jpg,14,IP050000433,False,False,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (41).jpg,14,IP024001598,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (42).jpg,14,IP052001096,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (43).jpg,14,IP096000321,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (44).jpg,14,IP015001019,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (45).jpg,10,IP021000458,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (46).jpg,14,IP028000051,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (47).jpg,14,IP024001040,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (48).jpg,14,IP071004811,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (49).jpg,0,IP075000259,False,True,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (5).jpg,18,IP000000307,False,False,True,Ceroplastes rubens,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (50).jpg,14,IP035000246,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (51).jpg,16,IP008000138,True,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (52).jpg,14,IP052001032,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (53).jpg,14,IP010000573,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (54).jpg,16,IP003000849,True,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (55).jpg,16,IP024002003,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (56).jpg,12,IP102001329,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,True,,False,False
+int8,TU,TU (57).jpg,14,IP000000523,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (58).jpg,14,IP049000434,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (59).jpg,16,IP006000125,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,TU,TU (6).jpg,16,IP027000107,True,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,TU,TU (60).jpg,12,IP010000292,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (61).jpg,16,IP025000484,False,False,True,brown plant hopper,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (62).jpg,4,IP075000259,False,True,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,True,False
+int8,TU,TU (63).jpg,0,IP075000186,False,True,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (64).jpg,12,IP015000104,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (65).jpg,0,IP021000063,False,True,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (66).jpg,14,IP071001803,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (67).jpg,14,IP039000581,False,False,True,Pseudococcus comstocki Kuwana,False,False,,False,True,False,,False,True,False,,True,False
+int8,TU,TU (68).jpg,14,IP102003183,False,False,True,longlegged spider mite,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (69).jpg,12,IP071002288,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (7).jpg,16,IP024001697,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (70).jpg,14,IP071004811,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (71).jpg,10,IP049000438,False,False,True,red spider,True,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (72).jpg,16,IP019000449,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (73).jpg,14,IP048000164,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TU,TU (74).jpg,16,IP002000015,False,False,True,Papilio xuthus,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (8).jpg,14,IP071003481,True,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TU,TU (9).jpg,14,IP102003419,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (1).jpg,14,IP102000794,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (10).jpg,16,IP023000122,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (100).jpg,16,IP001000284,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (101).jpg,16,IP027000393,False,False,True,wheat phloeothrips,False,False,,False,True,False,,True,False,False,,True,False
+int8,MP,MP (102).jpg,16,IP050000148,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (103).jpg,14,IP009000151,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (104).jpg,14,IP096000154,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (105).jpg,8,IP024002749,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (106).jpg,10,IP049000312,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (107).jpg,14,IP020000029,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (108).jpg,14,IP022000957,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (109).jpg,14,IP027000440,False,False,True,english grain aphid,False,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (11).jpg,16,IP032000213,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (110).jpg,16,IP032000179,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (111).jpg,16,IP001000191,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (112).jpg,16,IP025000499,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (113).jpg,16,IP014000550,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (114).jpg,16,IP003000535,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (115).jpg,14,IP040001172,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (116).jpg,14,IP002000187,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (117).jpg,14,IP102004883,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (118).jpg,16,IP025000499,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (119).jpg,14,IP018000388,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (12).jpg,12,IP063000234,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (120).jpg,16,IP038000512,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (121).jpg,16,IP038000512,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (122).jpg,16,IP071003653,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (123).JPG,10,IP024002839,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (124).JPG,16,IP008000330,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (125).JPG,16,IP015000074,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (126).jpg,14,IP074000113,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (127).JPG,16,IP056000013,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (128).JPG,16,IP029000505,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (129).JPG,12,IP071001879,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (13).jpg,14,IP015000486,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (130).JPG,14,IP013000065,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (14).jpg,12,IP096000379,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (15).jpg,16,IP014000316,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (16).jpg,14,IP024003061,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (17).jpg,12,IP015000511,False,False,True,wheat phloeothrips,False,False,,False,True,False,,True,False,False,,True,False
+int8,MP,MP (18).jpg,16,IP008000098,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (19).jpg,16,IP010000617,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (2).jpg,16,IP049000825,False,False,True,english grain aphid,False,False,,False,True,False,,False,True,False,,True,False
+int8,MP,MP (20).jpg,16,IP023000784,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (21).jpg,16,IP000000693,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (22).jpg,16,IP018000051,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (23).jpg,18,IP003000581,False,False,True,asiatic rice borer,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (24).jpg,14,IP016000446,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (25).jpg,16,IP010000111,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (26).jpg,18,IP014000280,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (27).jpg,14,IP014000071,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (28).jpg,12,IP071001318,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (29).JPG,16,IP049000774,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (3).jpg,14,IP091000044,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (30).jpg,14,IP040000221,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (31).jpg,14,IP035000072,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (32).jpg,12,IP022000335,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (33).jpg,12,IP071004844,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (34).jpg,10,IP096000159,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (35).jpg,16,IP024002690,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (36).jpg,10,IP096000351,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (37).jpg,16,IP017000037,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (38).jpg,16,IP049000869,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (39).jpg,14,IP038000257,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (4).jpg,0,IP027000294,True,True,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (40).jpg,14,IP095000444,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (41).jpg,16,IP010000673,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (42).jpg,16,IP003000582,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (43).jpg,16,IP052001548,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (44).jpg,14,IP102001604,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (45).jpg,14,IP102001586,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (46).jpg,16,IP016000272,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (47).jpg,14,IP038000232,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (48).jpg,16,IP014000332,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (49).jpg,16,IP048000578,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (5).jpg,16,IP024003255,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (50).jpg,16,IP068000658,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (51).jpg,14,IP039000796,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (52).jpg,16,IP046000371,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (53).jpg,14,IP006000190,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (54).jpg,10,IP059000213,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (55).jpg,10,IP024003048,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (56).jpg,12,IP102001027,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (57).jpg,14,IP071003523,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (58).jpg,10,IP024002659,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (59).jpg,18,IP000001064,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (6).jpg,16,IP024001412,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (60).jpg,12,IP014000098,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (61).jpg,14,IP102003940,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (62).jpg,16,IP004000122,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (63).jpg,16,IP052000858,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (64).jpg,16,IP003000074,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (65).jpg,16,IP024002665,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (66).jpg,16,IP049000717,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (67).jpg,16,IP027000242,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (68).jpg,16,IP021000344,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (69).jpg,16,IP014000746,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (7).jpg,16,IP072000627,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (70).jpg,16,IP014000332,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (71).jpg,16,IP026000585,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (72).jpg,14,IP025000488,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (73).jpg,14,IP020000120,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (74).jpg,16,IP016000509,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (75).jpg,14,IP040000882,True,False,True,english grain aphid,False,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (76).jpg,16,IP010000086,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (77).jpg,14,IP015000437,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (78).jpg,16,IP016000792,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (79).jpg,16,IP087000928,False,False,True,bird cherry-oataphid,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (8).jpg,12,IP011000224,False,False,True,english grain aphid,False,False,,False,True,False,,False,True,False,,False,True
+int8,MP,MP (80).jpg,16,IP000000321,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (81).jpg,16,IP051000072,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (82).jpg,14,IP045000197,True,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (83).jpg,14,IP040000018,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (84).jpg,14,IP085000085,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (85).jpg,16,IP010000726,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (86).jpg,2,IP024002874,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (87).jpg,6,IP029000679,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (88).jpg,16,IP022001164,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (89).jpg,14,IP038000121,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (9).jpg,4,IP024002749,False,True,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (90).jpg,14,IP095000272,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (91).jpg,16,IP024000525,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (92).jpg,16,IP085000298,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (93).jpg,16,IP040000304,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,MP,MP (94).jpg,18,IP005000308,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (95).JPG,14,IP052001351,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (96).jpg,14,IP029000642,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (97).jpg,16,IP014000255,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (98).jpg,14,IP007000160,False,False,True,aphids,True,True,,False,False,True,,False,False,True,,False,False
+int8,MP,MP (99).jpg,14,IP004000323,True,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (1).jpg,10,IP095000440,False,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (10).jpg,14,IP026000384,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (11).jpg,12,IP016000410,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (12).jpg,14,IP014000051,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (13).jpg,16,IP005000239,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (14).jpg,14,IP022000993,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (15).jpg,10,IP038000639,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (16).jpg,14,IP085000389,False,False,True,peach borer,False,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (17).JPG,12,IP000000390,True,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (18).JPG,14,IP102004030,True,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (19).JPG,14,IP014000565,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,TP,TP (2).jpg,12,IP020000101,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (20).JPG,16,IP015001405,False,False,True,wheat phloeothrips,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (21).JPG,16,IP000000409,False,False,True,Trialeurodes vaporariorum,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (22).JPG,10,IP071003653,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (23).JPG,14,IP102002659,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (24).JPG,16,IP096000463,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (3).jpg,14,IP022000993,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (4).jpg,12,IP024002575,False,False,True,wireworm,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (5).jpg,16,IP038000500,False,False,True,wheat phloeothrips,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (6).jpg,16,IP047000214,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,TP,TP (7).jpg,16,IP025000291,True,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,TP,TP (8).jpg,16,IP015000104,False,False,True,Trialeurodes vaporariorum,False,False,,False,True,False,,False,True,False,,False,True
+int8,TP,TP (9).jpg,14,IP072000312,False,False,True,Scirtothrips dorsalis Hood,True,False,,False,True,True,,False,False,True,,False,False
+int8,SE,SE (1).jpg,6,IP023000771,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (10).jpg,16,IP049000782,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (11).jpg,14,IP020000127,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (12).jpg,16,IP039000076,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (13).jpg,16,IP068000372,True,False,True,meadow moth,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SE,SE (14).jpg,14,IP040000315,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (15).jpg,16,IP014000181,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (16).jpg,14,IP040000760,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (17).jpg,14,IP018000634,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (18).jpg,14,IP095000188,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (19).jpg,16,IP021000420,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (2).jpg,16,IP022000130,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (20).jpg,16,IP018000164,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (21).jpg,16,IP009000115,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (22).jpg,16,IP022000077,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (23).jpg,16,IP024000810,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (24).jpg,16,IP014000213,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (25).jpg,14,IP040000300,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (26).jpg,12,IP009000249,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (27).jpg,16,IP102004690,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (28).jpg,14,IP022000755,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (29).jpg,2,IP023000783,False,True,True,army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (3).jpg,14,IP016000153,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (30).jpg,16,IP024002836,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (31).jpg,16,IP015000309,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (32).jpg,16,IP050000362,True,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (33).jpg,12,IP000000257,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (34).jpg,14,IP022000833,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (35).jpg,16,IP011000247,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (36).jpg,14,IP052000540,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (37).jpg,12,IP102002728,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (38).jpg,16,IP047000538,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,True,False
+int8,SE,SE (39).jpg,16,IP047000538,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,True,False
+int8,SE,SE (4).jpg,12,IP102003346,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (40).jpg,16,IP008000044,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (41).jpg,16,IP008000044,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (42).jpg,14,IP071001674,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (43).jpg,16,IP046000746,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SE,SE (44).jpg,16,IP102000082,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (45).jpg,16,IP042000098,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (46).jpg,14,IP022000833,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (47).jpg,16,IP102004744,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SE,SE (48).jpg,16,IP071003196,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (49).jpg,16,IP009000115,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (5).jpg,0,IP023000111,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (50).jpg,14,IP069000357,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (51).jpg,16,IP003000524,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (52).jpg,0,IP040000119,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (53).JPG,16,IP022000278,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (54).jpg,12,IP023000095,False,False,True,Prodenia litura,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (55).jpg,14,IP026000534,False,False,True,black cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (56).jpg,10,IP097000142,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SE,SE (57).jpg,14,IP022000143,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (58).jpg,12,IP100000452,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (59).jpg,14,IP015001277,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SE,SE (6).jpg,12,IP040000325,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (60).jpg,14,IP052000349,False,False,True,peach borer,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (61).jpg,12,IP024003409,False,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (62).jpg,10,IP015000983,True,False,True,yellow cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (63).jpg,16,IP016000090,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (64).jpg,16,IP087000614,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (65).jpg,12,IP059001254,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (66).jpg,12,IP011000068,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (67).jpg,12,IP047000430,False,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (68).jpg,14,IP003000633,False,False,True,cabbage army worm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (69).jpg,0,IP040000354,False,True,True,black cutworm,False,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (7).jpg,16,IP034000222,True,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (70).jpg,14,IP000000302,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (71).jpg,16,IP102002353,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (72).jpg,0,IP023000663,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (73).jpg,0,IP023000106,False,True,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (74).jpg,14,IP014000544,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (75).jpg,14,IP039000425,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SE,SE (8).jpg,16,IP014000575,False,False,True,beet army worm,True,False,False,False,True,True,True,False,False,True,True,False,False
+int8,SE,SE (9).jpg,14,IP063000112,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (1).jpg,16,IP007000162,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (10).jpg,14,IP024002028,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (11).jpg,16,IP024003456,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (12).jpg,14,IP016000442,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (13).jpg,14,IP087000868,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (14).jpg,14,IP027000062,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (15).jpg,10,IP047000351,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (16).jpg,16,IP018000133,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (17).jpg,14,IP102001616,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (18).jpg,14,IP015000588,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (19).jpg,14,IP024001398,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (2).jpg,14,IP038000157,True,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (20).jpg,0,IP087000923,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (21).jpg,14,IP016000213,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (22).jpg,0,IP087000997,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (23).jpg,14,IP102005462,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (24).jpg,16,IP102000854,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (25).jpg,16,IP001000341,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (26).jpg,10,IP015001414,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (27).jpg,14,IP052000147,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (28).jpg,14,IP016000708,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (29).jpg,14,IP042000037,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (3).jpg,0,IP023000567,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (30).jpg,14,IP024000427,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (31).jpg,14,IP015000069,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (32).jpg,12,IP102004178,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (33).jpg,12,IP067000322,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (34).jpg,12,IP013000320,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (35).jpg,14,IP102002635,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (36).jpg,12,IP101000346,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (37).jpg,8,IP024001842,False,True,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (38).jpg,14,IP052000920,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (39).jpg,16,IP017000069,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (4).jpg,18,IP002000160,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (40).jpg,8,IP027000081,False,True,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (41).jpg,14,IP035000093,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (42).jpg,14,IP026000500,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (43).jpg,14,IP091000152,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (44).jpg,16,IP044000055,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (45).jpg,12,IP057000304,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (46).jpg,14,IP016000762,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (47).jpg,16,IP015000300,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (48).jpg,16,IP036000067,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (49).jpg,14,IP038000447,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (5).jpg,16,IP015000800,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (50).jpg,16,IP022001024,True,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (51).jpg,16,IP020000330,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (52).jpg,14,IP015000536,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (53).jpg,10,IP042000169,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (54).jpg,14,IP016000536,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (55).jpg,14,IP015000068,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (56).jpg,16,IP046000713,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (57).jpg,14,IP023000875,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (58).jpg,12,IP102004638,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (59).jpg,14,IP040000490,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (6).jpg,16,IP041000089,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (60).jpg,12,IP015000719,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (61).jpg,14,IP015001161,True,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (62).jpg,14,IP048000697,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (63).jpg,14,IP026000197,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (64).jpg,12,IP048000609,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (65).jpg,14,IP014000738,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (66).jpg,16,IP000000205,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (67).jpg,0,IP087000699,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (68).jpg,16,IP050000468,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (69).jpg,14,IP071002365,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (7).jpg,16,IP000000308,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (70).jpg,0,IP087000876,True,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (71).jpg,16,IP058000086,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (72).jpg,16,IP024001979,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (73).jpg,0,IP087000890,True,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (74).jpg,0,IP087000884,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (75).jpg,2,IP087000871,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (76).jpg,16,IP000000306,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (77).jpg,0,IP087000880,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (78).jpg,16,IP022000333,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (79).jpg,16,IP079000095,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (8).jpg,12,IP014000684,False,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (80).jpg,16,IP079000049,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (81).jpg,14,IP049000508,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (82).jpg,16,IP046000707,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (83).jpg,14,IP071004964,True,False,True,Prodenia litura,True,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (84).jpg,16,IP009000167,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (85).jpg,18,IP014000520,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (86).jpg,16,IP040000398,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (87).jpg,14,IP071005039,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (88).jpg,16,IP068004738,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (89).jpg,16,IP024000254,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (9).jpg,14,IP102001291,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (90).jpg,0,IP087000237,False,True,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (91).jpg,16,IP049000742,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (92).jpg,16,IP015000460,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (93).JPG,12,IP102004155,False,False,True,flax budworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,SL,SI (94).JPG,14,IP019000465,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,SL,SI (95).JPG,14,IP038000032,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,SL,SI (96).JPG,14,IP051000043,False,False,True,Prodenia litura,True,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (1).jpg,12,IP033000039,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (10).jpg,14,IP070001072,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (100).jpg,16,IP010000152,True,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (101).jpg,16,IP018000291,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (102).jpg,14,IP063000030,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (103).JPG,14,IP014000481,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (104).JPG,14,IP015001157,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (105).JPG,16,IP026000551,False,False,True,Lawana imitata Melichar,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (106).JPG,12,IP038000660,False,False,True,wireworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (107).JPG,16,IP026000199,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (108).JPG,16,IP011000348,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (11).jpg,14,IP046000296,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (12).jpg,8,IP085000000,False,True,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (13).jpg,16,IP019000192,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (14).jpg,16,IP027000438,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (15).jpg,16,IP014000453,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (16).jpg,14,IP015000595,False,False,True,Cicadellidae,False,False,False,False,True,False,False,False,True,False,False,True,False
+int8,HA,HA  (17).jpg,14,IP039000461,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (18).jpg,14,IP038000150,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (19).jpg,12,IP052001774,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (2).jpg,14,IP039000069,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (20).jpg,14,IP003000558,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (21).jpg,16,IP052000556,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (22).jpg,14,IP044000143,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (23).jpg,16,IP046000888,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (24).jpg,16,IP015000086,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (25).jpg,16,IP001000482,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (26).jpg,12,IP101000297,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (27).jpg,16,IP000000003,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (28).jpg,14,IP035000160,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (29).jpg,14,IP051000088,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (3).jpg,12,IP070001069,False,False,True,grub,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (30).jpg,16,IP026000145,False,False,True,corn borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (31).jpg,12,IP093000246,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (32).jpg,14,IP040000394,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (33).jpg,14,IP071001782,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (34).jpg,12,IP043000103,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (35).jpg,16,IP024000699,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (36).jpg,16,IP015000496,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (37).jpg,14,IP102003993,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (38).jpg,12,IP102004292,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (39).jpg,16,IP016000161,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (4).jpg,14,IP018000775,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (40).jpg,16,IP008000104,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (41).jpg,14,IP102001719,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (42).jpg,14,IP102001687,True,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (43).jpg,12,IP071004433,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (44).jpg,16,IP056000164,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (45).jpg,12,IP015000481,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (46).jpg,12,IP052000639,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (47).jpg,12,IP015000415,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (48).jpg,16,IP052001754,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (49).jpg,14,IP003000188,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (5).jpg,14,IP008000301,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (50).jpg,12,IP024003837,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (51).jpg,16,IP016000119,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (52).jpg,14,IP102002706,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (53).jpg,16,IP015000021,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (54).jpg,16,IP052000168,True,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (55).jpg,16,IP010000017,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (56).jpg,14,IP015000349,True,False,True,Lawana imitata Melichar,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (57).jpg,16,IP052001475,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (58).jpg,18,IP024002012,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (59).jpg,16,IP040000068,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (6).jpg,14,IP102003993,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (60).jpg,16,IP014000058,False,False,True,Ceroplastes rubens,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (61).jpg,14,IP024001503,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (62).jpg,16,IP010000607,False,False,True,mole cricket,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (63).jpg,16,IP010000040,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (64).jpg,16,IP024001651,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (65).jpg,14,IP102003009,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (66).jpg,16,IP016000660,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (67).jpg,14,IP102001412,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (68).jpg,16,IP003000202,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (69).jpg,14,IP087000535,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (7).jpg,14,IP071001501,False,False,True,cabbage army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (70).jpg,16,IP003000292,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (71).jpg,16,IP005000043,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (72).jpg,12,IP043000100,False,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (73).jpg,16,IP059001034,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (74).jpg,14,IP102001636,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (75).jpg,14,IP077000509,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (76).jpg,16,IP024003046,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (77).jpg,14,IP011000079,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (78).jpg,16,IP016000023,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (79).jpg,14,IP052001188,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (8).jpg,14,IP035000335,True,False,True,Prodenia litura,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (80).jpg,16,IP014000361,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (81).jpg,14,IP016000031,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (82).jpg,14,IP037000050,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (83).jpg,16,IP013000096,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (84).jpg,14,IP021000377,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (85).jpg,16,IP030000250,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (86).jpg,16,IP079000013,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (87).jpg,16,IP038000536,False,False,True,peach borer,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (88).jpg,16,IP016000657,True,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (89).jpg,16,IP016000217,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (9).jpg,14,IP102001138,False,False,True,Cicadellidae,False,False,False,False,True,False,False,False,True,False,False,True,False
+int8,HA,HA  (90).jpg,16,IP015000635,False,False,True,flax budworm,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (91).jpg,14,IP027000080,False,False,True,army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (92).jpg,14,IP063000070,True,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (93).jpg,14,IP102001503,False,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,HA,HA  (94).jpg,14,IP050000405,False,False,True,flax budworm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (95).jpg,16,IP001000317,False,False,False,,False,False,False,False,False,False,False,False,False,False,False,False,False
+int8,HA,HA  (96).jpg,16,IP003000140,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (97).jpg,16,IP012000042,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (98).jpg,10,IP023000721,False,False,True,beet army worm,False,False,False,False,True,False,True,True,False,False,True,True,False
+int8,HA,HA  (99).jpg,14,IP102000681,True,False,True,alfalfa weevil,False,False,False,False,True,False,False,False,True,False,False,False,True
+int8,BA,BA (1).jpg,8,IP024002069,False,True,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (10).jpg,16,IP014000385,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (11).jpg,16,IP014000385,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (12).jpg,12,IP014000661,True,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (13).jpg,16,IP003000245,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (14).jpg,16,IP018000230,False,False,True,Icerya purchasi Maskell,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (15).jpg,14,IP087000721,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (16).jpg,14,IP005000056,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (17).jpg,16,IP024000937,False,False,True,flax budworm,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (18).jpg,16,IP005000128,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (19).jpg,16,IP039000481,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (2).jpg,12,IP024003734,True,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (20).jpg,14,IP026000623,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (21).jpg,14,IP063000065,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (22).jpg,16,IP077000259,False,False,True,Panonchus citri McGregor,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (23).jpg,16,IP024002028,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (24).jpg,14,IP099000078,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (25).jpg,14,IP054000173,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (26).jpg,16,IP015000979,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (27).jpg,12,IP102000811,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (28).jpg,16,IP020000077,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (29).jpg,14,IP024000302,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (3).jpg,16,IP000000302,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (30).jpg,14,IP023000777,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (31).jpg,18,IP003000137,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (32).jpg,14,IP022000205,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (33).jpg,14,IP011000052,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (34).jpg,18,IP004000008,False,False,True,Unaspis yanonensis,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (35).JPG,12,IP089000240,True,False,True,Salurnis marginella Guerr,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (36).jpg,14,IP071002474,False,False,True,Miridae,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (37).JPG,16,IP007000599,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (38).jpg,12,IP014000003,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (39).jpg,16,IP024003362,False,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,BA,BA (4).JPG,16,IP047000299,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (40).jpg,14,IP024003008,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (41).jpg,12,IP049001152,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (42).jpg,16,IP015000892,False,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (43).jpg,12,IP100000545,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (44).jpg,10,IP021000122,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (45).jpg,16,IP007000549,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (46).jpg,16,IP052000264,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (47).jpg,16,IP015001587,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (48).JPG,12,IP000000537,True,False,True,aphids,False,False,,True,False,False,,True,False,False,,True,False
+int8,BA,BA (49).JPG,16,IP049000909,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (5).JPG,16,IP039000575,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (50).JPG,12,IP046000123,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (51).JPG,16,IP014000385,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (52).JPG,12,IP068003974,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (53).JPG,14,IP000000573,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (54).JPG,10,IP102005317,False,False,True,rice leafhopper,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (55).JPG,14,IP022000972,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (56).JPG,12,IP018000607,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (57).JPG,16,IP015000335,True,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (58).JPG,12,IP080000094,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (59).JPG,12,IP070000220,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (6).jpg,10,IP014000648,False,False,True,Salurnis marginella Guerr,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (60).JPG,14,IP004000422,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,BA,BA (7).jpg,16,IP014000382,False,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+int8,BA,BA (8).jpg,14,IP023000106,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,BA,BA (9).jpg,14,IP024002614,True,False,True,Lawana imitata Melichar,False,False,,False,True,False,,False,True,False,,False,True
+int8,ZC,ZC (1).jpg,16,IP038000447,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (10).jpg,16,IP059000572,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (11).jpg,14,IP069000154,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (12).jpg,14,IP047000142,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (13).jpg,12,IP102001342,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (14).jpg,12,IP085000066,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (15).jpg,16,IP007000646,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (16).jpg,10,IP049000580,False,False,True,parathrene regalis,False,False,,False,True,False,,False,True,False,,False,True
+int8,ZC,ZC (17).jpg,16,IP071001068,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,ZC,ZC (18).jpg,14,IP046000464,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (19).jpg,14,IP013000076,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (2).jpg,14,IP024001121,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (20).jpg,16,IP037000044,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (21).jpg,16,IP015000223,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (22).jpg,14,IP049000774,True,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (23).jpg,16,IP102001235,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (24).jpg,14,IP024003053,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (25).jpg,16,IP025000299,True,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (26).jpg,14,IP102003391,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (27).jpg,12,IP024001647,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (28).jpg,12,IP024001647,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (29).JPG,14,IP025000319,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (3).jpg,14,IP045000103,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (30).JPG,14,IP011000002,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (31).JPG,16,IP011000382,False,False,True,brown plant hopper,False,False,,False,True,False,,False,True,False,,True,False
+int8,ZC,ZC (32).JPG,14,IP085000326,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (33).JPG,12,IP015000418,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (34).JPG,14,IP010000017,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (35).JPG,12,IP071002936,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (36).JPG,14,IP015001488,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (37).JPG,16,IP018000010,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (38).JPG,10,IP015001158,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (39).JPG,14,IP038000696,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (4).jpg,14,IP041000043,False,False,False,,False,False,,False,False,False,,False,False,False,,False,False
+int8,ZC,ZC (40).JPG,14,IP067000108,False,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (41).JPG,12,IP025000250,False,False,True,Cicadellidae,False,False,,False,True,False,,False,True,False,,True,False
+int8,ZC,ZC (42).JPG,10,IP102001212,True,False,True,Bactrocera tsuneonis,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (5).jpg,12,IP018000617,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (6).jpg,16,IP046000900,False,False,True,Tetradacus c Bactrocera minax,False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (7).jpg,14,IP040000204,False,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (8).jpg,12,IP052000597,True,False,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
+int8,ZC,ZC (9).jpg,0,IP085000218,False,True,True,Dacus dorsalis(Hendel),False,False,,False,True,False,,False,True,True,,False,False
