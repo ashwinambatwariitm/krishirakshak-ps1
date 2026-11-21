@@ -1,0 +1,55 @@
+{
+  "summary": [
+    {
+      "y": "0",
+      "source": "pd",
+      "test": "945",
+      "train": "2359",
+      "val": "372"
+    },
+    {
+      "y": "0",
+      "source": "pv",
+      "test": "2796",
+      "train": "12651",
+      "val": "2713"
+    },
+    {
+      "y": "1",
+      "source": "ip102",
+      "test": "1000",
+      "train": "2438",
+      "val": "562"
+    },
+    {
+      "y": "1",
+      "source": "natural",
+      "test": "483",
+      "train": "1556",
+      "val": "361"
+    },
+    {
+      "y": "1",
+      "source": "pd",
+      "test": "2082",
+      "train": "5294",
+      "val": "841"
+    },
+    {
+      "y": "1",
+      "source": "pv",
+      "test": "1934",
+      "train": "8251",
+      "val": "1746"
+    },
+    {
+      "y": "1",
+      "source": "solanaceae",
+      "test": "1165",
+      "train": "2734",
+      "val": "601"
+    }
+  ],
+  "chosen": "efficientnet_b0",
+  "threshold": 0.425
+}

@@ -2,6 +2,7 @@
 
 Model weights are not stored in git. They are published as GitHub Release assets of this repository:
 
+- `models-v5`: the tomato-leaf check v2 (`tomato_leaf_check_v2_effb0`, with chilli, brinjal and bell pepper; default since 21 Nov 2026, results in `results/leaf_check_v2/`).
 - `models-v4`: the tomato-leaf check (`tomato_leaf_check_effb0`, `training/src/leaf_check.py`, results in `results/leaf_check/`) and the pest detector by advice group (`pest_yolov8n_groups`, default since 21 Nov 2026; `training/src/pest_groups.py`, results in `results/pest_groups/`).
 - `models-v3`: the disease severity model and the IndicTrans2 translation model (CTranslate2 INT8).
 - `llm-v2`: the LoRA-tuned Llama 3.2 1B `.pte` (default advisor model); `llm-v1`: the base Llama 3.2 1B `.pte` and the
@@ -13,6 +14,7 @@ Model weights are not stored in git. They are published as GitHub Release assets
 Download into this folder and check each file against its SHA-256 checksum:
 
 ```
+gh release download models-v5 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download models-v4 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download models-v3 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
 gh release download llm-v2 --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
@@ -65,6 +67,12 @@ size, normalisation, thresholds) are in the JSON files in `results/int8_ptq/`.
 | `tomato_disease_v4_effb0_10class_int8.onnx` | ONNX INT8 of the v4 10-class model (5.0 MB) | `ac0eb60df6d6a070e96c3074a508e76b2611080942279ca848364a1abd4dcd01` |
 | `pest_yolov8n_ip102_negatives.onnx` | ONNX FP32 of the pest detector, 640 x 640 input (13.6 MB) | `dfbdb150843c3f714fc2cd82b3d0138f55e70ef4812920774dd542d06b2d7e23` |
 | `pest_yolov8n_ip102_negatives_int8.onnx` | ONNX INT8 of the pest detector (3.9 MB) | `cbf9844d5b6e3be1c16dcdc13c57bb913771c9072474f3cb838ec3f38fd24873` |
+
+## Release models-v5
+
+| File | What it is | SHA-256 |
+|---|---|---|
+| `tomato_leaf_check_v2_effb0.onnx` | "Is this a tomato leaf?" check v2 (chilli, brinjal and bell pepper added as "other"), EfficientNet-B0, ONNX FP32 (16 MB); threshold in `results/leaf_check_v2/tomato_leaf_check_v2_effb0.json` | `ee819f3073f5dfcd8334e396602498c712a50b12262250d8cee5425a2adc7145` |
 
 ## Release models-v4
 
