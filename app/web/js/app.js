@@ -103,7 +103,11 @@ function initApp() {
   document.querySelectorAll(".btn-home-back").forEach(btn => {
     btn.addEventListener("click", () => {
       if (window.voiceAdvisor) window.voiceAdvisor.stop();
-      showView("home");      // the English view (header button) stays until it is switched back
+      if (window.appState.viewingEnglish) {   // leave the English view: back to the chosen language
+        window.appState.viewingEnglish = false;
+        window.setLanguage(window.CONFIG.TRANSLATE_LANG || "en");
+      }
+      showView("home");
     });
   });
 
@@ -299,7 +303,8 @@ async function startAnalysis(blob) {
     const data = await window.apiService.analyseImage(blob, lang, window.appState.mockExample,
                                                       window.CONFIG.TRANSLATE_LANG || "");
     window.appState.setResult(data);
-    routeResultStatus(window.appState.viewingEnglish && data.display_lang !== "en" ? englishView(data) : data);
+    window.appState.viewingEnglish = false;
+    routeResultStatus(data);
     updateResultLanguageButton();
   } catch (err) {
     console.error("Analysis error:", err);
@@ -1155,17 +1160,9 @@ async function setupTranslatePicker() {
   select.addEventListener("change", () => {
     window.CONFIG.TRANSLATE_LANG = select.value;
     localStorage.setItem("KR_TRANSLATE", select.value);
-    // A result already open was answered in its own language: shown in that language when it is the one chosen
-    // now, otherwise in English (the device sent both)
-    const data = window.appState.analysisResult;
-    window.appState.viewingEnglish = !!(data && select.value && data.display_lang !== select.value);
     applyInterfaceLanguage();
-    if (window.appState.viewingEnglish) window.setLanguage("en");
-    rerenderCurrentResult();
-    updateResultLanguageButton();
   });
   applyInterfaceLanguage();
-  updateResultLanguageButton();
   try {
     const info = await window.apiService.getInfo();
     const langs = (info && info.translation_languages) || [];
@@ -1260,57 +1257,28 @@ function languageLabel(code) {
   return opt ? opt.textContent.split(" (")[0] : code;     // e.g. the native name of the chosen language
 }
 
-// Both language buttons (header: every screen; result page): the target language of a tap. Shown only when a
-// language other than English is chosen.
 function updateResultLanguageButton() {
-  const chosen = window.CONFIG.TRANSLATE_LANG || "";
-  const target = window.appState.viewingEnglish ? languageLabel(chosen) : "English";
-  const header = document.getElementById("btn-lang-switch");
-  if (header) {
-    header.classList.toggle("hidden", !chosen);
-    header.textContent = window.appState.viewingEnglish ? languageLabel(chosen) : "EN";
-    header.title = header.ariaLabel = target;
-  }
   const btn = document.getElementById("btn-result-lang");
   const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
   if (!btn) return;
   const available = data && chosen && data.display_lang && data.display_lang !== "en";
   btn.classList.toggle("hidden", !available);
-  if (available) btn.textContent = target;
-}
-
-// Draw the current result again in the language now shown (English view or the device's answer language)
-function rerenderCurrentResult() {
-  const data = window.appState.analysisResult;
-  if (!data) return;
-  // English view, or English chosen in the picker while the result came in another language
-  const english = window.appState.viewingEnglish || !window.CONFIG.TRANSLATE_LANG;
-  const view = english && data.display_lang && data.display_lang !== "en" ? englishView(data) : data;
-  const status = data.status || "uncertain";
-  if (status === "answered") renderAnsweredScreen(view);
-  else if (status === "retake_photo" || status === "not_tomato") renderRetakeScreen(view);
-  else renderUncertainScreen(view);
-}
-
-// Whole app in English or in the chosen language: labels on every screen, the result, the spray check. The
-// choice stays when going back home and for the next photo, until it is switched back.
-function setEnglishView(on) {
-  const chosen = window.CONFIG.TRANSLATE_LANG || "";
-  if (window.voiceAdvisor) window.voiceAdvisor.stop();
-  window.appState.viewingEnglish = !!(on && chosen);
-  window.setLanguage(window.appState.viewingEnglish ? "en" : (chosen || "en"));
-  if (typeof updateWeatherUI === "function") updateWeatherUI();
-  rerenderCurrentResult();
-  updateResultLanguageButton();
+  if (available) btn.textContent = window.appState.viewingEnglish ? languageLabel(chosen) : "English";
 }
 
 function toggleResultLanguage() {
-  setEnglishView(!window.appState.viewingEnglish);
+  const data = window.appState.analysisResult;
+  const chosen = window.CONFIG.TRANSLATE_LANG || "";
+  if (!data || !chosen) return;
+  if (window.voiceAdvisor) window.voiceAdvisor.stop();
+  window.appState.viewingEnglish = !window.appState.viewingEnglish;
+  window.setLanguage(window.appState.viewingEnglish ? "en" : chosen);      // interface labels too
+  renderAnsweredScreen(window.appState.viewingEnglish ? englishView(data) : data);
+  updateResultLanguageButton();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btn-result-lang");
   if (btn) btn.addEventListener("click", toggleResultLanguage);
-  const header = document.getElementById("btn-lang-switch");
-  if (header) header.addEventListener("click", toggleResultLanguage);
 });
