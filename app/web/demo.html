@@ -273,8 +273,8 @@ function explain(r, query, bytes, roundTripMs) {
         `(leaf ${ms(t.leaf_check)}, disease ${ms(t.disease)}, pests ${ms(t.pest)})`);
   const lc = r.leaf_check;
   if (lc) log("Leaf check", "#34d399", lc.is_tomato_leaf
-      ? `crop leaf found (p_other ${lc.p_other.toFixed(3)} < ${lc.threshold.toFixed(3)})` + (r.crop ? ` -> crop: ${r.crop.name}` : "")
-      : `no known crop leaf (p_other ${lc.p_other.toFixed(3)} >= ${lc.threshold.toFixed(3)}) -> no leaf disease checked`);
+      ? `tomato leaf (p_other ${lc.p_other.toFixed(3)} < ${lc.threshold.toFixed(3)})` + (r.crop ? ` -> crop: ${r.crop.name}` : "")
+      : `not a tomato plant (p_other ${lc.p_other.toFixed(3)} >= ${lc.threshold.toFixed(3)}) -> no leaf disease checked`);
   const d = r.disease || {};
   if (d.top && d.top.length) {
     const top = d.top.slice(0, 2).map(x => `${x.class} ${pct(x.probability)}`).join(", ");
