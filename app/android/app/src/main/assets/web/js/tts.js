@@ -9,6 +9,32 @@ class VoiceAdvisor {
     this.isSpeaking = false;
     this.currentUtterance = null;
     this.runId = 0;
+    this.durationTimer = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const stopBtn = document.getElementById("btn-tts-float-stop");
+      if (stopBtn) stopBtn.addEventListener("click", () => this.stop());
+    });
+  }
+
+  showFloatingBar(lang) {
+    const bar = document.getElementById("tts-floating-bar");
+    const textEl = document.getElementById("tts-float-text");
+    if (!bar) return;
+    const names = { hi: "Hindi", te: "Telugu", mr: "Marathi", kn: "Kannada", ta: "Tamil", bn: "Bengali",
+                    gu: "Gujarati", or: "Odia", pa: "Punjabi", en: "English" };
+    const langName = names[lang] || lang || "English";
+    if (textEl) {
+      const template = (window.t && window.t("speaking_label")) ? window.t("speaking_label") : "Speaking advice in {lang}...";
+      textEl.textContent = template.replace("{lang}", langName);
+    }
+    bar.classList.remove("hidden");
+  }
+
+  hideFloatingBar() {
+    const bar = document.getElementById("tts-floating-bar");
+    if (bar) bar.classList.add("hidden");
+    document.querySelectorAll(".btn-voice.speaking").forEach(b => b.classList.remove("speaking"));
   }
 
   // Android app: the WebView has no speechSynthesis; MainActivity exposes the phone's own offline engine
@@ -55,6 +81,7 @@ class VoiceAdvisor {
       if (ok) {
         this.isSpeaking = true;
         document.body.classList.add("tts-active");
+        this.showFloatingBar(a.lang);
         this.nativeEnd = { id, cb: onEndCallback };
         return;
       }
@@ -70,6 +97,7 @@ class VoiceAdvisor {
     this.nativeEnd = null;
     this.isSpeaking = false;
     document.body.classList.remove("tts-active");
+    this.hideFloatingBar();
     if (cb) cb();
   }
 
@@ -152,6 +180,7 @@ class VoiceAdvisor {
     const finish = () => {
       this.isSpeaking = false;
       document.body.classList.remove("tts-active");
+      this.hideFloatingBar();
       if (onEndCallback) onEndCallback();
     };
     const tryAttempt = (i) => {
@@ -180,6 +209,7 @@ class VoiceAdvisor {
         clearTimeout(timer);
         this.isSpeaking = true;
         document.body.classList.add("tts-active");
+        this.showFloatingBar(a.lang || lang);
       };
       u.onend = () => { clearTimeout(timer); if (!moved && run === this.runId) finish(); };
       u.onerror = (e) => {
@@ -202,6 +232,7 @@ class VoiceAdvisor {
     if (this.synth) this.synth.cancel();
     this.isSpeaking = false;
     document.body.classList.remove("tts-active");
+    this.hideFloatingBar();
   }
 
   toggle(text, lang = "en", buttonEl = null, fallbackText = null) {
