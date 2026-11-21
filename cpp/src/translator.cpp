@@ -51,6 +51,7 @@ public:
 
         // 1) pre-processing and tokenisation; empty sentences are not sent to the model
         std::vector<indic_text::PlaceholderMap> maps;
+        std::vector<std::vector<std::string>> termTexts;   // batch row -> local texts of its protected terms
         std::vector<std::vector<std::string>> batch;
         std::vector<size_t> index;   // batch row -> sentence
         out.sentences.resize(sentences.size());
@@ -88,6 +89,8 @@ public:
             tokens.insert(tokens.end(), pieces.begin(), pieces.end());
             batch.push_back(std::move(tokens));
             maps.push_back(p.placeholders);
+            termTexts.push_back({});
+            for (const auto& m : markers) termTexts.back().push_back(m.second);
             index.push_back(i);
         }
 
@@ -107,6 +110,14 @@ public:
                 const std::vector<std::string>& pieces = results[r].hypotheses.at(0);
                 s.complete = pieces.size() < kMaxTokens;
                 s.text = indic_text::postprocess(indic_text::decodePieces(pieces), flores, maps[r]);
+                // Left over from a broken term placeholder ("<ID1. ..." -> "<name. ..."; Marathi, Pi 2026-11-21):
+                // the bracket before the name and a full stop right after it inside the sentence
+                for (const std::string& t : termTexts[r])
+                    for (const auto& [from, to] : std::vector<std::pair<std::string, std::string>>{
+                             {"< " + t, t}, {"<" + t, t}, {t + ". ", t + " "}, {t + " . ", t + " "}}) {
+                        for (size_t pos = s.text.find(from); pos != std::string::npos; pos = s.text.find(from, pos + to.size()))
+                            s.text.replace(pos, from.size(), to);
+                    }
                 s.repetition = indic_text::hasRepetition(s.text);
                 const bool placeholderLeft = s.text.find("<ID") != std::string::npos ||
                                              s.text.find("[ID") != std::string::npos;
