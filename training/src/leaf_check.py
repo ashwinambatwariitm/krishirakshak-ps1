@@ -1,5 +1,12 @@
 # %% [markdown]
-# # KrishiRakshak PS1 - Tomato leaf check: "is this a tomato leaf?" (Kaggle GPU)
+# # KrishiRakshak PS1 - Tomato leaf check v2: "is this a tomato leaf?" (Kaggle GPU)
+#
+# **v2 (21 Nov 2026):** chilli, brinjal and bell pepper leaves added as "other". v1 had none of the crops that grow
+# next to tomato in India; on the Raspberry Pi test 3 of 5 chilli field photos passed as tomato (one diagnosed as
+# tomato leaf curl virus). New data: Red Chili Pepper Pests Dataset (indraagustian, Apache 2.0; field photos, its
+# own train / valid / test folders, near-copies across them removed), Eggplant Disease Recognition Dataset
+# (sujaykapadnis, CC BY 4.0; original photos only, not its augmented copies) and Solanaceae Family Leaves Dataset
+# (ziya07, CC0; brinjal and bell pepper folders, its tomato folder is not used).
 #
 # The disease model only knows tomato classes, so it gives a confident tomato disease for any photo: an IP102
 # rice-leaf photo was called "bacterial spot, 73%". This notebook trains a small separate model that runs before the
@@ -25,8 +32,9 @@
 #
 # **Kaggle setup:** Accelerator = *GPU T4*, Internet = on, attach `abdallahalidev/plantvillage-dataset`,
 # `yusufmurtaza01/plantdoc-object-detection-dataset`, `nirmalsankalana/plantdoc-dataset`, `parserpixy/ip102-dataset`,
-# `prasunroy/natural-images`, and the outputs of `ps1-tomato-disease-v4` (split manifests) and
-# `ps1-tomato-disease-v5` (baseline checkpoint).
+# `prasunroy/natural-images`, `indraagustian/red-chili-pepper-pests-dataset`,
+# `sujaykapadnis/eggplant-disease-recognition-dataset`, `ziya07/solanaceae-family-leaves-dataset`, and the outputs of
+# `ps1-tomato-disease-v4` (split manifests) and `ps1-tomato-disease-v5` (baseline checkpoint).
 
 # %%
 import os, sys, subprocess
@@ -38,7 +46,7 @@ if ON_KAGGLE:
                    check=True)
 
 # %%
-import json, math, random, re, time, warnings
+import hashlib, json, math, random, re, time, warnings
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -84,6 +92,7 @@ DECODE_MIN_SIDE = 336
 PV_OTHER_PER_CLASS = 20 if SMOKE else 450   # 25 non-tomato PlantVillage classes -> about 11,000 images
 IP102_MAX = 40 if SMOKE else 4000
 NATURAL_MAX = 40 if SMOKE else 2400
+EXTRA_MAX_PER_CROP = 20 if SMOKE else 1500   # chilli / brinjal / bell pepper photos (v2)
 
 # Split shares (as v4): PlantVillage 70/15/15, PlantDoc 65/10/25; IP102 uses its official trainval/test split
 PV_TEST_FRAC, PV_VAL_FRAC = 0.15, 0.15
@@ -97,7 +106,8 @@ MIN_CROP_SIDE = 32
 
 # Share of each training batch per (class, source); within a source, its sub-classes (crops) are balanced
 SAMPLE_SHARE = {("tomato", "pv"): 0.22, ("tomato", "pd"): 0.28,
-                ("other", "pv"): 0.18, ("other", "pd"): 0.17, ("other", "ip102"): 0.09, ("other", "natural"): 0.06}
+                ("other", "pv"): 0.14, ("other", "pd"): 0.14, ("other", "ip102"): 0.07, ("other", "natural"): 0.05,
+                ("other", "solanaceae"): 0.10}   # v2: chilli, brinjal, bell pepper (crops balanced inside)
 MAX_TOMATO_REJECT_VAL = 0.03   # threshold rule on validation (margin below the 5% target: validation sets are small)
 
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED)
@@ -204,6 +214,26 @@ def find_natural_images():
             return d
     return None
 
+def find_chili():
+    """Red chilli pest dataset: folder with train/images whose files start with kutu / ulat / thrips (v2)."""
+    for d, dirs, _ in walk_dirs(INPUT_ROOT, max_depth=5):
+        if "train" in dirs and (d / "train" / "images").is_dir():
+            names = os.listdir(d / "train" / "images")[:500]
+            if any(n.startswith(("kutu", "ulat", "thrips")) for n in names):
+                return d
+    return None
+
+def images_below(root, keep=lambda p: True):
+    """All image files below root (recursive) whose path passes keep."""
+    return sorted(str(p) for p in Path(root).rglob("*") if p.suffix.lower() in IMG_EXT and keep(str(p).lower()))
+
+def find_dir(test):
+    """First folder under the inputs for which test(folder, subfolder names) is true, or None."""
+    for d, dirs, _ in walk_dirs(INPUT_ROOT, max_depth=6):
+        if test(d, dirs):
+            return d
+    return None
+
 FILE_INDEX = {}  # small result files (manifests, checkpoints) found under the inputs
 for d, _, files in walk_dirs(INPUT_ROOT, max_depth=8):
     for f in files:
@@ -222,6 +252,10 @@ print("PlantDoc detection :", PD_DET_ROOT)
 print("PlantDoc folders   :", PD_CLS_ROOT)
 print("IP102              :", IP_ROOT, {k: str(v) for k, v in IP_SPLITS.items()})
 print("Natural Images     :", NAT_ROOT)
+CHILI_ROOT = find_chili()
+EGGPLANT_ROOT = find_dir(lambda d, dirs: "eggplant disease recognition" in d.name.lower())
+SOLANACEAE_ROOT = find_dir(lambda d, dirs: "Brinjal" in dirs and any(x.lower().startswith("pepper") for x in dirs))
+print("chilli / eggplant / solanaceae:", CHILI_ROOT, "|", EGGPLANT_ROOT, "|", SOLANACEAE_ROOT)
 print("v4 manifests       :", V4_PV_MANIFEST, V4_PD_MANIFEST)
 assert V4_PV_MANIFEST and V4_PD_MANIFEST, "attach the output of the ps1-tomato-disease-v4 notebook (split manifests)"
 
@@ -510,6 +544,75 @@ if NAT_ROOT is not None:
     nat["split"] = group_split(nat, OTHER_TEST_FRAC, OTHER_VAL_FRAC)
     parts.append(nat)
 
+# %% [markdown]
+# ## v2: chilli, brinjal and bell pepper leaves ("solanaceae" source; crops balanced inside it)
+# Chilli keeps the dataset's own test folder as test; its train / valid photos are split 85 / 15 by original photo
+# name. Brinjal and bell pepper are split like the other sources. Copies of one photo (pHash, rotations included)
+# form one group; a chilli training photo that is a near-copy of a chilli test photo is dropped (the dataset has the
+# same photo under different names). Every image here is also checked against the tomato field photos.
+
+# %%
+def chili_original(stem):
+    """Original photo name before Roboflow augmentation ('ulat--12-_jpg.rf.<hash>' -> 'ulat--12-')."""
+    return re.sub(r"_(jpe?g|png|JPE?G|PNG)\.rf\.[0-9a-fA-F]+$", "", stem)
+
+extra_rows = []
+if CHILI_ROOT is not None:
+    for folder, split in (("train", None), ("valid", None), ("val", None), ("test", "test")):
+        for f in images_below(CHILI_ROOT / folder / "images") if (CHILI_ROOT / folder / "images").is_dir() else []:
+            orig = chili_original(Path(f).stem)
+            sp = split or ("val" if int(hashlib.md5(orig.encode()).hexdigest(), 16) % 100 < 15 else "train")
+            extra_rows.append(dict(path=f, sub="chilli", split=sp, group="chili:" + orig))
+if EGGPLANT_ROOT is not None:
+    # original photos only: the dataset also ships augmented copies of the same photos
+    for f in images_below(EGGPLANT_ROOT, lambda q: "augment" not in q):
+        extra_rows.append(dict(path=f, sub="brinjal", split=None, group=None))
+if SOLANACEAE_ROOT is not None:
+    for sub_dir in sorted(SOLANACEAE_ROOT.iterdir()):
+        name = sub_dir.name.lower()
+        if not sub_dir.is_dir() or name.startswith("tomato"):
+            continue   # the tomato folder of this dataset is not used
+        crop = "brinjal" if "brinjal" in name else "pepper" if "pepper" in name else None
+        if crop:
+            extra_rows += [dict(path=f, sub=crop, split=None, group=None) for f in images_below(sub_dir)]
+ext = pd.DataFrame(extra_rows, columns=["path", "sub", "split", "group"])
+if len(ext):
+    # cap per crop (chilli: training share first; its test folder is kept whole)
+    keep = []
+    for crop, d in ext.groupby("sub"):
+        test_part = d[d.split == "test"]
+        rest = d[d.split != "test"]
+        n = max(0, EXTRA_MAX_PER_CROP - len(test_part)) if crop == "chilli" else EXTRA_MAX_PER_CROP
+        keep.append(pd.concat([test_part, rest.iloc[rng.choice(len(rest), min(len(rest), n), replace=False)]]))
+    ext = pd.concat(keep).reset_index(drop=True)
+    prof, ext_hashes = profile_paths(ext.path.tolist())
+    ok = prof.ok.to_numpy(bool)
+    ext, ext_hashes = ext[ok].reset_index(drop=True), ext_hashes[ok]
+    dsu = DSU(len(ext))
+    subs = ext["sub"].to_numpy()
+    for i, j in near_duplicate_pairs(ext_hashes, ext_hashes, HASH_MAX_DIST, same=True):
+        if subs[i] == subs[j]:   # copies are merged within one crop only
+            dsu.union(int(i), int(j), MAX_GROUP_SIZE)
+    roots = [dsu.find(i) for i in range(len(ext))]
+    ext["group"] = [f"ext{r}" for r in roots]
+    is_chili = (ext["sub"] == "chilli").to_numpy()
+    # chilli: one split per group of copies - test if any copy is in the dataset's test folder (this removes
+    # near-copies of test photos from training), else val if any copy is val, else train
+    rank = {"test": 2, "val": 1, "train": 0}
+    chili_split = ext[is_chili].groupby("group").split.agg(lambda v: max(v, key=lambda x: rank[x]))
+    ext.loc[is_chili, "split"] = ext.loc[is_chili, "group"].map(chili_split)
+    # brinjal / bell pepper: group split per crop, like the other sources
+    if (~is_chili).any():
+        ext.loc[~is_chili, "split"] = group_split(ext[~is_chili], OTHER_TEST_FRAC, OTHER_VAL_FRAC)
+    # never a copy of a tomato field photo
+    hits = near_duplicate_pairs(ext_hashes, tomato_pd_hashes, HASH_MAX_DIST)
+    if len(hits):
+        ext = ext.drop(index=np.unique(hits[:, 0])).reset_index(drop=True)
+    assert (ext.groupby("group").split.nunique() == 1).all()
+    parts.append(ext.assign(box=None, y=1, source="solanaceae", kind="photo"))
+    print("v2 chilli / brinjal / pepper:\n", ext.pivot_table(index="sub", columns="split", values="path",
+                                                             aggfunc="count").fillna(0).astype(int).to_string())
+
 cols = ["path", "box", "y", "source", "sub", "kind", "group", "split"]
 data = pd.concat([tomato[cols], opv[cols], opd[cols]] + [p[cols] for p in parts], ignore_index=True)
 data["box"] = pd.Series(list(data.box), dtype=object)
@@ -710,8 +813,10 @@ def rates(df, p, t):
         add(f"tomato {src} {kind}", tom & (df.source == src).to_numpy() & (df.kind == kind).to_numpy())
     oth = ~tom
     add("other: all", oth)
-    for src in ("pv", "pd", "ip102", "natural"):
+    for src in ("pv", "pd", "ip102", "natural", "solanaceae"):
         add(f"other {src}", oth & (df.source == src).to_numpy())
+    for crop in ("chilli", "brinjal", "pepper"):   # v2 sources, per crop
+        add(f"other v2 {crop}", oth & (df.source == "solanaceae").to_numpy() & (df["sub"] == crop).to_numpy())
     for crop in sorted(set(df["sub"][oth & df.source.isin(["pv", "pd"]).to_numpy()].map(crop_of))):
         add(f"other crop: {crop} (lab + field)",
             oth & df.source.isin(["pv", "pd"]).to_numpy() & (df["sub"].map(crop_of) == crop).to_numpy())
@@ -781,7 +886,7 @@ import onnx, onnxruntime as ort
 model_cpu = build_model(best_arch)
 model_cpu.load_state_dict(torch.load(WORK_DIR / f"{best_arch}_best.pt", map_location="cpu")["model_state_dict"])
 model_cpu.eval()
-ONNX_NAME = f"tomato_leaf_check_{'mnv3s' if best_arch == 'mobilenet_v3_small' else 'effb0'}.onnx"
+ONNX_NAME = f"tomato_leaf_check_v2_{'mnv3s' if best_arch == 'mobilenet_v3_small' else 'effb0'}.onnx"
 dummy = torch.randn(1, 3, IMG_SIZE, IMG_SIZE)
 torch.onnx.export(model_cpu, dummy, WORK_DIR / ONNX_NAME, input_names=["input"], output_names=["logits"],
                   opset_version=17, dynamic_axes=None, dynamo=False)

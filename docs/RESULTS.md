@@ -167,6 +167,25 @@ met for field photos (3.5%) but not for leaf crops (6.7%). Thresholding the dise
 detector, so the vision step is not slower. On a photo that is not a tomato leaf the application shows no disease
 result; insects of the tomato pest groups are still detected and shown.
 
+### Leaf check v2: chilli, brinjal and bell pepper added (`results/leaf_check_v2/`) - default since 21 Nov 2026
+
+v1 had none of the crops grown next to tomato in India; on the Raspberry Pi test 3 of 5 chilli field photos passed as
+tomato (one was diagnosed as tomato leaf curl virus). v2 adds them as "other": Red Chili Pepper Pests Dataset (field
+photos, Apache 2.0; the dataset's test folder stays test, near-copies of test photos are moved out of training),
+Eggplant Disease Recognition Dataset (CC BY 4.0, original photos only) and Solanaceae Family Leaves Dataset (CC0,
+brinjal and bell pepper; its tomato folder is not used). Same recipe and threshold rule; EfficientNet-B0 chosen on
+validation again, threshold 0.425.
+
+| Test set | v1 | v2 |
+|---|---|---|
+| chilli (565 field photos) / brinjal (300) / bell pepper (300) | not in v1 | **99.8% / 96.7% / 99.7%** rejected |
+| other: all | 94.2% (5,499) | 94.6% (6,664) |
+| tomato rejected: PlantVillage / PlantDoc field photos / leaf crops | 0.0% / 3.5% / 6.7% | 0.0% / 4.8% / 6.6% |
+| weakest crops: potato / bell pepper (PlantVillage + PlantDoc) | 67.6% / 84.5% | 65.0% / 83.3% |
+
+The other subsets change by at most 2.6 points. Tomato field photos rejected in error rise from 3.5% to 4.8%, still
+within the 5% target.
+
 ## IP102 pest detector (YOLOv8n, all classes)
 
 Data: 18,976 annotated images (13,662 train, 1,516 validation, official 3,798 test). One malformed annotation file was

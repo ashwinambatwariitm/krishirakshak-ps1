@@ -48,8 +48,8 @@ struct PipelineConfig {
     std::string severitySpec = "results/severity/severity_spec.json";
     // "Is this a tomato leaf?" check (training/src/leaf_check.py). The specification JSON holds the class order and
     // the rejection threshold chosen on validation. If the files are missing the check is skipped (older bundles).
-    std::string leafCheckOnnx = "models/tomato_leaf_check_effb0.onnx";
-    std::string leafCheckSpec = "results/leaf_check/tomato_leaf_check_effb0.json";
+    std::string leafCheckOnnx = "models/tomato_leaf_check_v2_effb0.onnx";
+    std::string leafCheckSpec = "results/leaf_check_v2/tomato_leaf_check_v2_effb0.json";
     std::string kbJson = "app/kb/tomato_kb.json";
     // LoRA-tuned Llama 3.2 1B (training/src/llama_lora_distill.py): on the Pi 5 it gave more accepted answers than
     // the base 1B (5/5 vs 3/5 photos) in half the time (results/pi5_bench/2026-11-18_llama1b_lora/).
