@@ -917,6 +917,38 @@ std::string decodePieces(const std::vector<std::string>& pieces) {
     return toU8(s);
 }
 
+// Numbers the model returned as a placeholder written in the target script (Odia "<\u0b06\u0b07. \u0b21\u0b3f. 1>",
+// Bengali, Kannada, Tamil, Telugu ...): IndicTransToolkit lists the spellings of "ID" only for a few scripts, so
+// these stayed in the text as "<... 1>" instead of the number (found in 76 knowledge-base translations). Any
+// "<...n>" or "@...n>" left after the regular replacement is the placeholder n: it gets its original text back.
+// Not in the Python toolkit, so the byte-exact comparison with it covers only texts without such leftovers.
+U32 restoreLeftoverPlaceholders(const U32& text, const PlaceholderMap& placeholders) {
+    std::map<int, U32> original;
+    for (const auto& kv : placeholders) {
+        const std::string& k = kv.first;
+        if (k.size() > 4 && k.rfind("<ID", 0) == 0 && k.back() == '>') {
+            const std::string n = k.substr(3, k.size() - 4);
+            if (!n.empty() && std::all_of(n.begin(), n.end(), [](char c) { return c >= '0' && c <= '9'; }))
+                original.emplace(std::stoi(n), toU32(kv.second));
+        }
+    }
+    if (original.empty()) return text;
+    static const std::wregex leftover(L"(@?)(?:<[^<>\\n]{0,30}?|[^\\s<>@]{1,12}[ .]{0,4}[^\\s<>@]{0,12}?[ .]{0,3})([0-9]+)\\s*[>\\]]");
+    const std::wstring w = toW(text);
+    std::wstring out;
+    size_t last = 0;
+    for (std::wsregex_iterator m(w.begin(), w.end(), leftover), end; m != end; ++m) {
+        const auto found = original.find(std::stoi((*m)[2].str()));
+        // only "<...n>" or "@...n>" forms, so ordinary text with a ">" is not touched
+        const bool bracketed = m->str().find(L'<') != std::wstring::npos;
+        if (found == original.end() || (!bracketed && (*m)[1].str().empty())) continue;
+        out += w.substr(last, m->position() - last) + (*m)[1].str() + toW(found->second);
+        last = m->position() + m->length();
+    }
+    out += w.substr(last);
+    return fromW(out);
+}
+
 std::string postprocess(const std::string& decoded, const std::string& tgtLang, const PlaceholderMap& placeholders) {
     const auto it = floresToIso().find(tgtLang);
     if (it == floresToIso().end() || tgtLang == "eng_Latn")
@@ -925,6 +957,7 @@ std::string postprocess(const std::string& decoded, const std::string& tgtLang, 
     // Odia fix of IndicTransToolkit; it runs before transliteration, as in the Python code
     if (tgtLang.rfind("ory", 0) == 0) s = replaceAll(s, U32{0x0B2F, 0x0B3C}, U32{0x0B5F});
     for (const auto& kv : placeholders) s = replaceAll(s, toU32(kv.first), toU32(kv.second));
+    s = restoreLeftoverPlaceholders(s, placeholders);
     return toU8(detokenizeIndicU(transliterateU(s, it->second)));
 }
 
