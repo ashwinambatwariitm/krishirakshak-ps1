@@ -129,6 +129,15 @@ const I18N = {
     chip_q2: "How to prevent disease spread?",
     chip_q3: "What are organic bio-control options?",
     chip_q4: "Water management tips during blight?",
+    tip_daylight: "Bright Daylight",
+    tip_sharp: "Close-up & Sharp",
+    tip_single_leaf: "Single Leaf",
+    leaf_alignment_hint: "Center a single affected leaf inside the frame",
+    llama_online: "On-Device Llama \u2022 100% Offline",
+    ai_grounded_badge: "ICAR / NIPHM Grounded",
+    chat_welcome: "Namaste! I am your Kisan AI advisor running on this device. Ask any question about tomato crop diseases, safe spray practices, waiting intervals (PHI), or organic control.",
+    chat_now: "Now",
+    speaking_label: "Speaking advice in {lang}...",
     
     // Weather & Spray Meter
     weather_title: "Weather & Spray Suitability Meter",
@@ -323,6 +332,15 @@ const I18N = {
     chip_q2: "\u0930\u094b\u0917 \u0915\u094b \u0906\u0917\u0947 \u092b\u0948\u0932\u0928\u0947 \u0938\u0947 \u0915\u0948\u0938\u0947 \u0930\u094b\u0915\u0947\u0902?",
     chip_q3: "\u091c\u0948\u0935\u093f\u0915 \u0935 \u0926\u0947\u0938\u0940 \u0928\u093f\u092f\u0902\u0924\u094d\u0930\u0923 \u0915\u0947 \u0915\u094d\u092f\u093e \u0909\u092a\u093e\u092f \u0939\u0948\u0902?",
     chip_q4: "\u091d\u0941\u0932\u0938\u093e \u0930\u094b\u0917 \u092e\u0947\u0902 \u0938\u093f\u0902\u091a\u093e\u0908 \u0915\u0948\u0938\u0947 \u0915\u0930\u0947\u0902?",
+    tip_daylight: "\u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u0930\u094b\u0936\u0928\u0940",
+    tip_sharp: "\u0928\u091c\u093c\u0926\u0940\u0915 \u0935 \u0938\u093e\u092b\u093c \u092b\u094b\u091f\u094b",
+    tip_single_leaf: "\u090f\u0915 \u0939\u0940 \u092a\u0924\u094d\u0924\u0940",
+    leaf_alignment_hint: "\u092a\u094d\u0930\u092d\u093e\u0935\u093f\u0924 \u092a\u0924\u094d\u0924\u0940 \u0915\u094b \u092b\u094d\u0930\u0947\u092e \u0915\u0947 \u092c\u0940\u091a \u092e\u0947\u0902 \u0930\u0916\u0947\u0902",
+    llama_online: "\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 Llama \u2022 \u092c\u093f\u0928\u093e \u0907\u0902\u091f\u0930\u0928\u0947\u091f",
+    ai_grounded_badge: "\u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 ICAR / NIPHM",
+    chat_welcome: "\u0928\u092e\u0938\u094d\u0924\u0947! \u092e\u0948\u0902 \u0906\u092a\u0915\u093e \u0915\u093f\u0938\u093e\u0928 AI \u092e\u093f\u0924\u094d\u0930 \u0939\u0942\u0902\u0964 \u091f\u092e\u093e\u091f\u0930 \u0915\u0947 \u0930\u094b\u0917, \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092f\u093e \u0924\u0941\u0921\u093c\u093e\u0908 \u0938\u092e\u092f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u092d\u0940 \u0938\u0935\u093e\u0932 \u092a\u0942\u091b\u0947\u0902\u0964",
+    chat_now: "\u0905\u092d\u0940",
+    speaking_label: "{lang} \u092e\u0947\u0902 \u092c\u094b\u0932 \u0930\u0939\u093e \u0939\u0948...",
     
     // Weather & Spray Meter
     weather_title: "\u092e\u094c\u0938\u092e \u090f\u0935\u0902 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092e\u0940\u091f\u0930",

@@ -638,82 +638,181 @@ function renderAnsweredScreen(data) {
   renderTechnicalDetails(data);
 }
 
+function formatChatTime() {
+  const d = new Date();
+  return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+function appendAiChatMessage(res, topic) {
+  const chatContainer = document.getElementById("chat-messages-container");
+  if (!chatContainer) return;
+
+  const aiMsg = document.createElement("div");
+  aiMsg.className = "chat-message ai-message";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble ai-bubble";
+
+  // Bubble header
+  const header = document.createElement("div");
+  header.className = "bubble-header";
+  header.innerHTML = `<span class="bubble-badge">${window.t("ai_grounded_badge") || "ICAR / NIPHM Grounded"}</span>`;
+  bubble.appendChild(header);
+
+  // Determine speech text and body text
+  let speechText = "";
+  let englishSpeech = "";
+
+  if (res.answer && res.accepted !== false) {
+    const p = document.createElement("p");
+    p.className = "bubble-text";
+    p.textContent = res.answer;
+    bubble.appendChild(p);
+    speechText = res.answer;
+    englishSpeech = res.answer;
+
+    if (res.translation) {
+      const trBlock = document.createElement("div");
+      trBlock.className = "translation-block";
+      renderTranslation(trBlock, res.translation, p);
+      bubble.appendChild(trBlock);
+
+      if (typeof res.translation === "object") {
+        if (res.translation.text) speechText = res.translation.text;
+        else if (Array.isArray(res.translation.sentences)) speechText = res.translation.sentences.join(" ");
+      }
+    }
+  } else {
+    const warning = document.createElement("p");
+    warning.className = "table-note";
+    warning.style.color = "var(--warn-amber)";
+    warning.style.marginBottom = "8px";
+    warning.textContent = window.t("llama_rejected_notice") || "A simplified explanation could not be verified safely. Please refer directly to the verified official facts below:";
+    bubble.appendChild(warning);
+  }
+
+  // Facts list
+  if (Array.isArray(res.facts) && res.facts.length > 0) {
+    const factsWrapper = document.createElement("div");
+    factsWrapper.className = "qa-facts-wrapper";
+    factsWrapper.style.marginTop = "8px";
+    factsWrapper.innerHTML = `<h4 class="qa-facts-title" style="margin-bottom:6px;">${window.t("verified_facts_title") || "Verified Reference Facts:"}</h4>`;
+    
+    const factsList = document.createElement("div");
+    res.facts.forEach(fact => {
+      const factItem = document.createElement("div");
+      factItem.className = "fact-item";
+      factItem.innerHTML = `<span>${escapeHtml(fact.text)} </span>${fact.source_org ? `<span class="source-badge">[${escapeHtml(fact.source_org)}]</span>` : ""}`;
+      factsList.appendChild(factItem);
+    });
+    factsWrapper.appendChild(factsList);
+    bubble.appendChild(factsWrapper);
+
+    if (!speechText) {
+      speechText = res.facts.map(f => f.text).join(". ");
+      englishSpeech = speechText;
+    }
+  }
+
+  // Bubble footer with Voice listen button & timestamp
+  const footer = document.createElement("div");
+  footer.className = "bubble-footer";
+  footer.innerHTML = `
+    <button class="btn-voice btn-voice-chat" type="button" title="Listen Aloud">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
+      <div class="sound-wavebars">
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+      </div>
+      <span>${window.t("listen_voice") || "Listen"}</span>
+    </button>
+    <span class="bubble-time">${formatChatTime()}</span>
+  `;
+  bubble.appendChild(footer);
+
+  // Wire up inline voice button
+  const voiceBtn = footer.querySelector(".btn-voice-chat");
+  if (voiceBtn && window.voiceAdvisor) {
+    voiceBtn.addEventListener("click", () => {
+      const chosenLang = window.CONFIG.TRANSLATE_LANG || "en";
+      window.voiceAdvisor.toggle(speechText, chosenLang, voiceBtn, englishSpeech);
+    });
+  }
+
+  aiMsg.appendChild(bubble);
+  chatContainer.appendChild(aiMsg);
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
 /**
- * Handle Follow-up Question in Kisan AI Tab (FR-9)
+ * Handle Follow-up Question in Kisan AI Tab (FR-9) - WhatsApp-Style Chat Flow
  */
 async function handleAskQuestion() {
   const inputEl = document.getElementById("input-question");
   const question = inputEl.value.trim();
   if (!question) return;
 
-  const loadingEl = document.getElementById("qa-loading");
-  const resContainer = document.getElementById("qa-response-container");
-  const answerEl = document.getElementById("qa-answer-text");
-  const factsContainer = document.getElementById("qa-facts-list");
-  const fallbackNotice = document.getElementById("qa-rejected-notice");
+  const chatContainer = document.getElementById("chat-messages-container");
+  const typingIndicator = document.getElementById("chat-typing-indicator");
 
-  loadingEl.classList.remove("hidden");
-  resContainer.classList.add("hidden");
-  fallbackNotice.classList.add("hidden");
-  factsContainer.innerHTML = "";
+  // 1. Clear input
+  inputEl.value = "";
+
+  // 2. Append user bubble
+  if (chatContainer) {
+    const userMsg = document.createElement("div");
+    userMsg.className = "chat-message user-message";
+    userMsg.innerHTML = `
+      <div class="chat-bubble user-bubble">
+        <p class="bubble-text">${escapeHtml(question)}</p>
+        <div class="bubble-footer">
+          <span class="bubble-time">${formatChatTime()}</span>
+        </div>
+      </div>
+    `;
+    chatContainer.appendChild(userMsg);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+
+  // 3. Show typing indicator
+  if (typingIndicator) {
+    typingIndicator.classList.remove("hidden");
+    if (chatContainer) chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
 
   const topic = window.appState.lastTopic;
-  const lang = "en";   // see startAnalysis
+  const lang = "en";
 
   try {
     const res = await window.apiService.askQuestion(question, topic, lang, window.CONFIG.TRANSLATE_LANG || "");
-    loadingEl.classList.add("hidden");
-    resContainer.classList.remove("hidden");
-
-    let qaTranslation = document.getElementById("qa-answer-translation");
-    if (!qaTranslation) {
-      qaTranslation = document.createElement("div");
-      qaTranslation.id = "qa-answer-translation";
-      qaTranslation.className = "translation-block hidden";
-      answerEl.insertAdjacentElement("afterend", qaTranslation);
-    }
-    if (res.answer && res.accepted !== false) {
-      answerEl.textContent = res.answer;
-      renderTranslation(qaTranslation, res.translation, answerEl);
-    } else {
-      renderTranslation(qaTranslation, null, answerEl);
-    }
-    window.appState.lastAnswerTranslation = res.accepted !== false ? res.translation : null;
-
-    if (res.answer && res.accepted !== false) {
-      answerEl.parentElement.classList.remove("hidden");
-      fallbackNotice.classList.add("hidden");
-    } else {
-      answerEl.parentElement.classList.add("hidden");
-      fallbackNotice.classList.remove("hidden");
-    }
-
-    if (Array.isArray(res.facts) && res.facts.length > 0) {
-      res.facts.forEach(fact => {
-        const factItem = document.createElement("div");
-        factItem.className = "fact-item";
-
-        const textSpan = document.createElement("span");
-        textSpan.textContent = fact.text + " ";
-        factItem.appendChild(textSpan);
-
-        if (fact.source_org) {
-          const srcBadge = document.createElement("span");
-          srcBadge.className = "source-badge";
-          srcBadge.textContent = `[${fact.source_org}]`;
-          factItem.appendChild(srcBadge);
-        }
-
-        factsContainer.appendChild(factItem);
-      });
-      document.getElementById("qa-facts-wrapper").classList.remove("hidden");
-    } else {
-      document.getElementById("qa-facts-wrapper").classList.add("hidden");
-    }
-
+    if (typingIndicator) typingIndicator.classList.add("hidden");
+    appendAiChatMessage(res, topic);
   } catch (err) {
-    loadingEl.classList.add("hidden");
-    alert("Could not get answer: " + err.message);
+    if (typingIndicator) typingIndicator.classList.add("hidden");
+    if (chatContainer) {
+      const errBubble = document.createElement("div");
+      errBubble.className = "chat-message ai-message";
+      errBubble.innerHTML = `
+        <div class="chat-bubble ai-bubble" style="border-color:var(--urgent-red);background:var(--urgent-bg);">
+          <p class="bubble-text" style="color:var(--urgent-red);font-weight:700;">Could not connect to KrishiRakshak device. Please check Wi-Fi hotspot connection.</p>
+          <div class="bubble-footer">
+            <span class="bubble-time">${formatChatTime()}</span>
+          </div>
+        </div>
+      `;
+      chatContainer.appendChild(errBubble);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
   }
 }
 
