@@ -12,7 +12,7 @@ const I18N = {
     home_heading: "Take a photo of the leaf or the insect",
     app_title: "KrishiRakshak",
     app_subtitle: "On-Device Plant Health Advisor",
-    tagline: "Works 100% offline on the Raspberry Pi. No internet needed.",
+    tagline: "Fully offline \u00b7 Raspberry Pi",
     
     // Bottom Navigation
     nav_scan: "Scan",
@@ -233,7 +233,7 @@ const I18N = {
     home_heading: "\u092a\u0924\u094d\u0924\u0940 \u092f\u093e \u0915\u0940\u091f \u0915\u093e \u092b\u094b\u091f\u094b \u0932\u0947\u0902",
     app_title: "\u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915",
     app_subtitle: "\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 \u091a\u0932\u0928\u0947 \u0935\u093e\u0932\u093e \u092b\u0938\u0932 \u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f \u0938\u0932\u093e\u0939\u0915\u093e\u0930",
-    tagline: "\u0930\u093e\u0938\u094d\u092a\u092c\u0947\u0930\u0940 \u092a\u093e\u0908 \u092a\u0930 100% \u0911\u092b\u0932\u093e\u0907\u0928 \u2022 \u092c\u093f\u0928\u093e \u0907\u0902\u091f\u0930\u0928\u0947\u091f \u091a\u0932\u0924\u093e \u0939\u0948",
+    tagline: "\u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0911\u092b\u0932\u093e\u0907\u0928 \u00b7 Raspberry Pi",
     
     // Bottom Navigation
     nav_scan: "\u091c\u093e\u0902\u091a",
