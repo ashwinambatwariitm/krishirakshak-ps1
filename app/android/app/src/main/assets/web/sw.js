@@ -4,18 +4,22 @@
  */
 
 // Version of the offline copy: changing it makes browsers drop older copies (activate handler below)
-const CACHE_NAME = "krishirakshak-v3";
+const CACHE_NAME = "krishirakshak-v4";
 const STATIC_ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./css/style.css",
+  "./css/dark.css",
   "./js/config.js",
   "./js/i18n_regional.js",
   "./js/i18n.js",
+  "./js/tts.js",
+  "./js/weather.js",
   "./js/api.js",
   "./js/canvas.js",
   "./js/state.js",
+  "./js/crop.js",
   "./js/app.js",
   "./assets/icon.svg"
 ];

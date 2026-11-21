@@ -31,6 +31,12 @@ function initApp() {
     openAboutModal();
   });
 
+  // Day / night mode button (the choice made earlier was already applied in index.html)
+  document.getElementById("btn-theme").addEventListener("click", () => {
+    applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+  applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
   document.getElementById("btn-history").addEventListener("click", () => {
     openHistoryModal();
   });
@@ -227,7 +233,7 @@ function switchTab(tabName) {
  */
 function showView(viewName) {
   switchTab("scan");
-  const views = ["home", "waiting", "result", "uncertain", "retake"];
+  const views = ["home", "crop", "waiting", "result", "uncertain", "retake"];
   views.forEach(v => {
     const el = document.getElementById(`view-${v}`);
     if (el) {
@@ -251,8 +257,29 @@ function handleImageSelected(event) {
   if (!file) return;
 
   event.target.value = "";
-  window.appState.setCapturedImage(file);
-  startAnalysis(file);
+  // Crop step first; the cut-out (or the whole photo) is what the device checks and what the result shows
+  window.photoCropper.open(file, (blob) => {
+    window.appState.setCapturedImage(blob);
+    startAnalysis(blob);
+  });
+}
+
+/**
+ * Day / night mode: data-theme="dark" on <html> switches the colours (css/dark.css); remembered on this phone
+ */
+function applyTheme(theme) {
+  const dark = theme === "dark";
+  if (dark) document.documentElement.setAttribute("data-theme", "dark");
+  else document.documentElement.removeAttribute("data-theme");
+  try { localStorage.setItem("KR_THEME", dark ? "dark" : "light"); } catch (e) { /* private mode: not remembered */ }
+  const btn = document.getElementById("btn-theme");
+  if (btn) {
+    const key = dark ? "theme_day" : "theme_night";
+    const label = window.t(key);
+    btn.setAttribute("data-i18n-title", key);   // kept when the language changes
+    btn.title = label;
+    btn.setAttribute("aria-label", label);
+  }
 }
 
 /**

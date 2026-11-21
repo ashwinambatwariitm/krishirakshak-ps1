@@ -123,6 +123,13 @@ const I18N = {
     chat_welcome: "Namaste! I am your Kisan AI advisor on this device. Ask any question about tomato diseases, safe spraying, the waiting period before harvest, or organic control.",
     chat_now: "Now",
     speaking_label: "Reading the advice aloud ({lang})...",
+    theme_night: "Night mode",
+    theme_day: "Day mode",
+    crop_title: "Crop the photo",
+    crop_hint: "Move the frame over the affected leaf or the insect. Drag a corner to change its size.",
+    crop_use: "Check this part",
+    crop_whole: "Use whole photo",
+    crop_cancel: "Cancel",
     
     // Weather & Spray Meter
     weather_title: "Weather & Spray Suitability Meter",
@@ -332,6 +339,13 @@ const I18N = {
     chat_welcome: "\u0928\u092e\u0938\u094d\u0924\u0947! \u092e\u0948\u0902 \u0906\u092a\u0915\u093e \u0915\u093f\u0938\u093e\u0928 AI \u092e\u093f\u0924\u094d\u0930 \u0939\u0942\u0902\u0964 \u091f\u092e\u093e\u091f\u0930 \u0915\u0947 \u0930\u094b\u0917, \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092f\u093e \u0924\u0941\u0921\u093c\u093e\u0908 \u0938\u092e\u092f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u092d\u0940 \u0938\u0935\u093e\u0932 \u092a\u0942\u091b\u0947\u0902\u0964",
     chat_now: "\u0905\u092d\u0940",
     speaking_label: "{lang} \u092e\u0947\u0902 \u092c\u094b\u0932 \u0930\u0939\u093e \u0939\u0948...",
+    theme_night: "\u0930\u093e\u0924 \u092e\u094b\u0921",
+    theme_day: "\u0926\u093f\u0928 \u092e\u094b\u0921",
+    crop_title: "\u092b\u094b\u091f\u094b \u0915\u093e \u0939\u093f\u0938\u094d\u0938\u093e \u091a\u0941\u0928\u0947\u0902",
+    crop_hint: "\u092b\u094d\u0930\u0947\u092e \u0915\u094b \u092a\u094d\u0930\u092d\u093e\u0935\u093f\u0924 \u092a\u0924\u094d\u0924\u0940 \u092f\u093e \u0915\u0940\u091f \u092a\u0930 \u0916\u093f\u0938\u0915\u093e\u090f\u0902\u0964 \u0906\u0915\u093e\u0930 \u092c\u0926\u0932\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u094b\u0928\u093e \u0916\u0940\u0902\u091a\u0947\u0902\u0964",
+    crop_use: "\u092f\u0939 \u0939\u093f\u0938\u094d\u0938\u093e \u091c\u093e\u0902\u091a\u0947\u0902",
+    crop_whole: "\u092a\u0942\u0930\u093e \u092b\u094b\u091f\u094b \u0907\u0938\u094d\u0924\u0947\u092e\u093e\u0932 \u0915\u0930\u0947\u0902",
+    crop_cancel: "\u0930\u0926\u094d\u0926 \u0915\u0930\u0947\u0902",
     
     // Weather & Spray Meter
     weather_title: "\u092e\u094c\u0938\u092e \u090f\u0935\u0902 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092e\u0940\u091f\u0930",

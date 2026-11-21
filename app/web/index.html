@@ -10,6 +10,9 @@
   <link rel="apple-touch-icon" href="assets/icon.svg">
   <title>KrishiRakshak | Farmer Plant Health & AI Advisor</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <!-- Night mode chosen earlier on this phone: set before the page is drawn, so it does not flash white -->
+  <script>try { if (localStorage.getItem("KR_THEME") === "dark") document.documentElement.setAttribute("data-theme", "dark"); } catch (e) {}</script>
 </head>
 <body>
 
@@ -27,6 +30,19 @@
       </div>
       <div class="header-actions">
         <!-- Language Switch English / Hindi (FR-1) -->
+        <!-- Day / night mode: the moon switches to night, the sun back to day -->
+        <button id="btn-theme" class="icon-btn" title="Night mode" aria-label="Night mode" data-i18n-title="theme_night">
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -123,6 +139,26 @@
       </section>
 
       <!-- VIEW 2: WAITING SCREEN (FR-2) -->
+      <!-- Crop step: cut out the affected leaf or the insect before the photo is checked -->
+      <section id="view-crop" class="hidden">
+        <div class="card crop-card">
+          <h2 class="crop-title" data-i18n="crop_title">Crop the photo</h2>
+          <p class="muted crop-hint" data-i18n="crop_hint">Move the frame over the affected leaf or the insect. Drag a corner to change its size.</p>
+          <div class="crop-stage">
+            <img id="crop-image" alt="" draggable="false">
+            <div id="crop-frame" class="crop-frame">
+              <span class="crop-handle nw" data-handle="nw"></span>
+              <span class="crop-handle ne" data-handle="ne"></span>
+              <span class="crop-handle sw" data-handle="sw"></span>
+              <span class="crop-handle se" data-handle="se"></span>
+            </div>
+          </div>
+          <button id="btn-crop-use" class="btn btn-primary" type="button" data-i18n="crop_use">Check this part</button>
+          <button id="btn-crop-whole" class="btn btn-secondary" type="button" data-i18n="crop_whole">Use whole photo</button>
+          <button id="btn-crop-cancel" class="btn-link" type="button" data-i18n="crop_cancel">Cancel</button>
+        </div>
+      </section>
+
       <section id="view-waiting" class="hidden">
         <div class="card waiting-card">
           <!-- Photo Preview with Scanning Animation & Leaf Alignment Frame -->
@@ -609,6 +645,7 @@
   <script src="js/api.js"></script>
   <script src="js/canvas.js"></script>
   <script src="js/state.js"></script>
+  <script src="js/crop.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
