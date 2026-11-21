@@ -205,6 +205,14 @@
 
         <!-- Grouped Official Advice Blocks (FR-7) -->
         <h3 class="section-heading" data-i18n="advice_title">Verified Management Practices</h3>
+        <!-- Reads the verified extracts aloud (also when there is no Llama text) -->
+        <button id="btn-voice-advice" class="btn-voice hidden" style="margin-bottom:10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span data-i18n="listen_voice">Listen Aloud</span>
+        </button>
         <div id="res-advice-blocks"></div>
 
         <!-- Spray Options Table (FR-8) -->
@@ -324,63 +332,52 @@
 
     <!-- TAB 3: SPRAY & WEATHER ADVISORY -->
     <div id="tab-weather-content" class="hidden">
+      <!-- Spray check: four questions a farmer can answer by looking, from the NIPHM rule for applying pesticides
+           (no weather data or sensor needed; works offline) -->
       <div class="card weather-gauge-card">
-        <h2 data-i18n="weather_title">Weather & Spray Suitability Meter</h2>
-        <p class="muted" data-i18n="weather_desc">Check if wind, temperature, and rain conditions are safe for spraying today.</p>
-
-        <!-- Dynamic Spray Suitability Banner -->
-        <div id="spray-status-banner" class="spray-meter-banner favorable">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          <span id="spray-status-text" data-i18n="spray_favorable">GOOD CONDITIONS FOR SPRAYING</span>
+        <h2 data-i18n="spray_check_title">Spray check: is this a good time to spray?</h2>
+        <p class="muted" data-i18n="spray_check_desc">Answer four questions about what you see in your field now.</p>
+        <div id="spray-questions">
+          <div class="spray-q">
+            <p data-i18n="spray_q_sun">Is it a hot, sunny time of the day now?</p>
+            <div class="spray-q-btns">
+              <button class="btn btn-secondary spray-ans" data-q="sun" data-a="yes" data-i18n="spray_yes">Yes</button>
+              <button class="btn btn-secondary spray-ans" data-q="sun" data-a="no" data-i18n="spray_no">No</button>
+            </div>
+          </div>
+          <div class="spray-q">
+            <p data-i18n="spray_q_wind">Are branches swaying strongly, or is dust blowing?</p>
+            <div class="spray-q-btns">
+              <button class="btn btn-secondary spray-ans" data-q="wind" data-a="yes" data-i18n="spray_yes">Yes</button>
+              <button class="btn btn-secondary spray-ans" data-q="wind" data-a="no" data-i18n="spray_no">No</button>
+            </div>
+          </div>
+          <div class="spray-q">
+            <p data-i18n="spray_q_rain">Are rain clouds coming, or are the leaves still wet from rain?</p>
+            <div class="spray-q-btns">
+              <button class="btn btn-secondary spray-ans" data-q="rain" data-a="yes" data-i18n="spray_yes">Yes</button>
+              <button class="btn btn-secondary spray-ans" data-q="rain" data-a="no" data-i18n="spray_no">No</button>
+            </div>
+          </div>
+          <div class="spray-q">
+            <p data-i18n="spray_q_direction">Will the wind carry the spray away from you, not towards your face?</p>
+            <div class="spray-q-btns">
+              <button class="btn btn-secondary spray-ans" data-q="direction" data-a="yes" data-i18n="spray_yes">Yes</button>
+              <button class="btn btn-secondary spray-ans" data-q="direction" data-a="no" data-i18n="spray_no">No</button>
+            </div>
+          </div>
         </div>
 
+        <div id="spray-status-banner" class="spray-meter-banner hidden">
+          <span id="spray-status-text"></span>
+        </div>
         <div id="spray-issues-box"></div>
 
-        <!-- Weather Metrics Grid -->
-        <div class="weather-grid">
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2">
-              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
-            </svg>
-            <div id="weather-temp" class="weather-metric-val">28&#176;C</div>
-            <div class="weather-metric-lbl" data-i18n="temp_label">Temperature</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="2">
-              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-            <div id="weather-humidity" class="weather-metric-val">65%</div>
-            <div class="weather-metric-lbl" data-i18n="humidity_label">Humidity</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00796b" stroke-width="2">
-              <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
-            </svg>
-            <div id="weather-wind" class="weather-metric-val">7 km/h</div>
-            <div class="weather-metric-lbl" data-i18n="wind_label">Wind Speed</div>
-          </div>
-
-          <div class="weather-metric-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0288d1" stroke-width="2">
-              <line x1="16" y1="13" x2="16" y2="21"></line>
-              <line x1="8" y1="13" x2="8" y2="21"></line>
-              <line x1="12" y1="15" x2="12" y2="23"></line>
-              <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path>
-            </svg>
-            <div id="weather-rain" class="weather-metric-val">10%</div>
-            <div class="weather-metric-lbl" data-i18n="rain_label">Rain Chance</div>
-          </div>
-        </div>
-
-        <!-- Practical Spray Tip -->
+        <!-- The rule behind the questions, quoted in the original English with its source -->
         <div class="alert-note" style="border-left-color:var(--primary);">
-          <strong data-i18n="spray_tip_title">Agronomy Spray Tip:</strong>
-          <span data-i18n="spray_tip_text">Ideal spray hours: 7:00 AM &#8211; 10:00 AM or 4:00 PM &#8211; 6:30 PM. Never spray directly against strong wind (>12 km/h) or under scorching mid-day sun.</span>
+          <strong data-i18n="spray_rule_label">Rule from NIPHM, Government of India</strong>
+          <p style="margin-top:4px;">"Do not apply on hot sunny day or strong windy condition. Do not apply just before the rains and after the rains. Do not apply against the windy direction."</p>
+          <p class="muted" style="margin-top:4px;font-size:0.8rem;">NIPHM / DPPQS / ICAR-NCIPM, AESA based IPM package for Tomato (2014), precautions for applying pesticides, p. 89-90</p>
         </div>
       </div>
     </div>

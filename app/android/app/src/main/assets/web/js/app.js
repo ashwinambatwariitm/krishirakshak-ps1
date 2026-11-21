@@ -133,24 +133,22 @@ function initApp() {
       const res = window.appState.analysisResult;
       if (!res || !res.disease) return;
       const lang = window.getLanguage();
-      let textToRead = "";
-      const pct = Math.round((res.disease.top[0]?.probability || 0.9) * 100);
-      const english = `Diagnosis Result: ${res.disease.name}. Model confidence: ${pct} percent.` +
-                      (res.disease.urgent ? " Urgent: act today." : "");
-      if (lang !== "en" && lang !== "hi") {
-        textToRead = `${window.t("diagnosis_result")}: ${res.disease.name}. ${window.t("confidence")}: ${pct}%.` +
-                     (res.disease.urgent ? ` ${window.t("urgent_badge")}.` : "");
-        window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag, english);
-        return;
-      }
-      if (lang === "hi") {
-        textToRead = `\u091c\u093e\u0902\u091a \u092a\u0930\u093f\u0923\u093e\u092e: ${res.disease.name}\u0964 \u092e\u0949\u0921\u0932 \u0938\u091f\u0940\u0915\u0924\u093e: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} \u092a\u094d\u0930\u0924\u093f\u0936\u0924\u0964`;
-        if (res.disease.urgent) textToRead += " \u0927\u094d\u092f\u093e\u0928 \u0926\u0947\u0902: \u0924\u0924\u094d\u0915\u093e\u0932 \u0915\u093e\u0930\u094d\u0930\u0935\u093e\u0908 \u0915\u0930\u0947\u0902\u0964";
-      } else {
-        textToRead = `Diagnosis Result: ${res.disease.name}. Model confidence: ${Math.round((res.disease.top[0]?.probability || 0.9) * 100)} percent.`;
-        if (res.disease.urgent) textToRead += " Urgent: act today.";
-      }
-      window.voiceAdvisor.toggle(textToRead, lang, btnVoiceDiag);
+      window.voiceAdvisor.toggle(spokenResult(res, window.t), lang, btnVoiceDiag,
+                                 lang === "en" ? null : spokenResult(englishView(res), tEnglish));
+    });
+  }
+
+  // Verified extracts read aloud (in the language shown); the only spoken advice when Llama's text was not
+  // accepted, e.g. for a healthy leaf or most insect photos
+  const btnVoiceAdvice = document.getElementById("btn-voice-advice");
+  if (btnVoiceAdvice) {
+    btnVoiceAdvice.addEventListener("click", () => {
+      const res = window.appState.analysisResult;
+      if (!res) return;
+      const lang = window.appState.viewingEnglish ? "en" : window.getLanguage();
+      const text = adviceText(res, false);
+      if (!text) return;
+      window.voiceAdvisor.toggle(text, lang, btnVoiceAdvice, lang === "en" ? null : adviceText(res, true));
     });
   }
 
@@ -189,7 +187,13 @@ function initApp() {
     window.appState.mockExample = mockParam;
   }
 
-  // Initialize weather assessment
+  // Spray check: each Yes / No answer updates the result
+  document.querySelectorAll(".spray-ans").forEach(btn => {
+    btn.addEventListener("click", () => {
+      window.sprayCheck.setAnswer(btn.getAttribute("data-q"), btn.getAttribute("data-a"));
+      updateWeatherUI();
+    });
+  });
   updateWeatherUI();
 
   // Register Service Worker for offline PWA
@@ -424,6 +428,8 @@ function renderAnsweredScreen(data) {
   if (mtNote) mtNote.classList.toggle("hidden", !(window.CONFIG.TRANSLATE_LANG && llamaRejected));
 
   // 5. Advice Blocks (FR-7)
+  const btnAdvice = document.getElementById("btn-voice-advice");
+  if (btnAdvice) btnAdvice.classList.toggle("hidden", !adviceText(data, false));
   const adviceContainer = document.getElementById("res-advice-blocks");
   adviceContainer.innerHTML = "";
   const sectionOrder = ["symptoms", "spread", "cultural", "mechanical", "biological", "monitoring", "safety", "general"];
@@ -655,34 +661,88 @@ async function handleAskQuestion() {
 }
 
 /**
- * Update Weather & Spray Suitability UI
+ * Text for the "listen" button of the result header: diagnosis, confidence, urgency and the insects found. For a
+ * photo that is not a tomato leaf but shows insects there is no disease name: say that, then the insects.
+ * tr: label function (window.t for the chosen language, tEnglish for the English fallback)
+ */
+function spokenResult(res, tr) {
+  const d = res.disease || {};
+  const pests = [...new Set((res.pests || []).map(p => p.name).filter(Boolean))].join(", ");
+  const top = d.top && d.top[0];
+  if (d.name) {
+    let text = `${tr("diagnosis_result")}: ${d.name}.`;
+    if (top && typeof top.probability === "number") text += ` ${tr("confidence")}: ${Math.round(top.probability * 100)}%.`;
+    if (d.urgent) text += ` ${tr("urgent_badge")}.`;
+    return pests ? `${text} ${pests}.` : text;
+  }
+  const head = d.not_tomato_leaf ? tr("not_tomato_title") : tr("diagnosis_result");
+  return pests ? `${head}. ${pests}.` : `${head}.`;
+}
+
+// English label (fallback text when the phone has no voice for the chosen language)
+function tEnglish(key) {
+  return (window.I18N && window.I18N.en && window.I18N.en[key]) || key;
+}
+
+// The result with its English texts (res.en holds them when the page is shown in another language)
+function englishView(res) {
+  const en = res.en || {};
+  const view = Object.assign({}, res, { disease: Object.assign({}, res.disease) });
+  if (en.disease_name !== undefined) view.disease.name = en.disease_name;
+  if (Array.isArray(en.pest_names)) view.pests = (res.pests || []).map((p, i) => Object.assign({}, p, { name: en.pest_names[i] }));
+  return view;
+}
+
+// Verified extracts of all advice blocks as one text, as shown in the advice cards (the chemical spray options
+// of the spray table are not read out)
+function adviceText(res, english) {
+  const parts = [];
+  (res.advice_blocks || []).forEach(block => {
+    const chunks = (block.chunks || []).filter(c => c.section !== "chemical");
+    if (chunks.length === 0) return;
+    const enBlock = english && res.en && (res.en.advice_blocks || []).find(b => b.topic === block.topic);
+    parts.push(`${english && enBlock ? enBlock.name : block.name}.`);
+    chunks.forEach(c => parts.push(english ? (c.text_en || c.text) : (c.text || c.text_en)));
+  });
+  return parts.filter(Boolean).join(" ");
+}
+
+/**
+ * Spray check screen: highlight the chosen answers, then "do not spray now" with the reasons (one unsafe answer is
+ * enough) or "conditions look suitable" once all four answers are safe
  */
 function updateWeatherUI() {
-  if (!window.fieldWeather) return;
-
-  const evaluation = window.fieldWeather.evaluateSprayConditions();
+  if (!window.sprayCheck) return;
+  const result = window.sprayCheck.evaluate();
   const banner = document.getElementById("spray-status-banner");
   const statusText = document.getElementById("spray-status-text");
   const issuesBox = document.getElementById("spray-issues-box");
-
   if (!banner || !statusText || !issuesBox) return;
 
-  const lang = window.getLanguage();
+  document.querySelectorAll(".spray-ans").forEach(btn => {
+    const chosen = window.sprayCheck.answers[btn.getAttribute("data-q")] === btn.getAttribute("data-a");
+    btn.classList.toggle("btn-primary", chosen);
+    btn.classList.toggle("btn-secondary", !chosen);
+  });
 
-  if (evaluation.isFavorable) {
-    banner.className = "spray-meter-banner favorable";
-    statusText.textContent = window.t("spray_favorable");
-    issuesBox.innerHTML = "";
-  } else {
+  issuesBox.innerHTML = "";
+  if (result.reasons.length > 0) {
     banner.className = "spray-meter-banner unfavorable";
-    statusText.textContent = window.t("spray_unfavorable");
-    issuesBox.innerHTML = "";
-    evaluation.issues.forEach(issue => {
+    statusText.textContent = window.t("spray_not_now");
+    result.reasons.forEach(key => {
       const p = document.createElement("div");
       p.className = "alert-note";
-      p.textContent = lang === "hi" ? issue.hi : issue.en;
+      p.textContent = window.t(key);
       issuesBox.appendChild(p);
     });
+  } else if (result.complete) {
+    banner.className = "spray-meter-banner favorable";
+    statusText.textContent = window.t("spray_ok");
+  } else if (result.answered > 0) {
+    banner.className = "spray-meter-banner";
+    statusText.textContent = window.t("spray_answer_all");
+  } else {
+    banner.className = "spray-meter-banner hidden";
   }
 }
 

@@ -938,3 +938,9 @@ body {
   padding: 12px 14px; border-radius: 10px; font-size: 0.92rem; line-height: 1.4; opacity: 0; pointer-events: none;
   transform: translateY(10px); transition: opacity .25s, transform .25s; }
 .kr-toast.show { opacity: 1; transform: none; }
+
+/* Spray check: four Yes / No questions */
+.spray-q { margin: 12px 0; }
+.spray-q p { font-weight: 600; margin-bottom: 6px; }
+.spray-q-btns { display: flex; gap: 8px; }
+.spray-q-btns .btn { flex: 1; min-height: 44px; }
