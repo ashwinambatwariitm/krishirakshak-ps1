@@ -250,6 +250,43 @@ static std::string inLanguage(const nlohmann::json& entry, const std::string& la
                                                                                      : entry.at("en").get<std::string>();
 }
 
+// Numbers of a text (digit runs with an optional decimal part), with the digits of Indian scripts read as ASCII
+// (Devanagari, Bengali, Gurmukhi, Gujarati, Odia, Tamil, Telugu, Kannada: UTF-8 E0 xx A6..AF).
+static std::multiset<std::string> numbersIn(const std::string& t) {
+    std::string ascii;
+    for (size_t i = 0; i < t.size(); ++i) {
+        const auto b0 = static_cast<unsigned char>(t[i]);
+        if (b0 == 0xE0 && i + 2 < t.size()) {
+            const auto b1 = static_cast<unsigned char>(t[i + 1]), b2 = static_cast<unsigned char>(t[i + 2]);
+            const bool digitBlock = b1 == 0xA5 || b1 == 0xA7 || b1 == 0xA9 || b1 == 0xAB || b1 == 0xAD || b1 == 0xAF ||
+                                    b1 == 0xB1 || b1 == 0xB3;
+            if (digitBlock && b2 >= 0xA6 && b2 <= 0xAF) { ascii.push_back(static_cast<char>('0' + (b2 - 0xA6))); i += 2; continue; }
+        }
+        ascii.push_back(t[i]);
+    }
+    std::multiset<std::string> out;
+    for (size_t i = 0; i < ascii.size();) {
+        if (!std::isdigit(static_cast<unsigned char>(ascii[i]))) { ++i; continue; }
+        size_t j = i;
+        while (j < ascii.size() && std::isdigit(static_cast<unsigned char>(ascii[j]))) ++j;
+        if (j + 1 < ascii.size() && ascii[j] == '.' && std::isdigit(static_cast<unsigned char>(ascii[j + 1])))
+            for (++j; j < ascii.size() && std::isdigit(static_cast<unsigned char>(ascii[j])); ++j) {}
+        out.insert(ascii.substr(i, j - i));
+        i = j;
+    }
+    return out;
+}
+
+// A translation is shown only if it keeps every number of the English source: machine translation sometimes drops
+// or changes numbers (doses, intervals, areas) or leaves a placeholder code in their place. Otherwise the verified
+// English text is shown.
+bool KnowledgeBase::keepsNumbers(const std::string& english, const std::string& translated) {
+    const auto want = numbersIn(english), got = numbersIn(translated);
+    for (const auto& n : want)
+        if (got.count(n) < want.count(n)) return false;
+    return true;
+}
+
 void KnowledgeBase::localize(KbChunk& c, const std::string& lang) const {
     // Translations are stored with each extract in the JSON (tools/translate_kb.py); textEn is never changed (Llama
     // and the grounding check work on the published English). Spray products and doses are never translated.
@@ -258,12 +295,15 @@ void KnowledgeBase::localize(KbChunk& c, const std::string& lang) const {
     const auto& j = kb_.at("chunks").at(static_cast<size_t>(c.id - 1));
     if (c.section == "chemical") {
         const auto notes = j.find("note_i18n");
-        if (notes != j.end() && notes->contains(lang)) c.note = notes->at(lang).get<std::string>();
-        else c.note = j.value("note", "");
+        const std::string noteEn = j.value("note", "");
+        if (notes != j.end() && notes->contains(lang) && keepsNumbers(noteEn, notes->at(lang).get<std::string>()))
+            c.note = notes->at(lang).get<std::string>();
+        else c.note = noteEn;
         return;
     }
     const auto it = j.find(lang);
-    if (it != j.end() && it->is_string() && !it->get<std::string>().empty()) c.text = it->get<std::string>();
+    if (it != j.end() && it->is_string() && !it->get<std::string>().empty() && keepsNumbers(c.textEn, it->get<std::string>()))
+        c.text = it->get<std::string>();
 }
 
 KbChunk KnowledgeBase::localized(KbChunk c, const std::string& lang) const {

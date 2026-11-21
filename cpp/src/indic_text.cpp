@@ -958,7 +958,8 @@ std::string postprocess(const std::string& decoded, const std::string& tgtLang, 
     if (tgtLang.rfind("ory", 0) == 0) s = replaceAll(s, U32{0x0B2F, 0x0B3C}, U32{0x0B5F});
     for (const auto& kv : placeholders) s = replaceAll(s, toU32(kv.first), toU32(kv.second));
     s = restoreLeftoverPlaceholders(s, placeholders);
-    return toU8(detokenizeIndicU(transliterateU(s, it->second)));
+    // once more on the final text: before detokenizing, a leftover can still be spread out ("@ X . Y . 3 >")
+    return toU8(restoreLeftoverPlaceholders(detokenizeIndicU(transliterateU(s, it->second)), placeholders));
 }
 
 bool hasRepetition(const std::string& text) {
