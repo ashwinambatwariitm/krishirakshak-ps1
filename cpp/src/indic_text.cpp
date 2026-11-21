@@ -930,6 +930,16 @@ void addTermPlaceholder(Prepared& p, const std::string& marker, const std::strin
     const std::string id = "<ID" + std::to_string(next) + ">";
     for (size_t pos = p.text.find(marker); pos != std::string::npos; pos = p.text.find(marker, pos + id.size()))
         p.text.replace(pos, marker.size(), id);
+    // The model often writes a placeholder at the start of a sentence without its closing bracket ("<ID1 ...",
+    // "<ID1. ..."; Pi, 2026-11-21). These forms go first, before the regular keys, whose bare "ID1" would leave the
+    // "<" behind; a full stop right after such an open placeholder is the model's, not the source's.
+    const std::string n = std::to_string(next);
+    PlaceholderMap open;
+    for (const char* t : {"<ID", "<id", "< ID", "< id"}) {
+        open.emplace_back(std::string(t) + n + ". ", replacement + " ");
+        open.emplace_back(std::string(t) + n + " ", replacement + " ");
+    }
+    p.placeholders.insert(p.placeholders.begin(), open.begin(), open.end());
     addPlaceholderKeys(p.placeholders, next, replacement);
 }
 
