@@ -57,6 +57,9 @@ Answer: one JSON object. **Start from `status`:**
 | `answered` | a disease (or healthy) and/or a pest was identified | result screen (below) |
 | `uncertain` | photo is fine but the model is not sure | `messages` + advice to retake or ask the local KVK; no diagnosis |
 | `retake_photo` | photo is too dark, bright, blurred or small | `messages` (one line per problem) and a "take another photo" button |
+| `not_tomato` | the tomato-leaf check found no tomato leaf and no insect of a tomato pest group | `messages` ("This photo does not look like a tomato leaf ...") and a "take another photo" button; no diagnosis |
+
+When the photo is not a tomato leaf but an insect of a tomato pest group is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, and the pest result as usual. `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
 
 Fields of an `answered` result:
 
@@ -68,7 +71,7 @@ Fields of an `answered` result:
 | `disease.reliability` | `good` / `medium` / `low` | for `low` a message asks to confirm with the KVK |
 | `disease.topic` | internal id (`early_blight` ...) | keep it: needed for `/api/ask` |
 | `severity.level` | `low` / `medium` / `high` / `unknown`; may be missing | "Estimated spread on this leaf: high (rough estimate)"; hide if `unknown` |
-| `pests[]` | one entry per detected insect: `name`, `species`, `species_reliable`, `confidence`, `topic`, `box_xyxy` (pixels of the sent image) | "Insect found: Whitefly"; give the species only if `species_reliable` is true; boxes may be drawn on the photo |
+| `pests[]` | one entry per detected insect: `name`, `species`, `species_reliable`, `confidence`, `topic`, `box_xyxy` (pixels of the sent image) | "Insect found: Whitefly"; give the species only if `species_reliable` is true (`name` / `topic` can still be a group such as Caterpillars or Thrips when the species is uncertain); boxes may be drawn on the photo |
 | `messages[]` | short sentences the farmer must see (spray rule, uncertainty, KVK) | show all, as notes, above the advice |
 | `llama.text` | Llama's explanation, already checked against the sources; **null** when the check rejected it | if not null: an "Advice" card; if null: show nothing (the extracts below are the advice) |
 | `advice_blocks[]` | one block per diagnosed topic: `name`, `chunks[]` | main content (below) |

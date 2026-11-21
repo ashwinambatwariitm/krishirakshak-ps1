@@ -170,7 +170,7 @@ int main(int argc, char** argv) {
     }
     if (useInt8) {
         cfg.diseaseOnnx = "models/tomato_disease_v5_effb0_6class_int8.onnx";
-        cfg.pestOnnx = "models/pest_yolov8n_ip102_negatives_int8.onnx";
+        cfg.pestOnnx = "models/pest_yolov8n_groups_int8.onnx";
     }
     if (!listFile.empty()) {
         std::ifstream in(listFile);

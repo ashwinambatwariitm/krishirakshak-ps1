@@ -25,6 +25,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 
 namespace kr {
 
@@ -35,12 +36,20 @@ struct PipelineConfig {
     std::string repoRoot = ".";       // other paths are relative to this unless absolute
     std::string diseaseOnnx = "models/tomato_disease_v5_effb0_6class.onnx";
     std::string diseaseSpec = "results/int8_ptq/tomato_disease_v5_effb0_6class.json";
-    std::string pestOnnx = "models/pest_yolov8n_ip102_negatives.onnx";
-    std::string pestSpec = "results/int8_ptq/pest_yolov8n_ip102_negatives.json";
-    std::string pestLabels = "results/pest_yolov8n_with_negatives/pest_labels.json";
-    std::string pestConfig = "results/pest_yolov8n_with_negatives/pest_config.json";
+    // Pest detector by advice group (aphid, whitefly, thrips, mite, caterpillar, other insect; training/src/pest_groups.py):
+    // on 578 out-of-source tomato pest photos it finds 85% of insects (IP102 species model 67%) and gives the right
+    // advice for 26% of photos (species model 13%, with the reliable-group rule 20%): results/pest_groups/. The IP102
+    // species model stays usable by pointing these four paths back to results/pest_yolov8n_with_negatives/.
+    std::string pestOnnx = "models/pest_yolov8n_groups.onnx";
+    std::string pestSpec = "results/pest_groups/pest_yolov8n_groups.json";
+    std::string pestLabels = "results/pest_groups/pest_labels.json";
+    std::string pestConfig = "results/pest_groups/pest_config.json";
     std::string severityOnnx = "models/severity_lraspp_mnv3.onnx";            // leaf + lesion segmentation
     std::string severitySpec = "results/severity/severity_spec.json";
+    // "Is this a tomato leaf?" check (training/src/leaf_check.py). The specification JSON holds the class order and
+    // the rejection threshold chosen on validation. If the files are missing the check is skipped (older bundles).
+    std::string leafCheckOnnx = "models/tomato_leaf_check_effb0.onnx";
+    std::string leafCheckSpec = "results/leaf_check/tomato_leaf_check_effb0.json";
     std::string kbJson = "app/kb/tomato_kb.json";
     // LoRA-tuned Llama 3.2 1B (training/src/llama_lora_distill.py): on the Pi 5 it gave more accepted answers than
     // the base 1B (5/5 vs 3/5 photos) in half the time (results/pi5_bench/2026-11-18_llama1b_lora/).
@@ -92,6 +101,9 @@ private:
                               const std::string& topic, const std::string& lang);
     PipelineConfig cfg_;
     std::unique_ptr<DiseaseClassifier> disease_;
+    std::unique_ptr<DiseaseClassifier> leafCheck_;   // same preprocessing as the disease model, two classes
+    float leafRejectThreshold_ = 1.0f;               // P(other) at or above which a photo is not a tomato leaf
+    std::pair<double, bool> checkLeaf(const cv::Mat& imageRgb);   // (P(other), is tomato); (0, true) if no model
     std::unique_ptr<PestDetector> pest_;
     std::unique_ptr<SeverityModel> severity_;
     std::unique_ptr<KnowledgeBase> kb_;

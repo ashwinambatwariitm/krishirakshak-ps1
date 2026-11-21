@@ -1,0 +1,7 @@
+,aphid,whitefly,thrips,mite,caterpillar,other_insect
+true aphid,329,0,0,0,0,12
+true whitefly,0,11,10,0,0,2
+true thrips,1,7,50,0,0,2
+true mite,2,0,0,57,1,2
+true caterpillar,0,0,0,0,377,31
+true other_insect,49,0,3,23,111,3114

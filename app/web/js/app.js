@@ -311,7 +311,8 @@ function routeResultStatus(data) {
   if (status === "answered") {
     renderAnsweredScreen(data);
     showView("result");
-  } else if (status === "retake_photo") {
+  } else if (status === "retake_photo" || status === "not_tomato") {
+    // "not_tomato": the tomato-leaf check rejected the photo; same screen, own title, the message explains it
     renderRetakeScreen(data);
     showView("retake");
   } else {
@@ -338,7 +339,9 @@ function renderAnsweredScreen(data) {
   const spreadBadge = document.getElementById("res-spread-badge");
   const pestsBadge = document.getElementById("res-pests-badge");
 
-  diseaseNameEl.textContent = disease.name || window.t("diagnosis_result");
+  // Insects found on a photo that is not a tomato leaf: no disease name, say why
+  diseaseNameEl.textContent = disease.name ||
+    window.t(disease.not_tomato_leaf ? "not_tomato_title" : "diagnosis_result");
 
   if (disease.top && disease.top[0] && typeof disease.top[0].probability === "number") {
     const pct = Math.round(disease.top[0].probability * 100);
@@ -710,6 +713,14 @@ function renderUncertainScreen(data) {
  * Render Status: retake_photo Screen
  */
 function renderRetakeScreen(data) {
+  const notTomato = data.status === "not_tomato";
+  const title = document.querySelector("#view-retake h2");
+  const desc = document.querySelector("#view-retake p.muted");
+  if (title) {
+    title.setAttribute("data-i18n", notTomato ? "not_tomato_title" : "retake_title");  // kept on language change
+    title.textContent = window.t(notTomato ? "not_tomato_title" : "retake_title");
+  }
+  if (desc) desc.classList.toggle("hidden", notTomato);  // "photo quality" text does not apply here
   const issuesContainer = document.getElementById("retake-issues-list");
   issuesContainer.innerHTML = "";
 

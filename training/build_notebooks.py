@@ -23,6 +23,7 @@ PLANTVILLAGE = "abdallahalidev/plantvillage-dataset"
 PLANTDOC_BOXES = "yusufmurtaza01/plantdoc-object-detection-dataset"
 PLANTDOC_FOLDERS = "nirmalsankalana/plantdoc-dataset"
 IP102 = "parserpixy/ip102-dataset"
+CHILI_PESTS = "indraagustian/red-chili-pepper-pests-dataset"
 DISEASE_DATA = [PLANTVILLAGE, PLANTDOC_BOXES, PLANTDOC_FOLDERS]
 
 # One entry per Kaggle notebook. "after" names one or more notebooks whose outputs (trained weights) must be attached;
@@ -53,6 +54,22 @@ NOTEBOOKS = [
     # Knowledge base in 9 regional languages (IndicTrans2 on CTranslate2, GPU FP16; inputs uploaded from the repo)
     dict(src="kb_translate.py", slug="ps1-kb-translate", title="PS1 KB Translate",
          datasets=["ashwinambatwar/krishirakshak-kb-translate-inputs"]),
+    # The current app pest model (FP32 ONNX from release models-v2) is attached as a private dataset for the comparison
+    dict(src="pest_groups.py", slug="ps1-pest-groups", title="PS1 Pest Groups",
+         datasets=[IP102, CHILI_PESTS, PLANTVILLAGE, PLANTDOC_FOLDERS, "ashvinambatwar/krishirakshak-pest-app-model"]),
+    # Accuracy of the deployed pest ONNX models per advice group (kb topic) on the IP102 test split; models from a
+    # private copy of release models-v2 (the repository is private, so the notebook cannot download them)
+    dict(src="ip102_pest_groups.py", slug="ps1-ip102-pest-groups", title="PS1 IP102 Pest Groups",
+         datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx"], gpu=False),
+    # Deployed pest detector on 609 photos from other sources (Huang & Chuang 2020, CC BY 4.0), checked for IP102
+    # near-duplicates; advice per image under today's rule and the advice-group rules
+    dict(src="pest_independent_test.py", slug="ps1-pest-independent-test", title="PS1 Pest Independent Test",
+         datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx", "bangadbilla420/tomato-pest-8-originals-huang"],
+         gpu=False),
+    # "Is this a tomato leaf?" check before the disease result (tomato vs other crops, insects, other objects)
+    dict(src="leaf_check.py", slug="ps1-leaf-check", title="PS1 Leaf Check",
+         datasets=DISEASE_DATA + [IP102, "prasunroy/natural-images"],
+         after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5"]),
     dict(src="int8_ptq.py", slug="ps1-int8-ptq", title="PS1 INT8 PTQ", datasets=DISEASE_DATA + [IP102],
          after=["ps1-tomato-disease-v4", "ps1-tomato-disease-v5", "ps1-ip102-pest-negft"], gpu=False),
 ]

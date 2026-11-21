@@ -3,6 +3,7 @@ C++ test cpp/tests/pest_severity_test.cpp, so both implementations apply the sam
 
 Usage (repository root): python -m tools.check_pest_severity
 """
+import json
 import sys
 from pathlib import Path
 
@@ -58,6 +59,22 @@ def main():
     apart = pest_severity(insects(kb, APHIDS, True, 4, 50.0), kb, 1000, 1000)[0]["box_share"]
     stacked = pest_severity(insects(kb, APHIDS, True, 4, 0.0), kb, 1000, 1000)[0]["box_share"]
     expect(apart > 3.5 * stacked and 0.001 <= stacked <= 0.003, "box share: overlapping boxes counted once")
+
+    # Last: the reliable advice groups of the deployed detector's pest_config.json (same cases as the C++ test)
+    black_cutworm, prodenia_litura, thrips, rice_leaf_roller = 18, 86, 54, 0
+    expect(kb.pest_topic(black_cutworm, False) == "insect_other", "without groups: uncertain cutworm -> insect_other")
+    groups = set(json.loads(Path(DEFAULT_CONFIG["pest_config"]).read_text())["reliable_groups"])
+    expect(groups == {"caterpillars", "thrips"}, "pest_config: reliable groups caterpillars, thrips")
+    kb.reliable_pest_groups = groups
+    expect(kb.pest_topic(black_cutworm, False) == "caterpillars", "uncertain black cutworm -> caterpillars")
+    expect(kb.pest_topic(prodenia_litura, False) == "caterpillars", "uncertain Spodoptera litura (86) -> caterpillars")
+    expect(kb.pest_topic(thrips, False) == "thrips", "uncertain thrips -> thrips")
+    expect(kb.pest_topic(RED_SPIDER, False) == "insect_other", "uncertain red spider -> insect_other (mites stay generic)")
+    expect(kb.pest_topic(APHIDS, True) == "aphids", "reliable aphids -> aphids (unchanged)")
+    expect(kb.pest_topic(rice_leaf_roller, True) == "insect_other", "reliable species outside the tomato topics -> insect_other")
+    s = pest_severity(insects(kb, black_cutworm, False, 1), kb, 1000, 1000)
+    expect(len(s) == 1 and s[0]["topic"] == "caterpillars" and s[0]["group"] == "chewing" and s[0]["level"] == "moderate",
+           "uncertain cutworm gets the caterpillar severity (chewing, 1 larva -> moderate)")
     print("FAILED" if FAILS else "ALL PASSED")
     return 1 if FAILS else 0
 

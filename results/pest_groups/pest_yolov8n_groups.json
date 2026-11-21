@@ -1,0 +1,13 @@
+{
+  "onnx_file": "pest_yolov8n_groups_int8.onnx",
+  "fp32_onnx_file": "pest_yolov8n_groups.onnx",
+  "img_size": 640,
+  "letterbox": "square 640 x 640, grey (114) padding",
+  "color_order": "RGB",
+  "scale": "pixel / 255",
+  "layout": "NCHW float32 (the INT8 model quantizes its input internally)",
+  "output": "(1, 10, 8400): 4 box values (cx, cy, w, h) + 6 group scores; NMS by the app",
+  "conf_threshold": 0.2,
+  "nms_iou": 0.7,
+  "conf_threshold_note": "chosen for the INT8 model on validation negatives (<= 5% false alarms)"
+}

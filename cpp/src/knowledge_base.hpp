@@ -17,7 +17,9 @@
 
 #include <map>
 #include <memory>
+#include <set>
 #include <string>
+#include <utility>
 #include <vector>
 
 struct sqlite3;
@@ -57,7 +59,12 @@ public:
     std::string reliability(const std::string& topic) const;                              // good / medium / low
     bool urgent(const std::string& topic) const;
     bool isPest(const std::string& topic) const;                                          // kind == "pest"
-    std::string pestTopic(int speciesId, bool speciesReliable) const;
+    // Advice topic of one detection. Group model: the topic of its class (modelTopic, from pest_config) when that
+    // class is reliable. IP102 species model: the species' topic when the species is reliable or the topic is one of
+    // the reliable advice groups. Otherwise insect_other.
+    std::string pestTopic(int speciesId, bool speciesReliable, const std::string& modelTopic = "") const;
+    // Advice groups that are reliable as a group (from the pest detector's pest_config.json); empty = species only
+    void setReliablePestGroups(std::set<std::string> groups) { reliablePestGroups_ = std::move(groups); }
     std::string version() const { return kb_.value("version", ""); }
     bool reviewed() const { return kb_.value("content_reviewed", false); }
 
@@ -68,6 +75,7 @@ private:
     nlohmann::json kb_;
     sqlite3* db_ = nullptr;
     std::map<int, std::string> pestTopicBySpecies_;
+    std::set<std::string> reliablePestGroups_;
 };
 
 }  // namespace kr

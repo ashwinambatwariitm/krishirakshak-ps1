@@ -1,0 +1,22 @@
+subset,photos,rejected
+tomato pv leaf,2796,0.0
+tomato pd crop,715,0.06713286713286713
+tomato pd full,230,0.034782608695652174
+other: all,5499,0.9421713038734315
+other pv,1934,0.9886246122026887
+other pd,2082,0.8645533141210374
+other ip102,1000,0.99
+other natural,483,0.9917184265010351
+other crop: apple (lab + field),514,0.9571984435797666
+other crop: blueberry (lab + field),312,0.9102564102564102
+other crop: cherry (lab + field),222,1.0
+other crop: corn (lab + field),517,0.9787234042553191
+other crop: grape (lab + field),442,0.9773755656108597
+other crop: orange (lab + field),71,1.0
+other crop: peach (lab + field),318,0.9748427672955975
+other crop: pepper (lab + field),342,0.8450292397660819
+other crop: potato (lab + field),432,0.6759259259259259
+other crop: raspberry (lab + field),232,0.9568965517241379
+other crop: soybean (lab + field),157,0.9808917197452229
+other crop: squash (lab + field),163,0.9386503067484663
+other crop: strawberry (lab + field),294,0.9693877551020408

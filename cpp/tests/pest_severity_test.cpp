@@ -1,14 +1,17 @@
 /*
  * pest_severity_test.cpp - checks the per-photo pest severity rule (pest_severity.cpp) on constructed detections,
- * with the real knowledge base: level bands, grouping of species into topics, ordering, box union share, and that
- * every level quotes the published scouting method (and the fruit-borer threshold for caterpillars).
+ * with the real knowledge base: level bands, grouping of species into topics, ordering, box union share, that
+ * every level quotes the published scouting method (and the fruit-borer threshold for caterpillars), and the reliable
+ * advice groups of the deployed pest_config.json (group advice although the species is uncertain).
  * The Python reference (app/pipeline/pest_severity.py) is checked on the same cases by
  * tools/check_pest_severity.py. Run from the repository root: build/x86/pest_severity_test .
  */
 #include "knowledge_base.hpp"
 #include "pest_severity.hpp"
 
+#include <fstream>
 #include <iostream>
+#include <set>
 #include <string>
 
 namespace {
@@ -96,6 +99,28 @@ int main(int argc, char** argv) {
         const auto stacked = kr::pestSeverity(insects(APHIDS, true, 4, 0.f), kb, 1000, 1000);
         expect(apart[0].boxShare > 3.5 * stacked[0].boxShare, "4 separate boxes cover ~4x the area of 4 stacked ones");
         expect(stacked[0].boxShare > 0.001 && stacked[0].boxShare < 0.003, "one 40x40 box on 1000x1000 ~ 0.16%");
+    }
+
+    // Last section: the reliable advice groups of the deployed detector's pest_config.json (results/pest_groups_ip102)
+    std::cout << "reliable advice groups (pest_config.json): group advice although the species is uncertain\n";
+    {
+        const int BLACK_CUTWORM = 18, PRODENIA_LITURA = 86, THRIPS = 54, RICE_LEAF_ROLLER = 0;
+        expect(kb.pestTopic(BLACK_CUTWORM, false) == "insect_other", "without groups: uncertain cutworm -> insect_other");
+        std::ifstream in(root + "/results/pest_yolov8n_with_negatives/pest_config.json");
+        const auto cfg = nlohmann::json::parse(in);
+        std::set<std::string> groups;
+        for (const auto& g : cfg.at("reliable_groups")) groups.insert(g.get<std::string>());
+        expect(groups == std::set<std::string>{"caterpillars", "thrips"}, "pest_config: reliable groups caterpillars, thrips");
+        kb.setReliablePestGroups(groups);
+        expect(kb.pestTopic(BLACK_CUTWORM, false) == "caterpillars", "uncertain black cutworm -> caterpillars");
+        expect(kb.pestTopic(PRODENIA_LITURA, false) == "caterpillars", "uncertain Spodoptera litura (86) -> caterpillars");
+        expect(kb.pestTopic(THRIPS, false) == "thrips", "uncertain thrips -> thrips");
+        expect(kb.pestTopic(RED_SPIDER, false) == "insect_other", "uncertain red spider -> insect_other (mites stay generic)");
+        expect(kb.pestTopic(APHIDS, true) == "aphids", "reliable aphids -> aphids (unchanged)");
+        expect(kb.pestTopic(RICE_LEAF_ROLLER, true) == "insect_other", "reliable species outside the tomato topics -> insect_other");
+        const auto s = kr::pestSeverity(insects(BLACK_CUTWORM, false, 1), kb, 1000, 1000);
+        expect(s.size() == 1 && s[0].topic == "caterpillars" && s[0].group == "chewing" && s[0].level == "moderate",
+               "uncertain cutworm gets the caterpillar severity (chewing, 1 larva -> moderate)");
     }
 
     std::cout << (fails ? "FAILED" : "ALL PASSED") << "\n";
