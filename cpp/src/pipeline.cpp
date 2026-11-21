@@ -289,6 +289,11 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     if (llama_ && !topics.empty() && lang == "en" && tooHot) {
         // Thermal guard: no Llama while the CPU is this hot; the verified extracts are the advice
         result["llama"] = {{"text", nullptr}, {"accepted", false}, {"rejected_reasons", {"device_too_hot"}}};
+    } else if (llama_ && !topics.empty() && lang == "en" &&
+               static_cast<int>(blockChunks.front().size()) < kMinGroundedSentences) {
+        // Too few source extracts (the generic insect topic has one): the answer could never have the minimum number
+        // of grounded sentences, so Llama is not run (saves about 3 s); the verified extract is the advice
+        result["llama"] = {{"text", nullptr}, {"accepted", false}, {"rejected_reasons", {"too_few_source_extracts"}}};
     } else if (llama_ && !topics.empty() && lang == "en") {
         // One-line structured summary for Llama (English); the facts are in the answer language
         std::string line;
