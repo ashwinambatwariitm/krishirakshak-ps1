@@ -113,7 +113,8 @@ nlohmann::json Pipeline::info() const {
 #endif
             {"kb_version", kb_->version()}, {"kb_reviewed", kb_->reviewed()},
             {"vision_threads_per_model", cfg_.visionThreads},
-            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"}};
+            {"ort_spinning", cfg_.ortSpin}, {"load_ms", loadMs_}, {"runtime", "C++"},
+            {"cpu_temp_c", readCpuTempC()}, {"cpu_freq_mhz", readCpuFreqMhz()}};
 }
 
 nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lang, const std::string& translateTo) {
@@ -121,6 +122,8 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     nlohmann::json result = {{"lang", lang}, {"display_lang", show}, {"translation", nullptr}};
     nlohmann::json timings;
     Timer total;
+    const double tempStartC = readCpuTempC();
+    const bool tooHot = tempStartC >= cfg_.llamaMaxTempC;
 
     Timer t;
     const QualityResult q = checkQuality(imageRgb);
@@ -273,7 +276,10 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
     result["llama"] = nullptr;
 
 #ifdef KR_WITH_LLM
-    if (llama_ && !topics.empty() && lang == "en") {
+    if (llama_ && !topics.empty() && lang == "en" && tooHot) {
+        // Thermal guard: no Llama while the CPU is this hot; the verified extracts are the advice
+        result["llama"] = {{"text", nullptr}, {"accepted", false}, {"rejected_reasons", {"device_too_hot"}}};
+    } else if (llama_ && !topics.empty() && lang == "en") {
         // One-line structured summary for Llama (English); the facts are in the answer language
         std::string line;
         if (answered) {
@@ -308,6 +314,9 @@ nlohmann::json Pipeline::analyse(const cv::Mat& imageRgb, const std::string& lan
 #endif
     timings["total"] = total.ms();
     result["timings_ms"] = timings;
+    // Device state for the technical details and the report: temperature before and after this photo, CPU clock
+    result["device"] = {{"cpu_temp_start_c", tempStartC}, {"cpu_temp_end_c", readCpuTempC()},
+                        {"cpu_freq_mhz", readCpuFreqMhz()}, {"llama_skipped_hot", tooHot && !topics.empty()}};
     return result;
 }
 

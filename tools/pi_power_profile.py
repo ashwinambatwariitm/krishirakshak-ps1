@@ -41,12 +41,19 @@ def read_cpu():
 
 
 def read_temp():
-    out = subprocess.run(["vcgencmd", "measure_temp"], capture_output=True, text=True).stdout
-    return float(re.findall(r"[0-9.]+", out)[0])
+    """CPU temperature in C from sysfs (as in the road anomaly detection project)."""
+    with open("/sys/class/thermal/thermal_zone0/temp") as f:
+        return int(f.read()) / 1000.0
+
+
+def read_freq():
+    """Current clock of CPU 0 in MHz (2400 at full speed on the Pi 5; lower when throttling)."""
+    with open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq") as f:
+        return int(f.read()) / 1000.0
 
 
 class Sampler(threading.Thread):
-    """Samples board power, CPU use (0-100% of all 4 cores) and temperature into a list."""
+    """Samples board power, CPU use (0-100% of all 4 cores), temperature and CPU clock into a list."""
     def __init__(self, period=0.2):
         super().__init__(daemon=True)
         self.period, self.rows, self.stop_flag = period, [], False
@@ -59,7 +66,7 @@ class Sampler(threading.Thread):
             busy, total = read_cpu()
             cpu = 100.0 * (busy - busy0) / max(1, total - total0)
             busy0, total0 = busy, total
-            self.rows.append(dict(t=t0, power_w=p, cpu_pct=cpu, temp_c=read_temp() if len(self.rows) % 10 == 0 else None))
+            self.rows.append(dict(t=t0, power_w=p, cpu_pct=cpu, temp_c=read_temp(), freq_mhz=read_freq()))
             time.sleep(max(0.0, self.period - (time.time() - t0)))
 
 
@@ -108,9 +115,9 @@ def main():
                                timings_ms=res.get("timings_ms", {})))
     time.sleep(2); s.stop_flag = True; s.join()
     with open(f"{args.out}/power_samples.csv", "w") as f:   # raw samples first, so a later error keeps them
-        f.write("t,power_w,cpu_pct,temp_c\n")
+        f.write("t,power_w,cpu_pct,temp_c,freq_mhz\n")
         for r in s.rows:
-            f.write(f"{r['t']:.3f},{r['power_w']:.3f},{r['cpu_pct']:.1f},{'' if r['temp_c'] is None else r['temp_c']}\n")
+            f.write(f"{r['t']:.3f},{r['power_w']:.3f},{r['cpu_pct']:.1f},{r['temp_c']:.1f},{r['freq_mhz']:.0f}\n")
     for e in events:
         e.update(stats(s.rows, e["start"], e["end"]))
     summary = {}
@@ -123,11 +130,13 @@ def main():
         summary[stage] = dict(requests=len(ev) if stage != "idle" else 0, samples=len(rows),
                               power_mean_w=round(sum(p) / len(p), 2), power_max_w=round(max(p), 2),
                               cpu_mean_pct=round(sum(r["cpu_pct"] for r in rows) / len(rows), 1),
+                              temp_max_c=max(r["temp_c"] for r in rows), freq_min_mhz=min(r["freq_mhz"] for r in rows),
                               seconds_per_request=round(sum(e["end"] - e["start"] for e in ev) / len(ev), 2),
                               energy_j_per_request=round(sum(e["energy_j"] or 0 for e in ev) / len(ev), 1)
                               if stage != "idle" else None)
-    temps = [r["temp_c"] for r in s.rows if r["temp_c"] is not None]
+    temps = [r["temp_c"] for r in s.rows]
     summary["temperature_c"] = dict(min=min(temps), max=max(temps))
+    summary["cpu_freq_mhz"] = dict(min=min(r["freq_mhz"] for r in s.rows), max=max(r["freq_mhz"] for r in s.rows))
     summary["throttled"] = subprocess.run(["vcgencmd", "get_throttled"], capture_output=True, text=True).stdout.strip()
     json.dump(dict(summary=summary, events=events), open(f"{args.out}/power_profile.json", "w"), indent=1)
     print(json.dumps(summary, indent=1))
