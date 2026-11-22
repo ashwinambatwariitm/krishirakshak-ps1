@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initApp() {
+  // Initialize Day/Light vs Night/Dark Theme
+  initTheme();
+
   // Initialize language
   window.updateStaticDOMText();
 
@@ -242,6 +245,44 @@ function switchTab(tabName) {
   });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
+ * Theme Management (Day Mode / Light Mode vs Night Mode / Dark Mode)
+ */
+function initTheme() {
+  const savedTheme = localStorage.getItem("KR_THEME") || "light";
+  applyTheme(savedTheme);
+
+  const toggleBtn = document.getElementById("btn-theme-toggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try {
+        localStorage.setItem("KR_THEME", next);
+      } catch (e) {}
+    });
+  }
+}
+
+function applyTheme(theme) {
+  const sunIcon = document.getElementById("theme-icon-sun");
+  const moonIcon = document.getElementById("theme-icon-moon");
+  const toggleBtn = document.getElementById("btn-theme-toggle");
+
+  if (theme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+    if (sunIcon) sunIcon.classList.remove("hidden");
+    if (moonIcon) moonIcon.classList.add("hidden");
+    if (toggleBtn) toggleBtn.setAttribute("title", window.t ? window.t("theme_day") : "Switch to Day Mode");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    if (sunIcon) sunIcon.classList.add("hidden");
+    if (moonIcon) moonIcon.classList.remove("hidden");
+    if (toggleBtn) toggleBtn.setAttribute("title", window.t ? window.t("theme_night") : "Switch to Night Mode");
+  }
 }
 
 /**

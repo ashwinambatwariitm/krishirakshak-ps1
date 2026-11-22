@@ -33,6 +33,30 @@
   --radius-btn: 12px;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: #4caf50;
+  --primary-light: #81c784;
+  --primary-glow: #a5d6a7;
+  --primary-dark: #c8e6c9;
+  --bg-app: #121813;
+  --card-bg: #1c241d;
+  --card-elevated: #242f25;
+  --ink-main: #f0f4ee;
+  --ink-muted: #b4c7b2;
+  --line-border: #2e4231;
+  --urgent-red: #ef5350;
+  --urgent-bg: #371c1c;
+  --warn-amber: #ff9800;
+  --warn-bg: #3e2712;
+  --llama-bg: #1e2d20;
+  --llama-border: #4caf50;
+  --spray-header-bg: #1e2c1f;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.35);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.45);
+  --shadow-lg: 0 10px 24px rgba(0,0,0,0.55);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1602,4 +1626,267 @@ details[open] .faq-question::after {
     width: 18px;
     height: 18px;
   }
+}
+
+/* ==========================================================================
+   Day & Night (Dark) Mode Rules
+   ========================================================================== */
+#btn-theme-toggle {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+#btn-theme-toggle:active {
+  transform: scale(0.92);
+}
+
+[data-theme="dark"] .app-header {
+  background: #142416;
+  border-bottom: 1px solid #233825;
+}
+
+[data-theme="dark"] .bottom-nav {
+  background: #161e17;
+  border-top: 1.5px solid var(--line-border);
+}
+
+[data-theme="dark"] .nav-item {
+  color: #8da48c;
+}
+
+[data-theme="dark"] .nav-item.active {
+  color: #81c784;
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: #1e281f;
+  color: #81c784;
+  border-color: #4caf50;
+}
+
+[data-theme="dark"] .input-text,
+[data-theme="dark"] select.input-text,
+[data-theme="dark"] textarea.input-text {
+  background: #161e17;
+  color: #f1f5ee;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .header-lang-picker select option {
+  background: #1a231b;
+  color: #f1f5ee;
+}
+
+[data-theme="dark"] .user-bubble {
+  background: #005c4b;
+  color: #e9edef;
+  border: 1.5px solid #008069;
+}
+
+[data-theme="dark"] .ai-bubble {
+  background: #1e281f;
+  color: #f1f5ee;
+  border: 1.5px solid var(--line-border);
+}
+
+[data-theme="dark"] .bubble-badge {
+  background: #162c18;
+  color: #81c784;
+  border-color: #388e3c;
+}
+
+[data-theme="dark"] .bubble-time {
+  color: #8ea38d;
+}
+
+[data-theme="dark"] .btn-voice-chat {
+  background: #162c18;
+  color: #a5d6a7;
+  border-color: #388e3c;
+}
+
+[data-theme="dark"] .chip-carousel-wrapper {
+  background: #161e17;
+  border-top-color: var(--line-border);
+}
+
+[data-theme="dark"] .chip-btn {
+  background: #1f2a20;
+  color: #c4d9c2;
+  border-color: #354a37;
+}
+
+[data-theme="dark"] .chip-btn:hover {
+  background: #273629;
+  border-color: #4c694f;
+}
+
+[data-theme="dark"] .chat-input-bar {
+  background: #161e17;
+  border-top-color: var(--line-border);
+}
+
+[data-theme="dark"] .chat-input-box {
+  background: #121813;
+  color: #f1f5ee;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .chat-typing-indicator {
+  background: #121813;
+}
+
+[data-theme="dark"] .typing-bubble {
+  background: #1e281f;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .typing-text {
+  color: #a3b89f;
+}
+
+[data-theme="dark"] .photo-tips-row {
+  background: #1c241d;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .photo-tip-chip {
+  background: #141a15;
+  color: #b4c7b2;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .weather-questions-card {
+  background: #1c241d;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .weather-opt-btn {
+  background: #141a15;
+  color: #c8dbc6;
+  border-color: #2d4030;
+}
+
+[data-theme="dark"] .weather-opt-btn:hover {
+  background: #1f2c21;
+  border-color: #435f47;
+}
+
+[data-theme="dark"] .weather-opt-btn.active {
+  background: #2e7d32;
+  color: #ffffff;
+  border-color: #4caf50;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
+}
+
+[data-theme="dark"] .spray-meter-banner.favorable {
+  background: #162c18;
+  color: #a5d6a7;
+  border-color: #388e3c;
+}
+
+[data-theme="dark"] .spray-meter-banner.unfavorable {
+  background: #331515;
+  color: #ef9a9a;
+  border-color: #d32f2f;
+}
+
+[data-theme="dark"] .alert-note {
+  background: #182219;
+  color: #d4ebd2;
+}
+
+[data-theme="dark"] .weather-faq-item {
+  background: #1c241d;
+  border-color: var(--line-border);
+  color: #f1f5ee;
+}
+
+[data-theme="dark"] .weather-faq-item[open] {
+  background: #212c22;
+}
+
+[data-theme="dark"] .weather-faq-item summary {
+  color: #81c784;
+}
+
+[data-theme="dark"] .modal-card {
+  background: #1c241d;
+  border-color: var(--line-border);
+  color: #f1f5ee;
+}
+
+[data-theme="dark"] .close-btn {
+  color: #a3b89f;
+}
+
+[data-theme="dark"] .info-row {
+  border-bottom-color: var(--line-border);
+}
+
+[data-theme="dark"] .info-label {
+  color: #a3b89f;
+}
+
+[data-theme="dark"] .info-val {
+  color: #f1f5ee;
+}
+
+[data-theme="dark"] .guide-accordion {
+  background: #1c241d;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .guide-title {
+  color: #81c784;
+}
+
+[data-theme="dark"] .home-illustration path[fill="#e8f5e9"] {
+  fill: #1e2c1f;
+}
+
+[data-theme="dark"] .toxic-box.green {
+  background: #162c18;
+  border-left-color: #4caf50;
+  color: #c8e6c9;
+}
+
+[data-theme="dark"] .toxic-box.blue {
+  background: #142533;
+  border-left-color: #2196f3;
+  color: #bbdefb;
+}
+
+[data-theme="dark"] .toxic-box.yellow {
+  background: #332e12;
+  border-left-color: #fbc02d;
+  color: #fff9c4;
+}
+
+[data-theme="dark"] .toxic-box.red {
+  background: #331515;
+  border-left-color: #f44336;
+  color: #ffcdd2;
+}
+
+[data-theme="dark"] .pest-level-low {
+  background: #162c18;
+  color: #81c784;
+}
+
+[data-theme="dark"] .pest-level-moderate {
+  background: #332010;
+  color: #ffb74d;
+}
+
+[data-theme="dark"] .pest-level-high {
+  background: #331515;
+  color: #ef9a9a;
+}
+
+[data-theme="dark"] .history-card {
+  background: #1c241d;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .viewfinder-box {
+  background: rgba(0, 0, 0, 0.45);
 }

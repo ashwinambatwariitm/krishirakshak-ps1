@@ -138,6 +138,8 @@ const I18N = {
     chat_welcome: "Namaste! I am your Kisan AI advisor running on this device. Ask any question about tomato crop diseases, safe spray practices, waiting intervals (PHI), or organic control.",
     chat_now: "Now",
     speaking_label: "Speaking advice in {lang}...",
+    theme_day: "Switch to Day / Light Mode",
+    theme_night: "Switch to Night / Dark Mode",
     
     // Field Conditions & Spray Prediction
     weather_title: "Field Conditions & Spray Advisory",
@@ -364,6 +366,8 @@ const I18N = {
     chat_welcome: "\u0928\u092e\u0938\u094d\u0924\u0947! \u092e\u0948\u0902 \u0906\u092a\u0915\u093e \u0915\u093f\u0938\u093e\u0928 AI \u092e\u093f\u0924\u094d\u0930 \u0939\u0942\u0902\u0964 \u091f\u092e\u093e\u091f\u0930 \u0915\u0947 \u0930\u094b\u0917, \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u091b\u093f\u0921\u093c\u0915\u093e\u0935 \u092f\u093e \u0924\u0941\u0921\u093c\u093e\u0908 \u0938\u092e\u092f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u092d\u0940 \u0938\u0935\u093e\u0932 \u092a\u0942\u091b\u0947\u0902\u0964",
     chat_now: "\u0905\u092d\u0940",
     speaking_label: "{lang} \u092e\u0947\u0902 \u092c\u094b\u0932 \u0930\u0939\u093e \u0939\u0948...",
+    theme_day: "\u0926\u093f\u0928 \u092e\u094b\u0921 (\u0932\u093e\u0907\u091f)",
+    theme_night: "\u0930\u093e\u0924 \u092e\u094b\u0921 (\u0921\u093e\u0930\u094d\u0915)",
     
     // Field Conditions & Spray Prediction
     weather_title: "\u0916\u0947\u0924 \u0915\u0940 \u0938\u094d\u0925\u093f\u0924\u093f \u090f\u0935\u0902 \u0938\u094d\u092a\u094d\u0930\u0947 \u0938\u0932\u093e\u0939",
