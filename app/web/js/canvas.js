@@ -1,6 +1,9 @@
 /**
  * Pest Bounding Box Overlay Canvas
  * Meets FR-13: Draw pest boxes (pests[].box_xyxy, pixels of the sent image) on the photo.
+ *
+ * Drawn at the screen's pixel density (sharp on high-resolution phones) and with the app's own font, which is
+ * loaded first so that Indic pest names are not drawn with a fallback font that lacks the script.
  */
 
 class PestCanvas {
@@ -14,61 +17,69 @@ class PestCanvas {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     const img = new Image();
+    const FONT = '700 13px "KR Sans", system-ui, sans-serif';
 
-    img.onload = () => {
+    // Short name on the photo: "Mava - sap-sucking pest (Aphids)" -> "Mava (Aphids)", with the confidence
+    const labelOf = (pest) => {
+      const conf = pest.confidence ? ` ${Math.round(pest.confidence * 100)}%` : "";
+      const name = (pest.name || "Pest").replace(/ - [^(]*(?=\(|$)/, " ").replace(/\s+/g, " ").trim();
+      return `${name}${conf}`;
+    };
+
+    const draw = () => {
       // Fit to container width while preserving natural aspect ratio
       const containerWidth = canvas.parentElement ? canvas.parentElement.clientWidth : 360;
       const targetWidth = Math.min(containerWidth, 600);
       const scale = targetWidth / img.naturalWidth;
       const targetHeight = img.naturalHeight * scale;
+      const dpr = Math.min(3, window.devicePixelRatio || 1);
 
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
+      canvas.width = Math.round(targetWidth * dpr);
+      canvas.height = Math.round(targetHeight * dpr);
+      canvas.style.width = `${targetWidth}px`;
+      canvas.style.height = `${targetHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Draw original photo
+      // Original photo
       ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
-      // Draw bounding boxes for each pest
-      if (Array.isArray(pests) && pests.length > 0) {
-        pests.forEach(pest => {
-          if (!pest.box_xyxy || pest.box_xyxy.length !== 4) return;
-          const [x1, y1, x2, y2] = pest.box_xyxy;
+      // One box per insect, label above it
+      (Array.isArray(pests) ? pests : []).forEach(pest => {
+        if (!pest.box_xyxy || pest.box_xyxy.length !== 4) return;
+        const [x1, y1, x2, y2] = pest.box_xyxy;
+        const bx = x1 * scale, by = y1 * scale, bw = (x2 - x1) * scale, bh = (y2 - y1) * scale;
 
-          const scaledX1 = x1 * scale;
-          const scaledY1 = y1 * scale;
-          const boxW = (x2 - x1) * scale;
-          const boxH = (y2 - y1) * scale;
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "#f59e0b";
+        ctx.fillStyle = "rgba(245, 158, 11, 0.12)";
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(bx, by, bw, bh, 6); else ctx.rect(bx, by, bw, bh);
+        ctx.fill();
+        ctx.stroke();
 
-          // Draw neon bounding box
-          ctx.lineWidth = 3;
-          ctx.strokeStyle = "#e53935"; // Vibrant crimson/red
-          ctx.strokeRect(scaledX1, scaledY1, boxW, boxH);
+        const label = labelOf(pest);
+        ctx.font = FONT;
+        const textHeight = 22;
+        const textWidth = ctx.measureText(label).width + 14;
+        const labelX = Math.min(bx, Math.max(0, targetWidth - textWidth));
+        const labelY = by - textHeight - 4 >= 0 ? by - textHeight - 4 : by + 4;
+        ctx.fillStyle = "#f59e0b";
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(labelX, labelY, textWidth, textHeight, 6); else ctx.rect(labelX, labelY, textWidth, textHeight);
+        ctx.fill();
+        ctx.fillStyle = "#1f1300";
+        ctx.textBaseline = "middle";
+        ctx.fillText(label, labelX + 7, labelY + textHeight / 2 + 1);
+      });
+    };
 
-          // Subtle fill for visibility
-          ctx.fillStyle = "rgba(229, 57, 53, 0.15)";
-          ctx.fillRect(scaledX1, scaledY1, boxW, boxH);
-
-          // Label text
-          const conf = pest.confidence ? ` ${Math.round(pest.confidence * 100)}%` : "";
-          // Short name on the photo: "Mava - sap-sucking pest (Aphids)" -> "Mava (Aphids)"
-          const name = (pest.name || "Pest").replace(/ - [^(]*(?=\(|$)/, " ").replace(/\s+/g, " ").trim();
-          const label = `${name}${conf}`;
-
-          ctx.font = "bold 13px system-ui, sans-serif";
-          const textMetrics = ctx.measureText(label);
-          const textHeight = 18;
-          const textWidth = textMetrics.width + 10;
-
-          // Label badge background
-          const labelY = Math.max(0, scaledY1 - textHeight);
-          ctx.fillStyle = "#e53935";
-          ctx.fillRect(scaledX1, labelY, textWidth, textHeight);
-
-          // Label text in white
-          ctx.fillStyle = "#ffffff";
-          ctx.textBaseline = "middle";
-          ctx.fillText(label, scaledX1 + 5, labelY + textHeight / 2);
-        });
+    img.onload = () => {
+      // Wait for the app font with the glyphs of the labels (Devanagari, Tamil, ...); draw anyway if it fails
+      const text = (Array.isArray(pests) ? pests : []).map(labelOf).join(" ");
+      if (text && document.fonts && document.fonts.load) {
+        document.fonts.load(FONT, text).then(draw, draw);
+      } else {
+        draw();
       }
     };
 

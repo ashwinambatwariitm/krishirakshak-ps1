@@ -4,7 +4,7 @@
  */
 
 // Version of the offline copy: changing it makes browsers drop older copies (activate handler below)
-const CACHE_NAME = "krishirakshak-v4";
+const CACHE_NAME = "krishirakshak-v5";
 const STATIC_ASSETS = [
   "./",
   "./index.html",
@@ -21,7 +21,16 @@ const STATIC_ASSETS = [
   "./js/state.js",
   "./js/crop.js",
   "./js/app.js",
-  "./assets/icon.svg"
+  "./assets/icon.svg",
+  "./fonts/NotoSans.woff2",
+  "./fonts/NotoSansDevanagari.woff2",
+  "./fonts/NotoSansBengali.woff2",
+  "./fonts/NotoSansGurmukhi.woff2",
+  "./fonts/NotoSansGujarati.woff2",
+  "./fonts/NotoSansOriya.woff2",
+  "./fonts/NotoSansTamil.woff2",
+  "./fonts/NotoSansTelugu.woff2",
+  "./fonts/NotoSansKannada.woff2"
 ];
 
 self.addEventListener("install", (event) => {

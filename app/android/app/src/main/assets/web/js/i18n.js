@@ -5,9 +5,14 @@
 
 const I18N = {
   en: {
+    pest_level_label: "Level (this photo)",
+    llama_checked: "Every sentence is matched with a verified source.",
+    tips_title: "For a good photo",
+    home_sub: "Disease, pests and severity are checked on this device, with advice from ICAR, NIPHM and TNAU.",
+    home_heading: "Take a photo of the leaf or the insect",
     app_title: "KrishiRakshak",
     app_subtitle: "On-Device Plant Health Advisor",
-    tagline: "Works 100% offline on the Raspberry Pi. No internet needed.",
+    tagline: "Fully offline \u00b7 Raspberry Pi",
     
     // Bottom Navigation
     nav_scan: "Scan",
@@ -76,7 +81,7 @@ const I18N = {
     important_notes: "Important Official Notices",
     
     // Llama & Advice
-    llama_card_title: "Advice (explained by Llama on this device)",
+    llama_card_title: "AI advice - Llama 3.2 (on this device)",
     llama_badge: "AI Simplified",
     advice_title: "Verified Management Practices",
     source_label: "Source",
@@ -221,9 +226,14 @@ const I18N = {
   },
   
   hi: {
+    pest_level_label: "\u0938\u094d\u0924\u0930 (\u0907\u0938 \u092b\u094b\u091f\u094b \u092e\u0947\u0902)",
+    llama_checked: "\u0939\u0930 \u0935\u093e\u0915\u094d\u092f \u090f\u0915 \u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 \u0938\u094d\u0930\u094b\u0924 \u0938\u0947 \u092e\u093f\u0932\u093e\u092f\u093e \u0917\u092f\u093e \u0939\u0948\u0964",
+    tips_title: "\u0905\u091a\u094d\u091b\u0947 \u092b\u094b\u091f\u094b \u0915\u0947 \u0932\u093f\u090f",
+    home_sub: "\u0930\u094b\u0917, \u0915\u0940\u091f \u0914\u0930 \u0909\u0928\u0915\u0940 \u0917\u0902\u092d\u0940\u0930\u0924\u093e \u0907\u0938\u0940 \u0909\u092a\u0915\u0930\u0923 \u092a\u0930 \u091c\u093e\u0902\u091a\u0940 \u091c\u093e\u0924\u0940 \u0939\u0948; \u0938\u0932\u093e\u0939 ICAR, NIPHM \u0914\u0930 TNAU \u0938\u0947\u0964",
+    home_heading: "\u092a\u0924\u094d\u0924\u0940 \u092f\u093e \u0915\u0940\u091f \u0915\u093e \u092b\u094b\u091f\u094b \u0932\u0947\u0902",
     app_title: "\u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915",
     app_subtitle: "\u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 \u091a\u0932\u0928\u0947 \u0935\u093e\u0932\u093e \u092b\u0938\u0932 \u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f \u0938\u0932\u093e\u0939\u0915\u093e\u0930",
-    tagline: "\u0930\u093e\u0938\u094d\u092a\u092c\u0947\u0930\u0940 \u092a\u093e\u0908 \u092a\u0930 100% \u0911\u092b\u0932\u093e\u0907\u0928 \u2022 \u092c\u093f\u0928\u093e \u0907\u0902\u091f\u0930\u0928\u0947\u091f \u091a\u0932\u0924\u093e \u0939\u0948",
+    tagline: "\u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0911\u092b\u0932\u093e\u0907\u0928 \u00b7 Raspberry Pi",
     
     // Bottom Navigation
     nav_scan: "\u091c\u093e\u0902\u091a",
@@ -292,7 +302,7 @@ const I18N = {
     important_notes: "\u092e\u0939\u0924\u094d\u0935\u092a\u0942\u0930\u094d\u0923 \u0906\u0927\u093f\u0915\u093e\u0930\u093f\u0915 \u0938\u0942\u091a\u0928\u093e\u090f\u0902",
     
     // Llama & Advice
-    llama_card_title: "\u0938\u0932\u093e\u0939 (\u0907\u0938 \u0921\u093f\u0935\u093e\u0907\u0938 \u092a\u0930 Llama \u0926\u094d\u0935\u093e\u0930\u093e \u0938\u092e\u091d\u093e\u0908 \u0917\u0908)",
+    llama_card_title: "AI \u0938\u0932\u093e\u0939 - Llama 3.2 (\u0907\u0938\u0940 \u0909\u092a\u0915\u0930\u0923 \u092a\u0930)",
     llama_badge: "AI \u0938\u0930\u0932 \u092d\u093e\u0937\u093e",
     advice_title: "\u092a\u094d\u0930\u092e\u093e\u0923\u093f\u0924 \u0930\u094b\u0915\u0925\u093e\u092e \u090f\u0935\u0902 \u092a\u094d\u0930\u092c\u0902\u0927\u0928 \u0915\u0947 \u0909\u092a\u093e\u092f",
     source_label: "\u0938\u094d\u0930\u094b\u0924",
