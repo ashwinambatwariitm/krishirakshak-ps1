@@ -229,7 +229,22 @@ const I18N = {
     total_time: "Total Inference Time",
     vision_time: "Vision Models (Disease + Pest)",
     llama_time: "Llama LLM Inference",
-    tokens_sec: "Tokens per second"
+    tokens_sec: "Tokens per second",
+    
+    // Wi-Fi Connection
+    wifi_btn: "Connect to Pi Wi-Fi",
+    wifi_modal_title: "Pi Wi-Fi Connection",
+    wifi_connect_btn: "Connect to Pi Wi-Fi Hotspot",
+    wifi_status_checking: "Checking Raspberry Pi connection...",
+    wifi_status_connected: "Connected to Raspberry Pi 5",
+    wifi_status_disconnected: "Not Connected (Pi Unreachable)",
+    wifi_guide_desc: "KrishiRakshak runs on an offline Raspberry Pi 5. Join the Pi's Wi-Fi network below to access 100% offline crop diagnosis and LLaMA AI.",
+    wifi_ssid_label: "HOTSPOT NAME (SSID)",
+    wifi_pwd_label: "HOTSPOT PASSWORD",
+    wifi_open_settings: "Open Phone Wi-Fi Settings",
+    wifi_advanced_toggle: "Advanced Server IP Address",
+    btn_copy: "Copy",
+    copied_toast: "Copied to clipboard!"
   },
   
   hi: {
@@ -457,7 +472,22 @@ const I18N = {
     total_time: "\u0915\u0941\u0932 \u0928\u093f\u0937\u094d\u0915\u0930\u094d\u0937 \u0938\u092e\u092f",
     vision_time: "\u0935\u093f\u091c\u093c\u0928 \u092e\u0949\u0921\u0932 (\u0930\u094b\u0917 + \u0915\u0940\u091f)",
     llama_time: "Llama \u090f\u0932\u090f\u0932\u090f\u092e \u0938\u092e\u092f",
-    tokens_sec: "\u091f\u094b\u0915\u0928 \u092a\u094d\u0930\u0924\u093f \u0938\u0947\u0915\u0902\u0921"
+    tokens_sec: "\u091f\u094b\u0915\u0928 \u092a\u094d\u0930\u0924\u093f \u0938\u0947\u0915\u0902\u0921",
+    
+    // Wi-Fi Connection
+    wifi_btn: "\u092a\u093e\u0908 \u0935\u093e\u0908-\u092b\u093e\u0908 \u0915\u0928\u0947\u0915\u094d\u091f \u0915\u0930\u0947\u0902",
+    wifi_modal_title: "\u092a\u093e\u0908 \u0935\u093e\u0908-\u092b\u093e\u0908 \u0915\u0928\u0947\u0915\u094d\u0936\u0928",
+    wifi_connect_btn: "\u092a\u093e\u0908 \u0939\u0949\u091f\u0938\u094d\u092a\u0949\u091f \u0938\u0947 \u0915\u0928\u0947\u0915\u094d\u091f \u0915\u0930\u0947\u0902",
+    wifi_status_checking: "\u0930\u093e\u0938\u094d\u092a\u092c\u0947\u0930\u0940 \u092a\u093e\u0908 \u0915\u0928\u0947\u0915\u094d\u0936\u0928 \u0915\u0940 \u091c\u093e\u0901\u091a \u0939\u094b \u0930\u0939\u0940 \u0939\u0948...",
+    wifi_status_connected: "\u0930\u093e\u0938\u094d\u092a\u092c\u0947\u0930\u0940 \u092a\u093e\u0908 5 \u0938\u0947 \u0915\u0928\u0947\u0915\u094d\u091f\u0947\u0921",
+    wifi_status_disconnected: "\u0915\u0928\u0947\u0915\u094d\u091f \u0928\u0939\u0940\u0902 \u0939\u0948 (\u092a\u093e\u0908 \u0909\u092a\u0932\u092c\u094d\u0927 \u0928\u0939\u0940\u0902)",
+    wifi_guide_desc: "\u0915\u0943\u0937\u093f\u0930\u0915\u094d\u0937\u0915 \u0911\u092b\u0932\u093e\u0907\u0928 \u0930\u093e\u0938\u094d\u092a\u092c\u0947\u0930\u0940 \u092a\u093e\u0908 5 \u092a\u0930 \u091a\u0932\u0924\u093e \u0939\u0948\u0964 100% \u0911\u092b\u0932\u093e\u0907\u0928 \u0938\u0947\u0935\u093e\u0913\u0902 \u0915\u0947 \u0932\u093f\u090f \u092a\u093e\u0908 \u0915\u0947 \u0935\u093e\u0908-\u092b\u093e\u0908 \u0938\u0947 \u091c\u0941\u0921\u093c\u0947\u0902\u0964",
+    wifi_ssid_label: "\u0939\u0949\u091f\u0938\u094d\u092a\u0949\u091f \u0915\u093e \u0928\u093e\u092e (SSID)",
+    wifi_pwd_label: "\u0939\u0949\u091f\u0938\u094d\u092a\u0949\u091f \u092a\u093e\u0938\u0935\u0930\u094d\u0921",
+    wifi_open_settings: "\u092b\u094b\u0928 \u0915\u0940 \u0935\u093e\u0908-\u092b\u093e\u0908 \u0938\u0947\u091f\u093f\u0902\u0917\u094d\u0938 \u0916\u094b\u0932\u0947\u0902",
+    wifi_advanced_toggle: "\u090f\u0921\u0935\u093e\u0902\u0938\u094d\u0921 \u0938\u0930\u094d\u0935\u0930 IP \u090f\u0921\u094d\u0930\u0947\u0938",
+    btn_copy: "\u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902",
+    copied_toast: "\u0915\u094d\u0932\u093f\u092a\u092c\u094b\u0930\u094d\u0921 \u092e\u0947\u0902 \u0915\u0949\u092a\u0940 \u0939\u094b \u0917\u092f\u093e!"
   }
 };
 

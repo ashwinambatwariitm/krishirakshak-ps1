@@ -51,6 +51,73 @@ function initApp() {
     renderHistoryList();
   });
 
+  // Wi-Fi Modal & Connection Triggers
+  const btnWifi = document.getElementById("btn-wifi");
+  if (btnWifi) {
+    btnWifi.addEventListener("click", () => openWifiModal());
+  }
+
+  const telemetryWifiBtn = document.getElementById("telemetry-wifi-btn");
+  if (telemetryWifiBtn) {
+    telemetryWifiBtn.addEventListener("click", () => openWifiModal());
+  }
+
+  const btnWaitingWifi = document.getElementById("btn-waiting-wifi");
+  if (btnWaitingWifi) {
+    btnWaitingWifi.addEventListener("click", () => openWifiModal());
+  }
+
+  const btnWifiClose = document.getElementById("btn-wifi-close");
+  if (btnWifiClose) {
+    btnWifiClose.addEventListener("click", () => closeWifiModal());
+  }
+
+  const btnCheckWifi = document.getElementById("btn-check-wifi");
+  if (btnCheckWifi) {
+    btnCheckWifi.addEventListener("click", () => checkWifiStatus());
+  }
+
+  const btnOpenWifiSettings = document.getElementById("btn-open-wifi-settings");
+  if (btnOpenWifiSettings) {
+    btnOpenWifiSettings.addEventListener("click", () => {
+      if (window.AndroidWifi && typeof window.AndroidWifi.openWifiSettings === "function") {
+        window.AndroidWifi.openWifiSettings();
+      } else {
+        showAppToast("Join Wi-Fi 'KrishiRakshak' (password: krishi2026)");
+      }
+    });
+  }
+
+  document.querySelectorAll(".btn-copy-cred").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const text = btn.getAttribute("data-copy");
+      if (text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showAppToast(window.t("copied_toast"));
+          }).catch(() => fallbackCopyText(text));
+        } else {
+          fallbackCopyText(text);
+        }
+      }
+    });
+  });
+
+  const btnSaveWifiIp = document.getElementById("btn-save-wifi-ip");
+  const wifiSettingApiBase = document.getElementById("wifi-setting-api-base");
+  if (btnSaveWifiIp && wifiSettingApiBase) {
+    btnSaveWifiIp.addEventListener("click", () => {
+      const newBase = wifiSettingApiBase.value.trim();
+      if (window.apiService) {
+        window.apiService.setBaseUrl(newBase);
+      }
+      checkWifiStatus();
+    });
+  }
+
+  // Periodic and startup check for Pi Wi-Fi connection
+  setTimeout(() => checkWifiStatus(), 600);
+
   // Camera & Gallery inputs
   const cameraInput = document.getElementById("camera-input");
   const galleryInput = document.getElementById("gallery-input");
@@ -1039,6 +1106,110 @@ async function openAboutModal() {
 
 function closeModal() {
   document.getElementById("about-modal").classList.add("hidden");
+}
+
+/**
+ * Wi-Fi Hotspot Connection Modal & Live Status
+ */
+async function openWifiModal() {
+  const modal = document.getElementById("wifi-modal");
+  if (!modal) return;
+  modal.classList.remove("hidden");
+
+  const inputBase = document.getElementById("wifi-setting-api-base");
+  if (inputBase) {
+    inputBase.value = window.apiService ? window.apiService.getBaseUrl() : (window.CONFIG ? window.CONFIG.API_BASE : "http://10.42.0.1:8080");
+  }
+
+  await checkWifiStatus();
+}
+
+function closeWifiModal() {
+  const modal = document.getElementById("wifi-modal");
+  if (modal) modal.classList.add("hidden");
+}
+
+async function checkWifiStatus() {
+  const statusCard = document.getElementById("wifi-status-card");
+  const cardDot = document.getElementById("wifi-card-dot");
+  const heading = document.getElementById("wifi-status-heading");
+  const sub = document.getElementById("wifi-status-sub");
+  const telemetryDot = document.getElementById("telemetry-wifi-dot");
+  const telemetryVal = document.getElementById("telemetry-wifi-val");
+
+  if (statusCard) {
+    statusCard.className = "wifi-status-card checking";
+  }
+  if (cardDot) cardDot.className = "telemetry-dot checking";
+  if (heading) heading.textContent = window.t("wifi_status_checking");
+
+  const baseUrl = window.apiService ? window.apiService.getBaseUrl() : (window.CONFIG ? window.CONFIG.API_BASE : "http://10.42.0.1:8080");
+  if (sub) sub.textContent = baseUrl || "http://10.42.0.1:8080";
+
+  let isConnected = false;
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
+    const resp = await fetch((baseUrl || "") + "/api/info", {
+      method: "GET",
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    if (resp.ok) {
+      isConnected = true;
+    }
+  } catch (e) {
+    isConnected = false;
+  }
+
+  if (isConnected) {
+    if (statusCard) statusCard.className = "wifi-status-card connected";
+    if (cardDot) cardDot.className = "telemetry-dot online";
+    if (heading) heading.textContent = window.t("wifi_status_connected");
+    if (telemetryDot) telemetryDot.className = "telemetry-dot online";
+    if (telemetryVal) telemetryVal.textContent = "CONNECTED (PI 5)";
+  } else {
+    if (statusCard) statusCard.className = "wifi-status-card disconnected";
+    if (cardDot) cardDot.className = "telemetry-dot offline";
+    if (heading) heading.textContent = window.t("wifi_status_disconnected");
+    if (telemetryDot) telemetryDot.className = "telemetry-dot offline";
+    if (telemetryVal) telemetryVal.textContent = "NOT CONNECTED";
+  }
+}
+
+function showAppToast(msg) {
+  if (window.voiceAdvisor && typeof window.voiceAdvisor.notify === "function") {
+    window.voiceAdvisor.notify(msg);
+  } else {
+    let el = document.getElementById("kr-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "kr-toast";
+      el.className = "kr-toast";
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 4000);
+  }
+}
+window.showAppToast = showAppToast;
+
+function fallbackCopyText(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand("copy");
+    showAppToast(window.t("copied_toast"));
+  } catch (e) {
+    console.warn("Copy failed:", e);
+  }
+  document.body.removeChild(ta);
 }
 
 /**

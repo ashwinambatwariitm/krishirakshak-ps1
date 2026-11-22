@@ -76,6 +76,15 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
+        <!-- Connect to Pi Wi-Fi button -->
+        <button id="btn-wifi" class="icon-btn" title="Connect to Pi Wi-Fi" aria-label="Connect to Pi Wi-Fi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+            <line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"></line>
+          </svg>
+        </button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -102,12 +111,12 @@
     <div id="tab-scan-content">
       <!-- VIEW 1: HOME SCREEN (Precision Diagnostic Scanner) -->
       <section id="view-home">
-        <!-- Telemetry Status Bar -->
+        <!-- Telemetry Status Bar with Wi-Fi Status Trigger -->
         <div class="telemetry-bar">
-          <div class="telemetry-item">
-            <span class="telemetry-dot online"></span>
-            <span class="telemetry-label">SYSTEM:</span>
-            <span class="telemetry-val">ONLINE (PI 5 SoC)</span>
+          <div class="telemetry-item" id="telemetry-wifi-btn" style="cursor:pointer;" title="Tap to connect to Pi Wi-Fi">
+            <span class="telemetry-dot online" id="telemetry-wifi-dot"></span>
+            <span class="telemetry-label">WI-FI:</span>
+            <span class="telemetry-val" id="telemetry-wifi-val">KrishiRakshak</span>
           </div>
           <div class="telemetry-item">
             <span class="telemetry-label">INFERENCE:</span>
@@ -213,8 +222,9 @@
           <!-- Error State -->
           <div id="waiting-error-box" class="card hidden" style="border-color:var(--urgent-red);background:var(--urgent-bg);margin-top:20px;">
             <p id="waiting-error-msg" style="color:var(--urgent-red);font-weight:700;margin-bottom:12px;" data-i18n="device_error">Cannot connect to KrishiRakshak device.</p>
-            <div style="display:flex;gap:10px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
               <button id="btn-retry-analysis" class="btn btn-primary" data-i18n="try_again">Try Again</button>
+              <button id="btn-waiting-wifi" class="btn btn-secondary" style="background:#fff;" data-i18n="wifi_connect_btn">Connect to Pi Wi-Fi</button>
               <button id="btn-cancel-analysis" class="btn btn-secondary" data-i18n="close">Cancel</button>
             </div>
           </div>
@@ -653,6 +663,95 @@
       <span data-i18n="nav_guide">Kisan Guide</span>
     </button>
   </nav>
+
+  <!-- WI-FI HOTSPOT CONNECTION MODAL -->
+  <div id="wifi-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.2">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+            <line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"></line>
+          </svg>
+          <h2 data-i18n="wifi_modal_title">Pi Wi-Fi Connection</h2>
+        </div>
+        <button id="btn-wifi-close" class="close-btn" aria-label="Close">&times;</button>
+      </div>
+
+      <!-- Live Connection Status Pill -->
+      <div id="wifi-status-card" class="wifi-status-card checking">
+        <span class="telemetry-dot checking" id="wifi-card-dot"></span>
+        <div style="flex:1;">
+          <div id="wifi-status-heading" style="font-weight:800;font-size:0.92rem;" data-i18n="wifi_status_checking">Checking Raspberry Pi connection...</div>
+          <div id="wifi-status-sub" style="font-size:0.75rem;font-family:var(--font-mono);opacity:0.85;margin-top:2px;">http://10.42.0.1:8080</div>
+        </div>
+        <button id="btn-check-wifi" class="icon-btn" title="Refresh Ping" style="width:30px;height:30px;min-width:30px;min-height:30px;background:rgba(0,0,0,0.06);color:inherit;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+        </button>
+      </div>
+
+      <p class="muted" style="margin:12px 0 14px;font-size:0.86rem;line-height:1.45;" data-i18n="wifi_guide_desc">
+        KrishiRakshak runs on an offline Raspberry Pi 5. Join the Pi's Wi-Fi network below to access 100% offline crop diagnosis and LLaMA AI.
+      </p>
+
+      <!-- Hotspot Network Details with One-Click Copy -->
+      <div class="wifi-credentials-card">
+        <div class="wifi-cred-row">
+          <div>
+            <div class="wifi-cred-label" data-i18n="wifi_ssid_label">HOTSPOT NAME (SSID)</div>
+            <div class="wifi-cred-val" id="val-hotspot-ssid">KrishiRakshak</div>
+          </div>
+          <button type="button" class="btn-copy-cred" data-copy="KrishiRakshak" title="Copy SSID">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span data-i18n="btn_copy">Copy</span>
+          </button>
+        </div>
+
+        <div class="wifi-cred-row" style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-border);">
+          <div>
+            <div class="wifi-cred-label" data-i18n="wifi_pwd_label">HOTSPOT PASSWORD</div>
+            <div class="wifi-cred-val" id="val-hotspot-pwd">krishi2026</div>
+          </div>
+          <button type="button" class="btn-copy-cred" data-copy="krishi2026" title="Copy Password">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span data-i18n="btn_copy">Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action: Open Native Wi-Fi Settings directly on Android -->
+      <button id="btn-open-wifi-settings" class="btn btn-primary" style="margin-top:14px;width:100%;min-height:44px;font-size:0.92rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+          <line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"></line>
+        </svg>
+        <span data-i18n="wifi_open_settings">Open Phone Wi-Fi Settings</span>
+      </button>
+
+      <!-- Advanced IP Configuration Toggle -->
+      <details style="margin-top:14px;font-size:0.82rem;color:var(--ink-muted);">
+        <summary style="cursor:pointer;font-weight:700;" data-i18n="wifi_advanced_toggle">&#9881; Advanced Server IP Address</summary>
+        <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--line-border);">
+          <label for="wifi-setting-api-base" style="font-weight:700;display:block;margin-bottom:4px;" data-i18n="api_server_setting">API Server Address</label>
+          <input type="text" id="wifi-setting-api-base" class="input-text" style="width:100%;margin-bottom:6px;" placeholder="http://10.42.0.1:8080">
+          <button id="btn-save-wifi-ip" class="btn btn-secondary" style="min-height:36px;font-size:0.82rem;width:100%;" data-i18n="save_setting">Save &amp; Test Connection</button>
+        </div>
+      </details>
+    </div>
+  </div>
 
   <!-- ABOUT MODAL (FR-10) -->
   <div id="about-modal" class="modal-overlay hidden">

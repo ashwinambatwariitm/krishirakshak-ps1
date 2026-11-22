@@ -102,6 +102,8 @@ class MainActivity : AppCompatActivity() {
             addJavascriptInterface(AndroidTTSBridge(), "AndroidTTS")
             // Expose native Speech-to-Text bridge to JavaScript (offline voice input)
             addJavascriptInterface(AndroidSTTBridge(), "AndroidSTT")
+            // Expose native Wi-Fi settings bridge to JavaScript
+            addJavascriptInterface(AndroidWifiBridge(), "AndroidWifi")
 
             webViewClient = object : WebViewClient() {
                 override fun onReceivedError(
@@ -262,6 +264,25 @@ class MainActivity : AppCompatActivity() {
                 } catch (ex: Exception) {
                     ex.printStackTrace()
                     webView.evaluateJavascript("if (window.onSpeechError) window.onSpeechError(\"${ex.message}\");", null)
+                }
+            }
+        }
+    }
+
+    inner class AndroidWifiBridge {
+        @JavascriptInterface
+        fun isAvailable(): Boolean = true
+
+        @JavascriptInterface
+        fun openWifiSettings() {
+            runOnUiThread {
+                try {
+                    val intent = Intent(android.provider.Settings.ACTION_WIFI_SETTINGS).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    }
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }

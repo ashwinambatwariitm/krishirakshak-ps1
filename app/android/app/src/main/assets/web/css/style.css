@@ -1678,6 +1678,95 @@ details[open] .faq-question::after {
   border: 1px solid #c8e6c9;
 }
 
+/* Wi-Fi Hotspot Connection Modal */
+.wifi-status-card {
+  padding: 10px 12px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--line-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.wifi-status-card.connected {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #15803d;
+}
+
+.wifi-status-card.disconnected {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.wifi-status-card.checking {
+  background: var(--bg-app);
+  border-color: var(--line-border);
+  color: var(--ink-main);
+}
+
+.wifi-credentials-card {
+  background: var(--bg-app);
+  border: 1px solid var(--line-border);
+  border-radius: var(--radius-btn);
+  padding: 12px;
+}
+
+.wifi-cred-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.wifi-cred-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--ink-muted);
+  letter-spacing: 0.4px;
+}
+
+.wifi-cred-val {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink-main);
+  margin-top: 2px;
+}
+
+.btn-copy-cred {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--card-bg);
+  border: 1px solid var(--line-border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--primary);
+  transition: all 0.15s ease;
+}
+
+.btn-copy-cred:hover {
+  background: var(--bg-app);
+  border-color: var(--primary);
+}
+
+.telemetry-dot.checking {
+  background: #f59e0b;
+  box-shadow: 0 0 5px #f59e0b;
+}
+
+.telemetry-dot.offline {
+  background: #ef4444;
+  box-shadow: 0 0 5px #ef4444;
+}
+
 /* Helpers */
 .hidden {
   display: none !important;
@@ -2114,4 +2203,38 @@ details[open] .faq-question::after {
 
 [data-theme="dark"] .viewfinder-box {
   background: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .wifi-status-card.connected {
+  background: #142417;
+  border-color: #233d26;
+  color: #4ade80;
+}
+
+[data-theme="dark"] .wifi-status-card.disconnected {
+  background: #2d1616;
+  border-color: #451f1f;
+  color: #f87171;
+}
+
+[data-theme="dark"] .wifi-status-card.checking {
+  background: #090e0b;
+  border-color: var(--line-border);
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .wifi-credentials-card {
+  background: #090e0b;
+  border-color: var(--line-border);
+}
+
+[data-theme="dark"] .btn-copy-cred {
+  background: var(--card-bg);
+  border-color: var(--line-border);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .btn-copy-cred:hover {
+  background: var(--card-elevated);
+  border-color: var(--primary);
 }
