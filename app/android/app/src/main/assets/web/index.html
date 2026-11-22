@@ -31,14 +31,17 @@
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#a5d6a7"/>
         </svg>
         <div class="brand-text">
-          <h1 data-i18n="app_title">KrishiRakshak</h1>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <h1 data-i18n="app_title">KrishiRakshak</h1>
+            <span class="badge-sys-status"><span class="pulse-dot"></span> PI-5</span>
+          </div>
           <p data-i18n="app_subtitle">On-Device Plant Health Advisor</p>
         </div>
       </div>
       <div class="header-actions">
         <!-- Single Unified Language Selector for Entire App -->
         <div id="translate-picker" class="header-lang-picker">
-          <svg class="lang-globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="lang-globe-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -58,7 +61,7 @@
         </div>
         <!-- Day / Light Mode Toggle Button -->
         <button id="btn-theme-toggle" class="icon-btn" title="Toggle Day/Night Mode" aria-label="Toggle Day/Night Mode">
-          <svg id="theme-icon-sun" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg id="theme-icon-sun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -69,20 +72,20 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <svg id="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
         <!-- History button (FR-14) -->
         <button id="btn-history" class="icon-btn" title="Recent Scans" aria-label="Recent Scans">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
         </button>
         <!-- About button (FR-10) -->
         <button id="btn-about" class="icon-btn" title="About" aria-label="About KrishiRakshak">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -97,54 +100,80 @@
 
     <!-- TAB 1: SCAN & DIAGNOSIS -->
     <div id="tab-scan-content">
-      <!-- VIEW 1: HOME SCREEN (FR-1) -->
+      <!-- VIEW 1: HOME SCREEN (Precision Diagnostic Scanner) -->
       <section id="view-home">
-        <div class="card home-hero">
-          <svg class="home-illustration" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#e8f5e9"/>
-            <path d="M12 8v8M8 12h8" stroke="#2e7d32" stroke-linecap="round"/>
-          </svg>
-          <h2 class="home-title" data-i18n="app_title">KrishiRakshak</h2>
-          <p class="home-tagline" data-i18n="tagline">Runs 100% offline on Raspberry Pi &#8226; Zero internet required</p>
+        <!-- Telemetry Status Bar -->
+        <div class="telemetry-bar">
+          <div class="telemetry-item">
+            <span class="telemetry-dot online"></span>
+            <span class="telemetry-label">SYSTEM:</span>
+            <span class="telemetry-val">ONLINE (PI 5 SoC)</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-label">INFERENCE:</span>
+            <span class="telemetry-val">100% AIR-GAPPED</span>
+          </div>
+        </div>
+
+        <!-- Optical Diagnostic Viewfinder Chamber -->
+        <div class="card diagnostic-card">
+          <div class="viewfinder-chamber">
+            <div class="viewfinder-hud">
+              <div class="corner-reticle tl"></div>
+              <div class="corner-reticle tr"></div>
+              <div class="corner-reticle bl"></div>
+              <div class="corner-reticle br"></div>
+              <div class="center-crosshair"></div>
+              
+              <!-- Leaf Alignment Silhouette Guide -->
+              <svg class="leaf-alignment-guide" viewBox="0 0 100 120" fill="none" stroke="currentColor">
+                <path d="M50 15 C30 35 25 70 50 105 C75 70 70 35 50 15 Z" stroke-dasharray="4 3" stroke-width="1.8"/>
+                <path d="M50 25 L50 95" stroke-dasharray="2 3" stroke-width="1.2"/>
+              </svg>
+
+              <div class="viewfinder-hud-caption" data-i18n="leaf_alignment_hint">Center a single affected leaf inside the frame</div>
+            </div>
+          </div>
 
           <!-- Hidden Native Inputs for Camera and Gallery -->
           <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
           <input type="file" id="gallery-input" accept="image/*" class="hidden">
 
-          <div class="action-buttons-group">
+          <!-- Action Control Bar -->
+          <div class="action-buttons-group" style="margin-top:14px;">
             <!-- Large Take Photo Button (FR-1) -->
             <button id="btn-take-photo" class="btn btn-primary">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                 <circle cx="12" cy="13" r="4"></circle>
               </svg>
-              <span data-i18n="take_photo">Take Photo</span>
+              <span data-i18n="take_photo">Capture Leaf Photo</span>
             </button>
 
             <!-- Choose from Gallery Button (FR-1) -->
             <button id="btn-choose-gallery" class="btn btn-secondary">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
                 <polyline points="21 15 16 10 5 21"></polyline>
               </svg>
-              <span data-i18n="choose_gallery">Choose from Gallery</span>
+              <span data-i18n="choose_gallery">Import from Storage</span>
             </button>
           </div>
 
-          <!-- Photo Guidance Tips for Farmers -->
-          <div class="photo-tips-row">
-            <div class="photo-tip-chip">
-              <span class="tip-symbol">&#9728;&#65039;</span>
-              <span data-i18n="tip_daylight">Bright Daylight</span>
+          <!-- Photo Capture Standards Grid -->
+          <div class="photo-standards-grid">
+            <div class="standard-spec-box">
+              <span class="spec-label">ILLUMINATION</span>
+              <span class="spec-value" data-i18n="tip_daylight">Daylight (&gt;500lx)</span>
             </div>
-            <div class="photo-tip-chip">
-              <span class="tip-symbol">&#128269;</span>
-              <span data-i18n="tip_sharp">Close-up &amp; Sharp</span>
+            <div class="standard-spec-box">
+              <span class="spec-label">OPTICAL FOCUS</span>
+              <span class="spec-value" data-i18n="tip_sharp">15-20cm Sharp</span>
             </div>
-            <div class="photo-tip-chip">
-              <span class="tip-symbol">&#127811;</span>
-              <span data-i18n="tip_single_leaf">Single Leaf</span>
+            <div class="standard-spec-box">
+              <span class="spec-label">SPECIMEN</span>
+              <span class="spec-value" data-i18n="tip_single_leaf">Single Foliar Leaf</span>
             </div>
           </div>
         </div>
@@ -340,24 +369,23 @@
       </section>
     </div>
 
-    <!-- TAB 2: KISAN AI ASSISTANT (FR-9 Expanded: WhatsApp-Style Layout) -->
+    <!-- TAB 2: KISAN AI ASSISTANT (On-Device LLM Terminal) -->
     <div id="tab-ai-content" class="hidden">
       <div class="card qa-card chat-wrapper-card">
-        <div class="chat-header">
-          <div class="chat-header-avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-              <circle cx="12" cy="5" r="2"></circle>
-              <path d="M12 7v4"></path>
-              <line x1="8" y1="16" x2="8" y2="16"></line>
-              <line x1="16" y1="16" x2="16" y2="16"></line>
+        <div class="chat-terminal-header">
+          <div class="terminal-meta-left">
+            <svg class="terminal-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
-          </div>
-          <div class="chat-header-info">
-            <h2 data-i18n="ask_title">Kisan AI Assistant</h2>
-            <div class="chat-status-indicator">
-              <span class="status-dot"></span>
-              <span data-i18n="llama_online">On-Device Llama &#8226; 100% Offline</span>
+            <div>
+              <h2 class="terminal-title" data-i18n="ask_title">Kisan AI Diagnostic Terminal</h2>
+              <div class="terminal-spec-row">
+                <span class="engine-tag">LLAMA-3B</span>
+                <span class="engine-tag icar">ICAR GROUNDED</span>
+                <span class="engine-tag offline">AIR-GAPPED</span>
+              </div>
             </div>
           </div>
         </div>
@@ -368,6 +396,7 @@
           <div class="chat-message ai-message">
             <div class="chat-bubble ai-bubble">
               <div class="bubble-header">
+                <span class="bubble-role">KRISHIRAKSHAK AGRONOMIST</span>
                 <span class="bubble-badge" data-i18n="ai_grounded_badge">ICAR / NIPHM Grounded</span>
               </div>
               <p class="bubble-text" data-i18n="chat_welcome">Namaste! I am your Kisan AI advisor running on this device. Ask any question about tomato crop diseases, safe spray practices, waiting intervals (PHI), or organic control.</p>
@@ -403,7 +432,7 @@
           <div class="qa-input-row">
             <input type="text" id="input-question" class="input-text" data-i18n-ph="ask_placeholder" placeholder="Type or speak question...">
             <button id="btn-mic-question" class="btn-mic" type="button" title="Speak question" aria-label="Speak question" data-i18n-title="mic_btn">
-              <svg class="mic-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg class="mic-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
                 <line x1="12" y1="19" x2="12" y2="23"></line>
@@ -420,63 +449,65 @@
     <!-- TAB 3: SPRAY ADVISORY -->
     <div id="tab-weather-content" class="hidden">
       <div class="card weather-gauge-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+        <div class="spray-header-row">
           <div>
             <h2 data-i18n="weather_title">Field Conditions &amp; Spray Advisory</h2>
             <p class="muted" data-i18n="weather_desc">Select conditions in your field to calculate offline spray suitability.</p>
           </div>
-          <span style="font-size:0.78rem;background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:12px;font-weight:700;border:1px solid #c8e6c9;">100% Offline On-Device</span>
+          <span class="engine-tag offline">100% OFFLINE</span>
         </div>
 
-        <!-- Interactive Field Observation Conditions for Farmer -->
-        <div class="weather-questions-card" style="margin-top:0;margin-bottom:16px;">
-          <h3 class="weather-q-title" data-i18n="weather_q_section_title">Field Condition Questions</h3>
-          <p class="muted" style="margin-bottom:14px;font-size:0.88rem;" data-i18n="weather_q_section_desc">Answer 3 quick questions about your field to calculate spray suitability:</p>
+        <!-- Field Condition Segmented Controls Matrix -->
+        <div class="matrix-card">
+          <div class="matrix-meta-header">
+            <span class="matrix-label" data-i18n="weather_q_section_title">Field Condition Parameters</span>
+            <span class="matrix-hint" data-i18n="weather_q_section_desc">Select conditions in your field to calculate spray suitability:</span>
+          </div>
 
-          <!-- Question 1: Wind Condition -->
-          <div class="weather-q-block">
-            <label class="weather-q-label">
-              <span class="q-icon">&#127811;</span>
-              <span data-i18n="q_wind_label">1. How is the wind in your field right now?</span>
-            </label>
-            <div class="weather-chip-group" data-q="wind">
-              <button type="button" class="weather-opt-btn active" data-wind="5" data-i18n="opt_wind_calm">Calm (&lt; 6 km/h)</button>
-              <button type="button" class="weather-opt-btn" data-wind="9" data-i18n="opt_wind_breeze">Gentle Breeze (7-12 km/h)</button>
-              <button type="button" class="weather-opt-btn" data-wind="18" data-i18n="opt_wind_strong">Strong Wind (&gt; 15 km/h)</button>
+          <!-- Parameter 1: Wind Condition -->
+          <div class="matrix-row">
+            <div class="matrix-param-title">
+              <span class="param-num">01</span>
+              <span data-i18n="q_wind_label">Wind Velocity (Drift Hazard Evaluation)</span>
+            </div>
+            <div class="segmented-track weather-chip-group" data-q="wind">
+              <button type="button" class="segmented-opt weather-opt-btn active" data-wind="5" data-i18n="opt_wind_calm">Calm (&lt; 6 km/h)</button>
+              <button type="button" class="segmented-opt weather-opt-btn" data-wind="9" data-i18n="opt_wind_breeze">Gentle Breeze (7-12 km/h)</button>
+              <button type="button" class="segmented-opt weather-opt-btn" data-wind="18" data-i18n="opt_wind_strong">Strong Wind (&gt; 15 km/h)</button>
             </div>
           </div>
 
-          <!-- Question 2: Sun & Heat -->
-          <div class="weather-q-block">
-            <label class="weather-q-label">
-              <span class="q-icon">&#9728;&#65039;</span>
-              <span data-i18n="q_temp_label">2. What is the time and heat condition?</span>
-            </label>
-            <div class="weather-chip-group" data-q="temp">
-              <button type="button" class="weather-opt-btn" data-temp="25" data-hum="65" data-i18n="opt_temp_morning">Morning / Cool (25&#176;C)</button>
-              <button type="button" class="weather-opt-btn active" data-temp="28" data-hum="55" data-i18n="opt_temp_afternoon">Warm Afternoon (29&#176;C)</button>
-              <button type="button" class="weather-opt-btn" data-temp="36" data-hum="40" data-i18n="opt_temp_scorching">Hot Midday (&gt; 34&#176;C)</button>
+          <!-- Parameter 2: Sun & Heat -->
+          <div class="matrix-row">
+            <div class="matrix-param-title">
+              <span class="param-num">02</span>
+              <span data-i18n="q_temp_label">Thermal Intensity (Evaporation &amp; Foliar Scorch)</span>
+            </div>
+            <div class="segmented-track weather-chip-group" data-q="temp">
+              <button type="button" class="segmented-opt weather-opt-btn" data-temp="25" data-hum="65" data-i18n="opt_temp_morning">Morning / Cool (25&#176;C)</button>
+              <button type="button" class="segmented-opt weather-opt-btn active" data-temp="28" data-hum="55" data-i18n="opt_temp_afternoon">Warm Afternoon (29&#176;C)</button>
+              <button type="button" class="segmented-opt weather-opt-btn" data-temp="36" data-hum="40" data-i18n="opt_temp_scorching">Hot Midday (&gt; 34&#176;C)</button>
             </div>
           </div>
 
-          <!-- Question 3: Sky & Rain -->
-          <div class="weather-q-block">
-            <label class="weather-q-label">
-              <span class="q-icon">&#127783;&#65039;</span>
-              <span data-i18n="q_rain_label">3. What is the sky and rain forecast?</span>
-            </label>
-            <div class="weather-chip-group" data-q="rain">
-              <button type="button" class="weather-opt-btn active" data-rain="10" data-i18n="opt_rain_clear">Clear Sky (No rain)</button>
-              <button type="button" class="weather-opt-btn" data-rain="30" data-i18n="opt_rain_cloudy">Cloudy / Overcast</button>
-              <button type="button" class="weather-opt-btn" data-rain="75" data-i18n="opt_rain_expected">Rain Expected / Raining</button>
+          <!-- Parameter 3: Sky & Rain -->
+          <div class="matrix-row">
+            <div class="matrix-param-title">
+              <span class="param-num">03</span>
+              <span data-i18n="q_rain_label">Precipitation Forecast (Chemical Wash-Off Risk)</span>
+            </div>
+            <div class="segmented-track weather-chip-group" data-q="rain">
+              <button type="button" class="segmented-opt weather-opt-btn active" data-rain="10" data-i18n="opt_rain_clear">Clear Sky (No rain)</button>
+              <button type="button" class="segmented-opt weather-opt-btn" data-rain="30" data-i18n="opt_rain_cloudy">Cloudy / Overcast</button>
+              <button type="button" class="segmented-opt weather-opt-btn" data-rain="75" data-i18n="opt_rain_expected">Rain Expected / Raining</button>
             </div>
           </div>
         </div>
 
         <!-- Predicted Spray Suitability Result Banner -->
-        <div style="font-size:0.88rem;font-weight:800;color:var(--text);margin-bottom:8px;">&#128302; Predicted Spray Suitability:</div>
+        <div class="verdict-bar-title">DECISION ENGINE VERDICT:</div>
         <div id="spray-status-banner" class="spray-meter-banner favorable">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
             <polyline points="22 4 12 14.01 9 11.01"></polyline>
           </svg>
