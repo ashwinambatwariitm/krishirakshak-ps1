@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initApp() {
+  updateHomeMode();
   // Initialize language
   window.updateStaticDOMText();
 
@@ -226,6 +227,14 @@ function switchTab(tabName) {
   });
 
   window.scrollTo({ top: 0, behavior: "smooth" });
+  updateHomeMode();
+}
+
+// Start page shown (scan tab, home view): the large brand area replaces the small app name in the top bar
+function updateHomeMode() {
+  const scan = document.getElementById("tab-scan-content");
+  const home = document.getElementById("view-home");
+  document.body.classList.toggle("home-mode", !!(scan && home && !scan.classList.contains("hidden") && !home.classList.contains("hidden")));
 }
 
 /**
@@ -247,6 +256,7 @@ function showView(viewName) {
 
   window.appState.currentView = viewName;
   window.scrollTo({ top: 0, behavior: "smooth" });
+  updateHomeMode();
 }
 
 /**

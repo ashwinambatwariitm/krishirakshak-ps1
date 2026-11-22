@@ -20,7 +20,8 @@
 /* ---------- Design tokens ---------- */
 :root {
   --brand: #15803d;            /* buttons, active states */
-  --brand-deep: #14532d;       /* header, strong text */
+  --brand-deep: #14532d;       /* strong green text */
+  --header-bg: #14532d;        /* top bar and start-page band */
   --brand-tint: #dcefe0;       /* light green fills */
   --bg: #edf3ec;               /* app background */
   --surface: #ffffff;          /* cards */
@@ -59,10 +60,10 @@ img, svg, canvas { display: block; }
 .text-center { text-align: center; }
 
 /* ---------- Header ---------- */
-.app-header { position: sticky; top: 0; z-index: 40; background: var(--brand-deep); color: #fff; }
+.app-header { position: sticky; top: 0; z-index: 40; background: var(--header-bg); color: #fff; }
 .header-container { max-width: 640px; margin: 0 auto; height: 58px; display: flex; align-items: center; gap: 10px; padding: 0 8px 0 14px; }
 .brand-wrapper { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
-.brand-icon { width: 34px; height: 34px; padding: 7px; border-radius: 10px; background: #fff; color: var(--brand-deep); flex: none; }
+.brand-icon { width: 34px; height: 34px; padding: 7px; border-radius: 10px; background: #fff; color: #14532d; flex: none; }
 .brand-icon path { stroke: currentColor; }
 .brand-text { min-width: 0; }
 .brand-text h1 { font-size: 17px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -852,3 +853,19 @@ select { appearance: none; -webkit-appearance: none; font-weight: 600; padding-r
 html[data-theme="dark"] .theme-icon-sun { display: block; }
 
 html[data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* ---------- Start page brand (option 1): large logo and name on the green band ---------- */
+body.home-mode .brand-wrapper { visibility: hidden; }
+.home-brand { margin: -16px -16px -52px; padding: 6px 20px 70px; background: var(--header-bg); color: #fff;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.home-logo { width: 72px; height: 72px; border-radius: 22px; background: #fff; color: #14532d; display: grid; place-items: center; }
+.home-brand-name { font-size: 34px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-top: 4px; }
+.home-brand-sub { font-size: 14px; opacity: 0.85; line-height: 1.4; }
+.home-brand-chip { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; font-size: 13px;
+  font-weight: 600; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.3); margin-top: 2px; }
+.home-brand + .home-hero { position: relative; z-index: 1; }
+.home-hero .home-title { font-size: 20px; }
+.home-info { display: flex; gap: 12px; align-items: flex-start; }
+.home-info-icon { width: 40px; height: 40px; border-radius: 13px; background: var(--brand-tint); color: var(--brand-deep);
+  display: grid; place-items: center; flex: none; }
+.home-info p { font-size: 15px; line-height: 1.55; color: var(--ink-2); }

@@ -19,33 +19,28 @@ SRC = ROOT / "app" / "web" / "css" / "style.css"
 OUT = ROOT / "app" / "web" / "css" / "dark.css"
 PREFIX = 'html[data-theme="dark"]'
 
-# Night values of the theme variables (style.css :root)
-VARIABLES = """  --primary: #43a047;
-  --primary-light: #66bb6a;
-  --primary-glow: #81c784;
-  --primary-dark: #a5d6a7;
-  --bg-app: #0e140f;
-  --card-bg: #172019;
-  --card-elevated: #1c271e;
-  --ink-main: #e7eee5;
-  --ink-muted: #b9ccb5;
-  --line-border: #3b4b39;
-  --urgent-red: #ef5350;
-  --urgent-bg: #3a1c1c;
-  --warn-amber: #ffa040;
-  --warn-bg: #3a2914;
-  --llama-bg: #162418;
-  --llama-border: #66bb6a;
-  --spray-header-bg: #1b2b1c;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.5);
-  --shadow-md: 0 6px 16px rgba(0,0,0,0.55);
-  --shadow-lg: 0 10px 24px rgba(0,0,0,0.6);
+# Night values of the theme variables (style.css :root; the older names there refer to these)
+VARIABLES = """  --brand: #22a052;
+  --brand-deep: #a5d6a7;
+  --brand-tint: #1d3523;
+  --header-bg: #0f2c18;
+  --bg: #0e140f;
+  --surface: #172019;
+  --surface-2: #1d271f;
+  --line: #2c3a2e;
+  --ink: #e7eee5;
+  --ink-2: #b9ccb5;
+  --ink-3: #8fa18b;
+  --danger: #ef5350; --danger-tint: #3a1c1c; --danger-line: #5a2a2a;
+  --warn: #ffa040; --warn-tint: #3a2914; --warn-line: #5a4020;
+  --info: #9ec3e6; --info-tint: #18232e; --info-line: #2a3a4a;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   color-scheme: dark;"""
 
 HEX = re.compile(r"#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b")
 RGBA = re.compile(r"rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([0-9.]+)\s*)?\)")
 # Parts that stay as they are at night: the green header and its buttons, the crop frame over the photo
-KEEP = re.compile(r"app-header|icon-btn|brand|header-actions|crop-frame|crop-handle|crop-stage")
+KEEP = re.compile(r"app-header|icon-btn|brand|header-actions|crop-frame|crop-handle|crop-stage|home-logo")
 COLOR_PROPS = ("background", "background-color", "background-image", "color", "border", "border-color",
                "border-top", "border-bottom", "border-left", "border-right", "border-left-color", "outline",
                "fill", "stroke")
