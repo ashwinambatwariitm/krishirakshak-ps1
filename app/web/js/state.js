@@ -27,10 +27,15 @@ class AppState {
 
     // Save to local history if answered
     if (result && result.status === "answered" && result.disease) {
+      // A pest result has no disease name: the insects found are the result (names and the best box confidence)
+      const pests = result.pests || [];
+      const pestNames = [...new Set(pests.map(p => p.name).filter(Boolean))].join(", ");
+      const top = result.disease.top && result.disease.top[0];
       this.saveToHistory({
         timestamp: Date.now(),
-        diseaseName: result.disease.name || "Unknown",
-        confidence: result.disease.top && result.disease.top[0] ? result.disease.top[0].probability : 0,
+        diseaseName: result.disease.name || pestNames || "Unknown",
+        confidence: result.disease.name && top ? top.probability
+                    : pests.reduce((m, p) => Math.max(m, p.confidence || 0), 0),
         urgent: !!result.disease.urgent,
         status: result.status,
         pestCount: (result.pests || []).length
