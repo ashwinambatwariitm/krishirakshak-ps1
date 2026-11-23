@@ -8,7 +8,8 @@
 #   lib/libonnxruntime.so*              ONNX Runtime 1.23.2 for aarch64
 #   lib/libctranslate2.so*, models/indictrans2_*, indic_text_test, translate_bench
 #                                       IndicTrans2 translation (only if built with CTranslate2)
-#   models/                             ONNX vision models (FP32 + INT8), Llama .pte + tokenizer
+#   models/                             ONNX vision models (FP32 + INT8), leaf check, severity, Llama .pte + tokenizer
+#   kr_pi.sh                            offline Wi-Fi hotspot and start-at-boot service
 #   results/...json                     model input/output specifications and thresholds
 #   app/kb/tomato_kb.json               advice knowledge base (ICAR, NIPHM, TNAU extracts)
 #   run_benchmarks.sh                   timing runs used for the report
@@ -42,10 +43,19 @@ if [ -f "${REPO}/build/arm/translate_bench" ]; then
 fi
 cp "${REPO}/tools/perf_model.py" "${OUT}/tools/"
 cp -P "${ORT}"/lib/libonnxruntime.so* "${OUT}/lib/"
+# Vision models of the application (release models-v2, v4, v5): disease v5, pest detector by advice group (default),
+# tomato-leaf check v2 (default); the earlier IP102 species detector stays for comparisons
 for m in tomato_disease_v5_effb0_6class tomato_disease_v5_effb0_6class_int8 \
+         pest_yolov8n_groups pest_yolov8n_groups_int8 tomato_leaf_check_v2_effb0 \
          pest_yolov8n_ip102_negatives pest_yolov8n_ip102_negatives_int8; do
   cp "${REPO}/models/${m}.onnx" "${OUT}/models/"
 done
+# Their input / output specifications, class labels and the reliable pest groups
+mkdir -p "${OUT}/results/pest_groups" "${OUT}/results/leaf_check_v2"
+cp "${REPO}"/results/pest_groups/{pest_yolov8n_groups,pest_labels,pest_config}.json "${OUT}/results/pest_groups/"
+cp "${REPO}/results/leaf_check_v2/tomato_leaf_check_v2_effb0.json" "${OUT}/results/leaf_check_v2/"
+# Hotspot and start-at-boot script
+cp "${REPO}/cpp/pi/kr_pi.sh" "${OUT}/"
 # LoRA-tuned 1B (application default) and the base 1B (--llama-pte, comparisons); same tokenizer
 cp "${REPO}/models/llama3_2_1b_krishirakshak_lora_8da4w.pte" "${REPO}/models/llama3_2_1b_instruct_8da4w.pte" \
    "${REPO}/models/llama3_2_tokenizer.model" "${OUT}/models/"
