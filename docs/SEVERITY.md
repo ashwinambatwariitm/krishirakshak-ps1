@@ -28,7 +28,8 @@ One level per pest topic found in the photo, from the number of insects the pest
   when the species is uncertain; other insects on tomato are reported as "insect, species uncertain". Counts are those
   of the detector (missed or merged insects change the count).
 - Result JSON: `pest_severity` (topic, group, count, box_share, level, basis, scouting, threshold). The web page shows
-  it in "Insects in this photo"; the Llama prompt includes the count and level of the main pest.
+  it in "Insects in this photo". The count is not given to Llama: with it, the 1B model echoed the count instead of
+  advising (Pi test, 21 Nov 2026).
 
 ## Disease severity (in the application)
 
