@@ -46,7 +46,8 @@ cmake -S ~/third_party_src/executorch -B ~/et-build/x86 -G Ninja -DCMAKE_BUILD_T
 cmake --build ~/et-build/x86 -j8 --target install
 ```
 
-For the Pi add `-DCMAKE_TOOLCHAIN_FILE=cpp/arm-toolchain.cmake` and install to `~/arm_libs/executorch`. Do not pass
+For the Pi add `-DCMAKE_TOOLCHAIN_FILE=<repository>/cpp/arm-toolchain.cmake` (full path: CMake resolves a relative
+toolchain path against the build folder) and install to `~/arm_libs/executorch`. Do not pass
 `-mcpu=cortex-a76` to the ExecuTorch build: it makes XNNPACK use the C++ `_Float16` type, which GCC 11 does not
 support. XNNPACK selects its Arm kernels (dot-product, FP16, i8mm) at run time anyway.
 
@@ -59,8 +60,8 @@ cmake -S cpp -B build/x86 && cmake --build build/x86 -j
 # development machine, with ExecuTorch Llama
 cmake -S cpp -B build/x86-llm -G Ninja -DEXECUTORCH_ROOT=$HOME/x86_libs/executorch && cmake --build build/x86-llm -j
 
-# Raspberry Pi 5
-cmake -S cpp -B build/arm -G Ninja -DCMAKE_TOOLCHAIN_FILE=cpp/arm-toolchain.cmake \
+# Raspberry Pi 5 (CMake >= 3.24 and Ninja; run from the repository root, the toolchain file needs its full path)
+cmake -S cpp -B build/arm -G Ninja -DCMAKE_TOOLCHAIN_FILE=$PWD/cpp/arm-toolchain.cmake \
   -DEXECUTORCH_ROOT=$HOME/arm_libs/executorch && cmake --build build/arm -j
 ```
 

@@ -35,9 +35,9 @@ exactly as published and are never rewritten or translated.
 | Tomato-leaf check | 94.6% of other crops, insects and objects rejected; 4.8% of tomato field photos rejected in error |
 | Pest detector (6 advice groups) | insect found 85-98% (IP102 test, independent photos); right advice group 26% on 578 independent pest photos (species model before: 13%) |
 | Severity | level agrees with plant pathologists on 61% of 91 field photos (colour rule before: 31%); lesion Dice 0.54 |
-| Speed on the Pi 5 | vision 0.12 s; Llama about 14 tokens/s, first token 2.5-3.5 s; full answer median 8.3 s (4.7-20 s) |
-| Memory and power | Llama INT4 peak 1.25 GB, whole app about 2 GB of 8 GB; 5.5 W board power during an answer, 1.45 W idle |
-| End-to-end tests | 37 test photos x 10 languages = 370 runs through the API and 370 through the app, no failures |
+| Speed on the Pi 5 | vision 0.11 s; Llama about 14 tokens/s, first token median 2.4 s; full answer median 8.4 s (4.7-20 s) |
+| Memory and power | Llama INT4 peak 1.25 GB, whole app 1.74 GB of 8 GB; 5.5 W board power during an answer, 1.45 W idle |
+| End-to-end tests | 36 test photos x 10 languages = 360 runs through the API and 360 through the app, no failures ([results/e2e_pi5](results/e2e_pi5)) |
 
 Details, with every test set and the FP32 / INT8 / INT4 comparisons: [docs/RESULTS.md](docs/RESULTS.md),
 [docs/SEVERITY.md](docs/SEVERITY.md), [docs/TRANSLATION_INDICTRANS2.md](docs/TRANSLATION_INDICTRANS2.md),
@@ -56,9 +56,10 @@ with Ubuntu for cross-compiling, and the GitHub CLI (`gh`).
    tar -xzf models/indictrans2_en_indic_200M_ct2_int8.tar.gz -C models
    ```
 2. Build the dependencies (ONNX Runtime 1.23.2, ExecuTorch 1.5.1, CTranslate2 4.6.0) and the program for the Pi, as in
-   [cpp/README.md](cpp/README.md):
+   [cpp/README.md](cpp/README.md). Needs CMake 3.24 or newer and Ninja. Run from the repository root (the toolchain
+   file needs its full path); this gives a program byte-identical to the one on the test Pi:
    ```
-   cmake -S cpp -B build/arm -G Ninja -DCMAKE_TOOLCHAIN_FILE=cpp/arm-toolchain.cmake \
+   cmake -S cpp -B build/arm -G Ninja -DCMAKE_TOOLCHAIN_FILE=$PWD/cpp/arm-toolchain.cmake \
      -DEXECUTORCH_ROOT=$HOME/arm_libs/executorch && cmake --build build/arm -j
    ```
 3. Package everything the Pi needs and copy it over:
