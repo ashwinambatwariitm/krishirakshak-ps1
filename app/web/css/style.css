@@ -410,30 +410,6 @@ select { appearance: none; -webkit-appearance: none; font-weight: 600; padding-r
   50% { filter: brightness(1.2); }
 }
 
-.chip-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.chip-btn {
-  background: #eef5ec;
-  color: #1b5e20;
-  border: 1px solid #c8dcc6;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.chip-btn:hover, .chip-btn:active {
-  background: #c8e6c9;
-  border-color: #2e7d32;
-}
-
 /* WhatsApp-Style Chat UI for Kisan AI */
 .chat-wrapper-card {
   padding: 0;
@@ -572,28 +548,6 @@ select { appearance: none; -webkit-appearance: none; font-weight: 600; padding-r
   font-size: 0.72rem;
   color: #6b7280;
   font-weight: 600;
-}
-
-.chip-carousel-wrapper {
-  background: #ffffff;
-  border-top: 1px solid var(--line-border);
-  padding: 8px 12px;
-  overflow-x: auto;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.chip-carousel-wrapper .chip-suggestions {
-  display: flex;
-  gap: 8px;
-  margin: 0;
-}
-
-.chip-carousel-wrapper .chip-btn {
-  flex: 0 0 auto;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 0.82rem;
 }
 
 .chat-input-bar {
