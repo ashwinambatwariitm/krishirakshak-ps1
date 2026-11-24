@@ -3,7 +3,7 @@
  * 
  * Supports:
  * - Disease & Pest Detection Flow (FR-1 to FR-8)
- * - Kisan AI Chat & Quick Chips (FR-9)
+ * - Kisan AI Chat (FR-9)
  * - Offline Text-to-Speech Voice Advisor (FR-15)
  * - Field Weather & Spray Suitability Meter
  * - Bottom Navigation for Farmers
@@ -112,7 +112,7 @@ function initApp() {
     });
   });
 
-  // Kisan AI / Follow-up Q&A ask button & chips
+  // Kisan AI / Follow-up Q&A ask button (typed questions only: the chat keeps the whole card for the answers)
   const btnAsk = document.getElementById("btn-ask");
   const inputQuestion = document.getElementById("input-question");
   if (btnAsk && inputQuestion) {
@@ -121,17 +121,6 @@ function initApp() {
       if (e.key === "Enter") handleAskQuestion();
     });
   }
-
-  // Clickable prompt suggestion chips
-  document.querySelectorAll(".chip-btn").forEach(chip => {
-    chip.addEventListener("click", () => {
-      const query = chip.getAttribute("data-query");
-      if (inputQuestion) {
-        inputQuestion.value = query;
-        handleAskQuestion();
-      }
-    });
-  });
 
   // Voice Read-Aloud (Text-to-Speech) Listeners (FR-15)
   const btnVoiceDiag = document.getElementById("btn-voice-diagnosis");

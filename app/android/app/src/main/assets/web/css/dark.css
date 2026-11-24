@@ -67,14 +67,6 @@ html[data-theme="dark"] .waiting-photo-container {
 html[data-theme="dark"] .spinner {
   border: 4px solid #2a3223;
 }
-html[data-theme="dark"] .chip-btn {
-  background: #1d2d18;
-  color: #ace7b0;
-  border: 1px solid #273c25;
-}
-html[data-theme="dark"] .chip-btn:hover, html[data-theme="dark"] .chip-btn:active {
-  background: #1e3e1f;
-}
 html[data-theme="dark"] .chat-wrapper-card {
   background: #1f2816;
 }
@@ -103,9 +95,6 @@ html[data-theme="dark"] .bubble-badge {
 }
 html[data-theme="dark"] .bubble-time {
   color: #959ba7;
-}
-html[data-theme="dark"] .chip-carousel-wrapper {
-  background: #182019;
 }
 html[data-theme="dark"] .chat-input-bar {
   background: #182019;
