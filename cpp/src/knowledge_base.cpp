@@ -209,10 +209,31 @@ std::vector<KbChunk> KnowledgeBase::search(const std::string& question, const st
         else flush();
     }
     flush();
-    if (terms.empty()) return {};
+
+    // Topic of the last diagnosis, when the app sends one: its management advice, non-chemical first (used when no
+    // word of the question matches the topic, e.g. "how to fix this disease")
+    auto topicAdvice = [&]() {
+        std::vector<KbChunk> out;
+        for (const char* sec : {"cultural", "mechanical", "biological", "resistant_varieties", "chemical"})
+            for (auto& c : query("SELECT * FROM chunks WHERE topic = ? AND section = ? ORDER BY id", {topic, sec}, lang))
+                if (static_cast<int>(out.size()) < k) out.push_back(c);
+        return out;
+    };
+    if (terms.empty()) return topic.empty() ? std::vector<KbChunk>{} : topicAdvice();
 
     std::string match;
     for (const auto& t : terms) match += (match.empty() ? "\"" : " OR \"") + t + "\"";
+
+    // A question about the diagnosis with no subject of its own ("how to fix this disease", "how do I control it"):
+    // ranked over the whole knowledge base its generic words match extracts of any topic, so the farmer gets the
+    // advice for the diagnosed topic instead. Any other question is ranked as before.
+    static const std::set<std::string> kGeneric = {
+        "fix", "cure", "treat", "treatment", "solve", "solution", "remedy", "control", "manage", "management", "prevent",
+        "stop", "disease", "problem", "issue", "pest", "plant", "plants", "tomato", "tomatoes", "crop", "leaf", "leaves",
+        "now", "please", "best", "way", "need", "must"};
+    if (!topic.empty() &&
+        std::all_of(terms.begin(), terms.end(), [](const std::string& t) { return kGeneric.count(t) > 0; }))
+        return topicAdvice();
 
     // bm25() is lower = better; chunks of the topic being discussed get a fixed bonus
     Stmt st(db_, "SELECT c.id, c.topic, bm25(chunks_fts) FROM chunks_fts JOIN chunks c ON c.id = chunks_fts.rowid "
@@ -224,10 +245,12 @@ std::vector<KbChunk> KnowledgeBase::search(const std::string& question, const st
         ranked.emplace_back(score, sqlite3_column_int(st.s, 0));
     }
     std::stable_sort(ranked.begin(), ranked.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
+    std::vector<int> ids;
+    for (int i = 0; i < std::min<int>(k, static_cast<int>(ranked.size())); ++i) ids.push_back(ranked[i].second);
 
     std::vector<KbChunk> out;
-    for (int i = 0; i < std::min<int>(k, static_cast<int>(ranked.size())); ++i) {
-        auto rows = query("SELECT * FROM chunks WHERE id = ?", {std::to_string(ranked[i].second)}, lang);
+    for (int id : ids) {
+        auto rows = query("SELECT * FROM chunks WHERE id = ?", {std::to_string(id)}, lang);
         out.insert(out.end(), rows.begin(), rows.end());
     }
     return out;

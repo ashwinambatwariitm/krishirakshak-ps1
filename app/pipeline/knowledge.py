@@ -33,6 +33,12 @@ SYNONYMS = {"harvest": ["harvest", "waiting"], "spray": ["spray"], "medicine": [
             "variety": ["variety", "varieties", "resistant"], "seed": ["seed", "seeds"]}
 
 
+
+# Words that do not say what a follow-up question is about (see search)
+GENERIC_WORDS = {"fix", "cure", "treat", "treatment", "solve", "solution", "remedy", "control", "manage", "management",
+                 "prevent", "stop", "disease", "problem", "issue", "pest", "plant", "plants", "tomato", "tomatoes", "crop",
+                 "leaf", "leaves", "now", "please", "best", "way", "need", "must"}
+
 class KnowledgeBase:
     """Read-only access to app/kb/tomato_kb.sqlite plus the user interface messages from tomato_kb.json."""
 
@@ -126,9 +132,18 @@ class KnowledgeBase:
         return chunks
 
     def search(self, question, topic=None, k=4, lang="en"):
-        """BM25 search for a follow-up question. Chunks of the current topic get a ranking bonus."""
+        """BM25 search for a follow-up question. Chunks of the current topic get a ranking bonus.
+
+        A question about the diagnosis with only generic words ("how to fix this disease") gets the topic's management
+        advice instead, non-chemical first (same rule as cpp/src/knowledge_base.cpp)."""
         words = [w for w in re.findall(r"[A-Za-z0-9]+", question.lower()) if w not in STOPWORDS]
         terms = sorted({t for w in words for t in SYNONYMS.get(w, [w])})
+        if topic and all(t in GENERIC_WORDS for t in terms):
+            rows = []
+            for sec in ("cultural", "mechanical", "biological", "resistant_varieties", "chemical"):
+                rows += self.con.execute("SELECT * FROM chunks WHERE topic = ? AND section = ? ORDER BY id",
+                                         (topic, sec)).fetchall()
+            return [self._row(r, lang) for r in rows[:k]]
         if not terms:
             return []
         query = " OR ".join(f'"{t}"' for t in terms)
