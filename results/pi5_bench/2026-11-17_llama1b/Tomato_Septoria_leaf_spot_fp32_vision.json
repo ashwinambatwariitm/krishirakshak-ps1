@@ -1,0 +1,179 @@
+{
+ "advice_blocks": [
+  {
+   "chunks": [
+    {
+     "dose": "",
+     "id": 20,
+     "note": "",
+     "product": "",
+     "section": "symptoms",
+     "source_id": "TNAU_SLS",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Septoria leaf spot (updated Jun 2023)",
+     "text": "Small, round to irregular spots with grey centre and dark margin on leaves. Spots join and leaves are blighted; complete defoliation. Stems and flowers are also affected.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+    },
+    {
+     "dose": "",
+     "id": 21,
+     "note": "",
+     "product": "",
+     "section": "spread",
+     "source_id": "TNAU_SLS",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Septoria leaf spot (updated Jun 2023)",
+     "text": "Survives in infected plant debris; spreads by spores through rain splash or wind. Favoured by high humidity.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+    },
+    {
+     "dose": "",
+     "id": 22,
+     "note": "",
+     "product": "",
+     "section": "cultural",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Removal and destruction of the affected plant parts.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 23,
+     "note": "",
+     "product": "",
+     "section": "biological",
+     "source_id": "TNAU_SLS",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Septoria leaf spot (updated Jun 2023)",
+     "text": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+    },
+    {
+     "dose": "2-3 g/litre",
+     "id": 25,
+     "note": "Label claim (CIB&RC) for leaf spot.",
+     "product": "Copper oxychloride 50% WP",
+     "section": "chemical",
+     "source_id": "ICAR_IPM",
+     "source_org": "ICAR-NCIPM",
+     "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+     "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for leaf spot.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+    },
+    {
+     "dose": "600-800 g in 300 l of water/acre",
+     "id": 24,
+     "note": "",
+     "product": "Mancozeb 75% WP",
+     "section": "chemical",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Spray Mancozeb 75% WP @ 600-800 g in 300 l of water/acre.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "200-250 ml/ha",
+     "id": 26,
+     "note": "",
+     "product": "Fluxapyroxad 250 g/l + Pyraclostrobin 250 g/l SC",
+     "section": "chemical",
+     "source_id": "TNAU_SLS",
+     "source_org": "TNAU",
+     "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Septoria leaf spot (updated Jun 2023)",
+     "text": "Spray Fluxapyroxad 250 g/l + Pyraclostrobin 250 g/l SC @ 200-250 ml/ha.",
+     "topic": "septoria_leaf_spot",
+     "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_4.html"
+    },
+    {
+     "dose": "",
+     "id": 60,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    },
+    {
+     "dose": "",
+     "id": 61,
+     "note": "",
+     "product": "",
+     "section": "safety",
+     "source_id": "NIPHM",
+     "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+     "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+     "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+     "topic": "general",
+     "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+    }
+   ],
+   "name": "Septoria leaf spot",
+   "topic": "septoria_leaf_spot"
+  }
+ ],
+ "disease": {
+  "answered": true,
+  "name": "Septoria leaf spot",
+  "reliability": "medium",
+  "top": [
+   {
+    "class": "septoria_leaf_spot",
+    "probability": 0.9613524079322815
+   },
+   {
+    "class": "bacterial_spot",
+    "probability": 0.01238843984901905
+   },
+   {
+    "class": "late_blight",
+    "probability": 0.01027648150920868
+   }
+  ],
+  "topic": "septoria_leaf_spot",
+  "urgent": false
+ },
+ "lang": "en",
+ "llama": null,
+ "messages": [
+  "The spray options below are copied from ICAR, NIPHM and TNAU publications. Use only one product, follow the label, observe the waiting period before harvest and wear protective clothing. Confirm with your KVK or agriculture officer if unsure."
+ ],
+ "pests": [],
+ "quality": {
+  "issues": [],
+  "metrics": {
+   "brightness": 109.95902267156863,
+   "height": 359,
+   "sharpness": 234.95612120983557,
+   "width": 450
+  },
+  "ok": true
+ },
+ "severity": {
+  "lesion_share": 0.6601553997620916,
+  "level": "high",
+  "method": "hsv_colour_ratio"
+ },
+ "status": "answered",
+ "timings_ms": {
+  "disease": 72.74018,
+  "pest": 262.483666,
+  "quality": 1.876624,
+  "retrieval": 0.264341,
+  "severity": 1.661744,
+  "total": 266.481719,
+  "vision_wall": 262.624142
+ }
+}
