@@ -13,6 +13,14 @@ routed to the local KVK and the Kisan Call Centre.
   covers the method, results, hardware utilisation and optimisation. End-to-end test results on the Pi are in
   [results/e2e_pi5](results/e2e_pi5).
 
+## Demo video
+
+[KrishiRakshak demo video (1:54, Google Drive)](https://drive.google.com/file/d/1tKIPScYwB9dU0Lyohyn3Ya9HTdOudLgx/view)
+recorded on 25 Nov 2026 with the final build on the Raspberry Pi 5. It shows the farmer's phone on the Pi's offline
+Wi-Fi hotspot (late blight in English, a Kisan AI question about the diagnosis, the spray check, a caterpillar in
+Marathi, a healthy leaf in Hindi), then the judge screen with the live log of every model on the Pi, then the measured
+numbers. Every answer comes from the Pi. Waiting time is cut and marked in the video.
+
 ![The farmer app on the Pi: start, crop, disease result, pest result, Kisan AI, night mode](docs/images/app_screens.jpg)
 
 ## How it works
