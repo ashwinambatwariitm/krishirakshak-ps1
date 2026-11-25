@@ -9,7 +9,7 @@ routed to the local KVK and the Kisan Call Centre.
 
 - **Team (Indian Institute of Technology Madras):** Ashvin Ambatwar (team lead), Aman Kumar Maurya, Onkar Bhumaji
   Mamidwar. Mentor: Panchavarnam Baskaran Nadar.
-- **Technical report (Phase 1):** [docs/KrishiRakshak_Technical_Report.pdf](docs/KrishiRakshak_Technical_Report.pdf)
+- **Technical report (Phase 1):** [report/KrishiRakshak_Technical_Report.pdf](report/KrishiRakshak_Technical_Report.pdf)
   covers the method, results, hardware utilisation and optimisation. End-to-end test results on the Pi are in
   [results/e2e_pi5](results/e2e_pi5).
 
@@ -146,7 +146,8 @@ training/       training scripts (training/src) and the Kaggle notebook builder
 kaggle/         the generated notebook of every training run
 tools/          evaluation, export, benchmark, translation and end-to-end test tools
 results/        metrics, confusion matrices, split manifests and Pi measurements of every run
-docs/           technical report, results, API, severity, translation, Llama quality
+report/         the technical report of Phase 1 (PDF)
+docs/           results, API, severity, translation, Llama quality
 models/         README with download commands and checksums (model files are release assets)
 ```
 
