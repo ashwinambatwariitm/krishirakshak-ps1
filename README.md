@@ -166,6 +166,8 @@ PlantVillage (CC BY-SA 3.0, whose authors ask that trained models follow the sam
 | PlantVillage / PlantDoc / IP102 | CC BY-SA 3.0 / CC BY 4.0 / research terms of the IP102 authors |
 | Red Chili Pepper Pests, Eggplant Disease Recognition, Solanaceae Leaves | Apache 2.0, CC BY 4.0, CC0 |
 | Severity training data (Roboflow "tomato", Kaggle leaf disease segmentation) | CC BY 4.0, CC0 |
+| Natural Images (Kaggle, "other" class of the tomato-leaf check, training and test) | CC BY-NC-SA 4.0: non-commercial, the leaf-check model is trained with it |
+| Independent pest test photos (Huang and Chuang 2020), evaluation only | CC BY 4.0 |
 | Knowledge-base extracts | quoted from ICAR, NIPHM and TNAU publications, each with its source and link. The texts remain the publishers' |
 
 The test photos used during development come from these datasets and are not redistributed here.
