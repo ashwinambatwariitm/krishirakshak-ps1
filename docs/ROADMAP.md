@@ -1,7 +1,8 @@
-# Roadmap and open tasks
+# Phase 1 task list (completed)
 
-Phase 1 submission deadline: 23 November 2026 (check the official challenge page for changes). Each task has a clear
-"done when" so it can be picked up and finished independently. Put your name next to a task in your pull request.
+All tasks below were completed for the Phase 1 submission (25 November 2026). The results are in
+[docs/RESULTS.md](RESULTS.md) and the [technical report](KrishiRakshak_Technical_Report.pdf). The Phase 2 plan is section 17 of
+the report. The task numbers (A1, B3, ...) are referred to in code comments and in docs/RESULTS.md.
 
 ## Track A - Vision models (accuracy)
 
@@ -21,7 +22,7 @@ Phase 1 submission deadline: 23 November 2026 (check the official challenge page
 | B1 | Run both ONNX models from C++ with ONNX Runtime on the Pi, using the input specifications in `models/README.md` and the JSON written by `tools/export_onnx.py`. | Same top-1 class / detections as `tools/predict.py` on 20 test photos. |
 | B2 | Measure on the Pi: latency including preprocessing, peak RAM, CPU load, temperature and throttling, for FP32 and INT8. | Table in `docs/RESULTS.md`. |
 | B3 | Camera capture and image quality checks (blur, too dark, too bright, leaf too small) with OpenCV. | Poor photos are rejected with a clear message; thresholds documented. |
-| B4 | Coordinator: combine disease, pest and quality results into one structured result for the advisory step. | JSON output matching the format in `docs/PROJECT_HANDOFF.md` section 7. |
+| B4 | Coordinator: combine disease, pest and quality results into one structured result for the advisory step. | JSON output as documented in `docs/APP_API.md`. |
 
 ## Track C - Advisory (Llama through ExecuTorch)
 
@@ -35,6 +36,6 @@ Phase 1 submission deadline: 23 November 2026 (check the official challenge page
 
 | # | Task | Done when |
 |---|---|---|
-| D1 | Technical report following the outline in `docs/plan_phase1.md` section 14. | Draft reviewed by every team member. |
-| D2 | Demonstration video with internet disabled (see `docs/plan_phase1.md` section 13). | Video shows the full offline flow in English and Hindi. |
+| D1 | Technical report. | `docs/KrishiRakshak_Technical_Report.pdf`, reviewed by the team and the mentor. |
+| D2 | Demonstration video of the offline application on the Pi. | Two-minute video recorded from the Pi, linked in the submission. |
 | D3 | Choose a licence compatible with PlantVillage (CC BY-SA) and Ultralytics (AGPL-3.0), add LICENSE, make the repository public before submitting. | LICENSE file added; repository public. |

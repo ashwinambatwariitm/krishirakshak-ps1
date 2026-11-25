@@ -1,11 +1,15 @@
 # IndicTrans2 offline translation experiment
 
+> This page documents the first experiment (PyTorch on the development PC). The deployed translator runs IndicTrans2 on
+> CTranslate2 INT8 on the Pi; its results are in [results/indictrans2/ct2_pi5/README.md](../results/indictrans2/ct2_pi5/README.md)
+> and in section A7 of the technical report.
+
 ## Scope and decision
 
 This experiment runs in WSL2 on the laptop CPU, which serves as the functional
 simulator. It is not an ARM emulator or a native Raspberry Pi performance test.
-The project owner explicitly requested WSL-only downloads and execution, with
-results copied to `C:\Users\ajink\Downloads\IndicTrans2_results`. No model,
+This first experiment was run on the development PC only (WSL), with results
+exported to a local results folder. No model,
 package or result was downloaded to the Pi and no inference ran there. An initial
 read-only connectivity check, before that clarification, found a reachable Pi 5.
 
@@ -87,7 +91,7 @@ python tools/translate_indictrans2.py \
   --output results/indictrans2/bench_dynamic_int8.json
 python tools/report_indictrans2.py
 python tools/check_repo.py
-python tools/export_indictrans2_results.py /mnt/c/Users/ajink/Downloads/IndicTrans2_results
+python tools/export_indictrans2_results.py <export-folder>
 ```
 
 Run benchmarks sequentially with no other inference jobs. Exit 0 means no

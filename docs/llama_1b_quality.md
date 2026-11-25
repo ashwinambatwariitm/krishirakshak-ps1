@@ -1,6 +1,6 @@
 # Llama 3.2 1B answer quality (prompt work)
 
-Task: `docs/handover/LLAMA_1B_TASK_AMAN.md`. Goal: more 1B answers pass the grounding check, without making them less
+Goal: more 1B answers pass the grounding check, without making them less
 correct. The check, its 0.75 threshold and every safety check are unchanged; only the prompt changed.
 
 **Result: `prompts/aman_v8_no_numbering.txt`**. On all 27 topics it is accepted for 24 (baseline 15), the six demo

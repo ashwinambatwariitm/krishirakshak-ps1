@@ -13,7 +13,7 @@
 #
 # Classes: `healthy`, `early_blight`, `late_blight`, `leaf_mold`, `septoria_leaf_spot`.
 #
-# Rules followed (see `docs/PROJECT_HANDOFF.md`):
+# Rules followed (see `docs/RESULTS.md, "Test data rules"`):
 # - Augmentation is **online only** - generated in memory per training step, never written to disk.
 # - Validation / test / PlantDoc images get resize + normalise only.
 # - Splits are made **before** augmentation, and grouped so photos of the same physical leaf never cross splits.

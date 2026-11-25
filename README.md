@@ -7,6 +7,12 @@ practices from ICAR, NIPHM and TNAU publications, has Llama 3.2 1B (ExecuTorch, 
 checks every sentence against the sources and translates the answer into one of 10 Indian languages. Severe cases are
 routed to the local KVK and the Kisan Call Centre.
 
+- **Team (Indian Institute of Technology Madras):** Ashvin Ambatwar (team lead), Aman Kumar Maurya, Onkar Bhumaji
+  Mamidwar. Mentor: Panchavarnam Baskaran Nadar.
+- **Technical report (Phase 1):** [docs/KrishiRakshak_Technical_Report.pdf](docs/KrishiRakshak_Technical_Report.pdf)
+  covers the method, results, hardware utilisation and optimisation. End-to-end test results on the Pi are in
+  [results/e2e_pi5](results/e2e_pi5).
+
 ![The farmer app on the Pi: start, crop, disease result, pest result, Kisan AI, night mode](docs/images/app_screens.jpg)
 
 ## How it works
