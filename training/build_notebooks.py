@@ -54,11 +54,11 @@ NOTEBOOKS = [
     # Knowledge base in 9 regional languages (IndicTrans2 on CTranslate2, GPU FP16; inputs uploaded from the repo)
     dict(src="kb_translate.py", slug="ps1-kb-translate", title="PS1 KB Translate",
          datasets=["ashwinambatwar/krishirakshak-kb-translate-inputs"]),
-    # The current app pest model (FP32 ONNX from release models-v2) is attached as a private dataset for the comparison
+    # The earlier app pest model (IP102 species, FP32 ONNX from release models-v2) is attached as a dataset for the comparison
     dict(src="pest_groups.py", slug="ps1-pest-groups", title="PS1 Pest Groups",
          datasets=[IP102, CHILI_PESTS, PLANTVILLAGE, PLANTDOC_FOLDERS, "ashvinambatwar/krishirakshak-pest-app-model"]),
     # Accuracy of the deployed pest ONNX models per advice group (kb topic) on the IP102 test split; models from a
-    # private copy of release models-v2 (the repository is private, so the notebook cannot download them)
+    # Kaggle dataset copy of release models-v2 (the notebook runs without access to GitHub)
     dict(src="ip102_pest_groups.py", slug="ps1-ip102-pest-groups", title="PS1 IP102 Pest Groups",
          datasets=[IP102, "bangadbilla420/krishirakshak-pest-onnx"], gpu=False),
     # Deployed pest detector on 609 photos from other sources (Huang & Chuang 2020, CC BY 4.0), checked for IP102

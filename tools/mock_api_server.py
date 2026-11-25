@@ -11,7 +11,8 @@ Usage:
     python tools/mock_api_server.py --port 9000 --delay 0
     curl --data-binary @leaf.jpg "http://localhost:8080/api/analyse?lang=en&example=uncertain"
 
-Examples: early_blight (default), healthy, hindi, uncertain, retake, pest. With lang=hi the Hindi example is used.
+Examples (real answers of the Pi, see docs/api_examples/): early_blight (default), healthy, pest, not_tomato,
+uncertain, retake. With a "translate" parameter the Marathi early-blight answer is used.
 Only the Python standard library is needed. CORS is allowed for any origin, so a web app on another port can call it.
 """
 import argparse
@@ -28,10 +29,11 @@ EXAMPLES = ROOT_DIR / "docs" / "api_examples"
 ANALYSE = {
     "early_blight": "analyse_en_early_blight.json",
     "healthy": "analyse_en_healthy_leaf.json",
-    "hindi": "analyse_hi_late_blight.json",
+    "pest": "analyse_en_pest_aphids.json",
+    "not_tomato": "analyse_en_not_tomato.json",
     "uncertain": "analyse_en_uncertain.json",
     "retake": "analyse_en_retake_photo.json",
-    "pest": "analyse_en_pest_CONSTRUCTED.json"
+    "translated": "analyse_mr_early_blight.json"
 }
 
 
@@ -71,7 +73,7 @@ class Handler(SimpleHTTPRequestHandler):
         if self.delay > 0:
             time.sleep(self.delay)
         if url.path == "/api/analyse":
-            name = "hindi" if query.get("lang", ["en"])[0] == "hi" else query.get("example", ["early_blight"])[0]
+            name = "translated" if query.get("translate", [""])[0] else query.get("example", ["early_blight"])[0]
             self.send_json(EXAMPLES / ANALYSE.get(name, ANALYSE["early_blight"]))
         elif url.path == "/api/ask":
             self.send_json(EXAMPLES / "ask_en_harvest_after_spraying.json")
@@ -82,7 +84,7 @@ class Handler(SimpleHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--port", type=int, default=8080)
-    parser.add_argument("--delay", type=float, default=2.0, help="seconds before answering (the Pi needs 10-45 s)")
+    parser.add_argument("--delay", type=float, default=2.0, help="seconds before answering (the Pi: median 8.4 s with Llama and translation)")
     args = parser.parse_args()
     Handler.delay = args.delay
     print(f"mock KrishiRakshak API on http://localhost:{args.port}/  (examples from {EXAMPLES})")

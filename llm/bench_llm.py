@@ -4,7 +4,7 @@ For each .pte file and each test case (diagnosis + language), records: model loa
 token, tokens per second, peak resident memory of the process, and whether the answer passed the output check.
 
 Usage:
-    python -m llm.bench_llm models/llama3_2_1b_instruct_8da4w.pte /mnt/c/krishirakshak_store/llama_export/llama3_2_1b_instruct_fp32.pte \
+    python -m llm.bench_llm models/llama3_2_1b_instruct_8da4w.pte models/llama3_2_1b_instruct_fp32.pte \
         --tokenizer models/llama3_2_tokenizer.model --csv results/llama_bench_wsl.csv
 
 Run each .pte in a separate process (this script does that) so the peak-memory numbers do not mix.

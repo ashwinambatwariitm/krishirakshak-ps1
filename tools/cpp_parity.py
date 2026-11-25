@@ -56,8 +56,10 @@ def main():
     disease = DiseaseClassifier(str(DEFAULT_CONFIG["disease_onnx"]).replace(".onnx", f"{suffix}.onnx"),
                                 DEFAULT_CONFIG["disease_spec"])
     severity = SeverityModel(DEFAULT_CONFIG["severity_onnx"], DEFAULT_CONFIG["severity_spec"])
-    pest = PestDetector(str(DEFAULT_CONFIG["pest_onnx"]).replace(".onnx", f"{suffix}.onnx"), DEFAULT_CONFIG["pest_spec"],
-                        DEFAULT_CONFIG["pest_labels"], DEFAULT_CONFIG["pest_config"])
+    # Same pest model as the C++ default (cpp/src/pipeline.hpp): the detector by advice group
+    groups = REPO / "results" / "pest_groups"
+    pest = PestDetector(str(REPO / "models" / f"pest_yolov8n_groups{suffix}.onnx"), groups / "pest_yolov8n_groups.json",
+                        groups / "pest_labels.json", groups / "pest_config.json")
 
     top1_same = quality_same = sev_same = pest_same = 0
     max_prob_diff = max_share_diff = 0.0

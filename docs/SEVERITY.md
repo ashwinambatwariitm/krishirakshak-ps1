@@ -1,7 +1,7 @@
 # Severity levels
 
 Problem statement PS1 asks the system to "classify severity levels" of diseases and pests. This page describes what
-the application reports today, how it was checked, and what is still open.
+the application reports, how it was checked, and what is still open.
 
 ## Pest severity (in the application)
 
@@ -23,10 +23,11 @@ One level per pest topic found in the photo, from the number of insects the pest
   AESA-based IPM package for tomato (count insects on five leaves per plant; larvae per plant; five random spots),
   and the economic threshold where one exists (fruit borer, TNAU). No threshold is invented where the sources give
   none.
-- Limitation: the pest detector (YOLOv8n, IP102) names the species of aphids reliably; caterpillars and thrips are
-  reliable as advice groups (pest_config.json `reliable_groups`, results/pest_groups_ip102) and get their topic even
-  when the species is uncertain; other insects on tomato are reported as "insect, species uncertain". Counts are those
-  of the detector (missed or merged insects change the count).
+- Limitation: the pest detector (YOLOv8n with 6 advice groups, `results/pest_groups/pest_config.json`) gives a
+  group's own advice only for the reliable groups aphid, thrips and caterpillar. Whitefly, mites and other insects are
+  reported as "insect, species uncertain" and get the general insect advice, so in practice the levels above are
+  reached for aphids, thrips and caterpillars. Counts are those of the detector (missed or merged insects change the
+  count).
 - Result JSON: `pest_severity` (topic, group, count, box_share, level, basis, scouting, threshold). The web page shows
   it in "Insects in this photo". The count is not given to Llama: with it, the 1B model echoed the count instead of
   advising (Pi test, 21 Nov 2026).
@@ -46,9 +47,10 @@ metrics in `results/severity/`.
   dataset" (field photos from PlantDoc, CC BY 4.0, with lesion masks, CC0; lesion output only); PlantDoc field
   photos as blurred backgrounds behind the Roboflow leaves.
 - Validation on 91 held-out tomato field photos with lesion masks checked by plant pathologists (PlantSeg test
-  split, evaluation only; `results/severity_plantseg/README.md`): level agrees with the expert level on **61%** of
-  the photos (colour rule used before: 31%), **74%** without the virus diseases; lesion IoU 0.37, Dice 0.54 (colour
-  rule 0.17 / 0.29; mean Dice per photo 0.48 vs 0.28). On the Roboflow test split (same photo style as training) 94%.
+  split, evaluation only; `results/severity_plantseg/README.md`): 88 of the 91 photos were graded. The level agrees with
+  the expert level on **61%** (54 of 88, colour rule used before: 31%) and on **74%** without the virus diseases (50 of
+  68). Lesion IoU 0.37, Dice 0.54 (colour
+  rule 0.17 / 0.29, mean Dice per photo 0.48 vs 0.28). On the Roboflow test split (same photo style as training) 94%.
 - Segmentation scores (pooled over all pixels; Dice = 2 x overlap / (predicted + reference area), from the same pixel
   counts as the IoU, `results/severity_plantseg/model_v2_eval.json` and `results/severity/severity_metrics.json`):
 
@@ -64,3 +66,11 @@ metrics in `results/severity/`.
 
 History: the first method, a colour rule (share of non-green pixels), agreed with the expert level on only 31% of
 the held-out photos (a random guess: 33%) and was withdrawn.
+
+## Still open
+
+- Disease severity: the training masks are mostly single leaves in the Roboflow style, and on the expert field masks
+  the model marks about two thirds of the lesion area (recall 0.45). Training on field masks is a Phase 2 item (P1 of
+  the technical report).
+- Pest severity: the count bands are a project rule for one photo. A field-level estimate needs the scouting method
+  quoted above, done by the farmer.

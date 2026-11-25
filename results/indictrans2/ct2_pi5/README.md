@@ -70,9 +70,12 @@ only 64% of the sentences compared with WSL, and INT8 matches FP32 in 55%. The r
 must therefore use translations produced on the Pi (`python_all_sentences_int8_2threads.json`, identical
 to the C++ output), not the PyTorch FP32 review sheet.
 
-Machine translations are not reviewed yet. Known errors seen in the outputs: "necrotic" translated as
-"impure" (Hindi), "marginal" as "retail" (Marathi), "vegetative" as "botanical" (Kannada),
-"bull's eye" translated literally.
+Review status (as in the technical report): Marathi was reviewed and corrected by a native speaker in the team,
+Hindi in part. The other seven languages are machine translations not yet reviewed by native speakers. Errors found
+by the team in earlier outputs, "necrotic" translated as "impure" (Hindi), "marginal" as "retail" (Marathi),
+"vegetative" as "botanical" (Kannada) and "bull's eye" translated literally, were corrected in the stored
+knowledge-base translations and are avoided in live answers by rewriting technical words in plain English before
+translation. Similar errors can remain in the unreviewed languages.
 
 ## Files
 

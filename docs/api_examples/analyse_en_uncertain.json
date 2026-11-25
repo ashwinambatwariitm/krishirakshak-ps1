@@ -1,49 +1,116 @@
 {
   "advice_blocks": [],
+  "crop": {
+    "name": "tomato",
+    "source": "leaf_check"
+  },
+  "demo_log": [
+    {
+      "ms": 0.0,
+      "stage": "request",
+      "text": "photo 252x162 px, answer language en, CPU 62.2 C"
+    },
+    {
+      "ms": 1.5,
+      "stage": "quality",
+      "text": "OpenCV photo check: brightness 172, sharpness (Laplacian var) 108 -> OK (1.5 ms)"
+    },
+    {
+      "ms": 116.5,
+      "stage": "vision",
+      "text": "ONNX Runtime, 2 models in parallel, 2 threads per model: wall 115 ms (leaf + disease thread 113 ms, pest thread 115 ms)"
+    },
+    {
+      "ms": 116.6,
+      "stage": "leaf_check",
+      "text": "tomato_leaf_check_v2_effb0.onnx, input 224x224: p_other 0.038 < threshold 0.425 -> tomato leaf (74 ms)"
+    },
+    {
+      "ms": 116.6,
+      "stage": "disease",
+      "text": "tomato_disease_v5_effb0_6class_int8.onnx, input 224x224: early_blight 58.2%, septoria_leaf_spot 16.7% (40 ms)"
+    },
+    {
+      "ms": 116.6,
+      "stage": "pests",
+      "text": "pest_yolov8n_groups_int8.onnx: 0 box(es) (115 ms)"
+    },
+    {
+      "ms": 116.6,
+      "stage": "knowledge",
+      "text": "no disease or pest found: no advice lookup"
+    },
+    {
+      "ms": 116.7,
+      "stage": "done",
+      "text": "status uncertain, total 117 ms, CPU 62.2 -> 63.4 C at 2400 MHz"
+    }
+  ],
+  "device": {
+    "cpu_freq_mhz": 2400.0,
+    "cpu_temp_end_c": 63.35,
+    "cpu_temp_start_c": 62.25,
+    "llama_skipped_hot": false
+  },
   "disease": {
     "answered": false,
     "name": null,
+    "not_tomato_leaf": false,
     "reliability": null,
     "top": [
       {
         "class": "early_blight",
-        "probability": 0.7398271560668945
-      },
-      {
-        "class": "yellow_leaf_curl_virus",
-        "probability": 0.13775373995304108
+        "probability": 0.5824372172355652
       },
       {
         "class": "septoria_leaf_spot",
-        "probability": 0.06743468344211578
+        "probability": 0.16651952266693115
+      },
+      {
+        "class": "late_blight",
+        "probability": 0.13993927836418152
       }
     ],
     "topic": null,
     "urgent": false
   },
+  "display_lang": "en",
   "lang": "en",
+  "leaf_check": {
+    "is_tomato_leaf": true,
+    "model": "tomato_leaf_check_v2_effb0.onnx",
+    "p_other": 0.037619736045598984,
+    "threshold": 0.42500001192092896
+  },
   "llama": null,
   "messages": [
     "The photo does not show the problem clearly enough for a reliable answer. Take a clearer photo of one affected leaf in daylight, or show the plant to your local KVK or agriculture officer."
   ],
+  "pest_severity": [],
   "pests": [],
   "quality": {
     "issues": [],
     "metrics": {
-      "brightness": 111.9031016031901,
-      "height": 600,
-      "sharpness": 248.04731737066888,
-      "width": 800
+      "brightness": 171.79696404825228,
+      "height": 162,
+      "sharpness": 107.53082256838907,
+      "width": 252
     },
     "ok": true
   },
+  "refer_to_expert": false,
   "status": "uncertain",
+  "supported_crops": [
+    "tomato"
+  ],
   "timings_ms": {
-    "disease": 17.331216,
-    "pest": 75.310337,
-    "quality": 1.691427,
-    "retrieval": 0.000386,
-    "total": 77.314644,
-    "vision_wall": 75.588799
-  }
+    "disease": 39.543399,
+    "leaf_check": 73.739717,
+    "pest": 114.92982,
+    "quality": 1.454081,
+    "retrieval": 0.000537,
+    "total": 116.635022,
+    "vision_wall": 115.026224
+  },
+  "translation": null
 }

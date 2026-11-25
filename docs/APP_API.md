@@ -1,111 +1,93 @@
-# KrishiRakshak device API - for building the farmer app
+# KrishiRakshak device API
 
-The analysis runs on the Raspberry Pi 5 inside one C++ program (`krishirakshak --serve 8080`): photo quality check,
-tomato disease classifier, insect pest detector, severity estimate, knowledge base retrieval (ICAR, NIPHM, TNAU) and
-Llama 3.2 through ExecuTorch. The app does not do any analysis. It only:
+The C++ program on the Raspberry Pi 5 serves the farmer app and a small JSON API over the Pi's own Wi-Fi hotspot
+(no internet). The farmer app (app/web) and the Android app (app/android) use only the calls below. The source of
+truth is the code: `cpp/src/web_server.hpp` (endpoints), `cpp/src/pipeline.cpp` (answer fields) and
+`app/web/js/api.js` (the app's client).
 
-1. lets the farmer take or choose a leaf photo and pick a language (English / Hindi),
-2. sends the photo to the device and shows the JSON answer described here,
-3. optionally sends a follow-up question.
-
-Because the app only talks to this API, it can be built and tested with the mock server and example answers below,
-and later pointed at the Pi without changes.
+Start (as the Pi service does, `cpp/pi/kr_pi.sh`):
 
 ```
- phone / browser app  --HTTP (Pi Wi-Fi hotspot or same LAN, no internet)-->  Raspberry Pi 5: krishirakshak --serve 8080
+./krishirakshak --root . --serve 8080 --web app/web
 ```
 
-## Example answers and mock server
+The phone joins the `KrishiRakshak` Wi-Fi and opens `http://10.42.0.1:8080`. Every reply carries
+`Access-Control-Allow-Origin: *`, so the Android app (pages inside the APK) can call the Pi. Requests are answered
+one at a time, so each model can use all four Cortex-A76 cores.
 
-Real answers saved from the device program are in `docs/api_examples/`:
+## Endpoints
 
-| File | Case |
+| Call | Request | Reply |
+|---|---|---|
+| `GET /` and other GET paths | | the farmer app from `--web app/web` (`/demo.html` = judge screen with the live log) |
+| `GET /basic` | | a minimal built-in page (always available) |
+| `GET /api/info` | | models, runtime, languages, knowledge-base version ([info.json](api_examples/info.json)) |
+| `POST /api/analyse?lang=en&translate=mr` | body = raw JPEG or PNG bytes (up to 15 MB) | diagnosis, severity, pests, advice ([examples](api_examples/)) |
+| `POST /api/ask` | JSON `{"question", "topic", "lang", "translate"}` | Kisan AI answer to a typed question ([example](api_examples/ask_en_harvest_after_spraying.json)) |
+
+## Languages
+
+- `lang=en` with `translate=<code>` is what the app sends for the 10 languages. `translate` is empty for English or
+  one of `hi te mr kn ta bn gu or pa` (Hindi, Telugu, Marathi, Kannada, Tamil, Bengali, Gujarati, Odia, Punjabi).
+- Names, messages and the verified knowledge-base extracts come in the display language (`display_lang`), with the
+  English text kept beside them (`text_en`, `note_en`, and the `en` block).
+- Llama writes in English only. Its accepted (grounded and checked) text is translated on the Pi by IndicTrans2
+  (CTranslate2 INT8) and returned in `translation`. Spray products and doses are never rewritten or translated.
+- `lang=hi` without `translate` is an older path kept for the command line: the Hindi page shows the reviewed Hindi
+  extracts and Llama is not run.
+
+## `POST /api/analyse` answer
+
+`status` decides the screen:
+
+| `status` | Meaning | Example |
+|---|---|---|
+| `answered` | a tomato disease above the 0.85 confidence threshold, or insects found (also on other plants) | [early blight](api_examples/analyse_en_early_blight.json), [healthy](api_examples/analyse_en_healthy_leaf.json), [aphids](api_examples/analyse_en_pest_aphids.json), [Marathi](api_examples/analyse_mr_early_blight.json) |
+| `uncertain` | a tomato leaf, but no class reaches the threshold: no disease is named | [uncertain](api_examples/analyse_en_uncertain.json) (a leaf-mould photo, a disease outside the 6 classes) |
+| `not_tomato` | not a tomato plant and no insect found | [not tomato](api_examples/analyse_en_not_tomato.json) |
+| `retake_photo` | photo too small, too dark, too bright or blurred (`quality.issues`) | [retake](api_examples/analyse_en_retake_photo.json) |
+
+Fields (a `retake_photo` answer has only `status`, `messages`, `quality`, `timings_ms` and the language fields):
+
+| Field | Content |
 |---|---|
-| `info.json` | `GET /api/info` |
-| `analyse_en_early_blight.json` | disease found, Llama explanation accepted |
-| `analyse_en_healthy_leaf.json` | healthy leaf, no Llama text (falls back to the extracts) |
-| `analyse_hi_late_blight.json` | Hindi answer (names and extracts in Hindi; no Llama text in Hindi by design) |
-| `analyse_en_uncertain.json` | the model is not sure (`status: "uncertain"`) |
-| `analyse_en_retake_photo.json` | photo too dark / blurred (`status: "retake_photo"`) |
-| `analyse_en_pest_CONSTRUCTED.json` | insect pest detected (constructed from the real format; no insect photo was available) |
-| `ask_en_harvest_after_spraying.json` | follow-up question; here the Llama answer was rejected (it invented "5 days") |
+| `messages` | short texts for the farmer (not a tomato plant, uncertain, confirm with an expert, spray safety) |
+| `quality` | `ok`, `issues`, `metrics` (brightness, sharpness, width, height) of the OpenCV photo check |
+| `leaf_check` | `is_tomato_leaf`, `p_other`, `threshold`, `model` of the tomato-leaf check |
+| `crop` | `{"name": "tomato", "source": "leaf_check"}` or null, and `supported_crops` |
+| `disease` | `answered`, `name`, `topic`, `top` (classes with probabilities), `reliability`, `urgent`, `not_tomato_leaf` |
+| `severity` | for a diagnosed disease: `level` = `low` / `moderate` / `high` (lesions under 10%, 10-25%, at least 25% of the leaf), `not_applicable` (virus diseases) or `unknown` (no leaf found), with `lesion_share`, `leaf_share`, `method`, `model`, `validated` |
+| `pests` | one entry per insect: `name`, `species`, `topic` (advice group), `confidence`, `box_xyxy` (pixels of the sent photo), `species_reliable` |
+| `pest_severity` | one entry per pest topic: `level`, `count`, `group`, `basis` (`insects_in_this_photo`), the published scouting method (`scouting`) and threshold |
+| `refer_to_expert` | true for an urgent disease (late blight), a virus disease, severity `high` or a `high` pest level: the app shows the KVK / Kisan Call Centre alert |
+| `advice_blocks` | per topic: `name`, `topic`, `chunks` = verified extracts with `section` (symptoms, spread, cultural, biological, chemical, safety), `text`, `product`, `dose`, `note` and the source (`source_org`, `source_title`, `url`) |
+| `llama` | `text` (accepted sentences) or null, `accepted`, `grounded_sentences`, `dropped_sentences`, `rejected_reasons`, `raw_text`, `stats` (tokens, tokens/s, time to first token) |
+| `translation` | null, or `lang`, `text`, `sentences` (each with `english`, `text`, `ok`), `withheld`, `reviewed` (false: machine translation), `ms` |
+| `en` | the English names, messages and advice when another display language is used |
+| `lang`, `display_lang` | requested language and the language of the shown texts |
+| `device` | CPU temperature at start and end, CPU frequency, `llama_skipped_hot` (Llama is skipped when the CPU is too hot) |
+| `timings_ms` | per stage: quality, leaf_check, disease, pest, vision_wall, severity, retrieval, llama, translation, total |
+| `demo_log` | step-by-step log for the judge screen (only in builds with `KR_DEMO_LOGS`, as in the examples) |
 
-Mock server (Python standard library only, allows CORS):
+When Llama's text fails the grounding check (in the final test this happened for the healthy leaf), when a topic
+has too few source extracts (Llama is then not run) or when the CPU is too hot, `llama.text` is null and the
+verified extracts are the advice. `rejected_reasons` says why.
 
-```
-python tools/mock_api_server.py                  # http://localhost:8080
-curl --data-binary @leaf.jpg "http://localhost:8080/api/analyse?lang=en&example=uncertain"
-```
-`example` = `early_blight` (default), `healthy`, `hindi`, `uncertain`, `retake`, `pest`; `lang=hi` returns the Hindi
-example. The mock waits 2 s (`--delay`); the real device needs 10-20 s with Llama 1B and about 45 s with Llama 3B, so
-the app must show a clear "checking..." state and must not time out before 60 s.
+Time on the Pi 5 (final test, 23-24 Nov 2026, [results/e2e_pi5](../results/e2e_pi5/README.md)): whole answer with
+Llama and translation median 8.36 s (4.72-20.13 s), vision 114 ms, "not a tomato plant" 118 ms. The app waits up to
+60 s.
 
-## Calls
+## `POST /api/ask` answer
 
-### `GET /api/info`
-Model and knowledge base versions, for an "about" screen. Fields: `disease_model`, `pest_model`, `llama` (model file),
-`kb_version`, `kb_reviewed` (false = draft under expert review: show "draft"), `runtime`, `load_ms`.
-Show the line "Advice is taken from ICAR, NIPHM and TNAU publications. Built with Llama." (required by the Llama
-licence).
+`question`, `answer` (accepted text or null), `accepted`, `facts` (the verified extracts used), `raw_text`,
+`dropped_sentences`, `rejected_reasons`, `stats` and `translation` (when `translate` is set). The same grounding
+check applies as for photos: the [example](api_examples/ask_en_harvest_after_spraying.json) shows a rejected answer,
+because Llama claimed a 5-day waiting period that no source extract gives. The app then shows the source extracts.
 
-### `POST /api/analyse?lang=en|hi`
-Body: the raw image bytes (JPEG or PNG, as taken by the camera; no multipart form, no base64).
-Answer: one JSON object. **Start from `status`:**
+## Examples and the mock server
 
-| `status` | Meaning | What the app shows |
-|---|---|---|
-| `answered` | a disease (or healthy) and/or a pest was identified | result screen (below) |
-| `uncertain` | photo is fine but the model is not sure | `messages` + advice to retake or ask the local KVK; no diagnosis |
-| `retake_photo` | photo is too dark, bright, blurred or small | `messages` (one line per problem) and a "take another photo" button |
-| `not_tomato` | not a tomato plant and no insect pest in the photo | title "Not a tomato plant", `messages` ("This photo does not show a tomato plant, and no insect pest was found. Take a photo of the affected tomato leaf, or of the insect on the plant, in daylight.") and a "take another photo" button; no diagnosis |
-
-Leaf disease and pest detection are equal tasks. When the photo shows no leaf of a supported crop but an insect is found, `status` is `answered` with `disease.not_tomato_leaf: true`, no disease name, confidence or severity, the pest result as usual, and the message "This is not a tomato plant, so no leaf disease was checked. The insects found are shown below." The app shows it as a pest result ("Pest detected"). `leaf_check` (`is_tomato_leaf`, `p_other`, `threshold`, `model`) is in every result when the model is installed.
-
-`crop`: the crop detected in the photo, e.g. `{"name": "tomato", "source": "leaf_check"}`, or `null` when no leaf of a supported crop was found. The farmer never selects the crop. `supported_crops` (also in `/api/info`): crops whose leaf diseases are checked, `["tomato"]` in Phase 1; a crop-identification model fills `crop` in Phase 2.
-
-`refer_to_expert` (true / false): the case should go to an extension worker - lesions on at least 25% of the leaf (severity `high`), an urgent disease (late blight), a virus disease (leaf curl, mosaic: severity `not_applicable`) or
-a `high` pest level for the photo. `messages` then contains "This looks serious. Show the affected leaves to your local KVK or agriculture officer soon, or call the Kisan Call Centre on 1800-180-1551 (free)." in the display language.
-
-Fields of an `answered` result:
-
-| Field | Content | How to show it |
-|---|---|---|
-| `disease.name` | disease name in the chosen language (null if not answered) | title |
-| `disease.top[0].probability` | confidence 0-1 of the top class | "Model confidence 94%" |
-| `disease.urgent` | true for fast-spreading diseases | red "Urgent - act today" |
-| `disease.reliability` | `good` / `medium` / `low` | for `low` a message asks to confirm with the KVK |
-| `disease.topic` | internal id (`early_blight` ...) | keep it: needed for `/api/ask` |
-| `severity.level` | `low` / `medium` / `high` / `unknown`; may be missing | "Estimated spread on this leaf: high (rough estimate)"; hide if `unknown` |
-| `pests[]` | one entry per detected insect: `name`, `species`, `species_reliable`, `confidence`, `topic`, `box_xyxy` (pixels of the sent image) | "Insect found: Whitefly"; give the species only if `species_reliable` is true (`name` / `topic` can still be a group such as Caterpillars or Thrips when the species is uncertain); boxes may be drawn on the photo |
-| `messages[]` | short sentences the farmer must see (spray rule, uncertainty, KVK) | show all, as notes, above the advice |
-| `llama.text` | Llama's explanation, already checked against the sources; **null** when the check rejected it | if not null: an "Advice" card; if null: show nothing (the extracts below are the advice) |
-| `advice_blocks[]` | one block per diagnosed topic: `name`, `chunks[]` | main content (below) |
-| `quality`, `timings_ms`, `llama.stats` | photo checks and timings | optional "technical details" section |
-
-Each `advice_blocks[].chunks[]` entry is one verified extract:
-`section` (`symptoms`, `spread`, `cultural`, `mechanical`, `biological`, `chemical`, `monitoring`, `safety`, ...),
-`text`, `source_org`, `source_title`, `url`, and for `section == "chemical"` also `product`, `dose`, `note`.
-
-Display rules (these are safety rules, not style):
-- Every extract is shown with its source (`source_org`), e.g. "... yellow margin. [TNAU]".
-- Spray advice (`section == "chemical"`) goes in a separate table: product, dose and source exactly as given, with
-  `note` under the product. Never shorten or rephrase product names or doses; the `messages` entry about sprays must
-  be visible next to the table.
-- The Llama text is shown only when `llama.text` is not null, and always together with the extracts.
-- In Hindi (`lang=hi`) the names, extracts and messages are already in Hindi; there is no Llama text.
-
-### `POST /api/ask`
-Body (JSON): `{"question": "when can I harvest after spraying?", "topic": "late_blight", "lang": "en"}`
-(`topic` from the last `disease.topic`, may be null).
-Answer: `answer` (Llama's answer, already checked; **null** if rejected), `facts[]` (the extracts used, same fields as
-the chunks above), `accepted`, `rejected_reasons`, `stats`. Show `answer` if not null, then always the `facts` with
-their sources.
-
-## Moving from the mock to the Pi
-
-- Run on the Pi: `./krishirakshak --root . --serve 8080` (it prints `serving on http://0.0.0.0:8080/`).
-- Point the app at `http://<pi-ip>:8080` instead of `http://localhost:8080`. Nothing else changes.
-- A native Android/Flutter app needs no extra setting. A web app served from another address needs CORS headers from
-  the device server; the current C++ server does not send them yet (it serves its own page). Tell the team if your
-  app is a separate web app and they will be added.
-- The device handles one request at a time (requests wait); show the waiting state until the answer arrives.
+[api_examples/](api_examples/) holds real answers of the Pi: the analyse answers are from the final end-to-end test
+(`_seconds`, the client-side time, removed), `info.json`, the uncertain answer and the ask answer were captured from
+the Pi on 25 Nov 2026 with the same build. For work on the app without a Pi, `python tools/mock_api_server.py`
+serves app/web and answers with these files (`?example=pest`, `uncertain`, `not_tomato`, `retake`, `healthy`, or
+any `translate` value for the Marathi answer).

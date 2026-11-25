@@ -5,7 +5,7 @@
   "rss_units": "MiB (Linux ru_maxrss / 1024), includes imports, loading and quantization",
   "pi": {
     "measured": false,
-    "reason": "WSL-only per project owner; no Pi downloads or inference"
+    "reason": "first experiment on the development PC only; no Pi downloads or inference"
   },
   "backends": {
     "fp32": {

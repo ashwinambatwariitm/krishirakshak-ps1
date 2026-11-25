@@ -41,7 +41,7 @@ def read_cpu():
 
 
 def read_temp():
-    """CPU temperature in C from sysfs (as in the road anomaly detection project)."""
+    """CPU temperature in C from sysfs."""
     with open("/sys/class/thermal/thermal_zone0/temp") as f:
         return int(f.read()) / 1000.0
 

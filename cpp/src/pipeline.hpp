@@ -59,8 +59,8 @@ struct PipelineConfig {
     std::string translateModel = "models/indictrans2_en_indic_200M_ct2_int8";   // CTranslate2 model folder
     std::string translateSpm = "models/indictrans2_model.SRC";                  // SentencePiece source model
     float diseaseThreshold = 0.85f;   // results/disease_v5_threshold/threshold.json
-    int visionThreads = 2;
-    int severityThreads = 4;          // runs after the two vision models, alone on the four cores            // per model; disease and pest run in parallel -> 4 cores
+    int visionThreads = 2;            // per thread: leaf check + disease and pests run in parallel -> 4 cores
+    int severityThreads = 4;          // runs after the two vision threads, alone on the four cores
     int llamaThreads = 4;             // XNNPACK thread pool for Llama (runs after vision, so it gets all 4 cores)
     // Translation runs after Llama. 2 threads, whole answer in one batch: fastest on the Pi 5 (4 threads is several
     // times slower; results/indictrans2/ct2_pi5/README.md)
@@ -68,7 +68,7 @@ struct PipelineConfig {
     bool useLlama = true;
     bool useTranslator = true;
     bool parallelVision = true;
-    // Thermal guard (as in the road anomaly detection project): at or above this CPU temperature Llama is skipped for
+    // Thermal guard: at or above this CPU temperature Llama is skipped for
     // the photo and the verified extracts are shown alone, so the Pi does not heat further (it throttles at about
     // 80-85 C). The hottest point measured in normal use was 62 C (results/pi5_bench/2026-11-21_power/).
     double llamaMaxTempC = 80.0;

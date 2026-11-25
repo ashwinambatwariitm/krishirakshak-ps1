@@ -45,7 +45,7 @@ if(CMAKE_CROSSCOMPILING)
     set(OpenCV_LIBS opencv_core opencv_imgproc opencv_imgcodecs)
     set(CT2_ROOT "$ENV{HOME}/arm_libs/ctranslate2_arm" CACHE PATH "CTranslate2 for aarch64")
     set(SPM_ROOT "$ENV{HOME}/arm_libs/sentencepiece_arm" CACHE PATH "SentencePiece for aarch64")
-    # Libraries of the Pi's own OS are resolved at run time on the Pi (same approach as road-anomaly-detection)
+    # Libraries of the Pi's own OS are resolved at run time on the Pi
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--allow-shlib-undefined -Wl,--unresolved-symbols=ignore-in-shared-libs")
 else()
     message(STATUS "Native build (development machine)")

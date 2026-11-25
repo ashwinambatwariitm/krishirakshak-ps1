@@ -1,4 +1,7 @@
-"""Run the tomato disease classifier and the insect pest detector on photos.
+"""Quick check of the PyTorch training checkpoints: tomato disease classifier and insect pest detector on photos.
+
+This is a development tool for the first released checkpoints (v4 10-class disease model, IP102 species pest model).
+The application on the Pi runs the deployed ONNX models in the C++ program (cpp/), see models/README.md.
 
 Usage:
     python tools/predict.py leaf.jpg
@@ -96,7 +99,7 @@ def main():
     parser.add_argument("--pest-conf", type=float, default=0.25, help="pest detection confidence (0.2 to 0.3)")
     parser.add_argument("--min-confidence", type=float, default=0.5,
                         help="below this disease probability the answer is reported as uncertain "
-                             "(engineering default, not yet tuned on validation data)")
+                             "(the application uses 0.85, chosen on validation data for the v5 model)")
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--no-pest", action="store_true", help="run only the disease classifier")
     parser.add_argument("--json", help="also write all predictions to this JSON file")

@@ -1,11 +1,30 @@
 {
-  "disease_model": "tomato_disease_v5_effb0_6class.onnx",
+  "cpu_freq_mhz": 2400.0,
+  "cpu_temp_c": 57.3,
+  "disease_model": "tomato_disease_v5_effb0_6class_int8.onnx",
   "kb_reviewed": false,
   "kb_version": "tomato_kb_v3",
-  "llama": "models/llama3_2_1b_instruct_8da4w.pte",
-  "load_ms": 4193.150841,
+  "leaf_check_model": "tomato_leaf_check_v2_effb0.onnx",
+  "llama": "models/llama3_2_1b_krishirakshak_lora_8da4w.pte",
+  "load_ms": 16248.899934,
   "ort_spinning": false,
-  "pest_model": "pest_yolov8n_ip102_negatives.onnx",
+  "pest_model": "pest_yolov8n_groups_int8.onnx",
   "runtime": "C++",
+  "severity_model": "severity_lraspp_mnv3.onnx",
+  "supported_crops": [
+    "tomato"
+  ],
+  "translation_languages": [
+    "hi",
+    "te",
+    "mr",
+    "kn",
+    "ta",
+    "bn",
+    "gu",
+    "or",
+    "pa"
+  ],
+  "translator": "models/indictrans2_en_indic_200M_ct2_int8",
   "vision_threads_per_model": 2
 }

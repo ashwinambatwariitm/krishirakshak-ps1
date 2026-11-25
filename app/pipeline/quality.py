@@ -2,8 +2,8 @@
 
 A poor photo should never get a confident diagnosis; the farmer is asked to take another one instead.
 
-The thresholds below are engineering defaults chosen to reject only clearly unusable photos. They still have to be
-checked on PlantDoc validation photos and on Raspberry Pi camera photos (docs/ROADMAP.md task B3).
+The thresholds below are engineering defaults chosen to reject only clearly unusable photos. Checking them on photos
+taken in Indian farms is part of the Phase 2 field-photo work (item P1 of the technical report).
 """
 import cv2
 import numpy as np

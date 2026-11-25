@@ -146,7 +146,7 @@ training/       training scripts (training/src) and the Kaggle notebook builder
 kaggle/         the generated notebook of every training run
 tools/          evaluation, export, benchmark, translation and end-to-end test tools
 results/        metrics, confusion matrices, split manifests and Pi measurements of every run
-docs/           technical report, results, API, severity, translation, Llama quality, Phase 1 task list
+docs/           technical report, results, API, severity, translation, Llama quality
 models/         README with download commands and checksums (model files are release assets)
 ```
 

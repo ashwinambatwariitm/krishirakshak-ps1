@@ -1,12 +1,16 @@
 /*
- * pest_detector.hpp - IP102 insect pest detector (YOLOv8n fine-tuned with insect-free leaves) on ONNX Runtime.
+ * pest_detector.hpp - insect pest detector (YOLOv8n) on ONNX Runtime.
+ *
+ * Deployed model: 6 advice groups (aphid, whitefly, thrips, mite, caterpillar, other insect), trained with
+ * insect-free leaves (training/src/pest_groups.py, results/pest_groups). The earlier IP102 species model (102
+ * classes, results/pest_yolov8n_with_negatives) is still supported: class names come from the labels file and the
+ * advice topic of each class from pest_config.json ("topic_by_class" for the group model).
  *
  * Input: square 640 x 640 letterbox with grey (114) padding, same rounding as Ultralytics LetterBox, RGB / 255.
- * Output (1, 106, 8400): cx, cy, w, h + 102 class scores per candidate. Decoding and non-maximum suppression are
+ * Output (1, 4 + classes, 8400): cx, cy, w, h + class scores per candidate. Decoding and non-maximum suppression are
  * done here with the Ultralytics rules: one class per candidate, class-aware NMS (IoU 0.7), at most 300 boxes.
- * Species are named only for ids that were reliable on the IP102 test set (pest_config.json); advice groups that are
- * reliable as a group (pest_config.json "reliable_groups", results/pest_groups_ip102) get their topic's advice even when
- * the species is not.
+ * Only classes listed as reliable in pest_config.json ("reliable_species_ids": aphid, thrips, caterpillar for the
+ * group model) get their topic's specific advice, the others get the general insect advice.
  */
 #pragma once
 

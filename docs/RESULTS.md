@@ -89,7 +89,8 @@ virus are the most useful next step.
 
 ### Deployment footprint (`results/disease_v4_all_10_classes/footprint*.csv`)
 
-Measured with PyTorch on a Kaggle x86 CPU (4 threads). Raspberry Pi 5 numbers must be measured after ONNX export.
+Measured with PyTorch on a Kaggle x86 CPU (4 threads). The Raspberry Pi 5 numbers of the deployed ONNX models are in
+"Precision on the device" below.
 
 | | EfficientNet-B0 | MobileNetV3-Small |
 |---|---|---|
@@ -102,7 +103,7 @@ Measured with PyTorch on a Kaggle x86 CPU (4 threads). Raspberry Pi 5 numbers mu
 
 Scaling to more crops (EfficientNet-B0): one model for all 14 PlantVillage crops (38 classes) is about 16.2 MB with
 the same latency and RAM; one model per crop (14 crops) is about 225 MB FP32 / 56 MB INT8 on disk with one model in RAM
-at a time. The Python/PyTorch runtime itself used about 630 MB; the Pi application will use ONNX Runtime from C++.
+at a time. The Python/PyTorch runtime itself used about 630 MB. The Pi application uses ONNX Runtime from C++ instead.
 
 ### v5 - six classes for the Phase 1 demo (`results/disease_v5_six_classes/`)
 
@@ -161,7 +162,7 @@ field and lab validation.
 | Natural Images | 483 | 99.2% | 12.0% |
 | hardest crops: potato / pepper | 432 / 342 | 67.6% / 84.5% | 2.5% / 6.1% |
 
-The target of docs/ROADMAP.md A1 (at least 90% of non-tomato photos rejected, at most 5% of tomato field photos) is
+The Phase 1 target (at least 90% of non-tomato photos rejected, at most 5% of tomato field photos) is
 met for field photos (3.5%) but not for leaf crops (6.7%). Thresholding the disease model's confidence does not work
 (5.5% rejected at the same tomato rejection). On the Raspberry Pi 5 the check takes 74 ms and runs next to the pest
 detector, so the vision step is not slower. On a photo that is not a tomato leaf the application shows no disease
@@ -187,6 +188,10 @@ The other subsets change by at most 2.6 points. Tomato field photos rejected in 
 within the 5% target.
 
 ## IP102 pest detector (YOLOv8n, all classes)
+
+This section and the next three describe the earlier species model (102 IP102 classes). On 21 Nov 2026 it was replaced
+in the application by the detector with 6 advice groups ("Pest detector by advice group" below). The species-model
+results are kept because they led to that choice.
 
 Data: 18,976 annotated images (13,662 train, 1,516 validation, official 3,798 test). One malformed annotation file was
 repaired and one degenerate box dropped. The class code in IP102 file names disagrees with the annotated class for
@@ -214,20 +219,20 @@ confidence threshold is chosen on the validation negatives.
 The false-alarm problem is solved without losing detection accuracy. 34 species meet the "reliable to name" bar
 (at least 10 test boxes, 70% species accuracy when found, AP50 of 0.5). For tomato-relevant pests the insect is found
 89-100% of the time; species naming is reliable for aphids (94%) and about 60% for whitefly, red spider mite,
-Spodoptera litura, black cutworm and thrips, so the application should present those species as a suggestion.
+Spodoptera litura, black cutworm and thrips, so the species model could only present those species as a suggestion.
 
 ### Accuracy per advice group (`results/pest_groups_ip102/`, `training/src/ip102_pest_groups.py`)
 
 The advice the farmer sees is per knowledge-base topic, and several topics are groups of IP102 species
-(`caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 species). The application names a topic only when the
-*species* is reliable (`pest_config.json`), which among tomato pests is only aphids; a found cutworm whose exact
-species is uncertain gets the generic `insect_other` advice. This evaluation scores the deployed ONNX models (FP32 and
+(`caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 species). With the species model the application named a
+topic only when the *species* was reliable (`pest_config.json`), which among tomato pests was only aphids. A found cutworm whose exact
+species was uncertain got the generic `insect_other` advice. This evaluation scores the deployed ONNX models (FP32 and
 the INT8 model of the Pi) with the application's own pre/post-processing (`pest_detector.cpp`) on the IP102 test split;
 its per-species numbers reproduce `per_species_results.csv` exactly. "Group right" = the best class of the matched box
 is in the right group; "precision" = of all boxes the app would label with the group, the share that overlaps a
 ground-truth insect of that group.
 
-INT8, threshold 0.2, knowledge-base mapping of today:
+INT8, threshold 0.2, knowledge-base mapping of 20 Nov 2026:
 
 | Advice group | Test boxes | Insect found | Exact species right (top-2) | **Group right** | Group precision |
 |---|---|---|---|---|---|
@@ -244,13 +249,14 @@ INT8, threshold 0.2, knowledge-base mapping of today:
 - Most group errors go to species outside the tomato groups ("other": 43 of 314 found caterpillars) or between
   caterpillars and Spodoptera litura ("Prodenia litura", class 86; 35 + 21 boxes). With class 86 merged into
   caterpillars (mapping `kb_with_86`) the group is 86% right when found with 81% precision (INT8; FP32 85% / 82%).
-- **Applied in the application** (20 Nov): `pest_config.json` lists `reliable_groups` = caterpillars, thrips; the
+- **Applied in the application on 20 Nov** (species model, replaced on 21 Nov by the group model): `pest_config.json` lists `reliable_groups` = caterpillars, thrips; the
   knowledge base maps class 86 to caterpillars; `KnowledgeBase::pestTopic` (C++) and `pest_topic` (Python) give a
   reliable group's topic even when the species is uncertain, and the "species uncertain" message is still shown.
   Mites stay generic (58%). Tests: `pest_severity_test` and `tools/check_pest_severity.py`.
 - An extended mapping (more aphid and mite species, Spodoptera litura, greenhouse whitefly, leafhoppers, mealybugs,
   fruit flies) is scored in `group_results.csv`; leafhoppers (98%) and fruit flies (100%) are reliable groups,
-  whitefly is not (73% right, 42% precision). The KB advice for these topics would have to fit those species first.
+  whitefly is not (73% right, 42% precision). These topics were not added: the knowledge-base advice would first have
+  to be checked for those species.
 - IP102 photos are mostly close-ups from the web; these are not field numbers for insects on tomato leaves.
 
 ### Independent test set: 8 tomato pests from other sources (`results/pest_independent_huang/`, `training/src/pest_independent_test.py`)
@@ -260,11 +266,11 @@ Mendeley Data V1, 2020, doi:10.17632/s62zm6djd2.1, CC BY 4.0), collected from IP
 search: insects on plants (often cotton, maize or cabbage, not only tomato), 299 x 299 pixels. This is an
 out-of-source check, not a tomato field test. 31 images are near-copies of IP102 images (perceptual hash, Hamming
 distance <= 8 of 64; 19 identical) and are left out below (578 images). Deployed INT8 model, threshold 0.2; "advice"
-is the set of topics of all boxes, as in the application. Rules: today = topic only for reliable species; group =
-also for species of the reliable advice groups (caterpillars, thrips), KB mapping of today; extended = the extended
+is the set of topics of all boxes, as in the application. Rules: species = topic only for reliable species (the rule of 20 Nov); group =
+also for species of the reliable advice groups (caterpillars, thrips), KB mapping of 20 Nov; extended = the extended
 mapping (with Spodoptera litura, whitefly, fruit flies, ...) and its reliable groups.
 
-| Pest (images) | Expected advice | Insect found | Right advice today | Right advice, group rule | Right advice, extended |
+| Pest (images) | Expected advice | Insect found | Right advice, species rule | Right advice, group rule | Right advice, extended |
 |---|---|---|---|---|---|
 | Tetranychus urticae, spider mite (70) | mites | 67% | 0% | 0% | 1% |
 | Myzus persicae, aphid (125) | aphids | 66% | 58% | 58% | 58% |
@@ -277,7 +283,7 @@ mapping (with Spodoptera litura, whitefly, fruit flies, ...) and its reliable gr
 
 | All 578 images | Right advice | Caterpillar advice for S. litura / Helicoverpa | Advice for a wrong kind of pest | Generic advice only | No insect found |
 |---|---|---|---|---|---|
-| today | 12.6% | 0% | 1.2% | 53.1% | 33.0% |
+| species rule | 12.6% | 0% | 1.2% | 53.1% | 33.0% |
 | group rule (KB mapping) | 19.9% | 8.3% | 1.7% | 37.0% | 33.0% |
 | extended mapping | 26.3% | 8.3% | 6.2% | 26.1% | 33.0% |
 
@@ -381,7 +387,7 @@ AP50 change -0.011; the largest drops are rare species with fewer than 25 test b
 ### Size, RAM and latency (`results/int8_ptq/bench_pc_x86.csv`, `tools/bench_onnx.py`)
 
 Measured on a development PC (Intel i5-12500H, ONNX Runtime 1.23, batch 1, 4 threads). These numbers are only a
-reference: the deployment numbers must be measured on the Raspberry Pi 5 with the same tool.
+reference. The Raspberry Pi 5 numbers are in "Precision on the device" below.
 
 | Model | Size | Extra RAM (session / peak) | Latency median |
 |---|---|---|---|
@@ -394,7 +400,7 @@ reference: the deployment numbers must be measured on the Raspberry Pi 5 with th
 
 INT8 cuts model size by 3.2-3.5x and RAM by up to 3x, but is slower than FP32 on this x86 CPU: S8S8 activations are
 not ONNX Runtime's fast path on Intel (a UINT8-activation prototype was faster there), and the mixed-precision
-boundaries add conversion steps. S8S8 is the recommended path on Arm, so the speed comparison is decided on the Pi 5.
+boundaries add conversion steps. S8S8 is the recommended path on Arm, and on the Pi 5 the INT8 vision step is 2.2x faster than FP32 (next section).
 
 ## Precision on the device: FP32 vs quantised models (21 Nov 2026)
 
@@ -408,7 +414,7 @@ the Raspberry Pi 5 (8 GB, 4 cores, no throttling, 49-59 C).
 | Pest detector by advice group | INT8 | 12 -> 3.4 MB | 578 independent pest photos: insects found 85.1% -> 84.9%, right advice 25.4% -> 26.0%, wrong-pest advice 4.7% -> 4.3% (`results/pest_groups/independent_huang_fp32/`) | 114 ms per photo |
 | IP102 species pest model (previous) | INT8 | 13.6 -> 3.9 MB | IP102 test mAP50 0.571 -> 0.560; same 578 photos: right advice 20.4% -> 20.1% (group rule) | 131 ms |
 | Tomato-leaf check | FP32 (no INT8 version) | 16 MB | - | 74 ms, in parallel with the pest detector |
-| Severity (LR-ASPP) | FP32 | - | - | about 130 ms |
+| Severity (LR-ASPP) | FP32 | 12.9 MB | - | about 130 ms |
 | **Llama 3.2 1B** | **INT4 8da4w, XNNPACK** | **6.0 GB -> 0.86 GB** | see below | see below |
 
 **Llama 3.2 1B on the Raspberry Pi 5** (`results/pi5_bench/2026-11-21_llama_precision/`): `krishirakshak
@@ -444,10 +450,10 @@ INT4 LoRA Llama, IndicTrans2 INT8), official 27 W supply, active cooler, 32-61 C
 |---|---|---|---|---|---|
 | Idle (application loaded, waiting) | - | 1.45 W / 2.5 W | 0.1% | - | 37 C |
 | Vision only: photo check, leaf check, disease and pest models (8 photos rejected as not a tomato leaf) | 0.14 s (vision 118 ms) | 4.5 W / 8.4 W | 40-90% | 0.6 J | 44 C |
-| Full answer: vision + Llama advice + Marathi translation (5 tomato disease photos) | 6.8 s median (4.2-18.1 s) | 5.5 W / 8.3 W | 88% | 39 J median, 50 J mean (0.014 Wh) | 61 C |
+| Full answer: vision + Llama advice + Marathi translation (5 tomato disease photos, 21 Nov) | 6.8 s median (4.2-18.1 s) | 5.5 W / 8.3 W | 88% | 39 J median, 50 J mean (0.014 Wh) | 61 C |
 
-- Temperature and clock are read from sysfs (`/sys/class/thermal/thermal_zone0/temp`, cpu0 `scaling_cur_freq`), as in
-  the road anomaly detection project, five times per second. Under load (CPU above 50%) the clock was 2400 MHz, the
+- Temperature and clock are read from sysfs (`/sys/class/thermal/thermal_zone0/temp`, cpu0 `scaling_cur_freq`) five times per
+  second. Under load (CPU above 50%) the clock was 2400 MHz, the
   Pi 5 maximum, in 239 of 240 samples (one 1800 MHz reading while the `ondemand` governor ramped up); the firmware
   reported no throttling (`throttled=0x0`). One full answer warms the CPU by about 10 C (33.7 -> 43.6 C).
 - Every analysis result now carries `device` (CPU temperature before and after the photo, CPU clock), and a thermal
@@ -463,14 +469,40 @@ INT4 LoRA Llama, IndicTrans2 INT8), official 27 W supply, active cooler, 32-61 C
   run at the same time on two cores each (vision 114-131 ms with peak RAM well below the 8 GB); Llama and translation
   run after them, one at a time.
 
-## Recommended models
+## Final end-to-end test on the Raspberry Pi 5 (23-24 Nov 2026, `results/e2e_pi5/`)
+
+The power test above (21 Nov) used 5 photos. The final test sent 36 photos in all 10 languages to the deployed
+application, through the HTTP API (360 runs) and through the farmer app (360 runs), with no failures. Details are in
+[results/e2e_pi5/README.md](../results/e2e_pi5/README.md).
+
+| | Median | Range |
+|---|---|---|
+| Whole answer, translated | 8.36 s | 4.72-20.13 s |
+| Llama 3.2 1B LoRA INT4 | 7.28 s | 3.72-14.78 s |
+| Llama first token | 2.4 s | 1.8-3.7 s |
+| Translation (IndicTrans2 CTranslate2 INT8) | 1.09 s | 0.70-5.49 s |
+| Vision (leaf check, disease, pests in parallel) | 114 ms | 112-136 ms |
+
+Peak memory of the application during the test was 1.74 GB of 8 GB.
+
+## Models used in the application
 
 | Task | Model | Notes |
 |---|---|---|
-| Tomato disease, Phase 1 demo (6 classes) | v5 EfficientNet-B0, seed 7 | Field accuracy 76% (crops); 88% on answered photos with the 0.85 "uncertain" threshold; INT8 5.0 MB with no meaningful accuracy loss |
-| Tomato disease, small fallback (6 classes) | v5 MobileNetV3-Small, seed 42 | Field accuracy 75% (crops); INT8 1.9 MB |
-| Tomato disease, all 10 classes (extended coverage) | v4 EfficientNet-B0, seed 7 | Field macro F1 about 0.62 |
+| Photo is a tomato leaf | Leaf check v2, EfficientNet-B0, FP32 | 94.6% of other crops, insects and objects rejected, 74 ms on the Pi |
+| Tomato disease (6 classes) | v5 EfficientNet-B0, seed 7, INT8 | Field accuracy 76% (crops), 88% on answered photos with the 0.85 "uncertain" threshold, 5.0 MB |
+| Insect pests (6 advice groups) | YOLOv8n by advice group, INT8 | Confidence threshold 0.2, advice for aphid, thrips and caterpillar, other groups get general insect advice |
+| Severity | LR-ASPP MobileNetV3-Large segmentation, FP32 | Level agrees with plant pathologists on 74% of 68 graded photos without virus diseases, 12.9 MB |
+| Advice in simple words | Llama 3.2 1B with LoRA, INT4 8da4w, ExecuTorch XNNPACK | Every sentence checked against the source extracts |
+| Translation | IndicTrans2 en-indic 200M, CTranslate2 INT8 | 9 Indian languages, 2 threads, one batch per answer |
+
+Other trained models, not used in the application:
+
+| Task | Model | Notes |
+|---|---|---|
+| Tomato disease, small fallback (6 classes) | v5 MobileNetV3-Small, seed 42 | Field accuracy 75% (crops), INT8 1.9 MB |
+| Tomato disease, all 10 classes | v4 EfficientNet-B0, seed 7 | Field macro F1 about 0.62 |
 | Tomato disease, 5 classes (earlier alternative) | v3 EfficientNet-B0, seed 42 | Field macro F1 about 0.78 on a different class set and test split |
-| Insect pests | YOLOv8n fine-tuned with negatives | Confidence threshold 0.2 (FP32 and INT8) |
+| Insect pests, IP102 species | YOLOv8n fine-tuned with negatives | Earlier species model, confidence threshold 0.2 |
 
 Download links and input specifications are in `models/README.md`.
