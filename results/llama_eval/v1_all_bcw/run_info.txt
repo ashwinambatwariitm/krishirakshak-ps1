@@ -1,1 +1,1 @@
-prompt=prompts/aman_v1_per_sentence.txt options=--block-cause-words
+prompt=prompts/advisor_v1_per_sentence.txt options=--block-cause-words

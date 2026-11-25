@@ -1,1 +1,1 @@
-prompt=prompts/aman_v3_no_keyword_list.txt options=
+prompt=prompts/advisor_v3_no_keyword_list.txt options=

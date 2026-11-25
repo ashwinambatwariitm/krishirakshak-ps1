@@ -13,7 +13,7 @@
 # | `direct_effb0` | EfficientNet-B0, 5-class, PlantVillage + PlantDoc |
 # | `cascade_mnv3s` | Healthy/Diseased gate -> 4-disease model, both MobileNetV3-Small, PlantVillage + PlantDoc |
 #
-# Rules (see `docs/PROJECT_HANDOFF.md`): online augmentation only (never saved); splits made before augmentation and grouped
+# Rules (see `docs/RESULTS.md, "Test data rules"`): online augmentation only (never saved); splits made before augmentation and grouped
 # so the same leaf/photo never crosses splits; the two PlantDoc copies on Kaggle are merged by perceptual hash so a
 # photo cannot be in train via one copy and in test via the other; PlantDoc images resembling PlantVillage are dropped.
 #

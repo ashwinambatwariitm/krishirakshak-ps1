@@ -9,7 +9,8 @@
  *   retrieveForDiagnosis(topic)  deterministic: all extracts of the diagnosed disease/pest in reading order
  *                                (symptoms, spread, field practices, biological, resistant varieties), then at most
  *                                three spray options (per-litre ICAR doses first), then the safety rules
- *   search(question)             BM25 ranking over the English extracts for follow-up questions
+ *   search(question, topic)      BM25 ranking for follow-up questions (topic chunks get a bonus), or the topic's
+ *                                management advice when the question has only generic words ("how to fix this disease")
  */
 #pragma once
 

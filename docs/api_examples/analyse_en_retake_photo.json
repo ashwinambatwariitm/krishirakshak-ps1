@@ -1,25 +1,37 @@
 {
+  "demo_log": [
+    {
+      "ms": 0.0,
+      "stage": "request",
+      "text": "photo 100x100 px, answer language en, CPU 59.0 C"
+    },
+    {
+      "ms": 3.6,
+      "stage": "quality",
+      "text": "OpenCV photo check: brightness 102, sharpness (Laplacian var) 149 -> retake photo (3.6 ms)"
+    }
+  ],
+  "display_lang": "en",
   "lang": "en",
   "messages": [
-    "The photo is too dark. Take it in daylight.",
-    "The photo is blurred. Hold the camera still and focus on one leaf."
+    "The photo is too small. Move closer to the leaf."
   ],
   "quality": {
     "issues": [
-      "too_dark",
-      "too_blurred"
+      "too_small"
     ],
     "metrics": {
-      "brightness": 9.274885110294118,
-      "height": 499,
-      "sharpness": 1.9527515807036298,
-      "width": 750
+      "brightness": 102.29455184936523,
+      "height": 100,
+      "sharpness": 149.45298767089844,
+      "width": 100
     },
     "ok": false
   },
   "status": "retake_photo",
   "timings_ms": {
-    "quality": 6.720706,
-    "total": 6.765696
-  }
+    "quality": 3.563318,
+    "total": 3.651671
+  },
+  "translation": null
 }

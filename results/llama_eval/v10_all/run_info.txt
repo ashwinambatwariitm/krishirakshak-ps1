@@ -1,1 +1,1 @@
-prompt=prompts/aman_v10_no_diagnosis.txt options=
+prompt=prompts/advisor_v10_no_diagnosis.txt options=

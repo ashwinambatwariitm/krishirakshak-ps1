@@ -24,8 +24,8 @@
 # are removed (they would teach the model that a tomato photo is "other").
 #
 # **Threshold:** a photo is rejected when P(other) is above a threshold chosen on validation so that at most
-# `MAX_TOMATO_REJECT_VAL` of the tomato validation photos (field and lab, each) are rejected. Target from
-# docs/ROADMAP.md (A1): at least 90% of non-tomato photos rejected, at most 5% of tomato field photos rejected.
+# `MAX_TOMATO_REJECT_VAL` of the tomato validation photos (field and lab, each) are rejected.
+# Target: at least 90% of non-tomato photos rejected, at most 5% of tomato field photos rejected.
 #
 # **Baseline:** the obvious alternative without a new model - reject when the v5 disease model's top probability is
 # low - is evaluated on the same test images with a threshold chosen the same way.

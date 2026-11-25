@@ -1,7 +1,7 @@
 {
   "runtime": "C++ krishirakshak --eval-advisor",
   "pte": "llama3_2_1b_instruct_8da4w.pte",
-  "prompt": "aman_v10_no_diagnosis.txt",
+  "prompt": "advisor_v10_no_diagnosis.txt",
   "options": "",
   "topics": 27,
   "accepted": 24,

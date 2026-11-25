@@ -3,7 +3,7 @@
     photo -> quality gate -> disease classifier + pest detector (ONNX Runtime)
           -> decision (answer / uncertain) -> estimated severity
           -> retrieval of verified extracts (SQLite) -> Llama explanation (ExecuTorch) -> output check
-          -> result dictionary (shown by the Flask user interface, or printed as JSON by run_pipeline.py)
+          -> result dictionary (printed as JSON by run_pipeline.py, the Python reference for the C++ program)
 
 All models are loaded once in Pipeline.__init__ and stay in memory; requests run one after the other
 (vision first, then Llama), which keeps peak memory low on the Raspberry Pi 5.

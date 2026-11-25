@@ -13,6 +13,7 @@
  * ones Llama receives, plus the grounding word lists; input of the LoRA training notebook:
  *   build/x86/grounding_test . --dump-facts results/llama_lora/prompt_facts.json
  */
+#include <algorithm>
 #include "knowledge_base.hpp"
 #include "output_guard.hpp"
 #include <fstream>
@@ -96,7 +97,7 @@ int main(int argc, char** argv) {
         // Llama 3.2 3B faithful rewrites in plain words (same-meaning groups: edge = margin, spots = lesions)
         {"septoria_leaf_spot", nullptr, "Small, round spots with a grey center and dark edge on leaves.", true},
         {"early_blight", nullptr, "Get rid of the leftover crop debris.", true},
-        // Faithful Llama 3.2 1B rewrites that must stay (laptop evaluation by Aman, docs/llama_1b_quality.md)
+        // Faithful Llama 3.2 1B rewrites that must stay (laptop evaluation, docs/llama_1b_quality.md)
         {"healthy", nullptr, "Use only necessary, label-claimed pesticides.", true},
         {"septoria_leaf_spot", nullptr, "Spots start on lower leaves and gradually advance upwards.", true},
         {"fruit_rots", nullptr, "Staking of plant to avoid fruit contact.", true},
@@ -148,6 +149,22 @@ int main(int argc, char** argv) {
         const bool kept = kr::keepGroundedSentences(c.text, facts).keptCount == 1;
         fails += kept != c.expectKept;
         std::cout << (kept == c.expectKept ? "PASS " : "FAIL ") << (kept ? "kept    " : "dropped ") << c.text << "\n";
+    }
+    // Kisan AI search: a question with only generic words after a diagnosis gets that topic's advice (phone test 25 Nov
+    // 2026: "How to fix this disease" after septoria leaf spot returned insect and other-disease extracts)
+    for (const char* topic : {"septoria_leaf_spot", "late_blight", "early_blight"}) {
+        const auto facts = kb.search("How to fix this disease", topic, 4, "en");
+        const bool ok = !facts.empty() &&
+            std::all_of(facts.begin(), facts.end(), [&](const kr::KbChunk& f) { return f.topic == topic; });
+        fails += !ok;
+        std::cout << (ok ? "PASS " : "FAIL ") << "search \"How to fix this disease\" after " << topic << "\n";
+    }
+    // A question with its own subject is ranked as before: the general waiting-period rule must be found
+    {
+        const auto facts = kb.search("when can I harvest after spraying", "late_blight", 4, "en");
+        const bool ok = std::any_of(facts.begin(), facts.end(), [](const kr::KbChunk& f) { return f.topic == "general"; });
+        fails += !ok;
+        std::cout << (ok ? "PASS " : "FAIL ") << "search \"when can I harvest after spraying\" finds the general rule\n";
     }
     std::cout << fails << " failures\n";
     return fails != 0;

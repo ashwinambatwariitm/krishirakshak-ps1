@@ -6,7 +6,8 @@ Inputs:
                                                 and the ICAR Indian Horticulture articles
     app/kb/extracts/pesticide_regulation.json   pesticides banned / restricted in India, with the reference used
 Each candidate extract was copied from its source with only line-break, spacing and hyphenation clean-up; each one
-records a locator (section / page). The checks used before merging are described in docs/KNOWLEDGE_BASE.md.
+records a locator (section / page). The checks used before merging are the rules below and the knowledge-base
+section of the technical report (docs/KrishiRakshak_Technical_Report.pdf).
 
 Rules applied here:
 - extracts that name a pesticide banned in India are dropped (spray rows and advice text alike);

@@ -1,0 +1,810 @@
+{
+  "advice_blocks": [
+    {
+      "chunks": [
+        {
+          "dose": "",
+          "id": 1,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "symptoms",
+          "source_id": "TNAU_EB",
+          "source_org": "TNAU",
+          "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+          "text": "\u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0938\u0939 \u0932\u0915\u094d\u0937\u094d\u092f\u093e\u0938\u093e\u0930\u0916\u094d\u092f\u093e \u0930\u091a\u0928\u0947\u0924 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0930\u093f\u0902\u0917 \u0905\u0938\u0932\u0947\u0932\u0947 \u0924\u092a\u0915\u093f\u0930\u0940 \u0920\u093f\u092a\u0915\u0947. \u092b\u0933\u093e\u0902\u0928\u093e \u0915\u0945\u0932\u093f\u0915\u094d\u0938 \u0915\u093f\u0902\u0935\u093e \u0916\u094b\u0921\u093e\u091a\u094d\u092f\u093e \u091c\u094b\u0921\u0923\u0940\u0926\u094d\u0935\u093e\u0930\u0947 \u0938\u0902\u0938\u0930\u094d\u0917 \u0939\u094b\u0924\u094b; \u092b\u0933\u093e\u0902\u0935\u0930 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0924\u092a\u0915\u093f\u0930\u0940 \u0930\u093f\u0902\u0917 \u0905\u0938\u0924\u093e\u0924.",
+          "text_en": "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+        },
+        {
+          "dose": "",
+          "id": 226,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "symptoms",
+          "source_id": "TNAU_IPM_VEG",
+          "source_org": "TNAU",
+          "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+          "text": "\u0905\u0928\u093f\u092f\u092e\u093f\u0924 \u092a\u093e\u0928\u093e\u0902\u091a\u0947 \u0920\u093f\u092a\u0915\u0947 \u092c\u0939\u0941\u0924\u0947\u0915\u0926\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0935\u0930\u0942\u0928 \u0926\u093f\u0938\u0924\u093e\u0924. \u0905\u0928\u0947\u0915 \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u094d\u092f\u093e \u0932\u093e\u0917\u0935\u0921\u0940\u092e\u0927\u094d\u092f\u0947, \u0932\u0915\u094d\u0937\u0923\u0947 \u0935\u094d\u0939\u0940 \u0906\u0915\u093e\u0930\u093e\u091a\u0940 \u0905\u0938\u0924\u093e\u0924 \u0906\u0923\u093f \u092e\u0927\u094d\u092f\u092d\u093e\u0917\u093e\u0915\u0921\u0947 \u092a\u0941\u0922\u0947 \u091c\u093e\u0924\u093e\u0924. \u0930\u094b\u0917\u0915\u093e\u0930\u0915\u093e\u0926\u094d\u0935\u093e\u0930\u0947 \u0924\u092f\u093e\u0930 \u0915\u0947\u0932\u0947\u0932\u094d\u092f\u093e \u092a\u094b\u0937\u0915 \u0935\u093f\u0936\u093f\u0937\u094d\u091f \u0935\u093f\u0937\u093e\u092e\u0941\u0933\u0947 \u092f\u093e \u0920\u093f\u092a\u0915\u094d\u092f\u093e\u0902\u091a\u094d\u092f\u093e \u092c\u093e\u0939\u0947\u0930\u0940\u0932 \u0915\u093e\u0920\u093e\u0935\u0930 \u0920\u0933\u0915 \u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0947 \u092a\u0921\u0923\u0947 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947. \u092c\u0939\u0941\u0924\u0947\u0915 \u0930\u094b\u0917 \u092b\u0941\u0932\u0923\u094d\u092f\u093e\u092a\u0942\u0930\u094d\u0935\u0940 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u091a\u094d\u092f\u093e \u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0924 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u093e\u0924.",
+          "text_en": "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+        },
+        {
+          "dose": "",
+          "id": 555,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "symptoms",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u0935\u093e\u0922 \u0939\u094b\u0923\u094d\u092f\u093e\u091a\u094d\u092f\u093e \u0915\u094b\u0923\u0924\u094d\u092f\u093e\u0939\u0940 \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0935\u0930 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u094b\u0923\u093e\u0930\u093e \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u093e \u0939\u093e \u090f\u0915 \u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0930\u094b\u0917 \u0906\u0939\u0947. \u092c\u0941\u0930\u0936\u0940 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u0932\u094d\u0932\u093e \u0915\u0930\u0924\u0947 \u091c\u094d\u092f\u093e\u092e\u0941\u0933\u0947 \u0935\u093f\u0936\u093f\u0937\u094d\u091f \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0920\u093f\u092a\u0915\u0947 \u092a\u0921\u0924\u093e\u0924 \u0906\u0923\u093f \u0921\u093e\u0917 \u092a\u0921\u0924\u093e\u0924. \u0932\u0935\u0915\u0930 \u0920\u093f\u092a\u0915\u0947 \u092a\u094d\u0930\u0925\u092e \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u0935\u0930 \u0932\u0939\u093e\u0928, \u092e\u0941\u0916\u094d\u092f\u0924\u0903 \u091c\u0941\u0928\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0915\u093e\u0933\u0947 \u0920\u093f\u092a\u0915\u0947 \u092e\u094d\u0939\u0923\u0942\u0928 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u093e\u0924.",
+          "text_en": "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+          "topic": "early_blight",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 2,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "spread",
+          "source_id": "TNAU_EB",
+          "source_org": "TNAU",
+          "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+          "text": "\u0938\u0902\u0915\u094d\u0930\u092e\u093f\u0924 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u091a\u094d\u092f\u093e \u0922\u093f\u0917\u093e\u0931\u094d\u092f\u093e\u0902\u092e\u0927\u094d\u092f\u0947 \u091c\u093f\u0935\u0902\u0924 \u0930\u093e\u0939\u0924\u0947. \u092a\u094d\u0930\u093e\u0925\u092e\u093f\u0915 \u0938\u0902\u0915\u094d\u0930\u092e\u093f\u0924 \u092c\u093f\u092f\u093e\u0923\u094d\u092f\u093e\u0902\u0926\u094d\u0935\u093e\u0930\u0947 \u092a\u0938\u0930\u0924\u0947; \u0926\u0941\u092f\u094d\u092f\u092e \u092a\u093e\u090a\u0938 \u0906\u0923\u093f \u0935\u093e\u0931\u094d\u092f\u093e\u092e\u0941\u0933\u0947 \u0935\u093e\u0939\u0942\u0928 \u0928\u0947\u0923\u093e\u0931\u094d\u092f\u093e \u092c\u0940\u091c\u0915\u0923\u093e\u0902\u0926\u094d\u0935\u093e\u0930\u0947 \u092a\u0938\u0930\u0924\u0947. \u0909\u092c\u0926\u093e\u0930, \u0926\u092e\u091f (24-29 \u0905\u0902\u0936 \u0938\u0947.), \u092a\u093e\u0935\u0938\u093e\u0933\u0940 \u0906\u0923\u093f \u0913\u0932\u0938\u0930 \u0939\u0935\u093e\u092e\u093e\u0928\u093e\u092e\u0941\u0933\u0947 \u0905\u0928\u0941\u0915\u0942\u0932.",
+          "text_en": "Survives in infected plant debris. Primary spread through infected seed; secondary spread by spores carried by rain and wind. Favoured by warm, humid (24-29 degree C), rainy and wet weather.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+        },
+        {
+          "dose": "",
+          "id": 559,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "spread",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u091c\u0917\u0923\u0947 \u0906\u0923\u093f \u092a\u094d\u0930\u0938\u093e\u0930\u0903 \u092a\u094d\u0930\u093e\u0925\u092e\u093f\u0915\u0903 \u092c\u0941\u0930\u0936\u0940 \u0939\u093f\u0935\u093e\u0933\u093e \u0938\u0902\u0915\u094d\u0930\u092e\u093f\u0924 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u091a\u094d\u092f\u093e \u0922\u093f\u0917\u093e\u0931\u094d\u092f\u093e\u0916\u093e\u0932\u0940 \u0915\u093f\u0902\u0935\u093e \u091c\u092e\u093f\u0928\u0940\u0935\u0930 \u0918\u093e\u0932\u0935\u0924\u0947 \u091c\u093f\u0925\u0947 \u0924\u0940 \u0915\u093f\u092e\u093e\u0928 \u090f\u0915 \u0906\u0923\u093f \u0915\u0926\u093e\u091a\u093f\u0924 \u0905\u0928\u0947\u0915 \u0935\u0930\u094d\u0937\u0947 \u091c\u0917\u0942 \u0936\u0915\u0924\u0947. \u0924\u0940 \u092c\u093f\u092f\u093e\u0923\u0947\u0939\u0940 \u0939\u094b\u090a \u0936\u0915\u0924\u0947.",
+          "text_en": "Survival and spread: Primary: The fungus spends the winter in infected plant debris in or on the soil where it can survive at least one and perhaps several years. It can also be seed borne.",
+          "topic": "early_blight",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 560,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "spread",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u0926\u0941\u092f\u094d\u092f\u092e\u0903 \u092c\u0940\u091c\u0915\u0923\u093e\u0902\u091a\u0940 \u0935\u093e\u0939\u0924\u0942\u0915 \u092a\u093e\u0923\u0940, \u0935\u093e\u0930\u093e, \u0915\u0940\u091f\u0915, \u092e\u0928\u0941\u0937\u094d\u092f\u093e\u0938\u0939 \u0907\u0924\u0930 \u092a\u094d\u0930\u093e\u0923\u0940 \u0906\u0923\u093f \u092f\u0902\u0924\u094d\u0930\u093e\u0902\u0926\u094d\u0935\u093e\u0930\u0947 \u0915\u0947\u0932\u0940 \u091c\u093e\u0924\u0947. \u090f\u0915\u0926\u093e \u092a\u094d\u0930\u093e\u0930\u0902\u092d\u093f\u0915 \u0938\u0902\u0938\u0930\u094d\u0917 \u091d\u093e\u0932\u093e \u0915\u0940, \u0924\u0947 \u0928\u0935\u0940\u0928 \u092c\u0940\u091c\u0915\u0923 \u0909\u0924\u094d\u092a\u093e\u0926\u0928\u093e\u091a\u093e \u0938\u0930\u094d\u0935\u093e\u0924 \u092e\u0939\u0924\u094d\u0924\u094d\u0935\u093e\u091a\u093e \u0938\u094d\u0930\u094b\u0924 \u092c\u0928\u0924\u093e\u0924 \u0906\u0923\u093f \u0930\u094b\u0917\u093e\u091a\u094d\u092f\u093e \u091c\u0932\u0926 \u092a\u094d\u0930\u0938\u093e\u0930\u093e\u0938\u093e\u0920\u0940 \u091c\u092c\u093e\u092c\u0926\u093e\u0930 \u0905\u0938\u0924\u093e\u0924.",
+          "text_en": "Secondary: The spores are transported by water, wind, insects, other animals including man, and machinery. Once the initial infections have occurred, they become the most important source of new spore production and are responsible for rapid disease spread.",
+          "topic": "early_blight",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 3,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "cultural",
+          "source_id": "TNAU_EB",
+          "source_org": "TNAU",
+          "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+          "text": "\u092a\u093f\u0915\u093e\u091a\u0947 \u0905\u0935\u0936\u0947\u0937 \u0915\u093e\u0922\u0942\u0928 \u091f\u093e\u0915\u093e \u0906\u0923\u093f \u0928\u0937\u094d\u091f \u0915\u0930\u093e. \u092a\u093f\u0915\u093e\u091a\u0947 \u0906\u0935\u0930\u094d\u0924\u0928 \u0915\u0930\u093e.",
+          "text_en": "Remove and destroy crop debris. Follow crop rotation.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+        },
+        {
+          "dose": "",
+          "id": 4,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "cultural",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927\u0915 \u0915\u093f\u0902\u0935\u093e \u0938\u0939\u0928\u0936\u0940\u0932 \u0938\u0902\u0935\u0930\u094d\u0927\u0928\u093e\u091a\u093e \u0935\u093e\u092a\u0930 \u0915\u0930\u093e. \u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915 \u0939\u0902\u0917\u093e\u092e\u093e\u0924 \u0930\u094b\u092a\u0935\u093e\u091f\u093f\u0915\u0947\u091a\u0947 \u0920\u093f\u0915\u093e\u0923 \u092c\u0926\u0932\u093e, \u0924\u0923 \u0928\u0937\u094d\u091f \u0915\u0930\u093e \u0906\u0923\u093f \u0938\u094d\u0935\u092f\u0902\u0938\u0947\u0935\u0940 \u091f\u094b\u092e\u0945\u091f\u094d\u092f\u093e\u091a\u094d\u092f\u093e \u0930\u094b\u092a\u093e\u0902\u0928\u093e \u092f\u094b\u0917\u094d\u092f \u092a\u094d\u0930\u0915\u093e\u0930\u0947 \u0916\u0924 \u0926\u094d\u092f\u093e. \u0936\u0947\u091c\u093e\u0930\u091a\u094d\u092f\u093e \u092d\u093e\u0917\u093e\u0924 \u0906\u091a\u094d\u091b\u093e\u0926\u093f\u0924 \u092a\u093f\u0915\u0947 \u0932\u093e\u0935\u0923\u0947 \u091f\u093e\u0933\u093e.",
+          "text_en": "Use resistant or tolerant cultivars. Change the nursery bed location every season, eradicate weeds and volunteer tomato plants, fertilize properly. Avoid planting overlapping crops in adjacent area.",
+          "topic": "early_blight",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 227,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "cultural",
+          "source_id": "TNAU_IPM_VEG",
+          "source_org": "TNAU",
+          "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+          "text": "\u0916\u093e\u0932\u091a\u0940 \u092a\u093e\u0928\u0947 \u0924\u094b\u0921\u0942\u0928 \u0906\u0923\u093f \u0938\u0902\u0915\u094d\u0930\u092e\u093f\u0924 \u092a\u093f\u0915\u093e\u091a\u0947 \u0905\u0935\u0936\u0947\u0937 \u091c\u093e\u0933\u0942\u0928 \u0936\u0947\u0924\u093e\u0924 \u0938\u094d\u0935\u091a\u094d\u091b\u0924\u093e. \u0930\u094b\u0917\u0915\u093e\u0930\u0915 \u0906\u0923\u093f \u0938\u0902\u0915\u094d\u0930\u092e\u093f\u0924 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u091a\u0947 \u092d\u093e\u0917 \u0938\u0941\u0915\u0935\u0923\u094d\u092f\u093e\u0938\u093e\u0920\u0940 \u0909\u0928\u094d\u0939\u093e\u0933\u0940 \u0928\u093e\u0902\u0917\u0930\u0923\u0940. \u0938\u0902\u0938\u0930\u094d\u0917 \u091f\u093e\u0933\u0923\u094d\u092f\u093e\u0938\u093e\u0920\u0940 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u091a\u094d\u092f\u093e \u091b\u0924\u094d\u0930\u093e\u0924\u0940\u0932 \u0938\u093e\u092a\u0947\u0915\u094d\u0937 \u0906\u0930\u094d\u0926\u094d\u0930\u0924\u093e \u0915\u092e\u0940 \u0915\u0930\u093e.",
+          "text_en": "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+        },
+        {
+          "dose": "",
+          "id": 5,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "biological",
+          "source_id": "TNAU_EB",
+          "source_org": "TNAU",
+          "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+          "text": "\u092c\u093f\u092f\u093e\u0923\u0947 \u0909\u092a\u091a\u093e\u0930\u0903 \u091f\u094d\u0930\u093e\u092f\u0915\u094b\u0921\u0930\u094d\u092e\u093e \u090f\u0938\u094d\u092a\u0947\u0930\u0947\u0932\u092e @4 \u0917\u094d\u0930\u0945\u092e/\u0915\u093f\u0932\u094b \u092c\u093f\u092f\u093e\u0923\u0947.",
+          "text_en": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds.",
+          "topic": "early_blight",
+          "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+        },
+        {
+          "dose": "0.75 g/litre",
+          "id": 6,
+          "note": "\u0905\u0930\u094d\u0932\u0940 \u092c\u094d\u0932\u093e\u0907\u091f, \u0932\u0940\u092b \u0938\u094d\u092a\u0949\u091f \u0906\u0923\u093f \u0932\u0947\u091f \u092c\u094d\u0932\u093e\u0907\u091f\u0938\u093e\u0920\u0940 \u0932\u0947\u092c\u0932 \u0915\u094d\u0932\u0947\u092e (\u0938\u0940. \u0906\u092f. \u092c\u0940. \u0906\u0923\u093f \u0906\u0930. \u0938\u0940.); \u092a\u094d\u0930\u0924\u093f \u0939\u0947\u0915\u094d\u091f\u0930 500 \u0932\u093f\u091f\u0930 \u092b\u0935\u093e\u0930\u0923\u0940 \u0926\u094d\u0930\u093e\u0935\u0923.",
+          "note_en": "Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+          "product": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+          "section": "chemical",
+          "source_id": "ICAR_IPM",
+          "source_org": "ICAR-NCIPM",
+          "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+          "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+          "text_en": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+          "topic": "early_blight",
+          "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+        },
+        {
+          "dose": "2-3 g/litre",
+          "id": 7,
+          "note": "\u0909\u0936\u0940\u0930\u093e \u0906\u0923\u093f \u0932\u0935\u0915\u0930 \u0939\u094b\u0923\u093e\u0930\u093e \u0930\u094b\u0917, \u0932\u0940\u092b \u0938\u094d\u092a\u0949\u091f \u0906\u0923\u093f \u091c\u0940\u0935\u093e\u0923\u0942 \u0935\u093f\u0932\u094d\u091f\u0938\u093e\u0920\u0940 \u0932\u0947\u092c\u0932 \u0915\u094d\u0932\u0947\u092e (\u0938\u0940. \u0906\u092f. \u092c\u0940. \u0906\u0923\u093f \u0906\u0930. \u0938\u0940.).",
+          "note_en": "Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+          "product": "Copper oxychloride 50% WP",
+          "section": "chemical",
+          "source_id": "ICAR_IPM",
+          "source_org": "ICAR-NCIPM",
+          "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+          "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+          "text_en": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+          "topic": "early_blight",
+          "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+        },
+        {
+          "dose": "2 ml/litre",
+          "id": 8,
+          "note": "\u0932\u0935\u0915\u0930 \u0906\u0923\u093f \u0909\u0936\u0940\u0930\u093e \u0939\u094b\u0923\u093e\u0931\u094d\u092f\u093e \u0930\u094b\u0917\u093e\u091a\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0921\u093e\u0917\u093e\u0938\u093e\u0920\u0940 \u0932\u0947\u092c\u0932 \u0926\u093e\u0935\u093e (\u0938\u0940. \u0906\u092f. \u092c\u0940. \u0906\u0923\u093f \u0906\u0930. \u0938\u0940.). \u092d\u093e\u0930\u0924\u093e\u0924 \u092a\u094d\u0930\u0924\u093f\u092c\u0902\u0927\u093f\u0924 \u0909\u092a\u092f\u094b\u0917\u0903 \u0935\u093e\u092a\u0930\u0923\u094d\u092f\u093e\u092a\u0942\u0930\u094d\u0935\u0940 \u0924\u0941\u092e\u091a\u094d\u092f\u093e \u0915\u0947. \u0935\u094d\u0939\u0940. \u0915\u0947. \u0915\u093f\u0902\u0935\u093e \u0915\u0943\u0937\u0940 \u0905\u0927\u093f\u0915\u093e\u0931\u094d\u092f\u093e\u0936\u0940 \u092a\u0941\u0937\u094d\u091f\u0940 \u0915\u0930\u093e.",
+          "note_en": "Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+          "product": "Mancozeb",
+          "section": "chemical",
+          "source_id": "ICAR_IPM",
+          "source_org": "ICAR-NCIPM",
+          "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+          "text": "Spray Mancozeb @ 2 ml/litre. Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+          "text_en": "Spray Mancozeb @ 2 ml/litre. Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+          "topic": "early_blight",
+          "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+        },
+        {
+          "dose": "",
+          "id": 60,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "safety",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915 \u0915\u0940\u091f\u0915\u0928\u093e\u0936\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u092a\u094d\u0930\u0924\u0940\u0915\u094d\u0937\u093e \u0915\u093e\u0932\u093e\u0935\u0927\u0940\u091a\u0947 \u0932\u0915\u094d\u0937 \u0920\u0947\u0935\u093e. \u0915\u093e\u092a\u0923\u0940\u091a\u094d\u092f\u093e 7 \u0926\u093f\u0935\u0938 \u0906\u0927\u0940 \u0915\u0940\u091f\u0915\u0928\u093e\u0936\u0915\u0947 \u0935\u093e\u092a\u0930\u0942 \u0928\u0915\u093e. \u0926\u0941\u092a\u093e\u0930\u0940 \u092b\u0935\u093e\u0930\u0923\u0940 \u0915\u0930\u0942 \u0928\u0915\u093e. \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0916\u093e\u0932\u091a\u094d\u092f\u093e \u092c\u093e\u091c\u0942\u0932\u093e \u0926\u0947\u0916\u0940\u0932 \u092b\u0935\u093e\u0930\u0923\u0940 \u0915\u0930\u093e, \u0935\u093f\u0936\u0947\u0937\u0924\u0903 \u0938\u0942\u0915\u094d\u0937\u094d\u092e\u091c\u0940\u0935, \u092a\u093e\u0902\u0922\u0931\u094d\u092f\u093e \u092e\u093e\u0936\u093e \u0906\u0923\u093f \u0938\u094d\u092a\u094b\u0921\u094b\u092a\u094d\u091f\u0947\u0930\u093e. \u092a\u0930\u091c\u0940\u0935\u0940 \u0938\u094b\u0921\u0932\u094d\u092f\u093e\u0928\u0902\u0924\u0930 7 \u0926\u093f\u0935\u0938\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0930\u093e\u0938\u093e\u092f\u0928\u093f\u0915 \u0915\u0940\u091f\u0915\u0928\u093e\u0936\u0915\u0947 \u0935\u093e\u092a\u0930\u0942 \u0928\u0915\u093e.",
+          "text_en": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+          "topic": "general",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 61,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "safety",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u0924\u092a\u0936\u0940\u0932\u0935\u093e\u0930 \u0906\u0923\u093f \u0905\u0926\u094d\u092f\u092f\u093e\u0935\u0924 \u092e\u093e\u0939\u093f\u0924\u0940\u0938\u093e\u0920\u0940 \u091c\u0935\u0933\u091a\u094d\u092f\u093e \u0915\u0947. \u0935\u094d\u0939\u0940. \u0915\u0947., \u090f\u0938. \u090f. \u092f\u0942. \u0915\u093f\u0902\u0935\u093e \u0906\u092f. \u0938\u0940. \u090f. \u0906\u0930. \u0938\u0902\u0938\u094d\u0925\u0947\u0936\u0940 \u0938\u0902\u092a\u0930\u094d\u0915 \u0938\u093e\u0927\u0932\u093e \u091c\u093e\u090a \u0936\u0915\u0924\u094b.",
+          "text_en": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+          "topic": "general",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 326,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "safety",
+          "source_id": "ICAR_IPM",
+          "source_org": "ICAR-NCIPM",
+          "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+          "text": "\u091f\u0940\u092a\u0903 \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u094d\u092f\u093e \u092a\u093f\u0915\u093e\u0924 \u092a\u094d\u0930\u0924\u093f \u0939\u0947\u0915\u094d\u091f\u0930 \u0906\u0935\u0936\u094d\u092f\u0915 \u0905\u0938\u0932\u0947\u0932\u094d\u092f\u093e \u092b\u0935\u093e\u0930\u0923\u0940 \u0926\u094d\u0930\u093e\u0935\u0923\u093e\u091a\u0940 = 500 \u0932\u093f\u091f\u0930.",
+          "text_en": "Note: Spray solution required per hectare in tomato crop = 500 litres.",
+          "topic": "general",
+          "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+        },
+        {
+          "dose": "",
+          "id": 657,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "safety",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u0938\u094d\u092a\u094b\u0921\u094b\u092a\u094d\u091f\u0947\u0930\u093e \u092b\u0935\u093e\u0930\u0923\u0940\u0938\u093e\u0930\u0916\u094d\u092f\u093e \u0930\u093e\u0924\u094d\u0930\u0940\u091a\u094d\u092f\u093e \u0935\u0947\u0933\u0940 \u0938\u0915\u094d\u0930\u093f\u092f \u0905\u0938\u0932\u0947\u0932\u094d\u092f\u093e \u0915\u0940\u091f\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u092c\u093e\u092c\u0924\u0940\u0924 \u0924\u0947 \u0930\u093e\u0924\u094d\u0930\u0940 \u0926\u093f\u0938\u0923\u094d\u092f\u093e\u091a\u094d\u092f\u093e \u0935\u0947\u0933\u0940 \u092c\u093e\u092f\u094b\u0938\u093e\u0907\u0921\u094d\u0938/\u0930\u0938\u093e\u092f\u0928\u093e\u0902\u091a\u0940 \u0936\u093f\u092b\u093e\u0930\u0938 \u0915\u0947\u0932\u0940 \u091c\u093e\u0924\u0947.",
+          "text_en": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night.",
+          "topic": "general",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        },
+        {
+          "dose": "",
+          "id": 658,
+          "note": "",
+          "note_en": "",
+          "product": "",
+          "section": "safety",
+          "source_id": "NIPHM",
+          "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+          "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+          "text": "\u092e\u093e\u0924\u0940\u092e\u0927\u094d\u092f\u0947 \u0915\u0940\u091f\u0915\u0928\u093e\u0936\u0915\u093e\u0902\u091a\u0947 \u0905\u0935\u0936\u0947\u0937 \u091f\u093e\u0933\u0923\u094d\u092f\u093e\u0938\u093e\u0920\u0940 \u0906\u0923\u093f \u0909\u0924\u094d\u092a\u093e\u0926\u0928 \u0915\u0930\u0923\u094d\u092f\u093e\u0938\u093e\u0920\u0940 \u0915\u092e\u0940 \u0915\u093e\u0933 \u091f\u093f\u0915\u0942\u0928 \u0930\u093e\u0939\u0923\u093e\u0930\u0940 \u0915\u0940\u091f\u0915\u0928\u093e\u0936\u0915\u0947 \u0932\u093e\u0935\u093e.",
+          "text_en": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce.",
+          "topic": "general",
+          "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+        }
+      ],
+      "name": "\u0932\u0935\u0915\u0930 \u092f\u0947\u0923\u093e\u0930\u093e \u0915\u0930\u092a\u093e (Early blight)",
+      "topic": "early_blight"
+    }
+  ],
+  "crop": {
+    "name": "tomato",
+    "source": "leaf_check"
+  },
+  "demo_log": [
+    {
+      "ms": 0.0,
+      "stage": "request",
+      "text": "photo 257x378 px, answer language mr, CPU 58.4 C"
+    },
+    {
+      "ms": 1.8,
+      "stage": "quality",
+      "text": "OpenCV photo check: brightness 95, sharpness (Laplacian var) 819 -> OK (1.8 ms)"
+    },
+    {
+      "ms": 116.0,
+      "stage": "vision",
+      "text": "ONNX Runtime, 2 models in parallel, 2 threads per model: wall 114 ms (leaf + disease thread 114 ms, pest thread 114 ms)"
+    },
+    {
+      "ms": 116.1,
+      "stage": "leaf_check",
+      "text": "tomato_leaf_check_v2_effb0.onnx, input 224x224: p_other 0.025 < threshold 0.425 -> tomato leaf (73 ms)"
+    },
+    {
+      "ms": 116.1,
+      "stage": "disease",
+      "text": "tomato_disease_v5_effb0_6class_int8.onnx, input 224x224: early_blight 93.9%, septoria_leaf_spot 1.8% (41 ms)"
+    },
+    {
+      "ms": 116.1,
+      "stage": "pests",
+      "text": "pest_yolov8n_groups_int8.onnx: 0 box(es) (114 ms)"
+    },
+    {
+      "ms": 242.3,
+      "stage": "severity",
+      "text": "severity_lraspp_mnv3.onnx: leaf 39.0% of the photo, lesions 19.3% of the leaf -> moderate (126 ms)"
+    },
+    {
+      "ms": 243.2,
+      "stage": "knowledge",
+      "text": "SQLite knowledge base: topic early_blight -> 18 verified extract(s) (0.8 ms)"
+    },
+    {
+      "ms": 243.4,
+      "stage": "llama",
+      "text": "prompt: \"Diagnosis: Early blight on a tomato leaf (model confidence 94%). Estimated spread on the photographed leaf: moderate.\" + 4 source extracts"
+    },
+    {
+      "ms": 14702.6,
+      "stage": "llama",
+      "text": "ExecuTorch XNNPACK, Llama 3.2 1B LoRA INT4: prompt 348 tok, first token 2.94 s, 154 tok at 13.4 tok/s (14.46 s)"
+    },
+    {
+      "ms": 14702.6,
+      "stage": "grounding",
+      "text": "10 sentence(s) matched to one source sentence each, 0 dropped -> accepted"
+    },
+    {
+      "ms": 18482.5,
+      "stage": "translate",
+      "text": "IndicTrans2 200M, CTranslate2 INT8, en -> mr: 10/10 sentence(s) kept, model 3771 ms (3780 ms)"
+    },
+    {
+      "ms": 18482.7,
+      "stage": "done",
+      "text": "status answered, total 18483 ms, CPU 58.4 -> 60.0 C at 2400 MHz"
+    }
+  ],
+  "device": {
+    "cpu_freq_mhz": 2400.0,
+    "cpu_temp_end_c": 60.05,
+    "cpu_temp_start_c": 58.4,
+    "llama_skipped_hot": false
+  },
+  "disease": {
+    "answered": true,
+    "name": "\u0932\u0935\u0915\u0930 \u092f\u0947\u0923\u093e\u0930\u093e \u0915\u0930\u092a\u093e (Early blight)",
+    "not_tomato_leaf": false,
+    "reliability": "medium",
+    "top": [
+      {
+        "class": "early_blight",
+        "probability": 0.9388247132301331
+      },
+      {
+        "class": "septoria_leaf_spot",
+        "probability": 0.017807461321353912
+      },
+      {
+        "class": "healthy",
+        "probability": 0.013021350838243961
+      }
+    ],
+    "topic": "early_blight",
+    "urgent": false
+  },
+  "display_lang": "mr",
+  "en": {
+    "advice_blocks": [
+      {
+        "chunks": [
+          {
+            "dose": "",
+            "id": 1,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "symptoms",
+            "source_id": "TNAU_EB",
+            "source_org": "TNAU",
+            "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+            "text": "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+            "text_en": "Brown spots with concentric rings in a bull's eye pattern with yellow margin. Fruit gets infected through calyx or stem attachment; brown concentric rings on fruits.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+          },
+          {
+            "dose": "",
+            "id": 226,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "symptoms",
+            "source_id": "TNAU_IPM_VEG",
+            "source_org": "TNAU",
+            "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+            "text": "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+            "text_en": "Irregular leaf spots mostly appear from marginal portion of leaves. In many tomato cultivars, symptoms are V shaped and progress towards midrib. These lesions are having prominent yellowing on their outer margin due to host specific toxin produced by the pathogen. Mostly disease appears in vegetative phase of plant growth before flowering.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+          },
+          {
+            "dose": "",
+            "id": 555,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "symptoms",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+            "text_en": "This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+            "topic": "early_blight",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 2,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "spread",
+            "source_id": "TNAU_EB",
+            "source_org": "TNAU",
+            "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+            "text": "Survives in infected plant debris. Primary spread through infected seed; secondary spread by spores carried by rain and wind. Favoured by warm, humid (24-29 degree C), rainy and wet weather.",
+            "text_en": "Survives in infected plant debris. Primary spread through infected seed; secondary spread by spores carried by rain and wind. Favoured by warm, humid (24-29 degree C), rainy and wet weather.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+          },
+          {
+            "dose": "",
+            "id": 559,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "spread",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "Survival and spread: Primary: The fungus spends the winter in infected plant debris in or on the soil where it can survive at least one and perhaps several years. It can also be seed borne.",
+            "text_en": "Survival and spread: Primary: The fungus spends the winter in infected plant debris in or on the soil where it can survive at least one and perhaps several years. It can also be seed borne.",
+            "topic": "early_blight",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 560,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "spread",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "Secondary: The spores are transported by water, wind, insects, other animals including man, and machinery. Once the initial infections have occurred, they become the most important source of new spore production and are responsible for rapid disease spread.",
+            "text_en": "Secondary: The spores are transported by water, wind, insects, other animals including man, and machinery. Once the initial infections have occurred, they become the most important source of new spore production and are responsible for rapid disease spread.",
+            "topic": "early_blight",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 3,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "cultural",
+            "source_id": "TNAU_EB",
+            "source_org": "TNAU",
+            "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+            "text": "Remove and destroy crop debris. Follow crop rotation.",
+            "text_en": "Remove and destroy crop debris. Follow crop rotation.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+          },
+          {
+            "dose": "",
+            "id": 4,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "cultural",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "Use resistant or tolerant cultivars. Change the nursery bed location every season, eradicate weeds and volunteer tomato plants, fertilize properly. Avoid planting overlapping crops in adjacent area.",
+            "text_en": "Use resistant or tolerant cultivars. Change the nursery bed location every season, eradicate weeds and volunteer tomato plants, fertilize properly. Avoid planting overlapping crops in adjacent area.",
+            "topic": "early_blight",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 227,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "cultural",
+            "source_id": "TNAU_IPM_VEG",
+            "source_org": "TNAU",
+            "source_title": "Integrated Pest Management Schedule for Vegetables (national technical bulletin hosted on TNAU Agritech; PDF dated Dec 2012) - tomato sections: Insect management/Tomato (pp. 3-6, incl. IPM package in tomato under polyhouse), Disease management/Tomato (pp. 23-28), Recommended IPM practices - Tomato (pp. 57-58), Annexure VI ETL",
+            "text": "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection.",
+            "text_en": "Field sanitation by plucking the lower leaves and burning of infected crop debris. Summer ploughing to increase the desiccation of pathogen and infected plant parts. Minimize relative humidity in plant canopy for preventing the infection.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/horticulture/pdf/tech_bulletin/national/IPM-Schedule-for-vegetables.pdf"
+          },
+          {
+            "dose": "",
+            "id": 5,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "biological",
+            "source_id": "TNAU_EB",
+            "source_org": "TNAU",
+            "source_title": "TNAU Agritech Portal, Crop Protection - Tomato: Early blight (updated Jun 2023)",
+            "text": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds.",
+            "text_en": "Seed treatment: Trichoderma asperellum @ 4 g/kg seeds.",
+            "topic": "early_blight",
+            "url": "https://agritech.tnau.ac.in/crop_protection/tomato_diseases_2.html"
+          },
+          {
+            "dose": "0.75 g/litre",
+            "id": 6,
+            "note": "Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+            "note_en": "Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+            "product": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+            "section": "chemical",
+            "source_id": "ICAR_IPM",
+            "source_org": "ICAR-NCIPM",
+            "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+            "text": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+            "text_en": "Spray Tebuconazole 50% + Trifloxystrobin 25% WG @ 0.75 g/litre. Label claim (CIB&RC) for early blight, leaf spot and late blight; 500 litres spray solution per hectare.",
+            "topic": "early_blight",
+            "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+          },
+          {
+            "dose": "2-3 g/litre",
+            "id": 7,
+            "note": "Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+            "note_en": "Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+            "product": "Copper oxychloride 50% WP",
+            "section": "chemical",
+            "source_id": "ICAR_IPM",
+            "source_org": "ICAR-NCIPM",
+            "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+            "text": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+            "text_en": "Spray Copper oxychloride 50% WP @ 2-3 g/litre. Label claim (CIB&RC) for late and early blight, leaf spot and bacterial wilt.",
+            "topic": "early_blight",
+            "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+          },
+          {
+            "dose": "2 ml/litre",
+            "id": 8,
+            "note": "Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+            "note_en": "Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+            "product": "Mancozeb",
+            "section": "chemical",
+            "source_id": "ICAR_IPM",
+            "source_org": "ICAR-NCIPM",
+            "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+            "text": "Spray Mancozeb @ 2 ml/litre. Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+            "text_en": "Spray Mancozeb @ 2 ml/litre. Label claim (CIB&RC) for leaf spot, early and late blight. Restricted use in India: confirm with your KVK or agriculture officer before use.",
+            "topic": "early_blight",
+            "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+          },
+          {
+            "dose": "",
+            "id": 60,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "safety",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+            "text_en": "Observe the waiting period of every pesticide without fail. Do not apply pesticides during the 7 days before harvest. Do not spray at midday. Spray the underside of the leaves too, especially for mites, whiteflies and Spodoptera. Do not apply chemical pesticides within 7 days of releasing parasitoids.",
+            "topic": "general",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 61,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "safety",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+            "text_en": "For detailed and updated information the nearest KVK, SAU or ICAR institute may be contacted.",
+            "topic": "general",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 326,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "safety",
+            "source_id": "ICAR_IPM",
+            "source_org": "ICAR-NCIPM",
+            "source_title": "Raghavendra K V, Rekha Balodi, Subhash Chander: Integrated pest management approaches against major insect pests and diseases of tomato. Indian Horticulture (ICAR), Jan-Feb 2023, pp. 39-42",
+            "text": "Note: Spray solution required per hectare in tomato crop = 500 litres.",
+            "text_en": "Note: Spray solution required per hectare in tomato crop = 500 litres.",
+            "topic": "general",
+            "url": "https://epubs.icar.org.in/index.php/IndHort/article/view/125318"
+          },
+          {
+            "dose": "",
+            "id": 657,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "safety",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night.",
+            "text_en": "In case of pests which are active during night like Spodoptera spray recommended biocides/ chemicals at the time of their appearance in the night.",
+            "topic": "general",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          },
+          {
+            "dose": "",
+            "id": 658,
+            "note": "",
+            "note_en": "",
+            "product": "",
+            "section": "safety",
+            "source_id": "NIPHM",
+            "source_org": "NIPHM / DPPQS / ICAR-NCIPM (Govt. of India)",
+            "source_title": "AESA based IPM package for Tomato (IPM package No. 18), 2014",
+            "text": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce.",
+            "text_en": "Apply short persistent pesticides to avoid pesticide residue in the soil and produce.",
+            "topic": "general",
+            "url": "https://www.niphm.gov.in/IPMPackages/Tomato.pdf"
+          }
+        ],
+        "name": "Early blight",
+        "topic": "early_blight"
+      }
+    ],
+    "disease_name": "Early blight",
+    "messages": [
+      "The spray options below are copied from ICAR, NIPHM and TNAU publications. Use only one product, follow the label, observe the waiting period before harvest and wear protective clothing. Confirm with your KVK or agriculture officer if unsure."
+    ],
+    "pest_names": [],
+    "pest_severity": []
+  },
+  "lang": "en",
+  "leaf_check": {
+    "is_tomato_leaf": true,
+    "model": "tomato_leaf_check_v2_effb0.onnx",
+    "p_other": 0.024806354194879532,
+    "threshold": 0.42500001192092896
+  },
+  "llama": {
+    "accepted": true,
+    "dropped_sentences": [],
+    "grounded_sentences": 10,
+    "raw_text": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin. Fruit gets infected through the calyx or stem attachment; brown concentric rings on fruits. Irregular leaf spots mostly appear from the marginal portion of leaves. In many tomato cultivars, symptoms are V-shaped and progress towards the midrib. These lesions are having prominent yellowing on their outer margin due to a host-specific toxin produced by the pathogen. Mostly disease appears in the vegetative phase of the plant growth before flowering. This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+    "rejected_reasons": [],
+    "stats": {
+      "generated_tokens": 154,
+      "ok": true,
+      "prompt_tokens": 348,
+      "stopped_on_repeat": false,
+      "time_to_first_token_s": 2.941,
+      "tokens_per_s": 13.371537726838586,
+      "total_s": 14.458189445
+    },
+    "text": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin. Fruit gets infected through the calyx or stem attachment; brown concentric rings on fruits. Irregular leaf spots mostly appear from the marginal portion of leaves. In many tomato cultivars, symptoms are V-shaped and progress towards the midrib. These lesions are having prominent yellowing on their outer margin due to a host-specific toxin produced by the pathogen. Mostly disease appears in the vegetative phase of the plant growth before flowering. This is a common disease of tomato occurring on the foliage at any stage of the growth. The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small, black lesions mostly on the older foliage."
+  },
+  "messages": [
+    "\u0916\u093e\u0932\u0940\u0932 \u092b\u0935\u093e\u0930\u0923\u0940 \u092a\u0930\u094d\u092f\u093e\u092f \u0906\u092f. \u0938\u0940. \u090f. \u0906\u0930., \u090f\u0928. \u0906\u092f. \u092a\u0940. \u090f\u091a. \u090f\u092e. \u0906\u0923\u093f \u091f\u0940. \u090f\u0928. \u090f. \u092f\u0942. \u092a\u094d\u0930\u0915\u093e\u0936\u0928\u093e\u0902\u092e\u0927\u0942\u0928 \u0915\u0949\u092a\u0940 \u0915\u0947\u0932\u0947\u0932\u0947 \u0906\u0939\u0947\u0924. \u092b\u0915\u094d\u0924 \u090f\u0915\u091a \u0909\u0924\u094d\u092a\u093e\u0926\u0928 \u0935\u093e\u092a\u0930\u093e, \u0932\u0947\u092c\u0932\u091a\u0947 \u0905\u0928\u0941\u0938\u0930\u0923 \u0915\u0930\u093e, \u0915\u093e\u092a\u0923\u0940\u091a\u094d\u092f\u093e \u0906\u0927\u0940 \u092a\u094d\u0930\u0924\u0940\u0915\u094d\u0937\u093e \u0915\u093e\u0932\u093e\u0935\u0927\u0940\u091a\u0947 \u0928\u093f\u0930\u0940\u0915\u094d\u0937\u0923 \u0915\u0930\u093e \u0906\u0923\u093f \u0938\u0902\u0930\u0915\u094d\u0937\u0915 \u0915\u092a\u0921\u0947 \u0918\u093e\u0932\u093e. \u0916\u093e\u0924\u094d\u0930\u0940 \u0928\u0938\u0932\u094d\u092f\u093e\u0938 \u0924\u0941\u092e\u091a\u094d\u092f\u093e \u0915\u0947. \u0935\u094d\u0939\u0940. \u0915\u0947. \u0915\u093f\u0902\u0935\u093e \u0915\u0943\u0937\u0940 \u0905\u0927\u093f\u0915\u093e\u0931\u094d\u092f\u093e\u0936\u0940 \u092a\u0941\u0937\u094d\u091f\u0940 \u0915\u0930\u093e."
+  ],
+  "pest_severity": [],
+  "pests": [],
+  "quality": {
+    "issues": [],
+    "metrics": {
+      "brightness": 95.02228133979885,
+      "height": 378,
+      "sharpness": 818.6893404892468,
+      "width": 257
+    },
+    "ok": true
+  },
+  "refer_to_expert": false,
+  "severity": {
+    "leaf_share": 0.39,
+    "lesion_share": 0.193,
+    "level": "moderate",
+    "method": "lesion_segmentation",
+    "model": "severity_lraspp_mnv3.onnx",
+    "validated": true
+  },
+  "status": "answered",
+  "supported_crops": [
+    "tomato"
+  ],
+  "timings_ms": {
+    "disease": 41.054175,
+    "leaf_check": 73.103903,
+    "llama": 14459.129964,
+    "pest": 114.023922,
+    "quality": 1.762122,
+    "retrieval": 0.84486,
+    "severity": 126.181235,
+    "total": 18482.605307,
+    "translation": 3779.854453,
+    "vision_wall": 114.203352
+  },
+  "translation": {
+    "lang": "mr",
+    "model_ms": 3770.716442,
+    "ms": 3779.854453,
+    "reviewed": false,
+    "sentences": [
+      {
+        "complete": true,
+        "english": "Brown spots with concentric rings in a bull's eye pattern with a yellow margin.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0938\u0939 \u0932\u0915\u094d\u0937\u094d\u092f\u093e\u0938\u093e\u0930\u0916\u094d\u092f\u093e \u0928\u092e\u0941\u0928\u094d\u092f\u093e\u0924 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0930\u093f\u0902\u0917\u094d\u091c \u0905\u0938\u0932\u0947\u0932\u0947 \u0924\u092a\u0915\u093f\u0930\u0940 \u0920\u093f\u092a\u0915\u0947."
+      },
+      {
+        "complete": true,
+        "english": "Fruit gets infected through the calyx or stem attachment;",
+        "ok": true,
+        "repetition": false,
+        "text": "\u0915\u0945\u0932\u093f\u0915\u094d\u0938 \u0915\u093f\u0902\u0935\u093e \u0916\u094b\u0921\u093e\u091a\u094d\u092f\u093e \u091c\u094b\u0921\u0923\u0940\u0926\u094d\u0935\u093e\u0930\u0947 \u092b\u0933\u093e\u0902\u0928\u093e \u0938\u0902\u0938\u0930\u094d\u0917 \u0939\u094b\u0924\u094b;"
+      },
+      {
+        "complete": true,
+        "english": "brown concentric rings on fruits.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u092b\u0933\u093e\u0902\u0935\u0930 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0924\u092a\u0915\u093f\u0930\u0940 \u0930\u093f\u0902\u0917 \u0905\u0938\u0924\u093e\u0924."
+      },
+      {
+        "complete": true,
+        "english": "Irregular leaf spots mostly appear from the marginal portion of leaves.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u0905\u0928\u093f\u092f\u092e\u093f\u0924 \u092a\u093e\u0928\u093e\u0902\u091a\u0947 \u0920\u093f\u092a\u0915\u0947 \u092c\u0939\u0941\u0924\u0947\u0915\u0926\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0902\u0935\u0930\u0942\u0928 \u0926\u093f\u0938\u0924\u093e\u0924."
+      },
+      {
+        "complete": true,
+        "english": "In many tomato cultivars, symptoms are V-shaped and progress towards the midrib.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u091f\u094b\u092e\u0945\u091f\u094b\u091a\u094d\u092f\u093e \u0905\u0928\u0947\u0915 \u092a\u094d\u0930\u0915\u093e\u0930\u093e\u0902\u092e\u0927\u094d\u092f\u0947, \u0932\u0915\u094d\u0937\u0923\u0947 \u0935\u094d\u0939\u0940-\u0906\u0915\u093e\u0930\u093e\u091a\u0940 \u0905\u0938\u0924\u093e\u0924 \u0906\u0923\u093f \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u092e\u0927\u094d\u092f\u0935\u0930\u094d\u0924\u0940 \u0936\u093f\u0930\u0947\u0915\u0921\u0947 \u091c\u093e\u0924\u093e\u0924."
+      },
+      {
+        "complete": true,
+        "english": "These lesions are having prominent yellowing on their outer margin due to a host-specific toxin produced by the pathogen.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u0930\u094b\u0917\u091c\u0928\u0915\u093e\u0902\u0926\u094d\u0935\u093e\u0930\u0947 \u0924\u092f\u093e\u0930 \u091d\u093e\u0932\u0947\u0932\u094d\u092f\u093e \u092a\u0940\u0915-\u0935\u093f\u0936\u093f\u0937\u094d\u091f \u0935\u093f\u0937\u093e\u0930\u0940 \u092a\u0926\u093e\u0930\u094d\u0925\u093e\u092e\u0941\u0933\u0947 \u092f\u093e \u0920\u093f\u092a\u0915\u094d\u092f\u093e\u0902\u091a\u094d\u092f\u093e \u092c\u093e\u0939\u0947\u0930\u0940\u0932 \u0915\u093e\u0920\u093e\u0935\u0930 \u092a\u094d\u0930\u092e\u0941\u0916 \u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u091b\u091f\u093e \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947."
+      },
+      {
+        "complete": true,
+        "english": "Mostly disease appears in the vegetative phase of the plant growth before flowering.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u092c\u0939\u0941\u0924\u0947\u0915 \u0930\u094b\u0917 \u092b\u0941\u0932 \u092f\u0947\u0923\u094d\u092f\u093e\u092a\u0942\u0930\u094d\u0935\u0940 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u091a\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0924 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u093e\u0924."
+      },
+      {
+        "complete": true,
+        "english": "This is a common disease of tomato occurring on the foliage at any stage of the growth.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u0915\u094b\u0923\u0924\u094d\u092f\u093e\u0939\u0940 \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0935\u0930 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u094b\u0923\u093e\u0930\u093e \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u093e \u0939\u093e \u090f\u0915 \u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0906\u091c\u093e\u0930 \u0906\u0939\u0947."
+      },
+      {
+        "complete": true,
+        "english": "The fungus attacks the foliage causing characteristic leaf spots and blight.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u092c\u0941\u0930\u0936\u0940 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u0932\u094d\u0932\u093e \u0915\u0930\u0924\u0947 \u091c\u094d\u092f\u093e\u092e\u0941\u0933\u0947 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0935\u0948\u0936\u093f\u0937\u094d\u091f\u094d\u092f\u092a\u0942\u0930\u094d\u0923 \u0920\u093f\u092a\u0915\u0947 \u092a\u0921\u0924\u093e\u0924 \u0906\u0923\u093f \u092a\u093e\u0928\u0947 \u0938\u0941\u0915\u0924\u093e\u0924."
+      },
+      {
+        "complete": true,
+        "english": "Early blight is first observed on the plants as small, black lesions mostly on the older foliage.",
+        "ok": true,
+        "repetition": false,
+        "text": "\u0932\u0935\u0915\u0930 \u092f\u0947\u0923\u093e\u0930\u093e \u0915\u0930\u092a\u093e \u092a\u094d\u0930\u0925\u092e \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u0935\u0930 \u0932\u0939\u093e\u0928, \u0915\u093e\u0933\u0947 \u0920\u093f\u092a\u0915\u0947 \u092c\u0939\u0941\u0924\u0947\u0915 \u091c\u0941\u0928\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0906\u0922\u0933\u0924\u093e\u0924."
+      }
+    ],
+    "text": "\u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0938\u0939 \u0932\u0915\u094d\u0937\u094d\u092f\u093e\u0938\u093e\u0930\u0916\u094d\u092f\u093e \u0928\u092e\u0941\u0928\u094d\u092f\u093e\u0924 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0930\u093f\u0902\u0917\u094d\u091c \u0905\u0938\u0932\u0947\u0932\u0947 \u0924\u092a\u0915\u093f\u0930\u0940 \u0920\u093f\u092a\u0915\u0947. \u0915\u0945\u0932\u093f\u0915\u094d\u0938 \u0915\u093f\u0902\u0935\u093e \u0916\u094b\u0921\u093e\u091a\u094d\u092f\u093e \u091c\u094b\u0921\u0923\u0940\u0926\u094d\u0935\u093e\u0930\u0947 \u092b\u0933\u093e\u0902\u0928\u093e \u0938\u0902\u0938\u0930\u094d\u0917 \u0939\u094b\u0924\u094b; \u092b\u0933\u093e\u0902\u0935\u0930 \u090f\u0915\u092e\u0947\u0915\u093e\u0902\u091a\u094d\u092f\u093e \u0906\u0924 \u0924\u092a\u0915\u093f\u0930\u0940 \u0930\u093f\u0902\u0917 \u0905\u0938\u0924\u093e\u0924. \u0905\u0928\u093f\u092f\u092e\u093f\u0924 \u092a\u093e\u0928\u093e\u0902\u091a\u0947 \u0920\u093f\u092a\u0915\u0947 \u092c\u0939\u0941\u0924\u0947\u0915\u0926\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0915\u093e\u0920\u093e\u0902\u0935\u0930\u0942\u0928 \u0926\u093f\u0938\u0924\u093e\u0924. \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u094d\u092f\u093e \u0905\u0928\u0947\u0915 \u092a\u094d\u0930\u0915\u093e\u0930\u093e\u0902\u092e\u0927\u094d\u092f\u0947, \u0932\u0915\u094d\u0937\u0923\u0947 \u0935\u094d\u0939\u0940-\u0906\u0915\u093e\u0930\u093e\u091a\u0940 \u0905\u0938\u0924\u093e\u0924 \u0906\u0923\u093f \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u092e\u0927\u094d\u092f\u0935\u0930\u094d\u0924\u0940 \u0936\u093f\u0930\u0947\u0915\u0921\u0947 \u091c\u093e\u0924\u093e\u0924. \u0930\u094b\u0917\u091c\u0928\u0915\u093e\u0902\u0926\u094d\u0935\u093e\u0930\u0947 \u0924\u092f\u093e\u0930 \u091d\u093e\u0932\u0947\u0932\u094d\u092f\u093e \u092a\u0940\u0915-\u0935\u093f\u0936\u093f\u0937\u094d\u091f \u0935\u093f\u0937\u093e\u0930\u0940 \u092a\u0926\u093e\u0930\u094d\u0925\u093e\u092e\u0941\u0933\u0947 \u092f\u093e \u0920\u093f\u092a\u0915\u094d\u092f\u093e\u0902\u091a\u094d\u092f\u093e \u092c\u093e\u0939\u0947\u0930\u0940\u0932 \u0915\u093e\u0920\u093e\u0935\u0930 \u092a\u094d\u0930\u092e\u0941\u0916 \u092a\u093f\u0935\u0933\u094d\u092f\u093e \u0930\u0902\u0917\u093e\u091a\u0940 \u091b\u091f\u093e \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u0947. \u092c\u0939\u0941\u0924\u0947\u0915 \u0930\u094b\u0917 \u092b\u0941\u0932 \u092f\u0947\u0923\u094d\u092f\u093e\u092a\u0942\u0930\u094d\u0935\u0940 \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u091a\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u091a\u094d\u092f\u093e \u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0924 \u0926\u093f\u0938\u0942\u0928 \u092f\u0947\u0924\u093e\u0924. \u0935\u093e\u0922\u0940\u091a\u094d\u092f\u093e \u0915\u094b\u0923\u0924\u094d\u092f\u093e\u0939\u0940 \u091f\u092a\u094d\u092a\u094d\u092f\u093e\u0935\u0930 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u094b\u0923\u093e\u0930\u093e \u091f\u094b\u092e\u0945\u091f\u094b\u091a\u093e \u0939\u093e \u090f\u0915 \u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0906\u091c\u093e\u0930 \u0906\u0939\u0947. \u092c\u0941\u0930\u0936\u0940 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0939\u0932\u094d\u0932\u093e \u0915\u0930\u0924\u0947 \u091c\u094d\u092f\u093e\u092e\u0941\u0933\u0947 \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0935\u0948\u0936\u093f\u0937\u094d\u091f\u094d\u092f\u092a\u0942\u0930\u094d\u0923 \u0920\u093f\u092a\u0915\u0947 \u092a\u0921\u0924\u093e\u0924 \u0906\u0923\u093f \u092a\u093e\u0928\u0947 \u0938\u0941\u0915\u0924\u093e\u0924. \u0932\u0935\u0915\u0930 \u092f\u0947\u0923\u093e\u0930\u093e \u0915\u0930\u092a\u093e \u092a\u094d\u0930\u0925\u092e \u0935\u0928\u0938\u094d\u092a\u0924\u0940\u0902\u0935\u0930 \u0932\u0939\u093e\u0928, \u0915\u093e\u0933\u0947 \u0920\u093f\u092a\u0915\u0947 \u092c\u0939\u0941\u0924\u0947\u0915 \u091c\u0941\u0928\u094d\u092f\u093e \u092a\u093e\u0928\u093e\u0902\u0935\u0930 \u0906\u0922\u0933\u0924\u093e\u0924.",
+    "withheld": 0
+  }
+}

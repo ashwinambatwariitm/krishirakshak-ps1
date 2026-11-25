@@ -2,8 +2,8 @@
 # # KrishiRakshak PS1 - IP102 pest detector: accuracy per ADVICE GROUP (evaluation only, CPU)
 #
 # The application gives pest advice per knowledge-base topic, and several topics are groups of IP102 species:
-# `caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 thrips species, `mites`, `aphids`. Today the app gives a
-# topic's advice only when the detected *species* is "reliable" (species accuracy >= 70% on the IP102 test split);
+# `caterpillars` = 3 cutworms + 3 armyworms, `thrips` = 5 thrips species, `mites`, `aphids`. At the time (20 Nov) the
+# app with the IP102 species model gave a topic's advice only when the detected *species* is "reliable" (species accuracy >= 70% on the IP102 test split);
 # among the tomato pests only aphids pass, so a cutworm whose exact species is uncertain gets generic advice even when
 # the detector is sure it is a caterpillar. This notebook measures how often the detector gets the **advice group**
 # right, which is what decides the advice the farmer sees.

@@ -3,7 +3,7 @@
  * (XNNPACK backend, 4-bit weights). This is the generation part of the RAG system.
  *
  * Llama receives the diagnosis and the verified extracts retrieved from the knowledge base and writes a short
- * explanation in English or Hindi. It does not diagnose and does not write spray doses (spray options are shown
+ * explanation in English (translated afterwards by IndicTrans2 for the other languages). It does not diagnose and does not write spray doses (spray options are shown
  * exactly as published). Every answer passes output_guard before it is shown.
  *
  * The interface is always available; the implementation (llama_advisor.cpp) is compiled only when the project is

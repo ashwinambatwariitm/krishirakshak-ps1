@@ -35,7 +35,7 @@ inline std::string readFile(const std::string& path) {
     return ss.str();
 }
 
-// Raspberry Pi CPU temperature in degrees Celsius from sysfs (as in the road anomaly detection project);
+// Raspberry Pi CPU temperature in degrees Celsius from sysfs;
 // -1 when the sensor is not available (for example on a laptop without that file).
 inline double readCpuTempC() {
     std::ifstream in("/sys/class/thermal/thermal_zone0/temp");

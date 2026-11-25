@@ -17,7 +17,7 @@
     },
     {
       "step": "Initial CTranslate2 converter code cache",
-      "error": "OSError: [Errno 30] Read-only file system: '/home/studinstru/.cache/huggingface/modules'",
+      "error": "OSError: [Errno 30] Read-only file system: '$HOME/.cache/huggingface/modules'",
       "resolution": "Retried with HF_MODULES_CACHE=/tmp/indictrans2_modules and authorized execution."
     },
     {
@@ -42,5 +42,5 @@
     }
   ],
   "runtime_sentence_failures": "See status, number_check, protected_text_check, repetition_check and error in translations.json. Failed candidates are retained for research but excluded from display_text.",
-  "pi_execution": "Not attempted: project owner requested WSL-only downloads and inference."
+  "pi_execution": "Not attempted in this first experiment (development PC only); Pi results are in results/indictrans2/ct2_pi5."
 }

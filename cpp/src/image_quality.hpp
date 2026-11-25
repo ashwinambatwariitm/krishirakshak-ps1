@@ -2,8 +2,8 @@
  * image_quality.hpp - quality gate run before any model: reject photos that are too small, too dark,
  * too bright or too blurred, so that a poor photo never gets a confident diagnosis.
  *
- * Thresholds are engineering defaults (same values as the Python reference app/pipeline/quality.py);
- * they still have to be checked on PlantDoc validation photos and Pi camera photos (ROADMAP task B3).
+ * Thresholds are engineering defaults (same values as the Python reference app/pipeline/quality.py). Checking them
+ * on photos taken in Indian farms is part of the Phase 2 field-photo work (item P1 of the technical report).
  */
 #pragma once
 

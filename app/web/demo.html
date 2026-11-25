@@ -373,8 +373,16 @@ function hookApp() {
         setStatus("DONE \u00b7 " + ms((j.timings_ms || {}).total), "b-ready");
       } else {
         lastReply = j;
-        const L = j.llama || {};
-        log("Llama", L.accepted ? "#fbbf24" : "#fb7185", L.accepted ? "answer accepted" : "not shown: " + (L.rejected_reasons || []).join(", "));
+        // /api/ask returns the Llama fields at the top level (accepted, answer, stats, translation)
+        const L = j.llama || j, st = L.stats || {};
+        if (L.accepted) {
+          log("Llama", "#fbbf24", `ExecuTorch, Llama 3.2 1B LoRA INT4: first token ${(st.time_to_first_token_s || 0).toFixed(2)} s, ` +
+              `${(st.tokens_per_s || 0).toFixed(1)} tok/s -> every sentence matched to a source -> accepted`);
+          log("Llama", "#fbbf24", "\u201c" + (L.answer || L.text || "") + "\u201d");
+          if (j.translation && j.translation.text) log("Translate", "#c084fc", j.translation.text);
+        } else {
+          log("Llama", "#fb7185", "not shown: " + (L.rejected_reasons || []).join(", ") + " -> the verified extracts are the answer");
+        }
         log("Done", "#34d399", `phone round trip ${ms(rt)}`);
         setStatus("DONE \u00b7 " + ms(rt), "b-ready");
       }

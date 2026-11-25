@@ -10,10 +10,10 @@ const CONFIG = {
   // Base URL for the KrishiRakshak API (e.g., "" on Pi, or "http://localhost:8080" for mock server)
   API_BASE: localStorage.getItem("KR_API_BASE") || "http://10.42.0.1:8080",
 
-  // Timeout in milliseconds (FR-2: Pi ExecuTorch Llama 3B inference can take ~45s)
+  // Timeout in milliseconds (final Pi test: whole answer 4.7-20 s, median 8.4 s, with Llama 1B and translation)
   TIMEOUT_MS: 60000,
 
-  // Default interface language ("en" or "hi")
+  // Interface language of the page; the 9 other languages are chosen with TRANSLATE_LANG below
   DEFAULT_LANG: localStorage.getItem("KR_LANG") || "en",
 
   // Machine translation of the checked Llama advice: "" = none, or hi te mr kn ta bn gu or pa

@@ -1,6 +1,6 @@
 /*
  * web_server.hpp - minimal embedded HTTP server for the offline farmer web page (POSIX sockets + C++ standard
- * library only, so it cross-compiles for the Raspberry Pi; same design as the road-anomaly-detection dashboard).
+ * library only, so it cross-compiles for the Raspberry Pi).
  *
  * The page is compiled into the binary (web_page.hpp), so deployment stays a single executable. A phone can open
  * it over the Pi's own Wi-Fi hotspot; no internet is involved.

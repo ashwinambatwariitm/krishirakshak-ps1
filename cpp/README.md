@@ -4,12 +4,14 @@ One executable, `krishirakshak`, runs the whole offline pipeline on the Raspberr
 
 | Stage | Implementation |
 |---|---|
-| Photo quality gate, estimated severity | OpenCV (`image_quality.cpp`, `severity.cpp`) |
-| Tomato disease classifier (v5 EfficientNet-B0) and IP102 pest detector (YOLOv8n) | ONNX Runtime C++ API, run in parallel (2 + 2 threads) (`disease_classifier.cpp`, `pest_detector.cpp`) |
+| Photo quality gate (too small, dark, bright or blurred) | OpenCV (`image_quality.cpp`) |
+| Tomato-leaf check (EfficientNet-B0), disease classifier (v5 EfficientNet-B0, 6 classes) and pest detector (YOLOv8n, 6 advice groups) | ONNX Runtime C++ API, two threads in parallel with 2 cores each: leaf check + disease, pests (`disease_classifier.cpp`, `pest_detector.cpp`) |
+| Severity: leaf and lesion segmentation (LR-ASPP MobileNetV3) | ONNX Runtime, 4 threads, after the two vision threads (`severity.cpp`, `pest_severity.cpp`) |
 | Verified advice extracts (ICAR, NIPHM, TNAU) | SQLite + FTS5 compiled into the binary, loaded from `app/kb/tomato_kb.json` (`knowledge_base.cpp`) |
-| Plain-language summary | Llama 3.2 1B Instruct, INT4 (8da4w), ExecuTorch C++ runtime with XNNPACK (`llama_advisor.cpp`) |
+| Plain-language summary | Llama 3.2 1B Instruct with LoRA, INT4 (8da4w), ExecuTorch C++ runtime with XNNPACK (`llama_advisor.cpp`) |
 | Safety of Llama text | Output check + sentence-level grounding against the retrieved extracts (`output_guard.cpp`) |
-| Farmer web page | Embedded POSIX-socket HTTP server, page compiled in (`web_server.hpp`, `web_page.hpp`) |
+| Translation into 9 Indian languages | IndicTrans2 200M on CTranslate2 INT8, 2 threads, one batch per answer (`translator.cpp`, `indic_text.cpp`) |
+| Farmer app and API | Embedded POSIX-socket HTTP server serving `app/web` and the JSON API (`web_server.hpp`, `web_page.hpp`) |
 
 Llama is used only for the advisory step, through ExecuTorch, as required by PS1. The vision models are a separate
 ONNX Runtime pipeline.
@@ -71,9 +73,10 @@ Model files go into `models/` (see `models/README.md`): the ONNX models and the 
 
 ```
 build/x86-llm/krishirakshak --root . leaf.jpg                 # JSON result (English)
-build/x86-llm/krishirakshak --root . --lang hi leaf.jpg       # Hindi (reviewed Hindi extracts)
+build/x86-llm/krishirakshak --root . --translate hi leaf.jpg  # English advice + Hindi translation (as the app does)
+build/x86-llm/krishirakshak --root . --lang hi leaf.jpg       # older option: reviewed Hindi extracts only, no Llama
 build/x86-llm/krishirakshak --root . --ask "when can I harvest after spraying" --topic late_blight
-build/x86-llm/krishirakshak --root . --serve 8080             # web page at http://<pi-ip>:8080/
+build/x86-llm/krishirakshak --root . --serve 8080 --web app/web   # app at http://<pi-ip>:8080/ (as kr_pi.sh runs it)
 build/arm/krishirakshak --root . --translate ta leaf.jpg      # English advice + Tamil machine translation
 ```
 
@@ -82,15 +85,16 @@ Options: `--int8` (INT8 vision models), `--no-llama`, `--sequential`, `--threads
 `--translate-threads N`, `--translate-model DIR`.
 
 Translation: only English Llama text that passed the grounding and safety checks is translated (one batch per
-answer, 2 CTranslate2 threads); the English stays in the result and on the page, and the translation is labelled as not
-reviewed. On the Pi 5 (late-blight photo, 8 sentences): Llama 16.5 s, translation 3.6 s, whole request 20.3 s, peak
-memory of the process 1.5 GB with Llama 1B, vision models and translator loaded. Measurements of the translator alone:
-`results/indictrans2/ct2_pi5/README.md`.
+answer, 2 CTranslate2 threads). The English stays in the result and on the page, and the translation is labelled as a
+machine translation. Final test on the Pi 5 (23-24 Nov 2026, 36 photos x 10 languages, `results/e2e_pi5/README.md`):
+whole answer median 8.36 s, Llama 7.28 s, translation 1.09 s, vision 114 ms, peak memory of the service 1.74 GB with
+all models loaded. Measurements of the translator alone: `results/indictrans2/ct2_pi5/README.md`.
 
 `--ort-spin` lets ONNX Runtime's worker threads busy-wait after each run (its default). The application turns this
 off: Llama runs on the same four cores right after vision, and spinning threads would take CPU time from it. On the
 development PC, 10 photos took the same wall time either way, but 45 % more CPU time with spinning (10.3 s vs
-14.8 s user time); the outputs are identical. `run_benchmarks.sh` repeats this A/B on the Pi.
+14.8 s user time). The outputs are identical. `run_benchmarks.sh` (written into the Pi bundle by `cpp/package_pi.sh`)
+repeats this A/B on the Pi.
 
 ## Performance model: how fast could it be?
 
@@ -114,7 +118,7 @@ XNNPACK delegate, throttling); above 100 % means the model of the hardware or of
   about heavy ones (matrix products, embedding, attention) that would run on the slow generic kernels.
 
 ```
-build/arm/membw > membw.json                                   # on the Pi (run_benchmarks.sh does this)
+build/arm/membw > membw.json                                   # on the Pi (run_benchmarks.sh in the bundle does this)
 python -m tools.perf_model --pte models/llama3_2_1b_instruct_8da4w.pte --membw bench/membw.json \
     --measured 'bench/*_llama_en.json'
 python -m llm.inspect_pte models/llama3_2_1b_instruct_8da4w.pte  # needs the executorch Python package
@@ -131,14 +135,15 @@ build/x86/translate_bench --model models/indictrans2_en_indic_200M_ct2_int8 --sp
 python -m tools.cpp_parity --data-root <data folder>           # C++ vs Python reference on 188 PlantDoc test photos
 ```
 
-Parity result (WSL, FP32 models): quality decision identical on 188/188 photos; on the 185 accepted photos the top-1
+Parity result (WSL, FP32 models, measured when both sides used the earlier IP102 species pest model, the tool now uses
+the advice-group model like the application): quality decision identical on 188/188 photos; on the 185 accepted photos the top-1
 disease is identical on 185/185 (max probability difference 3e-8), severity level on 185/185 and pest detections on
 184/185 (one box edge differs by one pixel at a .5 rounding boundary).
 
-## Llama behaviour (measured on WSL, 2026-11-17)
+## Llama behaviour
 
 Llama 3.2 1B sometimes refuses, repeats itself, invents a cause or reverses an instruction. The application therefore
 always shows the verified extracts and the spray table as published, and shows Llama text only for sentences that
-are supported by one retrieved source sentence (same negation, same numbers). Hindi pages use the reviewed Hindi
-extracts, because the 1B model produced fluent but meaningless Hindi. `cpp/tests/grounding_test.cpp` contains the
-unsafe sentences seen in testing.
+are supported by one retrieved source sentence (same negation, same numbers). Llama writes English only, because the
+1B model produced fluent but meaningless Hindi, and the checked English is then translated by IndicTrans2.
+`cpp/tests/grounding_test.cpp` contains the unsafe sentences seen in testing. Details: `docs/llama_1b_quality.md`.

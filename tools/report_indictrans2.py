@@ -1,4 +1,6 @@
-"""Summarize isolated benchmark runs and compare FP32/dynamic INT8 candidates."""
+"""Summarize the first IndicTrans2 experiment (PyTorch on the development PC): FP32 vs dynamic INT8 speed, memory and
+quality. Writes results/indictrans2/bench_summary.json and the two generated tables in docs/TRANSLATION_INDICTRANS2.md.
+The deployed CTranslate2 INT8 translator is measured on the Pi, see results/indictrans2/ct2_pi5/README.md."""
 import json
 import re
 import statistics
@@ -12,7 +14,8 @@ def update_document(bench, quality):
     withheld = sum(r["withheld"] for r in quality["languages"].values())
     errors = sum(r["errors"] for r in quality["languages"].values())
     qlines = ["The evaluation completed {} aligned sentence-language records: {} withheld and {} execution errors. "
-              "The fluent-speaker review sheet has 54 rows (six demo topics in nine languages).".format(total, withheld, errors), "",
+              "The review sheet of that run (`results/indictrans2/review_sheet.csv`, PyTorch FP32 output, kept as a record) "
+              "has 54 rows (six demo topics in nine languages).".format(total, withheld, errors), "",
               "| Language | Reference chrF | Number passes / checked | Number-bearing pass rate | Withheld | Errors |",
               "| --- | ---: | ---: | ---: | ---: | ---: |"]
     for lang, row in quality["languages"].items():
@@ -20,25 +23,24 @@ def update_document(bench, quality):
             lang, row["reference_chrf"], row["number_passed"], row["number_checked"],
             row["number_pass_rate"], row["number_bearing_pass_rate"], row["withheld"], row["errors"]))
     qlines.extend(["", "Each language is scored against all 38 non-chemical reference extracts. "
-                   "Neither side is reviewed. Withheld counts include numeric, literal, truncation "
-                   "and repetition failures; some conservative numeric failures are formatting changes."])
+                   "Neither side was reviewed at the time. Withheld counts include numeric, literal, truncation "
+                   "and repetition failures. Some conservative numeric failures are formatting changes."])
     slines = ["| WSL backend | Load seconds | Load/quantization peak MiB | Overall peak MiB |",
               "| --- | ---: | ---: | ---: |"]
     for name, row in bench["backends"].items():
         slines.append("| {} | {:.3f} | {:.1f} | {:.1f} |".format(
             name, row["load_seconds"], row["load_peak_rss_mb"], row["peak_rss_mb"]))
-    slines.extend(["| CTranslate2 INT8 | Not available | Not measured | Not measured |", "",
-                   "| Language | FP32 first / warm s | Dynamic INT8 first / warm s | FP32/INT8 chrF | Pi INT8 scenario s (not measured) |",
-                   "| --- | ---: | ---: | ---: | ---: |"])
+    slines.extend(["| CTranslate2 INT8 | Not convertible with the standard converter at that time | - | - |", "",
+                   "| Language | FP32 first / warm s | Dynamic INT8 first / warm s | FP32/INT8 chrF |",
+                   "| --- | ---: | ---: | ---: |"])
     for lang, row in bench["languages"].items():
-        low, high = row["pi_int8_seconds_scenario_not_measurement"]
-        slines.append("| {} | {:.3f} / {:.3f} | {:.3f} / {:.3f} | {:.2f} | {:.2f}-{:.2f} |".format(
+        slines.append("| {} | {:.3f} / {:.3f} | {:.3f} / {:.3f} | {:.2f} |".format(
             lang, row["fp32_first_seconds"], row["fp32_warm_median_seconds"],
-            row["int8_first_seconds"], row["int8_warm_median_seconds"], row["fp32_int8_chrf"], low, high))
+            row["int8_first_seconds"], row["int8_warm_median_seconds"], row["fp32_int8_chrf"]))
     slines.extend(["", "The FP32/INT8 comparison covers only two late-blight sentences per language. "
                    "Several languages change substantially, so close agreement is not demonstrated "
                    "across the dataset. Punjabi's slow repetitive candidate is withheld, but its "
-                   "generation time remains included. Both measured backends exceed 600 MB peak RSS."])
+                   "generation time remains included. Both measured backends exceed the 600 MB memory budget set for translation on the Pi."])
     path = ROOT / "docs/TRANSLATION_INDICTRANS2.md"
     text = path.read_text(encoding="ascii")
     for name, lines in [("QUALITY_RESULTS", qlines), ("SPEED_RESULTS", slines)]:
@@ -60,7 +62,7 @@ def main():
                "sample": "Pi late-blight accepted answer, two sentences, one answer per language",
                "timing": "First traversal and median of the following two traversals; no concurrent inference",
                "rss_units": "MiB (Linux ru_maxrss / 1024), includes imports, loading and quantization",
-               "pi": {"measured": False, "reason": "WSL-only per project owner; no Pi downloads or inference"},
+               "pi": {"measured": False, "reason": "first experiment, development PC only (the Pi results are in results/indictrans2/ct2_pi5)"},
                "backends": {"fp32": fp["metadata"], "dynamic-int8": quant["metadata"]},
                "languages": {}}
     for lang in LANGUAGES:
@@ -79,11 +81,7 @@ def main():
             "fp32_repeat_candidates_identical": all(
                 [s["translation"] or "" for s in r["sentences"]] == source for r in a),
             "int8_repeat_candidates_identical": all(
-                [s["translation"] or "" for s in r["sentences"]] == target for r in b),
-            "pi_int8_seconds_scenario_not_measurement": [2 * int_warm, 5 * int_warm]}
-    summary["pi_estimate_caveat"] = (
-        "2x-5x laptop warm time is an illustrative slowdown scenario, not a calibrated prediction. "
-        "ARM kernels, cooling, runtime support and memory may invalidate it. No Pi speed claim follows.")
+                [s["translation"] or "" for s in r["sentences"]] == target for r in b)}
     summary["chrf_signature"] = str(metric.get_signature())
     dump(out / "bench_summary.json", summary)
     if (out / "summary.json").exists():

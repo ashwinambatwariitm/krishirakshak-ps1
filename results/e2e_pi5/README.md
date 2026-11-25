@@ -39,6 +39,11 @@ accepted (190 of 190), spray lists complete (220 of 220), no JavaScript error, n
 font loaded for every script. Median 6.9 s per run. One run (Gujarati, late blight) stalled on the test computer for 47
 minutes with no error on the Pi; it was run again and passed.
 
+After this test one change was made (25 Nov 2026): a Kisan AI question with only generic words after a diagnosis ("How
+to fix this disease") now gets the advice of the diagnosed topic, found when testing the app on a phone. Photo analysis
+does not use this search. All 36 photos were run again in English and Marathi with the new build and gave answers
+identical to the final run (72 of 72, diagnosis, pests, severity, advice, Llama text and translation).
+
 ## Test photos
 
 The photos are not stored here; they come from public datasets whose licences are listed in the main README.

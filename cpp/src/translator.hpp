@@ -2,7 +2,7 @@
  * translator.hpp - translation stage: English advice -> Indian languages on the device, with IndicTrans2
  * (en-indic distilled 200M) running on the CTranslate2 C++ runtime (INT8 weights, ~210 MB on disk).
  *
- * The model was converted from the Hugging Face checkpoint with cpp/tools/convert_indictrans2_ct2.py.
+ * The model was converted from the Hugging Face checkpoint with tools/convert_indictrans2_ct2.py.
  * Measured on the Raspberry Pi 5 (Python runtime with the same CTranslate2 build options, 108 Llama answers):
  *   - all sentences of an answer in ONE batch with 2 threads: median 1.19 s per answer, peak memory ~440 MB;
  *   - 4 threads is several times slower (OpenMP threads spin and compete), and 4 single-thread workers or

@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-# Export Llama 3.2 1B Instruct to ExecuTorch .pte files (run once on a PC; the .pte is then copied to the device).
+# Export the base Llama 3.2 1B Instruct to ExecuTorch .pte files (run once on a PC; the .pte is then copied to the
+# device). The deployed LoRA-tuned model is exported the same way by training/src/llama_lora_distill.py (Kaggle).
 #
-#   INT4 (primary, deployed):  8da4w = 8-bit dynamic activations, 4-bit weights (group size 32),
+#   INT4 (deployed format):    8da4w = 8-bit dynamic activations, 4-bit weights (group size 32),
 #                              4-bit embeddings, KV cache + SDPA, XNNPACK backend (Arm NEON / KleidiAI kernels)
 #   FP32 baseline:             same graph without quantization, XNNPACK backend (for the comparison table)
 #
 # Requirements:
-#   - Python environment with executorch (see app/README.md)
+#   - Python environment with executorch 1.5.1 (pip install executorch==1.5.1, see cpp/README.md for the runtime)
 #   - Access to meta-llama/Llama-3.2-1B-Instruct on Hugging Face (accept the Llama 3.2 licence) and `hf auth login`
 #     This is the ONLY step that uses the internet; the application never does.
 #
-# Large files go to STORE (default: the Windows C: drive under WSL, which has more free space than the WSL disk).
+# Large files go to STORE (KR_STORE, default /mnt/c/krishirakshak_store: a drive with more free space under WSL).
 #
 # Usage:  bash llm/export_llama.sh [int4|fp32|all]
 set -euo pipefail

@@ -1,9 +1,9 @@
 # Llama 3.2 1B answer quality (prompt work)
 
-Task: `docs/handover/LLAMA_1B_TASK_AMAN.md`. Goal: more 1B answers pass the grounding check, without making them less
+Goal: more 1B answers pass the grounding check, without making them less
 correct. The check, its 0.75 threshold and every safety check are unchanged; only the prompt changed.
 
-**Result: `prompts/aman_v8_no_numbering.txt`**. On all 27 topics it is accepted for 24 (baseline 15), the six demo
+**Result: `prompts/advisor_v8_no_numbering.txt`**. On all 27 topics it is accepted for 24 (baseline 15), the six demo
 topics 6/6 (baseline 3/6), 0 refusals (baseline 8), 7.2 grounded sentences per topic (baseline 2.9) and no distortion
 found in a manual review of all 195 kept sentences. It also generates fewer tokens per answer (78 vs 106), so it should
 not be slower on the Pi.
@@ -12,18 +12,18 @@ not be slower on the Pi.
 
 - C++ application, laptop (WSL Debian 12, x86), `krishirakshak --root . --eval-advisor <topics>`, same `.pte`
   (`llama3_2_1b_instruct_8da4w.pte`) and KB (`tomato_kb_v3`) as the app; prompt set with `KR_ADVISOR_PROMPT=<file>`.
-  Greedy decoding, so a run is repeatable. Branch base: `llama-quality-speed` (ce31cb3).
+  Greedy decoding, so a run is repeatable.
 - Every variant runs on **all 27 topics**; the demo result is read from the same run (the six demo topics are part of
   the 27), so no prompt is tuned to six cases.
 - `python -m llm.summarize_eval results/llama_eval/<run>` turns the C++ output (`eval.jsonl`) into `answers.json` and
   `summary.json` (same keys as `llm/eval_advisor.py`) and `review.md`: every kept sentence of every accepted answer next
   to the source sentence that supports it best.
-- **Manual review**: I read every kept sentence of the accepted answers against its source. A sentence that changes
+- **Manual review**: every kept sentence of the accepted answers was read against its source. A sentence that changes
   the meaning (wrong plant part, wrong disease name, symptom turned into an instruction, changed season or schedule,
   nonsense) is a distortion, also when the check kept it because of a known gap (short words such as "rot" are not
   checked, "plant" is a stop word). **Clean** = accepted with no distortion. Variants that were clearly behind on
   acceptance were not reviewed (marked -).
-- `healthy` uses the spread line that is being fixed; its result is provisional.
+- `healthy` was run with a spread line in these runs. The application builds the healthy prompt without one.
 
 ## Log
 
@@ -34,23 +34,23 @@ topic. Runs are in `results/llama_eval/<run>/`.
 |---|---|---|---|---|---|---|---|
 | baseline (built-in) | - | 3/6 | 15 | 15 | 8 | 2.9 | 0 |
 | baseline + bcw | - | 5/6 | 17 | 15 | 8 | 3.1 | 3 (collar_rot, late_blight x2) |
-| v1 `aman_v1_per_sentence` | rewrite every fact sentence as its own short sentence; key-word list; one-shot example | 6/6 | 20 | 18 | 0 | 5.0 | 4 (damping_off x3, serpentine_leaf_miner) |
+| v1 `advisor_v1_per_sentence` | rewrite every fact sentence as its own short sentence; key-word list; one-shot example | 6/6 | 20 | 18 | 0 | 5.0 | 4 (damping_off x3, serpentine_leaf_miner) |
 | v1 + bcw | | 6/6 | 20 | 17 | 0 | 6.3 | 6 (+ helicoverpa x2) |
-| v1b `aman_v1b_full_stop` | v1 + "each ending with a full stop" | 3/6 (demo run) | - | - | 0 | 3.3 | - |
-| v2 `aman_v2_explain` | "friendly extension worker", official advice + explanation | 2/6 (demo run) | - | - | 5 of 6 | 2.3 | - |
-| v3 `aman_v3_no_keyword_list` | v1 without the key-word list | 5/6 | 13 | - | 0 | 3.1 | - |
-| v4 `aman_v4_no_example` | v3 without the one-shot example | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
+| v1b `advisor_v1b_full_stop` | v1 + "each ending with a full stop" | 3/6 (demo run) | - | - | 0 | 3.3 | - |
+| v2 `advisor_v2_explain` | "friendly extension worker", official advice + explanation | 2/6 (demo run) | - | - | 5 of 6 | 2.3 | - |
+| v3 `advisor_v3_no_keyword_list` | v1 without the key-word list | 5/6 | 13 | - | 0 | 3.1 | - |
+| v4 `advisor_v4_no_example` | v3 without the one-shot example | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
 | v4 + bcw | | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
-| v5 `aman_v5_keywords_no_example` | v1 without the example (key-word list kept) | 6/6 | 19 | - | 0 | 6.0 | - |
-| v6 `aman_v6_full_stop` | v4 + full stop | 3/6 | 15 | - | 0 | 4.1 | - |
-| v7 `aman_v7_task_in_user` | v4 instructions moved from the system to the user message | 5/6 | 24 | 21 | 0 | 5.7 | 3 (bacterial_canker, bacterial_wilt, tuta: headers only) |
-| **v8 `aman_v8_no_numbering`** | **v4 + "Do not number the lines."** | **6/6** | **24** | **24** | **0** | **7.2** | **0** |
+| v5 `advisor_v5_keywords_no_example` | v1 without the example (key-word list kept) | 6/6 | 19 | - | 0 | 6.0 | - |
+| v6 `advisor_v6_full_stop` | v4 + full stop | 3/6 | 15 | - | 0 | 4.1 | - |
+| v7 `advisor_v7_task_in_user` | v4 instructions moved from the system to the user message | 5/6 | 24 | 21 | 0 | 5.7 | 3 (bacterial_canker, bacterial_wilt, tuta: headers only) |
+| **v8 `advisor_v8_no_numbering`** | **v4 + "Do not number the lines."** | **6/6** | **24** | **24** | **0** | **7.2** | **0** |
 | v8 + bcw | (only fruit_rots changes) | 6/6 | 24 | 23 | 0 | 7.2 | 1 (fruit_rots) |
-| v9 `aman_v9_all_sentences` | v4 + "Rewrite all the sentences of the FACTS, not only the first ones." | 6/6 | 21 | - | 0 | 6.1 | - |
-| v10 `aman_v10_no_diagnosis` | v4 without the diagnosis line | 6/6 | 24 | 23 | 0 | 8.1 | 1 (early_blight, a demo topic) |
-| v11 `aman_v11_no_numbering_no_diagnosis` | v8 without the diagnosis line | 6/6 | 23 | 22 | 0 | 7.8 | 1 (yellow_leaf_curl_virus, a demo topic) |
-| v12 `aman_v12_no_repeat` | v8 + "Never write the same sentence twice." | 6/6 | 24 | 23 | 0 | 7.1 | 1 (helicoverpa) |
-| v13 `aman_v13_capital` | v8 + "Start every line with a capital letter." | 4/6 | 22 | - | 0 | 4.7 | - |
+| v9 `advisor_v9_all_sentences` | v4 + "Rewrite all the sentences of the FACTS, not only the first ones." | 6/6 | 21 | - | 0 | 6.1 | - |
+| v10 `advisor_v10_no_diagnosis` | v4 without the diagnosis line | 6/6 | 24 | 23 | 0 | 8.1 | 1 (early_blight, a demo topic) |
+| v11 `advisor_v11_no_numbering_no_diagnosis` | v8 without the diagnosis line | 6/6 | 23 | 22 | 0 | 7.8 | 1 (yellow_leaf_curl_virus, a demo topic) |
+| v12 `advisor_v12_no_repeat` | v8 + "Never write the same sentence twice." | 6/6 | 24 | 23 | 0 | 7.1 | 1 (helicoverpa) |
+| v13 `advisor_v13_capital` | v8 + "Start every line with a capital letter." | 4/6 | 22 | - | 0 | 4.7 | - |
 
 v8 still rejects three topics: `bacterial_speck` (writes one sentence twice; the copy is dropped as a duplicate, so 1
 grounded), `tuta_absoluta_pinworm` (numbers its lines anyway and loops on "The pinworm is found on the leaf") and
@@ -75,8 +75,8 @@ the wording of 20 topics and brings a new distortion; v13 breaks the demo (4/6).
    things not to write, once as its own sentence) stopped it for 25 of 27 topics.
 4. **`--block-cause-words` does not help the rewrite prompt** (v4 + bcw gives the same answers as v4; v8 + bcw changes
    only fruit_rots, and adds a distortion there), so v8 should run without it. It helps
-   the built-in prompt (3/6 -> 5/6 demo) but part of that gain is distortions the check misses (below), so I would not
-   switch it on for this.
+   the built-in prompt (3/6 -> 5/6 demo) but part of that gain is distortions the check misses (below), so it is not
+   switched on.
 
 What did not work: asking for full stops (v1b, v6: fewer accepted, the 1B starts adding words), "explain" wording
 (v2, refusals), moving the instructions into the user message (v7: markdown headers and new distortions), dropping the
@@ -108,12 +108,12 @@ the test passes.
 | v10 | early_blight | Fruit blight observed on plants as small black lesions | Early blight is first observed on the plants as small, black lesions ... | wrong disease name (5 of 6 words match) |
 | v11 | yellow_leaf_curl_virus | Disease appears in September | Disease appear in severe forms during the month of September to November. | season changed |
 
-Grounding gaps these show (for the core team; the check was not changed in this task):
+Grounding gaps these show (closed by the check update below):
 - 3-letter words are not checked ("rot"), and "plant" is a stop word.
 - A negated rewrite can match a source that is negative for another reason ("avoid").
 - With 4 content words, one changed or invented word still passes (3 of 4 = 0.75): "wrinkled", "fruit blight".
 - **A one-word line passes (1 of 1) and counts towards the two grounded sentences**, so an answer of markdown headers
-  and fragments can be accepted. Suggest a minimum of 2 content words per kept sentence.
+  and fragments can be accepted (now: at least 2 content words per kept sentence).
 
 ### Check update (19 Nov 2026)
 
@@ -153,16 +153,18 @@ with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app 
 
 ## v8 in the application (19 Nov 2026)
 
-- v8 is now the built-in prompt of `cpp/src/llama_advisor.cpp` (same text as `prompts/aman_v8_no_numbering.txt`).
+- v8 is now the built-in prompt of `cpp/src/llama_advisor.cpp` (same text as `prompts/advisor_v8_no_numbering.txt`).
   The previous prompt stays available: `KR_ADVISOR_PROMPT=prompts/advise_keep_words.txt`.
-- The near-duplicate repeat stop of the evaluation branch (`llama-quality-speed`) is in the application too, so the
-  application decodes like the evaluation runs above.
-- `krishirakshak --eval-advisor demo|all|TOPIC,TOPIC` is in main: one JSON line per topic, same fields as
+- The near-duplicate repeat stop used in the evaluation runs is in the application too, so the application decodes
+  like the evaluation runs above.
+- `krishirakshak --eval-advisor demo|all|TOPIC,TOPIC`: one JSON line per topic, same fields as
   `results/llama_eval/<run>/eval.jsonl` (for `llm/summarize_eval.py`), through the same Llama call and checks as a
   photo (`Pipeline::runAdvisor`); `all` is the 27 topics of this document; healthy gets no spread line.
-- **Open: the default model is the LoRA-tuned 1B, which was trained with the previous prompt.** v8 was measured on the
-  base 1B only. LoRA + v8, LoRA + previous prompt, base + v8 and base + previous prompt must be compared before the
-  release; compare on the six demo topics separately, because the other 21 were LoRA training topics.
+- **LoRA with v8 (Pi 5, INT4, 21 Nov 2026).** The LoRA-tuned 1B was trained with the previous prompt, so it was
+  compared with the base 1B, both with v8, on all 27 topics: base accepted 25/27 (188 kept sentences, 60 dropped,
+  24%), LoRA 23/27 (102 kept, 13 dropped, 11%), demo topics 6/6 and 5/6. The LoRA model stays the default for complete
+  sentences, fewer dropped sentences and answers about twice as fast (technical report, section A6,
+  `results/pi5_bench/2026-11-21_llama_precision`). On a rejected topic the farmer sees the verified extracts.
 
 ## Known limits of v8
 
@@ -170,19 +172,17 @@ with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app 
   `bacterial_canker`: 19 kept items such as "Seedlings affected", "Wilting", "Cracks", "Petioles". Also
   "Mulch organic mulch" (powdery_mildew), "Bemisia tabaci" (yellow_leaf_curl_virus). Faithful, but poor to read.
 - **Run-on text in the app.** v8 writes one sentence per line, often without a full stop. The app joins kept sentences
-  with spaces, so the farmer sees "Install yellow sticky traps Use nitrogen fertilizer judiciously". Suggest: when
-  joining, add a full stop to a kept sentence that does not end with one.
+  with spaces, so the farmer saw "Install yellow sticky traps Use nitrogen fertilizer judiciously". Fixed: a kept
+  sentence without a full stop now gets one (check update above).
 - **Retry prompt.** With v8 there are no refusals, so the retry prompt (hard-coded in `llama_advisor.cpp`) is not used.
   In the baseline runs its answers invented facts ("February or March", "Burn infected leaves", another disease name);
-  most were dropped by the check. If the built-in prompt changes to v8, the retry could reuse the v8 wording.
-- `healthy`: `llm/eval_advisor.py` now builds the healthy prompt without a spread line, like the application;
-  the C++ `--eval-advisor` (branch `llama-quality-speed`, not yet in main) still needs the same fix.
-- Measured on the laptop only. The Pi uses the same `.pte` and greedy decoding, so the text should be the same, but
-  speed needs measuring there.
+  most were dropped by the check.
+- The prompt comparison above was run on the laptop. Speed and the LoRA comparison were measured on the Pi 5
+  (`results/pi5_bench/`, final test in `results/e2e_pi5/README.md`: Llama median 7.28 s per answer).
 
 ## Files
 
-- `prompts/aman_v*.txt` - all variants (v8 is the one to use).
+- `prompts/advisor_v*.txt` - all variants (v8 is the one to use).
 - `results/llama_eval/<run>/` - `eval.jsonl` (raw C++ output), `answers.json`, `summary.json`, `review.md`,
   `run_info.txt`, `stderr.txt`.
 - `llm/summarize_eval.py` - table, review and JSON files from C++ runs.
