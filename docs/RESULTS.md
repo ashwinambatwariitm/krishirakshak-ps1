@@ -449,7 +449,7 @@ INT4 LoRA Llama, IndicTrans2 INT8), official 27 W supply, active cooler, 32-61 C
 | Stage | Time per photo | Board power (mean / peak) | CPU use (4 cores) | Energy per photo | CPU temperature (max) |
 |---|---|---|---|---|---|
 | Idle (application loaded, waiting) | - | 1.45 W / 2.5 W | 0.1% | - | 37 C |
-| Vision only: photo check, leaf check, disease and pest models (8 photos rejected as not a tomato leaf) | 0.14 s (vision 118 ms) | 4.5 W / 8.4 W | 40-90% | 0.6 J | 44 C |
+| Vision only: photo check, leaf check, disease and pest models (8 photos rejected as not a tomato leaf) | 0.14 s (vision 118 ms) | 4.5 W / 7.9 W | 40-90% | 0.6 J | 44 C |
 | Full answer: vision + Llama advice + Marathi translation (5 tomato disease photos, 21 Nov) | 6.8 s median (4.2-18.1 s) | 5.5 W / 8.3 W | 88% | 39 J median, 50 J mean (0.014 Wh) | 61 C |
 
 - Temperature and clock are read from sysfs (`/sys/class/thermal/thermal_zone0/temp`, cpu0 `scaling_cur_freq`) five times per
