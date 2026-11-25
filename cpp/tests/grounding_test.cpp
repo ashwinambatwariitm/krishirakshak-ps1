@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
         // Llama 3.2 3B faithful rewrites in plain words (same-meaning groups: edge = margin, spots = lesions)
         {"septoria_leaf_spot", nullptr, "Small, round spots with a grey center and dark edge on leaves.", true},
         {"early_blight", nullptr, "Get rid of the leftover crop debris.", true},
-        // Faithful Llama 3.2 1B rewrites that must stay (laptop evaluation by Aman, docs/llama_1b_quality.md)
+        // Faithful Llama 3.2 1B rewrites that must stay (laptop evaluation, docs/llama_1b_quality.md)
         {"healthy", nullptr, "Use only necessary, label-claimed pesticides.", true},
         {"septoria_leaf_spot", nullptr, "Spots start on lower leaves and gradually advance upwards.", true},
         {"fruit_rots", nullptr, "Staking of plant to avoid fruit contact.", true},

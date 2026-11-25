@@ -1,1 +1,1 @@
-prompt=prompts/aman_v12_no_repeat.txt options=
+prompt=prompts/advisor_v12_no_repeat.txt options=

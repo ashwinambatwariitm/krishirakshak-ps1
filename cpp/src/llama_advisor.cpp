@@ -186,7 +186,7 @@ public:
                        const std::string& lang) override {
         // Rephrase-only prompt (tests showed the 1B model refusing on "do not name pesticides" wording and reversing
         // instructions when asked to "explain"): Llama rewrites the facts in simple words and nothing else.
-        // Prompt v8 of the prompt evaluation (docs/llama_1b_quality.md, prompts/aman_v8_no_numbering.txt): every
+        // Prompt v8 of the prompt evaluation (docs/llama_1b_quality.md, prompts/advisor_v8_no_numbering.txt): every
         // source sentence becomes its own short sentence (the grounding check matches each answer sentence to ONE
         // source sentence, so merged rewrites were dropped), no one-shot example (the 1B model copied it into the
         // answer) and "Do not number the lines" (numbers glued to a line failed the number rule). Base 1B, all 27

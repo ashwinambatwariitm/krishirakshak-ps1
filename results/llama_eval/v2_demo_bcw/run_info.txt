@@ -1,1 +1,1 @@
-prompt=prompts/aman_v2_explain.txt options=--block-cause-words
+prompt=prompts/advisor_v2_explain.txt options=--block-cause-words

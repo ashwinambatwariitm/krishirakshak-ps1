@@ -1,1 +1,1 @@
-prompt=prompts/aman_v8_no_numbering.txt options=
+prompt=prompts/advisor_v8_no_numbering.txt options=

@@ -1,6 +1,6 @@
 # Distortion review - v8_all
 
-prompt=prompts/aman_v8_no_numbering.txt options=
+prompt=prompts/advisor_v8_no_numbering.txt options=
 
 For every accepted answer: each kept sentence (K) and the source sentence that supports it best (S), with the number of shared content words. Mark a kept sentence as a distortion if it changes the meaning of its source (wrong cause, wrong plant part, instruction made stronger or weaker, generic claim).
 

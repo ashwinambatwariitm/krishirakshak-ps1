@@ -1,7 +1,7 @@
 {
   "runtime": "C++ krishirakshak --eval-advisor",
   "pte": "llama3_2_1b_instruct_8da4w.pte",
-  "prompt": "aman_v5_keywords_no_example.txt",
+  "prompt": "advisor_v5_keywords_no_example.txt",
   "options": "--block-cause-words",
   "topics": 27,
   "accepted": 19,

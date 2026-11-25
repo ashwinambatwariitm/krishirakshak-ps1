@@ -1,1 +1,1 @@
-prompt=prompts/aman_v6_full_stop.txt options=--block-cause-words
+prompt=prompts/advisor_v6_full_stop.txt options=--block-cause-words

@@ -1,7 +1,7 @@
 {
   "runtime": "C++ krishirakshak --eval-advisor",
   "pte": "llama3_2_1b_instruct_8da4w.pte",
-  "prompt": "aman_v1b_full_stop.txt",
+  "prompt": "advisor_v1b_full_stop.txt",
   "options": "",
   "topics": 6,
   "accepted": 3,

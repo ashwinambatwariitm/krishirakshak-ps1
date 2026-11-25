@@ -1,1 +1,1 @@
-prompt=prompts/aman_v7_task_in_user.txt options=
+prompt=prompts/advisor_v7_task_in_user.txt options=

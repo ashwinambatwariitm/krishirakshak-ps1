@@ -3,7 +3,7 @@
 Goal: more 1B answers pass the grounding check, without making them less
 correct. The check, its 0.75 threshold and every safety check are unchanged; only the prompt changed.
 
-**Result: `prompts/aman_v8_no_numbering.txt`**. On all 27 topics it is accepted for 24 (baseline 15), the six demo
+**Result: `prompts/advisor_v8_no_numbering.txt`**. On all 27 topics it is accepted for 24 (baseline 15), the six demo
 topics 6/6 (baseline 3/6), 0 refusals (baseline 8), 7.2 grounded sentences per topic (baseline 2.9) and no distortion
 found in a manual review of all 195 kept sentences. It also generates fewer tokens per answer (78 vs 106), so it should
 not be slower on the Pi.
@@ -34,23 +34,23 @@ topic. Runs are in `results/llama_eval/<run>/`.
 |---|---|---|---|---|---|---|---|
 | baseline (built-in) | - | 3/6 | 15 | 15 | 8 | 2.9 | 0 |
 | baseline + bcw | - | 5/6 | 17 | 15 | 8 | 3.1 | 3 (collar_rot, late_blight x2) |
-| v1 `aman_v1_per_sentence` | rewrite every fact sentence as its own short sentence; key-word list; one-shot example | 6/6 | 20 | 18 | 0 | 5.0 | 4 (damping_off x3, serpentine_leaf_miner) |
+| v1 `advisor_v1_per_sentence` | rewrite every fact sentence as its own short sentence; key-word list; one-shot example | 6/6 | 20 | 18 | 0 | 5.0 | 4 (damping_off x3, serpentine_leaf_miner) |
 | v1 + bcw | | 6/6 | 20 | 17 | 0 | 6.3 | 6 (+ helicoverpa x2) |
-| v1b `aman_v1b_full_stop` | v1 + "each ending with a full stop" | 3/6 (demo run) | - | - | 0 | 3.3 | - |
-| v2 `aman_v2_explain` | "friendly extension worker", official advice + explanation | 2/6 (demo run) | - | - | 5 of 6 | 2.3 | - |
-| v3 `aman_v3_no_keyword_list` | v1 without the key-word list | 5/6 | 13 | - | 0 | 3.1 | - |
-| v4 `aman_v4_no_example` | v3 without the one-shot example | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
+| v1b `advisor_v1b_full_stop` | v1 + "each ending with a full stop" | 3/6 (demo run) | - | - | 0 | 3.3 | - |
+| v2 `advisor_v2_explain` | "friendly extension worker", official advice + explanation | 2/6 (demo run) | - | - | 5 of 6 | 2.3 | - |
+| v3 `advisor_v3_no_keyword_list` | v1 without the key-word list | 5/6 | 13 | - | 0 | 3.1 | - |
+| v4 `advisor_v4_no_example` | v3 without the one-shot example | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
 | v4 + bcw | | 6/6 | 22 | 22 | 0 | 6.4 | 0 |
-| v5 `aman_v5_keywords_no_example` | v1 without the example (key-word list kept) | 6/6 | 19 | - | 0 | 6.0 | - |
-| v6 `aman_v6_full_stop` | v4 + full stop | 3/6 | 15 | - | 0 | 4.1 | - |
-| v7 `aman_v7_task_in_user` | v4 instructions moved from the system to the user message | 5/6 | 24 | 21 | 0 | 5.7 | 3 (bacterial_canker, bacterial_wilt, tuta: headers only) |
-| **v8 `aman_v8_no_numbering`** | **v4 + "Do not number the lines."** | **6/6** | **24** | **24** | **0** | **7.2** | **0** |
+| v5 `advisor_v5_keywords_no_example` | v1 without the example (key-word list kept) | 6/6 | 19 | - | 0 | 6.0 | - |
+| v6 `advisor_v6_full_stop` | v4 + full stop | 3/6 | 15 | - | 0 | 4.1 | - |
+| v7 `advisor_v7_task_in_user` | v4 instructions moved from the system to the user message | 5/6 | 24 | 21 | 0 | 5.7 | 3 (bacterial_canker, bacterial_wilt, tuta: headers only) |
+| **v8 `advisor_v8_no_numbering`** | **v4 + "Do not number the lines."** | **6/6** | **24** | **24** | **0** | **7.2** | **0** |
 | v8 + bcw | (only fruit_rots changes) | 6/6 | 24 | 23 | 0 | 7.2 | 1 (fruit_rots) |
-| v9 `aman_v9_all_sentences` | v4 + "Rewrite all the sentences of the FACTS, not only the first ones." | 6/6 | 21 | - | 0 | 6.1 | - |
-| v10 `aman_v10_no_diagnosis` | v4 without the diagnosis line | 6/6 | 24 | 23 | 0 | 8.1 | 1 (early_blight, a demo topic) |
-| v11 `aman_v11_no_numbering_no_diagnosis` | v8 without the diagnosis line | 6/6 | 23 | 22 | 0 | 7.8 | 1 (yellow_leaf_curl_virus, a demo topic) |
-| v12 `aman_v12_no_repeat` | v8 + "Never write the same sentence twice." | 6/6 | 24 | 23 | 0 | 7.1 | 1 (helicoverpa) |
-| v13 `aman_v13_capital` | v8 + "Start every line with a capital letter." | 4/6 | 22 | - | 0 | 4.7 | - |
+| v9 `advisor_v9_all_sentences` | v4 + "Rewrite all the sentences of the FACTS, not only the first ones." | 6/6 | 21 | - | 0 | 6.1 | - |
+| v10 `advisor_v10_no_diagnosis` | v4 without the diagnosis line | 6/6 | 24 | 23 | 0 | 8.1 | 1 (early_blight, a demo topic) |
+| v11 `advisor_v11_no_numbering_no_diagnosis` | v8 without the diagnosis line | 6/6 | 23 | 22 | 0 | 7.8 | 1 (yellow_leaf_curl_virus, a demo topic) |
+| v12 `advisor_v12_no_repeat` | v8 + "Never write the same sentence twice." | 6/6 | 24 | 23 | 0 | 7.1 | 1 (helicoverpa) |
+| v13 `advisor_v13_capital` | v8 + "Start every line with a capital letter." | 4/6 | 22 | - | 0 | 4.7 | - |
 
 v8 still rejects three topics: `bacterial_speck` (writes one sentence twice; the copy is dropped as a duplicate, so 1
 grounded), `tuta_absoluta_pinworm` (numbers its lines anyway and loops on "The pinworm is found on the leaf") and
@@ -153,7 +153,7 @@ with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app 
 
 ## v8 in the application (19 Nov 2026)
 
-- v8 is now the built-in prompt of `cpp/src/llama_advisor.cpp` (same text as `prompts/aman_v8_no_numbering.txt`).
+- v8 is now the built-in prompt of `cpp/src/llama_advisor.cpp` (same text as `prompts/advisor_v8_no_numbering.txt`).
   The previous prompt stays available: `KR_ADVISOR_PROMPT=prompts/advise_keep_words.txt`.
 - The near-duplicate repeat stop of the evaluation branch (`llama-quality-speed`) is in the application too, so the
   application decodes like the evaluation runs above.
@@ -182,7 +182,7 @@ with chilli or brinjal" (a crop sequence became a mixed-planting rule). The app 
 
 ## Files
 
-- `prompts/aman_v*.txt` - all variants (v8 is the one to use).
+- `prompts/advisor_v*.txt` - all variants (v8 is the one to use).
 - `results/llama_eval/<run>/` - `eval.jsonl` (raw C++ output), `answers.json`, `summary.json`, `review.md`,
   `run_info.txt`, `stderr.txt`.
 - `llm/summarize_eval.py` - table, review and JSON files from C++ runs.

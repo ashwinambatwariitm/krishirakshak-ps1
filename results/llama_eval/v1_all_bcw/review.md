@@ -1,6 +1,6 @@
 # Distortion review - v1_all_bcw
 
-prompt=prompts/aman_v1_per_sentence.txt options=--block-cause-words
+prompt=prompts/advisor_v1_per_sentence.txt options=--block-cause-words
 
 For every accepted answer: each kept sentence (K) and the source sentence that supports it best (S), with the number of shared content words. Mark a kept sentence as a distortion if it changes the meaning of its source (wrong cause, wrong plant part, instruction made stronger or weaker, generic claim).
 
