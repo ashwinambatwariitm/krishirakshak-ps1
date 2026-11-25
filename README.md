@@ -1,7 +1,7 @@
 # KrishiRakshak - offline crop disease and pest advisor (Bharat AI-SoC Challenge 2026-27, PS1)
 
 KrishiRakshak turns one photo of a tomato leaf or an insect into checked advice in the farmer's language, fully
-offline on a Raspberry Pi 5 (8 GB, CPU only). The farmer's phone joins the Pi's own Wi-Fi hotspot; one C++ program on
+offline on a Raspberry Pi 5 (8 GB, CPU only). The farmer's phone joins the Pi's own Wi-Fi hotspot. One C++ program on
 the Pi finds the crop, the disease and the insects, measures how much of the leaf is affected, looks up verified
 practices from ICAR, NIPHM and TNAU publications, has Llama 3.2 1B (ExecuTorch, INT4) explain them in simple words,
 checks every sentence against the sources and translates the answer into one of 10 Indian languages. Severe cases are
@@ -37,12 +37,12 @@ exactly as published and are never rewritten or translated.
 
 | What | Result |
 |---|---|
-| Disease classifier, 6 tomato classes | 98.7% on lab photos (PlantVillage); 76% on field photos (PlantDoc), 88% on the field photos it answers (below 0.85 confidence it says "uncertain") |
-| Tomato-leaf check | 94.6% of other crops, insects and objects rejected; 4.8% of tomato field photos rejected in error |
-| Pest detector (6 advice groups) | insect found 85-98% (IP102 test, independent photos); right advice group 26% on 578 independent pest photos (species model before: 13%) |
-| Severity | level agrees with plant pathologists on 61% of 91 field photos (colour rule before: 31%); lesion Dice 0.54 |
-| Speed on the Pi 5 | vision 0.11 s; Llama about 14 tokens/s, first token median 2.4 s; full answer median 8.4 s (4.7-20 s) |
-| Memory and power | Llama INT4 peak 1.25 GB, whole app 1.74 GB of 8 GB; 5.5 W board power during an answer, 1.45 W idle |
+| Disease classifier, 6 tomato classes | 98.7% on lab photos (PlantVillage), 76% on field photos (PlantDoc), 88% on the field photos it answers (below 0.85 confidence it says "uncertain") |
+| Tomato-leaf check | 94.6% of other crops, insects and objects rejected, 4.8% of tomato field photos rejected in error |
+| Pest detector (6 advice groups) | insect found 85-98% (IP102 test, independent photos), right advice group 26% on 578 independent pest photos (species model before: 13%) |
+| Severity | level agrees with plant pathologists on 74% of 68 graded field photos without virus diseases (61% of 88 with them, colour rule before: 31%), lesion Dice 0.54 |
+| Speed on the Pi 5 | vision 0.11 s, Llama about 14 tokens/s, first token median 2.4 s, full answer median 8.4 s (4.7-20 s) |
+| Memory and power | Llama INT4 peak 1.25 GB, whole app 1.74 GB of 8 GB, 5.5 W board power during an answer, 1.45 W idle |
 | End-to-end tests | 36 test photos x 10 languages = 360 runs through the API and 360 through the app, no failures ([results/e2e_pi5](results/e2e_pi5)) |
 
 Details, with every test set and the FP32 / INT8 / INT4 comparisons: [docs/RESULTS.md](docs/RESULTS.md),
@@ -56,14 +56,15 @@ with Ubuntu for cross-compiling, and the GitHub CLI (`gh`).
 
 1. Download the models (not stored in git) into `models/`, as described in [models/README.md](models/README.md):
    ```
-   for r in models-v5 models-v4 models-v3 models-v2 llm-v2 llm-v1; do
+   for r in models-v5 models-v4 models-v3 models-v2 llm-v2 llm-v1
+   do
      gh release download $r --repo ashwinambatwariitm/krishirakshak-ps1 --dir models
    done
    tar -xzf models/indictrans2_en_indic_200M_ct2_int8.tar.gz -C models
    ```
 2. Build the dependencies (ONNX Runtime 1.23.2, ExecuTorch 1.5.1, CTranslate2 4.6.0) and the program for the Pi, as in
    [cpp/README.md](cpp/README.md). Needs CMake 3.24 or newer and Ninja. Run from the repository root (the toolchain
-   file needs its full path); this gives a program byte-identical to the one on the test Pi:
+   file needs its full path). This gives a program byte-identical to the one on the test Pi:
    ```
    cmake -S cpp -B build/arm -G Ninja -DCMAKE_TOOLCHAIN_FILE=$PWD/cpp/arm-toolchain.cmake \
      -DEXECUTORCH_ROOT=$HOME/arm_libs/executorch && cmake --build build/arm -j
@@ -87,7 +88,7 @@ with Ubuntu for cross-compiling, and the GitHub CLI (`gh`).
 ## Android app
 
 [app/android](app/android) wraps the same pages in an Android app with the phone's own offline voice for read-aloud.
-The pages are copied into the app with `app/android/sync_web.sh`; build with `./gradlew assembleDebug` (JDK 17,
+The pages are copied into the app with `app/android/sync_web.sh`, then built with `./gradlew assembleDebug` (JDK 17,
 Android SDK 34). The app connects to `http://10.42.0.1:8080`.
 
 ## Develop and test on a PC
@@ -100,13 +101,13 @@ ctest --test-dir build/x86                                               # groun
 python tools/mock_api_server.py                                          # app against saved example answers
 ```
 
-The answer format is documented in [docs/APP_API.md](docs/APP_API.md); program options in [cpp/README.md](cpp/README.md).
+The answer format is documented in [docs/APP_API.md](docs/APP_API.md), program options in [cpp/README.md](cpp/README.md).
 
 ## Training (Kaggle)
 
 All models were trained on Kaggle (Tesla T4). The scripts in `training/src/` (one per experiment, cells separated by
 `# %%`) are turned into notebooks with `python training/build_notebooks.py --kaggle-user YOUR_KAGGLE_NAME` and run
-with `kaggle kernels push -p kaggle/<notebook>`; outputs are downloaded with `kaggle kernels output`. Datasets are
+with `kaggle kernels push -p kaggle/<notebook>`. Outputs are downloaded with `kaggle kernels output`. Datasets are
 attached from Kaggle automatically. Before using GPU time, a script can be checked on fake data:
 
 ```
@@ -124,22 +125,29 @@ KR_SMOKE=1 KR_INPUT=/tmp/fake_data KR_WORK=/tmp/fake_out python training/src/tom
 | `llama_lora_distill.py`, `llama3b_export.py` | LoRA for Llama 3.2 1B, ExecuTorch export |
 | `kb_translate.py` | knowledge-base translation (IndicTrans2) |
 
-Rules that keep the test results honest: test photos are never used for training, checkpoint selection or threshold
-tuning; photos of the same leaf and copies across datasets stay in one split; augmentation happens in memory during
-training only; lab (PlantVillage) and field (PlantDoc) results are always reported separately.
+Rules that keep the test results honest:
+
+- test photos are never used for training, checkpoint selection or threshold tuning
+- photos of the same leaf and copies across datasets stay in one split
+- augmentation happens in memory during training only
+- lab (PlantVillage) and field (PlantDoc) results are always reported separately.
 
 ## Repository layout
 
 ```
-cpp/          the C++ program for the Pi (src/, tests/, tools/), packaging and the hotspot script (pi/kr_pi.sh)
-app/web/      the farmer app (HTML, CSS, JavaScript, fonts) served by the Pi; demo.html = judge screen
-app/android/  Android app around the same pages
-app/kb/       verified knowledge base (ICAR, NIPHM, TNAU extracts) and its translations
-training/     training scripts and the Kaggle notebook builder; kaggle/ = generated notebooks
-tools/        evaluation, export, benchmark and translation tools
-results/      metrics, confusion matrices, split manifests and Pi measurements of every run
-docs/         results, design notes, API, severity, translation, Llama quality, roadmap
-models/       README with download commands and checksums (model files are release assets)
+cpp/            the C++ program for the Pi (src/, tests/, tools/), packaging and the hotspot script (pi/kr_pi.sh)
+app/web/        the farmer app (HTML, CSS, JavaScript, fonts) served by the Pi, demo.html = judge screen
+app/android/    Android app around the same pages
+app/kb/         verified knowledge base (ICAR, NIPHM, TNAU extracts) and its translations
+app/pipeline/   Python reference of the pipeline (the C++ program follows it, checked by tools/cpp_parity.py)
+llm/            Llama export, benchmark, evaluation and the grounding check
+prompts/        Llama prompt variants compared in docs/llama_1b_quality.md (v8 is used)
+training/       training scripts (training/src) and the Kaggle notebook builder
+kaggle/         the generated notebook of every training run
+tools/          evaluation, export, benchmark, translation and end-to-end test tools
+results/        metrics, confusion matrices, split manifests and Pi measurements of every run
+docs/           technical report, results, API, severity, translation, Llama quality, Phase 1 task list
+models/         README with download commands and checksums (model files are release assets)
 ```
 
 ## Licences
@@ -150,7 +158,7 @@ PlantVillage (CC BY-SA 3.0, whose authors ask that trained models follow the sam
 
 | Component | Licence |
 |---|---|
-| Llama 3.2 1B (release assets llm-v1, llm-v2) | Llama 3.2 Community License, Copyright (c) Meta Platforms, Inc. All Rights Reserved; licence, use policy and notice in the release. Built with Llama. |
+| Llama 3.2 1B (release assets llm-v1, llm-v2) | Llama 3.2 Community License, Copyright (c) Meta Platforms, Inc. All Rights Reserved. Licence, use policy and notice in the release. Built with Llama. |
 | IndicTrans2 (AI4Bharat) | MIT |
 | ExecuTorch / ONNX Runtime / CTranslate2 / OpenCV | BSD / MIT / MIT / Apache 2.0 |
 | SQLite / nlohmann json | public domain / MIT |
@@ -158,6 +166,6 @@ PlantVillage (CC BY-SA 3.0, whose authors ask that trained models follow the sam
 | PlantVillage / PlantDoc / IP102 | CC BY-SA 3.0 / CC BY 4.0 / research terms of the IP102 authors |
 | Red Chili Pepper Pests, Eggplant Disease Recognition, Solanaceae Leaves | Apache 2.0, CC BY 4.0, CC0 |
 | Severity training data (Roboflow "tomato", Kaggle leaf disease segmentation) | CC BY 4.0, CC0 |
-| Knowledge-base extracts | quoted from ICAR, NIPHM and TNAU publications, each with its source and link; the texts remain the publishers' |
+| Knowledge-base extracts | quoted from ICAR, NIPHM and TNAU publications, each with its source and link. The texts remain the publishers' |
 
 The test photos used during development come from these datasets and are not redistributed here.
